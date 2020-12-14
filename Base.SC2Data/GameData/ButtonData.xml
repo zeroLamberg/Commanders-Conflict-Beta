@@ -1,0 +1,1204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CButton default="1" id="StormButtonParent">
+        <TooltipFlags index="ShowLevel" value="0"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowCooldown" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipFlags index="ShowAutocast" value="0"/>
+        <TooltipVitalName index="Energy" value="UI/Tooltip/Abil/Mana"/>
+    </CButton>
+    <CButton default="1" id="StormButtonParentFury" parent="StormButtonParent">
+        <TooltipVitalName index="Energy" value="UI/Tooltip/Abil/Fury"/>
+    </CButton>
+    <CButton default="1" id="CommandersPrestigeButtonSlot1">
+        <Name value="Button/Name/CommandersPrestigeButtonSlot1"/>
+        <Tooltip value="Button/Tooltip/CommandersPrestigeButtonSlot1"/>
+        <AlertName value="Button/Name/CommandersPrestigeButtonSlot1"/>
+        <AlertTooltip value="Button/Tooltip/CommandersPrestigeButtonSlot1"/>
+        <Hotkey value="Button/Hotkey/CommandersPrestigeButtonSlot1"/>
+        <EditorCategories value="CommandersHero:Common"/>
+        <HotkeyAlias value="CommandersPrestigeButtonSlot1"/>
+        <DefaultButtonLayout Row="1"/>
+        <TooltipFlags index="ShowLevel" value="0"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+    </CButton>
+    <CButton default="1" id="CommandersSpecificButton">
+        <TooltipFlags index="ShowLevel" value="0"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <EditorCategories value="CommandersHero:Common"/>
+        <DefaultButtonLayout Row="1" Column="3"/>
+    </CButton>
+    <CButton default="1" id="CommandersPrestigeButtonSlot2">
+        <Name value="Button/Name/CommandersPrestigeButtonSlot2"/>
+        <Tooltip value="Button/Tooltip/CommandersPrestigeButtonSlot2"/>
+        <AlertName value="Button/Name/CommandersPrestigeButtonSlot2"/>
+        <AlertTooltip value="Button/Tooltip/CommandersPrestigeButtonSlot2"/>
+        <Hotkey value="Button/Hotkey/CommandersPrestigeButtonSlot2"/>
+        <EditorCategories value="CommandersHero:Common"/>
+        <DefaultButtonLayout Row="1" Column="1"/>
+        <TooltipFlags index="ShowLevel" value="0"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+    </CButton>
+    <CButton id="AutoAttack">
+        <Icon value="Assets\Textures\storm_ui_icon_damage.dds"/>
+    </CButton>
+    <CButton id="BeneathContempt">
+        <TooltipFlags index="ShowLevel" value="0"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowCooldown" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipFlags index="ShowAutocast" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btncastle.dds"/>
+    </CButton>
+    <CButton id="HeroGeneric_HearthstoneReturnToBase">
+        <Icon value="assets\Icons\Hero_Yrel\Icon_Hero_Yrel_VelensChosen_Active.dds"/>
+        <EditorCategories value="CommandersHero:Common"/>
+        <TooltipFlags index="ShowLevel" value="0"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowCooldown" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipFlags index="ShowAutocast" value="0"/>
+    </CButton>
+    <CButton id="HeroTalandarDragoonArmorSuit">
+        <Icon value="Assets\Textures\btn-hero-fenix-dragoon.dds"/>
+        <EditorCategories value="CommandersHero:Talandar"/>
+    </CButton>
+    <CButton id="HeroTalandarPraetorArmorSuit">
+        <Icon value="Assets\Textures\btn-hero-fenix.dds"/>
+        <EditorCategories value="CommandersHero:Talandar"/>
+    </CButton>
+    <CButton id="HeroTalandarPurificationBlast">
+        <Icon value="Assets\Textures\btn-upgrade-protoss-fenix-purificationblast.dds"/>
+        <EditorCategories value="CommandersHero:Talandar"/>
+    </CButton>
+    <CButton id="HeroTalandarShieldCapacitor">
+        <Icon value="Assets\Textures\btn-ability-protoss-shieldcapacitor.dds"/>
+        <EditorCategories value="CommandersHero:Talandar"/>
+    </CButton>
+    <CButton id="HeroTalandarWhirlwind">
+        <Icon value="Assets\Textures\btn-ability-protoss-whirlwindfenix.dds"/>
+        <EditorCategories value="CommandersHero:Talandar"/>
+    </CButton>
+    <CButton id="TemplateDashAbilityApplyForce"/>
+    <CButton id="HeroTalandarThunderousCharge">
+        <Icon value="Assets\Textures\btn-ability-protoss-thunderouscharge.dds"/>
+        <EditorCategories value="CommandersHero:Talandar"/>
+    </CButton>
+    <CButton id="TemplateDashAbilityIssueMoveOrder"/>
+    <CButton id="MinionKillerTalentSimple" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_btn_d3_barbarian_bash.dds"/>
+        <HotkeyAlias value="TalentBucketCallOfTheStorm"/>
+    </CButton>
+    <CButton id="MinionKillerTalent" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_btn_d3_barbarian_bash.dds"/>
+        <HotkeyAlias value="TalentBucketCallOfTheStorm"/>
+    </CButton>
+    <CButton id="RollingStrikeWeaponCooldown" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_temp_war3_btnreplay-speeddown.dds"/>
+    </CButton>
+    <CButton id="AncientSpearWeaponCooldown" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_temp_war3_btnreplay-speeddown.dds"/>
+    </CButton>
+    <CButton id="TalentCleanse" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+    </CButton>
+    <CButton id="TalentCleanseActivated" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_ui_temp_icon_blindinglight.dds"/>
+    </CButton>
+    <CButton id="TalentCleanseSimple" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_ui_temp_icon_blindinglight.dds"/>
+    </CButton>
+    <CButton id="TalentEnrage" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnbattleroar.dds"/>
+        <HotkeyAlias value="PrestigeFirstAid@Slot1"/>
+    </CButton>
+    <CButton id="DoodadSuicide" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_temp_war3_btnsacrifice.dds"/>
+    </CButton>
+    <CButton id="BattleMomentum1" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_btn_d3_barbarian_rend.dds"/>
+    </CButton>
+    <CButton id="BattleMomentum2" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_btn_d3_barbarian_rend.dds"/>
+    </CButton>
+    <CButton id="BattleMomentumBase" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_btn_d3_barbarian_rend.dds"/>
+    </CButton>
+    <CButton id="ConstantHeroism1" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_temp_war3_btntransmute.dds"/>
+    </CButton>
+    <CButton id="ConstantHeroism2" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_temp_war3_btntransmute.dds"/>
+    </CButton>
+    <CButton id="ConstantHeroismBase" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btntransmute.dds"/>
+    </CButton>
+    <CButton id="PaulUnitAbility" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_temp_war3_btnloaddwarf.dds"/>
+    </CButton>
+    <CButton id="TalentAmplifiedHealing" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_ui_temp_icon_spellprojection.dds"/>
+        <HotkeyAlias value="TalentAbilityVampirism1"/>
+    </CButton>
+    <CButton id="TalentGenericBrilliance1" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnbrilliance.dds"/>
+    </CButton>
+    <CButton id="TalentGenericBrilliance1Base" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnbrilliance.dds"/>
+    </CButton>
+    <CButton id="TalentGenericBrilliance2" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnbrilliance.dds"/>
+    </CButton>
+    <CButton id="TalentGenericBrilliance3" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnbrilliance.dds"/>
+    </CButton>
+    <CButton id="TalentGenericBrilliance3Base" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnbrilliance.dds"/>
+    </CButton>
+    <CButton id="TalentGenericBrilliance4" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnbrilliance.dds"/>
+    </CButton>
+    <CButton id="TalentOverdrive" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_btn_d3_wizard_archon.dds"/>
+        <HotkeyAlias value="PrestigeFirstAid@Slot1"/>
+    </CButton>
+    <CButton id="TalentOverdriveResourceless" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_btn_d3_wizard_archon.dds"/>
+        <HotkeyAlias value="PrestigeFirstAid@Slot1"/>
+    </CButton>
+    <CButton id="Unleashed1" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\war3_pasbtnmagicalsentry.dds"/>
+    </CButton>
+    <CButton id="Unleashed2" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\war3_pasbtnmagicalsentry.dds"/>
+    </CButton>
+    <CButton id="UnleashedBase" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\war3_pasbtnmagicalsentry.dds"/>
+    </CButton>
+    <CButton id="Block1" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btndefend.dds"/>
+    </CButton>
+    <CButton id="Block1Base" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btndefend.dds"/>
+    </CButton>
+    <CButton id="Block2" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btndefend.dds"/>
+    </CButton>
+    <CButton id="Corruption1" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnorbofcorruption.dds"/>
+    </CButton>
+    <CButton id="Corruption2" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnorbofcorruption.dds"/>
+    </CButton>
+    <CButton id="Corruption3" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnorbofcorruption.dds"/>
+    </CButton>
+    <CButton id="Demolitionist1" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_btn_d3_barbarian_cleave.dds"/>
+    </CButton>
+    <CButton id="Demolitionist2" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_btn_d3_barbarian_cleave.dds"/>
+    </CButton>
+    <CButton id="Demolitionist3" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_btn_d3_barbarian_cleave.dds"/>
+    </CButton>
+    <CButton id="ShamanHealingTotem" parent="StormButtonParent">
+        <Tooltip value="Button/Tooltip/ItemHealingWard"/>
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnhealingward.dds"/>
+    </CButton>
+    <CButton id="NecromancerSummonSkeletons" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_temp_war3_btnskeletonarcher.dds"/>
+    </CButton>
+    <CButton id="Revenge1" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnunholyfrenzy.dds"/>
+    </CButton>
+    <CButton id="Revenge1Base" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnunholyfrenzy.dds"/>
+    </CButton>
+    <CButton id="Revenge2" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnunholyfrenzy.dds"/>
+    </CButton>
+    <CButton id="Revenge3" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnunholyfrenzy.dds"/>
+    </CButton>
+    <CButton id="MithrilSpurs" parent="StormButtonParent">
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\war3_horseshoe.dds"/>
+        <HotkeyAlias value="SummonMount"/>
+    </CButton>
+    <CButton id="VictoryRush1" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_btn_d3_wizard_energyarmor.dds"/>
+    </CButton>
+    <CButton id="VictoryRush1Base" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_btn_d3_wizard_energyarmor.dds"/>
+    </CButton>
+    <CButton id="VictoryRush2" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_btn_d3_wizard_energyarmor.dds"/>
+    </CButton>
+    <CButton id="WallCrush" parent="StormButtonParent">
+        <TooltipVitalName index="Energy" value=""/>
+        <Icon value="Assets\Textures\storm_btn_d3_wizard_waveofforce.dds"/>
+    </CButton>
+    <CButton id="WarSpurs" parent="StormButtonParent">
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnriderlesshorse.dds"/>
+        <HotkeyAlias value="SummonMount"/>
+    </CButton>
+    <CButton id="GiantKiller3" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnseagiant.dds"/>
+    </CButton>
+    <CButton id="TalentCullTheWeak" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnvillagerkid.dds"/>
+    </CButton>
+    <CButton id="TalentGenericArcaneTeachings2" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnorboffrost.dds"/>
+        <HotkeyAlias value="TalentGenericArcaneTeachings1Base"/>
+    </CButton>
+    <CButton id="TalentGenericArcaneTeachings1Base" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnorboffrost.dds"/>
+    </CButton>
+    <CButton id="TalentGenericArcaneTeachings1" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnorboffrost.dds"/>
+        <HotkeyAlias value="TalentGenericArcaneTeachings1Base"/>
+    </CButton>
+    <CButton id="TalentHealthGlobeMastery" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_ui_temp_icon_regenglobemastery.dds"/>
+    </CButton>
+    <CButton id="TalentBattleFury" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_btn_d3_demonhunter_rapidfire.dds"/>
+        <HotkeyAlias value="GenericTalentForceofWill1"/>
+    </CButton>
+    <CButton id="GenericTalentForceofWill1Base" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_btn_d3_monk_mantraofevasion.dds"/>
+    </CButton>
+    <CButton id="GenericTalentForceofWill2" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_btn_d3_monk_mantraofevasion.dds"/>
+    </CButton>
+    <CButton id="GenericTalentSwiftness1Base" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_btn_d3_monk_sweepingwind.dds"/>
+    </CButton>
+    <CButton id="TalentBattleFury2" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_btn_d3_demonhunter_rapidfire.dds"/>
+        <HotkeyAlias value="GenericTalentForceofWill1"/>
+    </CButton>
+    <CButton id="TalentBattleFuryBase" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_btn_d3_demonhunter_rapidfire.dds"/>
+        <HotkeyAlias value="GenericTalentForceofWill1"/>
+    </CButton>
+    <CButton id="TalentBerserk" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnberserk.dds"/>
+        <HotkeyAlias value="PrestigeFirstAid@Slot1"/>
+    </CButton>
+    <CButton id="TalentMentalAgility" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_ui_temp_icon_mentalclarity_3.dds"/>
+        <HotkeyAlias value="TalentGenericBrilliance1"/>
+    </CButton>
+    <CButton id="KaelthasArcaneTorrent" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_btn_d3_wizard_archon_arcanestrike.dds"/>
+    </CButton>
+    <CButton id="TalentMentalAgilityBase" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_ui_temp_icon_mentalclarity_3.dds"/>
+        <HotkeyAlias value="TalentGenericBrilliance1"/>
+    </CButton>
+    <CButton id="TalentRegenerativeShielding1Base" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\icon-health-terran.dds"/>
+    </CButton>
+    <CButton id="TalentRegenerativeShielding1" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\icon-health-terran.dds"/>
+    </CButton>
+    <CButton id="TalentRegenerativeShielding2" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\icon-health-terran.dds"/>
+    </CButton>
+    <CButton id="TalentRegenerativeShielding22" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\icon-health-terran.dds"/>
+    </CButton>
+    <CButton id="TalentRelentless2" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnreincarnation.dds"/>
+    </CButton>
+    <CButton id="TalentRelentless3" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnreincarnation.dds"/>
+    </CButton>
+    <CButton id="TalentRelentlessBase" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnreincarnation.dds"/>
+    </CButton>
+    <CButton id="TalentMentalAgility2" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_ui_temp_icon_mentalclarity_3.dds"/>
+        <HotkeyAlias value="TalentGenericBrilliance1"/>
+    </CButton>
+    <CButton id="TalentCalloftheStorm" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_btn_d3_wizard_stormarmor.dds"/>
+    </CButton>
+    <CButton id="SummonMountTalent" parent="StormButtonParent">
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\war3_horseshoe.dds"/>
+        <HotkeyAlias value="SummonMount"/>
+    </CButton>
+    <CButton id="TalentDemolitionist" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_btn_d3_barbarian_cleave.dds"/>
+        <HotkeyAlias value="ItemSiegecraft1"/>
+    </CButton>
+    <CButton id="GenericTalentForceofWill1" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_btn_d3_monk_mantraofevasion.dds"/>
+    </CButton>
+    <CButton id="TalentGenericCullTheWeak1Base" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnvillagerkid.dds"/>
+        <HotkeyAlias value="TalentGenericCullTheWeak1"/>
+    </CButton>
+    <CButton id="TalentGenericGiantKiller1Base" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnseagiant.dds"/>
+        <HotkeyAlias value="TalentGenericGiantKiller1"/>
+    </CButton>
+    <CButton id="TalentGenericHastyStrikes1Base" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_btn_d3_monk_sevensidedstrike.dds"/>
+    </CButton>
+    <CButton id="TalentGenericHastyStrikes3Base" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_btn_d3_monk_sevensidedstrike.dds"/>
+    </CButton>
+    <CButton id="TalentGenericManaBurst1Base" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnbigbadvoodoospell.dds"/>
+        <HotkeyAlias value="TalentGenericManaBurst1"/>
+    </CButton>
+    <CButton id="TalentGenericMarksman1Base" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_btn-ability-terran-snipe.dds"/>
+        <HotkeyAlias value="TalentGenericMarksman3"/>
+    </CButton>
+    <CButton id="TalentCorruption" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnorbofcorruption.dds"/>
+    </CButton>
+    <CButton id="TalentGenericMightAndMagic1Base" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btncontrolmagic.dds"/>
+    </CButton>
+    <CButton id="TalentGenericRapidRegeneration1Base" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnregenerate.dds"/>
+    </CButton>
+    <CButton id="TalentGenericShields4Base" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_btn-upgrade-protoss-shieldslevel0.dds"/>
+    </CButton>
+    <CButton id="TalentGenericShields1Base" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_btn-upgrade-protoss-shieldslevel0.dds"/>
+    </CButton>
+    <CButton id="TALENTBUGGED" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btncancel.dds"/>
+        <HotkeyAlias value="TalentGenericTenacity1"/>
+    </CButton>
+    <CButton id="TalentGenericTenacity1Base" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_btn_d3_barbarian_battlerage.dds"/>
+        <HotkeyAlias value="TalentGenericTenacity1"/>
+    </CButton>
+    <CButton id="TalentRelentless1" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnreincarnation.dds"/>
+    </CButton>
+    <CButton id="TalentGenericManaBurst1" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnbigbadvoodoospell.dds"/>
+    </CButton>
+    <CButton id="TalentGenericManaBurst2" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnbigbadvoodoospell.dds"/>
+    </CButton>
+    <CButton id="GenericTalentSwiftness1" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_btn_d3_monk_sweepingwind.dds"/>
+    </CButton>
+    <CButton id="TalentGenericTenacity1" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_btn_d3_barbarian_battlerage.dds"/>
+    </CButton>
+    <CButton id="TalentGenericTenacity2" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_btn_d3_barbarian_battlerage.dds"/>
+    </CButton>
+    <CButton id="TalentGenericTenacity3" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_btn_d3_barbarian_battlerage.dds"/>
+    </CButton>
+    <CButton id="TalentGenericThrillOfTheKill" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnreincarnation.dds"/>
+    </CButton>
+    <CButton id="GenericTalentSwiftness2" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_btn_d3_monk_sweepingwind.dds"/>
+    </CButton>
+    <CButton id="TalentGenericCullTheWeak2" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnvillagerkid.dds"/>
+    </CButton>
+    <CButton id="TalentGenericGiantKiller1" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnseagiant.dds"/>
+    </CButton>
+    <CButton id="TalentGenericGiantKiller2" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnseagiant.dds"/>
+    </CButton>
+    <CButton id="TalentGenericMarksman1" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_btn-ability-terran-snipe.dds"/>
+    </CButton>
+    <CButton id="TalentGenericCullTheWeak1" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnvillagerkid.dds"/>
+    </CButton>
+    <CButton id="TalentGenericMarksman2" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_btn-ability-terran-snipe.dds"/>
+    </CButton>
+    <CButton id="TalentGenericMarksman3" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_btn-ability-terran-snipe.dds"/>
+    </CButton>
+    <CButton id="TalentGenericExpertMarksman" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_btn-upgrade-terran-hisecautotracking.dds"/>
+    </CButton>
+    <CButton id="TalentGenericMightAndMagic2" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btncontrolmagic.dds"/>
+    </CButton>
+    <CButton id="TalentGenericMightAndMagic3" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btncontrolmagic.dds"/>
+    </CButton>
+    <CButton id="TalentGenericMightyBlows1Base" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_btn-upgrade-protoss-groundweaponslevel3.dds"/>
+        <HotkeyAlias value="TalentGenericMightyBlows2"/>
+    </CButton>
+    <CButton id="TalentGenericMightyBlows1" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_btn-upgrade-protoss-groundweaponslevel3.dds"/>
+    </CButton>
+    <CButton id="TalentGenericMightyBlows2" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_btn-upgrade-protoss-groundweaponslevel3.dds"/>
+    </CButton>
+    <CButton id="TalentHalfMightyBlows1Base" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_btn-upgrade-protoss-groundweaponslevel2.dds"/>
+    </CButton>
+    <CButton id="TalentHalfMightyBlows1" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_btn-upgrade-protoss-groundweaponslevel2.dds"/>
+    </CButton>
+    <CButton id="TalentHalfMightyBlows2" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_btn-upgrade-protoss-groundweaponslevel2.dds"/>
+    </CButton>
+    <CButton id="TalentGenericRapidRegeneration1" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnregenerate.dds"/>
+    </CButton>
+    <CButton id="TalentDashSupport" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_ui_icon_goblinrocketboots.dds"/>
+    </CButton>
+    <CButton id="TalentGenericHastyStrikes1" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_btn_d3_monk_sevensidedstrike.dds"/>
+    </CButton>
+    <CButton id="TalentGenericHastyStrikes2" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_btn_d3_monk_sevensidedstrike.dds"/>
+    </CButton>
+    <CButton id="TalentGenericHastyStrikes3" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_btn_d3_monk_sevensidedstrike.dds"/>
+    </CButton>
+    <CButton id="TalentGenericHastyStrikes4" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_btn_d3_monk_sevensidedstrike.dds"/>
+    </CButton>
+    <CButton id="TalentGenericHastyStrikes5" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_btn_d3_monk_sevensidedstrike.dds"/>
+    </CButton>
+    <CButton id="TalentGenericRapidRegeneration2" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnregenerate.dds"/>
+    </CButton>
+    <CButton id="TalentGenericShields1" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_btn-upgrade-protoss-shieldslevel0.dds"/>
+    </CButton>
+    <CButton id="TalentGenericMightAndMagic1" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btncontrolmagic.dds"/>
+    </CButton>
+    <CButton id="TalentGenericVampiricAssault1" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnundeadshrine.dds"/>
+    </CButton>
+    <CButton id="TalentGenericVampiricAssault1Base" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnundeadshrine.dds"/>
+        <HotkeyAlias value="TalentGenericVampiricAssault1"/>
+    </CButton>
+    <CButton id="TalentGenericVampiricAssault2" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnundeadshrine.dds"/>
+        <HotkeyAlias value="TalentGenericVampiricAssault1"/>
+    </CButton>
+    <CButton id="TalentDeafeningRoar" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnbattleroar.dds"/>
+    </CButton>
+    <CButton id="TalentDash" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_ui_icon_goblinrocketboots.dds"/>
+    </CButton>
+    <CButton id="GardensObeliskActivate" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_temp_war3_btnelvenguardtower.dds"/>
+    </CButton>
+    <CButton id="MarauderDropMedivacLoad" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_temp_btn-ability-terran-load.dds"/>
+        <AlertIcon value="Assets\Textures\storm_temp_btn-ability-terran-load.dds"/>
+        <EditorCategories value="Race:Terran"/>
+        <TintRacially value="1"/>
+        <Universal value="1"/>
+    </CButton>
+    <CButton id="MarauderDropMedivacUnload" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_temp_btn-ability-terran-unloadall.dds"/>
+        <AlertIcon value="Assets\Textures\storm_temp_btn-ability-terran-unloadall.dds"/>
+        <EditorCategories value="Race:Terran"/>
+        <TintRacially value="1"/>
+        <Universal value="1"/>
+    </CButton>
+    <CButton id="MarauderDropMedivacHeal" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_temp_btn-ability-terran-heal-color.dds"/>
+    </CButton>
+    <CButton id="TalentGenericShields2" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_btn-upgrade-protoss-shieldslevel0.dds"/>
+    </CButton>
+    <CButton id="TalentGenericShields3" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_btn-upgrade-protoss-shieldslevel0.dds"/>
+    </CButton>
+    <CButton id="TalentGenericShields4" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_btn-upgrade-protoss-shieldslevel0.dds"/>
+    </CButton>
+    <CButton id="TalentGenericShields5" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_btn-upgrade-protoss-shieldslevel0.dds"/>
+    </CButton>
+    <CButton id="TalentGenericShields6" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_btn-upgrade-protoss-shieldslevel0.dds"/>
+    </CButton>
+    <CButton id="TestTalentRank2" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_temp_war3_btnskillz.dds"/>
+        <HotkeyAlias value="TestTalent"/>
+    </CButton>
+    <CButton id="VehicleDragonFireBreath" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_temp_war3_btnfirerocks.dds"/>
+    </CButton>
+    <CButton id="GhostShipCannonBombard" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_temp_btn-techupgrade-terran-330mmbarragecannon.dds"/>
+    </CButton>
+    <CButton id="ItemCannonball" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_doubloonicon.dds"/>
+    </CButton>
+    <CButton id="ItemCannonballPickup" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_doubloonicon.dds"/>
+    </CButton>
+    <CButton id="BullRushWeaponCooldown" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_temp_war3_btnreplay-speeddown.dds"/>
+    </CButton>
+    <CButton id="PickupCannonBallText" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_doubloonicon.dds"/>
+    </CButton>
+    <CButton id="TestTalent" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_temp_war3_btnskillz.dds"/>
+    </CButton>
+    <CButton id="VehicleDragonDragonRoar" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_temp_war3_btnhowlofterror.dds"/>
+    </CButton>
+    <CButton id="PlaceholderMastery" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_temp_war3_btncancel.dds"/>
+    </CButton>
+    <CButton id="BindingRoots" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_temp_btn-ability-Storm-malfurion-entanglingroots.dds"/>
+        <HotkeyAlias value="MalfurionEntanglingRoots"/>
+    </CButton>
+    <CButton id="CaptureMacGuffin" parent="StormButtonParent">
+        <Icon value="Assets\Textures\btn-ability-protoss-voidrayprismaticalignment.dds"/>
+        <EditorCategories value="CommandersHero:Common"/>
+    </CButton>
+    <CButton id="CryForHelp" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_temp_war3_btnincinerate.dds"/>
+    </CButton>
+    <CButton id="FlyOn" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_ui_icon_mount.dds"/>
+    </CButton>
+    <CButton id="FlyOff" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_ui_icon_mount_unsummon.dds"/>
+        <HotkeyAlias value="FlyOn"/>
+    </CButton>
+    <CButton id="ItemNaturesGiftCancel" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="assets\Textures\hud_btn_bg_ability_cancel.dds"/>
+        <HotkeyAlias value="PrestigeIceBlock@Slot1"/>
+    </CButton>
+    <CButton id="ItemNaturesGift" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnreplenishhealth.dds"/>
+    </CButton>
+    <CButton id="ItemMagiciansWard" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btndoom.dds"/>
+    </CButton>
+    <CButton id="ItemPlaguebringer" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_btn_d3_witchdoctor_acidcloud.dds"/>
+    </CButton>
+    <CButton id="ItemEssenceDrain" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_btn_d3_witchdoctor_soulharvest.dds"/>
+    </CButton>
+    <CButton id="ItemVitality7" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_ui_temp_icon_mightyhealth.dds"/>
+    </CButton>
+    <CButton id="ItemVitality8" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_ui_temp_icon_mightyhealth.dds"/>
+    </CButton>
+    <CButton id="ItemVitality9" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_ui_temp_icon_mightyhealth.dds"/>
+    </CButton>
+    <CButton id="ItemVitality10" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_ui_temp_icon_mightyhealth.dds"/>
+    </CButton>
+    <CButton id="ItemVampiricReach" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_btn_d3_demonhunter_elementalarrow.dds"/>
+    </CButton>
+    <CButton id="ItemNuclearStrike" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_btn-ability-terran-nuclearstrike-color.dds"/>
+    </CButton>
+    <CButton id="ItemFlameAura1" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_ui_icon_cloakofflames.dds"/>
+    </CButton>
+    <CButton id="ItemArcaneHealer" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_ui_temp_icon_spellprojection.dds"/>
+    </CButton>
+    <CButton id="ItemVampiricTouch" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btndaggerofescape.dds"/>
+    </CButton>
+    <CButton id="ItemVitality5" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_ui_temp_icon_mightyhealth.dds"/>
+    </CButton>
+    <CButton id="ItemVitality6" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_ui_temp_icon_mightyhealth.dds"/>
+    </CButton>
+    <CButton id="ItemNecromancy" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_ui_temp_icon_vampiricspells.dds"/>
+    </CButton>
+    <CButton id="TowerDeadMorph" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_temp_btn-ability-zerg-root.dds"/>
+    </CButton>
+    <CButton id="PlaceholderPassive" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_ui_ingame_hero_icon_placeholder.dds"/>
+    </CButton>
+    <CButton id="UnselectedUltimateAbility" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_temp_btn-armor-general-blank.dds"/>
+    </CButton>
+    <CButton id="BailoutFlyingMount" parent="StormButtonParent">
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_ui_icon_dwarftoss.dds"/>
+        <TintRacially value="1"/>
+    </CButton>
+    <CButton id="DamageSpecializationAD" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_ui_icon_damage_2.dds"/>
+    </CButton>
+    <CButton id="ItemVitality4" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_ui_temp_icon_mightyhealth.dds"/>
+    </CButton>
+    <CButton id="SiegeSpecialization" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnwalloffire.dds"/>
+    </CButton>
+    <CButton id="SiegeSpecializationHealing" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnwalloffire.dds"/>
+    </CButton>
+    <CButton id="SiegeSpecializationKilling" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnwalloffire.dds"/>
+    </CButton>
+    <CButton id="TankSpecialization" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btndefend.dds"/>
+    </CButton>
+    <CButton id="DamageSpecializationAP" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_ui_icon_damage_2.dds"/>
+    </CButton>
+    <CButton id="MeleePlaceholder" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_ui_icon_hook_2.dds"/>
+    </CButton>
+    <CButton id="MeleePlaceholder2" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_ui_icon_cleave.dds"/>
+    </CButton>
+    <CButton id="RangedPlaceholder" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btndwarvenlongrifle.dds"/>
+    </CButton>
+    <CButton id="RangedPlaceholder2" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_ui_temp_icon_venomoustouch.dds"/>
+    </CButton>
+    <CButton id="SupportSpecialization" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnheal.dds"/>
+    </CButton>
+    <CButton id="BuildFlyingMachine" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_temp_war3_btngyrocopter.dds"/>
+    </CButton>
+    <CButton id="BuildGCV" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_temp_war3_btngoblinsapper.dds"/>
+    </CButton>
+    <CButton id="BuildLightCycle" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_temp_btn-unit-terran-hellion.dds"/>
+    </CButton>
+    <CButton id="BuildTrebuchet" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_temp_war3_btncatapult.dds"/>
+    </CButton>
+    <CButton id="ItemPurity" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btncharm.dds"/>
+    </CButton>
+    <CButton id="HeroPlaceholder1" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_ui_ingame_hero_icon_placeholder.dds"/>
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+    </CButton>
+    <CButton id="HeroPlaceholder2" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_ui_ingame_hero_icon_placeholder.dds"/>
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+    </CButton>
+    <CButton id="FirebatMolotov" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_temp_war3_btnorboflightning.dds"/>
+    </CButton>
+    <CButton id="HeroJump" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_temp_war3_btnwisp.dds"/>
+    </CButton>
+    <CButton id="ItemHeartbeatSensor" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_btn-status-radar.dds"/>
+    </CButton>
+    <CButton id="ItemSupplyLines" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_btn_d3_barbarian_ignorepain.dds"/>
+        <Tooltip value="Button/Tooltip/ItemJuggernaut"/>
+    </CButton>
+    <CButton id="ItemVitality" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_ui_temp_icon_mightyhealth.dds"/>
+    </CButton>
+    <CButton id="ItemVitality1" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_ui_temp_icon_mightyhealth.dds"/>
+    </CButton>
+    <CButton id="ItemVitality2" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_ui_temp_icon_mightyhealth.dds"/>
+    </CButton>
+    <CButton id="ItemVitality3" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_ui_temp_icon_mightyhealth.dds"/>
+    </CButton>
+    <CButton id="ItemShamansBlessing" parent="StormButtonParent">
+        <Tooltip value="Button/Tooltip/ItemHealingWard"/>
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnhealingward.dds"/>
+    </CButton>
+    <CButton id="ItemMarineDrop" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_temp_btn-unit-terran-dropship.dds"/>
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+    </CButton>
+    <CButton id="LightCycleForceWall" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_temp_btn-ability-protoss-forcefield-color.dds"/>
+    </CButton>
+    <CButton id="MarineDropMedivacHeal" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_temp_btn-ability-terran-heal-color.dds"/>
+    </CButton>
+    <CButton id="MarineDropMedivacLoad" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_temp_btn-ability-terran-load.dds"/>
+        <AlertIcon value="Assets\Textures\storm_temp_btn-ability-terran-load.dds"/>
+        <EditorCategories value="Race:Terran"/>
+        <TintRacially value="1"/>
+        <HotkeyAlias value="BunkerLoad"/>
+        <Universal value="1"/>
+    </CButton>
+    <CButton id="MarineDropMedivacUnload" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_temp_btn-ability-terran-unloadall.dds"/>
+        <AlertIcon value="Assets\Textures\storm_temp_btn-ability-terran-unloadall.dds"/>
+        <EditorCategories value="Race:Terran"/>
+        <TintRacially value="1"/>
+        <HotkeyAlias value="BunkerUnloadAll"/>
+        <Universal value="1"/>
+    </CButton>
+    <CButton id="MoonwellHeal"/>
+    <CButton id="ItemBlindingLight" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_btn_d3_monk_blindingflash.dds"/>
+    </CButton>
+    <CButton id="ItemPsiShield" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_btn-upgrade-protoss-shieldslevel0.dds"/>
+    </CButton>
+    <CButton id="ItemSkillPortal" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_ui_icon_cloakofreflection_2.dds"/>
+    </CButton>
+    <CButton id="LeaveVehicle" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_temp_war3_btnunloaddwarf.dds"/>
+    </CButton>
+    <CButton id="LightCycleAfterburner" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_temp_btn-upgrade-terran-reapernitropacks.dds"/>
+    </CButton>
+    <CButton id="MegaStun" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_ui_icon_slam.dds"/>
+    </CButton>
+    <CButton id="UseVehicle" parent="StormButtonParent">
+        <Icon value="assets\Icons\Common_Temporary\Icon_Temporary_Epicmount.dds"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+    </CButton>
+    <CButton id="MercLanerOgreBruiserTaunt" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_temp_war3_btntaunt.dds"/>
+    </CButton>
+    <CButton id="HealerDudeBuffAbility" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_temp_war3_btnheal.dds"/>
+    </CButton>
+    <CButton id="ItemDropPod" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_btn-tips-hyperion.dds"/>
+    </CButton>
+    <CButton id="ItemOrbitalDrop" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_btn-upgrade-terran-weaponrefit.dds"/>
+    </CButton>
+    <CButton id="MercLanerOgreBuffAbility" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_temp_war3_btndefendstop.dds"/>
+    </CButton>
+    <CButton id="Teleport" parent="StormButtonParent">
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_btn-ability-protoss-blackhole-color.dds"/>
+    </CButton>
+    <CButton id="ItemRapidCasting1" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_btn_d3_wizard_waveofforce.dds"/>
+    </CButton>
+    <CButton id="UnsummonMount" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_ui_icon_mount_unsummon.dds"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+    </CButton>
+    <CButton id="SummonMount" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_ui_icon_mount.dds"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+    </CButton>
+    <CButton id="Mastery" parent="StormButtonParent">
+        <EditorCategories value="Race:Neutral"/>
+    </CButton>
+    <CButton id="Health" parent="StormButtonParent">
+        <EditorCategories value="Race:Neutral"/>
+    </CButton>
+    <CButton id="Damage" parent="StormButtonParent">
+        <EditorCategories value="Race:Neutral"/>
+    </CButton>
+    <CButton id="HeroGeneric_Hearthstone" parent="StormButtonParent">
+        <Icon value="assets\Icons\Hero_Yrel\Icon_Hero_Yrel_VelensChosen.dds"/>
+        <EditorCategories value="CommandersHero:Common"/>
+        <TooltipFlags index="ShowCooldown" value="1"/>
+        <TooltipCooldownOverrideText value="Button/Tooltip/HeroGeneric_Hearthstone/Time"/>
+    </CButton>
+    <CButton id="SelectHero" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_temp_btn-command-cancel.dds"/>
+        <TintRacially value="1"/>
+    </CButton>
+    <CButton id="LevelUpLearn" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_temp_btn-ability-terran-heal.dds"/>
+        <TintRacially value="1"/>
+    </CButton>
+    <CButton id="AttackBuilding"/>
+    <CButton id="AttackBarrage"/>
+    <CButton id="AttackTowards"/>
+    <CButton id="BurrowDown"/>
+    <CButton id="CancelSlot"/>
+    <CButton id="Detector"/>
+    <CButton id="BunkerLoad"/>
+    <CButton id="MedivacLoad"/>
+    <CButton id="BunkerUnloadAll"/>
+    <CButton id="MedivacUnloadAll"/>
+</Catalog>

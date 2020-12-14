@@ -1,0 +1,1419 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CUser id="DataIngame_Announcers">
+        <Fields Id="CoreAttack_Blue" Type="Sound"/>
+        <Fields Id="CoreAttack_Red" Type="Sound"/>
+        <Fields Id="CoreAttack_Ally" Type="Sound"/>
+        <Fields Id="Countdown01sec" Type="Sound"/>
+        <Fields Id="Countdown02sec" Type="Sound"/>
+        <Fields Id="Countdown03sec" Type="Sound"/>
+        <Fields Id="Countdown04sec" Type="Sound"/>
+        <Fields Id="Countdown05sec" Type="Sound"/>
+        <Fields Id="Countdown10sec" Type="Sound"/>
+        <Fields Id="Countdown30sec" Type="Sound"/>
+        <Fields Id="CountdownRemain" Type="Sound"/>
+        <Fields Id="Ending_Red" Type="Sound"/>
+        <Fields Id="Ending_Blue" Type="Sound"/>
+        <Fields Id="EndingLose" Type="Sound"/>
+        <Fields Id="EndingWin" Type="Sound"/>
+        <Fields Id="FortDestroy_Blue" Type="Sound"/>
+        <Fields Id="FortDestroy_Red" Type="Sound"/>
+        <Fields Id="FortDestroy" Type="Sound"/>
+        <Fields Id="FortLost" Type="Sound"/>
+        <Fields Id="GameStart" Type="Sound"/>
+        <Fields Id="Gravestomp" Type="Sound"/>
+        <Fields Id="Gravestomp_Observer" Type="Sound"/>
+        <Fields Id="HeroSelect" Type="Sound"/>
+        <Fields Id="HeroSelect_Observer" Type="Sound"/>
+        <Fields Id="Kill_HeroSlain" Type="Sound"/>
+        <Fields Id="Kill_HeroKill" Type="Sound"/>
+        <Fields Id="Kill_FirstBloodAlly" Type="Sound"/>
+        <Fields Id="Kill_FirstBlood_Blue" Type="Sound"/>
+        <Fields Id="Kill_FirstBlood_Red" Type="Sound"/>
+        <Fields Id="Kill_DoubleKill" Type="Sound"/>
+        <Fields Id="Kill_TripleKill" Type="Sound"/>
+        <Fields Id="Kill_FourKill" Type="Sound"/>
+        <Fields Id="Kill_TeamKill" Type="Sound"/>
+        <Fields Id="Kill_TeamKill_Blue" Type="Sound"/>
+        <Fields Id="Kill_TeamKill_Red" Type="Sound"/>
+        <Fields Id="Kill_SixKill" Type="Sound"/>
+        <Fields Id="Kill_SevenKill" Type="Sound"/>
+        <Fields Id="Kill_EightKill" Type="Sound"/>
+        <Fields Id="Kill_NineKill" Type="Sound"/>
+        <Fields Id="Kill_TenKill" Type="Sound"/>
+        <Fields Id="KeepDestroy_Blue" Type="Sound"/>
+        <Fields Id="KeepDestroy_Red" Type="Sound"/>
+        <Fields Id="KeepDestroy" Type="Sound"/>
+        <Fields Id="KeepLost" Type="Sound"/>
+        <Fields Id="Kill_HeroSlain_Observer" Type="Sound"/>
+        <Fields Id="Kill_MegaKill" Type="Sound"/>
+        <Fields Id="MercCapture_Blue" Type="Sound"/>
+        <Fields Id="MercCapture_Red" Type="Sound"/>
+        <Fields Id="ResultEpic" Type="Sound"/>
+        <Fields Id="ResultLegendary" Type="Sound"/>
+        <Fields Id="ResultMVP" Type="Sound"/>
+        <Fields Id="PlayerAbandon" Type="Sound"/>
+        <Fields Id="PlayerRejoin" Type="Sound"/>
+        <Fields Id="SpreeEnd_Ally" Type="Sound"/>
+        <Fields Id="SpreeEnd" Type="Sound"/>
+        <Fields Id="SpreeFirstUpgrade" Type="Sound"/>
+        <Fields Id="SpreeMax" Type="Sound"/>
+        <Fields Id="SpreeSecondUpgrade" Type="Sound"/>
+        <Fields Id="SpreeStart" Type="Sound"/>
+        <Fields Id="SpreeThirdUpgrade" Type="Sound"/>
+        <Fields Id="TalentUnlock" Type="Sound"/>
+        <Fields Id="UnitHealth" Type="Sound"/>
+        <Fields Id="UnitMana" Type="Sound"/>
+        <Instances Id="[Default]"/>
+        <Instances Id="ProtossFemale">
+            <Sound Sound="ProtossFemale_CoreAttackAlly">
+                <Field Id="CoreAttack_Ally"/>
+            </Sound>
+            <Sound Sound="ProtossFemale_CoreAttack_Blue">
+                <Field Id="CoreAttack_Blue"/>
+            </Sound>
+            <Sound Sound="ProtossFemale_CoreAttack_Red">
+                <Field Id="CoreAttack_Red"/>
+            </Sound>
+            <Sound Sound="ProtossFemale_Countdown1sec">
+                <Field Id="Countdown01sec"/>
+            </Sound>
+            <Sound Sound="ProtossFemale_Countdown2sec">
+                <Field Id="Countdown02sec"/>
+            </Sound>
+            <Sound Sound="ProtossFemale_Countdown3sec">
+                <Field Id="Countdown03sec"/>
+            </Sound>
+            <Sound Sound="ProtossFemale_Countdown4sec">
+                <Field Id="Countdown04sec"/>
+            </Sound>
+            <Sound Sound="ProtossFemale_Countdown5sec">
+                <Field Id="Countdown05sec"/>
+            </Sound>
+            <Sound Sound="ProtossFemale_Countdown10sec">
+                <Field Id="Countdown10sec"/>
+            </Sound>
+            <Sound Sound="ProtossFemale_Countdown30sec">
+                <Field Id="Countdown30sec"/>
+            </Sound>
+            <Sound Sound="ProtossFemale_CountdownRemain">
+                <Field Id="CountdownRemain"/>
+            </Sound>
+            <Sound Sound="ProtossFemale_Ending_Blue">
+                <Field Id="Ending_Blue"/>
+            </Sound>
+            <Sound Sound="ProtossFemale_Ending_Red">
+                <Field Id="Ending_Red"/>
+            </Sound>
+            <Sound Sound="ProtossFemale_EndingLose">
+                <Field Id="EndingLose"/>
+            </Sound>
+            <Sound Sound="ProtossFemale_EndingWin">
+                <Field Id="EndingWin"/>
+            </Sound>
+            <Sound Sound="ProtossFemale_FortDestroy">
+                <Field Id="FortDestroy"/>
+            </Sound>
+            <Sound Sound="ProtossFemale_FortDestroy_Blue">
+                <Field Id="FortDestroy_Blue"/>
+            </Sound>
+            <Sound Sound="ProtossFemale_FortDestroy_Red">
+                <Field Id="FortDestroy_Red"/>
+            </Sound>
+            <Sound Sound="ProtossFemale_FortLost">
+                <Field Id="FortLost"/>
+            </Sound>
+            <Sound Sound="ProtossFemale_GameStart">
+                <Field Id="GameStart"/>
+            </Sound>
+            <Sound Sound="ProtossFemale_Gravestomp">
+                <Field Id="Gravestomp"/>
+            </Sound>
+            <Sound Sound="ProtossFemale_Gravestomp_Observer">
+                <Field Id="Gravestomp_Observer"/>
+            </Sound>
+            <Sound Sound="ProtossFemale_HeroSelect">
+                <Field Id="HeroSelect"/>
+            </Sound>
+            <Sound Sound="ProtossFemale_HeroSelect_Observer">
+                <Field Id="HeroSelect_Observer"/>
+            </Sound>
+            <Sound Sound="ProtossFemale_KeepDestroy">
+                <Field Id="KeepDestroy"/>
+            </Sound>
+            <Sound Sound="ProtossFemale_KeepDestroy_Blue">
+                <Field Id="KeepDestroy_Blue"/>
+            </Sound>
+            <Sound Sound="ProtossFemale_KeepDestroy_Red">
+                <Field Id="KeepDestroy_Red"/>
+            </Sound>
+            <Sound Sound="ProtossFemale_KeepLost">
+                <Field Id="KeepLost"/>
+            </Sound>
+            <Sound Sound="ProtossFemale_Kill_DoubleKill">
+                <Field Id="Kill_DoubleKill"/>
+            </Sound>
+            <Sound Sound="ProtossFemale_Kill_FirstBlood_Blue">
+                <Field Id="Kill_FirstBlood_Blue"/>
+            </Sound>
+            <Sound Sound="ProtossFemale_Kill_FirstBlood_Red">
+                <Field Id="Kill_FirstBlood_Red"/>
+            </Sound>
+            <Sound Sound="ProtossFemale_Kill_FirstBloodAlly">
+                <Field Id="Kill_FirstBloodAlly"/>
+            </Sound>
+            <Sound Sound="ProtossFemale_Kill_FourKill">
+                <Field Id="Kill_FourKill"/>
+            </Sound>
+            <Sound Sound="ProtossFemale_Kill_HeroKill">
+                <Field Id="Kill_HeroKill"/>
+            </Sound>
+            <Sound Sound="ProtossFemale_Kill_HeroSlain">
+                <Field Id="Kill_HeroSlain"/>
+            </Sound>
+            <Sound Sound="ProtossFemale_Kill_HeroSlain_Observer">
+                <Field Id="Kill_HeroSlain_Observer"/>
+            </Sound>
+            <Sound Sound="ProtossFemale_Kill_MegaKill">
+                <Field Id="Kill_MegaKill"/>
+            </Sound>
+            <Sound Sound="ProtossFemale_Kill_TeamKill">
+                <Field Id="Kill_TeamKill"/>
+            </Sound>
+            <Sound Sound="ProtossFemale_Kill_TeamKill_Blue">
+                <Field Id="Kill_TeamKill_Blue"/>
+            </Sound>
+            <Sound Sound="ProtossFemale_Kill_TeamKill_Red">
+                <Field Id="Kill_TeamKill_Red"/>
+            </Sound>
+            <Sound Sound="ProtossFemale_Kill_TripleKill">
+                <Field Id="Kill_TripleKill"/>
+            </Sound>
+            <Sound Sound="ProtossFemale_MercCapture_Blue">
+                <Field Id="MercCapture_Blue"/>
+            </Sound>
+            <Sound Sound="ProtossFemale_MercCapture_Red">
+                <Field Id="MercCapture_Red"/>
+            </Sound>
+            <Sound Sound="ProtossFemale_PlayerAbandon">
+                <Field Id="PlayerAbandon"/>
+            </Sound>
+            <Sound Sound="ProtossFemale_PlayerRejoin">
+                <Field Id="PlayerRejoin"/>
+            </Sound>
+            <Sound Sound="ProtossFemale_ResultEpic">
+                <Field Id="ResultEpic"/>
+            </Sound>
+            <Sound Sound="ProtossFemale_ResultLegendary">
+                <Field Id="ResultLegendary"/>
+            </Sound>
+            <Sound Sound="ProtossFemale_ResultMVP">
+                <Field Id="ResultMVP"/>
+            </Sound>
+            <Sound Sound="ProtossFemale_SpreeEnd">
+                <Field Id="SpreeEnd"/>
+            </Sound>
+            <Sound Sound="ProtossFemale_SpreeEnd_Ally">
+                <Field Id="SpreeEnd_Ally"/>
+            </Sound>
+            <Sound Sound="ProtossFemale_SpreeFirstUpgrade">
+                <Field Id="SpreeFirstUpgrade"/>
+            </Sound>
+            <Sound Sound="ProtossFemale_SpreeMax">
+                <Field Id="SpreeMax"/>
+            </Sound>
+            <Sound Sound="ProtossFemale_SpreeSecondUpgrade">
+                <Field Id="SpreeSecondUpgrade"/>
+            </Sound>
+            <Sound Sound="ProtossFemale_SpreeStart">
+                <Field Id="SpreeStart"/>
+            </Sound>
+            <Sound Sound="ProtossFemale_SpreeThirdUpgrade">
+                <Field Id="SpreeThirdUpgrade"/>
+            </Sound>
+            <Sound Sound="ProtossFemale_TalentUnlock">
+                <Field Id="TalentUnlock"/>
+            </Sound>
+            <Sound Sound="ProtossFemale_UnitHealth">
+                <Field Id="UnitHealth"/>
+            </Sound>
+            <Sound Sound="ProtossFemale_UnitMana">
+                <Field Id="UnitMana"/>
+            </Sound>
+        </Instances>
+        <Instances Id="ProtossMale">
+            <Sound Sound="ProtossMale_CoreAttackAlly">
+                <Field Id="CoreAttack_Ally"/>
+            </Sound>
+            <Sound Sound="ProtossMale_CoreAttack_Blue">
+                <Field Id="CoreAttack_Blue"/>
+            </Sound>
+            <Sound Sound="ProtossMale_CoreAttack_Red">
+                <Field Id="CoreAttack_Red"/>
+            </Sound>
+            <Sound Sound="ProtossMale_Countdown1sec">
+                <Field Id="Countdown01sec"/>
+            </Sound>
+            <Sound Sound="ProtossMale_Countdown2sec">
+                <Field Id="Countdown02sec"/>
+            </Sound>
+            <Sound Sound="ProtossMale_Countdown3sec">
+                <Field Id="Countdown03sec"/>
+            </Sound>
+            <Sound Sound="ProtossMale_Countdown4sec">
+                <Field Id="Countdown04sec"/>
+            </Sound>
+            <Sound Sound="ProtossMale_Countdown5sec">
+                <Field Id="Countdown05sec"/>
+            </Sound>
+            <Sound Sound="ProtossMale_Countdown10sec">
+                <Field Id="Countdown10sec"/>
+            </Sound>
+            <Sound Sound="ProtossMale_Countdown30sec">
+                <Field Id="Countdown30sec"/>
+            </Sound>
+            <Sound Sound="ProtossMale_CountdownRemain">
+                <Field Id="CountdownRemain"/>
+            </Sound>
+            <Sound Sound="ProtossMale_Ending_Blue">
+                <Field Id="Ending_Blue"/>
+            </Sound>
+            <Sound Sound="ProtossMale_Ending_Red">
+                <Field Id="Ending_Red"/>
+            </Sound>
+            <Sound Sound="ProtossMale_EndingLose">
+                <Field Id="EndingLose"/>
+            </Sound>
+            <Sound Sound="ProtossMale_EndingWin">
+                <Field Id="EndingWin"/>
+            </Sound>
+            <Sound Sound="ProtossMale_FortDestroy">
+                <Field Id="FortDestroy"/>
+            </Sound>
+            <Sound Sound="ProtossMale_FortDestroy_Blue">
+                <Field Id="FortDestroy_Blue"/>
+            </Sound>
+            <Sound Sound="ProtossMale_FortDestroy_Red">
+                <Field Id="FortDestroy_Red"/>
+            </Sound>
+            <Sound Sound="ProtossMale_FortLost">
+                <Field Id="FortLost"/>
+            </Sound>
+            <Sound Sound="ProtossMale_GameStart">
+                <Field Id="GameStart"/>
+            </Sound>
+            <Sound Sound="ProtossMale_Gravestomp">
+                <Field Id="Gravestomp"/>
+            </Sound>
+            <Sound Sound="ProtossMale_Gravestomp_Observer">
+                <Field Id="Gravestomp_Observer"/>
+            </Sound>
+            <Sound Sound="ProtossMale_HeroSelect">
+                <Field Id="HeroSelect"/>
+            </Sound>
+            <Sound Sound="ProtossMale_HeroSelect_Observer">
+                <Field Id="HeroSelect_Observer"/>
+            </Sound>
+            <Sound Sound="ProtossMale_KeepDestroy">
+                <Field Id="KeepDestroy"/>
+            </Sound>
+            <Sound Sound="ProtossMale_KeepDestroy_Blue">
+                <Field Id="KeepDestroy_Blue"/>
+            </Sound>
+            <Sound Sound="ProtossMale_KeepDestroy_Red">
+                <Field Id="KeepDestroy_Red"/>
+            </Sound>
+            <Sound Sound="ProtossMale_KeepLost">
+                <Field Id="KeepLost"/>
+            </Sound>
+            <Sound Sound="ProtossMale_Kill_DoubleKill">
+                <Field Id="Kill_DoubleKill"/>
+            </Sound>
+            <Sound Sound="ProtossMale_Kill_FirstBlood_Blue">
+                <Field Id="Kill_FirstBlood_Blue"/>
+            </Sound>
+            <Sound Sound="ProtossMale_Kill_FirstBlood_Red">
+                <Field Id="Kill_FirstBlood_Red"/>
+            </Sound>
+            <Sound Sound="ProtossMale_Kill_FirstBloodAlly">
+                <Field Id="Kill_FirstBloodAlly"/>
+            </Sound>
+            <Sound Sound="ProtossMale_Kill_FourKill">
+                <Field Id="Kill_FourKill"/>
+            </Sound>
+            <Sound Sound="ProtossMale_Kill_HeroKill">
+                <Field Id="Kill_HeroKill"/>
+            </Sound>
+            <Sound Sound="ProtossMale_Kill_HeroSlain">
+                <Field Id="Kill_HeroSlain"/>
+            </Sound>
+            <Sound Sound="ProtossMale_Kill_HeroSlain_Observer">
+                <Field Id="Kill_HeroSlain_Observer"/>
+            </Sound>
+            <Sound Sound="ProtossMale_Kill_MegaKill">
+                <Field Id="Kill_MegaKill"/>
+            </Sound>
+            <Sound Sound="ProtossMale_Kill_TeamKill">
+                <Field Id="Kill_TeamKill"/>
+            </Sound>
+            <Sound Sound="ProtossMale_Kill_TeamKill_Blue">
+                <Field Id="Kill_TeamKill_Blue"/>
+            </Sound>
+            <Sound Sound="ProtossMale_Kill_TeamKill_Red">
+                <Field Id="Kill_TeamKill_Red"/>
+            </Sound>
+            <Sound Sound="ProtossMale_Kill_TripleKill">
+                <Field Id="Kill_TripleKill"/>
+            </Sound>
+            <Sound Sound="ProtossMale_MercCapture_Blue">
+                <Field Id="MercCapture_Blue"/>
+            </Sound>
+            <Sound Sound="ProtossMale_MercCapture_Red">
+                <Field Id="MercCapture_Red"/>
+            </Sound>
+            <Sound Sound="ProtossMale_PlayerAbandon">
+                <Field Id="PlayerAbandon"/>
+            </Sound>
+            <Sound Sound="ProtossMale_PlayerRejoin">
+                <Field Id="PlayerRejoin"/>
+            </Sound>
+            <Sound Sound="ProtossMale_ResultEpic">
+                <Field Id="ResultEpic"/>
+            </Sound>
+            <Sound Sound="ProtossMale_ResultLegendary">
+                <Field Id="ResultLegendary"/>
+            </Sound>
+            <Sound Sound="ProtossMale_ResultMVP">
+                <Field Id="ResultMVP"/>
+            </Sound>
+            <Sound Sound="ProtossMale_SpreeEnd">
+                <Field Id="SpreeEnd"/>
+            </Sound>
+            <Sound Sound="ProtossMale_SpreeEnd_Ally">
+                <Field Id="SpreeEnd_Ally"/>
+            </Sound>
+            <Sound Sound="ProtossMale_SpreeFirstUpgrade">
+                <Field Id="SpreeFirstUpgrade"/>
+            </Sound>
+            <Sound Sound="ProtossMale_SpreeMax">
+                <Field Id="SpreeMax"/>
+            </Sound>
+            <Sound Sound="ProtossMale_SpreeSecondUpgrade">
+                <Field Id="SpreeSecondUpgrade"/>
+            </Sound>
+            <Sound Sound="ProtossMale_SpreeStart">
+                <Field Id="SpreeStart"/>
+            </Sound>
+            <Sound Sound="ProtossMale_SpreeThirdUpgrade">
+                <Field Id="SpreeThirdUpgrade"/>
+            </Sound>
+            <Sound Sound="ProtossMale_TalentUnlock">
+                <Field Id="TalentUnlock"/>
+            </Sound>
+            <Sound Sound="ProtossMale_UnitHealth">
+                <Field Id="UnitHealth"/>
+            </Sound>
+            <Sound Sound="ProtossMale_UnitMana">
+                <Field Id="UnitMana"/>
+            </Sound>
+        </Instances>
+        <Instances Id="Adjutant"/>
+    </CUser>
+    <CUser id="DataIngame_Heroes_Skin_Template">
+        <Fields>
+            <Id value="Skin Link"/>
+            <Type value="GameLink"/>
+            <GameLinkType value="Skin"/>
+            <EditorColumn value="2"/>
+        </Fields>
+        <Fields>
+            <Id value="Skin Upgrade Link"/>
+            <Type value="GameLink"/>
+            <GameLinkType value="Upgrade"/>
+            <EditorColumn value="3"/>
+        </Fields>
+        <Fields>
+            <Id value="Skin Name"/>
+            <Type value="Text"/>
+            <EditorColumn value="1"/>
+            <EditorText value="Name"/>
+        </Fields>
+        <Instances Id="[Default]"/>
+    </CUser>
+    <CUser id="Common_UserData"/>
+    <CUser id="DataIngame_Heroes_Role">
+        <Fields>
+            <Id value="Role"/>
+            <Type value="Text"/>
+            <EditorColumn value="1"/>
+            <EditorText value="Name"/>
+        </Fields>
+        <Fields Id="RoleImage" Type="Image" EditorColumn="2"/>
+        <Instances Id="[Default]"/>
+        <Instances Id="AssassinMelee">
+            <Text Text="UserData/DataIngame_Heroes_Role/AssassinMelee_Role">
+                <Field Id="Role"/>
+            </Text>
+        </Instances>
+        <Instances Id="AssassinRanged">
+            <Text Text="UserData/DataIngame_Heroes_Role/AssassinRanged_Role">
+                <Field Id="Role"/>
+            </Text>
+        </Instances>
+        <Instances Id="Bruiser">
+            <Text Text="UserData/DataIngame_Heroes_Role/Bruiser_Role">
+                <Field Id="Role"/>
+            </Text>
+        </Instances>
+        <Instances Id="Tank">
+            <Text Text="UserData/DataIngame_Heroes_Role/Tank_Role">
+                <Field Id="Role"/>
+            </Text>
+        </Instances>
+        <Instances Id="Healer">
+            <Text Text="UserData/DataIngame_Heroes_Role/Healer_Role">
+                <Field Id="Role"/>
+            </Text>
+        </Instances>
+        <Instances Id="Support">
+            <Text Text="UserData/DataIngame_Heroes_Role/Support_Role">
+                <Field Id="Role"/>
+            </Text>
+        </Instances>
+        <Instances Id="Specialist">
+            <Text Text="UserData/DataIngame_Heroes_Role/Specialist_Role">
+                <Field Id="Role"/>
+            </Text>
+        </Instances>
+    </CUser>
+    <CUser id="AbilityInfo_EnableCDR">
+        <Fields Id="Value" Type="Int"/>
+        <Instances Id="[Default]"/>
+        <Instances Id="Enable CDR">
+            <Int Int="1">
+                <Field Id="Value"/>
+            </Int>
+        </Instances>
+        <Instances Id="Disable CDR"/>
+    </CUser>
+    <CUser id="AbilityInfo_ShowHotkey">
+        <Fields Id="Value" Type="Int"/>
+        <Instances Id="[Default]"/>
+        <Instances Id="Show">
+            <Int Int="1">
+                <Field Id="Value"/>
+            </Int>
+        </Instances>
+        <Instances Id="Hide"/>
+    </CUser>
+    <CUser id="AbilityInfo_SelectionShown">
+        <Fields Id="Value" Type="Int"/>
+        <Instances Id="[Default]"/>
+        <Instances Id="Show">
+            <Int Int="1">
+                <Field Id="Value"/>
+            </Int>
+        </Instances>
+        <Instances Id="Hide"/>
+    </CUser>
+    <CUser id="AbilityInfo_Type">
+        <Instances Id="[Default]"/>
+        <Instances Id="Heroic"/>
+        <Instances Id="Basic"/>
+        <Instances Id="Trait"/>
+    </CUser>
+    <CUser id="AbilityInventoryInfo_ActivityType">
+        <Fields Id="Value" Type="Int"/>
+        <Instances Id="[Default]">
+            <Int Int="1">
+                <Field Id="Value"/>
+            </Int>
+        </Instances>
+        <Instances Id="Active">
+            <Int>
+                <Field Id="Value"/>
+            </Int>
+        </Instances>
+        <Instances Id="Passive"/>
+    </CUser>
+    <CUser id="Option_SelectingStatus">
+        <Fields Id="Option - Selecting Status" Type="Int"/>
+        <Instances Id="[Default]"/>
+        <Instances Id="Not Allowed"/>
+        <Instances Id="PTR Only">
+            <Int Int="1">
+                <Field Id="Option - Selecting Status"/>
+            </Int>
+        </Instances>
+        <Instances Id="Live Only">
+            <Int Int="2">
+                <Field Id="Option - Selecting Status"/>
+            </Int>
+        </Instances>
+        <Instances Id="PTR and Live">
+            <Int Int="3">
+                <Field Id="Option - Selecting Status"/>
+            </Int>
+        </Instances>
+    </CUser>
+    <CUser id="Storm_HeroAbility_Template">
+        <Fields Id="Ability" Type="GameLink" GameLinkType="Abil"/>
+        <Fields>
+            <Id value="Type"/>
+            <Type value="User"/>
+            <UserType value="AbilityInfo_Type"/>
+            <EditorColumn value="2"/>
+        </Fields>
+        <Fields>
+            <Id value="Activity Type"/>
+            <Type value="User"/>
+            <UserType value="AbilityInventoryInfo_ActivityType"/>
+            <EditorColumn value="3"/>
+        </Fields>
+        <Fields>
+            <Id value="CDR"/>
+            <Type value="User"/>
+            <UserType value="AbilityInfo_EnableCDR"/>
+            <EditorColumn value="4"/>
+        </Fields>
+        <Fields>
+            <Id value="Show/Hide Hotkey"/>
+            <Type value="User"/>
+            <UserType value="AbilityInfo_ShowHotkey"/>
+            <EditorColumn value="5"/>
+        </Fields>
+        <Fields>
+            <Id value="Selection Shown"/>
+            <Type value="User"/>
+            <UserType value="AbilityInfo_SelectionShown"/>
+            <EditorColumn value="6"/>
+        </Fields>
+        <Fields>
+            <Id value="Hero"/>
+            <Type value="User"/>
+            <UserType value="DataIngame_Heroes"/>
+            <EditorColumn value="1"/>
+        </Fields>
+        <Instances Id="[Default]"/>
+        <Instances Id="Ability_Diablo_DevastatingCharge">
+            <User Type="DataIngame_Heroes" Instance="Hero_Diablo">
+                <Field Id="Hero"/>
+            </User>
+            <User Type="AbilityInfo_EnableCDR" Instance="Enable CDR">
+                <Field Id="CDR"/>
+            </User>
+            <User Type="AbilityInventoryInfo_ActivityType" Instance="Passive">
+                <Field Id="Activity Type"/>
+            </User>
+            <User Type="AbilityInfo_Type" Instance="Basic">
+                <Field Id="Type"/>
+            </User>
+            <User Type="AbilityInfo_ShowHotkey" Instance="Show">
+                <Field Id="Show/Hide Hotkey"/>
+            </User>
+            <User Type="AbilityInfo_SelectionShown" Instance="Show">
+                <Field Id="Selection Shown"/>
+            </User>
+        </Instances>
+    </CUser>
+    <CUser id="Storm_Hero_Template">
+        <Fields>
+            <Id value="Единица"/>
+            <Type value="Unit"/>
+            <Count value="2"/>
+            <EditorColumn value="1"/>
+        </Fields>
+        <Fields Id="ID Hero String" Type="String" EditorColumn="2"/>
+        <Fields>
+            <Id value="звучок"/>
+            <Type value="Sound"/>
+            <Count value="4"/>
+            <EditorColumn value="3"/>
+            <EditorText value="Prefix"/>
+            <Flags index="Modifiable" value="1"/>
+        </Fields>
+        <Fields>
+            <Id value="Пользователь"/>
+            <Type value="GameLink"/>
+            <GameLinkType value="Hero"/>
+            <EditorColumn value="4"/>
+        </Fields>
+        <Instances Id="[Default]"/>
+        <Instances Id="Рейнор">
+            <Unit Unit="NovaHoloClone">
+                <Field Id="Единица"/>
+            </Unit>
+            <Unit Unit="SuicideUnitXPDummy">
+                <Field Id="Единица" Index="1"/>
+            </Unit>
+        </Instances>
+        <Instances Id="Безымянная копия">
+            <Sound Sound="Cutscene_SSF_Narrator_104">
+                <Field Id="звучок"/>
+            </Sound>
+        </Instances>
+    </CUser>
+    <CUser id="Storm_Heroes">
+        <Fields Id="Hero Unit" Type="Unit" EditorColumn="1"/>
+        <Fields Id="Hero Image" Type="Image" EditorColumn="3"/>
+        <Fields Id="Preview Unit" Type="Unit" EditorColumn="2"/>
+        <Instances Id="[Default]"/>
+        <Instances Id="1">
+            <Image Image="Assets\Textures\storm_ui_ingame_heroselect_btn_infestor.dds">
+                <Field Id="Hero Image"/>
+            </Image>
+            <Unit Unit="HeroAbathur">
+                <Field Id="Hero Unit"/>
+            </Unit>
+            <Unit Unit="PreviewAbathur">
+                <Field Id="Preview Unit"/>
+            </Unit>
+        </Instances>
+        <Instances Id="2">
+            <Image Image="Assets\Textures\storm_ui_ingame_heroselect_btn_arthas.dds">
+                <Field Id="Hero Image"/>
+            </Image>
+            <Unit Unit="HeroArthas">
+                <Field Id="Hero Unit"/>
+            </Unit>
+            <Unit Unit="PreviewArthas">
+                <Field Id="Preview Unit"/>
+            </Unit>
+        </Instances>
+        <Instances Id="3">
+            <Image Image="Assets\Textures\storm_ui_ingame_heroselect_btn_demonhunter.dds">
+                <Field Id="Hero Image"/>
+            </Image>
+            <Unit Unit="HeroDemonHunter">
+                <Field Id="Hero Unit"/>
+            </Unit>
+            <Unit Unit="PreviewDemonHunter">
+                <Field Id="Preview Unit"/>
+            </Unit>
+        </Instances>
+        <Instances Id="4">
+            <Image Image="Assets\Textures\storm_ui_ingame_heroselect_btn_diablo.dds">
+                <Field Id="Hero Image"/>
+            </Image>
+            <Unit Unit="HeroDiablo">
+                <Field Id="Hero Unit"/>
+            </Unit>
+            <Unit Unit="PreviewDiablo">
+                <Field Id="Preview Unit"/>
+            </Unit>
+        </Instances>
+        <Instances Id="5">
+            <Image Image="Assets\Textures\storm_ui_ingame_heroselect_btn_etc.dds">
+                <Field Id="Hero Image"/>
+            </Image>
+            <Unit Unit="HeroL90ETC">
+                <Field Id="Hero Unit"/>
+            </Unit>
+            <Unit Unit="PreviewL90ETC">
+                <Field Id="Preview Unit"/>
+            </Unit>
+        </Instances>
+        <Instances Id="6">
+            <Image Image="Assets\Textures\storm_ui_ingame_heroselect_btn_gryphon_rider.dds">
+                <Field Id="Hero Image"/>
+            </Image>
+            <Unit Unit="HeroFalstad">
+                <Field Id="Hero Unit"/>
+            </Unit>
+            <Unit Unit="PreviewFalstad">
+                <Field Id="Preview Unit"/>
+            </Unit>
+        </Instances>
+        <Instances Id="7">
+            <Image Image="Assets\Textures\storm_ui_ingame_heroselect_btn_goblintinker.dds">
+                <Field Id="Hero Image"/>
+            </Image>
+            <Unit Unit="HeroTinker">
+                <Field Id="Hero Unit"/>
+            </Unit>
+            <Unit Unit="PreviewGazlowe">
+                <Field Id="Preview Unit"/>
+            </Unit>
+        </Instances>
+        <Instances Id="8">
+            <Image Image="Assets\Textures\storm_ui_ingame_heroselect_btn_illidan.dds">
+                <Field Id="Hero Image"/>
+            </Image>
+            <Unit Unit="HeroIllidan">
+                <Field Id="Hero Unit"/>
+            </Unit>
+            <Unit Unit="PreviewIllidan">
+                <Field Id="Preview Unit"/>
+            </Unit>
+        </Instances>
+        <Instances Id="9">
+            <Image Image="Assets\Textures\storm_ui_ingame_heroselect_btn_kerrigan.dds">
+                <Field Id="Hero Image"/>
+            </Image>
+            <Unit Unit="HeroKerrigan">
+                <Field Id="Hero Unit"/>
+            </Unit>
+            <Unit Unit="PreviewKerrigan">
+                <Field Id="Preview Unit"/>
+            </Unit>
+        </Instances>
+        <Instances Id="10">
+            <Image Image="Assets\Textures\storm_ui_ingame_heroselect_btn_malfurion.dds">
+                <Field Id="Hero Image"/>
+            </Image>
+            <Unit Unit="HeroMalfurion">
+                <Field Id="Hero Unit"/>
+            </Unit>
+            <Unit Unit="PreviewMalfurion">
+                <Field Id="Preview Unit"/>
+            </Unit>
+        </Instances>
+        <Instances Id="11">
+            <Image Image="Assets\Textures\storm_ui_ingame_heroselect_btn_muradin.dds">
+                <Field Id="Hero Image"/>
+            </Image>
+            <Unit Unit="HeroMuradin">
+                <Field Id="Hero Unit"/>
+            </Unit>
+            <Unit Unit="PreviewMuradin">
+                <Field Id="Preview Unit"/>
+            </Unit>
+        </Instances>
+        <Instances Id="12">
+            <Image Image="Assets\Textures\storm_ui_ingame_heroselect_btn_nova.dds">
+                <Field Id="Hero Image"/>
+            </Image>
+            <Unit Unit="HeroNova">
+                <Field Id="Hero Unit"/>
+            </Unit>
+            <Unit Unit="PreviewNova">
+                <Field Id="Preview Unit"/>
+            </Unit>
+        </Instances>
+        <Instances Id="13">
+            <Image Image="Assets\Textures\storm_ui_ingame_heroselect_btn_raynor.dds">
+                <Field Id="Hero Image"/>
+            </Image>
+            <Unit Unit="HeroRaynor">
+                <Field Id="Hero Unit"/>
+            </Unit>
+            <Unit Unit="PreviewRaynor">
+                <Field Id="Preview Unit"/>
+            </Unit>
+        </Instances>
+        <Instances Id="14">
+            <Image Image="Assets\Textures\storm_ui_ingame_heroselect_btn_sgthammer.dds">
+                <Field Id="Hero Image"/>
+            </Image>
+            <Unit Unit="HeroSgtHammer">
+                <Field Id="Hero Unit"/>
+            </Unit>
+            <Unit Unit="PreviewSgtHammer">
+                <Field Id="Preview Unit"/>
+            </Unit>
+        </Instances>
+        <Instances Id="15">
+            <Image Image="Assets\Textures\storm_ui_ingame_heroselect_btn_femalebarbarian.dds">
+                <Field Id="Hero Image"/>
+            </Image>
+            <Unit Unit="HeroBarbarian">
+                <Field Id="Hero Unit"/>
+            </Unit>
+            <Unit Unit="PreviewBarbarian">
+                <Field Id="Preview Unit"/>
+            </Unit>
+        </Instances>
+        <Instances Id="16">
+            <Image Image="Assets\Textures\storm_ui_ingame_heroselect_btn_stitches.dds">
+                <Field Id="Hero Image"/>
+            </Image>
+            <Unit Unit="HeroStitches">
+                <Field Id="Hero Unit"/>
+            </Unit>
+            <Unit Unit="PreviewStitches">
+                <Field Id="Preview Unit"/>
+            </Unit>
+        </Instances>
+        <Instances Id="17">
+            <Image Image="Assets\Textures\storm_ui_ingame_heroselect_btn_tassadar.dds">
+                <Field Id="Hero Image"/>
+            </Image>
+            <Unit Unit="HeroTassadar">
+                <Field Id="Hero Unit"/>
+            </Unit>
+            <Unit Unit="PreviewTassadar">
+                <Field Id="Preview Unit"/>
+            </Unit>
+        </Instances>
+        <Instances Id="18">
+            <Image Image="Assets\Textures\storm_ui_ingame_heroselect_btn_tychus.dds">
+                <Field Id="Hero Image"/>
+            </Image>
+            <Unit Unit="HeroTychus">
+                <Field Id="Hero Unit"/>
+            </Unit>
+            <Unit Unit="PreviewTychus">
+                <Field Id="Preview Unit"/>
+            </Unit>
+        </Instances>
+        <Instances Id="19">
+            <Image Image="Assets\Textures\storm_ui_ingame_heroselect_btn_tyrael.dds">
+                <Field Id="Hero Image"/>
+            </Image>
+            <Unit Unit="HeroTyrael">
+                <Field Id="Hero Unit"/>
+            </Unit>
+            <Unit Unit="PreviewTyrael">
+                <Field Id="Preview Unit"/>
+            </Unit>
+        </Instances>
+        <Instances Id="20">
+            <Image Image="Assets\Textures\storm_ui_ingame_heroselect_btn_tyrande.dds">
+                <Field Id="Hero Image"/>
+            </Image>
+            <Unit Unit="HeroTyrande">
+                <Field Id="Hero Unit"/>
+            </Unit>
+            <Unit Unit="PreviewTyrande">
+                <Field Id="Preview Unit"/>
+            </Unit>
+        </Instances>
+        <Instances Id="21">
+            <Image Image="Assets\Textures\storm_ui_ingame_heroselect_btn_uther.dds">
+                <Field Id="Hero Image"/>
+            </Image>
+            <Unit Unit="HeroUther">
+                <Field Id="Hero Unit"/>
+            </Unit>
+            <Unit Unit="PreviewUther">
+                <Field Id="Preview Unit"/>
+            </Unit>
+        </Instances>
+        <Instances Id="22">
+            <Image Image="Assets\Textures\storm_ui_ingame_heroselect_btn_witchdoctor.dds">
+                <Field Id="Hero Image"/>
+            </Image>
+            <Unit Unit="PreviewWitchDoctor">
+                <Field Id="Preview Unit"/>
+            </Unit>
+            <Unit Unit="HeroWitchDoctor">
+                <Field Id="Hero Unit"/>
+            </Unit>
+        </Instances>
+        <Instances Id="23">
+            <Image Image="Assets\Textures\storm_ui_ingame_heroselect_btn_zeratul.dds">
+                <Field Id="Hero Image"/>
+            </Image>
+            <Unit Unit="HeroZeratul">
+                <Field Id="Hero Unit"/>
+            </Unit>
+            <Unit Unit="PreviewZeratul">
+                <Field Id="Preview Unit"/>
+            </Unit>
+        </Instances>
+    </CUser>
+    <CUser id="Storm_Heroes_Numbers">
+        <Fields>
+            <Id value="Hero Link"/>
+            <Type value="GameLink"/>
+            <GameLinkType value="Hero"/>
+            <EditorColumn value="1"/>
+        </Fields>
+        <Fields>
+            <Id value="Hero Upgrade"/>
+            <Type value="GameLink"/>
+            <GameLinkType value="Upgrade"/>
+            <EditorColumn value="2"/>
+            <EditorText value="Name"/>
+        </Fields>
+        <Instances Id="[Default]"/>
+        <Instances Id="1">
+            <GameLink GameLink="Random">
+                <Field Id="Hero Link"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="2">
+            <GameLink GameLink="Abathur">
+                <Field Id="Hero Link"/>
+            </GameLink>
+            <GameLink GameLink="LevelUp_Abathur">
+                <Field Id="Hero Upgrade"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="3">
+            <GameLink GameLink="Arthas">
+                <Field Id="Hero Link"/>
+            </GameLink>
+            <GameLink GameLink="LevelUp_Arthas">
+                <Field Id="Hero Upgrade"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="4">
+            <GameLink GameLink="Barbarian">
+                <Field Id="Hero Link"/>
+            </GameLink>
+            <GameLink GameLink="LevelUp_Barbarian">
+                <Field Id="Hero Upgrade"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="5">
+            <GameLink GameLink="DemonHunter">
+                <Field Id="Hero Link"/>
+            </GameLink>
+            <GameLink GameLink="LevelUp_DemonHunter">
+                <Field Id="Hero Upgrade"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="6">
+            <GameLink GameLink="Diablo">
+                <Field Id="Hero Link"/>
+            </GameLink>
+            <GameLink GameLink="LevelUp_Diablo">
+                <Field Id="Hero Upgrade"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="7">
+            <GameLink GameLink="L90ETC">
+                <Field Id="Hero Link"/>
+            </GameLink>
+            <GameLink GameLink="LevelUp_L90ETC">
+                <Field Id="Hero Upgrade"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="8">
+            <GameLink GameLink="Falstad">
+                <Field Id="Hero Link"/>
+            </GameLink>
+            <GameLink GameLink="LevelUp_Falstad">
+                <Field Id="Hero Upgrade"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="9">
+            <GameLink GameLink="Tinker">
+                <Field Id="Hero Link"/>
+            </GameLink>
+            <GameLink GameLink="LevelUp_Tinker">
+                <Field Id="Hero Upgrade"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="10">
+            <GameLink GameLink="Illidan">
+                <Field Id="Hero Link"/>
+            </GameLink>
+            <GameLink GameLink="LevelUp_Illidan">
+                <Field Id="Hero Upgrade"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="11">
+            <GameLink GameLink="Kerrigan">
+                <Field Id="Hero Link"/>
+            </GameLink>
+            <GameLink GameLink="LevelUp_Kerrigan">
+                <Field Id="Hero Upgrade"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="12">
+            <GameLink GameLink="Malfurion">
+                <Field Id="Hero Link"/>
+            </GameLink>
+            <GameLink GameLink="LevelUp_Malfurion">
+                <Field Id="Hero Upgrade"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="13">
+            <GameLink GameLink="Muradin">
+                <Field Id="Hero Link"/>
+            </GameLink>
+            <GameLink GameLink="LevelUp_Muradin">
+                <Field Id="Hero Upgrade"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="14">
+            <GameLink GameLink="Nova">
+                <Field Id="Hero Link"/>
+            </GameLink>
+            <GameLink GameLink="LevelUp_Nova">
+                <Field Id="Hero Upgrade"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="15">
+            <GameLink GameLink="Raynor">
+                <Field Id="Hero Link"/>
+            </GameLink>
+            <GameLink GameLink="LevelUp_Raynor">
+                <Field Id="Hero Upgrade"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="16">
+            <GameLink GameLink="SgtHammer">
+                <Field Id="Hero Link"/>
+            </GameLink>
+            <GameLink GameLink="LevelUp_SgtHammer">
+                <Field Id="Hero Upgrade"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="17">
+            <GameLink GameLink="Stitches">
+                <Field Id="Hero Link"/>
+            </GameLink>
+            <GameLink GameLink="LevelUp_Stitches">
+                <Field Id="Hero Upgrade"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="18">
+            <GameLink GameLink="Tassadar">
+                <Field Id="Hero Link"/>
+            </GameLink>
+            <GameLink GameLink="LevelUp_Tassadar">
+                <Field Id="Hero Upgrade"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="19">
+            <GameLink GameLink="Tychus">
+                <Field Id="Hero Link"/>
+            </GameLink>
+            <GameLink GameLink="LevelUp_Tychus">
+                <Field Id="Hero Upgrade"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="20">
+            <GameLink GameLink="Tyrael">
+                <Field Id="Hero Link"/>
+            </GameLink>
+            <GameLink GameLink="LevelUp_Tyrael">
+                <Field Id="Hero Upgrade"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="21">
+            <GameLink GameLink="Tyrande">
+                <Field Id="Hero Link"/>
+            </GameLink>
+            <GameLink GameLink="LevelUp_Tyrande">
+                <Field Id="Hero Upgrade"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="22">
+            <GameLink GameLink="Uther">
+                <Field Id="Hero Link"/>
+            </GameLink>
+            <GameLink GameLink="LevelUp_Uther">
+                <Field Id="Hero Upgrade"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="23">
+            <GameLink GameLink="Nazeebo">
+                <Field Id="Hero Link"/>
+            </GameLink>
+            <GameLink GameLink="LevelUp_Nazeebo">
+                <Field Id="Hero Upgrade"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="24">
+            <GameLink GameLink="Zeratul">
+                <Field Id="Hero Link"/>
+            </GameLink>
+            <GameLink GameLink="LevelUp_Zeratul">
+                <Field Id="Hero Upgrade"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="25">
+            <GameLink GameLink="Selendis">
+                <Field Id="Hero Link"/>
+            </GameLink>
+            <GameLink GameLink="LevelUp_Selendis">
+                <Field Id="Hero Upgrade"/>
+            </GameLink>
+        </Instances>
+    </CUser>
+    <CUser id="Storm_HeroAbilityAbility_Raynor">
+        <Fields Id="Ability" Type="GameLink" GameLinkType="Abil"/>
+        <Fields Id="Active/Passive" Type="Int" EditorColumn="1"/>
+        <Fields Id="CDR" Type="Int" EditorColumn="2"/>
+        <Fields Id="Selection Shown" Type="Int" EditorColumn="3"/>
+        <Fields Id="Show Hotkey" Type="Int" EditorColumn="4"/>
+        <Fields Id="Basic" Type="Int" EditorColumn="5"/>
+        <Fields Id="Heroic" Type="Int" EditorColumn="6"/>
+        <Fields Id="Trait" Type="Int" EditorColumn="7"/>
+        <Instances Id="[Default]">
+            <Int Int="2">
+                <Field Id="Trait"/>
+            </Int>
+            <Int Int="2">
+                <Field Id="Show Hotkey"/>
+            </Int>
+            <Int Int="2">
+                <Field Id="Selection Shown"/>
+            </Int>
+            <Int Int="2">
+                <Field Id="Heroic"/>
+            </Int>
+            <Int Int="2">
+                <Field Id="CDR"/>
+            </Int>
+            <Int Int="2">
+                <Field Id="Basic"/>
+            </Int>
+            <Int Int="2">
+                <Field Id="Active/Passive"/>
+            </Int>
+        </Instances>
+        <Instances Id="Penetrating Round">
+            <GameLink GameLink="RaynorPenetratingRound">
+                <Field Id="Ability"/>
+            </GameLink>
+            <Int Int="1">
+                <Field Id="Active/Passive"/>
+            </Int>
+            <Int Int="1">
+                <Field Id="Basic"/>
+            </Int>
+            <Int Int="1">
+                <Field Id="CDR"/>
+            </Int>
+            <Int Int="1">
+                <Field Id="Selection Shown"/>
+            </Int>
+            <Int Int="1">
+                <Field Id="Show Hotkey"/>
+            </Int>
+            <Int>
+                <Field Id="Heroic"/>
+            </Int>
+            <Int>
+                <Field Id="Trait"/>
+            </Int>
+        </Instances>
+        <Instances Id="Inspire">
+            <GameLink GameLink="RaynorInspire">
+                <Field Id="Ability"/>
+            </GameLink>
+            <Int Int="1">
+                <Field Id="Selection Shown"/>
+            </Int>
+            <Int Int="1">
+                <Field Id="Show Hotkey"/>
+            </Int>
+            <Int>
+                <Field Id="Trait"/>
+            </Int>
+            <Int>
+                <Field Id="Heroic"/>
+            </Int>
+            <Int Int="1">
+                <Field Id="CDR"/>
+            </Int>
+            <Int Int="1">
+                <Field Id="Basic"/>
+            </Int>
+            <Int Int="1">
+                <Field Id="Active/Passive"/>
+            </Int>
+        </Instances>
+        <Instances Id="Adrenaline Rush">
+            <GameLink GameLink="RaynorAdrenalineRushDummy">
+                <Field Id="Ability"/>
+            </GameLink>
+            <Int>
+                <Field Id="Active/Passive"/>
+            </Int>
+            <Int Int="1">
+                <Field Id="Basic"/>
+            </Int>
+            <Int Int="1">
+                <Field Id="CDR"/>
+            </Int>
+            <Int>
+                <Field Id="Heroic"/>
+            </Int>
+            <Int Int="1">
+                <Field Id="Selection Shown"/>
+            </Int>
+            <Int Int="1">
+                <Field Id="Show Hotkey"/>
+            </Int>
+            <Int>
+                <Field Id="Trait"/>
+            </Int>
+        </Instances>
+    </CUser>
+    <CUser id="DataIngame_Heroes">
+        <Fields>
+            <Id value="Hero Link"/>
+            <Type value="GameLink"/>
+            <GameLinkType value="Hero"/>
+            <EditorColumn value="2"/>
+        </Fields>
+        <Fields>
+            <Id value="Hero Upgrade"/>
+            <Type value="GameLink"/>
+            <GameLinkType value="Upgrade"/>
+            <EditorColumn value="1"/>
+        </Fields>
+        <Fields Id="Skins" Type="User" EditorColumn="4"/>
+        <Fields>
+            <Id value="Role"/>
+            <Type value="User"/>
+            <UserType value="DataIngame_Heroes_Role"/>
+            <EditorColumn value="3"/>
+        </Fields>
+        <Fields>
+            <Id value="Selecting Status"/>
+            <Type value="User"/>
+            <UserType value="Option_SelectingStatus"/>
+            <EditorColumn value="5"/>
+        </Fields>
+        <Instances Id="[Default]"/>
+        <Instances Id="Hero_Diablo">
+            <GameLink GameLink="Diablo">
+                <Field Id="Hero Link"/>
+            </GameLink>
+            <GameLink GameLink="LevelUp_Diablo">
+                <Field Id="Hero Upgrade"/>
+            </GameLink>
+            <User Type="DataIngame_Heroes_Role" Instance="Tank">
+                <Field Id="Role"/>
+            </User>
+            <User Type="DataIngame_Heroes_Skins_Diablo" Instance="[Default]">
+                <Field Id="Skins"/>
+            </User>
+            <User Type="Option_SelectingStatus" Instance="PTR and Live">
+                <Field Id="Selecting Status"/>
+            </User>
+        </Instances>
+        <Instances Id="Hero_Nazeebo">
+            <GameLink GameLink="Nazeebo">
+                <Field Id="Hero Link"/>
+            </GameLink>
+            <GameLink GameLink="LevelUp_Nazeebo">
+                <Field Id="Hero Upgrade"/>
+            </GameLink>
+            <User Type="DataIngame_Heroes_Role" Instance="Specialist">
+                <Field Id="Role"/>
+            </User>
+            <User Type="DataIngame_Heroes_Skins_Nazeebo" Instance="[Default]">
+                <Field Id="Skins"/>
+            </User>
+            <User Type="Option_SelectingStatus" Instance="PTR and Live">
+                <Field Id="Selecting Status"/>
+            </User>
+        </Instances>
+        <Instances Id="Hero_Selendis">
+            <GameLink GameLink="Selendis">
+                <Field Id="Hero Link"/>
+            </GameLink>
+            <GameLink GameLink="LevelUp_Selendis">
+                <Field Id="Hero Upgrade"/>
+            </GameLink>
+            <User Type="DataIngame_Heroes_Role" Instance="AssassinMelee">
+                <Field Id="Role"/>
+            </User>
+            <User Type="Option_SelectingStatus" Instance="PTR and Live">
+                <Field Id="Selecting Status"/>
+            </User>
+        </Instances>
+        <Instances Id="Hero_Katarina">
+            <GameLink GameLink="Katarina">
+                <Field Id="Hero Link"/>
+            </GameLink>
+            <GameLink GameLink="LeveUp_Katarina">
+                <Field Id="Hero Upgrade"/>
+            </GameLink>
+            <User Type="DataIngame_Heroes_Role" Instance="AssassinRanged">
+                <Field Id="Role"/>
+            </User>
+            <User Type="DataIngame_Heroes_Skins_Katarina" Instance="[Default]">
+                <Field Id="Skins"/>
+            </User>
+            <User Type="Option_SelectingStatus" Instance="PTR and Live">
+                <Field Id="Selecting Status"/>
+            </User>
+        </Instances>
+        <Instances Id="Hero_Malfurion">
+            <GameLink GameLink="Malfurion">
+                <Field Id="Hero Link"/>
+            </GameLink>
+            <GameLink GameLink="LevelUp_Malfurion">
+                <Field Id="Hero Upgrade"/>
+            </GameLink>
+            <User Type="DataIngame_Heroes_Role" Instance="Support">
+                <Field Id="Role"/>
+            </User>
+            <User Type="DataIngame_Heroes_Skins_Malfurion" Instance="[Default]">
+                <Field Id="Skins"/>
+            </User>
+            <User Type="DataIngame_Heroes_Skins_Malfurion" Instance="Malfurion_Base_White">
+                <Field Id="Skins" Index="1"/>
+            </User>
+            <User Type="DataIngame_Heroes_Skins_Malfurion" Instance="Malfurion_Betrayer">
+                <Field Id="Skins" Index="2"/>
+            </User>
+            <User Type="DataIngame_Heroes_Skins_Malfurion" Instance="Malfurion_Betrayer_Brown">
+                <Field Id="Skins" Index="3"/>
+            </User>
+            <User Type="DataIngame_Heroes_Skins_Malfurion" Instance="Malfurion_Betrayer_Red">
+                <Field Id="Skins" Index="4"/>
+            </User>
+            <User Type="DataIngame_Heroes_Skins_Malfurion" Instance="Malfurion_Flame">
+                <Field Id="Skins" Index="5"/>
+            </User>
+            <User Type="DataIngame_Heroes_Skins_Malfurion" Instance="Malfurion_Flame_Var1">
+                <Field Id="Skins" Index="6"/>
+            </User>
+            <User Type="DataIngame_Heroes_Skins_Malfurion" Instance="Malfurion_Flame_Var2">
+                <Field Id="Skins" Index="7"/>
+            </User>
+            <User Type="DataIngame_Heroes_Skins_Malfurion" Instance="Malfurion_Flame_Var3">
+                <Field Id="Skins" Index="8"/>
+            </User>
+            <User Type="DataIngame_Heroes_Skins_Malfurion" Instance="Malfurion_Stormrage">
+                <Field Id="Skins" Index="9"/>
+            </User>
+            <User Type="DataIngame_Heroes_Skins_Malfurion" Instance="Malfurion_Stormrage_Purple">
+                <Field Id="Skins" Index="10"/>
+            </User>
+            <User Type="DataIngame_Heroes_Skins_Malfurion" Instance="Malfurion_Stormrage_White">
+                <Field Id="Skins" Index="11"/>
+            </User>
+            <User Type="DataIngame_Heroes_Skins_Malfurion" Instance="Malfurion_Stormrage_Var3">
+                <Field Id="Skins" Index="12"/>
+            </User>
+            <User Type="DataIngame_Heroes_Skins_Malfurion" Instance="Malfurion_Ultimate">
+                <Field Id="Skins" Index="13"/>
+            </User>
+            <User Type="DataIngame_Heroes_Skins_Malfurion" Instance="Malfurion_Ultimate_Red">
+                <Field Id="Skins" Index="14"/>
+            </User>
+            <User Type="DataIngame_Heroes_Skins_Malfurion" Instance="Malfurion_Ultimate_White">
+                <Field Id="Skins" Index="15"/>
+            </User>
+            <User Type="DataIngame_Heroes_Skins_Malfurion" Instance="Malfurion_Winter">
+                <Field Id="Skins" Index="16"/>
+            </User>
+            <User Type="DataIngame_Heroes_Skins_Malfurion" Instance="Malfurion_Winter_Var1">
+                <Field Id="Skins" Index="17"/>
+            </User>
+            <User Type="DataIngame_Heroes_Skins_Malfurion" Instance="Malfurion_Winter_Var2">
+                <Field Id="Skins" Index="18"/>
+            </User>
+            <User Type="DataIngame_Heroes_Skins_Malfurion" Instance="Malfurion_Winter_Var3">
+                <Field Id="Skins" Index="19"/>
+            </User>
+            <User Type="DataIngame_Heroes_Skins_Malfurion" Instance="Malfurion_Winter_Var4">
+                <Field Id="Skins" Index="20"/>
+            </User>
+            <User Type="Option_SelectingStatus" Instance="PTR and Live">
+                <Field Id="Selecting Status"/>
+            </User>
+        </Instances>
+    </CUser>
+    <CUser id="Option_TrueFalse">
+        <Fields Id="Option - True/Flase" Type="Int"/>
+        <Instances Id="[Default]"/>
+        <Instances Id="True">
+            <Int Int="1">
+                <Field Id="Option - True/Flase"/>
+            </Int>
+        </Instances>
+        <Instances Id="False"/>
+    </CUser>
+</Catalog>

@@ -1,0 +1,2606 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CValidatorUnitType id="IsMarchoftheMurlocsInvisibleUnit">
+        <Value value="MarchoftheMurlocsInvisibleDummy"/>
+    </CValidatorUnitType>
+    <CValidatorLocationCompareRange id="EmeraldBreezeGreaterKnockbackValidator">
+        <ResultFailed value="TargetIsOutOfRange"/>
+        <WhichLocation Value="TargetUnit"/>
+        <Compare value="LT"/>
+        <Range value="3"/>
+    </CValidatorLocationCompareRange>
+    <CValidatorUnitCompareBehaviorCount id="MysticSporesDoTStack2">
+        <Value value="1"/>
+        <Behavior value="MysticSporesDoT2Stack"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="MysticSporesDoTStack3">
+        <Value value="1"/>
+        <Behavior value="MysticSporesDoT3Stack"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="MysticSporesHoT2Stack">
+        <Value value="1"/>
+        <Behavior value="MysticSporesHoT2Stack"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="MysticSporesDoTStack">
+        <Value value="1"/>
+        <Behavior value="MysticSporesDoTStack"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="MysticSporesHoTStack">
+        <Value value="1"/>
+        <Behavior value="MysticSporesHoTStack"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="MysticSporesHoT3Stack">
+        <Value value="1"/>
+        <Behavior value="MysticSporesHoT3Stack"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorLocationCompareRange id="LuminosityMinDistance1">
+        <ResultFailed value="TargetIsOutOfRange"/>
+        <WhichLocation Value="TargetUnit"/>
+        <Compare value="GT"/>
+        <Range value="1"/>
+        <Value Effect="EmeraldWindSecondSearch" Value="TargetPoint"/>
+    </CValidatorLocationCompareRange>
+    <CValidatorLocationCompareRange id="LuminosityMinDistance2">
+        <ResultFailed value="TargetIsOutOfRange"/>
+        <WhichLocation Value="TargetUnit"/>
+        <Compare value="GT"/>
+        <Range value="1"/>
+        <Value Effect="EmeraldWindThirdSearch" Value="TargetPoint"/>
+    </CValidatorLocationCompareRange>
+    <CValidatorLocationCompareRange id="LuminosityMinDistance3">
+        <ResultFailed value="TargetIsOutOfRange"/>
+        <WhichLocation Value="TargetUnit"/>
+        <Compare value="GT"/>
+        <Range value="2"/>
+        <Value Effect="EmeraldWindFourthSearch" Value="TargetPoint"/>
+    </CValidatorLocationCompareRange>
+    <CValidatorLocationCompareRange id="LuminosityMinDistance4">
+        <ResultFailed value="TargetIsOutOfRange"/>
+        <WhichLocation Value="TargetUnit"/>
+        <Compare value="GT"/>
+        <Range value="3"/>
+        <Value Effect="EmeraldWindFifthSearch" Value="TargetPoint"/>
+    </CValidatorLocationCompareRange>
+    <CValidatorLocationCompareRange id="LuminosityMinDistance5">
+        <ResultFailed value="TargetIsOutOfRange"/>
+        <WhichLocation Value="TargetUnit"/>
+        <Compare value="GT"/>
+        <Range value="4"/>
+        <Value Effect="EmeraldWindSixthSearch" Value="TargetPoint"/>
+    </CValidatorLocationCompareRange>
+    <CValidatorLocationCompareRange id="LuminosityMinDistance6">
+        <ResultFailed value="TargetIsOutOfRange"/>
+        <WhichLocation Value="TargetUnit"/>
+        <Compare value="GT"/>
+        <Range value="5"/>
+        <Value Effect="EmeraldWindSeventhSearch" Value="TargetPoint"/>
+    </CValidatorLocationCompareRange>
+    <CValidatorLocationCompareRange id="LuminosityMinDistance7">
+        <ResultFailed value="TargetIsOutOfRange"/>
+        <WhichLocation Value="TargetUnit"/>
+        <Compare value="GT"/>
+        <Range value="6"/>
+        <Value Effect="EmeraldWindEighthSearch" Value="TargetPoint"/>
+    </CValidatorLocationCompareRange>
+    <CValidatorLocationCompareRange id="LuminosityMinDistance8">
+        <ResultFailed value="TargetIsOutOfRange"/>
+        <WhichLocation Value="TargetUnit"/>
+        <Compare value="GT"/>
+        <Range value="7"/>
+        <Value Effect="EmeraldWindNinthSearch" Value="TargetPoint"/>
+    </CValidatorLocationCompareRange>
+    <CValidatorLocationCompareRange id="ShrinkingPowderMasteryRangeValidator">
+        <WhichLocation Effect="ShrinkingPowderApplyBehavior" Value="TargetUnit"/>
+        <Compare value="LE"/>
+        <Range value="6.75"/>
+        <Value Effect="ShrinkingPowderApplyBehavior"/>
+    </CValidatorLocationCompareRange>
+    <CValidatorLocationEnumArea id="ShrinkingPowderMasteryNearbyEnemyValidator">
+        <WhichLocation Value="TargetUnit"/>
+        <AreaArray Compare="GT" Count="0" Radius="3.5"/>
+        <SearchFilters value="Heroic;Neutral,Enemy,Mechanical,Missile,Item,Stasis,Dead,Hidden,Invulnerable,Benign,Passive"/>
+    </CValidatorLocationEnumArea>
+    <CEffectApplyBehavior id="BlizzardRelicApplyBehavior">
+        <EditorCategories value=""/>
+        <Chance value="0"/>
+        <Behavior value="Frostburn"/>
+    </CEffectApplyBehavior>
+    <CEffectDamage id="BlizzardRelicPeriodicDamage">
+        <EditorCategories value=""/>
+        <Amount value="10"/>
+        <CasterHistory value="Damage"/>
+    </CEffectDamage>
+    <CEffectApplyBehavior id="InfestedTerranApplyTimedLife">
+        <EditorCategories value="Race:Zerg"/>
+        <Behavior value="InfestedTerranTimedLife"/>
+    </CEffectApplyBehavior>
+    <CEffectCreateUnit id="InfestedTerranCreateEgg">
+        <EditorCategories value=""/>
+        <WhichLocation Value="TargetPoint"/>
+        <SpawnEffect value="InfestedTerranInitialSet"/>
+        <SpawnUnit value="InfestedTerranEgg"/>
+        <SpawnRange value="3"/>
+        <SpawnCount value="2"/>
+    </CEffectCreateUnit>
+    <CEffectSet id="InfestedTerranImpactSet">
+        <EditorCategories value=""/>
+        <EffectArray value="RemovePrecursor"/>
+        <EffectArray value="InfestedTerranIssueMorphOrder"/>
+    </CEffectSet>
+    <CEffectSet id="InfestedTerranInitialSet">
+        <EditorCategories value=""/>
+        <EffectArray value="InfestedTerranLaunchMissile"/>
+        <EffectArray value="MakePrecursor"/>
+    </CEffectSet>
+    <CEffectLaunchMissile id="InfestedTerranLaunchMissile">
+        <EditorCategories value=""/>
+        <LaunchLocation Value="CasterUnit"/>
+        <ImpactLocation Value="TargetUnitOrPoint"/>
+        <FinishEffect value="InfestedTerranImpactSet"/>
+        <AmmoUnit value="InfestedTerranEggMissile"/>
+        <Movers Link="InfestedTerranEggMissile"/>
+    </CEffectLaunchMissile>
+    <CEffectApplyBehavior id="DemonicStrengthApplyBehavior">
+        <WhichUnit Value="Caster"/>
+        <Behavior value="DemonicStrength"/>
+    </CEffectApplyBehavior>
+    <CEffectEnumArea id="CurseOfTheOldGodsSearch">
+        <SearchFilters value="-;Player,Ally,Neutral,Mechanical,Missile,Item,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="3.5" Effect="CurseOfTheOldGodsApplyBehavior"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="CurseOfTheOldGodsApplyBehavior">
+        <Behavior value="CurseOfTheOldGods"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="EngulfingDarknessSet">
+        <EffectArray value="EngulfingDarknessApplyBehavior"/>
+        <EffectArray value="EngulfingDarknessDamage"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="EngulfingDarknessApplyBehavior">
+        <Behavior value="EngulfingDarkness"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="FelRuneApplyArmingBehavior">
+        <Behavior value="FelRuneArming"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="FelRuneApplyScanBehavior">
+        <ValidatorArray index="0" value=""/>
+        <Behavior value="FelRuneScan"/>
+    </CEffectApplyBehavior>
+    <CEffectEnumArea id="FelRuneSearchArea">
+        <SearchFilters value="-;Player,Ally,Neutral,Mechanical,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray MaxCount="1" Radius="2" Effect="FelRuneImpactSet"/>
+    </CEffectEnumArea>
+    <CEffectSet id="FelRuneImpactSet">
+        <EffectArray value="FelRuneCreateRevealer"/>
+        <EffectArray value="FelRuneTargetSearchArea"/>
+        <EffectArray value="Suicide"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="FelRuneCreateRevealer">
+        <ExpireDelay value="6"/>
+        <RevealRadius value="5"/>
+        <RevealFlags index="Unfog" value="1"/>
+        <WhichLocation Value="TargetUnit"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="FelRuneTargetSearchArea">
+        <SearchFilters value="-;Player,Ally,Neutral,Mechanical,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="2.5" Effect="FelRuneDamageSet"/>
+    </CEffectEnumArea>
+    <CEffectSet id="FelRuneDamageSet">
+        <EffectArray value="FelRuneDamage"/>
+        <EffectArray value="FelRunePersistent"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="FelRunePersistent">
+        <WhichLocation Value="TargetUnit"/>
+        <PeriodCount value="4"/>
+        <PeriodicPeriodArray value="0.0625"/>
+        <PeriodicEffectArray value="FelRuneApplyForce"/>
+        <InitialEffect value="FelRuneApplyBehavior"/>
+        <PeriodicValidator value="TargetNotUnstoppable"/>
+        <!--FinalEffect value="FaceMeltRemoveBehavior"/-->
+    </CEffectCreatePersistent>
+    <CEffectApplyForce id="FelRuneApplyForce">
+        <Amount value="10"/>
+        <WhichLocation Effect="FelRunePersistent" Value="SourcePoint"/>
+        <WhichUnit Effect="FelRunePersistent"/>
+    </CEffectApplyForce>
+    <CEffectApplyBehavior id="FelRuneApplyBehavior">
+        <Behavior value="FelRuneKnockback"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="FelRuneRemoveBehavior">
+        <BehaviorLink value="FelRuneKnockback"/>
+    </CEffectRemoveBehavior>
+    <CEffectCreateUnit id="ForceWallCreateArtUnitCenter">
+        <ValidatorArray value="CliffLevelGE1"/>
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="TargetPoint"/>
+        <CreateFlags index="DropOff" value="0"/>
+        <CreateFlags index="Placement" value="0"/>
+        <CreateFlags index="ProvideFood" value="0"/>
+        <CreateFlags index="SetFacing" value="1"/>
+        <CreateFlags index="UseFood" value="0"/>
+        <SpawnEffect value="TassadarForceWallApplyBehavior"/>
+        <SpawnUnit value="TassadarForceWallArtUnitCenter"/>
+        <SpawnRange value="0"/>
+    </CEffectCreateUnit>
+    <CEffectCreateUnit id="ForceWallCreateArtUnitLeft">
+        <ValidatorArray value="CliffLevelGE1"/>
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="TargetPoint"/>
+        <Origin Effect="TassadarForceWallPersistent" Value="TargetPoint"/>
+        <CreateFlags index="DropOff" value="0"/>
+        <CreateFlags index="Placement" value="0"/>
+        <CreateFlags index="ProvideFood" value="0"/>
+        <CreateFlags index="SetFacing" value="1"/>
+        <CreateFlags index="UseFood" value="0"/>
+        <SpawnEffect value="TassadarForceWallApplyBehavior"/>
+        <SpawnUnit value="TassadarForceWallArtUnitLeft"/>
+        <SpawnRange value="0"/>
+    </CEffectCreateUnit>
+    <CEffectCreateUnit id="ForceWallCreateArtUnitRight">
+        <ValidatorArray value="CliffLevelGE1"/>
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="TargetPoint"/>
+        <Origin Effect="TassadarForceWallPersistent" Value="TargetPoint"/>
+        <CreateFlags index="DropOff" value="0"/>
+        <CreateFlags index="Placement" value="0"/>
+        <CreateFlags index="ProvideFood" value="0"/>
+        <CreateFlags index="SetFacing" value="1"/>
+        <CreateFlags index="UseFood" value="0"/>
+        <SpawnEffect value="TassadarForceWallApplyBehavior"/>
+        <SpawnUnit value="TassadarForceWallArtUnitRight"/>
+        <SpawnRange value="0"/>
+    </CEffectCreateUnit>
+    <CEffectCreateUnit id="ForceWallCreateLeftEndpoint">
+        <ValidatorArray value="CliffLevelGE1"/>
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="TargetPoint"/>
+        <Origin Effect="TassadarForceWallPersistent" Value="TargetPoint"/>
+        <CreateFlags index="DropOff" value="0"/>
+        <CreateFlags index="Placement" value="0"/>
+        <CreateFlags index="ProvideFood" value="0"/>
+        <CreateFlags index="SetFacing" value="1"/>
+        <CreateFlags index="UseFood" value="0"/>
+        <SpawnEffect value="TassadarForceWallApplyBehavior"/>
+        <SpawnUnit value="TassadarForceWallArtEndUnitLeft"/>
+        <SpawnRange value="0"/>
+    </CEffectCreateUnit>
+    <CEffectCreateUnit id="ForceWallCreateRightEndpoint">
+        <ValidatorArray value="CliffLevelGE1"/>
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="TargetPoint"/>
+        <Origin Effect="TassadarForceWallPersistent" Value="TargetPoint"/>
+        <CreateFlags index="DropOff" value="0"/>
+        <CreateFlags index="Placement" value="0"/>
+        <CreateFlags index="ProvideFood" value="0"/>
+        <CreateFlags index="SetFacing" value="1"/>
+        <CreateFlags index="UseFood" value="0"/>
+        <SpawnEffect value="TassadarForceWallApplyBehavior"/>
+        <SpawnUnit value="TassadarForceWallArtEndUnitRight"/>
+        <SpawnRange value="0"/>
+    </CEffectCreateUnit>
+    <CEffectSet id="PixieDustApplyBehaviorsSet">
+        <EditorCategories value=""/>
+        <EffectArray value="PixieDustApplyBlock"/>
+        <EffectArray value="PixieDustApplyMoveSpeedBuff"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="PixieDustApplyBlock">
+        <EditorCategories value=""/>
+        <Behavior value="PixieDustBlock"/>
+        <Count value="2"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="PixieDustApplyMoveSpeedBuff">
+        <EditorCategories value=""/>
+        <Behavior value="PixieDust"/>
+    </CEffectApplyBehavior>
+    <CEffectDamage id="PixieDustDummyDamage">
+        <EditorCategories value=""/>
+        <ImpactLocation Value="TargetUnit"/>
+        <Flags index="NoScaledDealtBonus" value="1"/>
+        <Flags index="NoFractionDealtBonus" value="1"/>
+        <Flags index="NoUnscaledDealtBonus" value="1"/>
+        <Kind value="Ranged"/>
+    </CEffectDamage>
+    <CEffectEnumArea id="ArcaneFlareInnerSearch">
+        <EditorCategories value=""/>
+        <Marker Link="Effect/ManaFlareSearch"/>
+        <SearchFilters value="-;Player,Ally,Mechanical,Missile,Item,Stasis,Hidden,Invulnerable"/>
+        <AreaArray Radius="1" Effect="ArcaneFlareInnerDamage"/>
+        <RevealerParams Duration="0.125">
+            <RevealFlags index="Unfog" value="1"/>
+        </RevealerParams>
+    </CEffectEnumArea>
+    <CEffectDamage id="ArcaneFlareInnerDamage">
+        <EditorCategories value=""/>
+        <Marker Link="Effect/ManaFlareOuterDamage"/>
+        <CasterHistory value="Damage"/>
+        <Amount value="70"/>
+    </CEffectDamage>
+    <CEffectSet id="ArcaneFlareSearchSet">
+        <EditorCategories value=""/>
+        <Marker>
+            <MatchFlags index="Id" value="1"/>
+        </Marker>
+        <EffectArray value="ArcaneFlareInnerSearch"/>
+        <EffectArray value="ArcaneFlareOuterSearch"/>
+    </CEffectSet>
+    <CEffectSwitch id="PixieDustSwitch">
+        <EditorCategories value=""/>
+        <CaseArray Validator="IsSelf" Effect="PixieDustApplyBehaviorsSet"/>
+        <CaseDefault value="PixieDustLaunchMissile"/>
+    </CEffectSwitch>
+    <CEffectApplyBehavior id="FlightApplyDisablerBehavior">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="FlightDisablerBehavior"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="FlightApplyFinalDisablerBehavior">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="FlightFinalDisablerBehavior"/>
+    </CEffectApplyBehavior>
+    <CEffectCreatePersistent id="FlightCreateFlyingPersistent">
+        <EditorCategories value=""/>
+        <WhichLocation Value="CasterUnit"/>
+        <Flags index="Channeled" value="1"/>
+        <InitialEffect value="FlightApplyAscendBehavior"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="FlightLaunchMissile"/>
+        <PeriodicPeriodArray value="0.5"/>
+    </CEffectCreatePersistent>
+    <CEffectDestroyPersistent id="FlightDestroyPersistent">
+        <EditorCategories value=""/>
+        <WhichLocation Effect="FlightPersistent" Value="TargetPoint"/>
+        <Effect value="FlightDestroyPersistent"/>
+        <Count value="1"/>
+        <Radius value="0.25"/>
+    </CEffectDestroyPersistent>
+    <CEffectSet id="FlightFinalSet">
+        <EditorCategories value=""/>
+        <EffectArray value="FlightRemoveDisablerBehavior"/>
+    </CEffectSet>
+    <CEffectSet id="FlightImpactSet">
+        <EditorCategories value=""/>
+        <EffectArray value="FlightTeleport"/>
+        <EffectArray value="FlightRemoveAscendBehavior"/>
+    </CEffectSet>
+    <CEffectIssueOrder id="FlightIssueStopOrder">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Abil value="stop"/>
+        <Player Value="Caster"/>
+    </CEffectIssueOrder>
+    <CEffectModifyUnit id="FlightAscendHeight">
+        <EditorCategories value=""/>
+        <ImpactUnit Value="Caster"/>
+        <Height value="6"/>
+        <HeightTime value="0.5"/>
+    </CEffectModifyUnit>
+    <CEffectRemoveBehavior id="FlightRemoveDisablerBehavior">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="FlightDisablerBehavior"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectSet id="FlightSet">
+        <EditorCategories value=""/>
+        <EffectArray value="FlightCreateFlyingPersistent"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectTeleport id="FlightTeleport">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <MinDistance value="0"/>
+        <PlacementRange value="2"/>
+        <TargetLocation Effect="FlightPersistent" Value="TargetPoint"/>
+    </CEffectTeleport>
+    <CEffectCreatePersistent id="ArcaneFlareCreatePersistent">
+        <EditorCategories value=""/>
+        <DebugTrace value="1"/>
+        <InitialDelay value="1.25"/>
+    </CEffectCreatePersistent>
+    <CEffectCreateHealer id="PhaseShiftCreateHealer">
+        <EditorCategories value=""/>
+        <PeriodCount value="1"/>
+        <PeriodicPeriod value="1"/>
+        <RechargeVitalRate value="30"/>
+    </CEffectCreateHealer>
+    <CEffectDamage id="ArcaneFlareOuterDamage">
+        <ValidatorArray value="noMarkers"/>
+        <EditorCategories value=""/>
+        <CasterHistory value="Damage"/>
+        <Amount value="45"/>
+    </CEffectDamage>
+    <CEffectEnumArea id="PhaseShiftSearch">
+        <EditorCategories value=""/>
+        <SearchFilters value="-;Neutral,Enemy,Mechanical,Structure,Item"/>
+        <AreaArray Radius="2.5" Effect="PhaseShiftCreateHealer"/>
+        <SearchFlags index="CenterAtLaunch" value="1"/>
+        <SearchFlags index="OffsetAreaByAngle" value="0"/>
+        <ExcludeArray Value="Unknown"/>
+    </CEffectEnumArea>
+    <CEffectSet id="ArcaneFlareLaunchSet">
+        <EditorCategories value=""/>
+        <EffectArray value="ArcaneFlareLaunchMissile"/>
+        <EffectArray value="ArcaneFlareCreatePersistent"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectSet id="ManaFlareImpactSet">
+        <EditorCategories value=""/>
+        <EffectArray value="ArcaneFlareOuterDamage"/>
+        <EffectArray value="ManaFlareModifyUnitSwitch"/>
+        <EffectArray value="ManaFlareModifyUnitMastery"/>
+    </CEffectSet>
+    <CEffectEnumArea id="ArcaneFlareOuterSearch">
+        <EditorCategories value=""/>
+        <SearchFilters value="-;Player,Ally,Mechanical,Missile,Item,Stasis,Hidden,Invulnerable"/>
+        <AreaArray Radius="2.5" Effect="ArcaneFlareOuterDamage"/>
+        <RevealerParams Duration="0.125">
+            <RevealFlags index="Unfog" value="1"/>
+        </RevealerParams>
+    </CEffectEnumArea>
+    <CEffectModifyUnit id="ManaFlareModifyUnit">
+        <EditorCategories value=""/>
+        <VitalArray index="Energy" Change="-50"/>
+    </CEffectModifyUnit>
+    <CEffectModifyUnit id="ManaFlareModifyUnitFloor">
+        <ValidatorArray value="NotStructureTarget"/>
+        <EditorCategories value=""/>
+    </CEffectModifyUnit>
+    <CEffectSwitch id="ManaFlareModifyUnitSwitch">
+        <EditorCategories value=""/>
+        <CaseArray Validator="TargetHasLTE149Mana" Effect="ManaFlareModifyUnitFloor"/>
+        <CaseDefault value="ManaFlareModifyUnit"/>
+    </CEffectSwitch>
+    <CEffectSwitch id="NaturalizeDamageSwitch">
+        <EditorCategories value=""/>
+        <CaseArray Validator="IsSummonedUnit" Effect="NaturalizeSummonedDamage"/>
+        <CaseDefault value="NaturalizeBaseDamage"/>
+    </CEffectSwitch>
+    <CEffectDamage id="NaturalizeSummonedDamage" parent="StormSpell">
+        <ResponseFlags index="Acquire" value="1"/>
+        <Amount value="65"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="PixieDustLaunchMissile">
+        <ImpactEffect value="PixieDustApplyBehaviorsSet"/>
+        <AmmoUnit value="PixieDustMissile"/>
+    </CEffectLaunchMissile>
+    <CEffectCreateHealer id="SoothingMistCreateHealer">
+        <EditorCategories value=""/>
+        <PeriodCount value="1"/>
+        <PeriodicPeriod value="1"/>
+        <RechargeVitalRate value="20"/>
+    </CEffectCreateHealer>
+    <CEffectEnumArea id="SoothingMistSearchArea">
+        <EditorCategories value=""/>
+        <ImpactLocation Value="TargetUnit"/>
+        <SearchFilters value="Heroic;Neutral,Enemy,Mechanical,Structure,Missile,Stasis,Dead"/>
+        <AreaArray Radius="6.75" Effect="SoothingMistCreateHealer"/>
+    </CEffectEnumArea>
+    <CEffectCreatePersistent id="MarchoftheMurlocsDummyPersistent">
+        <EditorCategories value=""/>
+        <WhichLocation Value="TargetUnit"/>
+    </CEffectCreatePersistent>
+    <CEffectApplyBehavior id="MysticSporesApplyDoTVisualBehavior">
+        <EditorCategories value=""/>
+        <Behavior value="MysticSporesDoTVisual"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="MysticSporesApplyHoTVisualBehavior">
+        <EditorCategories value=""/>
+        <Behavior value="MysticSporesHoTVisual"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="PixieDustRemoveBlockBehavior">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Source"/>
+        <BehaviorLink value="PixieDustBlock"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectSet id="PixieDustRemoveBlockSet">
+        <EditorCategories value=""/>
+        <EffectArray value="PixieDustDummyDamage"/>
+        <EffectArray value="PixieDustRemoveBlockBehavior"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="DreamDustApplyBehavior">
+        <ValidatorArray index="0" value="HasNaturesGiftCarryBehavior"/>
+        <EditorCategories value=""/>
+        <Behavior value="DreamDust"/>
+        <Chance value="0"/>
+    </CEffectApplyBehavior>
+    <CEffectSwitch id="MysticSporesApplyHoTSwitch">
+        <EditorCategories value=""/>
+        <CaseArray Validator="MysticSporesHoTStack" Effect="MysticSporesHotStack2Set"/>
+        <CaseArray Validator="MysticSporesHoT2Stack" Effect="MysticSporesHotStack3Set"/>
+        <CaseArray Validator="MysticSporesHoT3Stack" Effect="MysticSporesApplyHoTStack3"/>
+        <CaseDefault value="MysticSporesApplyHoTStack"/>
+    </CEffectSwitch>
+    <CEffectApplyBehavior id="MysticSporesApplyHoTStack2">
+        <EditorCategories value=""/>
+        <Behavior value="MysticSporesHoT2Stack"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="MysticSporesApplyHoTStack3">
+        <EditorCategories value=""/>
+        <Behavior value="MysticSporesHoT3Stack"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="MysticSporesDotStack2Set">
+        <EditorCategories value=""/>
+        <EffectArray value="MysticSporesApplyDoTStack2"/>
+        <EffectArray value="MysticSporesRemoveDoTStack"/>
+    </CEffectSet>
+    <CEffectSet id="MysticSporesHotStack3Set">
+        <EditorCategories value=""/>
+        <EffectArray value="MysticSporesApplyHoTStack3"/>
+        <EffectArray value="MysticSporesRemoveHoTStack2"/>
+    </CEffectSet>
+    <CEffectSet id="MysticSporesHotStack2Set">
+        <EditorCategories value=""/>
+        <EffectArray value="MysticSporesApplyHoTStack2"/>
+        <EffectArray value="MysticSporesRemoveHoTStack"/>
+    </CEffectSet>
+    <CEffectSet id="MysticSporesDotStack3Set">
+        <EditorCategories value=""/>
+        <EffectArray value="MysticSporesApplyDoTStack3"/>
+        <EffectArray value="MysticSporesRemoveDoTStack2"/>
+    </CEffectSet>
+    <CEffectRemoveBehavior id="MysticSporesRemoveDoTStack">
+        <EditorCategories value=""/>
+        <BehaviorLink value="MysticSporesDoTStack"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectCreatePersistent id="EmeraldBreezeInitialPersistent">
+        <OffsetVectorStartLocation Value="CasterPoint"/>
+        <Flags index="Channeled" value="1"/>
+        <InitialEffect value="EmeraldBreezeInitialSet"/>
+        <ExpireDelay value="0.2"/>
+        <FinalEffect value="EmeraldBreezeRemoveChannel"/>
+        <PeriodCount value="2"/>
+        <PeriodicValidator value="CasterNotDeadOrStunnedorSilenced"/>
+        <PeriodicEffectArray value="EmeraldBreezeSearch"/>
+        <PeriodicPeriodArray value="1"/>
+    </CEffectCreatePersistent>
+    <CEffectApplyBehavior id="EmeraldBreezeApplyChannel">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="EmeraldBreezeChannel"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="EmeraldBreezeInitialSet">
+        <EditorCategories value=""/>
+        <EffectArray value="EmeraldBreezeApplyChannel"/>
+        <EffectArray value="EmeraldBreezeSearch"/>
+        <TargetLocationType value="UnitOrPoint"/>
+    </CEffectSet>
+    <CEffectRemoveBehavior id="EmeraldBreezeRemoveChannel">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="EmeraldBreezeChannel"/>
+    </CEffectRemoveBehavior>
+    <CEffectCreatePersistent id="EmeraldBreezeGreaterKnockbackPersistent">
+        <WhichLocation Value="TargetUnit"/>
+        <InitialEffect value="EmeraldBreezeKnockbackSet"/>
+        <FinalEffect value="EmeraldBreezeKnockbackRemoveBehavior"/>
+        <PeriodCount value="5"/>
+        <PeriodicValidator value="TargetNotDeadNotUnstoppable"/>
+        <PeriodicEffectArray value="EmeraldBreezeGreaterKnockbackApplyForce"/>
+        <PeriodicPeriodArray value="0.0625"/>
+    </CEffectCreatePersistent>
+    <CEffectApplyForce id="EmeraldBreezeGreaterKnockbackApplyForce">
+        <WhichLocation Effect="EmeraldBreezeGreaterKnockbackPersistent" Value="CasterPoint"/>
+        <WhichUnit Effect="EmeraldBreezeGreaterKnockbackPersistent"/>
+        <Amount value="10"/>
+    </CEffectApplyForce>
+    <CEffectSwitch id="EmeraldBreezeKnockbackSwitch">
+        <EditorCategories value=""/>
+        <CaseArray Validator="EmeraldBreezeGreaterKnockbackValidator" Effect="EmeraldBreezeGreaterKnockbackPersistent"/>
+        <CaseDefault value="EmeraldBreezeKnockbackPersistent"/>
+    </CEffectSwitch>
+    <CEffectCreatePersistent id="EmeraldBreezeCreatePersistentReveal">
+        <EditorCategories value=""/>
+        <ExpireDelay value="1"/>
+        <RevealRadius value="4"/>
+        <RevealFlags index="Unfog" value="1"/>
+    </CEffectCreatePersistent>
+    <CEffectDamage id="EmeraldBreezeDamage" parent="StormSpell">
+        <Amount value="40"/>
+    </CEffectDamage>
+    <CEffectApplyForce id="EmeraldBreezeKnockbackApplyForce">
+        <WhichLocation Effect="EmeraldBreezeKnockbackPersistent" Value="CasterPoint"/>
+        <WhichUnit Effect="EmeraldBreezeKnockbackPersistent"/>
+        <Amount value="10"/>
+    </CEffectApplyForce>
+    <CEffectApplyBehavior id="EmeraldBreezeKnockbackApplyBehavior">
+        <ValidatorArray index="0" value="TargetNotUnstoppable"/>
+        <Behavior value="EmeraldBreezeKnockback"/>
+    </CEffectApplyBehavior>
+    <CEffectIssueOrder id="EmeraldBreezeKnockbackIssueStopOrder">
+        <Abil value="stop"/>
+        <Chance value="0"/>
+    </CEffectIssueOrder>
+    <CEffectCreatePersistent id="EmeraldBreezeRevealOffsetPersistent">
+        <EditorCategories value=""/>
+        <WhichLocation Value="CasterPoint"/>
+        <OffsetVectorStartLocation Value="CasterPoint"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="EmeraldBreezeCreatePersistentReveal"/>
+        <PeriodicOffsetArray value="0,-3,0"/>
+    </CEffectCreatePersistent>
+    <CEffectSet id="EmeraldBreezeSearchSet">
+        <EditorCategories value=""/>
+        <EffectArray value="EmeraldBreezeSearch"/>
+        <EffectArray value="EmeraldBreezeRevealOffsetPersistent"/>
+        <EffectArray value="CameraShakeMediumCasterDummySet"/>
+    </CEffectSet>
+    <CEffectSet id="EmeraldBreezeKnockbackSet">
+        <EffectArray value="EmeraldBreezeKnockbackApplyBehavior"/>
+        <EffectArray value="EmeraldBreezeKnockbackIssueStopOrder"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="EmeraldBreezeKnockbackPersistent">
+        <WhichLocation Value="TargetUnit"/>
+        <InitialEffect value="EmeraldBreezeKnockbackSet"/>
+        <FinalEffect value="EmeraldBreezeKnockbackRemoveBehavior"/>
+        <PeriodCount value="3"/>
+        <PeriodicValidator value="TargetNotDeadNotUnstoppable"/>
+        <PeriodicEffectArray value="EmeraldBreezeKnockbackApplyForce"/>
+        <PeriodicPeriodArray value="0.0625"/>
+    </CEffectCreatePersistent>
+    <CEffectRemoveBehavior id="EmeraldBreezeKnockbackRemoveBehavior">
+        <BehaviorLink value="EmeraldBreezeKnockback"/>
+    </CEffectRemoveBehavior>
+    <CEffectEnumArea id="EmeraldBreezeSearch">
+        <AreaArray Radius="3" Effect="EmeraldBreezeSet"/>
+        <SearchFlags index="OffsetByUnitRadius" value="1"/>
+    </CEffectEnumArea>
+    <CEffectSet id="EmeraldBreezeSet">
+        <EffectArray value="EmeraldBreezeDamage"/>
+        <EffectArray value="EmeraldBreezeKnockbackPersistent"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="MysticSporesApplyDoTStack2">
+        <EditorCategories value=""/>
+        <Behavior value="MysticSporesDoT2Stack"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="MysticSporesApplyDoTStack3">
+        <EditorCategories value=""/>
+        <Behavior value="MysticSporesDoT3Stack"/>
+    </CEffectApplyBehavior>
+    <CEffectSwitch id="MysticSporesApplyDoTSwitch">
+        <EditorCategories value=""/>
+        <CaseArray Validator="MysticSporesDoTStack" Effect="MysticSporesDotStack2Set"/>
+        <CaseArray Validator="MysticSporesDoTStack2" Effect="MysticSporesDotStack3Set"/>
+        <CaseArray Validator="MysticSporesDoTStack3" Effect="MysticSporesApplyDoTStack3"/>
+        <CaseDefault value="MysticSporesApplyDoTStack"/>
+    </CEffectSwitch>
+    <CEffectRemoveBehavior id="MysticSporesRemoveDoTStack2">
+        <EditorCategories value=""/>
+        <BehaviorLink value="MysticSporesDoT2Stack"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="MysticSporesRemoveHoTStack">
+        <EditorCategories value=""/>
+        <BehaviorLink value="MysticSporesHoTStack"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="MysticSporesRemoveHoTStack2">
+        <EditorCategories value=""/>
+        <BehaviorLink value="MysticSporesHoT2Stack"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectApplyBehavior id="ShrinkingPowderMasteryApplyBehavior">
+        <EditorCategories value=""/>
+        <Chance value="0"/>
+        <Behavior value="ShrinkingPowderMastery1"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="MysticSporesApplyDoTSwitchBehavior">
+        <EditorCategories value=""/>
+        <Behavior value="MysticSporesDoTSwitch"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="MysticSporesApplyHoTSwitchBehavior">
+        <EditorCategories value=""/>
+        <Behavior value="MysticSporesHoTSwitch"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="MysticSporesApplyHoTStack">
+        <EditorCategories value=""/>
+        <Behavior value="MysticSporesHoTStack"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="MysticSporesApplyDoTStack">
+        <EditorCategories value=""/>
+        <Behavior value="MysticSporesDoTStack"/>
+    </CEffectApplyBehavior>
+    <CEffectCreateHealer id="MysticSporesCreateHealer">
+        <EditorCategories value=""/>
+        <PeriodCount value="1"/>
+        <PeriodicPeriod value="1"/>
+        <RechargeVitalRate value="100"/>
+    </CEffectCreateHealer>
+    <CEffectCreateHealer id="MysticSporesCreateHealer2">
+        <EditorCategories value=""/>
+        <PeriodCount value="1"/>
+        <PeriodicPeriod value="1"/>
+        <RechargeVitalRate value="125"/>
+    </CEffectCreateHealer>
+    <CEffectCreateHealer id="MysticSporesCreateHealer3">
+        <EditorCategories value=""/>
+        <PeriodCount value="1"/>
+        <PeriodicPeriod value="1"/>
+        <RechargeVitalRate value="150"/>
+    </CEffectCreateHealer>
+    <CEffectDamage id="MysticSporesDamage">
+        <ValidatorArray value="TargetNotInvulnerable"/>
+        <EditorCategories value=""/>
+        <ImpactLocation Value="TargetUnit"/>
+        <Amount value="60"/>
+        <CasterHistory value="Damage"/>
+    </CEffectDamage>
+    <CEffectDamage id="MysticSporesDamage2">
+        <ValidatorArray value="TargetNotInvulnerable"/>
+        <EditorCategories value=""/>
+        <ImpactLocation Value="TargetUnit"/>
+        <Amount value="75"/>
+        <CasterHistory value="Damage"/>
+    </CEffectDamage>
+    <CEffectDamage id="MysticSporesDamage3">
+        <ValidatorArray value="TargetNotInvulnerable"/>
+        <EditorCategories value=""/>
+        <ImpactLocation Value="TargetUnit"/>
+        <Amount value="90"/>
+        <CasterHistory value="Damage"/>
+    </CEffectDamage>
+    <CEffectSwitch id="MysticSporesDamageSwitch">
+        <EditorCategories value=""/>
+        <CaseArray Validator="MysticSporesDoTStack2" Effect="MysticSporesDamage2"/>
+        <CaseArray Validator="MysticSporesDoTStack3" Effect="MysticSporesDamage3"/>
+        <CaseDefault value="MysticSporesDamage"/>
+    </CEffectSwitch>
+    <CEffectSwitch id="MysticSporesHealingSwitch">
+        <EditorCategories value=""/>
+        <CaseArray Validator="MysticSporesHoT2Stack" Effect="MysticSporesCreateHealer2"/>
+        <CaseArray Validator="MysticSporesHoT3Stack" Effect="MysticSporesCreateHealer3"/>
+        <CaseDefault value="MysticSporesCreateHealer"/>
+    </CEffectSwitch>
+    <CEffectEnumArea id="MysticSporesEnemySearch">
+        <EditorCategories value=""/>
+        <ImpactLocation Value="TargetUnit"/>
+        <SearchFilters value="-;Player,Ally,Mechanical,Missile,Item,Stasis,Hidden,Invulnerable"/>
+        <AreaArray Radius="5" Effect="MysticSporesDoTSet"/>
+        <SearchFlags index="OffsetByUnitRadius" value="1"/>
+        <RevealerParams Duration="0.125">
+            <RevealFlags index="Unfog" value="1"/>
+        </RevealerParams>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="MysticSporesAllySearch">
+        <EditorCategories value=""/>
+        <ImpactLocation Value="TargetUnit"/>
+        <SearchFilters value="-;Neutral,Enemy,Mechanical,Structure,Missile,Item,Stasis,Hidden"/>
+        <AreaArray Radius="5" Effect="MysticSporesHoTSet"/>
+        <SearchFlags index="OffsetByUnitRadius" value="1"/>
+    </CEffectEnumArea>
+    <CEffectSet id="MysticSporesHoTSet">
+        <EditorCategories value=""/>
+        <EffectArray value="MysticSporesHealingSwitch"/>
+        <EffectArray value="MysticSporesApplyHoTSwitch"/>
+        <EffectArray value="MysticSporesApplyHoTVisualBehavior"/>
+    </CEffectSet>
+    <CEffectSet id="MysticSporesDoTSet">
+        <EditorCategories value=""/>
+        <EffectArray value="MysticSporesDamageSwitch"/>
+        <EffectArray value="MysticSporesApplyDoTSwitch"/>
+        <EffectArray value="MysticSporesApplyDoTVisualBehavior"/>
+    </CEffectSet>
+    <CEffectSet id="MysticSporesSet">
+        <EditorCategories value=""/>
+        <EffectArray value="MysticSporesAllySearch"/>
+        <EffectArray value="MysticSporesEnemySearch"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="ShrinkingPowderApplyBehavior">
+        <EditorCategories value=""/>
+        <Behavior value="ShrinkingPowder"/>
+    </CEffectApplyBehavior>
+    <CEffectDamage id="ShrinkingPowderDamage">
+        <EditorCategories value=""/>
+        <Amount value="35"/>
+        <CasterHistory value="Damage"/>
+    </CEffectDamage>
+    <CEffectSet id="ShrinkingPowderSet">
+        <EditorCategories value=""/>
+        <EffectArray value="ShrinkingPowderApplyBehavior"/>
+        <EffectArray value="ShrinkingPowderDamage"/>
+    </CEffectSet>
+    <CEffectSet id="TutorialMurlocWeaponSet">
+        <EffectArray value="TutorialMurlocWeaponDamage"/>
+    </CEffectSet>
+    <CEffectDamage id="TutorialMurlocWeaponDamage" parent="StormWeapon">
+        <Kind value="Spell"/>
+        <Amount value="15"/>
+    </CEffectDamage>
+    <CEffectApplyBehavior id="DreamDustApplyCooldownBehavior">
+        <EditorCategories value=""/>
+        <Behavior value="DreamDustCooldownBuff"/>
+        <WhichUnit Value="Caster"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="DreamDustApplyReadyBehavior">
+        <EditorCategories value=""/>
+        <Behavior value="DreamDustReadyBuff"/>
+        <WhichUnit Value="Caster"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="DreamDustImpactSet">
+        <ValidatorArray value="NoLunarFlareBlind"/>
+        <EditorCategories value=""/>
+        <EffectArray value="DreamDustDamage"/>
+        <EffectArray value="DreamDustProcSet"/>
+    </CEffectSet>
+    <CEffectDamage id="DreamDustProcDummy">
+        <EditorCategories value=""/>
+    </CEffectDamage>
+    <CEffectSet id="DreamDustProcSet">
+        <ValidatorArray value="HasNaturesGiftCarryBehavior"/>
+        <EditorCategories value=""/>
+        <EffectArray value="DreamDustProcDummy"/>
+        <EffectArray value="DreamDustRemoveReadyBehavior"/>
+    </CEffectSet>
+    <CEffectSet id="DreamDustRemoveBehaviorsSet">
+        <EditorCategories value=""/>
+        <EffectArray value="DreamDustRemoveReadyBehavior"/>
+        <EffectArray value="DreamDustRemoveCooldownBehavior"/>
+    </CEffectSet>
+    <CEffectRemoveBehavior id="DreamDustRemoveReadyBehavior">
+        <EditorCategories value=""/>
+        <BehaviorLink value="DreamDustReadyBuff"/>
+        <WhichUnit Value="Caster"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="DreamDustRemoveCooldownBehavior">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="DreamDustCooldownBuff"/>
+    </CEffectRemoveBehavior>
+    <CEffectDamage id="NaturalizeBaseDamage" parent="StormSpell">
+        <ResponseFlags index="Acquire" value="1"/>
+        <Amount value="0.1"/>
+    </CEffectDamage>
+    <CEffectDamage id="DreamDustDamage" parent="StormWeapon">
+        <Amount value="36"/>
+    </CEffectDamage>
+    <CEffectApplyBehavior id="LuminosityApplyBehavior">
+        <ValidatorArray index="0" value="TargetIsEnemy"/>
+        <ValidatorArray value="TargetIsHero"/>
+        <Marker>
+            <MatchFlags index="Link" value="1"/>
+        </Marker>
+        <Behavior value="LuminositySilence"/>
+    </CEffectApplyBehavior>
+    <CEffectCreatePersistent id="EmeraldWindCreatePersistent">
+        <Marker>
+            <MatchFlags index="Link" value="1"/>
+        </Marker>
+        <WhichLocation Value="CasterPoint"/>
+        <PeriodCount value="9"/>
+        <PeriodicEffectArray value="EmeraldWindInitialSearch"/>
+        <PeriodicEffectArray value="EmeraldWindSecondSearch"/>
+        <PeriodicEffectArray value="EmeraldWindThirdSearch"/>
+        <PeriodicEffectArray value="EmeraldWindFourthSearch"/>
+        <PeriodicEffectArray value="EmeraldWindFifthSearch"/>
+        <PeriodicEffectArray value="EmeraldWindSixthSearch"/>
+        <PeriodicEffectArray value="EmeraldWindSeventhSearch"/>
+        <PeriodicEffectArray value="EmeraldWindEighthSearch"/>
+        <PeriodicEffectArray value="EmeraldWindNinthSearch"/>
+        <PeriodicPeriodArray value="0.25"/>
+    </CEffectCreatePersistent>
+    <CEffectDamage id="EmeraldWindDamage" parent="StormSpell">
+        <ValidatorArray value="EnemyTarget"/>
+        <ValidatorArray value="noMarkers"/>
+        <ValidatorArray value="TargetNotInvulnerable"/>
+        <Marker Link="Effect/LuminosityCreatePersistent"/>
+        <ResponseFlags index="Acquire" value="1"/>
+        <Amount value="100"/>
+    </CEffectDamage>
+    <CEffectEnumArea id="LuminosityDummySearch">
+        <ImpactLocation Value="CasterUnit"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="EmeraldWindEighthSearch">
+        <Marker Link="Effect/LuminosityCreatePersistent"/>
+        <LaunchLocation Effect="EmeraldWindCreatePersistent" Value="TargetPoint"/>
+        <SearchFilters value="-;Mechanical,Missile,Item,Stasis,Dead,Hidden"/>
+        <AreaArray Radius="8" Effect="EmeraldWindStructureImpact8Switch"/>
+        <RevealerParams Duration="0.5" ShapeExpansion="1">
+            <RevealFlags index="Unfog" value="1"/>
+        </RevealerParams>
+    </CEffectEnumArea>
+    <CEffectCreateHealer id="EmeraldWindHeal">
+        <ValidatorArray value="NotVehicle"/>
+        <ValidatorArray value="TargetIsNotEnemy"/>
+        <ValidatorArray value="NotStructure"/>
+        <ValidatorArray value="noMarkers"/>
+        <ValidatorArray value="TargetIsNotHover"/>
+        <Marker Link="Effect/LuminosityCreatePersistent"/>
+        <Chance value="0"/>
+        <Flags index="KeepMarkerAfterHeal" value="1"/>
+        <PeriodCount value="1"/>
+        <PeriodicPeriod value="1"/>
+        <RechargeVitalRate value="100"/>
+    </CEffectCreateHealer>
+    <CEffectSet id="EmeraldWindImpact1Set">
+        <Marker Link="Effect/LuminosityCreatePersistent"/>
+        <EffectArray value="EmeraldWindHeal"/>
+        <EffectArray value="EmeraldWindDamage"/>
+        <EffectArray value="EmeraldWindKnockbackCreatePersistent"/>
+    </CEffectSet>
+    <CEffectSet id="EmeraldWindImpact2Set">
+        <Marker Link="Effect/LuminosityCreatePersistent"/>
+        <EffectArray value="EmeraldWindHeal"/>
+        <EffectArray value="EmeraldWindDamage"/>
+        <EffectArray value="EmeraldWindKnockbackCreatePersistent"/>
+    </CEffectSet>
+    <CEffectSet id="EmeraldWindImpact3Set">
+        <ValidatorArray value="LuminosityMinDistance2"/>
+        <Marker Link="Effect/LuminosityCreatePersistent"/>
+        <EffectArray value="EmeraldWindHeal"/>
+        <EffectArray value="EmeraldWindDamage"/>
+        <EffectArray value="EmeraldWindKnockbackCreatePersistent"/>
+    </CEffectSet>
+    <CEffectSet id="EmeraldWindImpact4Set">
+        <ValidatorArray value="LuminosityMinDistance3"/>
+        <Marker Link="Effect/LuminosityCreatePersistent"/>
+        <EffectArray value="EmeraldWindHeal"/>
+        <EffectArray value="EmeraldWindDamage"/>
+        <EffectArray value="EmeraldWindKnockbackCreatePersistent"/>
+    </CEffectSet>
+    <CEffectSet id="EmeraldWindImpact5Set">
+        <ValidatorArray value="LuminosityMinDistance4"/>
+        <Marker Link="Effect/LuminosityCreatePersistent"/>
+        <EffectArray value="EmeraldWindHeal"/>
+        <EffectArray value="EmeraldWindDamage"/>
+        <EffectArray value="EmeraldWindKnockbackCreatePersistent"/>
+    </CEffectSet>
+    <CEffectSet id="EmeraldWindImpact6Set">
+        <ValidatorArray value="LuminosityMinDistance5"/>
+        <Marker Link="Effect/LuminosityCreatePersistent"/>
+        <EffectArray value="EmeraldWindHeal"/>
+        <EffectArray value="EmeraldWindDamage"/>
+        <EffectArray value="EmeraldWindKnockbackCreatePersistent"/>
+    </CEffectSet>
+    <CEffectSet id="EmeraldWindImpact7Set">
+        <ValidatorArray value="LuminosityMinDistance6"/>
+        <Marker Link="Effect/LuminosityCreatePersistent"/>
+        <EffectArray value="EmeraldWindHeal"/>
+        <EffectArray value="EmeraldWindDamage"/>
+        <EffectArray value="EmeraldWindKnockbackCreatePersistent"/>
+    </CEffectSet>
+    <CEffectSet id="EmeraldWindImpact8Set">
+        <ValidatorArray value="LuminosityMinDistance7"/>
+        <Marker Link="Effect/LuminosityCreatePersistent"/>
+        <EffectArray value="EmeraldWindHeal"/>
+        <EffectArray value="EmeraldWindDamage"/>
+        <EffectArray value="EmeraldWindKnockbackCreatePersistent"/>
+    </CEffectSet>
+    <CEffectSet id="EmeraldWindImpact9Set">
+        <ValidatorArray value="LuminosityMinDistance8"/>
+        <Marker Link="Effect/LuminosityCreatePersistent"/>
+        <EffectArray value="EmeraldWindHeal"/>
+        <EffectArray value="EmeraldWindDamage"/>
+        <EffectArray value="EmeraldWindKnockbackCreatePersistent"/>
+    </CEffectSet>
+    <CEffectEnumArea id="EmeraldWindInitialSearch">
+        <Marker Link="Effect/LuminosityCreatePersistent"/>
+        <LaunchLocation Effect="EmeraldWindCreatePersistent" Value="TargetPoint"/>
+        <SearchFilters value="-;Mechanical,Missile,Item,Stasis,Dead,Hidden"/>
+        <AreaArray Radius="1" Effect="EmeraldWindImpact1Set"/>
+        <RevealerParams Duration="0.5" ShapeExpansion="1">
+            <RevealFlags index="Unfog" value="1"/>
+        </RevealerParams>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="EmeraldWindNinthSearch">
+        <Marker Link="Effect/LuminosityCreatePersistent"/>
+        <LaunchLocation Effect="EmeraldWindCreatePersistent" Value="TargetPoint"/>
+        <SearchFilters value="-;Mechanical,Missile,Item,Stasis,Dead,Hidden"/>
+        <AreaArray Radius="8.9" Effect="EmeraldWindStructureImpact9Switch"/>
+        <RevealerParams Duration="0.5" ShapeExpansion="1">
+            <RevealFlags index="Unfog" value="1"/>
+        </RevealerParams>
+    </CEffectEnumArea>
+    <CEffectSet id="EmeraldWindPersistentsSet">
+        <Marker Link="Effect/LuminosityCreatePersistent"/>
+        <EffectArray value="EmeraldWindCreatePersistent"/>
+    </CEffectSet>
+    <CEffectEnumArea id="EmeraldWindSecondSearch">
+        <Marker Link="Effect/LuminosityCreatePersistent"/>
+        <LaunchLocation Effect="EmeraldWindCreatePersistent" Value="TargetPoint"/>
+        <SearchFilters value="-;Mechanical,Missile,Item,Stasis,Dead,Hidden"/>
+        <AreaArray Radius="2" Effect="EmeraldWindStructureImpact2Switch"/>
+        <RevealerParams Duration="0.5" ShapeExpansion="1">
+            <RevealFlags index="Unfog" value="1"/>
+        </RevealerParams>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="EmeraldWindSeventhSearch">
+        <Marker Link="Effect/LuminosityCreatePersistent"/>
+        <LaunchLocation Effect="EmeraldWindCreatePersistent" Value="TargetPoint"/>
+        <SearchFilters value="-;Mechanical,Missile,Item,Stasis,Dead,Hidden"/>
+        <AreaArray Radius="7" Effect="EmeraldWindStructureImpact7Switch"/>
+        <RevealerParams Duration="0.5" ShapeExpansion="1">
+            <RevealFlags index="Unfog" value="1"/>
+        </RevealerParams>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="EmeraldWindSixthSearch">
+        <Marker Link="Effect/LuminosityCreatePersistent"/>
+        <LaunchLocation Effect="EmeraldWindCreatePersistent" Value="TargetPoint"/>
+        <SearchFilters value="-;Mechanical,Missile,Item,Stasis,Dead,Hidden"/>
+        <AreaArray Radius="6" Effect="EmeraldWindStructureImpact6Switch"/>
+        <RevealerParams Duration="0.5" ShapeExpansion="1">
+            <RevealFlags index="Unfog" value="1"/>
+        </RevealerParams>
+    </CEffectEnumArea>
+    <CEffectSwitch id="EmeraldWindStructureImpact2Switch">
+        <EditorCategories value=""/>
+        <Marker Link="Effect/LuminosityCreatePersistent"/>
+        <CaseArray Validator="IsEnemyStructure" Effect="EmeraldWindDamage"/>
+        <CaseDefault value="EmeraldWindImpact2Set"/>
+    </CEffectSwitch>
+    <CEffectSwitch id="EmeraldWindStructureImpact3Switch">
+        <EditorCategories value=""/>
+        <Marker Link="Effect/LuminosityCreatePersistent"/>
+        <CaseArray Validator="IsEnemyStructure" Effect="EmeraldWindDamage"/>
+        <CaseDefault value="EmeraldWindImpact3Set"/>
+    </CEffectSwitch>
+    <CEffectSwitch id="EmeraldWindStructureImpact4Switch">
+        <EditorCategories value=""/>
+        <Marker Link="Effect/LuminosityCreatePersistent"/>
+        <CaseArray Validator="IsEnemyStructure" Effect="EmeraldWindDamage"/>
+        <CaseDefault value="EmeraldWindImpact4Set"/>
+    </CEffectSwitch>
+    <CEffectSwitch id="EmeraldWindStructureImpact5Switch">
+        <EditorCategories value=""/>
+        <Marker Link="Effect/LuminosityCreatePersistent"/>
+        <CaseArray Validator="IsEnemyStructure" Effect="EmeraldWindDamage"/>
+        <CaseDefault value="EmeraldWindImpact5Set"/>
+    </CEffectSwitch>
+    <CEffectSwitch id="EmeraldWindStructureImpact6Switch">
+        <EditorCategories value=""/>
+        <Marker Link="Effect/LuminosityCreatePersistent"/>
+        <CaseArray Validator="IsEnemyStructure" Effect="EmeraldWindDamage"/>
+        <CaseDefault value="EmeraldWindImpact6Set"/>
+    </CEffectSwitch>
+    <CEffectSwitch id="EmeraldWindStructureImpact7Switch">
+        <EditorCategories value=""/>
+        <Marker Link="Effect/LuminosityCreatePersistent"/>
+        <CaseArray Validator="IsEnemyStructure" Effect="EmeraldWindDamage"/>
+        <CaseDefault value="EmeraldWindImpact7Set"/>
+    </CEffectSwitch>
+    <CEffectSwitch id="EmeraldWindStructureImpact8Switch">
+        <EditorCategories value=""/>
+        <Marker Link="Effect/LuminosityCreatePersistent"/>
+        <CaseArray Validator="IsEnemyStructure" Effect="EmeraldWindDamage"/>
+        <CaseDefault value="EmeraldWindImpact8Set"/>
+    </CEffectSwitch>
+    <CEffectSwitch id="EmeraldWindStructureImpact9Switch">
+        <EditorCategories value=""/>
+        <Marker Link="Effect/LuminosityCreatePersistent"/>
+        <CaseArray Validator="IsEnemyStructure" Effect="EmeraldWindDamage"/>
+        <CaseDefault value="EmeraldWindImpact9Set"/>
+    </CEffectSwitch>
+    <CEffectEnumArea id="EmeraldWindThirdSearch">
+        <Marker Link="Effect/LuminosityCreatePersistent"/>
+        <LaunchLocation Effect="EmeraldWindCreatePersistent" Value="TargetPoint"/>
+        <SearchFilters value="-;Mechanical,Missile,Item,Stasis,Dead,Hidden"/>
+        <AreaArray Radius="3" Effect="EmeraldWindStructureImpact3Switch"/>
+        <RevealerParams Duration="0.5" ShapeExpansion="1">
+            <RevealFlags index="Unfog" value="1"/>
+        </RevealerParams>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="EmeraldWindFifthSearch">
+        <Marker Link="Effect/LuminosityCreatePersistent"/>
+        <LaunchLocation Effect="EmeraldWindCreatePersistent" Value="TargetPoint"/>
+        <SearchFilters value="-;Mechanical,Missile,Item,Stasis,Dead,Hidden"/>
+        <AreaArray Radius="5" Effect="EmeraldWindStructureImpact5Switch"/>
+        <RevealerParams Duration="0.5" ShapeExpansion="1">
+            <RevealFlags index="Unfog" value="1"/>
+        </RevealerParams>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="EmeraldWindFourthSearch">
+        <Marker Link="Effect/LuminosityCreatePersistent"/>
+        <LaunchLocation Effect="EmeraldWindCreatePersistent" Value="TargetPoint"/>
+        <SearchFilters value="-;Mechanical,Missile,Item,Stasis,Dead,Hidden"/>
+        <AreaArray Radius="4" Effect="EmeraldWindStructureImpact4Switch"/>
+        <RevealerParams Duration="0.5" ShapeExpansion="1">
+            <RevealFlags index="Unfog" value="1"/>
+        </RevealerParams>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="HarpoonApplyBehavior">
+        <Behavior value="Harpoon"/>
+    </CEffectApplyBehavior>
+    <CEffectDamage id="HarpoonBerserkerDamage" parent="StormSpell">
+        <ValidatorArray value="CasterHasBerserker"/>
+        <ResponseFlags index="Acquire" value="1"/>
+        <Amount value="60"/>
+    </CEffectDamage>
+    <CEffectDamage id="HarpoonDamage" parent="StormSpell">
+        <ValidatorArray value="CasterNoBerserker"/>
+        <ResponseFlags index="Acquire" value="1"/>
+        <Amount value="40"/>
+    </CEffectDamage>
+    <CEffectSet id="HarpoonImpactSet">
+        <EffectArray value="HarpoonApplyBehavior"/>
+        <EffectArray value="HarpoonDamage"/>
+        <EffectArray value="HarpoonBerserkerDamage"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="RampageApplyMissileScan1">
+        <WhichUnit Value="Source"/>
+        <Behavior value="RampageMissileScan1"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="RampageApplyMissileScan2">
+        <WhichUnit Value="Source"/>
+        <Behavior value="RampageMissileScan2"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="RampageApplyMissileScan3">
+        <WhichUnit Value="Source"/>
+        <Behavior value="RampageMissileScan3"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="RampageApplyMissileScan4">
+        <WhichUnit Value="Source"/>
+        <Behavior value="RampageMissileScan4"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="RampageApplyMissileScan5">
+        <WhichUnit Value="Source"/>
+        <Behavior value="RampageMissileScan5"/>
+    </CEffectApplyBehavior>
+    <CEffectDamage id="RampageBerserkerDamage1" parent="StormSpell">
+        <ValidatorArray value="CasterHasBerserker"/>
+        <ResponseFlags index="Acquire" value="1"/>
+        <AttributeFactor index="Structure" value="-0.5"/>
+        <Amount value="30"/>
+    </CEffectDamage>
+    <CEffectDamage id="RampageBerserkerDamage2" parent="StormSpell">
+        <ValidatorArray value="CasterHasBerserker"/>
+        <ResponseFlags index="Acquire" value="1"/>
+        <AttributeFactor index="Structure" value="-0.5"/>
+        <Amount value="67.5"/>
+    </CEffectDamage>
+    <CEffectDamage id="RampageBerserkerDamage3" parent="StormSpell">
+        <ValidatorArray value="CasterHasBerserker"/>
+        <ResponseFlags index="Acquire" value="1"/>
+        <AttributeFactor index="Structure" value="-0.5"/>
+        <Amount value="105"/>
+    </CEffectDamage>
+    <CEffectDamage id="RampageDamage1" parent="StormSpell">
+        <ValidatorArray value="CasterNoBerserker"/>
+        <ResponseFlags index="Acquire" value="1"/>
+        <Amount value="20"/>
+    </CEffectDamage>
+    <CEffectSet id="RampageDamage1Set">
+        <EffectArray value="RampageDamage1"/>
+        <EffectArray value="RampageBerserkerDamage1"/>
+    </CEffectSet>
+    <CEffectDamage id="RampageDamage2" parent="StormSpell">
+        <ValidatorArray value="CasterNoBerserker"/>
+        <ResponseFlags index="Acquire" value="1"/>
+        <Amount value="45"/>
+    </CEffectDamage>
+    <CEffectSet id="RampageDamage2Set">
+        <EffectArray value="RampageDamage2"/>
+        <EffectArray value="RampageBerserkerDamage2"/>
+    </CEffectSet>
+    <CEffectDamage id="RampageDamage3" parent="StormSpell">
+        <ValidatorArray value="CasterNoBerserker"/>
+        <ResponseFlags index="Acquire" value="1"/>
+        <Amount value="70"/>
+    </CEffectDamage>
+    <CEffectSet id="RampageDamage3Set">
+        <EffectArray value="RampageDamage3"/>
+        <EffectArray value="RampageBerserkerDamage3"/>
+    </CEffectSet>
+    <CEffectSet id="RampageDamageSet">
+        <EffectArray value="RampageDamageSwitch"/>
+        <EffectArray value="Suicide"/>
+    </CEffectSet>
+    <CEffectSwitch id="RampageDamageSwitch">
+        <CaseArray Validator="RampageMissileScan3" Effect="RampageDamage3Set"/>
+        <CaseArray Validator="RampageMissileScan2" Effect="RampageDamage2Set"/>
+        <CaseDefault value="RampageDamage1Set"/>
+    </CEffectSwitch>
+    <CEffectSet id="RampageImpactDummy1"/>
+    <CEffectSet id="RampageImpactDummy2"/>
+    <CEffectSet id="RampageImpactDummy3"/>
+    <CEffectSet id="RampageImpactSet">
+        <ValidatorArray value="noMarkers"/>
+        <EffectArray value="RampageMissileScanDestroyPersistent"/>
+        <EffectArray value="RampageDamageSet"/>
+        <EffectArray value="Suicide"/>
+    </CEffectSet>
+    <CEffectDestroyPersistent id="RampageMissileScanDestroyPersistent">
+        <WhichLocation Value="SourcePoint"/>
+        <Effect value="RampageMissileScanPersistent"/>
+        <Count value="1"/>
+        <Radius value="0.25"/>
+    </CEffectDestroyPersistent>
+    <CEffectEnumArea id="RampageMissileScanInitial">
+        <SearchFilters value="-;Player,Ally,Neutral,Massive,Structure,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray>
+            <Arc value="90"/>
+            <MaxCount value="1"/>
+            <Radius value="0.625"/>
+            <Effect value="RampageImpactSet"/>
+        </AreaArray>
+        <MaxCount value="1"/>
+    </CEffectEnumArea>
+    <CEffectCreatePersistent id="RampageMissileScanPersistent">
+        <WhichLocation Value="SourcePoint"/>
+        <PeriodCount value="4"/>
+        <PeriodicEffectArray value="RampageMissileSearch"/>
+        <PeriodicOffsetArray value="0,1.5,0"/>
+        <PeriodicOffsetArray value="0,1,0"/>
+        <PeriodicOffsetArray value="0,0.5,0"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicPeriodArray value="0"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="RampageMissileSearch">
+        <SearchFilters value="-;Player,Ally,Neutral,Massive,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray MaxCount="1" Radius="0.625" Effect="RampageImpactSet"/>
+    </CEffectEnumArea>
+    <CEffectCreatePersistent id="RampagePersistent">
+        <WhichLocation Value="CasterPoint"/>
+        <Flags index="Channeled" value="1"/>
+        <InitialEffect value="RampageSearchDummy"/>
+        <PeriodCount value="3"/>
+        <PeriodicEffectArray value="RampageLaunchMissile1"/>
+        <PeriodicEffectArray value="RampageLaunchMissile2"/>
+        <PeriodicEffectArray value="RampageLaunchMissile3"/>
+        <PeriodicOffsetArray value="0,-6.75,1"/>
+        <PeriodicPeriodArray value="0"/>
+        <PeriodicPeriodArray value="0.5"/>
+        <PeriodicPeriodArray value="0.5"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="RampageSearchDummy">
+        <ImpactLocation Value="TargetPoint"/>
+        <SearchFilters value="-;Player,Ally,Neutral,Massive,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Arc="49.9877" Radius="7.5" Effect="RampageImpactDummy"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="MercLanerMurlocWeaponApplyMissileScan">
+        <Marker>
+            <MatchFlags index="Id" value="1"/>
+        </Marker>
+        <WhichUnit Value="Source"/>
+        <Behavior value="MercLanerMurlocMissileScan"/>
+    </CEffectApplyBehavior>
+    <CEffectCreatePersistent id="MercLanerMurlocWeaponCreateLaunchPersistent">
+        <WhichLocation Value="CasterPoint"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="MercLanerMurlocWeaponLaunchMissile"/>
+        <PeriodicOffsetArray value="0,-11.5,0"/>
+        <PeriodicPeriodArray value="0.1"/>
+    </CEffectCreatePersistent>
+    <CEffectSet id="MercLanerMurlocWeaponImpactSet">
+        <EffectArray value="MercLanerMurlocWeaponMissileScanDestroyPersistent"/>
+        <EffectArray value="SuicideRemove"/>
+    </CEffectSet>
+    <CEffectEnumArea id="MercLanerMurlocWeaponInitialMissileScan">
+        <SearchFilters value="-;Player,Ally,Neutral,Massive,Structure,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <TargetSorts>
+            <SortArray value="TSDistance"/>
+        </TargetSorts>
+        <AreaArray>
+            <Arc value="90"/>
+            <MaxCount value="1"/>
+            <Radius value="0.3"/>
+            <Effect value="MercLanerMurlocWeaponDamage"/>
+        </AreaArray>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="MercLanerMurlocWeaponMissileScan">
+        <SearchFilters value="-;Player,Ally,Neutral,Massive,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray MaxCount="1" Radius="0.3" Effect="MercLanerMurlocWeaponDamage"/>
+        <MaxCount value="1"/>
+    </CEffectEnumArea>
+    <CEffectDestroyPersistent id="MercLanerMurlocWeaponMissileScanDestroyPersistent">
+        <WhichLocation Value="SourcePoint"/>
+        <Effect value="MercLanerMurlocWeaponMissileScanPersistent"/>
+        <Count value="1"/>
+        <Radius value="0.25"/>
+    </CEffectDestroyPersistent>
+    <CEffectCreatePersistent id="MercLanerMurlocWeaponMissileScanPersistent">
+        <WhichLocation Value="SourcePoint"/>
+        <PeriodCount value="4"/>
+        <PeriodicEffectArray value="MercLanerMurlocWeaponMissileScan"/>
+        <PeriodicOffsetArray value="0,1.5,0"/>
+        <PeriodicOffsetArray value="0,1,0"/>
+        <PeriodicOffsetArray value="0,0.5,0"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicPeriodArray value="0"/>
+    </CEffectCreatePersistent>
+    <CEffectDamage id="MercLanerMurlocWeaponDamage" parent="StormWeapon">
+        <Amount value="30"/>
+        <AttributeFactor index="Heroic" value="-0.5"/>
+        <ValidatorArray value="noMarkers"/>
+        <ShieldFactor value="-0.5"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="MercLanerMurlocWeaponLaunchMissile">
+        <ImpactEffect value="MercLanerMurlocWeaponImpactSet"/>
+        <AmmoUnit value="MercLanerMurlocAttackMissile"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <LaunchOffset value="0,-0.75,0"/>
+        <LaunchEffect value="MercLanerMurlocWeaponApplyMissileScan"/>
+    </CEffectLaunchMissile>
+    <CEffectDamage id="MercDefenderMurlocWeaponDamage">
+        <Amount value="20"/>
+        <ValidatorArray value="noMarkers"/>
+        <ShieldFactor value="-0.5"/>
+        <Kind value="Ranged"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="MercDefenderMurlocWeaponLaunchMissile">
+        <ImpactEffect value="MercDefenderMurlocWeaponDamage"/>
+        <AmmoUnit value="MercDefenderMurlocAttackMissile"/>
+        <ValidatorArray index="0" value="TargetNotDead"/>
+        <Flags index="TravelValidation" value="1"/>
+    </CEffectLaunchMissile>
+    <CEffectCreatePersistent id="EmeraldBreezeCreatePersistent">
+        <EditorCategories value=""/>
+        <InitialDelay value="0.5"/>
+        <ExpireDelay value="2.5"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="EmeraldBreezeCreateUnit"/>
+        <PeriodicPeriodArray value="1"/>
+    </CEffectCreatePersistent>
+    <CEffectCreateUnit id="EmeraldBreezeCreateUnit">
+        <EditorCategories value=""/>
+        <WhichLocation Value="TargetPoint"/>
+        <CreateFlags index="Birth" value="0"/>
+        <CreateFlags index="DropOff" value="0"/>
+        <CreateFlags index="OffsetByRadius" value="0"/>
+        <CreateFlags index="Placement" value="0"/>
+        <CreateFlags index="PlacementIgnoreBlockers" value="1"/>
+        <CreateFlags index="PlacementIgnoreCliffTest" value="1"/>
+        <SpawnUnit value="EmeraldBreezePathingBlocker"/>
+        <SpawnRange value="0.125"/>
+    </CEffectCreateUnit>
+    <CEffectCreatePersistent id="FlutterMasteryCreateSearchPersistent">
+        <EditorCategories value=""/>
+        <WhichLocation Value="CasterPoint"/>
+        <PeriodCount value="12"/>
+        <PeriodicEffectArray value="FlutterMasterySearchArea"/>
+        <PeriodicPeriodArray value="0.25"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="FlutterMasteryCreateTravelPersistent">
+        <EditorCategories value=""/>
+        <Chance value="0"/>
+        <WhichLocation Value="CasterUnit"/>
+        <InitialDelay value="0.0625"/>
+        <InitialEffect value="FlutterMasteryCreateSearchPersistent"/>
+        <PeriodCount value="20"/>
+        <PeriodicEffectArray value="FlutterMasteryCreateSearchPersistent"/>
+        <PeriodicPeriodArray value="0.125"/>
+    </CEffectCreatePersistent>
+    <CEffectDestroyPersistent id="FlutterMasteryDestroyTravelPersistent">
+        <EditorCategories value=""/>
+        <Effect value="FlutterMasteryCreateTravelPersistent"/>
+        <Count value="1"/>
+        <Radius value="0.5"/>
+    </CEffectDestroyPersistent>
+    <CEffectEnumArea id="FlutterMasterySearchArea">
+        <EditorCategories value=""/>
+        <LaunchLocation Value="OriginUnitOrPoint"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <SearchFilters value="-;Neutral,Enemy,Structure,Item,Dead,Hidden"/>
+        <AreaArray RectangleWidth="2.5" RectangleHeight="3" Effect="FlutterMasteryApplyTargetBehavior"/>
+    </CEffectEnumArea>
+    <CEffectSet id="NaturalizeSet">
+        <EditorCategories value=""/>
+        <EffectArray value="NaturalizeEnemySearch"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectSet id="NaturalizeEnemyImpactSet">
+        <EditorCategories value=""/>
+        <EffectArray value="NaturalizeDamageSwitch"/>
+    </CEffectSet>
+    <CEffectEnumArea id="NaturalizeEnemySearch">
+        <EditorCategories value=""/>
+        <SearchFilters value="-;Player,Ally,Missile,Item,Stasis,Hidden,Invulnerable"/>
+        <AreaArray Radius="2.5" Effect="NaturalizeEnemyImpactSet"/>
+        <RevealerParams Duration="1" ShapeExpansion="1">
+            <RevealFlags index="Unfog" value="1"/>
+        </RevealerParams>
+    </CEffectEnumArea>
+    <CEffectModifyUnit id="ManaDustEnemyModifyUnit">
+        <EditorCategories value=""/>
+        <VitalArray index="Energy" Change="-50"/>
+    </CEffectModifyUnit>
+    <CEffectEnumArea id="ManaDustAllySearch">
+        <EditorCategories value=""/>
+        <ImpactLocation Value="TargetUnit"/>
+        <SearchFilters value="Heroic;Neutral,Enemy,Mechanical,Structure,Missile,Item,Stasis,Hidden"/>
+        <AreaArray Radius="3.75" Effect="ManaDustAllyImpactSet"/>
+        <SearchFlags index="OffsetByUnitRadius" value="1"/>
+    </CEffectEnumArea>
+    <CEffectSet id="ManaDustAllyImpactSet">
+        <EditorCategories value=""/>
+        <EffectArray value="ManaDustAllyModifyUnit"/>
+    </CEffectSet>
+    <CEffectModifyUnit id="ManaDustAllyModifyUnit">
+        <EditorCategories value=""/>
+        <VitalArray index="Energy" Change="50"/>
+    </CEffectModifyUnit>
+    <CEffectSet id="FlutterMasteryApplyBehaviorSet">
+        <EditorCategories value=""/>
+        <Chance value="0"/>
+        <EffectArray value="FlutterMasteryApplyCasterBehavior"/>
+        <EffectArray value="FlutterMasteryApplyTargetBehavior"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="FlutterMasteryApplyTargetBehavior">
+        <EditorCategories value=""/>
+        <Behavior value="FlutterMasteryBuff"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="FlutterMasteryApplyCasterBehavior">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="FlutterMasteryBuff"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="FlutterApplyCasterBehavior">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="FlutterCaster"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="FlutterImpactSet">
+        <EditorCategories value=""/>
+        <EffectArray value="FlutterApplyShieldBehavior"/>
+        <EffectArray value="FlutterRemoveCasterBehavior"/>
+        <TargetLocationType value="UnitOrPoint"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="FlutterApplyShieldBehavior">
+        <EditorCategories value=""/>
+        <WhichUnit Effect="FlutterLaunchMissile"/>
+        <Behavior value="FlutterShield"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="FlutterRemoveCasterBehavior">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="FlutterCaster"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectCreatePersistent id="EmeraldWindKnockbackCreatePersistent">
+        <ValidatorArray value="TargetIsEnemy"/>
+        <WhichLocation Value="TargetUnit"/>
+        <InitialEffect value="EmeraldWindKnockbackApplyBehavior"/>
+        <PeriodCount value="4"/>
+        <PeriodicValidator value="TargetNotUnstoppable"/>
+        <PeriodicEffectArray value="EmeraldWindKnockbackApplyForce"/>
+        <PeriodicPeriodArray value="0.0625"/>
+    </CEffectCreatePersistent>
+    <CEffectApplyBehavior id="EmeraldWindKnockbackApplyBehavior">
+        <Behavior value="EmeraldWindKnockback"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyForce id="EmeraldWindKnockbackApplyForce">
+        <WhichLocation Effect="EmeraldWindCreatePersistent" Value="CasterPoint"/>
+        <Amount value="10"/>
+    </CEffectApplyForce>
+    <CEffectDamage id="ShrinkingPowderMasteryPeriodicDamage">
+        <ValidatorArray value="ShrinkingPowderMasteryNearbyEnemyValidator"/>
+        <EditorCategories value=""/>
+        <Chance value="0"/>
+        <Amount value="9"/>
+        <CasterHistory value="Damage"/>
+    </CEffectDamage>
+    <CRequirement id="PhaseShiftNotActive">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Show" Link="NotCountBehaviorVoidShiftCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CButton id="NaturesSwiftnessTalent" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_temp_war3_btnforceofnature.dds"/>
+        <HotkeyAlias value="ArthasFrostStrike"/>
+    </CButton>
+    <CButton id="NaturesSwiftnessTalentSimple" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_temp_war3_btnforceofnature.dds"/>
+        <HotkeyAlias value="ArthasFrostStrike"/>
+    </CButton>
+    <CActorUnit id="TutorialMurloc" parent="StormMinionStandard" unitName="TutorialMurloc">
+        <On Terms="UnitHighlightLocal.*.Start" Send="StatusIncrement PreTargetingTint"/>
+        <On Terms="UnitHighlightLocal.*.Stop" Send="StatusDecrement PreTargetingTint"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\ui_targetportrait_bbay_pirateskeletonblue.dds"/>
+        </GroupIcon>
+        <Wireframe>
+            <Image value="Assets\Textures\ui_targetportrait_bbay_pirateskeletonred.dds"/>
+        </Wireframe>
+    </CActorUnit>
+    <!--.........................................................................................-->
+    <!--.........................................................................................-->
+    <!-- Town Mercs ============================================================================ -->
+    <!--.........................................................................................-->
+    <!--.........................................................................................-->
+    <!--                                                                                         -->
+    <!-- Merc Laner Murloc                                                                       -->
+    <!--                                                                                         -->
+    <CActorUnit id="MercLanerMurloc" parent="StormMinionStandard" unitName="MercLanerMurloc">
+        <On Terms="UnitHighlightLocal.*.Start" Send="StatusIncrement PreTargetingTint"/>
+        <On Terms="UnitHighlightLocal.*.Stop" Send="StatusDecrement PreTargetingTint"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\ui_targetportrait_bbay_pirateskeletonblue.dds"/>
+        </GroupIcon>
+        <Wireframe>
+            <Image value="Assets\Textures\ui_targetportrait_bbay_pirateskeletonred.dds"/>
+        </Wireframe>
+    </CActorUnit>
+    <CActorModel id="MercLanerMurlocImpactModel" parent="StormModelAnimationStyleOneShot">
+        <Host Subject="_Unit"/>
+        <Inherits index="TeamColor" value="1"/>
+        <HostForProps Subject="MercLanerMurloc" Scope="Caster"/>
+        <AcceptedHostedPropTransfers index="TeamColor" value="1"/>
+        <Model value="MercLanerMurlocMissileImpact"/>
+    </CActorModel>
+    <CActorMissile id="MercLanerMurlocAttackMissile" parent="GenericAttackMissile" unitName="MercLanerMurlocAttackMissile"/>
+    <CActorAction id="MercLanerMurlocAttack" parent="RangedHeroAttackPoint" effectImpact="MercLanerMurlocWeaponDamage" effectLaunch="MercLanerMurlocWeaponLaunchMissile"/>
+    <!--                                                                                         -->
+    <!-- Merc Defender Murloc                                                                    -->
+    <!--                                                                                         -->
+    <CActorUnit id="MercDefenderMurloc" parent="StormMinionStandard" unitName="SkeletalPirate">
+        <On Terms="UnitHighlightLocal.*.Start" Send="StatusIncrement PreTargetingTint"/>
+        <On Terms="UnitHighlightLocal.*.Stop" Send="StatusDecrement PreTargetingTint"/>
+        <On Terms="UnitDeath" Send="Create MercSkeletonDeathSound"/>
+        <On Terms="Behavior.JungleCreepPassive.Off" Send="Create Merc_Pirate_Vox_Aggro"/>
+        <DeathArray index="Normal" ModelLink="MercDefenderMurlocDeath" SoundLink="Merc_Pirate_Death"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\ui_targetportrait_bbay_pirateskeletonred.dds"/>
+        </GroupIcon>
+        <Wireframe>
+            <Image value="Assets\Textures\ui_targetportrait_bbay_pirateskeletonred.dds"/>
+        </Wireframe>
+        <Model value="MercDefenderMurloc"/>
+        <BuildModel value="MercDefenderMurloc"/>
+        <PlacementModel value="MercDefenderMurloc"/>
+        <HighlightTooltip value="Unit/Name/MercDefenderMurloc"/>
+    </CActorUnit>
+    <CActorModel id="MercDefenderMurlocImpactModel" parent="StormModelAnimationStyleOneShot">
+        <Host Subject="_Unit"/>
+        <Inherits index="TeamColor" value="1"/>
+        <HostForProps Subject="MercDefenderMurloc" Scope="Caster"/>
+        <AcceptedHostedPropTransfers index="TeamColor" value="1"/>
+        <Model value="MercDefenderMurlocMissileImpact"/>
+    </CActorModel>
+    <CActorMissile id="MercDefenderMurlocAttackMissile" parent="GenericAttackMissile" unitName="MercDefenderMurlocAttackMissile"/>
+    <CActorAction id="MercDefenderMurlocAttack" parent="RangedHeroAttack" effectImpact="MercDefenderMurlocWeaponDamage" effectLaunch="MercDefenderMurlocWeaponLaunchMissile"/>
+    <CModel id="ArcaneFlareInnerCursorSplat" parent="UI">
+        <Model value="Assets\UI\Cursors\Storm_Effect_AOECursor_Tech\Storm_Effect_AOECursor_Tech.m3"/>
+        <ScaleMax value="0.400000,0.400000,0.400000"/>
+        <ScaleMin value="0.400000,0.400000,0.400000"/>
+        <SelectionRadius value="2.500000"/>
+        <ShadowRadius value="2.500000"/>
+    </CModel>
+    <CModel id="PixieDustMissile" parent="MissileFX">
+        <Model value="Assets\Effects\Storm_Effect_Malfurion_Base_WeaponB_Missile\Storm_Effect_Malfurion_Base_WeaponB_Missile.m3"/>
+        <EditorCategories value="Race:Neutral"/>
+    </CModel>
+    <CModel id="ArcaneFlareInnerWarning" parent="PersistentSpellFX">
+        <Model value="Assets\UI\Cursors\Storm_Effect_AOECursor\Storm_Effect_AOECursor.m3"/>
+    </CModel>
+    <CModel id="FlightOut" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Storm_Effect_Nova_Base_OrbitalBombardment_Pulse_old\Storm_Effect_Nova_Base_OrbitalBombardment_Pulse_old.m3"/>
+    </CModel>
+    <CModel id="PhaseShiftSparkles" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Storm_Effect_Talent_EyeoftheStorm_Buff\Storm_Effect_Talent_EyeoftheStorm_Buff.m3"/>
+        <AnimSpeed value="0.500000"/>
+        <ScaleMax value="0.250000,0.250000,0.250000"/>
+        <ScaleMin value="0.250000,0.250000,0.250000"/>
+    </CModel>
+    <CModel id="PhaseShiftHealRadius" parent="ImpactFX">
+        <Model value="Assets\Effects\Storm_Effect_Talent_Shielding_Impact\Storm_Effect_Talent_Shielding_Impact.m3"/>
+        <RadiusLoose value="0.750000"/>
+        <ScaleMax value="1.750000,1.750000,0.500000"/>
+        <ScaleMin value="1.750000,1.750000,0.500000"/>
+    </CModel>
+    <CModel id="PhaseShiftHealImpact" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Storm_Effect_Talent_HealthPotion_Impact\Storm_Effect_Talent_HealthPotion_Impact.m3"/>
+        <AnimSpeed value="0.500000"/>
+        <ScaleMax value="0.600000,0.600000,0.600000"/>
+        <ScaleMin value="0.600000,0.600000,0.600000"/>
+    </CModel>
+    <CModel id="ArcaneFlareOuterWarning" parent="PersistentSpellFX">
+        <Model value="Assets\UI\Cursors\Storm_Effect_AOECursor\Storm_Effect_AOECursor.m3"/>
+        <ScaleMax value="2.500000,2.500000,2.500000"/>
+        <ScaleMin value="2.500000,2.500000,2.500000"/>
+    </CModel>
+    <CModel id="ArcaneFlareImpact" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Storm_Effect_Muradin_Base_ThunderClapImpact\Storm_Effect_Muradin_Base_ThunderClapImpact.m3"/>
+    </CModel>
+    <CModel id="ArcaneFlareMissileImpact" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Storm_Effect_Muradin_Base_StormBolt_Impact\Storm_Effect_Muradin_Base_StormBolt_Impact.m3"/>
+        <ScaleMax value="1.500000,1.500000,1.500000"/>
+        <ScaleMin value="1.500000,1.500000,1.500000"/>
+    </CModel>
+    <CModel id="ArcaneFlareMissile" parent="MissileFX">
+        <Model value="Assets\Effects\Storm_Effect_Muradin_Base_Haymaker_Missile\Storm_Effect_Muradin_Base_Haymaker_Missile.m3"/>
+        <AnimSpeed value="1.500000"/>
+        <ScaleMax value="0.600000,0.600000,0.600000"/>
+        <ScaleMin value="0.600000,0.600000,0.600000"/>
+    </CModel>
+    <CModel id="NaturalizeCursorSplat" parent="UI">
+        <Model value="Assets\UI\Cursors\Storm_Effect_AOECursor_Tech\Storm_Effect_AOECursor_Tech.m3"/>
+        <SelectionRadius value="2.500000"/>
+        <ShadowRadius value="2.500000"/>
+    </CModel>
+    <CModel id="ArcaneFlareOuterCursorSplat" parent="UI">
+        <Model value="Assets\UI\Cursors\Storm_Effect_AOECursor_Tech\Storm_Effect_AOECursor_Tech.m3"/>
+        <SelectionRadius value="2.500000"/>
+        <ShadowRadius value="2.500000"/>
+    </CModel>
+    <CModel id="ManaDustRestoreManaModel" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Storm_Effect_ManaPotion_Impact\Storm_Effect_ManaPotion_Impact.m3"/>
+        <AnimSpeed value="0.500000"/>
+        <ScaleMax value="0.900000,0.900000,0.900000"/>
+        <ScaleMin value="0.900000,0.900000,0.900000"/>
+    </CModel>
+    <CModel id="MysticSporesHoT" parent="ImpactFX">
+        <Model value="Assets\Effects\Storm_Effect_Malfurion_Base_Rejuvenation_Impact\Storm_Effect_Malfurion_Base_Rejuvenation_Impact.m3"/>
+        <RadiusLoose value="0.750000"/>
+        <ScaleMax value="0.900000,0.900000,0.900000"/>
+        <ScaleMin value="0.900000,0.900000,0.900000"/>
+    </CModel>
+    <CModel id="MysticSporesDoT" parent="ImpactFX">
+        <Model value="Assets\Effects\Storm_Effect_Malfurion_Base_Rejuvenation_Impact\Storm_Effect_Malfurion_Base_Rejuvenation_Impact.m3"/>
+        <RadiusLoose value="0.750000"/>
+        <ScaleMax value="0.900000,0.900000,0.900000"/>
+        <ScaleMin value="0.900000,0.900000,0.900000"/>
+    </CModel>
+    <CModel id="FlutterShield" parent="ImpactFX">
+        <Model value="Assets\Effects\Storm_Effect_Talent_Shielding_Impact\Storm_Effect_Talent_Shielding_Impact.m3"/>
+        <RadiusLoose value="0.750000"/>
+    </CModel>
+    <CModel id="ManaDustBeam" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Storm_Effect_Placeholder_Lightning_Beam\Storm_Effect_Placeholder_Lightning_Beam.m3"/>
+        <RadiusLoose value="1.000000"/>
+        <ScaleMax value="0.400000,0.400000,0.400000"/>
+        <ScaleMin value="0.400000,0.400000,0.400000"/>
+    </CModel>
+    <CModel id="NaturalizeImpact" parent="ImpactFX">
+        <Model value="Assets\Effects\Storm_Effect_Muradin_Base_StormBolt_Impact\Storm_Effect_Muradin_Base_StormBolt_Impact.m3"/>
+        <EditorCategories value="Race:Terran"/>
+        <ScaleMax value="0.660000,0.660000,0.660000"/>
+        <ScaleMin value="0.660000,0.660000,0.660000"/>
+    </CModel>
+    <CModel id="EmeraldWindCast" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Storm_Effect_Talent_Shielding_Impact\Storm_Effect_Talent_Shielding_Impact.m3"/>
+        <AnimSpeed value="0.800000"/>
+        <ScaleMax value="0.800000,0.800000,2.000000"/>
+        <ScaleMin value="0.800000,0.800000,2.000000"/>
+    </CModel>
+    <CModel id="EmeraldWindChargeUp" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Storm_Effect_Talent_Rewind_Impact\Storm_Effect_Talent_Rewind_Impact.m3"/>
+        <ScaleMax value="1.500000,1.500000,1.500000"/>
+        <ScaleMin value="1.500000,1.500000,1.500000"/>
+    </CModel>
+    <CModel id="EmeraldWindDamageImpact" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Storm_Effect_Tassadar_Base_TimeWarp_Impact\Storm_Effect_Tassadar_Base_TimeWarp_Impact.m3"/>
+        <ScaleMax value="0.750000,0.750000,0.750000"/>
+        <ScaleMin value="0.750000,0.750000,0.750000"/>
+    </CModel>
+    <CModel id="EmeraldWindHealImpact" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Storm_Effect_Talent_HealthPotion_Impact\Storm_Effect_Talent_HealthPotion_Impact.m3"/>
+    </CModel>
+    <CModel id="EmeraldWindPersistentModel" parent="PersistentSpellFX">
+        <Model value="Assets\Units\Test\InvisibleUnit\InvisibleUnit.m3"/>
+        <ScaleMax value="2.500000,2.500000,1.000000"/>
+        <ScaleMin value="2.500000,2.500000,1.000000"/>
+    </CModel>
+    <CModel id="EmeraldBreezeInnerCursorSplat" parent="UI">
+        <Model value="Assets\UI\Cursors\Storm_Effect_AOECursor_Tech\Storm_Effect_AOECursor_Tech.m3"/>
+        <ScaleMax value="0.750000,0.750000,0.750000"/>
+        <ScaleMin value="0.750000,0.750000,0.750000"/>
+        <SelectionRadius value="2.500000"/>
+        <ShadowRadius value="2.500000"/>
+    </CModel>
+    <CModel id="EmeraldBreezePathingBlocker" parent="Unit" Race="Terran">
+        <Model value="Assets\Effects\Storm_Effect_Malfurion_Base_TwilightDream_BaseImpact\Storm_Effect_Malfurion_Base_TwilightDream_BaseImpact.m3"/>
+        <RadiusLoose value="0.000000"/>
+        <ScaleMax value="2.000000,2.000000,2.000000"/>
+        <ScaleMin value="2.000000,2.000000,2.000000"/>
+    </CModel>
+    <CModel id="EmeraldBreezeCursorSplat" parent="UI">
+        <Model value="Assets\UI\Cursors\Storm_Effect_AOECursor_Tech\Storm_Effect_AOECursor_Tech.m3"/>
+        <SelectionRadius value="2.500000"/>
+        <ShadowRadius value="2.500000"/>
+    </CModel>
+    <CModel id="SoothingMistHealImpact" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Storm_Effect_Talent_HPBuff\Storm_Effect_Talent_HPBuff.m3"/>
+        <AnimSpeed value="0.500000"/>
+    </CModel>
+    <CModel id="NaturalizeCast" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Storm_Effect_WitchDoctor_Base_Horrify_Impact\Storm_Effect_WitchDoctor_Base_Horrify_Impact.m3"/>
+        <ScaleMax value="2.000000,2.000000,2.000000"/>
+        <ScaleMin value="2.000000,2.000000,2.000000"/>
+    </CModel>
+    <CModel id="FlutterMasterySparkleEffect" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Physics\Storm_Effect_SparkSquib_Large\Storm_Effect_SparkSquib_Large.m3"/>
+        <AnimSpeed value="0.500000"/>
+        <ScaleMax value="1.750000,1.750000,1.750000"/>
+        <ScaleMin value="1.250000,1.250000,1.250000"/>
+    </CModel>
+    <CModel id="FlutterMasteryGroundEffect" parent="PersistentSpellFX">
+        <Model value="Assets\Doodads\Storm_Doodad_FogPlanes\Storm_Doodad_FogPlanes.m3"/>
+        <ScaleMax value="0.800000,0.800000,0.800000"/>
+        <ScaleMin value="0.800000,0.800000,0.800000"/>
+        <VariationCount value="4"/>
+    </CModel>
+    <CMoverMissile id="PixieDustMissile">
+        <MotionPhases>
+            <Driver value="Guidance"/>
+            <Acceleration value="9000"/>
+            <MinSpeed value="40"/>
+            <MaxSpeed value="40"/>
+            <ThrowBandYaw value="-360,-360,-360,-360"/>
+            <ThrowBandPitch value="-360,-360,-360,-360"/>
+            <Overlays/>
+            <Overlays/>
+        </MotionPhases>
+    </CMoverMissile>
+    <CSound id="ChenStorm_AttackImpact_Unit" parent="Combat">
+        <EditorCategories value="Race:Neutral"/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Lightning_Impact01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Lightning_Impact02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Lightning_Impact03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Lightning_Impact04.wav" FacialGroup=""/>
+        <DupeMaximumMethod value="Replace"/>
+        <Volume value="-5.040000,-5.040000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="ChenEarth_AttackImpact_Unit" parent="Combat">
+        <EditorCategories value="Race:Neutral"/>
+        <AssetArray File="Assets\Sounds\Impact_FX\Impact_Melee_Large_Unit01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Impact_FX\Impact_Melee_Large_Unit02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Impact_FX\Impact_Melee_Large_Unit03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Impact_FX\Impact_Melee_Large_Unit04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Impact_FX\Impact_Melee_Large_Unit05.wav" FacialGroup=""/>
+        <DupeMaximumMethod value="Replace"/>
+        <Pitch value="-1.000000,0.000000"/>
+        <Volume value="-8.040000,-8.040000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="AnubarakImpaleEnd" parent="Combat">
+        <AssetArray File="Assets\Sounds\Heroes\Anubarak_Base\Anubarak_Impale_Slam00.wav" FacialGroup=""/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+        <Category value="Spell"/>
+    </CSound>
+    <CSound id="AnubarakPassiveBoneShieldReady" parent="Combat">
+        <AssetArray File="Assets\Sounds\Heroes\Anubarak_Base\Anubarak_Passive_BoneShield_Ready01.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Anubarak_Base\Anubarak_Passive_BoneShield_Ready02.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Anubarak_Base\Anubarak_Passive_BoneShield_Ready03.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Anubarak_Base\Anubarak_Passive_BoneShield_Ready04.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Anubarak_Base\Anubarak_Passive_BoneShield_Ready05.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Anubarak_Base\Anubarak_Passive_BoneShield_Ready06.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Anubarak_Base\Anubarak_Passive_BoneShield_Ready07.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Anubarak_Base\Anubarak_Passive_BoneShield_Ready08.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Anubarak_Base\Anubarak_Passive_BoneShield_Ready09.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Anubarak_Base\Anubarak_Passive_BoneShield_Ready10.ogg" FacialGroup=""/>
+        <Pitch value="-2.000000,2.000000"/>
+        <Volume value="-11.000000,-11.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+        <Category value="Spell"/>
+    </CSound>
+    <CSound id="AnubarakSpawnBeetlesAttackImpact2" parent="Combat">
+        <AssetArray File="Assets\Sounds\SC2_SharedEffects\Zerg\SC2_Zerg_AttackImpactSmallPiercing0.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\SC2_SharedEffects\Zerg\SC2_Zerg_AttackImpactSmallPiercing1.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\SC2_SharedEffects\Zerg\SC2_Zerg_AttackImpactSmallPiercing2.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\SC2_SharedEffects\Zerg\SC2_Zerg_AttackImpactSmallPiercing3.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\SC2_SharedEffects\Zerg\SC2_Zerg_AttackImpactSmallPiercing4.wav" FacialGroup=""/>
+        <DupeMaximumMethod value="Replace"/>
+        <Volume value="-12.040000,-10.480000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="AnubarakLocustNeedlesPassiveAttackImpact" parent="Combat">
+        <AssetArray File="Assets\Sounds\SC2_SharedEffects\Zerg\SC2_Zerg_AttackImpactSmallPiercing0.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\SC2_SharedEffects\Zerg\SC2_Zerg_AttackImpactSmallPiercing1.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\SC2_SharedEffects\Zerg\SC2_Zerg_AttackImpactSmallPiercing2.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\SC2_SharedEffects\Zerg\SC2_Zerg_AttackImpactSmallPiercing3.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\SC2_SharedEffects\Zerg\SC2_Zerg_AttackImpactSmallPiercing4.wav" FacialGroup=""/>
+        <Pitch value="0.000000,3.000000"/>
+        <Volume value="-9.000000,-8.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="AnubarakLocustNeedlesPassiveAttackLaunch" parent="Combat">
+        <AssetArray File="Assets\Sounds\Heroes\Anubarak_Base\Anubarak_Beetle_Launch01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Anubarak_Base\Anubarak_Beetle_Launch02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Anubarak_Base\Anubarak_Beetle_Launch03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Anubarak_Base\Anubarak_Beetle_Launch04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Anubarak_Base\Anubarak_Beetle_Launch05.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Anubarak_Base\Anubarak_Beetle_Launch06.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Anubarak_Base\Anubarak_Beetle_Launch07.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Anubarak_Base\Anubarak_Beetle_Launch08.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Anubarak_Base\Anubarak_Beetle_Launch09.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Anubarak_Base\Anubarak_Beetle_Launch10.wav" FacialGroup=""/>
+        <Pitch value="-2.000000,1.000000"/>
+        <Volume value="-14.000000,-12.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="Chen_Attack_Launch" parent="Combat">
+        <AssetArray File="Assets\Sounds\Heroes\Chen_Base\Chen_Attack_Launch00.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Chen_Base\Chen_Attack_Launch01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Chen_Base\Chen_Attack_Launch02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Chen_Base\Chen_Attack_Launch03.wav" FacialGroup=""/>
+        <DupeMaximumMethod value="Replace"/>
+        <Pitch value="0.000000,2.000000"/>
+        <Volume value="-12.000000,-9.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="ChenSmashStunImpactSound" parent="Combat">
+        <AssetArray File="Assets\Sounds\Heroes\Chen_Base\Chen_Smash_Impact00.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Chen_Base\Chen_Smash_Impact01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Chen_Base\Chen_Smash_Impact02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Chen_Base\Chen_Smash_Impact03.wav" FacialGroup=""/>
+        <Category value="Spell"/>
+        <Volume value="3.000000,4.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="BlademasterMirrorImageSound" parent="Combat">
+        <AssetArray File="Assets\Sounds\Generic\Test_NoSound.wav" FacialGroup=""/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+        <Category value="Spell"/>
+    </CSound>
+    <CSound id="AnubarakCarrionSwarmImpact" parent="Combat">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\SC2_SharedEffects\Zerg\SC2_Zerg_AttackImpactSmallPiercing0.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\SC2_SharedEffects\Zerg\SC2_Zerg_AttackImpactSmallPiercing1.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\SC2_SharedEffects\Zerg\SC2_Zerg_AttackImpactSmallPiercing2.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\SC2_SharedEffects\Zerg\SC2_Zerg_AttackImpactSmallPiercing3.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\SC2_SharedEffects\Zerg\SC2_Zerg_AttackImpactSmallPiercing4.wav" FacialGroup=""/>
+        <Pitch value="-1.000000,1.000000"/>
+        <Volume value="-7.500000,-7.500000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+        <Category value="Spell"/>
+    </CSound>
+    <CSound id="AnubarakCarrionBeetleAttackImpact" parent="Combat">
+        <AssetArray File="Assets\Sounds\SC2_SharedEffects\Zerg\SC2_Zerg_AttackImpactSmallPiercing0.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\SC2_SharedEffects\Zerg\SC2_Zerg_AttackImpactSmallPiercing1.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\SC2_SharedEffects\Zerg\SC2_Zerg_AttackImpactSmallPiercing2.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\SC2_SharedEffects\Zerg\SC2_Zerg_AttackImpactSmallPiercing3.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\SC2_SharedEffects\Zerg\SC2_Zerg_AttackImpactSmallPiercing4.wav" FacialGroup=""/>
+        <DupeMaximumMethod value="Replace"/>
+        <Volume value="-12.040000,-10.480000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="FaerieDragon_PixieDust_Cast" parent="Spell">
+        <AssetArray File="Assets\Sounds\Heroes\Tassadar_Base\Tassadar_Precog_Launch01.wav" Pitch="8.000000,8.000000" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Tassadar_Base\Tassadar_Precog_Launch02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Tassadar_Base\Tassadar_Precog_Launch03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Tassadar_Base\Tassadar_Precog_Launch04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Tassadar_Base\Tassadar_Precog_Launch05.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Tassadar_Base\Tassadar_Precog_Launch06.wav" FacialGroup=""/>
+        <Volume value="-6.000000,-6.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="FaerieDragon_PixieDust_Impact" parent="Spell">
+        <AssetArray File="Assets\Sounds\Talents\Talent_Dash_Launch01.wav" Pitch="8.000000,8.000000" FacialGroup=""/>
+        <Volume value="-6.000000,-6.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="FaerieDragonShrinkingPowderImpact2" parent="Spell">
+        <AssetArray File="Assets\Sounds\Generic\Gen_Status_Slow10.wav" FacialGroup=""/>
+        <Category value="Combat"/>
+        <Volume value="4.000000,4.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="FaerieDragonShrinkingPowderOff2" parent="Spell">
+        <AssetArray File="Assets\Sounds\Generic\Gen_Status_KnockedInAir05.wav" Pitch="6.860000,6.860000" FacialGroup=""/>
+        <Volume value="2.000000,2.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="FaerieDragon_UI_VOX_Spun" parent="Hero_Store">
+        <AssetArray File="Assets\Sounds\Generic\Test_NoSound.wav" FacialGroup=""/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="40.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="FaerieDragonShrinkingPowderOff" parent="Spell">
+        <AssetArray File="Assets\Sounds\Generic\Gen_Status_KnockedInAir05.wav" Pitch="6.860000,6.860000" FacialGroup=""/>
+        <Volume value="2.000000,2.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="FaerieDragon_Flight_Land" parent="Spell">
+        <EditorCategories value="Race:Neutral"/>
+        <AssetArray File="Assets\Sounds\Heroes\Falstad_Base\Falstad_Griffon_Land01.wav" FacialGroup=""/>
+        <Volume value="-4.800000,-4.800000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+        <Category value="Movement"/>
+    </CSound>
+    <CSound id="FaerieDragon_HealAttackImpact" parent="Combat">
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Slime_Impact01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Slime_Impact02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Slime_Impact03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Slime_Impact04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Slime_Impact05.wav" FacialGroup=""/>
+        <Pitch value="1.000000,2.000000"/>
+        <Volume value="-21.000000,-18.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+        <Category value="Spell"/>
+    </CSound>
+    <CSound id="FaerieDragon_Flight_Launch" parent="Spell">
+        <EditorCategories value="Race:Neutral"/>
+        <AssetArray File="Assets\Sounds\Heroes\Falstad_Base\Falstad_Griffon_TakeFlight01.wav" FacialGroup=""/>
+        <Volume value="-4.800000,-4.800000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+        <Category value="Movement"/>
+    </CSound>
+    <CSound id="FaerieDragon_PhaseShift_Impact" parent="Spell">
+        <EditorCategories value="Race:Neutral"/>
+        <AssetArray File="Assets\Sounds\Generic\Test_NoSound.wav" FacialGroup=""/>
+        <Chance value="0"/>
+        <Volume value="-6.000000,-6.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+        <Category value="Combat"/>
+    </CSound>
+    <CSound id="FaerieDragon_PhaseShift_Loop" parent="Spell">
+        <EditorCategories value="Race:Neutral"/>
+        <AssetArray File="Assets\Sounds\Heroes\Malfurion_Base\Malfurion_Tranquility_Loop01.wav" Pitch="-5.000000,-5.000000" FacialGroup=""/>
+        <LoopCount value="-1"/>
+        <Volume value="-10.000000,-10.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+        <Category value="SEmitters"/>
+    </CSound>
+    <CSound id="FaerieDragon_PhaseShift_Cast" parent="Spell">
+        <EditorCategories value="Race:Neutral"/>
+        <AssetArray File="Assets\Sounds\Heroes\Tassadar_Base\Tassadar_PhaseShift_Launch01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Tassadar_Base\Tassadar_PhaseShift_Launch02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Tassadar_Base\Tassadar_PhaseShift_Launch03.wav" FacialGroup=""/>
+        <Volume value="2.000000,2.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="FaerieDragon_ArcaneFlare_Loop" parent="Spell">
+        <EditorCategories value="Race:Neutral"/>
+        <AssetArray File="Assets\Sounds\Heroes\Falstad_Base\Falstad_AerialBlitzkrieg_Effect_Loop01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Falstad_Base\Falstad_AerialBlitzkrieg_Effect_Loop02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Falstad_Base\Falstad_AerialBlitzkrieg_Effect_Loop03.wav" FacialGroup=""/>
+        <Category value="SEmitters"/>
+        <LoopCount value="-1"/>
+        <Volume value="-13.000000,-13.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="FaerieDragon_ArcaneFlare_Launch" parent="Spell">
+        <EditorCategories value="Race:Neutral"/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Lightning_Launch01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Lightning_Launch02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Lightning_Launch03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Lightning_Launch04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Lightning_Launch05.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Lightning_Launch06.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Lightning_Launch07.wav" FacialGroup=""/>
+        <Pitch value="4.000000,4.000000"/>
+        <Volume value="-6.000000,-6.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="FaerieDragon_HealAttackLaunch" parent="Combat">
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Slime_Launch01.wav" Pitch="6.000000,6.000000" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Slime_Launch02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Slime_Launch03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Slime_Launch04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Slime_Launch05.wav" FacialGroup=""/>
+        <Pitch value="1.000000,2.000000"/>
+        <Volume value="-21.000000,-18.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+        <Category value="Spell"/>
+    </CSound>
+    <CSound id="HeroFaerieDragon_UI_Lockin" parent="Hero_Store">
+        <AssetArray File="Assets\Sounds\Generic\Test_NoSound.wav" FacialGroup=""/>
+        <DupeWait value="10000,10000"/>
+        <Exclusivity value="HeroMed"/>
+        <Mode value="3DWorld"/>
+        <ReverbRolloffBlend value="Logarithmic"/>
+        <Volume value="-4.500000,-4.500000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="400.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="FaerieDragon_SideAttackImpact" parent="Combat">
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Slime_Impact01.wav" Pitch="2.000000,6.000000" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Slime_Impact02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Slime_Impact03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Slime_Impact04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Slime_Impact05.wav" FacialGroup=""/>
+        <Volume value="-13.000000,-13.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="FaerieDragon_SideAttackLaunch" parent="Combat">
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Slime_Launch01.wav" Pitch="6.000000,6.000000" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Slime_Launch02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Slime_Launch03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Slime_Launch04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Slime_Launch05.wav" FacialGroup=""/>
+        <Pitch value="1.000000,2.000000"/>
+        <Volume value="-21.000000,-18.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="FaerieDragon_EmeraldWind_Cast" parent="Spell">
+        <EditorCategories value="Race:Neutral"/>
+        <AssetArray File="Assets\Sounds\Talents\Talent_Overdrive_Launch01.wav" FacialGroup=""/>
+        <Category value="TV"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="FaerieDragon_EmeraldWind_Damage" parent="Spell">
+        <AssetArray File="Assets\Sounds\Generic\Test_NoSound.wav" FacialGroup=""/>
+        <Category value="TV"/>
+        <Volume value="-12.000000,-12.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="FaerieDragon_EmeraldWind_Loop" parent="Spell">
+        <EditorCategories value="Race:Neutral"/>
+        <AssetArray File="Assets\Sounds\Heroes\Tyrael_Base\Tyrael_Sanctification_Loop01.wav" Pitch="4.000000,4.000000" FacialGroup=""/>
+        <Category value="TV"/>
+        <LoopCount value="-1"/>
+        <Volume value="-6.000000,-6.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="FaerieDragon_Luminosity_Heal" parent="Spell">
+        <EditorCategories value="Race:Neutral"/>
+        <AssetArray File="Assets\Sounds\Generic\Test_NoSound.wav" FacialGroup=""/>
+        <Chance value="0"/>
+        <Volume value="-6.000000,-6.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+        <Category value="TV"/>
+    </CSound>
+    <CSound id="FaerieDragonMysticSporesDamageTicSound" parent="Combat">
+        <EditorCategories value="Race:Neutral"/>
+        <AssetArray File="Assets\Sounds\Malfurion_Ability_Moonfire_Impact_01.wav" Pitch="6.000000,6.000000" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Malfurion_Ability_Moonfire_Impact_02.wav" Pitch="6.000000,6.000000" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Malfurion_Ability_Moonfire_Impact_03.wav" Pitch="6.000000,6.000000" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Malfurion_Ability_Moonfire_Impact_04.wav" Pitch="6.000000,6.000000" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Malfurion_Ability_Moonfire_Impact_05.wav" Pitch="6.000000,6.000000" FacialGroup=""/>
+        <Category value="Spell"/>
+        <DupeDestroyCount value="4"/>
+        <Pitch value="5.000000,5.000000"/>
+        <Volume value="-26.000000,-26.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="FaerieDragonShrinkingPowderCast" parent="Spell">
+        <AssetArray File="Assets\Sounds\Talents\Talent_FlashBang_Explo01.wav" Pitch="8.000000,8.000000" FacialGroup=""/>
+        <Volume value="-6.000000,-6.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="FaerieDragonMysticSporesCastSound" parent="Spell">
+        <AssetArray File="Assets\Sounds\Heroes\Illidan_Base\Illidan_BetrayerStrike_Impact01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Illidan_Base\Illidan_BetrayerStrike_Impact02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Illidan_Base\Illidan_BetrayerStrike_Impact03.wav" FacialGroup=""/>
+        <Volume value="-4.000000,-4.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="FaerieDragonShrinkingPowderImpact" parent="Spell">
+        <AssetArray File="Assets\Sounds\Generic\Gen_Status_Slow10.wav" FacialGroup=""/>
+        <Volume value="4.000000,4.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+        <Category value="Combat"/>
+    </CSound>
+    <CSound id="FaerieDragon_Flutter_Impact" parent="Spell">
+        <EditorCategories value="Race:Neutral"/>
+        <AssetArray File="Assets\Sounds\Heroes\Uther_Base\Uther_HolyLight_Launch01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Uther_Base\Uther_HolyLight_Launch02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Uther_Base\Uther_HolyLight_Launch03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Uther_Base\Uther_HolyLight_Launch04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Uther_Base\Uther_HolyLight_Launch05.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Uther_Base\Uther_HolyLight_Launch06.wav" FacialGroup=""/>
+        <Volume value="-2.000000,-2.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+        <Category value="Combat"/>
+    </CSound>
+    <CSound id="FaerieDragonMysticSporesHealTicSound" parent="Combat">
+        <EditorCategories value="Race:Neutral"/>
+        <AssetArray File="Assets\Sounds\Malfurion_Ability_Regrowth_Cast_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Malfurion_Ability_Regrowth_Cast_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Malfurion_Ability_Regrowth_Cast_03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Malfurion_Ability_Regrowth_Cast_04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Malfurion_Ability_Regrowth_Cast_05.wav" FacialGroup=""/>
+        <Category value="Spell"/>
+        <DupeDestroyCount value="4"/>
+        <Pitch value="5.000000,5.000000"/>
+        <Volume value="-26.000000,-26.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="FaerieDragon_EmeraldBreeze_Loop" parent="Spell">
+        <EditorCategories value="Race:Neutral"/>
+        <AssetArray File="Assets\Sounds\Generic\Test_NoSound.wav" FacialGroup=""/>
+        <LoopCount value="-1"/>
+        <Volume value="-6.000000,-6.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+        <Category value="SEmitters"/>
+    </CSound>
+    <CSound id="FaerieDragonEmeraldBreezeImpact" parent="Combat">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Generic\Test_NoSound.wav" FacialGroup=""/>
+        <Category value="Spell"/>
+        <DupeDestroyCount value="4"/>
+        <DupeMuteCount value="4"/>
+        <Pitch value="3.640000,3.640000"/>
+        <Volume value="-19.100000,-19.100000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="FaerieDragonEmeraldBreezeLaunch" parent="Spell">
+        <EditorCategories value="Race:Neutral"/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Status_KnockedInAir01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Status_KnockedInAir02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Status_KnockedInAir03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Status_KnockedInAir04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Status_KnockedInAir05.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Status_KnockedInAir06.wav" FacialGroup=""/>
+        <Volume value="-5.000000,-5.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+        <Pitch value="7.000000,7.000000"/>
+    </CSound>
+    <CSound id="LiLi_KillFaerieDragon" parent="Hero_Critical">
+        <AssetArray File="LocalizedData\Sounds\VO\LiLi_KillFaerieDragon00.ogg"/>
+        <Flags index="HideSubtitle" value="0"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="0,0"/>
+    </CSound>
+    <CSound id="FaerieDragon_Naturalize_Cast" parent="Spell">
+        <EditorCategories value="Race:Neutral"/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Lightning_Launch01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Lightning_Launch02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Lightning_Launch03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Lightning_Launch04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Lightning_Launch05.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Lightning_Launch06.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Lightning_Launch07.wav" FacialGroup=""/>
+        <Volume value="-4.000000,-4.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="FaerieDragon_ArcaneFlare_Impact" parent="Spell">
+        <EditorCategories value="Race:Neutral"/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Lightning_Impact01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Lightning_Impact02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Lightning_Impact03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Lightning_Impact04.wav" FacialGroup=""/>
+        <Category value="Combat"/>
+        <Pitch value="4.000000,4.000000"/>
+        <Volume value="-2.000000,-2.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="FaerieDragon_FaerieDust_Proc_Sound" parent="Spell">
+        <EditorCategories value="Race:Neutral"/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Lightning_Launch01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Lightning_Launch02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Lightning_Launch03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Lightning_Launch04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Lightning_Launch05.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Lightning_Launch06.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Lightning_Launch07.wav" FacialGroup=""/>
+        <Pitch value="5.000000,5.000000"/>
+        <Volume value="-4.800000,-4.800000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="FaerieDragon_Flutter_Launch" parent="Spell">
+        <EditorCategories value="Race:Neutral"/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Earth_Launch05.wav" Pitch="8.000000,8.000000" FacialGroup=""/>
+        <Volume value="-6.000000,-6.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="FaerieDragon_AttackImpact" parent="Combat">
+        <Volume value="-9.000000,-9.000000"/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Slime_Impact01.wav" Pitch="2.000000,6.000000" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Slime_Impact02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Slime_Impact03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Slime_Impact04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Slime_Impact05.wav" FacialGroup=""/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="FaerieDragon_AttackLaunch" parent="Combat">
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Slime_Launch01.wav" Pitch="6.000000,6.000000" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Slime_Launch02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Slime_Launch03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Slime_Launch04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Slime_Launch05.wav" FacialGroup=""/>
+        <Pitch value="1.000000,2.000000"/>
+        <Volume value="-6.000000,-6.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="HeroFaerieDragon_Death" parent="Hero_Death">
+        <AssetArray File="Assets\Sounds\Units\NightElf\FaerieDragon\FaerieDragonDeath1.wav"/>
+        <Flags index="Stream" value="0"/>
+        <Flags index="HideSubtitle" value="0"/>
+        <Category value="Death"/>
+        <DupeWait value="0,0"/>
+        <PanLevel value="1.000000"/>
+        <SpeakerMix index="Center" value="1.000000"/>
+        <SpeakerMix index="BackLeft" value="1.000000"/>
+        <SpeakerMix index="BackRight" value="1.000000"/>
+        <SpeakerMix index="SideLeft" value="1.000000"/>
+        <SpeakerMix index="SideRight" value="1.000000"/>
+        <SustainFade index="1" Time="500"/>
+        <Volume value="0.000000,0.000000"/>
+    </CSound>
+    <CSound id="HeroFaerieDragon_Yes" parent="Hero_Low">
+        <AssetArray File="Assets\Sounds\Units\NightElf\FaerieDragon\FaerieDragonYes1.ogg"/>
+        <AssetArray File="Assets\Sounds\Units\NightElf\FaerieDragon\FaerieDragonYes2.ogg" FacialGroup=""/>
+        <Volume value="-4.500000,-4.500000"/>
+        <VolumeRolloffPoints index="0" Distance="216.304337"/>
+    </CSound>
+    <CSound id="HeroFaerieDragon_Pissed" parent="Hero_Pissed">
+        <AssetArray File="Assets\Sounds\Units\NightElf\FaerieDragon\FaerieDragonPissed1.ogg"/>
+        <VolumeRolloffPoints index="0" Distance="10.000000"/>
+    </CSound>
+    <CSound id="HeroFaerieDragon_Attack" parent="Hero_Medium">
+        <AssetArray File="Assets\Sounds\Units\NightElf\FaerieDragon\FaerieDragonYes2.ogg" Volume="-2.000000,-2.000000"/>
+        <Volume value="-4.500000,-4.500000"/>
+    </CSound>
+    <CSound id="HeroFaerieDragon_LowMana" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\HeroD1_Nova_034.ogg"/>
+        <DupeWait value="10000,10000"/>
+        <Volume value="0.000000,0.000000"/>
+    </CSound>
+    <CSound id="HeroFaerieDragon_LowHealth" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\HeroD1_Nova_033.ogg"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="HeroFaerieDragon_Revive" parent="Hero_High">
+        <AssetArray File="Assets\Sounds\Units\NightElf\FaerieDragon\FaerieDragonReady1.ogg"/>
+    </CSound>
+    <CUnit id="ArcaneFlareMissile" parent="MISSILE_INVULNERABLE">
+        <Mover value="HeroMissile"/>
+    </CUnit>
+    <CUnit id="TutorialMurloc">
+        <DeathRevealRadius value="3"/>
+        <FlagArray index="Unclickable" value="0"/>
+        <FlagArray index="Unhighlightable" value="0"/>
+        <FlagArray index="UseLineOfSight" value="1"/>
+        <FlagArray index="NoScore" value="1"/>
+        <FlagArray index="AILifetime" value="1"/>
+        <FlagArray index="VisionTestCenterOnly" value="1"/>
+        <PlaneArray index="Ground" value="1"/>
+        <PushPriority value="0"/>
+        <Collide index="Ground" value="1"/>
+        <Collide index="ForceField" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <LifeStart value="100"/>
+        <LifeMax value="100"/>
+        <LifeArmorName value="Unit/LifeArmorName/ZergGroundArmor"/>
+        <Speed value="5"/>
+        <Acceleration value="1000"/>
+        <LateralAcceleration value="46.0625"/>
+        <StationaryTurningRate value="999.8437"/>
+        <TurningRate value="999.8437"/>
+        <Sight value="7"/>
+        <AttackTargetPriority value="10"/>
+        <DamageDealtXP value="1"/>
+        <DamageTakenXP value="1"/>
+        <AbilArray Link="stop"/>
+        <AbilArray Link="attack"/>
+        <AbilArray Link="move"/>
+        <WeaponArray Link="TutorialMurlocWeapon"/>
+        <CardLayouts>
+            <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="2" Column="1"/>
+            <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="2" Column="1"/>
+            <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="2" Column="2"/>
+            <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="2" Column="4"/>
+            <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="2" Column="3"/>
+        </CardLayouts>
+        <SubgroupPriority value="14"/>
+        <MinimapRadius value="0.375"/>
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Melee"/>
+        <AIEvalFactor value="0"/>
+        <HotkeyCategory value="Unit/Category/ZergUnits"/>
+        <KillDisplay value="Never"/>
+        <OverlapIndex value="2"/>
+    </CUnit>
+    <CUnit id="MercDefenderMurlocAttackMissile" parent="MISSILE_INVULNERABLE">
+        <Mover value="MercDefenderMurlocMissile"/>
+        <StationaryTurningRate value="1007.9296"/>
+        <TurningRate value="1007.9296"/>
+    </CUnit>
+    <CUnit id="EmeraldBreezePathingBlocker">
+        <Mob value="Multiplayer"/>
+        <FlagArray index="Unclickable" value="0"/>
+        <FlagArray index="Unhighlightable" value="0"/>
+        <FlagArray index="Unselectable" value="1"/>
+        <FlagArray index="Untargetable" value="1"/>
+        <FlagArray index="PreventDestroy" value="1"/>
+        <FlagArray index="UseLineOfSight" value="1"/>
+        <FlagArray index="Invulnerable" value="1"/>
+        <FlagArray index="VisionTestCenterOnly" value="1"/>
+        <FlagArray index="Unstoppable" value="1"/>
+        <PlaneArray index="Ground" value="1"/>
+        <PushPriority value="0"/>
+        <Collide index="Ground" value="1"/>
+        <Response value="Nothing"/>
+        <Attributes index="Psionic" value="1"/>
+        <Attributes index="Summoned" value="1"/>
+        <LifeStart value="100"/>
+        <LifeMax value="100"/>
+        <LifeArmorName value="Unit/LifeArmorName/ProtossArmor"/>
+        <Acceleration value="1000"/>
+        <LateralAcceleration value="46"/>
+        <Sight value="2"/>
+        <AttackTargetPriority value="10"/>
+        <DamageDealtXP value="1"/>
+        <DamageTakenXP value="1"/>
+        <BehaviorArray Link="EmeraldBreezePathingBlockerTimedLife"/>
+        <Radius value="2"/>
+        <SubgroupPriority value="6"/>
+        <MinimapRadius value="0"/>
+        <KillDisplay value="Never"/>
+        <OverlapIndex value="3"/>
+    </CUnit>
+    <CBehaviorBuff id="PixieDust">
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\storm_temp_war3_btnscatterrockets.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="4"/>
+        <Modification UnifiedMoveSpeedFactor="0.4"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="FlightDisablerBehavior">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="TargetNotBeingPulled"/>
+        <RemoveValidatorArray value="TargetNotBeingKnockedBack"/>
+        <RemoveValidatorArray value="TargetNotBeingEatenZerusWorm"/>
+        <RemoveValidatorArray value="TargetNotStunned"/>
+        <Duration value="3"/>
+        <FinalEffect value="FlightDestroyPersistent"/>
+        <Modification>
+            <AbilLinkDisableArray value="AbathurSymbiote"/>
+            <AbilLinkDisableArray value="PortBackToBase"/>
+            <AbilLinkDisableArray value="CaptureMacGuffin"/>
+            <AbilLinkDisableArray value="attack"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="FlightFinalDisablerBehavior">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="TargetNotBeingPulled"/>
+        <RemoveValidatorArray value="TargetNotBeingKnockedBack"/>
+        <RemoveValidatorArray value="TargetNotBeingEatenZerusWorm"/>
+        <RemoveValidatorArray value="TargetNotStunned"/>
+        <Duration value="0.75"/>
+        <FinalEffect value="FlightDestroyPersistent"/>
+        <Modification>
+            <AbilClassDisableArray index="CAbilMove" value="1"/>
+            <AbilLinkDisableArray value="AbathurSymbiote"/>
+            <AbilLinkDisableArray value="PortBackToBase"/>
+            <AbilLinkDisableArray value="CaptureMacGuffin"/>
+            <AbilLinkDisableArray value="attack"/>
+            <DeathResponse>
+                <Cost>
+                    <Charge Link="Behavior/FlightDisablerBehavior"/>
+                    <Cooldown Link="Behavior/FlightDisablerBehavior"/>
+                </Cost>
+            </DeathResponse>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="PixieDustBlock">
+        <Alignment value="Positive"/>
+        <BehaviorFlags index="Permanent" value="1"/>
+        <InfoIcon value="Assets\Textures\storm_temp_war3_btnscatterrockets.dds"/>
+        <BehaviorCategories index="User2" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BuffFlags index="RemoveDamageResponseExhausted" value="0"/>
+        <MaxStackCount value="2"/>
+        <MaxStackCountPerCaster value="2"/>
+        <Duration value="4"/>
+        <DamageResponse>
+            <Chance value="1"/>
+            <Handled value="PixieDustRemoveBlockSet"/>
+            <ModifyFraction value="0.5"/>
+            <TargetFilters value="Heroic;Structure"/>
+            <Kind index="Spell" value="0"/>
+            <Kind index="Melee" value="0"/>
+            <Kind index="Splash" value="0"/>
+            <ValidatorArray value="TargetDoesNotHaveBashBehavior"/>
+            <ValidatorArray value="TargetDoesNotHaveBetrayersStrikeBehavior"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="DreamDust">
+        <InfoIcon value="Assets\Textures\storm_temp_war3_btnmanadrain.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="2"/>
+        <Modification UnifiedMoveSpeedFactor="-0.2"/>
+        <BehaviorCategories index="Slow" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="EmeraldBreezeChannel">
+        <InfoFlags index="Hidden" value="1"/>
+        <BehaviorCategories index="Restorable" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="2.25"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="EmeraldBreezeKnockback" parent="PushPullParent">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\storm_temp_war3_btncyclone.dds"/>
+        <DisableValidatorArray value="TargetNotUnstoppable"/>
+        <RemoveValidatorArray value="TargetCleanseDebuffRemoval"/>
+        <BuffFlags index="UpdateDurationWhileDisabled" value="1"/>
+        <Modification MoveSpeedMaximum="10" MoveSpeedMinimum="10">
+            <StateFlags index="SuppressCollision" value="1"/>
+        </Modification>
+        <BehaviorCategories index="Stun" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="MysticSporesDoT2Stack">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BuffFlags index="RefreshStack" value="1"/>
+        <Duration value="6"/>
+        <Period value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="MysticSporesDoT3Stack">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BuffFlags index="RefreshStack" value="1"/>
+        <Duration value="6"/>
+        <Period value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="MysticSporesHoT3Stack">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BuffFlags index="RefreshStack" value="1"/>
+        <Duration value="6"/>
+        <Period value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="MysticSporesHoTStack">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BuffFlags index="RefreshStack" value="1"/>
+        <Duration value="6"/>
+        <Period value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="MysticSporesHoTSwitch">
+        <Alignment value="Positive"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="6"/>
+        <Period value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="MysticSporesDoTSwitch">
+        <Alignment value="Negative"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BuffFlags index="RefreshStack" value="1"/>
+        <Duration value="6"/>
+        <Period value="1"/>
+        <PeriodicEffect value="MysticSporesDamageSwitch"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="MysticSporesDoTStack">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BuffFlags index="RefreshStack" value="1"/>
+        <Duration value="6"/>
+        <Period value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="MysticSporesHoT2Stack">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BuffFlags index="RefreshStack" value="1"/>
+        <Duration value="6"/>
+        <Period value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="MysticSporesHoTVisual">
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\storm_temp_war3_btnreplenishhealth.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BuffFlags index="RefreshStack" value="1"/>
+        <MaxStackCount value="3"/>
+        <Duration value="6"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ShrinkingPowder">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\storm_btn_d3_wizard_energyarmor.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="2"/>
+        <Modification UnifiedMoveSpeedFactor="-0.5">
+            <StateFlags index="SuppressAttack" value="1"/>
+            <AbilClassDisableArray index="CAbilEffectInstant" value="1"/>
+            <AbilClassDisableArray index="CAbilEffectTarget" value="1"/>
+        </Modification>
+        <Period value="0.4375"/>
+        <InitialEffect value="ShrinkingPowderMasteryApplyBehavior"/>
+        <PeriodicEffect value="ShrinkingPowderMasteryPeriodicDamage"/>
+        <DisableValidatorArray value="TargetNotUnstoppable"/>
+        <RemoveValidatorArray value="TargetCleanseDebuffRemoval"/>
+        <BehaviorCategories index="Slow" value="1"/>
+        <BehaviorCategories index="User7" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ShrinkingPowderMastery1">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\storm_btn_d3_wizard_energyarmor.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="2"/>
+        <DisableValidatorArray value="TargetNotUnstoppable"/>
+        <RemoveValidatorArray value="TargetCleanseDebuffRemoval"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="LuminositySilence" parent="SilenceParent">
+        <Name value="Behavior/Name/LuminositySilence"/>
+        <Tooltip value="Behavior/Tooltip/LuminositySilence"/>
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\storm_btn_d3_wizard_energyarmor.dds"/>
+        <EditorCategories value="Race:Neutral,AbilityorEffectType:Units"/>
+        <Duration value="4"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Harpoon">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\war3_pasbtnenvenomedspear.dds"/>
+        <DisableValidatorArray value="TargetNotUnstoppable"/>
+        <RemoveValidatorArray value="TargetCleanseDebuffRemoval"/>
+        <RemoveValidatorArray value="TargetCleanseDebuffRemoval"/>
+        <BuffFlags index="UpdateDurationWhileDisabled" value="1"/>
+        <Duration value="1.5"/>
+        <Modification>
+            <ModifyFlags index="SuppressMoving" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="MercLanerMurlocMissileScan">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units,Race:Neutral"/>
+        <Period value="0.0625"/>
+        <InitialEffect value="MercLanerMurlocWeaponInitialMissileScan"/>
+        <PeriodicEffect value="MercLanerMurlocWeaponMissileScanPersistent"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="FlutterMasteryBuff">
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\storm_temp_war3_btnenchantedcrows.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="0.5"/>
+        <Modification UnifiedMoveSpeedFactor="0.35"/>
+        <BehaviorCategories index="Fast" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="FlutterShield">
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\storm_temp_war3_btnenchantedcrows.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="2"/>
+        <DamageResponse Chance="1" ModifyFraction="0" ModifyLimit="150"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="FlutterCaster">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Modification>
+            <StateFlags index="Unstoppable" value="1"/>
+        </Modification>
+        <InitialEffect value="FlutterMasteryCreateTravelPersistent"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="EmeraldBreezePathingBlockerTimedLife" parent="StormTimedLife">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="2.5"/>
+        <Period value="1"/>
+        <InitialEffect value="EmeraldBreezeSearch"/>
+        <PeriodicEffect value="EmeraldBreezeSearch"/>
+        <ExpireEffect value="Suicide"/>
+        <Modification>
+            <StateFlags index="Benign" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="EmeraldWindKnockback" parent="PushPullParent">
+        <Alignment value="Negative"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <InfoIcon value="Assets\Textures\storm_ui_icon_deathpact_2.dds"/>
+        <DisableValidatorArray value="TargetNotUnstoppable"/>
+        <RemoveValidatorArray value="TargetCleanseDebuffRemoval"/>
+        <BuffFlags index="UpdateDurationWhileDisabled" value="1"/>
+        <Duration value="0.25"/>
+        <Modification MoveSpeedMinimum="4"/>
+    </CBehaviorBuff>
+</Catalog>

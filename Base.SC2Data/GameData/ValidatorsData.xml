@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CValidatorUnitFilters default="1" id="SourceIsParentFilter">
+        <WhichUnit Value="Source"/>
+    </CValidatorUnitFilters>
+    <CValidatorUnitFilters default="1" id="CasterIsParentFilter">
+        <WhichUnit Value="Caster"/>
+    </CValidatorUnitFilters>
+    <CValidatorUnitFilters default="1" id="CasterNotParentFilter">
+        <WhichUnit Value="Caster"/>
+    </CValidatorUnitFilters>
+    <CValidatorUnitFilters default="1" id="TargetIsParentFilter"/>
+    <CValidatorUnitFilters default="1" id="TargetNotParentFilter"/>
+    <CValidatorUnitFilters default="1" id="SourceNotParentFilter">
+        <WhichUnit Value="Source"/>
+    </CValidatorUnitFilters>
+    <CValidatorCombine id="CasterIsBlindedOrTargetIsEvadingAndNotGenjiDodge">
+        <CombineArray value="CasterIsBlinded"/>
+        <CombineArray value="TargetIsEvadingAndNotGenjiDodge"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="CasterandTargetNotDeadTargetIsVisibleAndNotCloakedOrIsRevealedAndNotInStasisAndNotInvulnerableAndNotPossessed">
+        <Type value="And"/>
+        <CombineArray value="CasterNotDeadAndTargetNotDead"/>
+        <CombineArray value="TargetIsVisible"/>
+        <CombineArray value="NotCloakedOrIsRevealed"/>
+        <CombineArray value="TargetNotStasis"/>
+        <CombineArray value="TargetNotInvulnerable"/>
+        <CombineArray value="SylvanasTargetUnPossessed"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="TargetIsSpecialDeathStateOrNotBenignOrInvulnerableOrStasis">
+        <CombineArray value="TargetNotInvulnerableOrBenign"/>
+        <CombineArray value="TargetIsSpecialDeathState"/>
+        <CombineArray value="TargetNotStasis"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="SiegeGiantMeleePeriodicValidatorCombine">
+        <Type value="And"/>
+        <CombineArray value="CasterNotDazedOrDeadOrPolymorphedOrRootedOrStasisOrStunned"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="CasterNotDazedOrDeadOrSilencedOrSpecialDeathStateOrStasisOrStunnedOrTimeStopped">
+        <Type value="And"/>
+        <CombineArray value="CasterNotStunnedCommanders"/>
+        <CombineArray value="CasterNotDead"/>
+        <CombineArray value="CasterNotSilenced"/>
+        <CombineArray value="CasterNotSpecialDeathState"/>
+        <CombineArray value="CasterNotStasis"/>
+        <CombineArray value="CasterNotDazed"/>
+        <CombineArray value="CasterNotTimeStopped"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="CasterNotDazedOrDeadOrSilencedOrSpecialDeathStateOrStasisOrStunnedExceptTimeStopped">
+        <CombineArray value="CasterNotDazedOrDeadOrSilencedOrSpecialDeathStateOrStasisOrStunnedOrTimeStopped"/>
+        <CombineArray value="CasterIsTimeStopped"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="SourceNotSilencedAndTargetNotSilenced">
+        <CombineArray value="SourceNotSilenced"/>
+        <CombineArray value="TargetNotSilenced"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="TargetNotDeadOrSpecialDeathStateOrStasisOrTimeStopped">
+        <Type value="And"/>
+        <CombineArray value="TargetNotDead"/>
+        <CombineArray value="TargetNotStasis"/>
+        <CombineArray value="TargetNotTimeStopped"/>
+        <CombineArray value="TargetNotSpecialDeathState"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="TargetNotInStasisExceptSpecialDeathState">
+        <CombineArray value="TargetNotStasis"/>
+        <CombineArray value="TargetIsSpecialDeathState"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="TargetNotDeadOrSpecialDeathStateOrTimeStopped">
+        <Type value="And"/>
+        <CombineArray value="TargetNotDead"/>
+        <CombineArray value="TargetNotTimeStopped"/>
+        <CombineArray value="TargetNotSpecialDeathState"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="TargetIsDisplaceable">
+        <Type value="And"/>
+        <CombineArray value="TargetNotSgtHammerFortified"/>
+        <CombineArray value="Diablo_LightningBreath_TargetIsNotCastingLightningBreath"/>
+        <CombineArray value="TargetNotUnstoppable"/>
+        <CombineArray value="TargetDoesNotHaveImmuneToCrowdControlBehavior"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="CasterIsAttackingUnitAndNotDeadOrDoesNotHaveAmmoDisablerAndTargetNotDead">
+        <Type value="And"/>
+        <CombineArray value="CasterNotDeadAndTargetNotDead"/>
+        <CombineArray value="CasterIsAttackingUnit"/>
+        <CombineArray value="CasterDoesNotHaveStructureAmmoDisabler"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="TargetNotImmuneToFriendlyAbilitiesOrIsDVaMech">
+        <CombineArray value="TargetNotImmuneToFriendlyAbilities"/>
+        <CombineArray value="DVaTargetIsMech"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="TargetLifeNotFullNotImmuneToFriendlyAbilitiesAndNotAlliedStructure">
+        <Type value="And"/>
+        <CombineArray value="TargetLifeNotFull"/>
+        <CombineArray value="IsAllyOrSelfNotStructure"/>
+        <CombineArray value="TargetNotImmuneToFriendlyAbilities"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="TargetNotBenignOrNotHeroic">
+        <CombineArray value="TargetNotBenign"/>
+        <CombineArray value="TargetIsNotHeroic"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="TargetIsEvadingAndNotGenjiDodge">
+        <Type value="And"/>
+        <CombineArray value="TargetIsEvading"/>
+        <CombineArray value="GenjiTargetDoesNotHaveDodgeBuffBehavior"/>
+    </CValidatorCombine>
+</Catalog>

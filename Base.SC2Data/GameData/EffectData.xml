@@ -1,0 +1,3214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CEffectApplyBehavior default="1" id="CommandersApplyBlind">
+        <ValidatorArray index="0" value="NotVehicle"/>
+        <ValidatorArray value="TargetNotStructure"/>
+        <ValidatorArray value="Commanders_TargetIsNotPseudoStructure"/>
+        <EditorCategories value=""/>
+    </CEffectApplyBehavior>
+    <CEffectLaunchMissile default="1" id="CommandersLaunchUnitTargetPointValidated">
+        <Name value="Effect/Name/CommandersLaunchUnitTargetPointValidated"/>
+        <EditorCategories value="CommandersHero:Common"/>
+        <ValidatorArray index="0" value="CasterNotDazedOrDeadOrRootedOrStasisOrStunnedExceptTimeStop"/>
+        <Flags index="2D" value="1"/>
+        <Flags index="Placement" value="1"/>
+        <Flags index="TravelValidation" value="1"/>
+        <DeathType value="Unknown"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <PeriodicValidator value="CasterNotDazedOrDeadOrRootedOrStasisOrStunnedExceptTimeStop"/>
+        <PlacementRange value="5"/>
+    </CEffectLaunchMissile>
+    <CEffectApplyBehavior default="1" id="CommandersApplySlow">
+        <ValidatorArray index="0" value="TargetNotUnstoppable"/>
+        <ValidatorArray value="Commanders_TargetIsStructureOrPseudoStructure2"/>
+        <EditorCategories value=""/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior default="1" id="CommandersApplyRoots">
+        <Name value="Effect/Name/CommandersApplyRoots"/>
+        <ValidatorArray index="0" value="TargetNotUnstoppable"/>
+        <ValidatorArray value="Commanders_TargetIsStructureOrPseudoStructure2"/>
+        <EditorCategories value=""/>
+        <Marker Link="Effect/CommandersApplyRoots"/>
+        <Behavior value="CommandersApplyRoots"/>
+    </CEffectApplyBehavior>
+    <CEffectModifyUnit default="1" id="CommandersModifyUnitHealing">
+        <ValidatorArray value="TargetNotStasis"/>
+        <ValidatorArray value="NotVehicle"/>
+        <EditorCategories value=""/>
+        <VitalArray index="Life">
+            <Change value="0">
+                <AccumulatorArray value="CommandersHealingCreatedModificator"/>
+                <AccumulatorArray value="CommandersHealingTakenModificator"/>
+            </Change>
+            <ChangeFraction value="0">
+                <AccumulatorArray value="CommandersHealingCreatedModificator"/>
+                <AccumulatorArray value="CommandersHealingTakenModificator"/>
+            </ChangeFraction>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectDamage default="1" id="CommandersSpellDamage">
+        <CasterHistory value="Damage"/>
+        <ResponseFlags index="Acquire" value="1"/>
+        <SplashHistory value="Damage"/>
+        <EditorCategories value="CommandersHero:Common"/>
+        <ValidatorArray value="TargetNotStasisOrInvulnerable"/>
+        <ValidatorArray value="NotHidden"/>
+    </CEffectDamage>
+    <CEffectDamage default="1" id="CommandersEnergyDamage">
+        <ValidatorArray value="TargetNotStasisOrInvulnerable"/>
+        <ValidatorArray value="NotHidden"/>
+        <EditorCategories value="CommandersHero:Common"/>
+        <CasterHistory value="Damage"/>
+        <ResponseFlags index="Acquire" value="1"/>
+        <SplashHistory value="Damage"/>
+    </CEffectDamage>
+    <CEffectDamage default="1" id="CommandersWeaponDamage">
+        <CasterHistory value="Damage"/>
+        <ResponseFlags index="Acquire" value="1"/>
+        <Kind value="Ranged"/>
+        <KindSplash value="Ranged"/>
+        <SplashHistory value="Damage"/>
+        <EditorCategories value="CommandersHero:Common"/>
+        <ValidatorArray value="TargetNotStasisOrInvulnerable"/>
+        <ValidatorArray value="NotHidden"/>
+    </CEffectDamage>
+    <CEffectDamage default="1" id="CommandersStormDamage">
+        <CasterHistory value="Damage"/>
+        <ResponseFlags index="Acquire" value="1"/>
+        <Kind value="Splash"/>
+        <KindSplash value="Splash"/>
+        <SplashHistory value="Damage"/>
+        <EditorCategories value="CommandersHero:Common"/>
+        <ValidatorArray value="TargetNotStasisOrInvulnerable"/>
+        <ValidatorArray value="NotHidden"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile default="1" id="CommandersLaunchUnitTargetUnitValidated">
+        <Name value="Effect/Name/CommandersLaunchUnitTargetUnitValidated"/>
+        <ValidatorArray index="0" value="CommandersLaunchUnitTargetUnitValidatedTargetFilters"/>
+        <EditorCategories value="CommandersHero:Common"/>
+        <Marker Link="Effect/CommandersLaunchUnitTargetUnitValidated"/>
+        <InterruptEffect value="HeroGenericMissileInterruptLaunchMissile"/>
+        <PeriodicValidator value="CommandersLaunchMissileTargetUnitDisablesAndTimeStopCombine"/>
+        <Flags index="2D" value="1"/>
+        <Flags index="TravelValidation" value="1"/>
+        <AmmoUnit value="CommandersLaunchUnitTargetUnitValidatedWeapon"/>
+        <DeathType value="Unknown"/>
+    </CEffectLaunchMissile>
+    <CEffectDamage default="1" id="CommandersKineticDamage">
+        <EditorCategories value="CommandersHero:Common"/>
+        <CasterHistory value="Damage"/>
+        <ResponseFlags index="Acquire" value="1"/>
+        <Kind value="Ranged"/>
+        <KindSplash value="Ranged"/>
+        <SplashHistory value="Damage"/>
+        <ValidatorArray value="TargetNotStasisOrInvulnerable"/>
+        <ValidatorArray value="NotHidden"/>
+    </CEffectDamage>
+    <CEffectCreateHealer default="1" id="CommandersCreateHealerEnergetic">
+        <EditorCategories value=""/>
+        <PeriodCount value="1"/>
+        <PeriodicPeriod value="1"/>
+        <RechargeVitalRate value="0">
+            <AccumulatorArray value="CommandersHealingCreatedModificator"/>
+            <AccumulatorArray value="CommandersHealingTakenModificator"/>
+        </RechargeVitalRate>
+        <ValidatorArray value="TargetNotDeadOrStasis"/>
+        <ValidatorArray value="NotHidden"/>
+    </CEffectCreateHealer>
+    <CEffectCreateHealer default="1" id="CommandersCreateHealerKinetic">
+        <EditorCategories value=""/>
+        <PeriodCount value="1"/>
+        <PeriodicPeriod value="1"/>
+        <RechargeVitalRate value="0">
+            <AccumulatorArray value="CommandersHealingCreatedModificator"/>
+            <AccumulatorArray value="CommandersHealingTakenModificator"/>
+        </RechargeVitalRate>
+        <ValidatorArray value="TargetNotDeadOrStasis"/>
+        <ValidatorArray value="NotHidden"/>
+    </CEffectCreateHealer>
+    <CEffectCreateHealer default="1" id="CommandersCreateHealerStorm">
+        <EditorCategories value=""/>
+        <PeriodCount value="1"/>
+        <PeriodicPeriod value="1"/>
+        <RechargeVitalRate value="0">
+            <AccumulatorArray value="CommandersHealingCreatedModificator"/>
+            <AccumulatorArray value="CommandersHealingTakenModificator"/>
+        </RechargeVitalRate>
+        <ValidatorArray value="TargetNotDeadOrStasis"/>
+        <ValidatorArray value="NotHidden"/>
+    </CEffectCreateHealer>
+    <CEffectCreateHealer default="1" id="CommandersCreateHealer">
+        <EditorCategories value=""/>
+        <PeriodCount value="1"/>
+        <PeriodicPeriod value="1"/>
+        <RechargeVitalRate value="0">
+            <AccumulatorArray value="CommandersHealingCreatedModificator"/>
+            <AccumulatorArray value="CommandersHealingTakenModificator"/>
+        </RechargeVitalRate>
+        <ValidatorArray value="TargetNotDeadOrStasis"/>
+        <ValidatorArray value="NotHidden"/>
+    </CEffectCreateHealer>
+    <CEffectApplyBehavior default="1" id="CommandersApplyStun">
+        <Name value="Effect/Name/CommandersApplyStun"/>
+        <ValidatorArray index="0" value="TargetNotUnstoppable"/>
+        <ValidatorArray value="Commanders_TargetIsStructureOrPseudoStructure2"/>
+        <EditorCategories value=""/>
+        <Marker Link="Effect/CommandersApplyStun"/>
+        <Behavior value="CommandersApplyStun"/>
+    </CEffectApplyBehavior>
+    <CEffectModifyUnit id="CommandersModifyUnitHealingVampiricStorm" parent="CommandersModifyUnitHealing">
+        <VitalArray index="Life">
+            <Change value="0">
+                <AccumulatorArray value="CommandersHealingVampiricStorm"/>
+            </Change>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectModifyUnit id="CommandersModifyUnitHealingVampiricEnergetic" parent="CommandersModifyUnitHealing">
+        <VitalArray index="Life">
+            <Change value="0">
+                <AccumulatorArray value="CommandersHealingVampiricEnergetic"/>
+            </Change>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectModifyUnit id="CommandersModifyUnitHealingVampiricKinetic" parent="CommandersModifyUnitHealing">
+        <VitalArray index="Life">
+            <Change value="0">
+                <AccumulatorArray value="CommandersHealingVampiricKinetic"/>
+            </Change>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectDamage id="HeroTalandarPraetorWeapon@Damage" parent="CommandersKineticDamage">
+        <EditorCategories value="Race:Protoss,CommandersHero:Talandar"/>
+        <Amount value="40"/>
+    </CEffectDamage>
+    <CEffectRemoveBehavior id="HeroTalandarDragoonArmorSuit@RemovePraetorCarryBehavior">
+        <ValidatorArray index="0" removed="1"/>
+        <EditorCategories value="CommandersHero:Talandar"/>
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="HeroTalandarPraetorArmorSuit@PraetorCarryBehavior"/>
+    </CEffectRemoveBehavior>
+    <CEffectApplyBehavior id="HeroTalandarPraetorArmorSuit@ApplyCasterTeleportBehavior">
+        <EditorCategories value="CommandersHero:Talandar"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="HeroTalandarPraetorArmorSuit@CasterTeleportBehavior"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="HeroTalandarPraetorArmorSuit@ApplyPraetorCarryBehavior">
+        <EditorCategories value="CommandersHero:Talandar"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="HeroTalandarPraetorArmorSuit@PraetorCarryBehavior"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="HeroTalandarPraetorArmorSuit@RemoveDragoonCarryBehavior">
+        <EditorCategories value="CommandersHero:Talandar"/>
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="HeroTalandarDragoonArmorSuit@DragoonCarryBehavior"/>
+    </CEffectRemoveBehavior>
+    <CEffectSet id="HeroTalandarPraetorWeapon@InitialSet">
+        <EditorCategories value="Race:Neutral,CommandersHero:Talandar"/>
+        <EffectArray value="HeroTalandarPraetorWeapon@Damage"/>
+    </CEffectSet>
+    <CEffectSet id="HeroTalandarPurificationBlast@AfterKnockupSet">
+        <EditorCategories value="CommandersHero:Talandar"/>
+        <EffectArray value="HeroTalandarPurificationBlast@ApplyAfterKnockupSlow"/>
+        <EffectArray value="HeroTalandarPurificationBlast@ApplyAfterKnockupBlind"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="HeroTalandarPurificationBlast@ApplyAfterKnockupSlow" parent="CommandersApplySlow">
+        <EditorCategories value="CommandersHero:Talandar"/>
+        <Behavior value="HeroTalandarPurificationBlast@Slow"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="HeroTalandarPurificationBlast@ApplyAfterKnockupBlind" parent="CommandersApplyBlind">
+        <EditorCategories value="CommandersHero:Talandar"/>
+        <Behavior value="HeroTalandarPurificationBlast@Blind"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="HeroTalandarPurificationBlast@ApplyPurificationBlastBehavior">
+        <EditorCategories value="CommandersHero:Talandar"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="HeroTalandarPurificationBlast@PurificationBlast"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="HeroTalandarPurificationBlast@ApplyTalandarExpireStun">
+        <EditorCategories value="CommandersHero:Talandar"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="HeroTalandarPurificationBlast@TalandarExpireStun"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="HeroTalandarPurificationBlast@ApplyTalandarCastStun">
+        <EditorCategories value="CommandersHero:Talandar"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="HeroTalandarPurificationBlast@TalandarCastStun"/>
+    </CEffectApplyBehavior>
+    <CEffectTeleport id="HeroTalandarPurificationBlast@CasterTeleport">
+        <EditorCategories value="CommandersHero:Talandar"/>
+        <WhichUnit Value="Caster"/>
+        <TargetLocation Value="TargetPoint"/>
+        <TeleportFlags index="TestFog" value="0"/>
+    </CEffectTeleport>
+    <CEffectCreateUnit id="HeroTalandarPurificationBlast@CreateWarpoutUnit">
+        <EditorCategories value="CommandersHero:Talandar"/>
+        <WhichLocation Value="CasterPoint"/>
+        <Origin Value="CasterPoint"/>
+        <CreateFlags index="Placement" value="0"/>
+        <SpawnEffect value="HeroTalandarPurificationBlast@SetWarpoutUnitFacing"/>
+        <SpawnUnit value="HeroTalandarPurificationBlast@WarpOutUnit"/>
+    </CEffectCreateUnit>
+    <CEffectDamage id="HeroTalandarPurificationBlast@ExpireDamage" parent="CommandersEnergyDamage">
+        <EditorCategories value="CommandersHero:Talandar"/>
+        <Amount value="237"/>
+    </CEffectDamage>
+    <CEffectApplyBehavior id="HeroTalandarPurificationBlast@ApplyKnockup" parent="CommandersApplyStun">
+        <Name value="Effect/Name/HeroTalandarPurificationBlast@ApplyKnockup"/>
+        <EditorCategories value="CommandersHero:Talandar"/>
+        <ResponseFlags index="Acquire" value="1"/>
+        <Behavior value="HeroTalandarPurificationBlast@Knockup"/>
+    </CEffectApplyBehavior>
+    <CEffectEnumArea id="HeroTalandarPurificationBlast@ExpireSearch">
+        <EditorCategories value="CommandersHero:Talandar"/>
+        <DebugTrace value="1"/>
+        <SearchFilters value="-;Player,Ally,Neutral,Mechanical,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="4" Effect="HeroTalandarPurificationBlast@ExpireSearchSet"/>
+    </CEffectEnumArea>
+    <CEffectSet id="HeroTalandarPurificationBlast@ExpireSearchSet">
+        <EditorCategories value="CommandersHero:Talandar"/>
+        <EffectArray value="HeroTalandarPurificationBlast@ExpireDamage"/>
+        <EffectArray value="HeroTalandarPurificationBlast@ApplyKnockup"/>
+        <EffectArray value="ApplyAbilityImpactReveal"/>
+    </CEffectSet>
+    <CEffectSet id="HeroTalandarPurificationBlast@FallStartDummySet">
+        <EditorCategories value="CommandersHero:Talandar"/>
+    </CEffectSet>
+    <CEffectSet id="HeroTalandarPurificationBlast@ExpireSet">
+        <EditorCategories value="CommandersHero:Talandar"/>
+        <EffectArray value="HeroTalandarPurificationBlast@ApplyTalandarExpireStun"/>
+        <EffectArray value="HeroTalandarPurificationBlast@ExpireSearch"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="HeroTalandarPurificationBlast@InitialPersistent">
+        <EditorCategories value="CommandersHero:Talandar"/>
+        <PeriodCount value="4"/>
+        <PeriodicEffectArray value="HeroTalandarPurificationBlast@CreateWarpoutUnit"/>
+        <PeriodicEffectArray value="HeroTalandarPurificationBlast@ApplyTalandarCastStun"/>
+        <PeriodicEffectArray value="HeroTalandarPurificationBlast@ApplyPurificationBlastBehavior"/>
+        <PeriodicEffectArray value="HeroTalandarPurificationBlast@CasterTeleport"/>
+        <PeriodicPeriodArray value="0"/>
+        <PeriodicPeriodArray value="0"/>
+        <PeriodicPeriodArray value="0.55"/>
+        <PeriodicPeriodArray value="0"/>
+        <ValidatorArray value="Walkable"/>
+        <TimeScaleSource Value="Caster"/>
+    </CEffectCreatePersistent>
+    <CEffectApplyBehavior id="HeroTalandarThunderousCharge@ApplySpeed">
+        <EditorCategories value="CommandersHero:Talandar"/>
+        <WhichUnit Value="Source"/>
+        <Behavior value="HeroTalandarThunderousCharge@Speed"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyForce id="HeroTalandarThunderousCharge@CasterApplyForce">
+        <EditorCategories value="CommandersHero:Talandar"/>
+        <WhichLocation Effect="HeroTalandarThunderousCharge@MovePersistent" Value="TargetPoint"/>
+        <Amount value="-10"/>
+    </CEffectApplyForce>
+    <CEffectDamage id="HeroTalandarThunderousCharge@DamageNonHeroic" parent="CommandersEnergyDamage">
+        <EditorCategories value="CommandersHero:Talandar"/>
+        <Amount value="50"/>
+    </CEffectDamage>
+    <CEffectDamage id="HeroTalandarThunderousCharge@DamageHeroic" parent="CommandersEnergyDamage">
+        <EditorCategories value="CommandersHero:Talandar"/>
+        <Amount value="100"/>
+    </CEffectDamage>
+    <CEffectSet id="HeroTalandarThunderousCharge@ImpactSetHeroic">
+        <ValidatorArray value="noMarkers"/>
+        <EditorCategories value="CommandersHero:Talandar"/>
+        <EffectArray value="HeroTalandarThunderousCharge@DamageHeroic"/>
+        <EffectArray value="HeroTalandarThunderousCharge@RemoveCasterSpeedBuff"/>
+        <EffectArray value="HeroTalandarThunderousCharge@KnockbackCreatePersistent"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="HeroTalandarThunderousCharge@InitialPersistent">
+        <EditorCategories value="CommandersHero:Talandar"/>
+        <Marker>
+            <MatchFlags index="Id" value="1"/>
+        </Marker>
+        <WhichLocation Value="OriginPoint"/>
+        <TimeScaleSource Value="Caster"/>
+        <Flags index="Channeled" value="1"/>
+        <InitialEffect value="HeroTalandarThunderousCharge@ApplySpeed"/>
+        <FinalEffect value="HeroTalandarThunderousCharge@RemoveSpeed"/>
+        <PeriodCount value="4"/>
+        <PeriodicValidator value="HeroTalandarThunderousCharge@CasterHasSpeedBuff"/>
+        <PeriodicEffectArray value="HeroTalandarThunderousCharge@PeriodicSet"/>
+        <PeriodicOffsetArray value="0,-6,0"/>
+        <PeriodicPeriodArray value="0.0625"/>
+    </CEffectCreatePersistent>
+    <CEffectApplyBehavior id="HeroTalandarThunderousCharge@KnockbackApplyBehavior">
+        <EditorCategories value="CommandersHero:Talandar"/>
+        <WhichUnit Effect="HeroTalandarThunderousCharge@ImpactSetHeroic"/>
+        <Behavior value="HeroTalandarThunderousCharge@Knockback"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyForce id="HeroTalandarThunderousCharge@KnockbackApplyForce">
+        <EditorCategories value="CommandersHero:Talandar"/>
+        <WhichLocation Effect="HeroTalandarThunderousCharge@SearchSet" Value="TargetPoint"/>
+        <WhichUnit Effect="HeroTalandarThunderousCharge@ImpactSetHeroic"/>
+        <Amount value="-9000"/>
+    </CEffectApplyForce>
+    <CEffectCreatePersistent id="HeroTalandarThunderousCharge@KnockbackCreatePersistent">
+        <EditorCategories value="CommandersHero:Talandar"/>
+        <WhichLocation Value="CasterPoint"/>
+        <Flags index="PersistUntilDestroyed" value="1"/>
+        <InitialEffect value="HeroTalandarThunderousCharge@KnockbackApplyBehavior"/>
+        <PeriodicValidator value="HeroTalandarThunderousCharge@TargetHasKnockbackBehavior"/>
+        <PeriodicEffectArray value="HeroTalandarThunderousCharge@KnockbackApplyForce"/>
+        <PeriodicPeriodArray value="0.0625"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="HeroTalandarThunderousCharge@MovePersistent">
+        <EditorCategories value="CommandersHero:Talandar"/>
+        <WhichLocation Value="CasterUnit"/>
+        <TimeScaleSource Value="Caster"/>
+        <InitialEffect value="HeroTalandarThunderousCharge@CasterApplyForce"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="HeroTalandarThunderousCharge@OffsetPersistent">
+        <EditorCategories value="CommandersHero:Talandar"/>
+        <WhichLocation Value="CasterPoint"/>
+        <InitialEffect value="HeroTalandarThunderousCharge@SearchSet"/>
+        <InitialOffset value="0,-4,0"/>
+    </CEffectCreatePersistent>
+    <CEffectSet id="HeroTalandarThunderousCharge@PeriodicSet">
+        <EditorCategories value="CommandersHero:Talandar"/>
+        <EffectArray value="HeroTalandarThunderousCharge@MovePersistent"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectRemoveBehavior id="HeroTalandarThunderousCharge@RemoveCasterSpeedBuff">
+        <EditorCategories value="CommandersHero:Talandar"/>
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="HeroTalandarThunderousCharge@Speed"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="HeroTalandarThunderousCharge@RemoveSpeed">
+        <EditorCategories value="CommandersHero:Talandar"/>
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="HeroTalandarThunderousCharge@Speed"/>
+    </CEffectRemoveBehavior>
+    <CEffectSet id="HeroTalandarThunderousCharge@SearchSet">
+        <EditorCategories value="CommandersHero:Talandar"/>
+        <EffectArray value="HeroTalandarThunderousCharge@SearchHeroicTargets"/>
+        <EffectArray value="HeroTalandarThunderousCharge@SearchNonHeroicTargets"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectSet id="HeroTalandarThunderousCharge@ImpactSetNonHeroic">
+        <ValidatorArray value="noMarkers"/>
+        <EditorCategories value="CommandersHero:Talandar"/>
+        <EffectArray value="HeroTalandarThunderousCharge@DamageNonHeroic"/>
+    </CEffectSet>
+    <CEffectEnumArea id="HeroTalandarThunderousCharge@SearchNonHeroicTargets">
+        <EditorCategories value="CommandersHero:Talandar"/>
+        <ImpactLocation Value="SourceUnit"/>
+        <SearchFilters value="-;Player,Ally,Neutral,Mechanical,Massive,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray RectangleWidth="2.5" RectangleHeight="2" Effect="HeroTalandarThunderousCharge@ImpactSetNonHeroic"/>
+        <AreaRelativeOffset value="0,-1"/>
+        <RevealerParams Duration="0.75">
+            <RevealFlags index="Unfog" value="1"/>
+        </RevealerParams>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="HeroTalandarThunderousCharge@SearchHeroicTargets">
+        <EditorCategories value="CommandersHero:Talandar"/>
+        <ImpactLocation Value="SourceUnit"/>
+        <SearchFilters value="Heroic;Player,Ally,Neutral,Mechanical,Massive,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray>
+            <MaxCount value="1"/>
+            <RectangleWidth value="2.5"/>
+            <RectangleHeight value="2"/>
+            <Effect value="HeroTalandarThunderousCharge@ImpactSetHeroic"/>
+        </AreaArray>
+        <MaxCount value="1"/>
+        <AreaRelativeOffset value="0,-1"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="HeroTalandarThunderousCharge@ApplyStunBehavior" parent="CommandersApplyStun">
+        <Name value="Effect/Name/HeroTalandarThunderousCharge@ApplyStunBehavior"/>
+        <EditorCategories value="CommandersHero:Talandar"/>
+        <Behavior value="HeroTalandarThunderousCharge@Stun"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="HeroTalandarWhirlwind@ApplyStun" parent="CommandersApplyStun">
+        <Name value="Effect/Name/HeroTalandarWhirlwind@ApplyStun"/>
+        <EditorCategories value="CommandersHero:Talandar"/>
+        <Behavior value="HeroTalandarWhirlwind@Stun"/>
+    </CEffectApplyBehavior>
+    <CEffectDamage id="HeroTalandarWhirlwind@Damage" parent="CommandersEnergyDamage">
+        <EditorCategories value="CommandersHero:Talandar"/>
+    </CEffectDamage>
+    <CEffectSet id="HeroTalandarWhirlwind@ImpactSet">
+        <EditorCategories value="CommandersHero:Talandar"/>
+        <EffectArray value="HeroTalandarWhirlwind@ApplyStun"/>
+        <EffectArray value="HeroTalandarWhirlwind@Damage"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="HeroTalandarWhirlwind@ApplyAnimationBehavior">
+        <EditorCategories value="CommandersHero:Talandar"/>
+        <Behavior value="HeroTalandarWhirlwind@AnimationBehavior"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="HeroTalandarWhirlwind@InitialSet">
+        <EditorCategories value="CommandersHero:Talandar"/>
+        <EffectArray value="HeroTalandarWhirlwind@ApplyAnimationBehavior"/>
+        <EffectArray value="HeroTalandarWhirlwind@Search"/>
+    </CEffectSet>
+    <CEffectEnumArea id="HeroTalandarWhirlwind@Search">
+        <EditorCategories value="CommandersHero:Talandar"/>
+        <DebugTrace value="1"/>
+        <ImpactLocation Value="SourceUnit"/>
+        <SearchFilters value="-;Player,Ally,Neutral,Mechanical,Missile,Stasis,Dead,Invulnerable,Unstoppable"/>
+        <AreaArray Radius="3" Effect="HeroTalandarWhirlwind@ImpactSet"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="TemplateDashAbilityApplyForce@ApplySpeed">
+        <WhichUnit Value="Source"/>
+        <Behavior value="TemplateDashAbilityApplyForce@Speed"/>
+    </CEffectApplyBehavior>
+    <CEffectCreatePersistent id="PsiStrike">
+        <InitialDelay value="0"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="TemplateDashAbilityApplyForce@InitialPersistent">
+        <Marker>
+            <MatchFlags index="Id" value="1"/>
+        </Marker>
+        <WhichLocation Value="OriginPoint"/>
+        <TimeScaleSource Value="Caster"/>
+        <Flags index="Channeled" value="1"/>
+        <InitialEffect value="TemplateDashAbilityApplyForce@ApplySpeed"/>
+        <FinalEffect value="TemplateDashAbilityApplyForce@RemoveSpeed"/>
+        <PeriodCount value="4"/>
+        <PeriodicValidator value="TemplateDashAbilityApplyForce@CasterHasSpeedBuff"/>
+        <PeriodicEffectArray value="TemplateDashAbilityApplyForce@PeriodicSet"/>
+        <PeriodicOffsetArray value="0,-4,0"/>
+        <PeriodicPeriodArray value="0.0625"/>
+    </CEffectCreatePersistent>
+    <CEffectApplyForce id="TemplateDashAbilityApplyForce@CasterApplyForce">
+        <WhichLocation Effect="TemplateDashAbilityApplyForce@PeriodicSet" Value="TargetPoint"/>
+        <Amount value="-10"/>
+    </CEffectApplyForce>
+    <CEffectDamage id="TemplateDashAbilityApplyForce@Damage" parent="DU_WEAP">
+        <AINotifyFlags index="HurtEnemy" value="1"/>
+        <Kind value="Splash"/>
+        <Amount value="50"/>
+    </CEffectDamage>
+    <CEffectCreatePersistent id="TemplateDashAbilityApplyForce@MovePersistent">
+        <WhichLocation Value="SourceUnit"/>
+        <TimeScaleSource Value="Caster"/>
+        <Flags index="Channeled" value="1"/>
+        <InitialEffect value="TemplateDashAbilityApplyForce@CasterApplyForce"/>
+    </CEffectCreatePersistent>
+    <CEffectSet id="TemplateDashAbilityApplyForce@PeriodicSet">
+        <EffectArray value="TemplateDashAbilityApplyForce@TargetSearch"/>
+        <EffectArray value="TemplateDashAbilityApplyForce@MovePersistent"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectEnumArea id="TemplateDashAbilityApplyForce@TargetSearch">
+        <DebugTrace value="1"/>
+        <ImpactLocation Value="SourceUnit"/>
+        <SearchFilters value="-;Player,Ally,Neutral,Mechanical,Massive,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray RectangleWidth="2.5" RectangleHeight="1.5" Effect="TemplateDashAbilityApplyForce@TargetImpactSet"/>
+        <AreaRelativeOffset value="0,-1"/>
+    </CEffectEnumArea>
+    <CEffectSet id="TemplateDashAbilityApplyForce@TargetImpactSet">
+        <ValidatorArray value="noMarkers"/>
+        <EffectArray value="TemplateDashAbilityApplyForce@Damage"/>
+    </CEffectSet>
+    <CEffectRemoveBehavior id="TemplateDashAbilityApplyForce@RemoveSpeed">
+        <WhichUnit Value="Source"/>
+        <BehaviorLink value="TemplateDashAbilityApplyForce@Speed"/>
+    </CEffectRemoveBehavior>
+    <CEffectApplyBehavior id="TemplateDashAbilityIssueMoveOrder@ApplyBehavior2">
+        <WhichUnit Value="Caster"/>
+        <Behavior value="TemplateDashAbilityIssueMoveOrder"/>
+    </CEffectApplyBehavior>
+    <CEffectCancelOrder id="TemplateDashAbilityIssueMoveOrder@CancelOrder">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <AbilCmd value="move,Move"/>
+    </CEffectCancelOrder>
+    <CEffectSet id="TemplateDashAbilityIssueMoveOrder@FinalSet">
+        <EffectArray value="TemplateDashAbilityIssueMoveOrder@RemoveBehavior"/>
+        <EffectArray value="TemplateDashAbilityIssueMoveOrder@CancelOrder"/>
+    </CEffectSet>
+    <CEffectEnumArea id="TemplateDashAbilityIssueMoveOrder@InitialTargetSearch">
+        <LaunchLocation Value="CasterUnit"/>
+        <ImpactLocation Value="CasterUnit"/>
+        <SearchFilters value="Heroic;Player,Ally,Neutral,Mechanical,Structure,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray>
+            <Arc value="90"/>
+            <MaxCount value="1"/>
+            <Radius value="0.75"/>
+            <Effect value="LungeSwitch2"/>
+        </AreaArray>
+        <AreaRelativeOffset value="0,-1"/>
+        <MaxCount value="1"/>
+    </CEffectEnumArea>
+    <CEffectIssueOrder id="TemplateDashAbilityIssueMoveOrder@IssueMoveOrder">
+        <WhichUnit Value="Caster"/>
+        <Abil value="move"/>
+        <Player Value="Caster"/>
+        <Target Effect="TemplateDashAbilityIssueMoveOrder@OffsetPersistent" Value="TargetPoint"/>
+    </CEffectIssueOrder>
+    <CEffectCreatePersistent id="TemplateDashAbilityIssueMoveOrder@OffsetPersistent">
+        <TimeScaleSource Value="Caster"/>
+        <InitialEffect value="TemplateDashAbilityIssueMoveOrder@Set"/>
+        <ExpireDelay value="0.5"/>
+        <FinalEffect value="TemplateDashAbilityIssueMoveOrder@FinalSet"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="TemplateDashAbilityIssueMoveOrder@Persistent">
+        <Marker>
+            <MatchFlags index="Id" value="1"/>
+        </Marker>
+        <WhichLocation Value="CasterPoint"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="TemplateDashAbilityIssueMoveOrder@OffsetPersistent"/>
+        <PeriodicOffsetArray value="0,-7,0"/>
+    </CEffectCreatePersistent>
+    <CEffectRemoveBehavior id="TemplateDashAbilityIssueMoveOrder@RemoveBehavior">
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="TemplateDashAbilityIssueMoveOrder"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectSet id="TemplateDashAbilityIssueMoveOrder@Set">
+        <EffectArray value="TemplateDashAbilityIssueMoveOrder@ApplyBehavior2"/>
+        <EffectArray value="TemplateDashAbilityIssueMoveOrder@IssueMoveOrder"/>
+    </CEffectSet>
+    <CEffectEnumArea id="TemplateDashAbilityIssueMoveOrder@TargetSearch">
+        <LaunchLocation Value="CasterUnit"/>
+        <ImpactLocation Value="CasterUnit"/>
+        <SearchFilters value="Heroic;Player,Ally,Neutral,Mechanical,Missile,Item,Stasis,Dead,Hidden"/>
+        <AreaArray>
+            <Arc value="180"/>
+            <MaxCount value="1"/>
+            <Radius value="1"/>
+            <Effect value="LungeSwitch2"/>
+        </AreaArray>
+        <AreaRelativeOffset value="0,-0.5"/>
+        <MaxCount value="1"/>
+        <SearchFlags index="OffsetByUnitRadius" value="1"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="ApplyBenignBehaviorCaster">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="Benign"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="ApplyBenignBehaviorTarget">
+        <EditorCategories value=""/>
+        <Behavior value="Benign"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="ApplyBenignBehaviorSource">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Source"/>
+        <Behavior value="Benign"/>
+    </CEffectApplyBehavior>
+    <CEffectAddTrackedUnit id="CommandersAddSummonedUnitToTrackedList">
+        <EditorCategories value=""/>
+        <BehaviorLink value="CommandersHeroSummonedUnitTracker"/>
+        <TrackedUnit Value="Target"/>
+    </CEffectAddTrackedUnit>
+    <CEffectRemoveBehavior id="CommandersRemoveArmorEnergeticCreepBehaviors">
+        <EditorCategories value=""/>
+        <StackAlias value="ArmorEnergeticCreep"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="CommandersRemovePowerEnergeticBehaviors">
+        <EditorCategories value=""/>
+        <StackAlias value="PowerEnergetic"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="CommandersRemoveArmorKineticCreepBehaviors">
+        <EditorCategories value=""/>
+        <StackAlias value="ArmorKineticCreep"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="CommandersRemoveArmorEnergeticHeroBehaviors">
+        <EditorCategories value=""/>
+        <StackAlias value="ArmorEnergeticHero"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="CommandersRemoveArmorStormCreepBehaviors">
+        <EditorCategories value=""/>
+        <StackAlias value="ArmorStormCreep"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="CommandersRemoveArmorKineticHeroBehaviors">
+        <EditorCategories value=""/>
+        <StackAlias value="ArmorKineticHero"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="CommandersRemoveArmorEnergeticMercenaryBehaviors">
+        <EditorCategories value=""/>
+        <StackAlias value="ArmorEnergeticMercenary"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="CommandersRemoveArmorStormHeroBehaviors">
+        <EditorCategories value=""/>
+        <StackAlias value="ArmorStormHero"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="CommandersRemoveArmorKineticMercenaryBehaviors">
+        <EditorCategories value=""/>
+        <StackAlias value="ArmorKineticMercenary"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="CommandersRemoveArmorEnergeticMinionBehaviors">
+        <EditorCategories value=""/>
+        <StackAlias value="ArmorEnergeticMinion"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="CommandersRemoveArmorStormMercenaryBehaviors">
+        <EditorCategories value=""/>
+        <StackAlias value="ArmorStormMercenary"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="CommandersRemoveArmorKineticMinionBehaviors">
+        <EditorCategories value=""/>
+        <StackAlias value="ArmorKineticMinion"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="CommandersRemoveArmorEnergeticStructureBehaviors">
+        <EditorCategories value=""/>
+        <StackAlias value="ArmorEnergeticStructure"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="CommandersRemoveArmorStormMinionBehaviors">
+        <EditorCategories value=""/>
+        <StackAlias value="ArmorStormMinion"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="CommandersRemoveArmorKineticStructureBehaviors">
+        <EditorCategories value=""/>
+        <StackAlias value="ArmorKineticStructure"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="CommandersRemoveArmorEnergeticSummonBehaviors">
+        <EditorCategories value=""/>
+        <StackAlias value="ArmorEnergeticSummon"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="CommandersRemoveArmorStormStructureBehaviors">
+        <EditorCategories value=""/>
+        <StackAlias value="ArmorStormStructure"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="CommandersRemoveArmorKineticSummonBehaviors">
+        <EditorCategories value=""/>
+        <StackAlias value="ArmorKineticSummon"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="CommandersRemoveArmorStormSummonBehaviors">
+        <EditorCategories value=""/>
+        <StackAlias value="ArmorStormSummon"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="CommandersRemovePowerKineticBehaviors">
+        <EditorCategories value=""/>
+        <StackAlias value="PowerKinetic"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="CommandersRemovePowerStormBehaviors">
+        <EditorCategories value=""/>
+        <StackAlias value="PowerStorm"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="CommandersRemoveHealingTakenBehaviors">
+        <EditorCategories value=""/>
+        <StackAlias value="HealingTaken"/>
+    </CEffectRemoveBehavior>
+    <CEffectSet id="CommandersSummonedUnitBirth">
+        <EditorCategories value=""/>
+    </CEffectSet>
+    <CEffectCreateHealer id="CommandersVampiricHealerEnergetic" parent="CommandersCreateHealerEnergetic">
+        <TechAliasArray value="Base"/>
+        <RechargeVitalRate value="0">
+            <AccumulatorArray value="CommandersHealingVampiricEnergetic"/>
+        </RechargeVitalRate>
+    </CEffectCreateHealer>
+    <CEffectCreateHealer id="CommandersVampiricHealerStorm" parent="CommandersCreateHealerStorm">
+        <TechAliasArray value="Base"/>
+        <RechargeVitalRate value="0">
+            <AccumulatorArray value="CommandersHealingVampiricStorm"/>
+        </RechargeVitalRate>
+    </CEffectCreateHealer>
+    <CEffectCreateHealer id="CommandersVampiricHealerKinetic" parent="CommandersCreateHealerKinetic">
+        <TechAliasArray value="Base"/>
+        <RechargeVitalRate value="0">
+            <AccumulatorArray value="CommandersHealingVampiricKinetic"/>
+        </RechargeVitalRate>
+    </CEffectCreateHealer>
+    <CEffectApplyBehavior id="HeroGeneric_RegenGlobePickup_AB_GlobeMana">
+        <ValidatorArray index="0" value="TargetIsManaUser"/>
+        <EditorCategories value=""/>
+        <Behavior value="HeroGeneric_RegenGlobeImpact_RegenGlobeMana"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="RemoveBehaviorStackAliasTriggersFunctionOnly"/>
+    <CEffectSet id="ContinuousQuestIncreaseContinue">
+        <EditorCategories value=""/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="HeroGeneric_HearthstoneReturn_ApplyCasterBehavior">
+        <ValidatorArray index="0" removed="1"/>
+        <EditorCategories value="CommandersHero:Common"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="HeroGeneric_Hearthstone_CasterBehavior"/>
+    </CEffectApplyBehavior>
+    <!--        <ValidatorArray value="HeroGeneric_Hearthstone_CasterIsNotHeartingTargetPoint"/>-->
+    <CEffectSet id="HeroGeneric_HearthstoneReturn_TriggerDummySet">
+        <ValidatorArray value="HunterCliffCheckCasterLevel1"/>
+        <EditorCategories value="CommandersHero:Common"/>
+    </CEffectSet>
+    <CEffectDamage id="BuildingProtoss_Weapon_Keep_Damage" parent="CommandersKineticDamage">
+        <EditorCategories value="CommandersHero:Tileset"/>
+        <AttributeFactor index="Summoned" value="-0.25"/>
+        <Amount value="500"/>
+    </CEffectDamage>
+    <CEffectEnumArea id="MinionProtoss_Weapon_Catapult_ImpactSearch">
+        <EditorCategories value="CommandersHero:Minions"/>
+        <SearchFilters value="-;Player,Ally,Neutral,Mechanical,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="1" Effect="MinionProtoss_Weapon_Catapult_Damage"/>
+    </CEffectEnumArea>
+    <CEffectDamage id="MinionProtoss_Weapon_Catapult_Damage" parent="CommandersKineticDamage">
+        <ValidatorArray index="0" removed="1"/>
+        <ValidatorArray index="1" removed="1"/>
+        <EditorCategories value="CommandersHero:Minions"/>
+        <AttributeFactor index="Biological" value="0.5"/>
+        <AttributeFactor index="Structure" value="2"/>
+        <Amount value="60"/>
+    </CEffectDamage>
+    <CEffectRemoveBehavior id="RemoveBenignBehaviorCaster">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="Benign"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="RemoveBenignBehaviorTarget">
+        <EditorCategories value=""/>
+        <BehaviorLink value="Benign"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="RemoveBenignBehaviorSource">
+        <EditorCategories value=""/>
+        <BehaviorLink value="Benign"/>
+    </CEffectRemoveBehavior>
+    <CEffectSet id="TalentQuestCompleteDummySet">
+        <EditorCategories value=""/>
+    </CEffectSet>
+    <CEffectModifyUnit id="SafeZone_Ally_RegenerateShields">
+        <ValidatorArray value="ShieldsNotFull"/>
+        <ValidatorArray value="CanHaveShields"/>
+        <EditorCategories value="CommandersHero:Tileset"/>
+        <VitalArray index="Shields">
+            <ChangeFraction value="0.02"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectApplyBehavior id="SafeZone_Knockback_ApplyStun">
+        <EditorCategories value="CommandersHero:Tileset"/>
+        <Behavior value="SafeZone_Knockback_Stun"/>
+    </CEffectApplyBehavior>
+    <CEffectModifyUnit id="BuildingProtoss_Weapon_Fort_RemoveAmmo">
+        <EditorCategories value="CommandersHero:Tileset"/>
+        <ImpactUnit Value="Caster"/>
+        <VitalArray index="Energy">
+            <Change value="1"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectSet id="SafeZone_Knockback_DummyTriggerSet">
+        <EditorCategories value="CommandersHero:Tileset"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="SafeZone_Knockback_ApplyDebuff">
+        <EditorCategories value="CommandersHero:Tileset"/>
+        <Behavior value="SaveZone_KnockbackDebuff"/>
+    </CEffectApplyBehavior>
+    <CEffectDamage id="BuildingProtoss_Weapon_Fort_Damage" parent="CommandersKineticDamage">
+        <EditorCategories value="CommandersHero:Tileset"/>
+        <AttributeFactor index="Summoned" value="-0.25"/>
+        <Flags index="NoLeech" value="1"/>
+        <Flags index="NoVitalLeechLife" value="1"/>
+        <Flags index="NoVitalLeechShields" value="1"/>
+        <Flags index="NoVitalLeechEnergy" value="1"/>
+        <Amount value="350"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="HeroGenericMissileInterruptLaunchMissileSource">
+        <EditorCategories value="CommandersHero:Common"/>
+        <Flags index="2D" value="1"/>
+        <Flags index="Placement" value="1"/>
+        <Flags index="PlacementIgnoreBlockers" value="1"/>
+        <Flags index="ValidateAbil" value="0"/>
+        <Flags index="ValidateTeleport" value="0"/>
+        <Flags index="ValidateWeapon" value="0"/>
+        <AmmoUnit value=""/>
+        <PlacementRange value="10"/>
+        <Movers Link="HeroMissileInterruptedMover"/>
+        <DeathType value="Unknown"/>
+        <ImpactLocation Value="SourceUnit"/>
+        <ValidatorArray index="0" value="SourceUnitNotPathable"/>
+        <ValidatorArray value="SourceNotDead"/>
+    </CEffectLaunchMissile>
+    <CEffectSet id="Commanders_DummyCooldownEffect_Caster"/>
+    <CEffectSet id="Commanders_DummyCooldownEffect_Target"/>
+    <CEffectLaunchMissile id="HeroGenericMissileInterruptLaunchMissile">
+        <ValidatorArray index="0" value="CasterUnitIsNotCurrentlyOnPathableGround"/>
+        <ValidatorArray value="CasterNotDead"/>
+        <ValidatorArray value="ArtanisPhasePrismNoTargetingBehaviorCaster"/>
+        <ValidatorArray value="StitchesCasterNotHooked"/>
+        <LaunchLocation Value="CasterUnit"/>
+        <ImpactLocation Value="CasterUnit"/>
+        <Flags index="2D" value="1"/>
+        <Flags index="Placement" value="1"/>
+        <Flags index="PlacementIgnoreBlockers" value="1"/>
+        <Flags index="ValidateAbil" value="0"/>
+        <Flags index="ValidateTeleport" value="0"/>
+        <Flags index="ValidateWeapon" value="0"/>
+        <AmmoUnit value=""/>
+        <PlacementAround Value="CasterUnit"/>
+        <PlacementRange value="10"/>
+        <Movers Link="HeroMissileInterruptedMover"/>
+        <DeathType value="Unknown"/>
+    </CEffectLaunchMissile>
+    <CEffectCreatePersistent id="HeroGenericMissileInterruptLaunchMissileSourceDelay">
+        <EditorCategories value="CommandersHero:Common"/>
+        <InitialEffect value="HeroGenericMissileInterruptLaunchMissileSource"/>
+    </CEffectCreatePersistent>
+    <CEffectCreateUnit id="HeroGeneric_Hearthstone_CreatePlaceholder">
+        <ValidatorArray value="Walkable"/>
+        <ValidatorArray value="HasVisionOfTarget"/>
+        <ValidatorArray value="HeroNotInCombat"/>
+        <EditorCategories value="CommandersHero:Common"/>
+        <WhichLocation Value="TargetPoint"/>
+        <CreateFlags index="DropOff" value="0"/>
+        <CreateFlags index="OffsetByRadius" value="0"/>
+        <CreateFlags index="NormalizeSpawnOffset" value="0"/>
+        <SpawnEffect value="HeroGeneric_Hearthstone_ApplyPlaceholderBehavior"/>
+        <SpawnUnit value="HeroGenericHearthstoneUnit"/>
+    </CEffectCreateUnit>
+    <CEffectCreatePersistent id="MinionProtoss_Weapon_Catapult_CP">
+        <ValidatorArray value="CasterNotDead"/>
+        <EditorCategories value="CommandersHero:Minions"/>
+        <InitialDelay value="0.25"/>
+        <InitialEffect value="MinionProtoss_Weapon_Catapult_LM"/>
+        <PeriodCount value="1"/>
+        <PeriodicPeriodArray value="1.25"/>
+    </CEffectCreatePersistent>
+    <CEffectApplyBehavior id="GateTower_TowerController_AB_Death">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="GateTower_TowerController_AfterDeathBehavior"/>
+    </CEffectApplyBehavior>
+    <CEffectDamage id="GateTower_TowerController_DeadTowerSuicide">
+        <ImpactLocation Value="SourceUnit"/>
+        <Flags index="Kill" value="1"/>
+        <Flags index="NoKillCredit" value="1"/>
+    </CEffectDamage>
+    <CEffectSet id="BuildingProtoss_Weapon_Keep_ImpactSet">
+        <EditorCategories value="CommandersHero:Tileset"/>
+        <EffectArray value="BuildingProtoss_Weapon_Keep_Damage"/>
+        <EffectArray value="BuildingProtoss_Weapon_Keep_ApplySlow"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="BuildingProtoss_Weapon_Keep_ApplySlow">
+        <EditorCategories value="CommandersHero:Tileset"/>
+        <Behavior value="Building_Town_Slowed"/>
+    </CEffectApplyBehavior>
+    <CEffectLaunchMissile id="MinionProtoss_Weapon_Catapult_LM">
+        <EditorCategories value="CommandersHero:Minions"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <ImpactEffect value="MinionProtoss_Weapon_Catapult_ImpactSearch"/>
+        <AmmoUnit value="MinionProtoss_Weapon_Catapult_AttackMissile"/>
+        <ImpactRange value="1"/>
+    </CEffectLaunchMissile>
+    <CEffectDamage id="BuildingProtoss_Weapon_Core_Damage" parent="CommandersKineticDamage">
+        <EditorCategories value="CommandersHero:Tileset"/>
+        <AttributeFactor index="Biological" value="4"/>
+        <AttributeFactor index="Robotic" value="-3"/>
+        <Flags index="NoLeech" value="1"/>
+        <Flags index="NoVitalLeechLife" value="1"/>
+        <Flags index="NoVitalLeechShields" value="1"/>
+        <Flags index="NoVitalLeechEnergy" value="1"/>
+        <Amount value="300"/>
+    </CEffectDamage>
+    <CEffectSet id="BuildingProtoss_Weapon_Core_ImpactSet">
+        <EditorCategories value="CommandersHero:Tileset"/>
+        <EffectArray value="BuildingProtoss_Weapon_Core_Damage"/>
+    </CEffectSet>
+    <CEffectLaunchMissile id="BuildingProtoss_Weapon_Core_LM">
+        <EditorCategories value="CommandersHero:Tileset"/>
+        <ImpactEffect value="BuildingProtoss_Weapon_Core_ImpactSet"/>
+        <AmmoUnit value="Nexus_Weapon_Missile"/>
+        <Movers Link="BuildingProtoss_Weapon_Core_Missile"/>
+    </CEffectLaunchMissile>
+    <!--        <ValidatorArray value="HeroGeneric_Hearthstone_CasterIsNotHeartingReturnToBase"/>-->
+    <CEffectTeleport id="HeroGeneric_Hearthstone_Teleport">
+        <EditorCategories value="CommandersHero:Common"/>
+        <WhichUnit Value="Caster"/>
+        <MinDistance value="0"/>
+        <PlacementArc value="360"/>
+        <PlacementRange value="7"/>
+        <TargetLocation Value="TargetPoint"/>
+        <TeleportFlags index="TestFog" value="0"/>
+        <ValidatorArray value="HunterCliffCheckTargetLevel1"/>
+    </CEffectTeleport>
+    <CEffectApplyBehavior id="ShieldB_Shielding_AB">
+        <ValidatorArray index="0" value="TargetLifeNotFull"/>
+        <EditorCategories value="Race:Terran"/>
+        <Behavior value="ShieldB_Shielding_DummyBehavior"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="Storm_Weapon_HeroTraitWeaponSet">
+        <EditorCategories value=""/>
+        <EffectArray value=""/>
+        <EffectArray value=""/>
+        <EffectArray value=""/>
+        <EffectArray value=""/>
+        <EffectArray value=""/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="Building_AmmoReload_ApplyReload_Tower">
+        <ValidatorArray index="0" value="EnergyFullCaster"/>
+        <ValidatorArray value="Building_Tower_HasNoReload"/>
+        <EditorCategories value="CommandersHero:Tileset"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="Building_Tower_AmmoReload"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="TalentQuestProgressDummySet">
+        <EditorCategories value=""/>
+    </CEffectSet>
+    <CEffectSet id="MinionProtoss_Weapon_Psionic_ImpactSet">
+        <EditorCategories value="CommandersHero:Minions"/>
+        <EffectArray value="MinionProtoss_Weapon_Psionic_Damage"/>
+    </CEffectSet>
+    <CEffectDamage id="MinionProtoss_Weapon_Psionic_Damage" parent="CommandersKineticDamage">
+        <EditorCategories value="CommandersHero:Minions"/>
+        <AttributeFactor index="Biological" value="1.5"/>
+        <AttributeFactor index="Robotic" value="-1.5"/>
+        <Amount value="17"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="MinionProtss_Weapon_Psionic_LM">
+        <EditorCategories value="CommandersHero:Minions"/>
+        <ImpactEffect value="MinionProtoss_Weapon_Psionic_ImpactSet"/>
+        <AmmoUnit value="MinionProtoss_Weapon_Psionic_AttackMissile"/>
+        <Movers Link="HighTemplarWeapon"/>
+    </CEffectLaunchMissile>
+    <CEffectDamage id="MinionProtoss_Weapon_Ranged_Damage" parent="CommandersKineticDamage">
+        <EditorCategories value="CommandersHero:Minions"/>
+        <AttributeFactor index="Biological" value="1"/>
+        <AttributeFactor index="Robotic" value="-1"/>
+        <Amount value="40"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="MininonProtoss_Weapon_Ranged_LaunchMissile">
+        <EditorCategories value="CommandersHero:Minions"/>
+        <ImpactEffect value="MinionProtoss_Weapon_Ranged_Damage"/>
+        <AmmoUnit value="MinionProtoss_Weapon_Ranged_AttackMissile"/>
+        <Movers Link="MinionProtoss_Weapon_Ranged_Mover"/>
+    </CEffectLaunchMissile>
+    <CEffectDamage id="MinionProtoss_Weapon_Melee_Damage" parent="CommandersKineticDamage">
+        <EditorCategories value="CommandersHero:Minions"/>
+        <AttributeFactor index="Biological" value="0.5"/>
+        <AttributeFactor index="Robotic" value="-0.5"/>
+        <Amount value="30"/>
+    </CEffectDamage>
+    <CEffectSet id="AssistMePing">
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectCreateUnit id="HeroGeneric_CreateGlobe">
+        <EditorCategories value=""/>
+        <WhichLocation Value="SourceUnitOrPoint"/>
+        <Origin Value="CasterUnitOrPoint"/>
+        <CreateFlags index="DropOff" value="0"/>
+        <CreateFlags index="OffsetByRadius" value="0"/>
+        <CreateFlags index="Placement" value="0"/>
+        <CreateFlags index="PlacementIgnoreBlockers" value="1"/>
+        <CreateFlags index="PlacementIgnoreCliffTest" value="1"/>
+        <CreateFlags index="ProvideFood" value="0"/>
+        <CreateFlags index="TechComplete" value="0"/>
+        <CreateFlags index="UseFood" value="0"/>
+        <CreateFlags index="NormalizeSpawnOffset" value="0"/>
+        <SpawnOwner Value="Caster"/>
+        <SpawnUnit value="RegenGlobe"/>
+    </CEffectCreateUnit>
+    <CEffectApplyBehavior id="Building_AmmoReload_ApplyReload_Town">
+        <ValidatorArray index="0" value="EnergyFullCaster"/>
+        <ValidatorArray value="Building_Town_HasNoReload"/>
+        <EditorCategories value="CommandersHero:Tileset"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="Building_Town_AmmoReload"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="BuildingProtoss_Weapon_Fort_ApplySlowBehavior">
+        <EditorCategories value="CommandersHero:Tileset"/>
+        <Behavior value="Building_Town_Slowed"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="BuildingProtoss_Weapon_Fort_ImpactSet">
+        <EditorCategories value="CommandersHero:Tileset"/>
+        <EffectArray value="BuildingProtoss_Weapon_Fort_Damage"/>
+        <EffectArray value="BuildingProtoss_Weapon_Fort_ApplySlowBehavior"/>
+    </CEffectSet>
+    <CEffectSet id="BuildingProtoss_Weapon_Fort_InitialSet">
+        <EditorCategories value="CommandersHero:Tileset"/>
+        <EffectArray value="BuildingProtoss_Weapon_Fort_LM"/>
+        <EffectArray value="BuildingProtoss_Weapon_Fort_RemoveAmmo"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="Tower_KhaydarinMonolith_T1_Weapon_CP">
+        <EditorCategories value=""/>
+        <WhichLocation Value="TargetUnit"/>
+        <ExpireEffect value="BuildingProtoss_Weapon_Fort_LM"/>
+        <PeriodCount value="8"/>
+        <PeriodicValidator value="GuardTowerTargetInRange"/>
+        <PeriodicPeriodArray value="0.0625"/>
+    </CEffectCreatePersistent>
+    <CEffectLaunchMissile id="BuildingProtoss_Weapon_Fort_LM">
+        <ValidatorArray index="0" value="TargetNotDead"/>
+        <EditorCategories value="CommandersHero:Tileset"/>
+        <ImpactEffect value="BuildingProtoss_Weapon_Fort_ImpactSet"/>
+        <AmmoUnit value="BuildingProtoss_Weapon_Fort_Missile"/>
+    </CEffectLaunchMissile>
+    <CEffectCreatePersistent id="TownWorkerRepair">
+        <ValidatorArray value="NotFullLifeAndEnergy"/>
+        <WhichLocation Value="TargetUnit"/>
+        <TimeScaleSource Value="Caster"/>
+        <Flags index="Channeled" value="1"/>
+        <Flags index="PersistUntilDestroyed" value="1"/>
+        <PeriodicValidator value="NotFullLifeAndEnergy"/>
+        <PeriodicEffectArray value="TownWorkerRepairHealth"/>
+        <PeriodicPeriodArray value="0.5"/>
+    </CEffectCreatePersistent>
+    <CEffectModifyUnit id="TownWorkerRepairHealth">
+        <VitalArray index="Life">
+            <Change value="12"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectSet id="DangerPingPoint">
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="KingsCoreWeaponDelay">
+        <EditorCategories value=""/>
+        <WhichLocation Value="TargetUnit"/>
+        <InitialDelay value="0.25"/>
+        <FinalEffect value="KingsCoreWeaponSearch"/>
+        <ValidatorArray value="TargetDoesNotHaveStartupDelay"/>
+    </CEffectCreatePersistent>
+    <CEffectSet id="OnMyWayPing">
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectRemoveBehavior id="RemoveRevealedSuppressHoldFireBehavior">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Source"/>
+        <BehaviorLink value="RevealedSuppressHoldFire"/>
+    </CEffectRemoveBehavior>
+    <CEffectApplyBehavior id="RevealedApplySuppressHoldFireBehavior">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Source"/>
+        <Behavior value="RevealedSuppressHoldFire"/>
+    </CEffectApplyBehavior>
+    <CEffectModifyUnit id="HammerOfTheLightbringerModifyUnit">
+        <EditorCategories value=""/>
+        <ImpactUnit Value="Caster"/>
+        <VitalArray index="Energy">
+            <Change value="5"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectSet id="DangerPingUnit"/>
+    <CEffectSet id="RetreatPing">
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectSet id="DefendPing">
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="BaseRepulserFieldApplyRecentDamageTakenBehavior">
+        <Behavior value="BaseRepulserFieldRecentDamageTaken"/>
+    </CEffectApplyBehavior>
+    <CEffectModifyUnit id="JungleCreepSoftLeashingHealing1">
+        <EditorCategories value=""/>
+        <ImpactUnit Value="Source"/>
+        <VitalArray index="Life">
+            <ChangeFraction value="0.025"/>
+        </VitalArray>
+        <VitalArray index="Shields">
+            <ChangeFraction value="0.025"/>
+        </VitalArray>
+        <VitalArray index="Energy">
+            <ChangeFraction value="0.025"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectModifyUnit id="JungleCreepSoftLeashingHealing2">
+        <EditorCategories value=""/>
+        <ImpactUnit Value="Source"/>
+        <VitalArray index="Life">
+            <ChangeFraction value="0.1"/>
+        </VitalArray>
+        <VitalArray index="Shields">
+            <ChangeFraction value="0.1"/>
+        </VitalArray>
+        <VitalArray index="Energy">
+            <ChangeFraction value="0.1"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectModifyUnit id="JungleCreepSoftLeashingHealing3">
+        <EditorCategories value=""/>
+        <ImpactUnit Value="Source"/>
+        <VitalArray index="Life">
+            <ChangeFraction value="0.25"/>
+        </VitalArray>
+        <VitalArray index="Shields">
+            <ChangeFraction value="0.25"/>
+        </VitalArray>
+        <VitalArray index="Energy">
+            <ChangeFraction value="0.25"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectModifyUnit id="JungleCreepSoftLeashingHealing4">
+        <EditorCategories value=""/>
+        <ImpactUnit Value="Source"/>
+        <VitalArray index="Life">
+            <ChangeFraction value="0.35"/>
+        </VitalArray>
+        <VitalArray index="Shields">
+            <ChangeFraction value="0.35"/>
+        </VitalArray>
+        <VitalArray index="Energy">
+            <ChangeFraction value="0.35"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectModifyUnit id="JungleCreepSoftLeashingHealing5">
+        <EditorCategories value=""/>
+        <ImpactUnit Value="Source"/>
+        <VitalArray index="Life">
+            <ChangeFraction value="0.5"/>
+        </VitalArray>
+        <VitalArray index="Shields">
+            <ChangeFraction value="0.5"/>
+        </VitalArray>
+        <VitalArray index="Energy">
+            <ChangeFraction value="0.5"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectModifyUnit id="JungleCreepSoftLeashingHealing6">
+        <EditorCategories value=""/>
+        <ImpactUnit Value="Source"/>
+        <VitalArray index="Life">
+            <ChangeFraction value="1"/>
+        </VitalArray>
+        <VitalArray index="Shields">
+            <ChangeFraction value="1"/>
+        </VitalArray>
+        <VitalArray index="Energy">
+            <ChangeFraction value="1"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectCreatePersistent id="JungleCreepSoftLeashingHealingPersistent">
+        <EditorCategories value=""/>
+        <WhichLocation Value="SourceUnit"/>
+        <PeriodCount value="65535"/>
+        <PeriodicValidator value="SourceHasJungleSoftLeashing"/>
+        <PeriodicEffectArray value="JungleCreepSoftLeashingHealing1"/>
+        <PeriodicEffectArray value="JungleCreepSoftLeashingHealing1"/>
+        <PeriodicEffectArray value="JungleCreepSoftLeashingHealing1"/>
+        <PeriodicEffectArray value="JungleCreepSoftLeashingHealing2"/>
+        <PeriodicEffectArray value="JungleCreepSoftLeashingHealing3"/>
+        <PeriodicEffectArray value="JungleCreepSoftLeashingHealing4"/>
+        <PeriodicEffectArray value="JungleCreepSoftLeashingHealing5"/>
+        <PeriodicEffectArray value="JungleCreepSoftLeashingHealing6"/>
+        <PeriodicEffectArray value="JungleCreepSoftLeashingHealing6"/>
+        <PeriodicEffectArray value="JungleCreepSoftLeashingHealing6"/>
+        <PeriodicEffectArray value="JungleCreepSoftLeashingHealing6"/>
+        <PeriodicEffectArray value="JungleCreepSoftLeashingHealing6"/>
+        <PeriodicEffectArray value="JungleCreepSoftLeashingHealing6"/>
+        <PeriodicEffectArray value="JungleCreepSoftLeashingHealing6"/>
+        <PeriodicEffectArray value="JungleCreepSoftLeashingHealing6"/>
+        <PeriodicEffectArray value="JungleCreepSoftLeashingHealing6"/>
+        <PeriodicEffectArray value="JungleCreepSoftLeashingHealing6"/>
+        <PeriodicEffectArray value="JungleCreepSoftLeashingHealing6"/>
+        <PeriodicEffectArray value="JungleCreepSoftLeashingHealing6"/>
+        <PeriodicEffectArray value="JungleCreepSoftLeashingHealing6"/>
+        <PeriodicEffectArray value="JungleCreepSoftLeashingHealing6"/>
+        <PeriodicEffectArray value="JungleCreepSoftLeashingHealing6"/>
+        <PeriodicEffectArray value="JungleCreepSoftLeashingHealing6"/>
+        <PeriodicEffectArray value="JungleCreepSoftLeashingHealing6"/>
+        <PeriodicEffectArray value="JungleCreepSoftLeashingHealing6"/>
+        <PeriodicEffectArray value="JungleCreepSoftLeashingHealing6"/>
+        <PeriodicEffectArray value="JungleCreepSoftLeashingHealing6"/>
+        <PeriodicEffectArray value="JungleCreepSoftLeashingHealing6"/>
+        <PeriodicEffectArray value="JungleCreepSoftLeashingHealing6"/>
+        <PeriodicPeriodArray value="1"/>
+        <InitialDelay value="0.5"/>
+    </CEffectCreatePersistent>
+    <CEffectDamage id="KillDeadCannonTower">
+        <ValidatorArray value="IsDeadCannonTower"/>
+        <Flags index="Kill" value="1"/>
+    </CEffectDamage>
+    <CEffectSet id="MercDefenderSiegeModeMeleeAnimDummy">
+        <EditorCategories value=""/>
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectSet id="MercDefenderSiegeModeMeleeFinishDummy">
+        <EditorCategories value=""/>
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectSet id="PalaceDamageResponseDummySet">
+        <EditorCategories value=""/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="CaptureMacGuffinApplyDummyBehavior">
+        <EditorCategories value="CommandersHero:Common"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="MacGuffinDummy"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="CaptureMacGuffinRemoveDummyBehavior">
+        <EditorCategories value="CommandersHero:Common"/>
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="MacGuffinDummy"/>
+    </CEffectRemoveBehavior>
+    <CEffectApplyBehavior id="DarkArrowDebuffApplyBehavior">
+        <Behavior value="DarkArrowPeriodicDamage"/>
+    </CEffectApplyBehavior>
+    <CEffectCreatePersistent id="DarkArrowMissileCreatePersistentReveal">
+        <ExpireDelay value="0.5"/>
+        <RevealRadius value="1.375"/>
+        <RevealFlags index="Unfog" value="1"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="TownBuildingRevealSearchHero">
+        <EditorCategories value=""/>
+        <SearchFilters value="Heroic;Neutral,Enemy"/>
+        <AreaArray Radius="12" Effect="TownBuildingRevealApplyBehavior"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="TownBuildingRevealApplyBehavior">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Source"/>
+        <Behavior value="TownReveal"/>
+    </CEffectApplyBehavior>
+    <CEffectEnumArea id="TownBuildingRevealSearchMinion">
+        <EditorCategories value=""/>
+        <SearchFilters value="Biological;Neutral,Enemy"/>
+        <AreaArray Radius="12" Effect="TownBuildingRevealApplyBehavior"/>
+    </CEffectEnumArea>
+    <CEffectSet id="TownBuildingRevealSet">
+        <EditorCategories value=""/>
+        <EffectArray value="TownBuildingRevealSearchHero"/>
+        <EffectArray value="TownBuildingRevealSearchMinion"/>
+    </CEffectSet>
+    <CEffectSet id="RavenLordsCurseDummyEffect">
+        <EditorCategories value=""/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="BucketOverdriveApplyBehavior">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="BucketOverdrive"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="StabFacingControllerBehavior">
+        <WhichUnit Value="Caster"/>
+    </CEffectApplyBehavior>
+    <CEffectSwitch id="ShieldB_Shielding_Switch">
+        <EditorCategories value=""/>
+        <CaseDefault value="ShieldB_Shielding_DefaultRegen"/>
+    </CEffectSwitch>
+    <CEffectModifyUnit id="ShieldB_Shielding_DefaultRegen">
+        <EditorCategories value=""/>
+        <VitalArray index="Life">
+            <ChangeFraction value="0.025"/>
+        </VitalArray>
+        <VitalArray index="Energy">
+            <ChangeFraction value="0.025"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectLaunchMissile id="BuildingProtoss_Weapon_Tower_LM">
+        <EditorCategories value="CommandersHero:Tileset"/>
+        <ImpactEffect value="BuildingProtoss_Weapon_Tower_ImpactSet"/>
+        <AmmoUnit value="Tower_MonolithCannon_Weapon_Missile"/>
+    </CEffectLaunchMissile>
+    <CEffectDamage id="BuildingProtoss_Weapon_Tower_Damage" parent="CommandersKineticDamage">
+        <EditorCategories value="CommandersHero:Tileset"/>
+        <AttributeFactor index="Summoned" value="-0.25"/>
+        <Flags index="NoLeech" value="1"/>
+        <Flags index="NoVitalLeechLife" value="1"/>
+        <Flags index="NoVitalLeechShields" value="1"/>
+        <Flags index="NoVitalLeechEnergy" value="1"/>
+        <Amount value="250"/>
+    </CEffectDamage>
+    <CEffectSet id="BuildingProtoss_Weapon_Tower_ImpactSet">
+        <EditorCategories value="CommandersHero:Tileset"/>
+        <EffectArray value="BuildingProtoss_Weapon_Tower_Damage"/>
+    </CEffectSet>
+    <CEffectEnumArea id="Gate_SearchTower_Search">
+        <EditorCategories value=""/>
+        <SearchFilters value="Structure;Ally,Neutral,Enemy,Biological,Dead,Hidden"/>
+        <AreaArray MaxCount="2" Radius="8" Effect="Gate_SearchTower_AB"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="Gate_SearchTower_AB">
+        <ValidatorArray index="0" value="UnitType_Tower"/>
+        <EditorCategories value=""/>
+        <Behavior value="Gate_SeachTower_TowerBehavior"/>
+    </CEffectApplyBehavior>
+    <CEffectSwitch id="GateTower_TowerController_Switch">
+        <EditorCategories value=""/>
+        <CaseArray Validator="Building_GateIsNear" Effect="GateTower_TowerController_AB_Death"/>
+    </CEffectSwitch>
+    <CEffectSet id="Building_AmmoReload_WakeUp">
+        <EditorCategories value="CommandersHero:Tileset"/>
+    </CEffectSet>
+    <CEffectSwitch id="Building_AmmoReload_Switch">
+        <EditorCategories value="CommandersHero:Tileset"/>
+        <CaseArray Validator="UnitType_Tower" Effect="Building_AmmoReload_ApplyReload_Tower"/>
+        <CaseArray Validator="UnitType_Tower_Standalone" Effect="Building_AmmoReload_ApplyReload_Tower"/>
+        <CaseDefault value="Building_AmmoReload_ApplyReload_Town"/>
+    </CEffectSwitch>
+    <CEffectApplyBehavior id="GateTower_TowerController_AB_DeadBehavior">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="GateTower_TowerController_DeadBehavior"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="PaulUnitAbilitySet">
+        <EditorCategories value=""/>
+    </CEffectSet>
+    <CEffectDamage id="SuicideTimeout">
+        <ImpactLocation Value="SourceUnit"/>
+        <Flags index="Kill" value="1"/>
+        <Death value="Timeout"/>
+    </CEffectDamage>
+    <CEffectApplyBehavior id="TowerAttackApplyNoEnergyRegenBehavior">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="NoEnergyRegen"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="TowerAttackApplyPowerdownBehavior">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="TowerLowEnergyPowerdown"/>
+    </CEffectApplyBehavior>
+    <CEffectDamage id="MengKnockbackDamage">
+        <EditorCategories value="Race:Terran"/>
+        <Marker Link="Effect/MengKnockbackSet"/>
+        <Amount value="300"/>
+        <CasterHistory value="Damage"/>
+    </CEffectDamage>
+    <CEffectCreateHealer id="TalentRegenerativeShieldingHealer2">
+        <EditorCategories value=""/>
+        <ImpactUnit Value="Source"/>
+        <PeriodCount value="1"/>
+        <PeriodicPeriod value="1"/>
+        <RechargeVitalFraction value="0.0195"/>
+    </CEffectCreateHealer>
+    <CEffectCreateHealer id="TalentRegenerativeShieldingHealer3">
+        <EditorCategories value=""/>
+        <ImpactUnit Value="Source"/>
+        <PeriodCount value="1"/>
+        <PeriodicPeriod value="1"/>
+        <RechargeVitalFraction value="0.0312"/>
+    </CEffectCreateHealer>
+    <CEffectApplyBehavior id="BaseHealingPadApplyHealingBuff">
+        <ValidatorArray index="0" value="LifeNotFullOrEnergyNotFull"/>
+        <EditorCategories value=""/>
+        <Behavior value="BaseHealingPadBuff"/>
+    </CEffectApplyBehavior>
+    <CEffectSwitch id="BaseHealingPadSwitch">
+        <EditorCategories value=""/>
+        <CaseArray Validator="TargetNotManaUser" Effect="HealingPadBarbarianHeal"/>
+        <CaseDefault value="HealingPadHeal"/>
+    </CEffectSwitch>
+    <CEffectCreatePersistent id="FlyerRevealCreatePersistent">
+        <ExpireDelay value="0.25"/>
+        <RevealRadius value="12"/>
+        <RevealFlags index="Unfog" value="1"/>
+        <WhichLocation Value="TargetUnit"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="BaseRepulserFieldCirclePersistent">
+        <EditorCategories value=""/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="BaseRepulserFieldCircleSearchArea"/>
+        <PeriodicOffsetArray value="0,-2.8283,0"/>
+    </CEffectCreatePersistent>
+    <CEffectSet id="BaseRepulserFieldSearchSet">
+        <EffectArray value="BaseRepulserFieldCliffSearchArea"/>
+        <EffectArray value="BaseRepulserFieldCirclePersistent"/>
+    </CEffectSet>
+    <CEffectSet id="FlyerRevealDummySet">
+        <EditorCategories value=""/>
+    </CEffectSet>
+    <CEffectLaunchMissile id="FootmanMinionLevel3WeaponAirLaunchMissile">
+        <ValidatorArray index="0" value="TargetNotDead"/>
+        <ImpactEffect value="FootmanMinionLevel3WeaponDamage"/>
+        <Flags index="TravelValidation" value="1"/>
+        <AmmoUnit value="FootmanMinionLevel3AirMissile"/>
+    </CEffectLaunchMissile>
+    <CEffectLaunchMissile id="FootmanMinionLevel2WeaponAirLaunchMissile">
+        <ValidatorArray index="0" value="TargetNotDead"/>
+        <ImpactEffect value="FootmanMinionLevel2WeaponDamage"/>
+        <Flags index="TravelValidation" value="1"/>
+        <AmmoUnit value="FootmanMinionLevel2AirMissile"/>
+    </CEffectLaunchMissile>
+    <CEffectCreatePersistent id="HealingPadSearchCirclePersistent">
+        <EditorCategories value=""/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="HealingPadSearchAreaCircle"/>
+        <PeriodicOffsetArray value="0,-2.8283,0"/>
+        <PeriodicPeriodArray value="0"/>
+    </CEffectCreatePersistent>
+    <CEffectSet id="HealingPadSearchSet">
+        <EditorCategories value=""/>
+        <EffectArray value="HealingPadSearchAreaCliff"/>
+        <EffectArray value="HealingPadSearchCirclePersistent"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="MinionAbilityCooldownLimiterApplyBehavior">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="MinionAbilityCooldownLimiter"/>
+    </CEffectApplyBehavior>
+    <CEffectSwitch id="ShamanMinionTotemHealSwitch">
+        <EditorCategories value=""/>
+        <CaseArray Validator="TargetIsHero" Effect="ShamanMinionTotemHeroHeal"/>
+        <CaseDefault value="ShamanMinionTotemHeal"/>
+    </CEffectSwitch>
+    <CEffectCreateHealer id="ShamanMinionTotemHeroHeal">
+        <PeriodCount value="1"/>
+        <PeriodicPeriod value="1"/>
+        <RechargeVitalFraction value="0.0117"/>
+    </CEffectCreateHealer>
+    <CEffectSet id="HeroGeneric_Default_HeroSystemBehaviors_InitialSet">
+        <EditorCategories value="CommandersHero:Common"/>
+        <EffectArray value="Generic_Default_Armor_AddSpellBuff_75"/>
+        <EffectArray value="Generic_Default_Armor_AddKineticBuff_75"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="HeroGeneric_Hearthstone_ApplyPlaceholderBehavior">
+        <EditorCategories value="CommandersHero:Common"/>
+        <Behavior value="HeroGeneric_Hearthstone_HerthstonePlaceholderUnitBehavior"/>
+    </CEffectApplyBehavior>
+    <CEffectModifyUnit id="HeroGeneric_Hearthstone_SetUnitFacing">
+        <EditorCategories value="CommandersHero:Common"/>
+        <LaunchUnit Value="Caster"/>
+        <ImpactUnit Value="Source"/>
+        <FacingLocation Value="CasterUnit"/>
+    </CEffectModifyUnit>
+    <CEffectEnumArea id="HeroGeneric_Hearthstone_SearchRadiusEffect">
+        <EditorCategories value="CommandersHero:Common"/>
+        <SearchFilters value="-;Player,Ally,Neutral,Enemy"/>
+        <AreaArray Radius="1.25"/>
+    </CEffectEnumArea>
+    <CEffectSet id="BuildingProtoss_Weapon_Tower_InitialSet">
+        <EditorCategories value="CommandersHero:Tileset"/>
+        <EffectArray value="BuildingProtoss_Weapon_Tower_LM"/>
+        <EffectArray value="BuildingProtoss_Weapon_Tower_AddEnergy"/>
+    </CEffectSet>
+    <CEffectModifyUnit id="BuildingProtoss_Weapon_Tower_AddEnergy">
+        <EditorCategories value="CommandersHero:Tileset"/>
+        <VitalArray index="Energy">
+            <Change value="1"/>
+        </VitalArray>
+        <ImpactUnit Value="Caster"/>
+    </CEffectModifyUnit>
+    <CEffectSet id="BuildingProtoss_Weapon_Keep_InitialSet">
+        <EditorCategories value="CommandersHero:Tileset"/>
+        <EffectArray value="BuildingProtoss_Weapon_Keep_Search"/>
+        <EffectArray value="BuildingProtoss_Weapon_Keep_AddEnergy"/>
+    </CEffectSet>
+    <CEffectModifyUnit id="BuildingProtoss_Weapon_Keep_AddEnergy">
+        <EditorCategories value="CommandersHero:Tileset"/>
+        <VitalArray index="Energy">
+            <Change value="1"/>
+        </VitalArray>
+        <ImpactUnit Value="Caster"/>
+    </CEffectModifyUnit>
+    <CEffectApplyBehavior id="SafeZone_ApplyBaseSprint">
+        <EditorCategories value="CommandersHero:Common"/>
+        <Behavior value="CommandersBaseSprint"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="HeroGeneric_Hearthstone_RemoveCasterBehavior">
+        <EditorCategories value="CommandersHero:Common"/>
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="HeroGeneric_Hearthstone_CasterBehavior"/>
+    </CEffectRemoveBehavior>
+    <CEffectModifyUnit id="HeroGeneric_Hearthstone_InterruptedSetDuration">
+        <EditorCategories value="CommandersHero:Common"/>
+        <LaunchUnit Value="Caster"/>
+        <ImpactUnit Value="Caster"/>
+        <Cost Abil="HeroGeneric_Hearthstone,Execute" CooldownOperation="Set" CooldownTimeUse="10"/>
+    </CEffectModifyUnit>
+    <CEffectCreatePersistent id="HeroGeneric_Hearthstone_InitialPersistent">
+        <ValidatorArray value="Walkable"/>
+        <ValidatorArray value="HasVisionOfTarget"/>
+        <ValidatorArray value="HeroNotInCombat"/>
+        <EditorCategories value=""/>
+        <PeriodCount value="3"/>
+        <PeriodicEffectArray value="HeroGeneric_Hearthstone_RemoveCasterBehavior"/>
+        <PeriodicEffectArray value="HeroGeneric_HearthstoneReturn_ApplyCasterBehavior"/>
+        <PeriodicEffectArray value="HeroGeneric_Hearthstone_CreatePlaceholder"/>
+        <PeriodicPeriodArray value="0"/>
+        <PeriodicPeriodArray value="0.01"/>
+        <PeriodicPeriodArray value="0"/>
+    </CEffectCreatePersistent>
+    <CEffectModifyUnit id="HeroTalandarPurificationBlast@SetWarpoutUnitFacing">
+        <EditorCategories value="CommandersHero:Talandar"/>
+        <LaunchUnit Value="Target"/>
+        <FacingLocation Effect="HeroTalandarPurificationBlast@InitialPersistent" Value="TargetPoint"/>
+        <FacingType value="LookAt"/>
+    </CEffectModifyUnit>
+    <CEffectApplyBehavior id="HeroTalandarDragoonArmorSuit@ApplyDragoonCarryBehavior">
+        <ValidatorArray index="0" removed="1"/>
+        <EditorCategories value="CommandersHero:Talandar"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="HeroTalandarDragoonArmorSuit@DragoonCarryBehavior"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="UnknownEffect">
+        <EditorCategories value=""/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="HeroTalandarDragoonArmorSuit@InitialPersistent">
+        <ValidatorArray value="Walkable"/>
+        <EditorCategories value="CommandersHero:Talandar"/>
+        <TimeScaleSource Value="Caster"/>
+        <PeriodCount value="4"/>
+        <PeriodicEffectArray value="HeroTalandarDragoonArmorSuit@ApplyCasterTeleportBehavior"/>
+        <PeriodicEffectArray value="HeroTalandarDragoonArmorSuit@RemovePraetorCarryBehavior"/>
+        <PeriodicEffectArray value="HeroTalandarDragoonArmorSuit@ApplyDragoonCarryBehavior"/>
+        <PeriodicEffectArray value="HeroTalandarDragoonArmorSuit@Teleport"/>
+        <PeriodicPeriodArray value="0"/>
+        <PeriodicPeriodArray value="0"/>
+        <PeriodicPeriodArray value="0"/>
+        <PeriodicPeriodArray value="0.5"/>
+    </CEffectCreatePersistent>
+    <CEffectTeleport id="HeroTalandarDragoonArmorSuit@Teleport">
+        <EditorCategories value="CommandersHero:Talandar"/>
+        <WhichUnit Value="Caster"/>
+        <TargetLocation Value="TargetPoint"/>
+        <TeleportFlags index="TestFog" value="0"/>
+    </CEffectTeleport>
+    <CEffectApplyBehavior id="HeroTalandarDragoonArmorSuit@ApplyCasterTeleportBehavior">
+        <ValidatorArray index="0" removed="1"/>
+        <EditorCategories value="CommandersHero:Talandar"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="HeroTalandarDragoonArmorSuit@CasterTeleportBehavior"/>
+    </CEffectApplyBehavior>
+    <CEffectCreatePersistent id="HeroTalandarPraetorArmorSuit@InitialPersistent">
+        <ValidatorArray value="Walkable"/>
+        <EditorCategories value="CommandersHero:Talandar"/>
+        <TimeScaleSource Value="Caster"/>
+        <PeriodCount value="4"/>
+        <PeriodicEffectArray value="HeroTalandarPraetorArmorSuit@ApplyCasterTeleportBehavior"/>
+        <PeriodicEffectArray value="HeroTalandarPraetorArmorSuit@RemoveDragoonCarryBehavior"/>
+        <PeriodicEffectArray value="HeroTalandarPraetorArmorSuit@ApplyPraetorCarryBehavior"/>
+        <PeriodicEffectArray value="HeroTalandarPraetorArmorSuit@Teleport"/>
+        <PeriodicPeriodArray value="0"/>
+        <PeriodicPeriodArray value="0"/>
+        <PeriodicPeriodArray value="0"/>
+        <PeriodicPeriodArray value="0.5"/>
+    </CEffectCreatePersistent>
+    <CEffectTeleport id="HeroTalandarPraetorArmorSuit@Teleport">
+        <EditorCategories value="CommandersHero:Talandar"/>
+        <WhichUnit Value="Caster"/>
+        <TargetLocation Value="TargetPoint"/>
+        <TeleportFlags index="TestFog" value="0"/>
+    </CEffectTeleport>
+    <CEffectSet id="HeroTalandarDragoonWeapon@ImpactSet">
+        <EditorCategories value="Race:Neutral,CommandersHero:Talandar"/>
+        <EffectArray value="HeroTalandarDragoonWeapon@Damage"/>
+        <EffectArray value="HeroTalandarDragoonWeapon@SplashSearch"/>
+    </CEffectSet>
+    <CEffectLaunchMissile id="WizardMinionWeaponLaunchMissile">
+        <ValidatorArray index="0" value="TargetNotDead"/>
+        <ImpactEffect value="WizardMinionWeaponDamage"/>
+        <Flags index="TravelValidation" value="1"/>
+        <AmmoUnit value="WizardMinionMissile"/>
+    </CEffectLaunchMissile>
+    <CEffectModifyUnit id="HeroDamageKnockback2">
+        <EditorCategories value=""/>
+    </CEffectModifyUnit>
+    <CEffectSwitch id="IceBarrierDamageSwitch">
+        <EditorCategories value=""/>
+        <CaseArray Validator="TargetChilled" Effect="IceBarrierRelicBonusChillDamage"/>
+        <CaseArray Validator="TargetFrozen" Effect="IceBarrierRelicBonusFreezeDamage"/>
+        <CaseDefault value="IceBarrierDamage"/>
+    </CEffectSwitch>
+    <CEffectSwitch id="IceBarrierRelicSwitch">
+        <EditorCategories value=""/>
+        <CaseArray Validator="Ability3Relic" Effect="IceBarrierDamageSwitch"/>
+        <CaseDefault value="IceBarrierDamage"/>
+    </CEffectSwitch>
+    <CEffectDamage id="IceBarrierRelicBonusChillDamage">
+        <EditorCategories value=""/>
+        <Amount value="75"/>
+        <CasterHistory value="Damage"/>
+    </CEffectDamage>
+    <CEffectDamage id="IceBarrierRelicBonusFreezeDamage">
+        <EditorCategories value=""/>
+        <Amount value="100"/>
+        <CasterHistory value="Damage"/>
+    </CEffectDamage>
+    <CEffectCreatePersistent id="GrenadierMinionCreatePersistent">
+        <EditorCategories value=""/>
+        <PeriodCount value="1"/>
+        <PeriodicPeriodArray value="0.75"/>
+        <InitialDelay value="0.25"/>
+        <InitialEffect value="GrenadierMinionWeaponLaunchMissile"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="CatapultMinionCreatePersistent">
+        <EditorCategories value=""/>
+        <InitialDelay value="0.25"/>
+        <InitialEffect value="CatapultMinionWeaponLaunchMissile"/>
+        <PeriodCount value="1"/>
+        <PeriodicPeriodArray value="1.25"/>
+        <ValidatorArray value="CasterNotDead"/>
+    </CEffectCreatePersistent>
+    <CEffectSet id="GrenadierMinionSet">
+        <EditorCategories value=""/>
+        <EffectArray value="GrenadierMinionCreatePersistent"/>
+    </CEffectSet>
+    <CEffectLaunchMissile id="FootmanMinionWeaponAirLaunchMissile">
+        <ValidatorArray index="0" value="TargetNotDead"/>
+        <ImpactEffect value="FootmanMinionWeaponDamage"/>
+        <Flags index="TravelValidation" value="1"/>
+        <AmmoUnit value="FootmanMinionAirMissile"/>
+    </CEffectLaunchMissile>
+    <CEffectApplyBehavior id="NecromancerMinionApplyTimedLife">
+        <EditorCategories value=""/>
+        <Behavior value="NecromancerMinionSkeletonTimedLife"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="NecromancerMinionApplyRootDelay">
+        <EditorCategories value=""/>
+        <Behavior value="NecromancerSkeletonsRootDelay"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="NecromancerMinionSkeletonSet">
+        <EffectArray value="NecromancerMinionSkeletonDamage"/>
+    </CEffectSet>
+    <CEffectSet id="CannonballPickupDummySet">
+        <EditorCategories value=""/>
+        <EffectArray value="Suicide"/>
+        <ValidatorArray value="HasLT100CannonballStacks"/>
+        <ValidatorArray value="NoArthasImmortalServitudeTargetBehavior"/>
+    </CEffectSet>
+    <CEffectLaunchMissile id="CatapultMinionWeaponLaunchMissile">
+        <ImpactEffect value="CatapultMinionWeaponDamage"/>
+        <AmmoUnit value="CatapultMinionMissile"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <Movers Link="CatapultMinionMissileMover" IfRangeLTE="14"/>
+        <ValidatorArray index="0" value="CasterNotDead"/>
+    </CEffectLaunchMissile>
+    <CEffectApplyBehavior id="ShamanMinionTotemApplyBehavior">
+        <Behavior value="ShamanMinionTotemHeal"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="ShamanMinionTotemApplyCooldownBehavior">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="ShamanMinionTotemDisableBehavior"/>
+    </CEffectApplyBehavior>
+    <CEffectCreatePersistent id="ShamanMinionTotemCreatePersistent">
+        <EditorCategories value=""/>
+        <WhichLocation Value="CasterPoint"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="ShamanMinionTotemCreateUnit"/>
+        <PeriodicOffsetArray value="0,1,0"/>
+        <PeriodicPeriodArray value="0.0625"/>
+        <InitialEffect value="MinionAbilityCooldownLimiterApplyBehavior"/>
+        <InitialDelay value="0.4"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="NecromancerMinionCreatePersistent">
+        <EditorCategories value=""/>
+        <WhichLocation Value="CasterPoint"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="NecromancerMinionCreateUnit"/>
+        <PeriodicOffsetArray value="0,-2,0"/>
+        <PeriodicOffsetArray value="1,-2,0"/>
+        <PeriodicOffsetArray value="2,-2,0"/>
+        <PeriodicOffsetArray value="-1,-2,0"/>
+        <PeriodicOffsetArray value="-2,-2,0"/>
+        <PeriodicOffsetArray value="-2,2,0"/>
+        <PeriodicOffsetArray value="2,2,0"/>
+        <PeriodicOffsetArray value="1,0,0"/>
+        <PeriodicOffsetArray value="0,2,0"/>
+        <PeriodicOffsetArray value="-1,0,0"/>
+        <PeriodicPeriodArray value="0.0625"/>
+        <InitialEffect value="MinionAbilityCooldownLimiterApplyBehavior"/>
+    </CEffectCreatePersistent>
+    <CEffectCreateUnit id="ShamanMinionTotemCreateUnit">
+        <EditorCategories value=""/>
+        <WhichLocation Value="TargetPoint"/>
+        <Origin Value="TargetPoint"/>
+        <SpawnUnit value="ShamanMinionTotem"/>
+    </CEffectCreateUnit>
+    <CEffectCreateUnit id="NecromancerMinionCreateUnit">
+        <EditorCategories value=""/>
+        <WhichLocation Value="TargetPoint"/>
+        <Origin Value="TargetPoint"/>
+        <SpawnUnit value="NecromancerMinionSkeleton"/>
+        <SpawnCount value="2"/>
+        <SpawnEffect value="NecromancerMinionApplyTimedLife"/>
+    </CEffectCreateUnit>
+    <CEffectCreateHealer id="ShamanMinionTotemHeal">
+        <PeriodCount value="1"/>
+        <PeriodicPeriod value="1"/>
+        <RechargeVitalFraction value="0.0507"/>
+    </CEffectCreateHealer>
+    <CEffectEnumArea id="ShamanMinionTotemSearch">
+        <SearchFilters value="-;Neutral,Enemy,Massive,Structure,Hover,Worker,Missile,Stasis,Dead,Hidden"/>
+        <AreaArray Radius="7" Effect="ShamanMinionTotemApplyBehavior"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+    </CEffectEnumArea>
+    <CEffectSet id="ShamanMinionTotemSet">
+        <EditorCategories value=""/>
+        <EffectArray value="ShamanMinionTotemApplyCooldownBehavior"/>
+        <EffectArray value="ShamanMinionTotemCreateUnit"/>
+    </CEffectSet>
+    <CEffectLaunchMissile id="ShieldBearerMinionWeaponAirLaunchMissile">
+        <ValidatorArray index="0" value="TargetNotDead"/>
+        <ImpactEffect value="ShieldBearerMinionWeaponDamage"/>
+        <Flags index="TravelValidation" value="1"/>
+        <AmmoUnit value="ShieldBearerMinionAirMissile"/>
+    </CEffectLaunchMissile>
+    <CEffectLaunchMissile id="ShamanMinionWeaponLaunchMissile">
+        <ValidatorArray index="0" value="TargetNotDead"/>
+        <ImpactEffect value="ShamanMinionWeaponDamage"/>
+        <Flags index="TravelValidation" value="1"/>
+        <AmmoUnit value="ShamanMinionMissile"/>
+    </CEffectLaunchMissile>
+    <CEffectLaunchMissile id="NecromancerMinionWeaponLaunchMissile">
+        <ValidatorArray index="0" value="TargetNotDead"/>
+        <ImpactEffect value="NecromancerMinionWeaponDamage"/>
+        <Flags index="TravelValidation" value="1"/>
+        <AmmoUnit value="NecromancerMinionMissile"/>
+    </CEffectLaunchMissile>
+    <CEffectLaunchMissile id="GrenadierMinionWeaponLaunchMissile">
+        <ImpactEffect value="GrenadierMinionWeaponDamage"/>
+        <AmmoUnit value="GrenadierMinionMissile"/>
+        <ImpactLocation Value="TargetPoint"/>
+    </CEffectLaunchMissile>
+    <CEffectCreatePersistent id="CaptureMacGuffin">
+        <ValidatorArray value="UnitIsMacGuffin"/>
+        <ValidatorArray value="NoMacguffinNotActive"/>
+        <ValidatorArray value="MacGuffinNotInUse"/>
+        <EditorCategories value="CommandersHero:Common"/>
+        <WhichLocation Value="TargetUnit"/>
+        <Flags index="Channeled" value="1"/>
+        <InitialEffect value="CaptureMacGuffinApplyDummyBehavior"/>
+        <ExpireEffect value="CaptureMacGuffinCastComplete"/>
+        <FinalEffect value="CaptureMacGuffinFinalDummy"/>
+        <PeriodCount value="56"/>
+        <PeriodicValidator value="CasterNotInCombatAndNotDeadAndNotStunnedAndNotStasis"/>
+        <PeriodicPeriodArray value="0.125"/>
+    </CEffectCreatePersistent>
+    <CEffectModifyUnit id="CaptureMacGuffinCastComplete">
+        <EditorCategories value="CommandersHero:Common"/>
+    </CEffectModifyUnit>
+    <CEffectSet id="CaptureMacGuffinFinalDummy">
+        <EditorCategories value="CommandersHero:Common"/>
+        <EffectArray value="CaptureMacGuffinRemoveDummyBehavior"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="OgreMageAuraApplyBehavior">
+        <ValidatorArray index="0" value="NotRegenGlobe"/>
+        <ValidatorArray value="NotHyperion"/>
+        <EditorCategories value=""/>
+        <Behavior value="OgreMageAuraBuff"/>
+    </CEffectApplyBehavior>
+    <CEffectEnumArea id="OgreMageAuraSearch">
+        <EditorCategories value=""/>
+        <SearchFilters value="-;Neutral,Enemy,Mechanical,Structure,Missile,Item,Dead,Hidden"/>
+        <AreaArray Radius="8" Effect="OgreMageAuraApplyBehavior"/>
+    </CEffectEnumArea>
+    <CEffectCreatePersistent id="BindingRootsCreatePersistent">
+        <EditorCategories value=""/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="BindingRootsSearch"/>
+        <PeriodicPeriodArray value="1.5"/>
+        <ValidatorArray value="BindingRootsTargetNotClose"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="BindingRootsSearch">
+        <EditorCategories value=""/>
+        <SearchFilters value="-;Player,Ally,Structure,Item,Stasis,Dead,Invulnerable"/>
+        <AreaArray Radius="2" Effect="BindingRootsApplyTargetBehavior"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="CleaveRelicApplyBehavior">
+        <EditorCategories value=""/>
+        <Chance value="0"/>
+        <Behavior value="ZeratulCleaveRelicDoT"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="HellMawApplyDummyFXBehavior">
+        <EditorCategories value=""/>
+        <Behavior value="HellMawFXDummyBehavior"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="ArchmageFireBuffApplyOnFireBehavior">
+        <EditorCategories value=""/>
+        <Behavior value="ArchmageFireBuffTargetOnFire"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="FountainApplyHealBehaviorL1">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="HealingFountainRestoreL1"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="MoonwellApplyHealBehaviorL3">
+        <EditorCategories value=""/>
+        <Behavior value="HealingFountainRestoreL3"/>
+        <WhichUnit Value="Caster"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="MoonwellRestoreSetL1">
+        <EffectArray value="MoonwellDrinkL1ModifyHealthModifyUnit"/>
+        <EffectArray value="MoonwellDrinkL1ModifyEnergyModifyUnit"/>
+    </CEffectSet>
+    <CEffectSet id="MoonwellRestoreSetL3">
+        <EffectArray value="MoonwellDrinkL3ModifyHealthModifyUnit"/>
+        <EffectArray value="MoonwellDrinkL3ModifyEnergyModifyUnit"/>
+    </CEffectSet>
+    <CEffectIssueOrder id="GraveGolemBindingRootsCastIssueOrderDefender">
+        <ValidatorArray value="BindingRootsTargetNotClose"/>
+        <WhichUnit Value="Caster"/>
+        <Abil value="UnderworldBossRoots"/>
+        <Player Value="Caster"/>
+        <Target Value="TargetUnitOrPoint"/>
+    </CEffectIssueOrder>
+    <CEffectEnumArea id="GraveGolemBindingRootsCastSearchDefender">
+        <SearchFilters value="Heroic,Visible;Player,Ally,Neutral,Structure,Missile,Item,Stasis,Dead,Invulnerable"/>
+        <AreaArray Radius="8" Effect="GraveGolemBindingRootsCastIssueOrderDefender"/>
+    </CEffectEnumArea>
+    <CEffectIssueOrder id="GraveGolemBindingRootsCastIssueOrder">
+        <ValidatorArray value="BindingRootsTargetNotClose"/>
+        <WhichUnit Value="Caster"/>
+        <Abil value="UnderworldBossRoots"/>
+        <Player Value="Caster"/>
+        <Target Value="TargetUnitOrPoint"/>
+    </CEffectIssueOrder>
+    <CEffectEnumArea id="GraveGolemBindingRootsCastSearch">
+        <SearchFilters value="Heroic,Visible;Player,Ally,Neutral,Structure,Missile,Item,Stasis,Dead,Invulnerable"/>
+        <AreaArray Radius="8" Effect="GraveGolemBindingRootsCastIssueOrder"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="OutofCombatHealerApplyBehavior">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Source"/>
+        <Behavior value="OutofCombatHealerActive"/>
+    </CEffectApplyBehavior>
+    <CEffectCreateHealer id="OutofCombatHealerPeriodicHealer">
+        <EditorCategories value=""/>
+        <PeriodCount value="1"/>
+        <PeriodicPeriod value="1"/>
+        <RechargeVitalFraction value="0.0507"/>
+    </CEffectCreateHealer>
+    <CEffectApplyBehavior id="BindingRootsApplyTargetBehavior">
+        <EditorCategories value=""/>
+        <Behavior value="BindingRootsTargetBehavior"/>
+    </CEffectApplyBehavior>
+    <CEffectDamage id="BindingRootsImpactDamage">
+        <EditorCategories value=""/>
+        <Amount value="100"/>
+        <CasterHistory value="Damage"/>
+    </CEffectDamage>
+    <CEffectRemoveBehavior id="BindingRootsRemoveTargetBehavior">
+        <EditorCategories value=""/>
+        <BehaviorLink value="BindingRootsTargetBehavior"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectDamage id="BindingRootsSustainedDamage">
+        <EditorCategories value=""/>
+        <ImpactUnitValidator value="TargetIsInStasisOrNotInvulnerable"/>
+        <Amount value="30"/>
+        <CasterHistory value="Damage"/>
+    </CEffectDamage>
+    <CEffectDestroyPersistent id="DethLazorModel1DestroyPersistent">
+        <Effect value="DethLazorChargeModelPersistent1"/>
+        <Count value="1"/>
+        <Radius value="0.25"/>
+    </CEffectDestroyPersistent>
+    <CEffectApplyBehavior id="MercLanerOgreBuffApplyBehaviorHeroOnly">
+        <ValidatorArray index="0" value="NoOgreShieldBuff"/>
+        <Behavior value="MercLanerOgreBuff"/>
+    </CEffectApplyBehavior>
+    <CEffectDamage id="DeadTowerSuicide">
+        <ValidatorArray value="TargetNotDeadNotUnstoppable"/>
+        <ImpactLocation Value="CasterUnit"/>
+        <Flags index="Kill" value="1"/>
+    </CEffectDamage>
+    <CEffectCreatePersistent id="GuardTowerL1CreatePersistent">
+        <EditorCategories value=""/>
+        <WhichLocation Value="TargetUnit"/>
+        <ExpireEffect value="GuardTowerLaunchMissile"/>
+        <PeriodCount value="8"/>
+        <PeriodicValidator value="GuardTowerTargetInRange"/>
+        <PeriodicPeriodArray value="0.0625"/>
+        <ValidatorArray value="TargetDoesNotHaveStartupDelay"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="TownHallL1CreatePersistent">
+        <EditorCategories value=""/>
+        <WhichLocation Value="TargetUnit"/>
+        <ExpireEffect value="TownHallWeaponLaunchMissile"/>
+        <PeriodCount value="8"/>
+        <PeriodicValidator value="GuardTowerTargetInRange"/>
+        <PeriodicPeriodArray value="0.0625"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="GuardTowerL2CreatePersistent">
+        <EditorCategories value=""/>
+        <WhichLocation Value="TargetUnit"/>
+        <ExpireEffect value="GuardTowerL2LaunchMissile"/>
+        <PeriodCount value="8"/>
+        <PeriodicValidator value="GuardTowerTargetInRange"/>
+        <PeriodicPeriodArray value="0.0625"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="GuardTowerL3CreatePersistent">
+        <EditorCategories value=""/>
+        <WhichLocation Value="TargetUnit"/>
+        <ExpireEffect value="GuardTowerL3LaunchMissile"/>
+        <PeriodCount value="8"/>
+        <PeriodicValidator value="GuardTowerTargetInRange"/>
+        <PeriodicPeriodArray value="0.0625"/>
+    </CEffectCreatePersistent>
+    <CEffectLaunchMissile id="BruiserMinionLvl2WeaponAirLaunchMissile">
+        <ValidatorArray index="0" value="TargetNotDead"/>
+        <ImpactEffect value="BruiserMinionLvl2WeaponDamage"/>
+        <Flags index="TravelValidation" value="1"/>
+        <AmmoUnit value="BruiserMinionLvl2AirMissile"/>
+    </CEffectLaunchMissile>
+    <CEffectLaunchMissile id="BruiserMinionLvl3WeaponAirLaunchMissile">
+        <ValidatorArray index="0" value="TargetNotDead"/>
+        <ImpactEffect value="BruiserMinionLvl3WeaponDamage"/>
+        <Flags index="TravelValidation" value="1"/>
+        <AmmoUnit value="BruiserMinionLvl3AirMissile"/>
+    </CEffectLaunchMissile>
+    <CEffectLaunchMissile id="BruiserMinionLvl4WeaponAirLaunchMissile">
+        <ValidatorArray index="0" value="TargetNotDead"/>
+        <ImpactEffect value="BruiserMinionLvl4WeaponDamage"/>
+        <Flags index="TravelValidation" value="1"/>
+        <AmmoUnit value="BruiserMinionLvl4AirMissile"/>
+    </CEffectLaunchMissile>
+    <CEffectCreatePersistent id="TownHallL2CreatePersistent">
+        <EditorCategories value=""/>
+        <WhichLocation Value="TargetUnit"/>
+        <ExpireEffect value="TownHallL2WeaponLaunchMissile"/>
+        <PeriodCount value="8"/>
+        <PeriodicValidator value="GuardTowerTargetInRange"/>
+        <PeriodicPeriodArray value="0.0625"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="TownHallL3CreatePersistent">
+        <EditorCategories value=""/>
+        <WhichLocation Value="TargetUnit"/>
+        <ExpireEffect value="TownHallL3WeaponLaunchMissile"/>
+        <PeriodCount value="8"/>
+        <PeriodicValidator value="GuardTowerTargetInRange"/>
+        <PeriodicPeriodArray value="0.0625"/>
+    </CEffectCreatePersistent>
+    <CEffectModifyUnit id="StructureAmmoReplenish">
+        <VitalArray index="Energy">
+            <Change value="1"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectSet id="StructureAmmoMonitorDisableSet">
+        <EffectArray value="StructureAmmoMonitorDisableAB"/>
+        <EffectArray value="StructureAmmoMonitorDisableWarningAB"/>
+        <EffectArray value="StructureAmmoReplenishRB"/>
+        <EffectArray value="StructureAmmoReplenishAB"/>
+        <ValidatorArray value="TowerLowAmmoDisableAddCheck"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="StructureAmmoMonitorDisableAB">
+        <WhichUnit Value="Caster"/>
+        <Behavior value="StructureAmmoDisabler"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="StructureAmmoMonitorDisableWarningAB">
+        <WhichUnit Value="Caster"/>
+        <Behavior value="StructureAmmoDisablerWarning"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="StructureAmmoReplenishAB">
+        <WhichUnit Value="Source"/>
+        <Behavior value="StructureAmmoReplenisher"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="StructureAmmoReplenishRB">
+        <WhichUnit Value="Source"/>
+        <BehaviorLink value="StructureAmmoReplenisher"/>
+    </CEffectRemoveBehavior>
+    <CEffectDamage id="TownGateKillDeadTower">
+        <EditorCategories value=""/>
+        <ImpactLocation Value="TargetUnit"/>
+        <Flags index="Kill" value="1"/>
+        <Flags index="NoKillCredit" value="1"/>
+        <ValidatorArray value="UnitIsDeadTower"/>
+    </CEffectDamage>
+    <CEffectEnumArea id="TownGateSearchForDeadTowers">
+        <AreaArray Radius="7" Effect="TownGateKillDeadTower"/>
+        <ImpactLocation Value="TargetUnit"/>
+    </CEffectEnumArea>
+    <CEffectLaunchMissile id="MercLanerPirateMeleeAirLaunchMissile">
+        <ValidatorArray index="0" value="TargetNotDead"/>
+        <ImpactEffect value="MercLanerPirateMeleeDamage"/>
+        <Flags index="TravelValidation" value="1"/>
+        <AmmoUnit value="MercLanerPirateMeleeAirAttackMissile"/>
+    </CEffectLaunchMissile>
+    <CEffectLaunchMissile id="MercLanerPirateRangedWeaponLaunchMissile">
+        <ValidatorArray index="0" value="TargetNotDead"/>
+        <ImpactEffect value="MercLanerPirateRangedWeaponDamage"/>
+        <Flags index="TravelValidation" value="1"/>
+        <AmmoUnit value="MercLanerPirateRangedAttackMissile"/>
+    </CEffectLaunchMissile>
+    <CEffectApplyBehavior id="GateApplyLowerBehavior">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="GateLowerBehavior"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="MercDefenderMeleeBanditImpactSet">
+        <EditorCategories value=""/>
+        <EffectArray value="MercDefenderMeleeBanditDamage"/>
+        <EffectArray value="MercDefenderMeleeBanditMercLordDamage"/>
+    </CEffectSet>
+    <CEffectSet id="MercDefenderRangedBanditImpactSet">
+        <EditorCategories value=""/>
+        <EffectArray value="MercDefenderRangedBanditDamage"/>
+        <EffectArray value="MercDefenderRangedBanditMercLordDamage"/>
+    </CEffectSet>
+    <CEffectLaunchMissile id="MercDefenderMeleeBanditWeaponAir">
+        <ValidatorArray index="0" value="TargetNotDead"/>
+        <Marker Link="Effect/MeleeMinionWeaponAirLaunchMissile"/>
+        <ImpactEffect value="MercDefenderMeleeBanditDamage"/>
+        <Flags index="TravelValidation" value="1"/>
+        <AmmoUnit value="MercBanditMeleeAirAttackMissile"/>
+    </CEffectLaunchMissile>
+    <CEffectLaunchMissile id="MercDefenderRangedBanditWeaponAir">
+        <ValidatorArray index="0" value="TargetNotDead"/>
+        <Marker Link="Effect/MeleeMinionWeaponAirLaunchMissile"/>
+        <ImpactEffect value="MercDefenderRangedBanditImpactSet"/>
+        <Flags index="TravelValidation" value="1"/>
+        <AmmoUnit value="MercBanditRangedAirAttackMissile"/>
+    </CEffectLaunchMissile>
+    <CEffectEnumArea id="TownGateAllyNearSearchArea">
+        <EditorCategories value=""/>
+        <SearchFilters value="Ground;Neutral,Enemy,Structure"/>
+        <AreaArray Radius="3" Effect="GateApplyLowerBehavior"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="SpiritofRedemptionApplyRezDelayBehavior">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="UtherEternalDevotionRezDelay"/>
+        <ValidatorArray index="0" value="NoEternalDevotionRezDelay"/>
+    </CEffectApplyBehavior>
+    <CEffectDamage id="SuicideRemoveCaster">
+        <ImpactLocation Value="CasterUnit"/>
+        <Flags index="Kill" value="1"/>
+        <Death value="Remove"/>
+    </CEffectDamage>
+    <CEffectSet id="MercDefenderGnollImpactSet">
+        <EditorCategories value=""/>
+        <EffectArray value="MercDefenderGnollDamage"/>
+        <EffectArray value="MercDefenderGnollMercLordDamage"/>
+    </CEffectSet>
+    <CEffectSet id="MercDefenderMeleeOgreImpactSet">
+        <EditorCategories value=""/>
+        <EffectArray value="MercDefenderMeleeOgreDamage"/>
+        <EffectArray value="MercDefenderMeleeOgreMercLordDamage"/>
+    </CEffectSet>
+    <CEffectSet id="MercDefenderRangedOgreImpactSet">
+        <EditorCategories value=""/>
+        <EffectArray value="MercDefenderRangedOgreDamage"/>
+        <EffectArray value="MercDefenderRangedOgreMercLordDamage"/>
+    </CEffectSet>
+    <CEffectSet id="VehicleDefenderMortarTeamWeaponImpactSet">
+        <EditorCategories value=""/>
+        <EffectArray value="VehicleDefenderMortarTeamWeaponDamage"/>
+        <EffectArray value="VehicleDefenderMortarTeamWeaponMercLordDamage"/>
+    </CEffectSet>
+    <CEffectLaunchMissile id="GuardTowerLaunchMissile">
+        <EditorCategories value=""/>
+        <ImpactEffect value="CannonTowerDamage"/>
+        <AmmoUnit value="TowerMissile"/>
+    </CEffectLaunchMissile>
+    <CEffectLaunchMissile id="GuardTowerL2LaunchMissile">
+        <EditorCategories value=""/>
+        <ImpactEffect value="CannonTowerL2Damage"/>
+        <AmmoUnit value="TowerMissile"/>
+        <ValidatorArray value="TargetDoesNotHaveStartupDelay"/>
+    </CEffectLaunchMissile>
+    <CEffectLaunchMissile id="GuardTowerL3LaunchMissile">
+        <EditorCategories value=""/>
+        <ImpactEffect value="CannonTowerL3Damage"/>
+        <AmmoUnit value="TowerMissile"/>
+        <ValidatorArray value="TargetDoesNotHaveStartupDelay"/>
+    </CEffectLaunchMissile>
+    <CEffectSet id="TownHallL2AttackImpactSet">
+        <EditorCategories value=""/>
+        <EffectArray value="TownHallL2WeaponDamage"/>
+        <EffectArray value="TownHallAttackApplySlowBehavior"/>
+    </CEffectSet>
+    <CEffectEnumArea id="TownHallAttackSearchArea">
+        <EditorCategories value=""/>
+        <SearchFilters value="-;Self,Player,Ally,Neutral,Mechanical,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="1.25" Effect="TownHallAttackImpactSet"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="TownHallAttackApplySlowBehavior">
+        <Behavior value="Building_Town_Slowed"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="TownHallL3AttackImpactSet">
+        <EditorCategories value=""/>
+        <EffectArray value="TownHallL3WeaponDamage"/>
+        <EffectArray value="TownHallAttackApplySlowBehavior"/>
+    </CEffectSet>
+    <CEffectEnumArea id="TownHallL2AttackSearchArea">
+        <EditorCategories value=""/>
+        <SearchFilters value="-;Self,Player,Ally,Neutral,Mechanical,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="1.25" Effect="TownHallL2AttackImpactSet"/>
+    </CEffectEnumArea>
+    <CEffectSet id="TownHallAttackImpactSet">
+        <EditorCategories value=""/>
+        <EffectArray value="TownHallWeaponDamage"/>
+        <EffectArray value="TownHallAttackApplySlowBehavior"/>
+    </CEffectSet>
+    <CEffectEnumArea id="TownHallL3AttackSearchArea">
+        <EditorCategories value=""/>
+        <SearchFilters value="-;Self,Player,Ally,Neutral,Mechanical,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="1.25" Effect="TownHallL3AttackImpactSet"/>
+    </CEffectEnumArea>
+    <CEffectSet id="BattleCrySet">
+        <EffectArray value="BattleCryApplyBehavior"/>
+        <EffectArray value="BattleCrySearch"/>
+    </CEffectSet>
+    <CEffectDamage id="CannonTowerDamage">
+        <EditorCategories value=""/>
+        <Amount value="75"/>
+        <AttributeFactor index="Biological" value="1"/>
+        <AttributeFactor index="Structure" value="1"/>
+        <Kind value="Ranged"/>
+    </CEffectDamage>
+    <CEffectDamage id="CannonTowerL2Damage">
+        <EditorCategories value=""/>
+        <Amount value="100"/>
+        <AttributeFactor index="Biological" value="1"/>
+        <AttributeFactor index="Structure" value="1"/>
+        <Kind value="Ranged"/>
+    </CEffectDamage>
+    <CEffectDamage id="CannonTowerL3Damage">
+        <EditorCategories value=""/>
+        <Amount value="150"/>
+        <AttributeFactor index="Biological" value="1"/>
+        <AttributeFactor index="Structure" value="1"/>
+        <Kind value="Ranged"/>
+    </CEffectDamage>
+    <CEffectDamage id="HeroJumpDummySet">
+        <ValidatorArray value="NotMounted"/>
+    </CEffectDamage>
+    <CEffectSet id="MoonwellDrinkL2Set">
+        <ValidatorArray value="HeroGeneric_FountainDrink_FountainValidators"/>
+        <EditorCategories value=""/>
+        <EffectArray value="HeroGeneric_FountainDrink_CreateHealer_Mana"/>
+        <EffectArray value="HeroGeneric_FountainDrink_CreateHealer_Health"/>
+    </CEffectSet>
+    <CEffectModifyUnit id="MoonwellDrinkL3ModifyEnergyModifyUnit">
+        <ValidatorArray value="NotBarbarian"/>
+        <VitalArray index="Energy">
+            <ChangeFraction value="0.015"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectModifyUnit id="MoonwellDrinkL3ModifyHealthModifyUnit">
+        <VitalArray index="Life">
+            <ChangeFraction value="0.02"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectSet id="MoonwellDrinkL3Set">
+        <ValidatorArray value="HeroGeneric_FountainDrink_FountainValidators"/>
+        <EditorCategories value=""/>
+        <EffectArray value="MoonwellDrinkL3ModifyEnergyModifyUnit"/>
+        <EffectArray value="MoonwellDrinkL3ModifyHealthModifyUnit"/>
+    </CEffectSet>
+    <CEffectModifyUnit id="MoonwellDrinkL1ModifyEnergyModifyUnit">
+        <EditorCategories value=""/>
+        <ValidatorArray value="NotBarbarian"/>
+        <VitalArray index="Energy">
+            <ChangeFraction value="0.015"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectModifyUnit id="MoonwellDrinkL1ModifyHealthModifyUnit">
+        <VitalArray index="Life">
+            <ChangeFraction value="0.02"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectSet id="MoonwellDrinkL1Set">
+        <ValidatorArray value="HeroGeneric_FountainDrink_FountainValidators"/>
+        <EditorCategories value=""/>
+        <EffectArray value="MoonwellDrinkL1ModifyEnergyModifyUnit"/>
+        <EffectArray value="MoonwellDrinkL1ModifyHealthModifyUnit"/>
+    </CEffectSet>
+    <CEffectSwitch id="MoonwellDrinkSwitch">
+        <EditorCategories value=""/>
+        <CaseArray Validator="IsMoonwellL2" Effect="HeroGeneric_FountainDrink_ApplyHealBehavior"/>
+        <CaseArray Validator="IsMoonwellL3" Effect="MoonwellApplyHealBehaviorL3"/>
+        <CaseDefault value="FountainApplyHealBehaviorL1"/>
+    </CEffectSwitch>
+    <CEffectEnumArea id="SiegeWeaponSplashSearchAdvancedArtillery">
+        <ExcludeArray Effect="SiegeWeaponImpactSet" Value="Target"/>
+        <SearchFilters value="-;Player,Ally,Neutral,Mechanical,Missile,Item,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="2" Effect="SiegeWeaponAdvancedArtillerySplashDamageSwitch"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="SiegeWeaponSplashSearchAdvancedArtilleryImproved">
+        <ExcludeArray Effect="SiegeWeaponImpactSet" Value="Target"/>
+        <SearchFilters value="-;Player,Ally,Neutral,Mechanical,Missile,Item,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="2" Effect="SiegeWeaponAdvancedArtilleryImprovedSplashDamageSwitch"/>
+    </CEffectEnumArea>
+    <!-- Siege Weapon Splash Damage vs. Minions And Structures -->
+    <CEffectSet id="TownHallAttackSet">
+        <EditorCategories value=""/>
+        <EffectArray value="TownHallRangeIndicatorApplyBehavior"/>
+        <EffectArray value="TownHallL1CreatePersistent"/>
+    </CEffectSet>
+    <CEffectSet id="TownHallL2AttackSet">
+        <EditorCategories value=""/>
+        <EffectArray value="TownHallRangeIndicatorApplyBehavior"/>
+        <EffectArray value="TownHallL2CreatePersistent"/>
+    </CEffectSet>
+    <CEffectLaunchMissile id="TownHallL2WeaponLaunchMissile">
+        <ValidatorArray index="0" value="TargetNotDead"/>
+        <ImpactEffect value="TownHallL2AttackImpactSet"/>
+        <Flags index="TravelValidation" value="1"/>
+        <AmmoUnit value="TownHallL2WeaponAttackMissile"/>
+    </CEffectLaunchMissile>
+    <CEffectSet id="TownHallL3AttackSet">
+        <EditorCategories value=""/>
+        <EffectArray value="TownHallRangeIndicatorApplyBehavior"/>
+        <EffectArray value="TownHallL3CreatePersistent"/>
+    </CEffectSet>
+    <CEffectLaunchMissile id="TownHallL3WeaponLaunchMissile">
+        <ValidatorArray index="0" value="TargetNotDead"/>
+        <ImpactEffect value="TownHallL3AttackImpactSet"/>
+        <Flags index="TravelValidation" value="1"/>
+        <AmmoUnit value="TownHallL3WeaponAttackMissile"/>
+    </CEffectLaunchMissile>
+    <CEffectApplyBehavior id="TownHallRangeIndicatorApplyBehavior">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="Building_Town_RangeIndicator"/>
+    </CEffectApplyBehavior>
+    <CEffectLaunchMissile id="TownHallWeaponLaunchMissile">
+        <ValidatorArray index="0" value="TargetNotDead"/>
+        <ImpactEffect value="TownHallAttackImpactSet"/>
+        <Flags index="TravelValidation" value="1"/>
+        <AmmoUnit value="TownHallL1WeaponAttackMissile"/>
+    </CEffectLaunchMissile>
+    <CEffectDamage id="TownKillDamage">
+        <EditorCategories value=""/>
+        <Flags index="Kill" value="1"/>
+        <Amount value="1"/>
+    </CEffectDamage>
+    <CEffectCreateHealer id="HealCreateHealer">
+        <ValidatorArray value="noMarkers"/>
+        <ValidatorArray value="SourceNotHidden"/>
+        <ValidatorArray value="IsMarineDropMarine"/>
+        <EditorCategories value="Race:Terran"/>
+        <DrainVital value="Energy"/>
+        <RechargeVitalRate value="25"/>
+    </CEffectCreateHealer>
+    <CEffectModifyUnit id="VehiclePadRepairModifyUnit">
+        <ValidatorArray value="IsVehicle"/>
+        <EditorCategories value=""/>
+        <VitalArray index="Life">
+            <ChangeFraction value="0.01"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectEnumArea id="VehiclePadRepairSearchArea">
+        <EditorCategories value=""/>
+        <ImpactLocation Value="CasterPoint"/>
+        <SearchFilters value="-;Neutral,Enemy,Structure,Hover,Worker,Missile,Item,Stasis,Dead,Hidden"/>
+        <AreaArray Radius="2" Effect="VehiclePadRepairModifyUnit"/>
+    </CEffectEnumArea>
+    <CEffectLaunchMissile id="VehicleDefenderMortarTeamWeaponLaunchMissile">
+        <ValidatorArray index="0" value="TargetNotDead"/>
+        <ImpactEffect value="VehicleDefenderMortarTeamWeaponImpactSet"/>
+        <Flags index="TravelValidation" value="1"/>
+        <AmmoUnit value="VehicleDefenderMortarTeamAirAttackMissile"/>
+    </CEffectLaunchMissile>
+    <CEffectEnumArea id="ExpertRidingSearch">
+        <EditorCategories value=""/>
+        <SearchFilters value="Biological;Self,Neutral,Enemy,Structure,Heroic,RawResource,HarvestableResource,Missile,Dead"/>
+        <AreaArray Radius="8" Effect="ExpertRidingApplyBehavior"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="ExpertRidingApplyBehavior">
+        <Behavior value="ExpertRidingMinionBuff"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="CameraShakeHeavyDummySet"/>
+    <CEffectSet id="CameraShakeHeavyTauntingTotemSet"/>
+    <CEffectSet id="CameraShakeHeavyCasterDummySet"/>
+    <CEffectSet id="CameraShakeLightDummySet"/>
+    <CEffectSet id="CameraShakeLightTauntingTotemSet"/>
+    <CEffectSet id="CameraShakeLightCasterDummySet"/>
+    <CEffectSet id="CameraShakeMediumDummySet"/>
+    <CEffectSet id="CameraShakeMediumTauntingTotemSet"/>
+    <CEffectSet id="CameraShakeMediumCasterDummySet"/>
+    <CEffectSet id="FortifySet">
+        <EffectArray value="FortifyApplyBehavior"/>
+        <EffectArray value="FortifyRegenApplyBehavior"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="FortifyApplyBehavior">
+        <Behavior value="Fortify"/>
+    </CEffectApplyBehavior>
+    <CEffectModifyUnit id="FortifyRegen">
+        <VitalArray index="Shields">
+            <Change value="4.5"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectApplyBehavior id="FortifyRegenApplyBehavior">
+        <Behavior value="FortifyRegen"/>
+    </CEffectApplyBehavior>
+    <CEffectLaunchMissile id="MercDefenderMeleeOgreWeaponAir">
+        <ValidatorArray index="0" value="TargetNotDead"/>
+        <Marker Link="Effect/MeleeMinionWeaponAirLaunchMissile"/>
+        <ImpactEffect value="MercDefenderMeleeOgreDamage"/>
+        <Flags index="TravelValidation" value="1"/>
+        <AmmoUnit value="MercDefenderMeleeOgreAttackMissile"/>
+    </CEffectLaunchMissile>
+    <CEffectApplyBehavior id="MercLanerOgreBuffApplyBehaviorOgreOnly">
+        <ValidatorArray index="0" value="IsOgreDefenderOrLanerBruiser"/>
+        <ValidatorArray value="NoOgreShieldBuff"/>
+        <Behavior value="MercLanerOgreBuff"/>
+    </CEffectApplyBehavior>
+    <CEffectLaunchMissile id="MercDefenderRangedOgreLaunchMissile">
+        <ValidatorArray index="0" value="TargetNotDead"/>
+        <ImpactEffect value="MercDefenderRangedOgreImpactSet"/>
+        <Flags index="TravelValidation" value="1"/>
+        <AmmoUnit value="MercDefenderRangedOgreMissile"/>
+    </CEffectLaunchMissile>
+    <CEffectApplyBehavior id="VehicleDefeatedApplyEmptyVehicleBehavior">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="GenericVehicleBehaviorEmpty"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="OgreKingDefeatedApplyRegenBehavior">
+        <WhichUnit Value="Caster"/>
+        <Behavior value="OgrenautRegen"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="OgreKingDefeatedApplyStunBehavior">
+        <WhichUnit Value="Caster"/>
+        <Behavior value="OgrenautDefeatedStun"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="OgreKingDefeatedRemovePreventDeathBehavior">
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="OgreKingDontDie"/>
+    </CEffectRemoveBehavior>
+    <CEffectSet id="OgreKingDefeatedSet">
+        <EffectArray value="OgreKingDefeatedApplyStunBehavior"/>
+        <EffectArray value="OgreKingDefeatedRemovePreventDeathBehavior"/>
+    </CEffectSet>
+    <CEffectEnumArea id="HuntingHawkDummySearch">
+        <SearchFilters value="-;Player,Ally,Neutral,Mechanical,Missile,Item,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="8" Effect="HuntingHawkDummySet"/>
+    </CEffectEnumArea>
+    <CEffectSet id="HuntingHawkDummySet"/>
+    <CEffectCreateUnit id="TrainInfestedTerranCreateEgg">
+        <EditorCategories value=""/>
+        <SpawnEffect value="InfestedTerranIssueMorphOrder"/>
+        <SpawnUnit value="InfestedTerranEgg"/>
+        <SpawnRange value="3"/>
+    </CEffectCreateUnit>
+    <CEffectApplyBehavior id="WeaponDamageOverTimeApplyBehavior">
+        <ValidatorArray index="0" value="CasterHasWeaponDamageOverTime"/>
+        <Behavior value="OnHitApplyDamageOverTimeDebuff"/>
+    </CEffectApplyBehavior>
+    <CEffectDamage id="WeaponDamageOverTimeDamage">
+        <AttributeFactor index="Heroic" value="-0.5"/>
+        <AttributeFactor index="Summoned" value="-0.5"/>
+        <Visibility value="Visible"/>
+        <Amount value="15"/>
+        <Death value="Disintegrate"/>
+    </CEffectDamage>
+    <CEffectEnumArea id="CritterStompSearch">
+        <ImpactLocation Value="CasterUnit"/>
+        <ExcludeArray/>
+        <SearchFilters value="Ground,Heroic;Structure,Destructible"/>
+        <AreaArray Radius="0.3" Effect="Suicide"/>
+    </CEffectEnumArea>
+    <CEffectLaunchMissile id="FlagBearerMinionWeaponLaunchMissileLv2">
+        <ValidatorArray index="0" value="TargetNotDead"/>
+        <ImpactEffect value="FlagBearerMinionWeaponDamageLv2"/>
+        <Flags index="TravelValidation" value="1"/>
+        <AmmoUnit value="FlagBearerMinionMissileLv2"/>
+    </CEffectLaunchMissile>
+    <CEffectApplyBehavior id="GenerateRegenGlobeAddBehaviortoGenerator">
+        <WhichUnit Value="Caster"/>
+        <Behavior value="GenerateRegenGlobe"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="GenerateRegenGlobeAddBehaviortoGlobe">
+        <EditorCategories value=""/>
+        <Behavior value="GeneratedRegenGlobeCasterDetector"/>
+    </CEffectApplyBehavior>
+    <CEffectCreateUnit id="GenerateRegenGlobeCreateUnit">
+        <EditorCategories value=""/>
+        <SpawnEffect value="GenerateRegenGlobeAddBehaviortoGlobe"/>
+        <SpawnUnit value="RegenGlobeGenerated"/>
+        <WhichLocation Value="TargetPoint"/>
+        <SpawnRange value="1"/>
+        <SpawnOffset value="0,-2.5"/>
+    </CEffectCreateUnit>
+    <CEffectCreatePersistent id="GenerateRegenGlobePersistent">
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="GenerateRegenGlobeCreateUnit"/>
+        <PeriodicOffsetArray value="0,-1.5,0"/>
+        <PeriodicPeriodArray value="0"/>
+        <WhichLocation Value="CasterPoint"/>
+    </CEffectCreatePersistent>
+    <CEffectLaunchMissile id="GeneratedRegenGlobePickupLaunchMissile">
+        <ImpactEffect value="RegenGlobePickupBehaviorSwitch"/>
+        <AmmoUnit value="RegenGlobeMissile"/>
+        <ValidatorArray index="0" value="NotMirrorImage"/>
+        <ValidatorArray value="GeneratedRegenGlobeCheckAlliance"/>
+    </CEffectLaunchMissile>
+    <CEffectEnumArea id="GeneratedRegenGlobePickupSearch">
+        <SearchFilters value="Heroic;Player,Ally,Enemy,Mechanical,Massive,Structure,Missile,Item,Stasis,Dead"/>
+        <AreaArray Radius="12" Effect="GeneratedRegenGlobePickupLaunchMissile"/>
+        <ImpactLocation Value="SourceUnit"/>
+        <ValidatorArray value="NoStageDiveChannel"/>
+    </CEffectEnumArea>
+    <CEffectSet id="GeneratedRegenGlobePickupSet">
+        <EffectArray value="GeneratedRegenGlobePickupSearch"/>
+        <EffectArray value="Suicide"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="GeneratorPointer">
+        <EditorCategories value=""/>
+    </CEffectCreatePersistent>
+    <CEffectModifyUnit id="HeroDamageKnockback">
+        <!--<ValidatorArray value="OriginIsHeroic"/>-->
+        <EditorCategories value=""/>
+    </CEffectModifyUnit>
+    <CEffectCreatePersistent id="OgreKingThrowChestCreateTargetZonePersistent">
+        <EditorCategories value=""/>
+        <WhichLocation Value="TargetUnit"/>
+        <Flags index="Channeled" value="1"/>
+        <InitialEffect value="OgreKingThrowNetLaunchMissile"/>
+        <ExpireEffect value="OgreKingThrowChestLaunchMissile"/>
+        <PeriodCount value="8"/>
+        <PeriodicValidator value="CasterNotStunned"/>
+        <PeriodicEffectArray value="OgreKingThrowNetApplyRootBehavior"/>
+        <PeriodicPeriodArray value="0.25"/>
+    </CEffectCreatePersistent>
+    <CEffectDamage id="OgreKingThrowChestDamage">
+        <EditorCategories value=""/>
+        <Amount value="400"/>
+        <CasterHistory value="Damage"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="OgreKingThrowChestLaunchMissile">
+        <LaunchOffset value="0,-0.5,0"/>
+        <ImpactEffect value="OgreKingThrowChestSearchArea"/>
+        <AmmoUnit value="OgreKingChestMissile"/>
+    </CEffectLaunchMissile>
+    <CEffectEnumArea id="OgreKingThrowChestSearchArea">
+        <EditorCategories value=""/>
+        <AreaArray Radius="0.5" Effect="OgreKingThrowChestDamage"/>
+        <SearchFilters value="-;Player,Ally,Neutral,Mechanical,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+    </CEffectEnumArea>
+    <CEffectApplyForce id="OgreKingThrowNetApplyForce">
+        <WhichLocation Effect="OgreKingThrowNetKnockbackPersistent" Value="CasterPoint"/>
+        <WhichUnit Effect="OgreKingThrowNetKnockbackPersistent"/>
+        <Amount value="16"/>
+    </CEffectApplyForce>
+    <CEffectApplyBehavior id="OgreKingThrowNetApplyKnockbackBehavior">
+        <ValidatorArray index="0" value="PenetratingRoundApplyBehaviorTargetFilters"/>
+        <Marker Link="Effect/PenetratingRoundApplyBehavior"/>
+        <Behavior value="OgreKingThrowNetKnockback"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="OgreKingThrowNetApplyRootBehavior">
+        <EditorCategories value=""/>
+        <Behavior value="OgreKingThrowNetRoot"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="OgreKingThrowNetFinalSet">
+        <EditorCategories value=""/>
+        <EffectArray value="OgreKingThrowNetRemoveKnockbackBehavior"/>
+        <EffectArray value="OgreKingThrowNetApplyRootBehavior"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="OgreKingThrowNetKnockbackPersistent">
+        <WhichLocation Value="TargetUnit"/>
+        <InitialEffect value="OgreKingThrowNetApplyKnockbackBehavior"/>
+        <FinalEffect value="OgreKingThrowNetFinalSet"/>
+        <PeriodicValidator value="TargetNotUnstoppable"/>
+        <PeriodicEffectArray value="OgreKingThrowNetApplyForce"/>
+        <PeriodicPeriodArray value="0"/>
+    </CEffectCreatePersistent>
+    <CEffectLaunchMissile id="OgreKingThrowNetLaunchMissile">
+        <LaunchOffset value="0,-0.5,0"/>
+        <ImpactEffect value="OgreKingThrowNetKnockbackPersistent"/>
+        <AmmoUnit value="OgreKingNetMissile"/>
+    </CEffectLaunchMissile>
+    <CEffectRemoveBehavior id="OgreKingThrowNetRemoveKnockbackBehavior">
+        <BehaviorLink value="OgreKingThrowNetKnockback"/>
+    </CEffectRemoveBehavior>
+    <CEffectLaunchMissile id="OgreFlagBearerMinionWeaponLaunchMissileLv2">
+        <ValidatorArray index="0" value="TargetNotDead"/>
+        <ImpactEffect value="OgreFlagBearerMinionWeaponDamageLv2"/>
+        <Flags index="TravelValidation" value="1"/>
+        <AmmoUnit value="OgreFlagBearerMinionMissileLv2"/>
+    </CEffectLaunchMissile>
+    <CEffectLaunchMissile id="OgreMeleeMinionWeaponAirLaunchMissileLv2">
+        <ValidatorArray index="0" value="TargetNotDead"/>
+        <ImpactEffect value="OgreMeleeMinionWeaponDamageLv2"/>
+        <Flags index="TravelValidation" value="1"/>
+        <AmmoUnit value="OgreMeleeMinionAirMissileLv2"/>
+    </CEffectLaunchMissile>
+    <CEffectLaunchMissile id="OgreRangedMinionWeaponLaunchMissileLv2">
+        <ValidatorArray index="0" value="TargetNotDead"/>
+        <ImpactEffect value="OgreRangedMinionWeaponDamageLv2"/>
+        <Flags index="TravelValidation" value="1"/>
+        <AmmoUnit value="OgreRangedMinionMissileLv2"/>
+    </CEffectLaunchMissile>
+    <CEffectApplyBehavior id="ShopApplyNearTownShop">
+        <ValidatorArray index="0" value="NotTauntingTotem"/>
+        <Behavior value="NearTownShop"/>
+    </CEffectApplyBehavior>
+    <CEffectCreatePersistent id="OverkillGroundImpactPersistentB">
+        <WhichLocation Value="CasterUnit"/>
+        <OffsetVectorStartLocation Value="CasterUnit"/>
+        <!--OffsetVectorStartLocation Effect="OverkillTargetedSearchSet" Value="TargetUnit"/-->
+        <OffsetVectorEndLocation Value="TargetUnit"/>
+        <Flags index="RandomOffset" value="1"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="OverkillGroundImpactDummy"/>
+        <PeriodicOffsetArray value="0,-1.5,0"/>
+        <PeriodicOffsetArray value="-0.75,-2.875,0"/>
+        <PeriodicOffsetArray value="0.75,-2.875,0"/>
+        <PeriodicOffsetArray value="-1.5,-4.25,0"/>
+        <PeriodicOffsetArray value="0,-4.5,0"/>
+        <PeriodicOffsetArray value="1.5,-4.25,0"/>
+        <PeriodicOffsetArray value="-2.25,-5.5,0"/>
+        <PeriodicOffsetArray value="-0.75,-6,0"/>
+        <PeriodicOffsetArray value="0.75,-6,0"/>
+        <PeriodicOffsetArray value="2.25,-5.5,0"/>
+        <PeriodicOffsetArray value="0,-1,0"/>
+        <PeriodicOffsetArray value="0,-2,0"/>
+        <PeriodicOffsetArray value="0,-3,0"/>
+        <PeriodicOffsetArray value="0,-4,0"/>
+        <PeriodicOffsetArray value="0,-5,0"/>
+        <PeriodicOffsetArray value="1,-1,0"/>
+        <PeriodicOffsetArray value="1,-2,0"/>
+        <PeriodicOffsetArray value="2,-3,0"/>
+        <PeriodicOffsetArray value="2,-4,0"/>
+        <PeriodicOffsetArray value="-1,-1,0"/>
+        <PeriodicOffsetArray value="-1,-2,0"/>
+        <PeriodicOffsetArray value="-2,-3,0"/>
+        <PeriodicOffsetArray value="-2,-4,0"/>
+        <PeriodicOffsetArray value="4,-4,0"/>
+        <PeriodicOffsetArray value="-4,-4,0"/>
+        <PeriodicOffsetArray value="2,-3,0"/>
+        <PeriodicOffsetArray value="-2,-3,0"/>
+        <PeriodicOffsetArray value="-3.8,-7,0"/>
+        <PeriodicOffsetArray value="3.75,-7,0"/>
+        <PeriodicOffsetArray value="-1.2,-8,0"/>
+        <PeriodicOffsetArray value="3,-8,0"/>
+        <PeriodicOffsetArray value="-0.75,-7.5,0"/>
+        <PeriodicPeriodArray value="0.025"/>
+    </CEffectCreatePersistent>
+    <CEffectApplyBehavior id="TauntApplyBehavior">
+        <EditorCategories value=""/>
+        <Behavior value="OgreTauntDummy"/>
+    </CEffectApplyBehavior>
+    <CEffectIssueOrder id="TauntIssueOrder">
+        <EditorCategories value=""/>
+        <Abil value="attack"/>
+        <Target Value="CasterUnit"/>
+    </CEffectIssueOrder>
+    <CEffectSet id="TauntSet">
+        <EditorCategories value=""/>
+        <EffectArray value="TauntApplyBehavior"/>
+        <EffectArray value="TauntIssueOrder"/>
+        <ValidatorArray value="NoOgreTaunt"/>
+    </CEffectSet>
+    <CEffectModifyUnit id="TownPriestHeal">
+        <ValidatorArray value="TargetLifeNotFull"/>
+        <ValidatorArray value="NotVehicle"/>
+        <EditorCategories value=""/>
+        <VitalArray index="Life">
+            <Change value="100"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectApplyBehavior id="HealingPadApplyNearShopBuff">
+        <ValidatorArray index="0" value="NotTauntingTotem"/>
+        <Behavior value="NearShop"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="LightningBreathImpactDummy">
+        <TargetLocationType value="Point"/>
+        <EffectArray value="LightningBreathSearch"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="MinionScanApplyBehavior">
+        <WhichUnit Value="Caster"/>
+        <Behavior value="MinionsNearby"/>
+    </CEffectApplyBehavior>
+    <CEffectEnumArea id="MinionScanSearchArea">
+        <SearchFilters value="Biological;Player,Ally,Neutral,Dead"/>
+        <AreaArray MaxCount="1" Radius="15" Effect="MinionScanApplyBehavior"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="MountTestApplyBehavior">
+        <Behavior value="MountedTest"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="MountTestRemoveBehavior">
+        <BehaviorLink value="MountedTest"/>
+    </CEffectRemoveBehavior>
+    <CEffectLaunchMissile id="OgreKingWeaponAirLaunchMissile">
+        <ValidatorArray index="0" value="TargetNotDead"/>
+        <ValidatorArray value="IsFlyingStorm"/>
+        <ImpactEffect value="OgreKingJungleWeaponImpactSet"/>
+        <Flags index="TravelValidation" value="1"/>
+        <AmmoUnit value="OgreKingAirAttackMissile"/>
+    </CEffectLaunchMissile>
+    <CEffectLaunchMissile id="OgreMeleeMinionWeaponAirLaunchMissile">
+        <ValidatorArray index="0" value="TargetNotDead"/>
+        <ImpactEffect value="OgreMeleeMinionWeaponDamage"/>
+        <Flags index="TravelValidation" value="1"/>
+        <AmmoUnit value="OgreMeleeMinionAirMissile"/>
+    </CEffectLaunchMissile>
+    <CEffectLaunchMissile id="OgreRangedMinionWeaponLaunchMissile">
+        <ValidatorArray index="0" value="TargetNotDead"/>
+        <ImpactEffect value="OgreRangedMinionWeaponDamage"/>
+        <Flags index="TravelValidation" value="1"/>
+        <AmmoUnit value="OgreRangedMinionMissile"/>
+    </CEffectLaunchMissile>
+    <CEffectModifyUnit id="TowerSpendEnergy">
+        <ImpactUnit Value="Caster"/>
+        <VitalArray index="Energy">
+            <Change value="-1"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectCreatePersistent id="TowerTargetingLaserCreatePersistent">
+        <WhichLocation Value="TargetUnit"/>
+        <PeriodCount value="120"/>
+        <PeriodicValidator value="CasterNotDead"/>
+        <PeriodicPeriodArray value="0.5"/>
+    </CEffectCreatePersistent>
+    <CEffectDestroyPersistent id="TowerTargetingLaserDestroyPersistent">
+        <WhichLocation Value="TargetUnit"/>
+        <Effect value="TowerTargetingLaserCreatePersistent"/>
+        <Count value="1"/>
+        <Radius value="0.125"/>
+    </CEffectDestroyPersistent>
+    <CEffectApplyBehavior id="HealingPadApplyHomeShieldBuff">
+        <Behavior value="HomeShieldProtection"/>
+        <ValidatorArray index="0" value="NotTauntingTotem"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="HealingPadSet">
+        <EffectArray value="HealingPadApplyHomeShieldBuff"/>
+        <EffectArray value="HealingPadApplyNearShopBuff"/>
+        <EffectArray value="BaseHealingPadSwitch"/>
+        <EffectArray value="ItemPlaguebringerRemoveBehavior"/>
+        <EffectArray value="BaseHealingPadBarbarianSwitch"/>
+    </CEffectSet>
+    <CEffectSet id="OgreKingGlobalYellDummy">
+        <ValidatorArray value="OgreKingGlobalYellHPThreshold"/>
+    </CEffectSet>
+    <CEffectSet id="AttackPing"/>
+    <CEffectSet id="HelpPing"/>
+    <CEffectModifyUnit id="JungleCreepOutOfCombatRegen">
+        <VitalArray index="Life">
+            <ChangeFraction value="0.015"/>
+        </VitalArray>
+        <VitalArray index="Shields">
+            <ChangeFraction value="0.015"/>
+        </VitalArray>
+        <VitalArray index="Energy">
+            <ChangeFraction value="0.05"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectLaunchMissile id="BruiserMinionLvl1WeaponAirLaunchMissile">
+        <ValidatorArray index="0" value="TargetNotDead"/>
+        <ImpactEffect value="BruiserMinionLvl1WeaponDamage"/>
+        <Flags index="TravelValidation" value="1"/>
+        <AmmoUnit value="BruiserMinionLvl1AirMissile"/>
+    </CEffectLaunchMissile>
+    <CEffectModifyUnit id="TowerEnergyRegen">
+        <ImpactUnit Value="Source"/>
+        <VitalArray index="Energy">
+            <Change value="1"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectModifyUnit id="HealingPadHeal">
+        <ValidatorArray value="NotMaxEnergyOrNotMaxHPOrNotMaxShield"/>
+        <ValidatorArray value="TargetNotDead"/>
+        <ValidatorArray value="NotTauntingTotem"/>
+        <ValidatorArray value="NotVehicle"/>
+        <ValidatorArray value="NotBarbarian"/>
+        <VitalArray index="Life">
+            <ChangeFraction value="0.02"/>
+        </VitalArray>
+        <VitalArray index="Shields">
+            <ChangeFraction value="1"/>
+        </VitalArray>
+        <VitalArray index="Energy">
+            <ChangeFraction value="0.02"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectEnumArea id="BaseRepulserFieldCircleSearchArea">
+        <SearchFilters value="-;Player,Ally,Neutral,Missile,Item,Dead"/>
+        <AreaArray Radius="3" Effect="BaseRepulserFieldSet"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="BaseRepulserFieldCliffSearchArea">
+        <SearchFilters value="-;Player,Ally,Neutral,Missile,Item,Dead"/>
+        <AreaArray Radius="18" Effect="BaseRepulserFieldSet"/>
+        <SearchFlags index="SameCliff" value="1"/>
+    </CEffectEnumArea>
+    <CEffectSet id="BaseRepulserFieldSet">
+        <EffectArray value="BaseRepulserFieldApplyRecentDamageTakenBehavior"/>
+        <EffectArray value="BaseRepulserFieldDamage"/>
+    </CEffectSet>
+    <CEffectLaunchMissile id="RangedMinionWeaponLaunchMissile">
+        <ImpactEffect value="RangedMinionWeaponDamage"/>
+        <AmmoUnit value="RangedMinionMissile"/>
+        <ValidatorArray index="0" value="TargetNotDead"/>
+        <Flags index="TravelValidation" value="1"/>
+    </CEffectLaunchMissile>
+    <CEffectLaunchMissile id="FlagBearerMinionWeaponLaunchMissile">
+        <ImpactEffect value="FlagBearerMinionWeaponDamage"/>
+        <AmmoUnit value="FlagBearerMinionMissile"/>
+        <ValidatorArray index="0" value="TargetNotDead"/>
+        <Flags index="TravelValidation" value="1"/>
+    </CEffectLaunchMissile>
+    <CEffectLaunchMissile id="OgreFlagBearerMinionWeaponLaunchMissile">
+        <ImpactEffect value="OgreFlagBearerMinionWeaponDamage"/>
+        <AmmoUnit value="OgreFlagBearerMinionMissile"/>
+        <ValidatorArray index="0" value="TargetNotDead"/>
+        <Flags index="TravelValidation" value="1"/>
+    </CEffectLaunchMissile>
+    <CEffectLaunchMissile id="MeleeMinionWeaponAirLaunchMissile">
+        <ImpactEffect value="MeleeMinionWeaponDamage"/>
+        <AmmoUnit value="MeleeMinionAirMissile"/>
+        <ValidatorArray index="0" value="TargetNotDead"/>
+        <Flags index="TravelValidation" value="1"/>
+    </CEffectLaunchMissile>
+    <CEffectEnumArea id="HealingPadSearchAreaCliff">
+        <SearchFilters value="-;Self,Neutral,Enemy,Structure,Worker,Missile,Destructible,Stasis,Hidden"/>
+        <AreaArray Radius="14" Effect="HealingPadSet"/>
+        <SearchFlags index="SameCliff" value="1"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="HealingPadSearchAreaCircle">
+        <SearchFilters value="-;Self,Neutral,Enemy,Structure,Worker,Missile,Destructible,Stasis,Hidden"/>
+        <AreaArray Radius="3" Effect="HealingPadSet"/>
+    </CEffectEnumArea>
+    <CEffectModifyUnit id="HealerDudeHeal">
+        <ValidatorArray value="NotMaxHP"/>
+        <EditorCategories value="Race:Zerg"/>
+        <VitalArray index="Life">
+            <Change value="50"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectModifyUnit id="HealerDudeDummy">
+        <EditorCategories value="Race:Zerg"/>
+    </CEffectModifyUnit>
+    <CEffectEnumArea id="KingsCoreWeaponSearch">
+        <ImpactLocation Value="TargetUnit"/>
+        <SearchFilters value="-;Player,Ally,Neutral,Light,Mechanical,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="1.5" Effect="KingsCoreWeaponDamage"/>
+    </CEffectEnumArea>
+    <CEffectCreatePersistent id="HealerDude">
+        <ValidatorArray value="noMarkers"/>
+        <ValidatorArray value="IsDamagerDude"/>
+        <ValidatorArray value="LifeNotFull"/>
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="TargetUnit"/>
+        <TimeScaleSource Value="Caster"/>
+        <Flags index="Channeled" value="1"/>
+        <Flags index="PersistUntilDestroyed" value="1"/>
+        <InitialEffect value="HealerDudeHeal"/>
+        <PeriodicEffectArray value="HealerDudeHealSet"/>
+        <PeriodicPeriodArray value="1"/>
+    </CEffectCreatePersistent>
+    <CEffectSet id="HealerDudeHealSet">
+        <EffectArray value="HealerDudeHeal"/>
+        <EffectArray value="HealerDudeDummy"/>
+    </CEffectSet>
+    <CEffectSet id="DamagerDudeSet">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="MercDefenderMeleeOgreDamage"/>
+    </CEffectSet>
+    <CEffectSet id="DamagerDudeDamageSet">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="MercDefenderMeleeOgreDamage"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="MengKnockbackPersistent">
+        <WhichLocation Value="TargetUnit"/>
+        <PeriodCount value="4"/>
+        <PeriodicPeriodArray value="0.0625"/>
+        <PeriodicEffectArray value="MengKnockbackApplyForce"/>
+        <InitialEffect value="MengKnockbackApplyBehavior"/>
+        <PeriodicValidator value="TargetNotUnstoppable"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="MengKnockbackSearch">
+        <SearchFilters value="-;Player,Ally,Neutral,Air,Mechanical,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="4" Effect="MengKnockbackSet"/>
+        <ImpactLocation Value="CasterPoint"/>
+    </CEffectEnumArea>
+    <CEffectSet id="MengKnockbackSet">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="MengKnockbackDamage"/>
+        <EffectArray value="MengKnockbackPersistent"/>
+        <EffectArray value="CameraShakeLightTauntingTotemSet"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="MengKnockbackApplyBehavior">
+        <Behavior value="MengKnockbackKnockback"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyForce id="MengKnockbackApplyForce">
+        <Amount value="10"/>
+        <WhichLocation Effect="MengKnockbackPersistent" Value="CasterPoint"/>
+        <WhichUnit Effect="MengKnockbackPersistent"/>
+    </CEffectApplyForce>
+    <CEffectLaunchMissile id="MercLanerGnollAirMissileLaunch">
+        <ImpactEffect value="MercLanerGnollWeaponDamage"/>
+        <AmmoUnit value="MercLanerGnollAirAttackMissile"/>
+        <ValidatorArray index="0" value="TargetNotDead"/>
+        <Flags index="TravelValidation" value="1"/>
+    </CEffectLaunchMissile>
+    <CEffectLaunchMissile id="MercDefenderGnollAirMissileLaunch">
+        <ImpactEffect value="MercDefenderGnollImpactSet"/>
+        <AmmoUnit value="MercDefenderGnollAirAttackMissile"/>
+        <ValidatorArray index="0" value="TargetNotDead"/>
+        <Flags index="TravelValidation" value="1"/>
+    </CEffectLaunchMissile>
+    <CEffectLaunchMissile id="MercLanerMeleeOgreAirMissileLaunch">
+        <ImpactEffect value="MercLanerMeleeOgreDamage"/>
+        <AmmoUnit value="MercLanerMeleeOgreAirAttackMissile"/>
+        <ValidatorArray index="0" value="TargetNotDead"/>
+        <Flags index="TravelValidation" value="1"/>
+    </CEffectLaunchMissile>
+    <CEffectLaunchMissile id="MercLanerRangedOgreWeaponLaunchMissile">
+        <ImpactEffect value="MercLanerRangedOgreWeaponDamage"/>
+        <AmmoUnit value="MercLanerRangedOgreAttackMissile"/>
+        <ValidatorArray index="0" value="TargetNotDead"/>
+        <Flags index="TravelValidation" value="1"/>
+    </CEffectLaunchMissile>
+    <CEffectEnumArea id="RicochetSearch1">
+        <SearchFilters value="-;Player,Ally,Neutral,Missile,Item,Buried,Stasis,Dead,Hidden,Invulnerable"/>
+        <TargetSorts>
+            <SortArray value="TSEngaged"/>
+            <SortArray value="TSNoBounce"/>
+            <SortArray value="TSRandom"/>
+        </TargetSorts>
+        <AreaArray MaxCount="1" Radius="5" Effect="RicochetLaunch1"/>
+        <LaunchLocation Value="TargetUnit"/>
+        <ExcludeArray Value="Target"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="RicochetSearch2">
+        <SearchFilters value="-;Player,Ally,Neutral,Missile,Item,Buried,Stasis,Dead,Hidden,Invulnerable"/>
+        <TargetSorts>
+            <SortArray value="TSEngaged"/>
+            <SortArray value="TSNoBounce"/>
+            <SortArray value="TSRandom"/>
+        </TargetSorts>
+        <AreaArray MaxCount="1" Radius="5" Effect="RicochetLaunch2"/>
+        <LaunchLocation Effect="RicochetImpactSet1" Value="TargetUnit"/>
+        <ExcludeArray Value="Target"/>
+        <ExcludeArray Effect="RicochetSearch1" Value="Target"/>
+    </CEffectEnumArea>
+    <CEffectSet id="RicochetImpactSet1">
+        <EffectArray value="RicochetDamage"/>
+        <EffectArray value="RicochetSearch2"/>
+    </CEffectSet>
+    <CEffectSet id="RicochetImpactSet2">
+        <EffectArray value="RicochetDamage2"/>
+    </CEffectSet>
+    <CEffectLaunchMissile id="RicochetLaunch1">
+        <LaunchLocation Effect="RicochetSearch1" Value="TargetUnit"/>
+        <ImpactEffect value="RicochetImpactSet1"/>
+        <AmmoUnit value="RicochetMissile"/>
+        <ValidatorArray index="0" value="noMarkers"/>
+    </CEffectLaunchMissile>
+    <CEffectLaunchMissile id="RicochetLaunch2">
+        <LaunchLocation Effect="RicochetImpactSet1" Value="TargetUnit"/>
+        <ImpactEffect value="RicochetImpactSet2"/>
+        <AmmoUnit value="RicochetMissile"/>
+        <ValidatorArray index="0" value="noMarkers"/>
+    </CEffectLaunchMissile>
+    <CEffectApplyBehavior id="PhaseShift">
+        <Behavior value="VoidShift"/>
+    </CEffectApplyBehavior>
+    <CEffectCreateHealer id="Repair">
+        <ValidatorArray value="NotWarpingIn"/>
+        <ValidatorArray value="HiddenCompareBA"/>
+        <ValidatorArray value="HiddenCompareAB"/>
+        <ValidatorArray value="NotVortexd"/>
+    </CEffectCreateHealer>
+    <CEffectEnumArea id="BuildingProtoss_Weapon_Keep_Search">
+        <EditorCategories value="CommandersHero:Tileset"/>
+        <SearchFilters value="-;Player,Ally,Neutral,Psionic,Missile,Stasis,Dead,Invulnerable"/>
+        <AreaArray Radius="2" Effect="BuildingProtoss_Weapon_Keep_ImpactSet"/>
+    </CEffectEnumArea>
+    <CEffectDamage id="StormSuicideRemove">
+        <ValidatorArray value="TargetNotDeadNotUnstoppable"/>
+        <ImpactLocation Value="SourceUnit"/>
+        <Flags index="Kill" value="1"/>
+        <Death value="Remove"/>
+    </CEffectDamage>
+    <CEffectEnumArea id="StormScanForHeroesSearch">
+        <EditorCategories value=""/>
+        <SearchFilters value="Heroic;Structure,Missile,Dead"/>
+        <AreaArray Radius="15" Effect="Storm_RemovePyramidBirth"/>
+    </CEffectEnumArea>
+    <CEffectRemoveBehavior id="Storm_RemovePyramidBirth">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="StormScanForHeroes"/>
+    </CEffectRemoveBehavior>
+    <CEffectDamage id="StormKillRemove">
+        <ImpactLocation Value="TargetUnit"/>
+        <Flags index="Kill" value="1"/>
+        <Flags index="NoKillCredit" value="1"/>
+        <Death value="Remove"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="SafeZone_Knockback_LaunchMissile">
+        <ValidatorArray index="0" value="CasterNotDead"/>
+        <EditorCategories value="CommandersHero:Tileset"/>
+        <LaunchLocation Value="CasterUnit"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <ImpactEffect value="SafeZone_Knockback_RemoveDebuff"/>
+        <FinishEffect value="SafeZone_Knockback_RemoveDebuff"/>
+        <Movers Link="SafeZone_KnockbackMissile" IfRangeLTE="500"/>
+        <DeathType value="Unknown"/>
+    </CEffectLaunchMissile>
+    <CEffectRemoveBehavior id="SafeZone_Knockback_RemoveDebuff">
+        <EditorCategories value="CommandersHero:Tileset"/>
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="SaveZone_KnockbackDebuff"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectModifyUnit id="SafeZone_Ally_RegenerateHealth">
+        <ValidatorArray value="TargetLifeNotFull"/>
+        <EditorCategories value="CommandersHero:Tileset"/>
+        <VitalArray index="Life">
+            <ChangeFraction value="0.02"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectSet id="SafeZone_Ally_HealSet">
+        <ValidatorArray value="TargetNotDead"/>
+        <ValidatorArray value="NotVehicle"/>
+        <EditorCategories value="CommandersHero:Tileset"/>
+        <EffectArray value="SafeZone_Ally_RegenerateHealth"/>
+        <EffectArray value="SafeZone_Ally_RegenerateEnergy"/>
+        <EffectArray value="SafeZone_Ally_RegenerateShields"/>
+    </CEffectSet>
+    <CEffectModifyUnit id="SafeZone_Ally_RegenerateEnergy">
+        <ValidatorArray value="EnergyNotFull"/>
+        <ValidatorArray value="TargetIsManaUser"/>
+        <EditorCategories value="CommandersHero:Tileset"/>
+        <VitalArray index="Energy">
+            <ChangeFraction value="0.02"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectApplyBehavior id="SafeZone_Ally_ApplyProtectionBuff">
+        <EditorCategories value="CommandersHero:Tileset"/>
+        <Behavior value="SafeZone_Ally_ProtectionBuff"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="SafeZone_Ally_ApplyHealBuff">
+        <EditorCategories value="CommandersHero:Tileset"/>
+        <Behavior value="SafeZone_Ally_HealBuff"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="SafeZone_Ally_ApplySet">
+        <EditorCategories value="CommandersHero:Tileset"/>
+        <EffectArray value="SafeZone_Ally_ApplyProtectionBuff"/>
+        <EffectArray value="SafeZone_Ally_ApplyHealBuff"/>
+    </CEffectSet>
+    <CEffectSet id="SafeZone_Knockback_ImpactSet">
+        <ValidatorArray value="HallOfStormsKnockbackExceptionCombine"/>
+        <EditorCategories value="CommandersHero:Tileset"/>
+        <EffectArray value="DismountDecloakTargetSet"/>
+        <EffectArray value="SafeZone_Knockback_ApplyDebuff"/>
+        <EffectArray value="SafeZone_Knockback_DummyTriggerSet"/>
+        <EffectArray value="SafeZone_Knockback_ApplyStun"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="HallOfStormsStunApplyBehavior">
+        <Behavior value="HallOfStormsStun"/>
+    </CEffectApplyBehavior>
+    <CEffectModifyUnit id="BlindMissedDummy"/>
+    <CEffectCreatePersistent id="GodRayCreatePersistent">
+        <WhichLocation Value="TargetUnit"/>
+        <Flags index="PersistUntilDestroyed" value="1"/>
+        <PeriodicValidator value="CasterNotDead"/>
+        <PeriodicPeriodArray value="0.25"/>
+    </CEffectCreatePersistent>
+    <CEffectDestroyPersistent id="GodRayDestroyPersistent">
+        <WhichLocation Value="TargetUnit"/>
+        <Effect value="GodRayCreatePersistent"/>
+        <Count value="1"/>
+        <Radius value="0.25"/>
+    </CEffectDestroyPersistent>
+    <CEffectApplyBehavior id="ApplyAbilityImpactRevealEnemyOnly">
+        <ValidatorArray index="0" value="TargetIsEnemy"/>
+        <Behavior value="AbilityImpactReveal"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="ApplyAbilityImpactReveal">
+        <ValidatorArray value="TargetNotUnrevealable"/>
+        <Behavior value="AbilityImpactReveal"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="HeroGenericCleanseRemoveCCBehaviorCategoriesTarget">
+        <BehaviorCategories index="Slow" value="1"/>
+        <BehaviorCategories index="Stun" value="1"/>
+        <BehaviorCategories index="PassiveMagic" value="1"/>
+        <BehaviorCategories index="User6" value="1"/>
+        <BehaviorCategories index="User7" value="1"/>
+        <BehaviorCategories index="User8" value="1"/>
+        <BehaviorCategories index="User11" value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="HeroGenericCleanseRemoveCCBehaviorCategoriesExpandedTarget" parent="HeroGenericCleanseRemoveCCBehaviorCategoriesTarget">
+        <Name value="Effect/Name/HeroGenericCleanseRemoveCCBehaviorCategoriesExpandedTarget"/>
+        <BehaviorCategories index="Permanent" value="1"/>
+        <BehaviorCategories index="User10" value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="HeroGenericCleanseRemoveCCBehaviorCategoriesCaster">
+        <BehaviorCategories index="Slow" value="1"/>
+        <BehaviorCategories index="Stun" value="1"/>
+        <BehaviorCategories index="PassiveMagic" value="1"/>
+        <BehaviorCategories index="User6" value="1"/>
+        <BehaviorCategories index="User7" value="1"/>
+        <BehaviorCategories index="User8" value="1"/>
+        <BehaviorCategories index="User11" value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="HeroGenericCleanseRemoveCCBehaviorCategoriesExpandedCaster" parent="HeroGenericCleanseRemoveCCBehaviorCategoriesCaster">
+        <Name value="Effect/Name/HeroGenericCleanseRemoveCCBehaviorCategoriesExpandedCaster"/>
+        <BehaviorCategories index="Permanent" value="1"/>
+        <BehaviorCategories index="User10" value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectSet id="DecloakedInitialSet">
+        <EffectArray value="RevealedApplySuppressHoldFireBehavior"/>
+        <EffectArray value="CloakApplyDisplayCooldown"/>
+    </CEffectSet>
+    <CEffectModifyUnit id="CloakApplyDisplayCooldown">
+        <ImpactUnit Value="Source"/>
+        <Cost Abil="NovaCloakCooldownDisplay,Execute" CooldownOperation="Set">
+            <Player Value="Source"/>
+            <Fraction Cooldown="1"/>
+        </Cost>
+        <Cost Abil="ZeratulCloakCooldownDisplay,Execute" CooldownOperation="Set">
+            <Player Value="Source"/>
+            <Fraction Cooldown="1"/>
+        </Cost>
+    </CEffectModifyUnit>
+    <CEffectApplyBehavior id="HeroGeneric_RegenGlobePickup_AB_Globe">
+        <EditorCategories value=""/>
+        <Behavior value="HeroGeneric_RegenGlobeImpact_RegenGlobe"/>
+    </CEffectApplyBehavior>
+    <CEffectModifyUnit id="HeroGeneric_RegenGlobePickup_ManaPercentModifier">
+        <ValidatorArray value="TargetIsManaUser"/>
+        <EditorCategories value=""/>
+        <VitalArray index="Energy">
+            <ChangeFraction value="0.0075"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectModifyUnit id="HeroGeneric_RegenGlobePickup_HealthPercentModifier" parent="CommandersModifyUnitHealing">
+        <VitalArray index="Life">
+            <ChangeFraction value="0.0075"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectSet id="HeroGeneric_RegenGlobePickup_PickUpImpactSet">
+        <EditorCategories value=""/>
+        <EffectArray value="HeroGeneric_RegenGlobePickup_AB_Globe"/>
+        <EffectArray value="HeroGeneric_RegenGlobePickup_AB_GlobeMana"/>
+    </CEffectSet>
+    <CEffectLaunchMissile id="HeroGeneric_RegenGlobePickup_LM_Default">
+        <ValidatorArray index="0" value="NotMirrorImage"/>
+        <ImpactEffect value="HeroGeneraic_RegenGlobePickUp_ImpactSwitch"/>
+        <AmmoUnit value="RegenGlobeMissile"/>
+    </CEffectLaunchMissile>
+    <CEffectSwitch id="HeroGeneric_RegenGlobePickup_SwitchLM">
+        <ValidatorArray value="noMarkers"/>
+        <EditorCategories value=""/>
+        <CaseArray Validator="TargetShouldNotBeVisibleCombine" Effect="HerpGeneric_RegenGlobePickup_LM_NoEnemyVisibility"/>
+        <CaseDefault value="HeroGeneric_RegenGlobePickup_LM_Default"/>
+    </CEffectSwitch>
+    <CEffectLaunchMissile id="HerpGeneric_RegenGlobePickup_LM_NoEnemyVisibility">
+        <ValidatorArray index="0" value="NotMirrorImage"/>
+        <ImpactEffect value="HeroGeneraic_RegenGlobePickUp_ImpactSwitch"/>
+        <AmmoUnit value="RegenGlobeMissileNoEnemyVisibility"/>
+    </CEffectLaunchMissile>
+    <CEffectEnumArea id="HeroGeneric_RegenerationGlobe_Search_TargetForImpactEffect">
+        <ValidatorArray value="NoStageDiveChannel"/>
+        <ImpactLocation Value="SourceUnit"/>
+        <SearchFilters value="Heroic;Player,Neutral,Enemy,Mechanical,Massive,Structure,Missile,Item,Stasis,Dead,Hallucination"/>
+        <AreaArray Radius="12" Effect="HeroGeneric_RegenGlobePickup_SwitchLM"/>
+    </CEffectEnumArea>
+    <CEffectSet id="HeroGeneric_RegenerationGlobe_InitialSet">
+        <EffectArray value="HeroGeneric_RegenerationGlobe_Search_TargetForImpactEffect"/>
+        <EffectArray value="Suicide"/>
+    </CEffectSet>
+    <CEffectSet id="RegenGlobeFadeDummy"/>
+    <CEffectCreatePersistent id="HeroGeneric_RegenerationGlobe_CreatePersistentSearch">
+        <EditorCategories value=""/>
+        <Marker>
+            <MatchFlags index="Id" value="1"/>
+        </Marker>
+        <WhichLocation Value="SourceUnit"/>
+        <Flags index="PersistUntilDestroyed" value="1"/>
+        <PeriodicValidator value="CasterNotDead"/>
+        <PeriodicEffectArray value="HeroGeneric_RegenerationGlobe_Search_TargetForCastEffect"/>
+        <PeriodicPeriodArray value="0.02"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="HeroGeneric_RegenerationGlobe_Search_TargetForCastEffect">
+        <EditorCategories value=""/>
+        <SearchFilters value="Heroic;Player,Neutral,Enemy,Missile,Stasis,Dead,Hidden,Hallucination"/>
+        <TargetSorts RequestCount="1" RequestPercentage="1">
+            <SortArray value="TSClosestDistance"/>
+        </TargetSorts>
+        <AreaArray MaxCount="1" Radius="1.2" Effect="HeroGeneric_RegenerationGlobe_InitialSet"/>
+    </CEffectEnumArea>
+    <CEffectSwitch id="HeroGeneraic_RegenGlobePickUp_ImpactSwitch">
+        <EditorCategories value=""/>
+        <CaseDefault value="HeroGeneric_RegenGlobePickup_PickUpImpactSet"/>
+        <CaseArray Validator="IsKatarina" Effect="HeroGeneric_RegenGlobePickup_Katarina_PickUpImpactSet"/>
+        <ValidatorArray value="TargetNotHallucination"/>
+    </CEffectSwitch>
+    <CEffectSet id="GenericPolymorphDismountRevealSet">
+        <EffectArray value="DismountCaster"/>
+        <EffectArray value="GenericPolymorphApplyGenericPolymorphReveal"/>
+    </CEffectSet>
+    <CEffectRemoveBehavior id="DismountCaster">
+        <WhichUnit Value="Caster"/>
+        <Chance value="0"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="CaptureMacGuffinDismountCaster">
+        <WhichUnit Value="Caster"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="CaptureMacGuffinTwoDismountCaster">
+        <WhichUnit Value="Caster"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="DismountSource">
+        <WhichUnit Value="Source"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="DismountTarget"/>
+    <CEffectApplyBehavior id="GenericPolymorphApplyGenericPolymorphReveal">
+        <WhichUnit Value="Source"/>
+        <Behavior value="GenericPolymorphReveal"/>
+    </CEffectApplyBehavior>
+    <CEffectDamage id="DestroyPlayerCollisionBlocker">
+        <Flags index="Kill" value="1"/>
+        <Flags index="NoKillCredit" value="1"/>
+    </CEffectDamage>
+    <CEffectApplyBehavior id="SuppressTalentUseAnimationsApplyBehavior">
+        <Behavior value="SuppressTalentUseAnimations"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="SuppressTalentUseAnimationsRemoveBehavior">
+        <BehaviorLink value="SuppressTalentUseAnimations"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectSet id="DecloakCasterSet">
+        <EffectArray value="ApplyGenericDecloakCaster"/>
+        <EffectArray value="DecloakTemporaryCloakCaster"/>
+    </CEffectSet>
+    <CEffectSet id="DecloakSourceSet">
+        <EffectArray value="ApplyGenericDecloakSource"/>
+        <EffectArray value="DecloakTemporaryCloakSource"/>
+    </CEffectSet>
+    <CEffectSet id="DecloakTargetSet">
+        <EffectArray value="ApplyGenericDecloakTarget"/>
+        <EffectArray value="DecloakTemporaryCloakTarget"/>
+        <EffectArray value="ApplyAbilityImpactReveal"/>
+        <EffectArray value="HeroGenericUnrevealableImpactDummy"/>
+    </CEffectSet>
+    <CEffectModifyUnit id="HeroGenericUnrevealableImpactDummy">
+        <ValidatorArray value="TargetIsUnrevealable"/>
+    </CEffectModifyUnit>
+    <CEffectRemoveBehavior id="DecloakTemporaryCloakCaster">
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="TempCloakCategory"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="DecloakTemporaryCloakSource">
+        <ValidatorArray index="0" removed="1"/>
+        <WhichUnit Value="Source"/>
+        <BehaviorLink value="TempCloakCategory"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="DecloakTemporaryCloakTarget">
+        <ValidatorArray index="0" value="TargetNotUnrevealable"/>
+        <BehaviorLink value="TempCloakCategory"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="DecloakUnrevealableCloakCaster">
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="UnrevealableCloakCategory"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="DecloakUnrevealableCloakSource">
+        <WhichUnit Value="Source"/>
+        <BehaviorLink value="UnrevealableCloakCategory"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="DecloakUnrevealableCloakTarget">
+        <BehaviorLink value="UnrevealableCloakCategory"/>
+    </CEffectRemoveBehavior>
+    <CEffectSet id="DismountDecloakCasterSet">
+        <EffectArray value="DismountCasterSet"/>
+        <EffectArray value="DecloakCasterSet"/>
+    </CEffectSet>
+    <CEffectSet id="DismountCasterSet">
+        <EffectArray value="DismountCaster"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="ApplyGenericDecloakTarget">
+        <ValidatorArray value="HasPersistentCloakCaster"/>
+        <ValidatorArray value="TargetNotUnrevealable"/>
+        <Behavior value="GenericCloakRevealer"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="ApplyGenericDecloakSource">
+        <ValidatorArray value="HasPersistentCloakSource"/>
+        <WhichUnit Value="Source"/>
+        <Behavior value="GenericCloakRevealer"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="ApplyGenericDecloakCaster">
+        <ValidatorArray value="HasPersistentCloakCaster"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="GenericCloakRevealer"/>
+    </CEffectApplyBehavior>
+    <CEffectDamage id="HeroTalandarDragoonWeapon@Damage" parent="CommandersKineticDamage">
+        <EditorCategories value="CommandersHero:Talandar"/>
+        <Amount value="78.5"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="HeroTalandarDragoonWeapon@LaunchMissile">
+        <ValidatorArray index="0" value="TargetNotDead"/>
+        <EditorCategories value="Race:Protoss,CommandersHero:Talandar"/>
+        <Marker>
+            <MatchFlags index="Id" value="1"/>
+        </Marker>
+        <ImpactEffect value="HeroTalandarDragoonWeapon@ImpactSet"/>
+        <Flags index="TravelValidation" value="1"/>
+        <Flags index="ValidateWeapon" value="0"/>
+        <AmmoUnit value="HeroTalandarDragoonWeapon@Missile"/>
+    </CEffectLaunchMissile>
+    <CEffectEnumArea id="HeroTalandarDragoonWeapon@SplashSearch">
+        <ValidatorArray value="TargetNotEvading"/>
+        <EditorCategories value="Race:Neutral,CommandersHero:Talandar"/>
+        <ExcludeArray Effect="HeroTalandarDragoonWeapon@ImpactSet" Value="Target"/>
+        <AreaArray Radius="2" Effect="HeroTalandarDragoonWeapon@SplashImpactSet"/>
+    </CEffectEnumArea>
+    <CEffectSet id="HeroTalandarDragoonWeapon@SplashImpactSet">
+        <ValidatorArray value="noMarkers"/>
+        <EditorCategories value="Race:Neutral,CommandersHero:Talandar"/>
+        <EffectArray value="HeroTalandarDragoonWeapon@SplashDamage"/>
+    </CEffectSet>
+    <CEffectDamage id="HeroTalandarDragoonWeapon@SplashDamage" parent="CommandersKineticDamage">
+        <ValidatorArray value="CasterNotBlindedAndTargetNotEvading"/>
+        <EditorCategories value="CommandersHero:Talandar"/>
+        <Amount value="78.5"/>
+    </CEffectDamage>
+</Catalog>

@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CGameUI id="Dflt">
+        <MusicArray value="Music_LibertyStartup"/>
+        <IntroMusic value="Music_LibertyIntro"/>
+        <CreditsMusic value="Music_EndCreditsA1"/>
+        <LoopAmbience value="Amb_2D_Gluescreen"/>
+        <ObjectGroupData index="0" removed="1"/>
+        <ObjectGroupData index="1" removed="1"/>
+        <LoadingScreenHelp index="3" Text="LoadingScreen/Help05"/>
+        <LoadingScreenHelp index="4" Text="LoadingScreen/Help06"/>
+        <LoadingScreenHelp index="5" Text="LoadingScreen/Help07"/>
+        <LoadingScreenHelp index="6" Text="LoadingScreen/Help08"/>
+        <LoadingScreenHelp index="7" Text="LoadingScreen/Help11"/>
+        <LoadingScreenHelp index="8" Text="LoadingScreen/Help12"/>
+        <LoadingScreenHelp index="9" Text="LoadingScreen/Help13"/>
+        <LoadingScreenHelp index="10" Text="LoadingScreen/Help14"/>
+        <LoadingScreenHelp index="11" removed="1"/>
+        <LoadingScreenHelp index="12" removed="1"/>
+        <LoadingScreenHelp index="13" removed="1"/>
+        <LoadingScreenHelp index="14" removed="1"/>
+        <LoadingScreenHelp index="15" removed="1"/>
+        <LoadingScreenHelp index="16" removed="1"/>
+        <LoadingScreenHelp index="17" removed="1"/>
+        <LoadingScreenHelp index="18" removed="1"/>
+        <LoadingScreenHelp index="19" removed="1"/>
+        <LoadingScreenHelp index="20" removed="1"/>
+        <LoadingScreenHelp index="21" removed="1"/>
+        <LoadingScreenHelp index="22" removed="1"/>
+        <LoadingScreenHelp index="23" removed="1"/>
+        <LoadingScreenHelp index="24" removed="1"/>
+        <LoadingScreenHelp index="25" removed="1"/>
+        <LoadingScreenHelp index="26" removed="1"/>
+        <LoadingScreenHelp index="27" removed="1"/>
+        <LoadingScreenHelp index="28" removed="1"/>
+        <LoadingScreenHelp index="29" removed="1"/>
+        <LoadingScreenHelp index="30" removed="1"/>
+        <LoadingScreenHelp index="31" removed="1"/>
+        <LoadingScreenHelp index="32" removed="1"/>
+        <LoadingScreenHelp index="33" removed="1"/>
+        <LoadingScreenHelp index="34" removed="1"/>
+        <LoadingScreenHelp index="35" removed="1"/>
+        <LoadingScreenHelp index="36" removed="1"/>
+        <LoadingScreenHelp index="37" removed="1"/>
+        <LoadingScreenHelp index="38" removed="1"/>
+        <LoadingScreenHelp index="39" removed="1"/>
+        <LoadingScreenHelp index="40" removed="1"/>
+        <LoadingScreenHelp index="41" removed="1"/>
+        <LoadingScreenHelp index="42" removed="1"/>
+        <LoadingScreenHelp index="43" removed="1"/>
+        <LoadingScreenHelp index="44" removed="1"/>
+        <LoadingScreenHelp index="45" removed="1"/>
+        <LoadingScreenHelp index="46" removed="1"/>
+        <LoadingScreenHelp index="47" removed="1"/>
+        <LoadingScreenHelp index="48" removed="1"/>
+        <LoadingScreenHelp index="49" removed="1"/>
+        <LoadingScreenHelp index="50" removed="1"/>
+        <LoadingScreenHelp index="51" removed="1"/>
+        <LoadingScreenHelp index="52" removed="1"/>
+        <LoadingScreenHelp index="53" removed="1"/>
+        <LoadingScreenHelp index="54" removed="1"/>
+        <LoadingScreenHelp index="55" removed="1"/>
+        <LoadingScreenHelp index="56" removed="1"/>
+        <LoadingScreenHelp index="57" removed="1"/>
+        <LoadingScreenHelp index="58" removed="1"/>
+        <LoadingScreenHelp index="59" removed="1"/>
+        <LoadingScreenHelp index="60" removed="1"/>
+        <LoadingScreenHelp index="61" removed="1"/>
+        <DefaultUIRace value="Prot"/>
+        <ObserverSoundtrack value="Music_TerrLow"/>
+        <StrobeHighlightColor value="255,255,225,225"/>
+        <SoundData index="ME" Volume="0.000000" VolumeControl="SoundEffects"/>
+        <SoundData index="Movie" VolumeControl="SoundEffects"/>
+        <SoundData index="TV" Volume="0.000000" VolumeControl="SoundEffects">
+            <ThresholdPoints/>
+            <ThresholdPoints Count="4" Volume="-6.000000"/>
+            <VolumeRolloffFadeOut index="1" Time="250"/>
+            <VolumeRolloffPoints index="0" Distance="10.000000"/>
+            <VolumeRolloffPoints index="1" Distance="30.000000"/>
+            <DSPArray value="Heroes_HowlingWolfeLimiter_SFX_Spell_Ultimate"/>
+        </SoundData>
+        <SoundData index="Dialogue" Volume="0.000000">
+            <VolumeRolloffPoints index="0" Distance="100.000000"/>
+            <VolumeRolloffPoints index="1" Distance="1000.000000"/>
+        </SoundData>
+        <SoundData index="Mission" Volume="0.000000"/>
+        <SoundData index="Music" Volume="0.000000"/>
+        <SoundData index="Other" Volume="0.000000" VolumeControl="SoundEffects">
+            <VolumeRolloffFadeOut index="1" Time="250"/>
+            <VolumeRolloffPoints index="1" Distance="20.000000"/>
+        </SoundData>
+        <SoundData index="Ambient" Volume="0.000000" AlertFadeVolume="0.000000,0.000000">
+            <ThresholdPoints/>
+            <ThresholdPoints/>
+            <ThresholdPoints/>
+            <ThresholdPoints/>
+            <VolumeRolloffPoints index="1" Distance="100.000000"/>
+        </SoundData>
+        <SoundData index="SAmbient" Volume="0.000000" AlertFadeVolume="0.000000,0.000000">
+            <VolumeRolloffFadeOut index="1" Time="250"/>
+            <VolumeRolloffPoints index="1" Distance="20.000000"/>
+        </SoundData>
+        <SoundData index="Alert" Volume="0.000000" VolumeControl="SoundEffects">
+            <VolumeRolloffFadeOut index="1" Time="250"/>
+            <VolumeRolloffPoints index="0" Distance="10.000000"/>
+            <VolumeRolloffPoints index="1" Distance="100.000000"/>
+        </SoundData>
+        <SoundData index="Death" Volume="0.000000">
+            <VolumeRolloffFadeOut index="1" Time="250"/>
+            <VolumeRolloffPoints index="1" Distance="20.000000"/>
+        </SoundData>
+        <SoundData index="Ready" Volume="0.000000" VolumeControl="SoundReady"/>
+        <SoundData index="Spell" Volume="0.000000" AlertFadeVolume="0.000000,0.000000">
+            <ThresholdPoints/>
+            <ThresholdPoints Count="5" Volume="-1.000000"/>
+            <ThresholdPoints Count="8" Volume="-2.000000"/>
+            <ThresholdPoints Count="12" Volume="-4.000000"/>
+            <VolumeRolloffFadeOut index="1" Time="250"/>
+            <VolumeRolloffPoints index="1" Distance="20.000000"/>
+            <DSPArray value="Heroes_HowlingWolfeLimiter_SFX_Spell_Oneshots"/>
+        </SoundData>
+        <SoundData index="SpellOneshotImpact" VolumeBaseline="-6.000000">
+            <ThresholdPoints/>
+            <ThresholdPoints Count="5" Volume="-3.000000"/>
+            <ThresholdPoints Count="10" Volume="-6.000000"/>
+            <VolumeRolloffFadeOut index="1" Time="250"/>
+            <VolumeRolloffPoints index="1" Distance="20.000000"/>
+            <DSPArray value="Heroes_HowlingWolfeLimiter_SFX_Spell_Oneshots"/>
+        </SoundData>
+        <SoundData index="SpellOneshotLaunch" VolumeBaseline="-6.000000">
+            <ThresholdPoints Volume="-3.000000"/>
+            <ThresholdPoints Count="5" Volume="-6.000000"/>
+            <ThresholdPoints Count="10" Volume="-9.000000"/>
+            <VolumeRolloffFadeOut index="1" Time="250"/>
+            <VolumeRolloffPoints index="1" Distance="20.000000"/>
+            <DSPArray value="Heroes_HowlingWolfeLimiter_SFX_Spell_Oneshots"/>
+        </SoundData>
+        <SoundData index="Combat" Volume="0.000000" AlertFadeVolume="0.000000,0.000000">
+            <ThresholdPoints index="0" Count="0"/>
+            <ThresholdPoints index="1" Count="5" Volume="-2.000000"/>
+            <ThresholdPoints Count="7" Volume="-4.000000"/>
+            <ThresholdPoints Count="13" Volume="-6.000000"/>
+            <ThresholdPoints Count="20" Volume="-8.000000"/>
+            <ThresholdPoints Count="25" Volume="-8.000000"/>
+            <VolumeRolloffFadeOut index="1" Time="250"/>
+            <VolumeRolloffPoints index="1" Distance="20.000000"/>
+            <DSPArray value="Heroes_HowlingWolfeLimiter_SFX_Hero_Combat"/>
+        </SoundData>
+        <SoundData index="Voice" Volume="0.000000" AlertFadeVolume="0.000000,0.000000"/>
+        <SoundData index="Message" Volume="0.000000" VolumeControl="SoundAmbience">
+            <VolumeRolloffFadeOut index="1" Time="250"/>
+            <VolumeRolloffPoints index="1" Distance="20.000000"/>
+        </SoundData>
+        <SoundData index="UI" Volume="0.000000"/>
+        <SoundData index="UIMovie" VolumeControl="SoundEffects"/>
+        <SoundData index="Flames" Volume="0.000000" AlertFadeVolume="0.000000,0.000000">
+            <VolumeRolloffFadeOut index="1" Time="250"/>
+            <VolumeRolloffPoints index="1" Distance="20.000000"/>
+        </SoundData>
+        <SoundData index="Build" Volume="0.000000" AlertFadeVolume="0.000000,0.000000">
+            <ThresholdPoints/>
+            <VolumeRolloffFadeOut index="1" Time="250"/>
+        </SoundData>
+        <SoundData index="Gather" Volume="0.000000" AlertFadeVolume="0.000000,0.000000">
+            <VolumeRolloffFadeOut index="1" Time="250"/>
+            <VolumeRolloffPoints index="1" Distance="20.000000"/>
+        </SoundData>
+        <SoundData index="Doodad" Volume="0.000000" AlertFadeVolume="0.000000,0.000000">
+            <VolumeRolloffFadeOut index="1" Time="250"/>
+        </SoundData>
+        <SoundData index="SEmitters" VolumeControl="SoundEffects">
+            <VolumeRolloffFadeOut index="1" Time="250"/>
+        </SoundData>
+        <SoundData index="SPieces">
+            <VolumeRolloffFadeOut index="1" Time="250"/>
+            <VolumeRolloffPoints index="1" Distance="20.000000"/>
+        </SoundData>
+        <SoundData index="Foley" Volume="0.000000">
+            <VolumeRolloffFadeOut index="1" Time="250"/>
+        </SoundData>
+        <SoundData index="Movement" Volume="0.000000" AlertFadeVolume="0.000000,0.000000">
+            <VolumeRolloffFadeOut index="1" Time="250"/>
+            <VolumeRolloffPoints index="1" Distance="20.000000"/>
+        </SoundData>
+        <SoundData index="User11">
+            <MixerPriority value="10"/>
+            <MixerPriorityNonLocal value="2"/>
+            <MuteControl value="SoundReady"/>
+            <VolumeControl value="Unknown"/>
+            <CategoryDuckingFadeTimeIn value="250"/>
+            <CategoryDuckingFadeTimeOut value="2000"/>
+            <MinimumDuckingLevel value="-9.000000"/>
+            <Flags index="PauseOnDisable" value="1"/>
+            <Flags index="ApplyCategoryDuckingGlobal" value="1"/>
+            <Flags index="ApplyCategoryDuckingNonLocal" value="1"/>
+            <CategoryDucking index="TV" value="-1.000000"/>
+            <CategoryDucking index="Mission" value="-3.000000"/>
+            <CategoryDucking index="Music" value="-4.500000"/>
+            <CategoryDucking index="Ambient" value="-6.000000"/>
+            <CategoryDucking index="Alert" value="-3.000000"/>
+            <CategoryDucking index="Death" value="-3.000000"/>
+            <CategoryDucking index="Spell" value="-3.000000"/>
+            <CategoryDucking index="SpellOneshotImpact" value="-3.000000"/>
+            <CategoryDucking index="SpellOneshotLaunch" value="-9.000000"/>
+            <CategoryDucking index="Combat" value="-3.000000"/>
+            <CategoryDucking index="Voice" value="-6.000000"/>
+            <CategoryDucking index="Message" value="-4.500000"/>
+            <CategoryDucking index="UIMovie" value="-1.500000"/>
+            <CategoryDucking index="Flames" value="-3.000000"/>
+            <CategoryDucking index="Build" value="-3.000000"/>
+            <CategoryDucking index="Gather" value="-6.000000"/>
+            <CategoryDucking index="Doodad" value="-6.000000"/>
+            <CategoryDucking index="SEmitters" value="-9.000000"/>
+            <CategoryDucking index="SPieces" value="-6.000000"/>
+            <CategoryDucking index="Foley" value="-3.000000"/>
+            <CategoryDucking index="Movement" value="-6.000000"/>
+            <CategoryDucking index="User1" value="-6.000000"/>
+            <CategoryDucking index="User8" value="-9.000000"/>
+            <CategoryDucking index="User10" value="-3.000000"/>
+            <CategoryDucking index="User12" value="-6.000000"/>
+            <CategoryDucking index="User13" value="-6.000000"/>
+            <CategoryDucking index="User14" value="-6.000000"/>
+            <CategoryDucking index="User20" value="-9.000000"/>
+            <CategoryDucking index="User24" value="-3.000000"/>
+            <CategoryDucking index="User26" value="-6.000000"/>
+            <CategoryDucking index="User27" value="-3.000000"/>
+            <CategoryDucking index="User28" value="-9.000000"/>
+            <CategoryDucking index="User29" value="-1.500000"/>
+            <CategoryDucking index="User30" value="-9.000000"/>
+            <CategoryDucking index="User32" value="-96.000000"/>
+            <CategoryDucking index="User33" value="-24.000000"/>
+            <CategoryDucking index="User34" value="-9.000000"/>
+        </SoundData>
+        <SoundData index="User23" MixerPriorityNonLocal="0" VolumeBaseline="-7.000000" MinimumDuckingLevel="-12.000000"/>
+        <ListenerDistanceRolloff index="2" CameraValue="70.000000" ListenerFactor="0.200000"/>
+        <ListenerDistanceRolloff index="3" removed="1"/>
+        <DisplayTimeInSeconds value="1"/>
+        <OverrideColors index="Self">
+            <Value index="Diffuse" value="0.140000,0.360000,1.000000,1.000000"/>
+            <Value index="Emissive" value="0.140000,0.360000,1.000000,1.000000"/>
+        </OverrideColors>
+        <OverrideColors index="Ally">
+            <Value index="Diffuse" value="0.140000,0.360000,1.000000,1.000000"/>
+            <Value index="Emissive" value="0.140000,0.360000,1.000000,1.000000"/>
+        </OverrideColors>
+        <OverrideColors index="Hostile">
+            <Value index="Emissive" value="0.700000,0.000000,0.000000,1.000000"/>
+        </OverrideColors>
+        <OverrideColors index="Neutral">
+            <Value index="Diffuse" value="1.000000,0.780000,0.000000,1.000000"/>
+            <Value index="Emissive" value="1.000000,0.780000,0.000000,1.000000"/>
+        </OverrideColors>
+        <ResourceArray index="Minerals" Icon="Assets\Textures\icon-mineral-nobg.dds" IconBackground="Assets\Textures\icon-mineral-terran.dds"/>
+        <ResourceArray index="Vespene" Icon="Assets\Textures\icon-gas-terran-nobg.dds" IconBackground="Assets\Textures\icon-gas-terran.dds"/>
+        <ResourceArray index="Terrazine" Icon="Assets\Textures\icon-energy-NoBG.dds" IconBackground="Assets\Textures\icon-energy-terran.dds"/>
+        <ResourceArray index="Custom" Icon="Assets\Textures\icon-health-NoBG.dds" IconBackground="Assets\Textures\icon-health-terran.dds"/>
+        <SelectionColors index="Ally" value="255,55,109,251"/>
+        <MinimapData SelectedUnitBorderColor="255,0,255,0"/>
+        <PlanetPanelDefaultBackground value=""/>
+        <CommandHotkeyRepeatIgnored value="1"/>
+        <AllowReturnToGameplayWhenDefeated value="1"/>
+        <HelpControlCategories Name="UI/HelpControlCategory_Selection_Name" Description="UI/HelpControlCategory_Selection_Description"/>
+        <HelpControlCategories Name="UI/HelpControlCategory_BasicUnitCommands_Name" Description="UI/HelpControlCategory_BasicUnitCommands_Description"/>
+        <HelpControlCategories Name="UI/HelpControlCategory_AdvancedUnitCommands_Name" Description="UI/HelpControlCategory_AdvancedUnitCommands_Description"/>
+        <HelpControlCategories Name="UI/HelpControlCategory_ControlGroups_Name" Description="UI/HelpControlCategory_ControlGroups_Description"/>
+        <HelpControlCategories Name="UI/HelpControlCategory_CameraControls_Name" Description="UI/HelpControlCategory_CameraControls_Description"/>
+        <HelpControlCategories Name="UI/HelpControlCategory_Communication_Name" Description="UI/HelpControlCategory_Communication_Description"/>
+        <HelpControls Category="UI/HelpControlCategory_BasicUnitCommands_Name" Name="UI/HelpControl_Move_Name" Description="UI/HelpControl_Move_Description" Basic="1"/>
+        <HelpControls Category="UI/HelpControlCategory_BasicUnitCommands_Name" Name="UI/HelpControl_Stop_Name" Description="UI/HelpControl_Stop_Description"/>
+        <HelpControls Category="UI/HelpControlCategory_BasicUnitCommands_Name" Name="UI/HelpControl_Attack_Name" Description="UI/HelpControl_Attack_Description" Basic="1"/>
+        <HelpControls Category="UI/HelpControlCategory_BasicUnitCommands_Name" Name="UI/HelpControl_AttackMove_Name" Description="UI/HelpControl_AttackMove_Description"/>
+        <HelpControls Category="UI/HelpControlCategory_BasicUnitCommands_Name" Name="UI/HelpControl_Abilities_Name" Description="UI/HelpControl_Abilities_Description" Basic="1"/>
+        <HelpControls Category="UI/HelpControlCategory_BasicUnitCommands_Name" Name="UI/HelpControl_StopChanneling_Name" Description="UI/HelpControl_StopChanneling_Description"/>
+        <HelpControls Category="UI/HelpControlCategory_BasicUnitCommands_Name" Name="UI/HelpControl_Mount_Name" Description="UI/HelpControl_Mount_Description" Basic="1"/>
+        <HelpControls Category="UI/HelpControlCategory_BasicUnitCommands_Name" Name="UI/HelpControl_Hearthstone_Name" Description="UI/HelpControl_Hearthstone_Description" Basic="1"/>
+        <HelpControls Category="UI/HelpControlCategory_BasicUnitCommands_Name" Name="UI/HelpControl_Animations_Name" Description="UI/HelpControl_Animations_Description"/>
+        <HelpControls Category="UI/HelpControlCategory_BasicUnitCommands_Name" Name="UI/HelpControl_QueuingCommands_Name" Description="UI/HelpControl_QueuingCommands_Description"/>
+        <HelpControls Category="UI/HelpControlCategory_Information_Name" Name="UI/HelpControl_Talents_Name" Description="UI/HelpControl_Talents_Description"/>
+        <HelpControls Category="UI/HelpControlCategory_Information_Name" Name="UI/HelpControl_Scoreboard_Name" Description="UI/HelpControl_Scoreboard_Description"/>
+        <HelpControls Category="UI/HelpControlCategory_CameraControls_Name" Name="UI/HelpControl_MoveCamera_Name" Description="UI/HelpControl_MoveCamera_Description" Basic="1"/>
+        <HelpControls Category="UI/HelpControlCategory_CameraControls_Name" Name="UI/HelpControl_CenterCamera_Name" Description="UI/HelpControl_CenterCamera_Description" Basic="1"/>
+        <HelpControls Category="UI/HelpControlCategory_CameraControls_Name" Name="UI/HelpControl_CameraLock_Name" Description="UI/HelpControl_CameraLock_Description" Basic="1"/>
+        <HelpControls Category="UI/HelpControlCategory_Communication_Name" Name="UI/HelpControl_Ping_Name" Description="UI/HelpControl_Ping_Description"/>
+        <HelpControls Category="UI/HelpControlCategory_Communication_Name" Name="UI/HelpControl_InitiateChat_Name" Description="UI/HelpControl_InitiateChat_Description"/>
+        <HelpControls Category="UI/HelpControlCategory_Communication_Name" Name="UI/HelpControl_AlliedChat_Name" Description="UI/HelpControl_AlliedChat_Description"/>
+        <HelpControls Category="UI/HelpControlCategory_Communication_Name" Name="UI/HelpControl_AllChat_Name" Description="UI/HelpControl_AllChat_Description"/>
+        <HelpControls Category="UI/HelpControlCategory_Communication_Name" Name="UI/HelpControl_PartyChat_Name" Description="UI/HelpControl_PartyChat_Description"/>
+        <HelpControls Category="UI/HelpControlCategory_Communication_Name" Name="UI/HelpControl_Reply_Name" Description="UI/HelpControl_Reply_Description"/>
+        <HelpControls Category="UI/HelpControlCategory_Communication_Name" Name="UI/HelpControl_CycleRecipients_Name" Description="UI/HelpControl_CycleRecipients_Description"/>
+        <HelpControls Category="UI/HelpControlCategory_Communication_Name" Name="UI/HelpControl_BlockCommunication_Name" Description="UI/HelpControl_BlockCommunication_Description"/>
+        <HelpGameMechanics index="0" Icon="UI/HelpMenuDialogGameMechanics_Experience" Name="UI/HelpGameMechanic_Experience_Name" Description="UI/HelpGameMechanic_Experience_Description"/>
+        <HelpGameMechanics index="1" Icon="UI/HelpMenuDialogGameMechanics_Gates" Name="UI/HelpGameMechanic_Gates_Name" Description="UI/HelpGameMechanic_Gates_Description"/>
+        <HelpGameMechanics index="2" Icon="UI/HelpMenuDialogGameMechanics_TowerAmmunition" Name="UI/HelpGameMechanic_TowerAmmunition_Name" Description="UI/HelpGameMechanic_TowerAmmunition_Description"/>
+        <HelpGameMechanics index="3" Icon="UI/HelpMenuDialogGameMechanics_Moonwells" Name="UI/HelpGameMechanic_Moonwells_Name" Description="UI/HelpGameMechanic_Moonwells_Description"/>
+        <HelpGameMechanics index="4" Icon="UI/HelpMenuDialogGameMechanics_VisionTowers" Name="UI/HelpGameMechanic_VisionTowers_Name" Description="UI/HelpGameMechanic_VisionTowers_Description"/>
+        <HelpGameMechanics index="5" Icon="UI/HelpMenuDialogGameMechanics_MercenaryCamps" Name="UI/HelpGameMechanic_MercenaryCamps_Name" Description="UI/HelpGameMechanic_MercenaryCamps_Description"/>
+        <HelpGameMechanics index="6" Icon="UI/HelpMenuDialogGameMechanics_HealthGlobes" Name="UI/HelpGameMechanic_HealthGlobes_Name" Description="UI/HelpGameMechanic_HealthGlobes_Description"/>
+        <HelpGameMechanics index="7" Icon="UI/HelpMenuDialogGameMechanics_BruiserMinions" Name="UI/HelpGameMechanic_BruiserMinions_Name" Description="UI/HelpGameMechanic_BruiserMinions_Description"/>
+        <HelpGameMechanics index="8" Icon="UI/HelpMenuDialogGameMechanics_Bushes" Name="UI/HelpGameMechanic_Bushes_Name" Description="UI/HelpGameMechanic_Bushes_Description"/>
+        <HelpGameMechanics index="9" Icon="UI/HelpMenuDialogGameMechanics_FogofWar" Name="UI/HelpGameMechanic_FogofWar_Name" Description="UI/HelpGameMechanic_FogofWar_Description"/>
+        <HelpGameMechanics index="10" removed="1"/>
+        <HelpGameMechanics index="11" removed="1"/>
+        <HelpGameMechanics index="12" removed="1"/>
+        <ActivateLobbyChatOnJoin value="1"/>
+        <QuickCastMode value="OnUp"/>
+        <HotkeyInfoArray index="QuickHeroTalentTreeSelection" Category="1" Name="2" Tooltip="3"/>
+    </CGameUI>
+</Catalog>

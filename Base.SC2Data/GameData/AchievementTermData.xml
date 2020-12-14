@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CAchievementTermEffectDamaged id="CommanderFenixDragoonSuitAttack">
+        <Effect value="HeroTalandarDragoonWeapon@LaunchMissile"/>
+    </CAchievementTermEffectDamaged>
+    <CAchievementTermEffectDamaged id="CommanderFenixDragoonSuitSolarCannon">
+        <Effect value="HeroTalandarChargedBuster@StartSet"/>
+    </CAchievementTermEffectDamaged>
+</Catalog>

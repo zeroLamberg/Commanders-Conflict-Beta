@@ -1,0 +1,559 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CEffectSet id="MapM_BattleForSlayn_VoidMinion_CreateUnitSpawnModelAtPoint">
+        <EditorCategories value="CommandersHero:Tileset"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectDamage id="MapM_BattleForSlayn_VoidThrasher_Weapon_Damage" parent="CommandersKineticDamage">
+        <EditorCategories value="CommandersHero:Tileset"/>
+        <Amount value="850"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="MapM_BattleForSlayn_VoidThrasher_Weapon_LM">
+        <EditorCategories value="CommandersHero:Tileset"/>
+        <ImpactEffect value="MapM_BattleForSlayn_VoidThrasher_Weapon_Damage"/>
+        <AmmoUnit value="MapM_BattleForSlayn_VoidThrasher_Weapon_Missile"/>
+    </CEffectLaunchMissile>
+    <CEffectSet id="MapM_BattleForSlayn_VoidMinion_Weapon_ImpactSet">
+        <EditorCategories value="CommandersHero:Tileset"/>
+        <EffectArray value="MapM_BattleForSlayn_VoidMinion_Weapon_Damage"/>
+    </CEffectSet>
+    <CEffectDamage id="MapM_BattleForSlayn_VoidMinion_Weapon_Damage" parent="CommandersKineticDamage">
+        <EditorCategories value="CommandersHero:Tileset"/>
+        <Amount value="31"/>
+        <AttributeFactor index="Heroic" value="0.5"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="MapM_BattleForSlayn_VoidMinion_Weapon_LM">
+        <EditorCategories value="CommandersHero:Tileset"/>
+        <ImpactEffect value="MapM_BattleForSlayn_VoidMinion_Weapon_ImpactSet"/>
+        <AmmoUnit value="MapM_BattleForSlayn_VoidMinion_Weapon_Missile"/>
+        <Movers Link="AscendantWeapon"/>
+    </CEffectLaunchMissile>
+    <CAbilEffectTarget id="MapM_BattleForSlayn_VoidThrasher_AttackAbil">
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Mercenaries"/>
+        <Effect index="0" value="MapM_BattleForSlayn_VoidThrasher_Weapon_LM"/>
+        <Flags index="AbortOnAllianceChange" value="0"/>
+        <Flags index="BestUnit" value="0"/>
+        <Flags index="ChannelingMinimum" value="0"/>
+        <Flags index="RangeUseCasterRadius" value="0"/>
+        <Flags index="ReApproachable" value="0"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Flags index="UpdateChargesOnLevelChange" value="0"/>
+        <Cost>
+            <Cooldown Location="Unit" TimeUse="2.25"/>
+        </Cost>
+        <TargetFilters value="Structure;Player,Ally,Neutral,Dead,Invulnerable"/>
+        <Range value="500"/>
+        <Arc value="45"/>
+        <CastIntroTime value="1.25"/>
+        <UninterruptibleArray index="Cast" value="1"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="BunkerAttack"/>
+    </CAbilEffectTarget>
+    <CActorUnit id="MapM_BattleForSlayn_VoidMinion" parent="CommandersCreepStandard" unitName="MapM_BattleForSlayn_VoidMinion">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Tileset"/>
+        <On Terms="WeaponStart.*.AttackStart" Send="AnimClear Attack"/>
+        <On Terms="WeaponStart.*.AttackStart" Send="AnimPlay Attack Attack"/>
+        <On Terms="WeaponStart.*.AttackStart; AnimPlaying Birth" Send="AnimClear Birth"/>
+        <On Terms="UnitMovementUpdate.*.Walk; AnimPlaying Attack" Send="AnimClear Attack"/>
+        <On Terms="AssetPreInit; TextureGroupsGlobal ContainsAll kingscrest" Send="ModelSwap MinionRangedKingsCrest"/>
+        <On Terms="AssetPreInit; TextureGroupsGlobal ContainsAll luxoria" Send="ModelSwap MinionRangedKingsLuxoria"/>
+        <On Terms="ActorCreation" Send="SetOpacity"/>
+        <On Terms="ActorCreation" Send="SetOpacity 1.000000 0.500000"/>
+        <On Terms="ActorCreation" Send="SetMinimapVisibility"/>
+        <DeathArray index="Normal" ModelLink="MapM_BattleForSlayn_VoidMinionDeath" SoundLink="" VoiceLink="Ascendant_Death_Fx"/>
+        <WalkAnimMoveSpeed value="3"/>
+        <BarOffset value="5"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\ui_targetportrait_bbay_minions_archer_blue.dds"/>
+        </GroupIcon>
+        <Wireframe>
+            <Image value="Assets\Textures\ui_targetportrait_bbay_minions_archer_red.dds"/>
+        </Wireframe>
+    </CActorUnit>
+    <CActorDoodad id="MapM_BattleForSlayn_VoidThrasher_GroundSkirt">
+        <Aliases index="0" value="_Snapshot"/>
+        <Aliases index="1" removed="1"/>
+        <Flags index="SuppressSaveLoad" value="0"/>
+        <Inherits index="BaseModelScale" value="1"/>
+        <Inherits index="CastShadows" value="1"/>
+        <Inherits index="CloakEffect" value="1"/>
+        <Inherits index="CreepEngulfment" value="1"/>
+        <Inherits index="Decal" value="1"/>
+        <Inherits index="ModelMaterials" value="1"/>
+        <Inherits index="Opacity" value="1"/>
+        <Inherits index="Scale" value="1"/>
+        <Inherits index="TeamColor" value="1"/>
+        <Inherits index="TimeScale" value="1"/>
+        <Inherits index="TintColor" value="1"/>
+        <Inherits index="WarpGroup" value="1"/>
+        <FogVisibility value="Visible"/>
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Tileset"/>
+        <On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death"/>
+        <On index="1" Terms="ActorOrphan" Send="Destroy"/>
+        <On Terms="AnimBracketState.*.AfterClosing; !AnimBracketExitReason ModelSwap; AnimName BSD" Send="Destroy"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachOrigin SOpForwardNorth"/>
+        <Model value="VoidThrasherGroundSkirt"/>
+        <ModelFlags index="AutomatedGlobalLoopsIgnoreOrphan" value="0"/>
+        <ModelFlags index="AutomateGlobalLoops" value="0"/>
+        <ModelFlags index="IgnoreWalkables" value="0"/>
+        <ModelFlags index="UseSyncSeed" value="1"/>
+    </CActorDoodad>
+    <CActorAction id="MapM_BattleForSlayn_VoidThrasher_Weapon_Attack" parent="GenericAttack" effectImpact="MapM_BattleForSlayn_VoidThrasher_Weapon_Damage" effectLaunch="MapM_BattleForSlayn_VoidThrasher_Weapon_LM">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Tileset"/>
+        <LaunchSiteOps Ops="SOpAttachTarget1"/>
+        <ImpactMap index="None" Model="MapM_VoidThrasher_Weapon_Impact"/>
+    </CActorAction>
+    <CActorMissile id="MapM_BattleForSlayn_VoidThrasher_Weapon_AttackMissile" parent="GenericAttackMissile" unitName="MapM_BattleForSlayn_VoidThrasher_Weapon_Missile">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Tileset"/>
+        <Model value="MapM_VoidThrasher_Weapon_Missile"/>
+    </CActorMissile>
+    <CActorSound id="MapM_BattleForSlayn_VoidThrasher_Weapon_SoundLaunch" parent="SoundOneShot">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Tileset"/>
+        <On Terms="UnitCreation.MapM_BattleForSlayn_VoidThrasher_Weapon_Missile" Send="Create"/>
+        <Layers>
+            <Sound value="MapM_BattleForSlayn_VoidThrasher_Weapon_LaunchLayer2"/>
+            <PitchSource value="Actor"/>
+            <PlayDelaySource value="Actor"/>
+            <VolumeSource value="Actor"/>
+            <Chance value="100"/>
+            <Pitch value="-3.000000,1.000000"/>
+            <PlayDelay value="0,10"/>
+            <Volume value="-17.000000,-15.000000"/>
+        </Layers>
+    </CActorSound>
+    <CActorSound id="MapM_BattleForSlayn_VoidThrasher_Weapon_SoundMissileLaunch" parent="SoundContinuous">
+        <FogVisibility value="Visible"/>
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Tileset"/>
+        <On Terms="UnitCreation.MapM_BattleForSlayn_VoidThrasher_Weapon_Missile" Send="Create"/>
+    </CActorSound>
+    <CActorModel id="MapM_BattleForSlaun_VoidMinion_ModelSpawn" parent="CommandersModelAnimationStyleOneShot">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Tileset"/>
+        <On index="0" Send="AnimBracketStart BSD Birth {} Death ContentPlayOnce"/>
+        <On Terms="Effect.MapM_BattleForSlayn_VoidMinion_CreateUnitSpawnModelAtPoint.Start" Send="Create"/>
+        <Model value="MapM_BattleForSlayn_VoidMinion_Spawn"/>
+    </CActorModel>
+    <CActorAction id="MapM_BattleForSlayn_VoidMinion_Weapon_Attack" parent="GenericAttack" effectImpact="AscendantWeaponDamage" effectLaunch="MapM_BattleForSlayn_VoidMinion_Weapon_LM">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Tileset"/>
+        <LaunchSiteOps Ops="SOpAttachCenter SOpMoveByDot15"/>
+        <LaunchAssets Sound="MapM_Obelisk_MinionWeapon_Launch"/>
+        <ImpactMap index="None" Sound="MapM_Obelisk_MinionWeapon_Impact"/>
+        <ImpactPhysics Name="AscendantPsiBlastImpact" MatchKeys="Basic" Physics="AscendantPsiBlastDeathImpactForce"/>
+    </CActorAction>
+    <CActorMissile id="MapM_BattleForSlayn_VoidMinion_Weapon_AttackMissile" parent="GenericAttackMissile" unitName="MapM_BattleForSlayn_VoidMinion_Weapon_Missile">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Tileset"/>
+    </CActorMissile>
+    <CActorUnit id="MapM_BattleForSlayn_VoidThrasher" parent="CommandersCreepStandard" unitName="MapM_BattleForSlayn_VoidThrasher">
+        <Macros index="4" value="WarpTrain_HasWarpModel"/>
+        <Macros index="5" value="DiabloDevilChargePretargetMacro"/>
+        <Macros index="6" value="DiabloOverpowerAnimationMacro"/>
+        <Macros value="NazeeboGargantuanGrabAnimationMacro"/>
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Tileset"/>
+        <On index="26" Terms="UnitDeathCustomize; CanApplyActionPhysics RagdollBasic" Send="DeathCustomize RagdollBasic"/>
+        <On index="27" Terms="UnitHighlightLocal.*.Start" Send="StatusIncrement PreTargetingTint"/>
+        <On index="28" Terms="UnitHighlightLocal.*.Stop" Send="StatusDecrement PreTargetingTint"/>
+        <On index="29" Terms="UnitDeathCustomize" Target="VoidThrasherGroundSkirt" Send="AnimBracketStop BSD"/>
+        <On index="30" Terms="Abil.MapM_BattleForSlayn_VoidThrasher_AttackAbil.SourceCastStart" Send="AnimPlay Spell Attack 0 -1.000000 -1.000000 3.500000 AsDuration"/>
+        <On index="31" Terms="Behavior.MapM_VoidThrasher_AttackMode.On" Send="AnimBracketStart StandWork Stand,Work,Start Stand,Work Stand,Work,End 0 0.000000"/>
+        <On index="32" Terms="Behavior.MapM_VoidThrasher_AttackMode.Off" Send="AnimBracketStop StandWork"/>
+        <On Terms="UnitBirth.MapM_BattleForSlayn_VoidThrasher" Send="SetMinimapVisibility"/>
+        <On Terms="UnitBirth.MapM_BattleForSlayn_VoidThrasher" Send="$Birth"/>
+        <On Terms="UnitBirth.MapM_BattleForSlayn_VoidThrasher" Send="AnimSetTimeScale Birth 3.000000"/>
+        <On Terms="UnitBirth.MapM_BattleForSlayn_VoidThrasher" Send="TimerSet 1.000000 BirthT"/>
+        <On Terms="TimerExpired; TimerName BirthT" Send="AnimSetTimeScale Birth 1.000000"/>
+        <On Terms="UnitBirth.MapM_BattleForSlayn_VoidThrasher" Send="Create MapM_BattleForSlayn_VoidThrasher_GroundSkirt"/>
+        <CustomUnitStatusFrame value="UnitStatus/SuperCreepNeutralUnitStatusFrameTemplate"/>
+        <HighlightTooltip value="Unit/Name/Bogus"/>
+        <MinimapIconIsTeamColored value="0"/>
+        <MinimapUseSelfColor value="1"/>
+        <MinimapUseSelectionColor value="1"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <StatusBarFlags index="Workers" value="0"/>
+    </CActorUnit>
+    <CModel id="MapM_BattleForSlayn_VoidMinionDeath" parent="UnitDeath">
+        <Model value="Assets\Units\Protoss\Supplicant_Death\Supplicant_Death.m3"/>
+        <EditorCategories value="CommandersHero:Tileset"/>
+        <ScaleMax value="1.350000,1.350000,1.350000"/>
+        <ScaleMin value="1.350000,1.350000,1.350000"/>
+    </CModel>
+    <CModel id="MapM_BattleForSlayn_VoidMinion" parent="Unit">
+        <Model value="Assets\Units\Protoss\Supplicant\Supplicant.m3"/>
+        <EditorCategories value="CommandersHero:Tileset"/>
+        <Radius value="0.375000"/>
+        <ScaleMax value="1.350000,1.350000,1.350000"/>
+        <ScaleMin value="1.350000,1.350000,1.350000"/>
+        <SelectionRadius value="0.340800"/>
+        <ShadowRadius value="0.340800"/>
+    </CModel>
+    <CModel id="MapM_BattleForSlayn_VoidMinion_Weapon_AttackImpact" parent="ImpactFX">
+        <Model value="Assets\Effects\Protoss\HighTemplarTaldarim_AgonizingBlast_Impact\HighTemplarTaldarim_AgonizingBlast_Impact.m3"/>
+        <EditorCategories value="CommandersHero:Tileset"/>
+    </CModel>
+    <CModel id="MapM_BattleForSlayn_VoidMinion_Weapon_Missile" parent="MissileFX">
+        <Model value="Assets\Effects\Protoss\HighTemplarTaldarim_AgonizingBlast\HighTemplarTaldarim_AgonizingBlast.m3"/>
+        <EditorCategories value="CommandersHero:Tileset"/>
+    </CModel>
+    <CModel id="MapM_BattleForSlayn_VoidThrasher" parent="Unit" Race="Zerg">
+        <Model value="Assets\Units\Zerg\Void_Thrasher\Void_Thrasher.m3"/>
+        <AttachProps Id="Ref_Center" RadiusShield="4.000000"/>
+        <EditorCategories value="CommandersHero:Tileset"/>
+        <Events>
+            <Anim value="Stand,00"/>
+            <Name value="Void_Thrasher_StandIdle_Vox"/>
+            <Type value="Sound"/>
+            <Time value="0.132000"/>
+            <Payload value="Void_Thrasher_StandIdle_Vox"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,00"/>
+            <Name value="Void_Thrasher_StandIdle_Vox"/>
+            <Type value="Sound"/>
+            <Time value="2.756000"/>
+            <Payload value="Void_Thrasher_StandIdle_Vox"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,00"/>
+            <Name value="Void_Thrasher_StandIdle_Vox"/>
+            <Type value="Sound"/>
+            <Time value="6.223001"/>
+            <Payload value="Void_Thrasher_StandIdle_Vox"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,00"/>
+            <Name value="Void_Thrasher_StandIdle_Vox"/>
+            <Type value="Sound"/>
+            <Time value="8.114000"/>
+            <Payload value="Void_Thrasher_StandIdle_Vox"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,Work,A,End,00"/>
+            <Name value="Void_Thrasher_Movement_Vox"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="Void_Thrasher_Movement_Vox"/>
+        </Events>
+        <Events>
+            <Anim value="Birth,00"/>
+            <Name value="VoidRift_Launch_Mn"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="VoidRift_Launch_Mn"/>
+        </Events>
+        <Events>
+            <Anim value="Birth,00"/>
+            <Name value="Void_Thrasher_Birth_Vox"/>
+            <Type value="Sound"/>
+            <Time value="2.020000"/>
+            <Payload value="Void_Thrasher_Birth_Vox"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,Work,Start,00"/>
+            <Name value="Void_Thrasher_SWS"/>
+            <Type value="Sound"/>
+            <Time value="0.007000"/>
+            <Payload value="Void_Thrasher_SWS"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,Work,00"/>
+            <Name value="Void_Thrasher_Launch_Vox"/>
+            <Type value="Sound"/>
+            <Time value="0.025000"/>
+            <Payload value="Void_Thrasher_Launch_Vox"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,Work,End,00"/>
+            <Name value="Thrasher_2D_Vx_Lunge"/>
+            <Type value="Sound"/>
+            <Time value="0.030000"/>
+            <Payload value="Thrasher_2D_Vx_Lunge"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,Work,End,00"/>
+            <Name value="Thrasher_2D_Vx_Spit"/>
+            <Type value="Sound"/>
+            <Time value="1.574000"/>
+            <Payload value="Thrasher_2D_Vx_Spit"/>
+        </Events>
+        <Events>
+            <Anim value="Stun,00"/>
+            <Name value="Void_Thrasher_Injured_Vox"/>
+            <Type value="Sound"/>
+            <Time value="0.042000"/>
+            <Payload value="Void_Thrasher_Injured_Vox"/>
+        </Events>
+        <Events>
+            <Anim value="Stun,00"/>
+            <Name value="Void_Thrasher_Movement_Vox"/>
+            <Type value="Sound"/>
+            <Time value="2.000000"/>
+            <Payload value="Void_Thrasher_Movement_Vox"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Void_Thrasher_Death_LastGasp_Vox"/>
+            <Type value="Sound"/>
+            <Time value="2.000000"/>
+            <Payload value="Void_Thrasher_Death_LastGasp_Vox"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Void_Thrasher_Death_Vox"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="Void_Thrasher_Death_Vox"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Void_Thrasher_Vanish"/>
+            <Type value="Sound"/>
+            <Time value="3.039000"/>
+            <Payload value="Void_Thrasher_Vanish"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,Work,A,End,00"/>
+            <Name value="Void_Thrasher_Electric_Exhale_Vox"/>
+            <Type value="Sound"/>
+            <Time value="0.012000"/>
+            <Payload value="Void_Thrasher_Electric_Exhale_Vox"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Void_Thrasher_ChestGlow"/>
+            <Type value="Sound"/>
+            <Time value="2.978000"/>
+            <Payload value="Void_Thrasher_ChestGlow"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Void_Thrasher_Electric_StrikeShort"/>
+            <Type value="Sound"/>
+            <Time value="2.586000"/>
+            <Payload value="Void_Thrasher_Electric_StrikeShort"/>
+        </Events>
+        <Events>
+            <Anim value="Burrow"/>
+            <Name value="Burrow"/>
+            <Type value="Sound"/>
+            <Time value="0.990000"/>
+            <Payload value="Yagdra_Burrow"/>
+        </Events>
+        <Events>
+            <Anim value="Unburrow"/>
+            <Name value="Unburrow"/>
+            <Type value="Sound"/>
+            <Payload value="Yagdra_UnBurrow"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,Cover"/>
+            <Name value="AttackCover"/>
+            <Type value="Sound"/>
+            <Time value="0.340000"/>
+            <Payload value="Yagdra_Swipe"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,01"/>
+            <Name value="AttackInhale"/>
+            <Type value="Sound"/>
+            <Payload value="Void_Thrasher_Electric_Inhale_Vox"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,01"/>
+            <Name value="AttackAttack"/>
+            <Type value="Sound"/>
+            <Time value="0.530000"/>
+            <Payload value="Yagdra_Attack"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,01"/>
+            <Name value="AttackVox"/>
+            <Type value="Sound"/>
+            <Time value="0.530000"/>
+            <Payload value="Void_Thrasher_Launch_Vox"/>
+        </Events>
+        <PlanetPanelCamera value="Star2CameraLow15"/>
+        <Radius value="1.200000"/>
+        <SelectionLayer value="2"/>
+        <SelectionRadius value="1.900000"/>
+        <ShadowRadius value="2.000000"/>
+        <SquibTypeDefault value="Flesh"/>
+        <TechPurchaseCamera value="Star2CameraLow15"/>
+        <UnitGlossaryCamera value="Star2CameraLow15"/>
+    </CModel>
+    <CWeaponLegacy id="MapM_BattleForSlayn_VoidThrasher_Weapon">
+        <EditorCategories value="CommandersHero:Tileset"/>
+        <Icon value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel0.dds"/>
+        <DisplayEffect value="MapM_BattleForSlayn_VoidThrasher_Weapon_Damage"/>
+        <TargetFilters value="Structure;Player,Ally,Neutral,Missile,Stasis,Dead,Invulnerable"/>
+        <MinScanRange value="0"/>
+        <Range value="500"/>
+        <Arc value="45"/>
+        <Period value="2"/>
+        <PreswingBeforeAttack value="1.5"/>
+        <Effect value="MapM_BattleForSlayn_VoidThrasher_Weapon_LM"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="MapM_BattleForSlayn_VoidMinionWeapon">
+        <Name value="Weapon/Name/Ascendant"/>
+        <EditorCategories value="CommandersHero:Tileset"/>
+        <Icon value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel0.dds"/>
+        <DisplayEffect value="MapM_BattleForSlayn_VoidMinion_Weapon_Damage"/>
+        <TargetFilters value="Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AcquireFilters value="Visible;Player,Ally,Neutral,Enemy,Light,Biological,Psionic,Heroic,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="7"/>
+        <Period value="1.754"/>
+        <Effect value="MapM_BattleForSlayn_VoidMinion_Weapon_LM"/>
+    </CWeaponLegacy>
+    <CMoverMissile id="MapM_BattleForSlayn_VoidThrasher_WeaponMover" parent="MissileDefault">
+        <MotionPhases index="0">
+            <Driver value="Ballistic"/>
+            <Acceleration value="-1"/>
+            <Speed value="26"/>
+            <MaxSpeed value="18.75"/>
+            <Gravity value="10"/>
+            <ClearanceLookahead value="3"/>
+            <ClearanceAcceleration value="75"/>
+            <Outro value="-1"/>
+            <YawPitchRoll value="MAX"/>
+        </MotionPhases>
+    </CMoverMissile>
+    <CMoverMissile id="MapM_BattleForSlayn_VoidMinion_WeaponMover" parent="MissileDefault"/>
+    <CSound id="MapAnnouncer_VoidThrasherAttacks" parent="UI">
+        <AssetArray File="LocalizedData\Sounds\VO\acObj_ShakurasAlly_838.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\acObj_ShakurasAlly_973.ogg" FacialGroup=""/>
+        <Flags index="Wait" value="1"/>
+    </CSound>
+    <CSound id="MapAnnouncer_VoidThrasherDies" parent="UI">
+        <AssetArray File="localizeddata\Sounds\Announcer\MapM_BattleForSlayn\MapM_BattleForSlayn_VoidTrasherDies.ogg" FacialGroup=""/>
+        <Flags index="Wait" value="1"/>
+    </CSound>
+    <CSound id="MapAnnouncer_VoidThrasherSpawns" parent="UI">
+        <AssetArray File="LocalizedData\Sounds\VO\acObj_ShakurasAlly_837.ogg" FacialGroup=""/>
+        <Flags index="Wait" value="1"/>
+    </CSound>
+    <CSound id="MapM_BattleForSlayn_VoidThrasher_Weapon_AttackImpact" parent="Combat">
+        <EditorCategories value="CommandersHero:Tileset"/>
+        <AssetArray File="Assets\Sounds\Thrasher_Missile_Impact_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Thrasher_Missile_Impact_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Thrasher_Missile_Impact_03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Thrasher_Missile_Impact_04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Thrasher_Missile_Impact_05.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Thrasher_Missile_Impact_06.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Thrasher_Missile_Impact_07.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Thrasher_Missile_Impact_08.wav" FacialGroup=""/>
+        <DupeMaximumMethod value="Replace"/>
+        <DupeMuteCount value="2"/>
+        <DupePrioritization value="Oldest"/>
+        <Pitch value="-1.000000,1.000000"/>
+        <Volume value="-2.000000,-2.000000"/>
+    </CSound>
+    <CSound id="MapM_BattleForSlayn_VoidThrasher_Weapon_LaunchLayer2" parent="Combat">
+        <EditorCategories value="CommandersHero:Tileset"/>
+        <AssetArray File="Assets\Sounds\WarMissile_Launch00.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\WarMissile_Launch01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\WarMissile_Launch02.wav" FacialGroup=""/>
+        <DopplerLevel value="2.000000"/>
+        <Pitch value="-4.000000,-2.000000"/>
+        <Volume value="-2.000000,0.000000"/>
+    </CSound>
+    <CSound id="MapM_BattleForSlayn_VoidThrasher_Weapon_SoundLaunch" parent="Combat">
+        <EditorCategories value="CommandersHero:Tileset"/>
+        <AssetArray File="Assets\Sounds\Thrasher_Attack_Launch_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Thrasher_Attack_Launch_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Thrasher_Attack_Launch_03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Thrasher_Attack_Launch_04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Thrasher_Attack_Launch_05.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Thrasher_Attack_Launch_06.wav" FacialGroup=""/>
+        <DopplerLevel value="2.000000"/>
+        <Pitch value="-3.000000,3.000000"/>
+    </CSound>
+    <CSound id="MapM_BattleForSlayn_VoidThrasher_Weapon_SoundMissileLaunch" parent="Spell">
+        <EditorCategories value="CommandersHero:Tileset"/>
+        <AssetArray File="Assets\Sounds\Korhal_BileFlyBy_4_Mn.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Korhal_BileFlyBy_1_Mn.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Korhal_BileFlyBy_2_Mn.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Korhal_BileFlyBy_3_Mn.wav" FacialGroup=""/>
+        <DopplerLevel value="3.000000"/>
+        <DupeDestroyCount value="3"/>
+        <DupeThresholdFadeTime value="50"/>
+        <Pitch value="-2.000000,2.000000"/>
+        <Volume value="-2.000000,-2.000000"/>
+        <VolumeRolloffFadeBlend value="Logarithmic"/>
+        <VolumeRolloffPoints Distance="15.000000"/>
+        <VolumeRolloffPoints Distance="30.000000" Volume="-96.000000"/>
+    </CSound>
+    <CUnit id="MapM_BattleForSlayn_VoidThrasher_Weapon_Missile" parent="MISSILE">
+        <FogVisibility value="Dimmed"/>
+        <Mover value="MapM_BattleForSlayn_VoidThrasher_WeaponMover"/>
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Melee,CommandersHero:Tileset"/>
+    </CUnit>
+    <CUnit id="MapM_BattleForSlayn_VoidMinion_Weapon_Missile" parent="MISSILE_INVULNERABLE">
+        <Mover value="MapM_BattleForSlayn_VoidMinion_WeaponMover"/>
+        <Height value="4"/>
+        <EditorCategories value="ObjectType:Projectile,CommandersHero:Tileset"/>
+    </CUnit>
+    <CUnit id="MapM_BattleForSlayn_VoidMinion" parent="CommandersMinion">
+        <Collide index="Ground" value="1"/>
+        <Attributes index="Biological" value="0"/>
+        <Attributes index="User1" value="1"/>
+        <LifeStart value="400"/>
+        <LifeMax value="400"/>
+        <Speed value="2.5"/>
+        <AbilArray index="3" removed="1"/>
+        <BehaviorArray Link="MapM_BattleForSlayn_VoidMinion_TimedLife"/>
+        <WeaponArray Link="MapM_BattleForSlayn_VoidMinionWeapon"/>
+        <Radius value="0.6875"/>
+        <InnerRadius value="0.5"/>
+        <ScoreMake value="50"/>
+        <ScoreKill value="100"/>
+        <EditorCategories value="ObjectType:Unit,CommandersHero:Tileset"/>
+    </CUnit>
+    <CUnit id="MapM_BattleForSlayn_VoidThrasher" parent="CommandersMinion">
+        <FlagArray index="Unstoppable" value="1"/>
+        <FogVisibility value="Dimmed"/>
+        <Collide index="Ground" value="1"/>
+        <Attributes index="Biological" value="0"/>
+        <Attributes index="Hover" value="1"/>
+        <Attributes index="User1" value="1"/>
+        <LifeStart value="5000"/>
+        <LifeMax value="5000"/>
+        <LifeRegenRate value="-83.332"/>
+        <Speed value="0"/>
+        <Sight value="0"/>
+        <AbilArray Link="MapM_BattleForSlayn_VoidThrasher_AttackAbil"/>
+        <BehaviorArray Link="MapM_BattleForSlayn_VoidThrasherInvulnerability"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="3" Face="Attack" Type="AbilCmd" AbilCmd="MapM_BattleForSlayn_VoidThrasher_AttackAbil,255" Row="2" Column="4"/>
+        </CardLayouts>
+        <EditorCategories value="ObjectType:Unit,CommandersHero:Tileset"/>
+        <Radius value="2"/>
+    </CUnit>
+    <CBehaviorBuff id="MapM_BattleForSlayn_VoidMinion_TimedLife">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Tileset"/>
+        <Duration value="7.5"/>
+        <FinalEffect value="Suicide"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="MapM_BattleForSlayn_VoidThrasherInvulnerability">
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Tileset"/>
+        <Duration value="6"/>
+        <Modification>
+            <StateFlags index="Invulnerable" value="1"/>
+            <StateFlags index="SuppressLifeRegen" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CUpgrade id="MapM_BattleForSlayn_ScalingUpgrade">
+        <EffectArray Operation="AddBaseMultiply" Reference="Unit,MapM_BattleForSlayn_VoidThrasher,LifeMax" Value="0.1"/>
+        <EffectArray Operation="AddBaseMultiply" Reference="Unit,MapM_BattleForSlayn_VoidThrasher,LifeStart" Value="0.1"/>
+        <EffectArray Operation="AddBaseMultiply" Reference="Unit,MapM_BattleForSlayn_VoidMinion,LifeStart" Value="0.1"/>
+        <EffectArray Operation="AddBaseMultiply" Reference="Unit,MapM_BattleForSlayn_VoidMinion,LifeMax" Value="0.1"/>
+        <EffectArray Operation="AddBaseMultiply" Reference="Effect,MapM_BattleForSlayn_VoidThrasher_Weapon_Damage,Amount" Value="0.1"/>
+        <EffectArray Operation="AddBaseMultiply" Reference="Effect,MapM_BattleForSlayn_VoidMinion_Weapon_Damage,Amount" Value="0.1"/>
+        <EffectArray Operation="AddBaseMultiply" Reference="Unit,MapM_BattleForSlayn_VoidThrasher,LifeRegenRate" Value="0.1"/>
+        <EditorCategories value="CommandersHero:Tileset"/>
+        <MaxLevel value="30"/>
+    </CUpgrade>
+</Catalog>

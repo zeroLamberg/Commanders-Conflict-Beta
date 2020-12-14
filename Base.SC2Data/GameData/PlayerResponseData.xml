@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CPlayerResponseUnitBirth id="CommandersUnitBrith">
+        <Handled value="CommandersSummonedUnitBirth"/>
+        <TargetFilters value="Summoned;Ally,Neutral,Enemy,Missile"/>
+        <Location value="Attacker"/>
+        <CasterFilters value="Heroic;Missile,Destructible,Hidden"/>
+        <BirthType index="Trained" value="0"/>
+        <BirthType index="Built" value="0"/>
+        <BirthType index="CheatCreated" value="0"/>
+        <BirthType index="TriggerCreated" value="0"/>
+    </CPlayerResponseUnitBirth>
+</Catalog>

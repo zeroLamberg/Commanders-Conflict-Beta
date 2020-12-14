@@ -1,0 +1,2600 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CEffectDamage id="MercenaryHybridPsionic_Weapon_DamageLaner" parent="CommandersKineticDamage">
+        <ValidatorArray value="SourceIsMercenary"/>
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <AttributeFactor index="Biological" value="1"/>
+        <AttributeFactor index="Structure" value="1"/>
+        <Amount value="65"/>
+    </CEffectDamage>
+    <CEffectDamage id="Mercenary_HybridMelee_Weapon_DamageDefender" parent="CommandersKineticDamage">
+        <ValidatorArray value="SourceIsCreep"/>
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <Amount value="55"/>
+    </CEffectDamage>
+    <CEffectDamage id="Mercenary_HybridRanged_Weapon_DamageLaner" parent="CommandersKineticDamage">
+        <ValidatorArray value="SourceIsMercenary"/>
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <AttributeFactor index="Biological" value="1.5"/>
+        <AttributeFactor index="Structure" value="1.5"/>
+        <Amount value="75"/>
+    </CEffectDamage>
+    <CEffectApplyBehavior id="Mercenary_HybridMelee_Weapon_ApplySlow">
+        <ValidatorArray index="0" value="TargetIsNotUnstoppable"/>
+        <ValidatorArray value="NotStructureTarget"/>
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <Behavior value="Mercenary_HybridMelee_Weapon_Slow"/>
+        <Chance value="0"/>
+    </CEffectApplyBehavior>
+    <CEffectDamage id="Mercenary_HybridMelee_Weapon_DamageLaner" parent="CommandersKineticDamage">
+        <ValidatorArray value="SourceIsMercenary"/>
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <AttributeFactor index="Biological" value="1"/>
+        <AttributeFactor index="Structure" value="1"/>
+        <Amount value="75"/>
+    </CEffectDamage>
+    <CEffectDamage id="Mercenary_HybridRanged_Weapon_DamageDefender" parent="CommandersKineticDamage">
+        <ValidatorArray value="SourceIsCreep"/>
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <Amount value="55"/>
+    </CEffectDamage>
+    <CEffectApplyBehavior id="Mercenary_HybridRanged_ApplyReducedDamage">
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <Behavior value="Mercenary_HybridRanged_Weapon_ReducedDamage"/>
+        <Chance value="0"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="Mercenary_HybridMelee_Weapon_ImpactSet">
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <EffectArray value="Mercenary_HybridMelee_Weapon_DamageDefender"/>
+        <EffectArray value="Mercenary_HybridMelee_Weapon_DamageLaner"/>
+        <EffectArray value="Mercenary_HybridMelee_Weapon_ApplySlow"/>
+        <EffectArray value="RemoveBenignBehaviorCaster"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="MercenaryHybridPsionic_Weapon_ApplyArmorReduction">
+        <ValidatorArray index="0" removed="1"/>
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <Behavior value="Mercenary_HybridPsionic_Weapon_ArmorReduced"/>
+        <Chance value="0"/>
+    </CEffectApplyBehavior>
+    <CEffectCreatePersistent id="Mercenary_HybridRanged_Weapon_CP">
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <WhichLocation Value="TargetUnit"/>
+        <TimeScaleSource Value="Caster"/>
+        <Flags index="Channeled" value="1"/>
+        <Flags index="PersistUntilDestroyed" value="1"/>
+        <InitialEffect value="Mercenary_HybridRanged_Weapon_ImpactSet"/>
+        <PeriodicValidator value="TargetNotStasisOrInvulnerableOrDead"/>
+        <PeriodicEffectArray value="Mercenary_HybridRanged_Weapon_ImpactSet"/>
+        <PeriodicPeriodArray value="1"/>
+    </CEffectCreatePersistent>
+    <CEffectDamage id="MercenaryHybridPsionic_Weapon_DamageDefender" parent="CommandersKineticDamage">
+        <ValidatorArray value="SourceIsCreep"/>
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <Amount value="40"/>
+    </CEffectDamage>
+    <CEffectSet id="Mercenary_HybridRanged_Weapon_ImpactSet">
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <EffectArray value="Mercenary_HybridRanged_Weapon_DamageDefender"/>
+        <EffectArray value="Mercenary_HybridRanged_Weapon_DamageLaner"/>
+        <EffectArray value="Mercenary_HybridRanged_ApplyReducedDamage"/>
+    </CEffectSet>
+    <CEffectSet id="Mercenary_HybridPsionic_Weapon_ImpactSet">
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <EffectArray value="MercenaryHybridPsionic_Weapon_DamageDefender"/>
+        <EffectArray value="MercenaryHybridPsionic_Weapon_DamageLaner"/>
+        <EffectArray value="MercenaryHybridPsionic_Weapon_ApplyArmorReduction"/>
+    </CEffectSet>
+    <CActorUnit id="MercenaryHybridMeleeDefender" parent="CommandersCreepStandard" unitName="MercenaryHybridMeleeDefender">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Mercenaries"/>
+        <On index="26" Terms="UnitDeathCustomize" Send="DeathCustomize RagdollBasic"/>
+        <On index="27" Terms="UnitHighlightLocal.*.Start" Send="StatusIncrement PreTargetingTint"/>
+        <On index="28" Terms="UnitHighlightLocal.*.Stop" Send="StatusDecrement PreTargetingTint"/>
+        <On index="29" Terms="Behavior.L90ETCMoshPitStun.On" Send="AnimPlay Spell Dance PlayForever"/>
+        <On index="30" Terms="Behavior.L90ETCMoshPitStun.Off" Send="AnimClear Spell"/>
+        <On index="31" Terms="Behavior.FaceMeltDance.On" Send="AnimPlay Spell Dance PlayForever"/>
+        <On index="32" Terms="Behavior.FaceMeltDance.Off" Send="AnimClear Spell"/>
+        <On Terms="Behavior.TalentBucketPromote.On" Send="SetScale 1.250000 1.000000"/>
+        <On Terms="WeaponStart.*.AttackStart" Send="AnimBracketStart Attack Attack"/>
+        <On Terms="WeaponStop.*.AttackStop" Send="AnimBracketStop Attack"/>
+        <On Terms="UnitBirth" Send="Create Generic_ModelWarpIn"/>
+        <On Terms="ActorCreation" Send="SetMinimapVisibility"/>
+        <Model value="Mercenary_HybridMelee"/>
+        <BuildModel value="Mercenary_HybridMelee"/>
+        <DeathArray index="Normal" ModelLink="Mercenary_HybridMelee_Death" SoundLink="Mercenary_HybridMelee_Death" VoiceLink=""/>
+        <DeathCustoms ModelLink="MassHallucinationDeath" SoundLink="Tassadar_MassHallucination_DeathLarge" Name="Hallucination"/>
+        <PlacementModel value="Mercenary_HybridMelee"/>
+        <WalkAnimMoveSpeed value="4"/>
+        <CustomUnitStatusFrame value="UnitStatus/MinionUnitStatusFrameTemplate"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\ui_targetportrait_bbay_minions_footman_blue.dds"/>
+        </GroupIcon>
+        <LifeArmorIcon value="Assets\Textures\storm_temp_btn-upgrade-protoss-groundarmorlevel0.dds"/>
+        <MinimapIconIsTeamColored value="0"/>
+        <MinimapUseSelfColor value="1"/>
+        <MinimapUseSelectionColor value="1"/>
+        <MovementHerdNode value="HerdNode_Infantry_Small"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <StatusBarFlags index="Workers" value="0"/>
+        <UnitIcon value="Assets\Textures\btn-unit-xelnaga-viper.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\ui_targetportrait_bbay_minions_footman_red.dds"/>
+        </Wireframe>
+    </CActorUnit>
+    <CActorAction id="MercenaryHybridMelee_Weapon_Attack" parent="GenericAttack" effectAttack="Mercenary_HybridMelee_Weapon_ImpactSet">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Mercenaries"/>
+    </CActorAction>
+    <CActorUnit id="MercenaryHybridMeleeLaner" parent="CommandersMinionStandard" unitName="MercenaryHybridMeleeLaner">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Mercenaries"/>
+        <On index="34" Terms="WeaponStart.*.AttackStart" Send="AnimBracketStart Attack Attack"/>
+        <On index="35" Terms="WeaponStop.*.AttackStop" Send="AnimBracketStop Attack"/>
+        <On index="36" Terms="UnitBirth" Send="Create Generic_ModelWarpIn"/>
+        <On index="37" Terms="ActorCreation" Send="Create Storm_Effect_MinionWarpIn"/>
+        <On Terms="UnitBirth" Send="SetMinimapVisibility"/>
+        <Model value="Mercenary_HybridMelee"/>
+        <EventDataFootprint index="0" Model="MercDefender_HybridMeleeFootprint"/>
+        <BuildModel value="Mercenary_HybridMelee"/>
+        <DeathArray index="Normal" ModelLink="Mercenary_HybridMelee_Death" SoundLink="Mercenary_HybridMelee_Death" VoiceLink=""/>
+        <PlacementModel value="Mercenary_HybridMelee"/>
+        <WalkAnimMoveSpeed value="4"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\ui_targetportrait_bbay_minions_footman_blue.dds"/>
+        </GroupIcon>
+        <LifeArmorIcon value="Assets\Textures\storm_temp_btn-upgrade-protoss-groundarmorlevel0.dds"/>
+        <MinimapIconIsTeamColored value="1"/>
+        <MinimapRenderPriority value="Merc"/>
+        <MovementHerdNode value="HerdNode_Infantry_Small"/>
+        <SoundArray index="Birth" value="MercDefender_HybridMelee_Birth"/>
+        <SoundArray index="Ready" value="MercDefender_HybridMelee_Ready"/>
+        <SoundArray index="Help" value="MercDefender_HybridMelee_Help"/>
+        <SoundArray index="What" value="MercDefender_HybridMelee_What"/>
+        <SoundArray index="Yes" value="MercDefender_HybridMelee_Yes"/>
+        <SoundArray index="Attack" value="MercDefender_HybridMelee_Attack"/>
+        <SoundArray index="Pissed" value="MercDefender_HybridMelee_Pissed"/>
+        <SoundArray index="Movement" value="MercDefender_HybridMelee_Movement"/>
+        <SoundArray index="Turning" value="MercDefender_HybridMelee_Turning"/>
+        <SoundArray index="Board" value="MercDefender_HybridMelee_Board"/>
+        <SoundArray index="Click" value="MercDefender_HybridMelee_Click"/>
+        <SoundArray index="ClickError" value="MercDefender_HybridMelee_ClickError"/>
+        <SoundArray index="Highlight" value="MercDefender_HybridMelee_Highlight"/>
+        <UnitIcon value="Assets\Textures\btn-unit-xelnaga-viper.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\ui_targetportrait_bbay_minions_footman_red.dds"/>
+        </Wireframe>
+    </CActorUnit>
+    <CActorAction id="MercenaryHybridRanged_Weapon_Attack" parent="GenericAttackBase">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Mercenaries"/>
+        <On Terms="Effect.Mercenary_HybridRanged_Weapon_CP.Start" Send="Create"/>
+        <On Terms="Effect.Mercenary_HybridRanged_Weapon_ImpactSet.Start; FromEffectTreeDescendant" Send="ActionDamage"/>
+        <On Terms="Effect.Mercenary_HybridRanged_Weapon_CP.Stop" Send="Destroy"/>
+        <LaunchSiteOps Ops="SOpAttachWeapon"/>
+        <ImpactSiteOps Ops="SOpAttachHarness SOpForwardLaunchGuide"/>
+        <AcquisitionYawHalfArc value="5.000000"/>
+        <ActionFlags index="AlignedImpactsAndDamages" value="1"/>
+        <ActionFlags index="LaunchForceSite" value="1"/>
+        <Lifetime value="-1.000000"/>
+    </CActorAction>
+    <CActorUnit id="MercenaryHybridRangedLaner" parent="CommandersMinionStandard" unitName="MercenaryHybridRangedLaner">
+        <Macros index="4" value="WarpTrain_HasNoWarpModel"/>
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Mercenaries"/>
+        <On index="12" Send="AnimPlay Birth Stand 0 0.000000"/>
+        <On Terms="UnitBirth" Send="Create Generic_ModelWarpIn"/>
+        <On Terms="UnitBirth" Send="SetMinimapVisibility"/>
+        <Model value="Mercenary_HybridRanged"/>
+        <BuildModel value="Mercenary_HybridRanged"/>
+        <DeathArray index="Normal" ModelLink="Mercenary_HybridRanged_Death" SoundLink="Hybrid_Zerg_Death" VoiceLink=""/>
+        <PlacementModel value="Mercenary_HybridRanged"/>
+        <WalkAnimMoveSpeed value="4"/>
+        <BarOffset value="5"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\ui_targetportrait_bbay_minions_archer_blue.dds"/>
+        </GroupIcon>
+        <MinimapIconIsTeamColored value="1"/>
+        <MinimapRenderPriority value="Merc"/>
+        <UnitIcon value="Assets\Textures\tip_hybridnemesis.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\ui_targetportrait_bbay_minions_archer_red.dds"/>
+        </Wireframe>
+    </CActorUnit>
+    <CActorUnit id="MercenaryHybridRangedDefender" parent="CommandersCreepStandard" unitName="MercHybridRangedDefender">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Mercenaries"/>
+        <On index="12" Send="AnimPlay Birth Stand 0 0.000000"/>
+        <On index="26" Terms="UnitDeathCustomize" Send="DeathCustomize RagdollBasic"/>
+        <On index="27" Terms="UnitHighlightLocal.*.Start" Send="StatusIncrement PreTargetingTint"/>
+        <On index="28" Terms="UnitHighlightLocal.*.Stop" Send="StatusDecrement PreTargetingTint"/>
+        <On index="29" Terms="Behavior.L90ETCMoshPitStun.On" Send="AnimPlay Spell Dance PlayForever"/>
+        <On index="30" Terms="Behavior.L90ETCMoshPitStun.Off" Send="AnimClear Spell"/>
+        <On index="31" Terms="Behavior.FaceMeltDance.On" Send="AnimPlay Spell Dance PlayForever"/>
+        <On index="32" Terms="Behavior.FaceMeltDance.Off" Send="AnimClear Spell"/>
+        <On Terms="Behavior.TalentBucketPromote.On" Send="SetScale 1.250000 1.000000"/>
+        <On Terms="WeaponStart.*.AttackStart" Send="AnimClear Attack"/>
+        <On Terms="WeaponStart.*.AttackStart" Send="AnimPlay Attack Attack"/>
+        <On Terms="WeaponStart.*.AttackStart; AnimPlaying Birth" Send="AnimClear Birth"/>
+        <On Terms="UnitMovementUpdate.*.Walk; AnimPlaying Attack" Send="AnimClear Attack"/>
+        <On Terms="UnitBirth" Send="Create Generic_ModelWarpIn"/>
+        <On Terms="ActorCreation" Send="SetMinimapVisibility"/>
+        <Model value="Mercenary_HybridRanged"/>
+        <BuildModel value="Mercenary_HybridRanged"/>
+        <DeathArray index="Normal" ModelLink="Mercenary_HybridRanged_Death" SoundLink="Hybrid_Zerg_Death" VoiceLink=""/>
+        <PlacementModel value="Mercenary_HybridRanged"/>
+        <WalkAnimMoveSpeed value="4"/>
+        <CustomUnitStatusFrame value="UnitStatus/MinionUnitStatusFrameTemplate"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\ui_targetportrait_bbay_minions_archer_blue.dds"/>
+        </GroupIcon>
+        <HighlightTooltip value="Unit/Name/MercenaryHybridRangedDefender"/>
+        <UnitIcon value="Assets\Textures\tip_hybridnemesis.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\ui_targetportrait_bbay_minions_archer_red.dds"/>
+        </Wireframe>
+    </CActorUnit>
+    <CActorBeamSimple id="MercenaryHybridRanged_Weapon_AttackBeam" parent="BeamSimpleAnimationStyleContinuous">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Mercenaries"/>
+        <On Terms="Effect.Mercenary_HybridRanged_Weapon_CP.Stop; At Effect" Send="AnimBracketStop BSD"/>
+        <Model value="Mercenary_HybridRanged_Weapon_AttackBeam"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+    </CActorBeamSimple>
+    <CActorSound id="MercenaryHybridRanged_Weapon_SoundLoop" parent="SoundContinuous">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Mercenaries"/>
+        <On Terms="Effect.Mercenary_HybridRanged_Weapon_CP.Start; At Caster" Send="Create"/>
+        <On Terms="Effect.Mercenary_HybridRanged_Weapon_CP.Stop" Send="Destroy"/>
+        <Sound value="HybridRanged_Weapon_Loop"/>
+    </CActorSound>
+    <CActorSound id="MercenaryHybridRanged_Weapon_SoundStart" parent="SoundOneShot">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Mercenaries"/>
+        <On Terms="Effect.Mercenary_HybridRanged_Weapon_CP.Start; At Target" Send="Create"/>
+        <Sound value="HybridRanged_Weapon_Start"/>
+    </CActorSound>
+    <CActorSound id="MercenaryHybridRanged_Weapon_SoundStop" parent="SoundOneShot">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Mercenaries"/>
+        <On Terms="Effect.Mercenary_HybridRanged_Weapon_CP.Start; At Caster" Send="Create"/>
+        <Sound value="HybridRanged_Weapon_End"/>
+    </CActorSound>
+    <CActorSound id="MercenaryHybridRanged_Weapon_Sound_VX01" parent="SoundOneShot">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Mercenaries"/>
+        <On Terms="Effect.Mercenary_HybridRanged_Weapon_CP.Start; At Caster" Send="Create"/>
+        <Sound value="HybridRanged_Weapon_VX01"/>
+    </CActorSound>
+    <CActorSound id="MercenaryHybridRanged_Weapon_Sound_VX02" parent="SoundOneShot">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Mercenaries"/>
+        <On Terms="Effect.Mercenary_HybridRanged_Weapon_CP.Stop; At Caster" Send="Create"/>
+        <Sound value="HybridRanged_Weapon_VX02"/>
+    </CActorSound>
+    <CActorUnit id="MercenaryHybridPsionicLaner" parent="CommandersMinionStandard" unitName="MercenaryHybridPsionicLaner">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Mercenaries"/>
+        <On Terms="ActorCreation" Send="Create BaseMinionSpawnSound"/>
+        <On Terms="ActorCreation" Send="Create LargeGroupMinionSpawnSound"/>
+        <On Terms="ActorCreation" Send="Create MinionWallaSound"/>
+        <On Terms="ActorCreation" Send="Create Storm_Effect_MinionWarpIn"/>
+        <On Terms="ActorCreation" Send="AnimGroupApply A"/>
+        <On Terms="UnitBirth" Send="Create Generic_ModelWarpIn"/>
+        <On Terms="UnitBirth" Send="SetMinimapVisibility"/>
+        <Model value="MercenaryHybridPsionic"/>
+        <BuildModel value="MercenaryHybridPsionic"/>
+        <DeathArray index="Normal" ModelLink="MercenaryHybridPsionic_Death" SoundLink="Mercenary_HybridPsionic_Death" VoiceLink=""/>
+        <PlacementModel value="MercenaryHybridPsionic"/>
+        <WalkAnimMoveSpeed value="4"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\ui_targetportrait_bbay_minions_wizard_blue.dds"/>
+        </GroupIcon>
+        <MinimapIconIsTeamColored value="1"/>
+        <MinimapRenderPriority value="Merc"/>
+        <UnitIcon value="Assets\Textures\BTN-Unit-xelnaga-maar.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\ui_targetportrait_bbay_minions_wizard_red.dds"/>
+        </Wireframe>
+    </CActorUnit>
+    <CActorAction id="MercenaryHybridPsionic_Weapon_Attack" parent="GenericAttack" effectAttack="Mercenary_HybridPsionic_Weapon_ImpactSet">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Mercenaries"/>
+        <LaunchSiteOps Ops="SOpAttachWeapon"/>
+        <LaunchAttachQuery Methods="Weapon"/>
+    </CActorAction>
+    <CActorUnit id="MercenaryHybridPsionicDefender" parent="CommandersCreepStandard" unitName="MercenaryHybridPsionicDefender">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Tileset"/>
+        <On index="26" Terms="UnitDeathCustomize" Send="DeathCustomize RagdollBasic"/>
+        <On index="27" Terms="UnitHighlightLocal.*.Start" Send="StatusIncrement PreTargetingTint"/>
+        <On index="28" Terms="UnitHighlightLocal.*.Stop" Send="StatusDecrement PreTargetingTint"/>
+        <On index="29" Terms="Behavior.L90ETCMoshPitStun.On" Send="AnimPlay Spell Dance PlayForever"/>
+        <On index="30" Terms="Behavior.L90ETCMoshPitStun.Off" Send="AnimClear Spell"/>
+        <On index="31" Terms="Behavior.FaceMeltDance.On" Send="AnimPlay Spell Dance PlayForever"/>
+        <On index="32" Terms="Behavior.FaceMeltDance.Off" Send="AnimClear Spell"/>
+        <On Terms="Behavior.TalentBucketPromote.On" Send="SetScale 1.250000 1.000000"/>
+        <On Terms="WeaponStart.*.AttackStart" Send="AnimClear Attack"/>
+        <On Terms="WeaponStart.*.AttackStart" Send="AnimPlay Attack Attack"/>
+        <On Terms="WeaponStart.*.AttackStart; AnimPlaying Birth" Send="AnimClear Birth"/>
+        <On Terms="UnitMovementUpdate.*.Walk; AnimPlaying Attack" Send="AnimClear Attack"/>
+        <On Terms="ActorCreation" Send="Create BaseMinionSpawnSound"/>
+        <On Terms="ActorCreation" Send="Create LargeGroupMinionSpawnSound"/>
+        <On Terms="ActorCreation" Send="Create MinionWallaSound"/>
+        <On Terms="ActorCreation" Send="Create Storm_Effect_MinionWarpIn"/>
+        <On Terms="ActorCreation" Send="AnimGroupApply A"/>
+        <On Terms="UnitBirth" Send="Create Generic_ModelWarpIn"/>
+        <On Terms="ActorCreation" Send="SetMinimapVisibility"/>
+        <Model value="MercenaryHybridPsionic"/>
+        <BuildModel value="MercenaryHybridPsionic"/>
+        <DeathArray index="Normal" ModelLink="MercenaryHybridPsionic_Death" SoundLink="Mercenary_HybridPsionic_Death" VoiceLink=""/>
+        <PlacementModel value="MercenaryHybridPsionic"/>
+        <WalkAnimMoveSpeed value="4"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\ui_targetportrait_bbay_minions_wizard_blue.dds"/>
+        </GroupIcon>
+        <UnitIcon value="Assets\Textures\BTN-Unit-xelnaga-maar.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\ui_targetportrait_bbay_minions_wizard_red.dds"/>
+        </Wireframe>
+    </CActorUnit>
+    <CActorBeamSimple id="MercenaryHybridPsionic_Weapon_AttackBeam" parent="BeamSimpleAnimationStyleOneShot">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Mercenaries"/>
+    </CActorBeamSimple>
+    <CModel id="MercenaryHybridPsionic_Weapon_AttackImpact" parent="ImpactFX">
+        <Model value="Assets\Effects\Protoss\ArchonBeamImpact\ArchonBeamImpact.m3"/>
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+    </CModel>
+    <CModel id="Mercenary_HybridRanged_Weapon_AttackBeam" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Protoss\HybridEnergizeBeamLarge\HybridEnergizeBeamLarge.m3"/>
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <RadiusLoose value="1.000000"/>
+    </CModel>
+    <CModel id="Mercenary_HybridMelee" parent="Unit" Race="Protoss">
+        <Model value="assets\Units\Mercs\Merc_Hybrid_Melee\Merc_Hybrid_Melee.m3"/>
+        <!--<Events>
+            <Anim value="Attack,00"/>
+            <Name value="HybridSounds"/>
+            <Type value="Sound"/>
+            <Time value="0.100000"/>
+            <Payload value="HybridF_AttackLaunch"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,00"/>
+            <Name value="HybridSounds"/>
+            <Type value="Sound"/>
+            <Time value="0.200000"/>
+            <Payload value="HybridF_AttackLaunch"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,00"/>
+            <Name value="HybridSounds"/>
+            <Type value="Sound"/>
+            <Time value="0.390000"/>
+            <Payload value="HybridF_AttackImpact"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,00"/>
+            <Name value="HybridSounds"/>
+            <Type value="Sound"/>
+            <Time value="0.530000"/>
+            <Payload value="HybridF_AttackImpact"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,Angry,00"/>
+            <Name value="HybridSounds"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="HybridF_Roar"/>
+        </Events>
+        <Events>
+            <Anim value="Walk,02"/>
+            <Name value="HybridZergFootstep"/>
+            <Type value="Sound"/>
+            <Time value="0.600000"/>
+            <Payload value="HybridZerg_Footstep"/>
+        </Events>
+        <Events>
+            <Anim value="Walk,02"/>
+            <Name value="HybridZergFootstep"/>
+            <Type value="Sound"/>
+            <Time value="1.400000"/>
+            <Payload value="HybridZerg_Footstep"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,00"/>
+            <Name value="HybridVoxSound"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="HybridF_Attack_vox"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,Work,00"/>
+            <Name value="HybridSounds"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="HybridZerg_Roar"/>
+        </Events>-->
+        <Occlusion value="Show"/>
+        <PlanetPanelCamera value="Star2CameraHigher14"/>
+        <Radius value="1.000000"/>
+        <ScaleMax value="0.800000,0.800000,0.800000"/>
+        <ScaleMin value="0.800000,0.800000,0.800000"/>
+        <SelectionRadius value="1.250000"/>
+        <ShadowRadius value="1.250000"/>
+        <TechPurchaseCamera value="Star2CameraHigher14"/>
+        <UnitGlossaryCamera value="Star2CameraHigher14"/>
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <RadiusLoose value="1.250000"/>
+    </CModel>
+    <CModel id="Mercenary_HybridMelee_Death" parent="UnitDeath" Race="Zerg">
+        <Model value="assets\Units\Mercs\Merc_Hybrid_Melee_Death\Merc_Hybrid_Melee_Death.m3"/>
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <SelectionRadius value="0.625000"/>
+        <ShadowRadius value="0.625000"/>
+        <RadiusLoose value="1.250000"/>
+    </CModel>
+    <CModel id="MercenaryHybridPsionic" parent="Unit" Race="Protoss">
+        <Model value="assets\Units\Mercs\Merc_Hybrid_Psionic\Merc_Hybrid_Psionic.m3"/>
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <Occlusion value="Show"/>
+        <PlanetPanelCamera value="Star2CameraHigher08"/>
+        <Radius value="1.000000"/>
+        <RadiusLoose value="1.250000"/>
+        <ScaleMax value="0.900000,0.900000,0.900000"/>
+        <ScaleMin value="0.900000,0.900000,0.900000"/>
+        <SelectionRadius value="1.111000"/>
+        <ShadowRadius value="1.111000"/>
+        <TechPurchaseCamera value="Star2CameraHigher08"/>
+        <UnitGlossaryCamera value="Star2CameraHigher08"/>
+    </CModel>
+    <CModel id="MercenaryHybridPsionic_Weapon_AttackBeam" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Zerg\HybridBeam\HybridBeam.m3"/>
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+    </CModel>
+    <CModel id="MercenaryHybridPsionic_Death" parent="UnitDeath" Race="Protoss">
+        <Model value="Assets\Units\Protoss\HybridProtossDeathEx1\HybridProtossDeathEx1.m3"/>
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <SelectionRadius value="0.555400"/>
+        <ShadowRadius value="0.555400"/>
+    </CModel>
+    <CModel id="Mercenary_HybridRanged" parent="Unit" Race="Zerg">
+        <Model value="assets\Units\Mercs\Merc_Hybrid_Ranged\Merc_Hybrid_Ranged.m3"/>
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <Occlusion value="Show"/>
+        <PlanetPanelCamera value="Star2CameraLow08"/>
+        <Radius value="1.250000"/>
+        <SelectionOffset value="0.000000,0.000000,-0.400000"/>
+        <SelectionRadius value="1.250000"/>
+        <ShadowRadius value="1.250000"/>
+        <SquibTypeDefault value="Flesh"/>
+        <TechPurchaseCamera value="Star2CameraLow08"/>
+        <UnitGlossaryCamera value="Star2CameraLow08"/>
+    </CModel>
+    <CModel id="Mercenary_HybridRanged_Death" parent="UnitDeath" Race="Zerg">
+        <Model value="Assets\Units\Protoss\Hybrid_Nemesis_Death\Hybrid_Nemesis_Death.m3"/>
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="HybridNemesisDeathSound"/>
+            <Type value="Actor"/>
+            <Time value="3.017000"/>
+            <Payload value="HybridNemesisDeathSound"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Uni_DeathFXAcid"/>
+            <Type value="Sound"/>
+            <Time value="0.021000"/>
+            <Payload value="Uni_DeathFXAcid"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Uni_DeathFXAcid"/>
+            <Type value="Sound"/>
+            <Time value="3.004000"/>
+            <Payload value="Uni_DeathFXAcid"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Hybrid_Nemesis_DeathScreams"/>
+            <Type value="Sound"/>
+            <Time value="0.011000"/>
+            <Payload value="Hybrid_Nemesis_DeathScreams"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Hybrid_Nemesis_DeathScreams"/>
+            <Type value="Sound"/>
+            <Time value="0.810000"/>
+            <Payload value="Hybrid_Nemesis_DeathScreams"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Hybrid_Nemesis_DeathScreams"/>
+            <Type value="Sound"/>
+            <Time value="1.607000"/>
+            <Payload value="Hybrid_Nemesis_DeathScreams"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Hybrid_Nemesis_DeathScreams"/>
+            <Type value="Sound"/>
+            <Time value="2.389000"/>
+            <Payload value="Hybrid_Nemesis_DeathScreams"/>
+        </Events>
+        <Occlusion value="Show"/>
+    </CModel>
+    <CWeaponLegacy id="MercenaryHybridMeleeWeapon">
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <Options index="Melee" value="1"/>
+        <Icon value="Assets\Textures\btn-upgrade-zerg-meleeattacks-level0.dds"/>
+        <DisplayEffect value="Mercenary_HybridMelee_Weapon_DamageLaner"/>
+        <TargetFilters value="Visible;Player,Ally,Neutral,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AcquireFilters value="-;Player,Ally,Neutral,Enemy"/>
+        <Range value="0.8608"/>
+        <Marker>
+            <MatchFlags index="Id" value="1"/>
+        </Marker>
+        <Period value="1"/>
+        <DamagePoint value="0.5"/>
+        <Effect value="Mercenary_HybridMelee_Weapon_ImpactSet"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="MercenaryHybridRangedWeapon">
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <Icon value="Assets\Textures\btn-ability-protoss-oraclepulsarcannonon.dds"/>
+        <DisplayEffect value="Mercenary_HybridRanged_Weapon_DamageDefender"/>
+        <TargetFilters value="Visible;Psionic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AcquireFilters value="-;Player,Ally,Neutral,Enemy"/>
+        <Range value="6"/>
+        <Period value="1"/>
+        <Effect value="Mercenary_HybridRanged_Weapon_CP"/>
+        <LegacyOptions index="CanRetargetWhileChanneling" value="1"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="MercenaryHybridPsionicWeapon">
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <Icon value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel0.dds"/>
+        <DisplayEffect value="MercenaryHybridPsionic_Weapon_DamageDefender"/>
+        <TargetFilters value="Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AcquireFilters value="-;Player,Ally,Neutral,Enemy"/>
+        <Range value="4"/>
+        <Period value="1.5"/>
+        <Effect value="Mercenary_HybridPsionic_Weapon_ImpactSet"/>
+    </CWeaponLegacy>
+    <CSound id="Mercenary_HybridMelee_Death" parent="DeathVoice">
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <AssetArray File="Assets\Sounds\HybridZerg_Death00.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\HybridZerg_Death01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\HybridZerg_Death02.wav" FacialGroup=""/>
+        <Flags index="Download" value="1"/>
+        <Flags index="Ignorable" value="0"/>
+        <Chance value="100"/>
+        <ReverbBalance Room="-10000"/>
+        <Volume value="0.000000,3.000000"/>
+        <VolumeRolloffPoints Distance="14.902508"/>
+        <VolumeRolloffPoints Distance="35.515320" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="MercenaryHybridMelee_Weapon_AttackImpact" parent="Spell">
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <AssetArray File="Assets\Sounds\Zerg\Ultralisk\Ultralisk_AttackImpact0.wav"/>
+        <AssetArray File="Assets\Sounds\Zerg\Ultralisk\Ultralisk_AttackImpact1.wav"/>
+        <AssetArray File="Assets\Sounds\Zerg\Ultralisk\Ultralisk_AttackImpact2.wav"/>
+        <AssetArray File="Assets\Sounds\Zerg\Ultralisk\Ultralisk_AttackImpact3.wav"/>
+        <Volume value="-8.000000,-8.000000"/>
+    </CSound>
+    <CSound id="MercenaryHybridMelee_Weapon_AttackLaunch" parent="Spell">
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <AssetArray File="Assets\Sounds\Hybrid_Zerg_Attack1.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Hybrid_Zerg_Attack2.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Hybrid_Zerg_Attack3.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Hybrid_Zerg_Attack4.ogg" FacialGroup=""/>
+        <Volume value="-15.000000,-15.000000"/>
+    </CSound>
+    <CSound id="MercenaryHybridPsionic_Weapon_AttackImpact" parent="Combat">
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <AssetArray File="Assets\Sounds\Protoss\Archon\Archon_AttackImpact0.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Archon\Archon_AttackImpact1.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Archon\Archon_AttackImpact2.wav"/>
+        <Volume value="-8.000000,-8.000000"/>
+    </CSound>
+    <CSound id="MercenaryHybridPsionic_Weapon_AttackLaunch" parent="Spell">
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <AssetArray File="Assets\Sounds\HybridProtoss_attack00.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\HybridProtoss_attack02.ogg" Pitch="6.000000,6.000000" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\HybridProtoss_attack03.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\HybridProtoss_attack04.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\HybridProtoss_attack05.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\HybridProtoss_attack06.ogg" Pitch="-3.000000,-3.000000" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\HybridProtoss_attack07.ogg" Pitch="5.000000,5.000000" FacialGroup=""/>
+        <Volume value="-8.000000,-8.000000"/>
+    </CSound>
+    <CSound id="HybridRanged_Weapon_End" parent="Combat">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\HybridNemesis_Beam_End_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\HybridNemesis_Beam_End_02.wav" FacialGroup=""/>
+        <Pitch value="-6.000000,-4.000000"/>
+        <SustainFade index="1" Time="1000"/>
+        <Volume value="-8.000000,-8.000000"/>
+    </CSound>
+    <CSound id="HybridRanged_Weapon_Loop" parent="Combat">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\HybridNemesis_Beam_Loop_01.wav" LoopCount="-1" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\HybridNemesis_Beam_Loop_02.wav" LoopCount="-1" FacialGroup=""/>
+        <Pitch value="-2.000000,-1.000000"/>
+        <SustainFade index="1" Time="1000"/>
+        <Volume value="-8.000000,-8.000000"/>
+    </CSound>
+    <CSound id="HybridRanged_Weapon_Start" parent="Combat">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\HybridNemesis_Beam_Start_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\HybridNemesis_Beam_Start_02.wav" FacialGroup=""/>
+        <Pitch value="-3.000000,-1.000000"/>
+        <SustainFade index="1" Time="1000" Volume="-47.079998"/>
+        <Volume value="-8.000000,-8.000000"/>
+    </CSound>
+    <CSound id="HybridRanged_Weapon_VX01" parent="Combat">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\HybridNemesis_Vx_Utter_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\HybridNemesis_Vx_Utter_02.wav" FacialGroup=""/>
+        <Chance value="30"/>
+        <Pitch value="-4.000000,-1.000000"/>
+        <Volume value="-8.000000,-8.000000"/>
+    </CSound>
+    <CSound id="HybridRanged_Weapon_VX02" parent="Combat">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\HybridNemesis_Vx_Utter_04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\HybridNemesis_Vx_Utter_03.wav" FacialGroup=""/>
+        <Chance value="40"/>
+        <Pitch value="-3.000000,-1.000000"/>
+        <Volume value="-8.000000,-8.000000"/>
+    </CSound>
+    <CUnit id="MercenaryHybridMeleeDefender" parent="CommandersMinion">
+        <Attributes index="Light" value="1"/>
+        <LifeStart value="3420"/>
+        <LifeMax value="3420"/>
+        <WeaponArray Link="MercenaryHybridMeleeWeapon"/>
+        <EditorCategories value="ObjectType:Unit,CommandersHero:Mercenaries"/>
+        <BehaviorArray Link="MinionProtoss_WarpingInvulnerable"/>
+        <BehaviorArray Link="MercenaryScaling_HybridMeleeDefender"/>
+        <Collide index="Ground" value="1"/>
+        <InnerRadius value="0.5"/>
+    </CUnit>
+    <CUnit id="MercenaryHybridMeleeLaner" parent="CommandersMinion">
+        <FogVisibility value="Dimmed"/>
+        <Attributes index="Robotic" value="1"/>
+        <LifeStart value="4250"/>
+        <LifeMax value="4250"/>
+        <WeaponArray Link="MercenaryHybridMeleeWeapon"/>
+        <EditorCategories value="ObjectType:Unit,CommandersHero:Mercenaries"/>
+        <BehaviorArray Link="MinionProtoss_WarpingInvulnerable"/>
+        <BehaviorArray Link="MercenaryScaling_HybridMeleeLaner"/>
+        <Collide index="Ground" value="1"/>
+    </CUnit>
+    <CUnit id="MercHybridRangedDefender" parent="CommandersMinion">
+        <PushPriority value="10"/>
+        <Attributes index="Light" value="1"/>
+        <LifeStart value="1400"/>
+        <LifeMax value="1400"/>
+        <Height value="3"/>
+        <BehaviorArray Link="MinionProtoss_WarpingInvulnerable"/>
+        <BehaviorArray Link="MercenaryScaling_HybridRangedDefender"/>
+        <WeaponArray Link="MercenaryHybridRangedWeapon"/>
+        <EditorCategories value="ObjectType:Unit,CommandersHero:Mercenaries"/>
+        <Collide index="Ground" value="1"/>
+        <InnerRadius value="0.5"/>
+    </CUnit>
+    <CUnit id="MercenaryHybridRangedLaner" parent="CommandersMinion">
+        <FogVisibility value="Dimmed"/>
+        <Attributes index="Robotic" value="1"/>
+        <LifeStart value="3000"/>
+        <LifeMax value="3000"/>
+        <Height value="3"/>
+        <BehaviorArray Link="MinionProtoss_WarpingInvulnerable"/>
+        <BehaviorArray Link="MercenaryScaling_HybridRangedLaner"/>
+        <WeaponArray Link="MercenaryHybridRangedWeapon"/>
+        <EditorCategories value="ObjectType:Unit,CommandersHero:Mercenaries"/>
+        <Collide index="Ground" value="1"/>
+    </CUnit>
+    <CUnit id="MercenaryHybridPsionicDefender" parent="CommandersMinion">
+        <Attributes index="Light" value="1"/>
+        <LifeStart value="1100"/>
+        <LifeMax value="1100"/>
+        <WeaponArray Link="MercenaryHybridPsionicWeapon"/>
+        <EditorCategories value="ObjectType:Unit,CommandersHero:Mercenaries"/>
+        <BehaviorArray Link="MinionProtoss_WarpingInvulnerable"/>
+        <BehaviorArray Link="MercenaryScaling_HybridPsionicDefender"/>
+        <Collide index="Ground" value="1"/>
+        <InnerRadius value="0.5"/>
+    </CUnit>
+    <CUnit id="MercenaryHybridPsionicLaner" parent="CommandersMinion">
+        <FogVisibility value="Dimmed"/>
+        <Attributes index="Robotic" value="1"/>
+        <LifeStart value="2300"/>
+        <LifeMax value="2300"/>
+        <WeaponArray Link="MercenaryHybridPsionicWeapon"/>
+        <EditorCategories value="ObjectType:Unit,CommandersHero:Mercenaries"/>
+        <BehaviorArray Link="MinionProtoss_WarpingInvulnerable"/>
+        <BehaviorArray Link="MercenaryScaling_HybridPsionicLaner"/>
+        <Collide index="Ground" value="1"/>
+    </CUnit>
+    <CBehaviorVeterancy id="MercenaryScaling_HybridPsionicLaner">
+        <InfoFlags index="Hidden" value="1"/>
+        <XPFraction index="Kills" value="0"/>
+        <VeterancyLevelArray/>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="1"/>
+                <VitalMaxArray index="Life" value="20"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="1"/>
+                <VitalMaxArray index="Life" value="20"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="1"/>
+                <VitalMaxArray index="Life" value="20"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="1"/>
+                <VitalMaxArray index="Life" value="20"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="1"/>
+                <VitalMaxArray index="Life" value="20"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="2"/>
+                <VitalMaxArray index="Life" value="30"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="2"/>
+                <VitalMaxArray index="Life" value="30"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="2"/>
+                <VitalMaxArray index="Life" value="30"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="2"/>
+                <VitalMaxArray index="Life" value="30"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="2"/>
+                <VitalMaxArray index="Life" value="30"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="3"/>
+                <VitalMaxArray index="Life" value="40"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="3"/>
+                <VitalMaxArray index="Life" value="40"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="3"/>
+                <VitalMaxArray index="Life" value="40"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="3"/>
+                <VitalMaxArray index="Life" value="40"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="3"/>
+                <VitalMaxArray index="Life" value="40"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="4"/>
+                <VitalMaxArray index="Life" value="60"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="4"/>
+                <VitalMaxArray index="Life" value="60"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="4"/>
+                <VitalMaxArray index="Life" value="60"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="4"/>
+                <VitalMaxArray index="Life" value="60"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="4"/>
+                <VitalMaxArray index="Life" value="60"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="5"/>
+                <VitalMaxArray index="Life" value="80"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="5"/>
+                <VitalMaxArray index="Life" value="80"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="5"/>
+                <VitalMaxArray index="Life" value="80"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="5"/>
+                <VitalMaxArray index="Life" value="80"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="5"/>
+                <VitalMaxArray index="Life" value="80"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="5"/>
+                <VitalMaxArray index="Life" value="80"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="5"/>
+                <VitalMaxArray index="Life" value="80"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="5"/>
+                <VitalMaxArray index="Life" value="80"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="5"/>
+                <VitalMaxArray index="Life" value="80"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="5"/>
+                <VitalMaxArray index="Life" value="80"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="5"/>
+                <VitalMaxArray index="Life" value="80"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="5"/>
+                <VitalMaxArray index="Life" value="80"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="5"/>
+                <VitalMaxArray index="Life" value="80"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="5"/>
+                <VitalMaxArray index="Life" value="80"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="5"/>
+                <VitalMaxArray index="Life" value="80"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="5"/>
+                <VitalMaxArray index="Life" value="80"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="5"/>
+                <VitalMaxArray index="Life" value="80"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="5"/>
+                <VitalMaxArray index="Life" value="80"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="5"/>
+                <VitalMaxArray index="Life" value="80"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="5"/>
+                <VitalMaxArray index="Life" value="80"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="5"/>
+                <VitalMaxArray index="Life" value="80"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="5"/>
+                <VitalMaxArray index="Life" value="80"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="5"/>
+                <VitalMaxArray index="Life" value="80"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="5"/>
+                <VitalMaxArray index="Life" value="80"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="5"/>
+                <VitalMaxArray index="Life" value="80"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="5"/>
+                <VitalMaxArray index="Life" value="80"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="5"/>
+                <VitalMaxArray index="Life" value="80"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="5"/>
+                <VitalMaxArray index="Life" value="80"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="5"/>
+                <VitalMaxArray index="Life" value="80"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="5"/>
+                <VitalMaxArray index="Life" value="80"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="5"/>
+                <VitalMaxArray index="Life" value="80"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="5"/>
+                <VitalMaxArray index="Life" value="80"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="5"/>
+                <VitalMaxArray index="Life" value="80"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="5"/>
+                <VitalMaxArray index="Life" value="80"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="5"/>
+                <VitalMaxArray index="Life" value="80"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="5"/>
+                <VitalMaxArray index="Life" value="80"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="5"/>
+                <VitalMaxArray index="Life" value="80"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="5"/>
+                <VitalMaxArray index="Life" value="80"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="5"/>
+                <VitalMaxArray index="Life" value="80"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="5"/>
+                <VitalMaxArray index="Life" value="80"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Mercenaries"/>
+    </CBehaviorVeterancy>
+    <CBehaviorVeterancy id="MercenaryScaling_HybridRangedLaner">
+        <InfoFlags index="Hidden" value="1"/>
+        <XPFraction index="Kills" value="0"/>
+        <VeterancyLevelArray/>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="2"/>
+                <VitalMaxArray index="Life" value="40"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="2"/>
+                <VitalMaxArray index="Life" value="40"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="2"/>
+                <VitalMaxArray index="Life" value="40"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="2"/>
+                <VitalMaxArray index="Life" value="40"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="2"/>
+                <VitalMaxArray index="Life" value="40"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="3"/>
+                <VitalMaxArray index="Life" value="60"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="3"/>
+                <VitalMaxArray index="Life" value="60"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="3"/>
+                <VitalMaxArray index="Life" value="60"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="3"/>
+                <VitalMaxArray index="Life" value="60"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="3"/>
+                <VitalMaxArray index="Life" value="60"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="4"/>
+                <VitalMaxArray index="Life" value="80"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="4"/>
+                <VitalMaxArray index="Life" value="80"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="4"/>
+                <VitalMaxArray index="Life" value="80"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="4"/>
+                <VitalMaxArray index="Life" value="80"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="4"/>
+                <VitalMaxArray index="Life" value="80"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="5"/>
+                <VitalMaxArray index="Life" value="100"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="5"/>
+                <VitalMaxArray index="Life" value="100"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="5"/>
+                <VitalMaxArray index="Life" value="100"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="5"/>
+                <VitalMaxArray index="Life" value="100"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="5"/>
+                <VitalMaxArray index="Life" value="100"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="6"/>
+                <VitalMaxArray index="Life" value="120"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="6"/>
+                <VitalMaxArray index="Life" value="120"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="6"/>
+                <VitalMaxArray index="Life" value="120"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="6"/>
+                <VitalMaxArray index="Life" value="120"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="6"/>
+                <VitalMaxArray index="Life" value="120"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="6"/>
+                <VitalMaxArray index="Life" value="120"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="6"/>
+                <VitalMaxArray index="Life" value="120"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="6"/>
+                <VitalMaxArray index="Life" value="120"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="6"/>
+                <VitalMaxArray index="Life" value="120"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="6"/>
+                <VitalMaxArray index="Life" value="120"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="6"/>
+                <VitalMaxArray index="Life" value="120"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="6"/>
+                <VitalMaxArray index="Life" value="120"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="6"/>
+                <VitalMaxArray index="Life" value="120"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="6"/>
+                <VitalMaxArray index="Life" value="120"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="6"/>
+                <VitalMaxArray index="Life" value="120"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="6"/>
+                <VitalMaxArray index="Life" value="120"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="6"/>
+                <VitalMaxArray index="Life" value="120"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="6"/>
+                <VitalMaxArray index="Life" value="120"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="6"/>
+                <VitalMaxArray index="Life" value="120"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="6"/>
+                <VitalMaxArray index="Life" value="120"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="6"/>
+                <VitalMaxArray index="Life" value="120"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="6"/>
+                <VitalMaxArray index="Life" value="120"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="6"/>
+                <VitalMaxArray index="Life" value="120"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="6"/>
+                <VitalMaxArray index="Life" value="120"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="6"/>
+                <VitalMaxArray index="Life" value="120"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="6"/>
+                <VitalMaxArray index="Life" value="120"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="6"/>
+                <VitalMaxArray index="Life" value="120"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="6"/>
+                <VitalMaxArray index="Life" value="120"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="6"/>
+                <VitalMaxArray index="Life" value="120"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="6"/>
+                <VitalMaxArray index="Life" value="120"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="6"/>
+                <VitalMaxArray index="Life" value="120"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="6"/>
+                <VitalMaxArray index="Life" value="120"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="6"/>
+                <VitalMaxArray index="Life" value="120"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="6"/>
+                <VitalMaxArray index="Life" value="120"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="6"/>
+                <VitalMaxArray index="Life" value="120"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="6"/>
+                <VitalMaxArray index="Life" value="120"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="6"/>
+                <VitalMaxArray index="Life" value="120"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="6"/>
+                <VitalMaxArray index="Life" value="120"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="6"/>
+                <VitalMaxArray index="Life" value="120"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="6"/>
+                <VitalMaxArray index="Life" value="120"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Mercenaries"/>
+    </CBehaviorVeterancy>
+    <CBehaviorVeterancy id="MercenaryScaling_HybridMeleeLaner">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Mercenaries"/>
+        <XPFraction index="Kills" value="0"/>
+        <VeterancyLevelArray/>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="1.5"/>
+                <VitalMaxArray index="Life" value="40"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="1.5"/>
+                <VitalMaxArray index="Life" value="40"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="1.5"/>
+                <VitalMaxArray index="Life" value="40"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="1.5"/>
+                <VitalMaxArray index="Life" value="40"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="1.5"/>
+                <VitalMaxArray index="Life" value="40"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="2.25"/>
+                <VitalMaxArray index="Life" value="110"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="2.25"/>
+                <VitalMaxArray index="Life" value="110"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="2.25"/>
+                <VitalMaxArray index="Life" value="110"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="2.25"/>
+                <VitalMaxArray index="Life" value="110"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="2.25"/>
+                <VitalMaxArray index="Life" value="110"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="3"/>
+                <VitalMaxArray index="Life" value="150"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="3"/>
+                <VitalMaxArray index="Life" value="150"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="3"/>
+                <VitalMaxArray index="Life" value="150"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="3"/>
+                <VitalMaxArray index="Life" value="150"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="3"/>
+                <VitalMaxArray index="Life" value="150"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="3.75"/>
+                <VitalMaxArray index="Life" value="235"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="3.75"/>
+                <VitalMaxArray index="Life" value="235"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="3.75"/>
+                <VitalMaxArray index="Life" value="235"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="3.75"/>
+                <VitalMaxArray index="Life" value="235"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="3.75"/>
+                <VitalMaxArray index="Life" value="235"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="4.5"/>
+                <VitalMaxArray index="Life" value="150"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="4.5"/>
+                <VitalMaxArray index="Life" value="150"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="4.5"/>
+                <VitalMaxArray index="Life" value="150"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="4.5"/>
+                <VitalMaxArray index="Life" value="150"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="4.5"/>
+                <VitalMaxArray index="Life" value="150"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="4.5"/>
+                <VitalMaxArray index="Life" value="150"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="4.5"/>
+                <VitalMaxArray index="Life" value="150"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="4.5"/>
+                <VitalMaxArray index="Life" value="150"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="4.5"/>
+                <VitalMaxArray index="Life" value="150"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="4.5"/>
+                <VitalMaxArray index="Life" value="150"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="4.5"/>
+                <VitalMaxArray index="Life" value="150"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="4.5"/>
+                <VitalMaxArray index="Life" value="150"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="4.5"/>
+                <VitalMaxArray index="Life" value="150"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="4.5"/>
+                <VitalMaxArray index="Life" value="150"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="4.5"/>
+                <VitalMaxArray index="Life" value="150"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="4.5"/>
+                <VitalMaxArray index="Life" value="150"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="4.5"/>
+                <VitalMaxArray index="Life" value="150"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="4.5"/>
+                <VitalMaxArray index="Life" value="150"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="4.5"/>
+                <VitalMaxArray index="Life" value="150"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="4.5"/>
+                <VitalMaxArray index="Life" value="150"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="4.5"/>
+                <VitalMaxArray index="Life" value="150"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="4.5"/>
+                <VitalMaxArray index="Life" value="150"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="4.5"/>
+                <VitalMaxArray index="Life" value="150"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="4.5"/>
+                <VitalMaxArray index="Life" value="150"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="4.5"/>
+                <VitalMaxArray index="Life" value="150"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="4.5"/>
+                <VitalMaxArray index="Life" value="150"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="4.5"/>
+                <VitalMaxArray index="Life" value="150"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="4.5"/>
+                <VitalMaxArray index="Life" value="150"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="4.5"/>
+                <VitalMaxArray index="Life" value="150"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="4.5"/>
+                <VitalMaxArray index="Life" value="150"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="4.5"/>
+                <VitalMaxArray index="Life" value="150"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="4.5"/>
+                <VitalMaxArray index="Life" value="150"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="4.5"/>
+                <VitalMaxArray index="Life" value="150"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="4.5"/>
+                <VitalMaxArray index="Life" value="150"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="4.5"/>
+                <VitalMaxArray index="Life" value="150"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="4.5"/>
+                <VitalMaxArray index="Life" value="150"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="4.5"/>
+                <VitalMaxArray index="Life" value="150"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="4.5"/>
+                <VitalMaxArray index="Life" value="150"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="4.5"/>
+                <VitalMaxArray index="Life" value="150"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="4.5"/>
+                <VitalMaxArray index="Life" value="150"/>
+            </Modification>
+        </VeterancyLevelArray>
+    </CBehaviorVeterancy>
+    <CBehaviorVeterancy id="MercenaryScaling_HybridMeleeDefender">
+        <InfoFlags index="Hidden" value="1"/>
+        <XPFraction index="Kills" value="0"/>
+        <VeterancyLevelArray/>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="1"/>
+                <VitalMaxArray index="Life" value="52"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="1"/>
+                <VitalMaxArray index="Life" value="52"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="1"/>
+                <VitalMaxArray index="Life" value="52"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="1"/>
+                <VitalMaxArray index="Life" value="52"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="1"/>
+                <VitalMaxArray index="Life" value="52"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="1.5"/>
+                <VitalMaxArray index="Life" value="78"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="1.5"/>
+                <VitalMaxArray index="Life" value="78"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="1.5"/>
+                <VitalMaxArray index="Life" value="78"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="1.5"/>
+                <VitalMaxArray index="Life" value="78"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="1.5"/>
+                <VitalMaxArray index="Life" value="78"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="2"/>
+                <VitalMaxArray index="Life" value="104"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="2"/>
+                <VitalMaxArray index="Life" value="104"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="2"/>
+                <VitalMaxArray index="Life" value="104"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="2"/>
+                <VitalMaxArray index="Life" value="104"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="2"/>
+                <VitalMaxArray index="Life" value="104"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="2.5"/>
+                <VitalMaxArray index="Life" value="130"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="2.5"/>
+                <VitalMaxArray index="Life" value="130"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="2.5"/>
+                <VitalMaxArray index="Life" value="130"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="2.5"/>
+                <VitalMaxArray index="Life" value="130"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="2.5"/>
+                <VitalMaxArray index="Life" value="130"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <VitalMaxArray index="Life" value="156"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <VitalMaxArray index="Life" value="156"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <VitalMaxArray index="Life" value="156"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <VitalMaxArray index="Life" value="156"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <VitalMaxArray index="Life" value="156"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <VitalMaxArray index="Life" value="156"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <VitalMaxArray index="Life" value="156"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <VitalMaxArray index="Life" value="156"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <VitalMaxArray index="Life" value="156"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <VitalMaxArray index="Life" value="156"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <VitalMaxArray index="Life" value="156"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <VitalMaxArray index="Life" value="156"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <VitalMaxArray index="Life" value="156"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <VitalMaxArray index="Life" value="156"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <VitalMaxArray index="Life" value="156"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <VitalMaxArray index="Life" value="156"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <VitalMaxArray index="Life" value="156"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <VitalMaxArray index="Life" value="156"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <VitalMaxArray index="Life" value="156"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <VitalMaxArray index="Life" value="156"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <VitalMaxArray index="Life" value="156"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <VitalMaxArray index="Life" value="156"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <VitalMaxArray index="Life" value="156"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <VitalMaxArray index="Life" value="156"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <VitalMaxArray index="Life" value="156"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <VitalMaxArray index="Life" value="156"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <VitalMaxArray index="Life" value="156"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <VitalMaxArray index="Life" value="156"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <VitalMaxArray index="Life" value="156"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <VitalMaxArray index="Life" value="156"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <VitalMaxArray index="Life" value="156"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <VitalMaxArray index="Life" value="156"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <VitalMaxArray index="Life" value="156"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <VitalMaxArray index="Life" value="156"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <VitalMaxArray index="Life" value="156"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <VitalMaxArray index="Life" value="156"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <VitalMaxArray index="Life" value="156"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <VitalMaxArray index="Life" value="156"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <VitalMaxArray index="Life" value="156"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <VitalMaxArray index="Life" value="156"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Mercenaries"/>
+    </CBehaviorVeterancy>
+    <CBehaviorBuff id="Mercenary_HybridRanged_Weapon_ReducedDamage">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\btn-ability-protoss-oraclepulsarcannonon.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Mercenaries"/>
+        <BuffFlags index="RefreshStack" value="1"/>
+        <MaxStackCount value="5"/>
+        <Duration value="5"/>
+        <Modification>
+            <AttributeChangeArray Attribute="HeroGeneric_PowerEnergetic_Negative" Points="5"/>
+            <AttributeChangeArray Attribute="HeroGeneric_PowerKinetic_Negative" Points="5"/>
+            <AttributeChangeArray Attribute="HeroGeneric_PowerStorm_Negative" Points="5"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorVeterancy id="MercenaryScaling_HybridRangedDefender">
+        <InfoFlags index="Hidden" value="1"/>
+        <XPFraction index="Kills" value="0"/>
+        <VeterancyLevelArray/>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="2"/>
+                <VitalMaxArray index="Life" value="25"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="2"/>
+                <VitalMaxArray index="Life" value="25"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="2"/>
+                <VitalMaxArray index="Life" value="25"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="2"/>
+                <VitalMaxArray index="Life" value="25"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="2"/>
+                <VitalMaxArray index="Life" value="25"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="1"/>
+                <VitalMaxArray index="Life" value="15"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="1"/>
+                <VitalMaxArray index="Life" value="15"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="1"/>
+                <VitalMaxArray index="Life" value="15"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="1"/>
+                <VitalMaxArray index="Life" value="15"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="1"/>
+                <VitalMaxArray index="Life" value="15"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="1"/>
+                <VitalMaxArray index="Life" value="55"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="1"/>
+                <VitalMaxArray index="Life" value="55"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="1"/>
+                <VitalMaxArray index="Life" value="55"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="1"/>
+                <VitalMaxArray index="Life" value="55"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="1"/>
+                <VitalMaxArray index="Life" value="55"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="3"/>
+                <VitalMaxArray index="Life" value="95"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="3"/>
+                <VitalMaxArray index="Life" value="95"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="3"/>
+                <VitalMaxArray index="Life" value="95"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="3"/>
+                <VitalMaxArray index="Life" value="95"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="3"/>
+                <VitalMaxArray index="Life" value="95"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="3"/>
+                <VitalMaxArray index="Life" value="95"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="3"/>
+                <VitalMaxArray index="Life" value="95"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="3"/>
+                <VitalMaxArray index="Life" value="95"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="3"/>
+                <VitalMaxArray index="Life" value="95"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="3"/>
+                <VitalMaxArray index="Life" value="95"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="3"/>
+                <VitalMaxArray index="Life" value="95"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="3"/>
+                <VitalMaxArray index="Life" value="95"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="3"/>
+                <VitalMaxArray index="Life" value="95"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="3"/>
+                <VitalMaxArray index="Life" value="95"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="3"/>
+                <VitalMaxArray index="Life" value="95"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Mercenaries"/>
+    </CBehaviorVeterancy>
+    <CBehaviorVeterancy id="MercenaryScaling_HybridPsionicDefender">
+        <InfoFlags index="Hidden" value="1"/>
+        <XPFraction index="Kills" value="0"/>
+        <VeterancyLevelArray/>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Melee" value="2"/>
+                <VitalMaxArray index="Life" value="20"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="2"/>
+                <VitalMaxArray index="Life" value="20"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="2"/>
+                <VitalMaxArray index="Life" value="20"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="2"/>
+                <VitalMaxArray index="Life" value="20"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="2"/>
+                <VitalMaxArray index="Life" value="20"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="1"/>
+                <VitalMaxArray index="Life" value="10"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="1"/>
+                <VitalMaxArray index="Life" value="10"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="1"/>
+                <VitalMaxArray index="Life" value="10"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="1"/>
+                <VitalMaxArray index="Life" value="10"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="1"/>
+                <VitalMaxArray index="Life" value="10"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="1"/>
+                <VitalMaxArray index="Life" value="40"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="1"/>
+                <VitalMaxArray index="Life" value="40"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="1"/>
+                <VitalMaxArray index="Life" value="40"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="1"/>
+                <VitalMaxArray index="Life" value="40"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="1"/>
+                <VitalMaxArray index="Life" value="40"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="3"/>
+                <VitalMaxArray index="Life" value="70"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="3"/>
+                <VitalMaxArray index="Life" value="70"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="3"/>
+                <VitalMaxArray index="Life" value="70"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="3"/>
+                <VitalMaxArray index="Life" value="70"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="3"/>
+                <VitalMaxArray index="Life" value="70"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="3"/>
+                <VitalMaxArray index="Life" value="70"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="3"/>
+                <VitalMaxArray index="Life" value="70"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="3"/>
+                <VitalMaxArray index="Life" value="70"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="3"/>
+                <VitalMaxArray index="Life" value="70"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="3"/>
+                <VitalMaxArray index="Life" value="70"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="3"/>
+                <VitalMaxArray index="Life" value="70"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="3"/>
+                <VitalMaxArray index="Life" value="70"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="3"/>
+                <VitalMaxArray index="Life" value="70"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="3"/>
+                <VitalMaxArray index="Life" value="70"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="2">
+                <DamageDealtScaled index="Melee" value="3"/>
+                <VitalMaxArray index="Life" value="70"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Mercenaries"/>
+    </CBehaviorVeterancy>
+    <CBehaviorBuff id="Mercenary_HybridPsionic_Weapon_ArmorReduced">
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Mercenaries"/>
+        <BuffFlags index="RefreshStack" value="1"/>
+        <MaxStackCount value="5"/>
+        <Duration value="5"/>
+        <Modification>
+            <AttributeChangeArray Attribute="Commanders_ArmorEnergeticHero_Negative" Points="5"/>
+            <AttributeChangeArray Attribute="Commanders_ArmorKineticHero_Negative" Points="5"/>
+            <AttributeChangeArray Attribute="Commanders_ArmorStormHero_Negative" Points="5"/>
+        </Modification>
+    </CBehaviorBuff>
+</Catalog>

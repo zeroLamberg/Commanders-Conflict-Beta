@@ -1,0 +1,2240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CKineticRotate id="Mercenary_Colossus_FireBeam_RotateKinetic">
+        <Duration value="1.5"/>
+        <Around Effect="Mercenary_Colossus_FireBeam_InitialPersistent"/>
+        <Yaw value="360"/>
+    </CKineticRotate>
+    <CKineticFollow id="Mercenary_Colossus_FireBeam_FollowCasterKinetic">
+        <Cycles value="1"/>
+        <Duration value="1.5"/>
+        <Follow value="Position"/>
+    </CKineticFollow>
+    <CEffectApplyBehavior id="Mercenary_Colossus_ThermalLances_ApplyMarker">
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <Behavior value="Mercenary_Colossus_ThermalLances_Marker"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="Mercenary_Colossus_ChargedBlast_ApplyDebuff">
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <Behavior value="Mercenary_Colossus_ChargedBlast_Debuff"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="Mercenary_Colossus_FireBeam_ApplyMarkerBehavior">
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <Behavior value="Mercenary_Colossus_FireBeam_MarkerBehavior"/>
+    </CEffectApplyBehavior>
+    <CEffectDamage id="Mercenary_Colossus_FireBeam_BeamDamage" parent="CommandersEnergyDamage">
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <CasterHistory value="Unknown"/>
+        <AttributeFactor index="Biological" value="1"/>
+        <Amount value="140"/>
+        <SplashHistory value="Unknown"/>
+    </CEffectDamage>
+    <CEffectEnumArea id="Mercenary_Colossus_FireBeam_BeamSearchArea">
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <LaunchLocation Value="CasterUnit"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <SearchFilters value="-;Player,Ally,Neutral,Mechanical,Psionic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="0.75" Effect="Mercenary_Colossus_FireBeam_BeamImpactSet"/>
+    </CEffectEnumArea>
+    <CEffectSet id="Mercenary_Colossus_FireBeam_BeamImpactSet">
+        <ValidatorArray value="Mercenary_Colossus_FireBeam_HasNoMarker"/>
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <EffectArray value="Mercenary_Colossus_FireBeam_ApplyMarkerBehavior"/>
+        <EffectArray value="Mercenary_Colossus_FireBeam_BeamDamage"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="Mercenary_Colossus_FireBeam_ImpactPointPersistent">
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <WhichLocation Value="SourcePoint"/>
+        <InitialEffect value="Mercenary_Colossus_FireBeam_BeamSearchArea"/>
+        <PeriodCount value="48"/>
+        <PeriodicEffectArray value="Mercenary_Colossus_FireBeam_PeriodicSearchArea"/>
+        <PeriodicPeriodArray value="0.0625"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="Mercenary_Colossus_FireBeam_PeriodicSearchArea">
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <LaunchLocation Value="CasterUnit"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <SearchFilters value="-;Player,Ally,Neutral,Mechanical,Psionic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="0.75" Effect="Mercenary_Colossus_FireBeam_PeriodicImpactSet"/>
+    </CEffectEnumArea>
+    <CEffectSet id="Mercenary_Colossus_FireBeam_PeriodicImpactSet">
+        <ValidatorArray value="noMarkers"/>
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <EffectArray value="Mercenary_Colossus_FireBeam_PeriodicDamage"/>
+    </CEffectSet>
+    <CEffectDamage id="Mercenary_Colossus_FireBeam_PeriodicDamage" parent="CommandersEnergyDamage">
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <AttributeFactor index="Biological" value="1"/>
+        <Amount value="40"/>
+    </CEffectDamage>
+    <CEffectRemoveKinetic id="Mercenary_Colossus_FireBeam_RemoveRotateKinetic">
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <KineticLink value="Mercenary_Colossus_FireBeam_RotateKinetic"/>
+    </CEffectRemoveKinetic>
+    <CEffectModifyUnit id="Mercenary_Colossus_FireBeam_ClearTurret">
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <LaunchUnit Value="Caster"/>
+        <ImpactUnit Value="Caster"/>
+        <ModifyTurret Action="ClearTarget" Turret="Mercenary_Colossus_Turret"/>
+    </CEffectModifyUnit>
+    <CEffectSet id="Mercenary_Colossus_FireBeam_FinalSet">
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <EffectArray value="Mercenary_Colossus_FireBeam_ClearTurret"/>
+        <EffectArray value="Mercenary_Colossus_FireBeam_RemoveRotateKinetic"/>
+        <EffectArray value="Mercenary_Colossus_FireBeam_RemoveFollowKinetic"/>
+        <EffectArray value="TimedLifeFate"/>
+    </CEffectSet>
+    <CEffectRemoveKinetic id="Mercenary_Colossus_FireBeam_RemoveFollowKinetic">
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <KineticLink value="Mercenary_Colossus_FireBeam_FollowCasterKinetic"/>
+    </CEffectRemoveKinetic>
+    <CEffectModifyUnit id="Mercenary_Colossus_FireBeam_LockTurret">
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <LaunchUnit Value="Caster"/>
+        <ImpactUnit Value="Caster"/>
+        <ModifyTurret Turret="Mercenary_Colossus_Turret">
+            <Target Value="TargetUnit"/>
+            <Flags index="Tracking" value="1"/>
+        </ModifyTurret>
+    </CEffectModifyUnit>
+    <CEffectApplyBehavior id="Mercenary_Colossus_FireBeam_ApplyTimedLifeBehavior">
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <Behavior value="Mercenary_Colossus_FireBeam_BeamUnitTimedLife"/>
+    </CEffectApplyBehavior>
+    <CEffectModifyUnit id="Mercenary_Colossus_ChargedBlast_RemoveWarningUnit">
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <ModifyFlags index="Remove" value="1"/>
+    </CEffectModifyUnit>
+    <CEffectModifyUnit id="Mercenary_Colossus_ChargedBlast_LockTurret">
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <LaunchUnit Value="Caster"/>
+        <ImpactUnit Value="Caster"/>
+        <ModifyTurret Turret="Mercenary_Colossus_Turret">
+            <Target Value="TargetUnit"/>
+            <Flags index="Tracking" value="1"/>
+        </ModifyTurret>
+    </CEffectModifyUnit>
+    <CEffectModifyUnit id="Mercenary_Colossus_ChargedBlast_ClearTurret">
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <LaunchUnit Value="Caster"/>
+        <ImpactUnit Value="Caster"/>
+        <ModifyTurret Action="ClearTarget" Turret="Mercenary_Colossus_Turret"/>
+    </CEffectModifyUnit>
+    <CEffectCreatePersistent id="Mercenary_Colossus_ChargedBlast_TimedLifePersistent">
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <WhichLocation Value="TargetUnit"/>
+        <InitialEffect value="Mercenary_Colossus_ChargedBlast_LockTurret"/>
+        <ExpireEffect value="Mercenary_Colossus_ChargedBlast_RemoveWarningUnit"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="Mercenary_Colossus_ChargedBlast_ClearTurret"/>
+        <PeriodicPeriodArray value="1.5"/>
+    </CEffectCreatePersistent>
+    <CEffectCreateUnit id="Mercenary_Colossus_ChargedBlast_CreateWarningUnit">
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <WhichLocation Value="TargetPoint"/>
+        <CreateFlags index="Placement" value="0"/>
+        <CreateFlags index="PlacementIgnoreBlockers" value="1"/>
+        <CreateFlags index="PlacementIgnoreCliffTest" value="1"/>
+        <SpawnEffect value="Mercenary_Colossus_ChargedBlast_TimedLifePersistent"/>
+        <SpawnUnit value="Mercenary_Colossus_ChargedBlast_WarningUnit"/>
+    </CEffectCreateUnit>
+    <CEffectDamage id="Mercenary_Colossus_ChargedBlast_Damage" parent="CommandersEnergyDamage">
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <AttributeFactor index="Biological" value="1"/>
+        <Amount value="250"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="Mercenary_Colossus_ChargedBlast_LM">
+        <ValidatorArray index="0" value="CasterNotDead"/>
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <ImpactEffect value="Mercenary_Colossus_ChargedBlast_Search"/>
+        <AmmoUnit value="Mercenary_Colossus_ChargedBlast_Weapon"/>
+    </CEffectLaunchMissile>
+    <CEffectSet id="Mercenary_Colossus_ThermalLances_InitialSet">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="Mercenary_Colossus_ThermalLances_Forward"/>
+        <EffectArray value="Mercenary_Colossus_ThermalLances_Reverse"/>
+        <EffectArray value="Mercenary_Colossus_ThermalLances_FireBeam"/>
+    </CEffectSet>
+    <CEffectDamage id="Mercenary_Colossus_ThermalLances_Damage" parent="CommandersKineticDamage">
+        <ValidatorArray value="Mercenary_Colossus_ThermalLances_TargetHasNoMarker"/>
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <Amount value="160"/>
+        <DamageInheritEffect value="Mercenary_Colossus_ThermalLances_ApplyMarker"/>
+    </CEffectDamage>
+    <CEffectCreatePersistent id="Mercenary_Colossus_ThermalLances_DamageDelay">
+        <Name value="Effect/Name/Mercenary_Colossus_ThermalLances_DamageDelay2"/>
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <WhichLocation Value="TargetUnit"/>
+        <ExpireDelay value="0.25"/>
+        <FinalEffect value="Mercenary_Colossus_ThermalLances_Damage"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="Mercenary_Colossus_ThermalLances_Forward">
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <WhichLocation Value="TargetUnit"/>
+        <TimeScaleSource Value="Caster"/>
+        <Flags index="Channeled" value="1"/>
+        <ExpireDelay value="0.375"/>
+        <ExpireEffect value="Mercenary_Colossus_ThermalLances_Damage"/>
+        <PeriodCount value="11"/>
+        <PeriodicEffectArray value="Mercenary_Colossus_ThermalLances_Search"/>
+        <PeriodicOffsetArray value="-1.25,0,0"/>
+        <PeriodicOffsetArray value="-1,0,0"/>
+        <PeriodicOffsetArray value="-0.75,0,0"/>
+        <PeriodicOffsetArray value="-0.5,0,0"/>
+        <PeriodicOffsetArray value="-0.25,0,0"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicOffsetArray value="0.25,0,0"/>
+        <PeriodicOffsetArray value="0.5,0,0"/>
+        <PeriodicOffsetArray value="0.75,0,0"/>
+        <PeriodicOffsetArray value="1,0,0"/>
+        <PeriodicOffsetArray value="1.25,0,0"/>
+        <PeriodicPeriodArray value="0.0312"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="Mercenary_Colossus_ThermalLances_Reverse">
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <WhichLocation Value="TargetUnit"/>
+        <TimeScaleSource Value="Caster"/>
+        <Flags index="Channeled" value="1"/>
+        <ExpireDelay value="0.375"/>
+        <ExpireEffect value="Mercenary_Colossus_ThermalLances_Damage"/>
+        <PeriodCount value="11"/>
+        <PeriodicEffectArray value="Mercenary_Colossus_ThermalLances_SearchReverse"/>
+        <PeriodicOffsetArray value="1.25,0,0"/>
+        <PeriodicOffsetArray value="1,0,0"/>
+        <PeriodicOffsetArray value="0.75,0,0"/>
+        <PeriodicOffsetArray value="0.5,0,0"/>
+        <PeriodicOffsetArray value="0.25,0,0"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicOffsetArray value="-0.25,0,0"/>
+        <PeriodicOffsetArray value="-0.5,0,0"/>
+        <PeriodicOffsetArray value="-0.75,0,0"/>
+        <PeriodicOffsetArray value="-1,0,0"/>
+        <PeriodicOffsetArray value="-1.25,0,0"/>
+        <PeriodicPeriodArray value="0.0312"/>
+        <Marker>
+            <MatchFlags index="Id" value="1"/>
+        </Marker>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="Mercenary_Colossus_ChargedBlast_Search">
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <SearchFilters value="-;Player,Ally,Neutral,Mechanical,Psionic,Stasis,Dead,Invulnerable"/>
+        <AreaArray Radius="2" Effect="Mercenary_Colossus_ChargedBlast_ImpactSet"/>
+    </CEffectEnumArea>
+    <CEffectSet id="Mercenary_Colossus_ChargedBlast_ImpactSet">
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <EffectArray value="Mercenary_Colossus_ChargedBlast_Damage"/>
+        <EffectArray value="Mercenary_Colossus_ChargedBlast_ApplyDebuff"/>
+    </CEffectSet>
+    <CEffectEnumArea id="Mercenary_Colossus_ThermalLances_Search">
+        <Name value="Effect/Name/Mercenary_Colossus_ThermalLances_Search2"/>
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <ExcludeArray Value="Target"/>
+        <SearchFilters value="-;Player,Ally,Neutral,Psionic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="0.15" Effect="Mercenary_Colossus_ThermalLances_DamageDelay"/>
+        <SearchFlags index="CallForHelp" value="1"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="Mercenary_Colossus_ThermalLances_SearchReverse">
+        <Name value="Effect/Name/Mercenary_Colossus_ThermalLances_SearchReverse2"/>
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <ExcludeArray Value="Target"/>
+        <SearchFilters value="-;Player,Ally,Neutral,Psionic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="0.15" Effect="Mercenary_Colossus_ThermalLances_DamageDelay"/>
+        <SearchFlags index="CallForHelp" value="1"/>
+    </CEffectEnumArea>
+    <CEffectCreatePersistent id="Mercenary_Colossus_ThermalLances_FireBeam">
+        <Name value="Effect/Name/Mercenary_Colossus_ThermalLances_FireBeam2"/>
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <WhichLocation Value="TargetUnit"/>
+        <TimeScaleSource Value="Caster"/>
+        <ExpireDelay value="0.375"/>
+        <PeriodCount value="4"/>
+        <PeriodicEffectArray value="Mercenary_Colossus_ThermalLances_FireBeamCP"/>
+        <PeriodicOffsetArray value="-1.5,0,0"/>
+        <PeriodicOffsetArray value="1.5,0,0"/>
+        <PeriodicOffsetArray value="-0.5,0,0"/>
+        <PeriodicOffsetArray value="0.5,0,0"/>
+        <PeriodicPeriodArray value="0.125"/>
+        <PeriodicPeriodArray value="0"/>
+        <PeriodicPeriodArray value="0"/>
+        <PeriodicPeriodArray value="0"/>
+        <Marker>
+            <MatchFlags index="Id" value="1"/>
+        </Marker>
+    </CEffectCreatePersistent>
+    <CEffectApplyBehavior id="Mercenary_Colossus_ThermalLances_FireBeamAB">
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <Behavior value="Mercenary_Colossus_ThermalLancesFireBeam"/>
+        <ValidatorArray index="0" value="Mercenary_Colossus_ThermalLances_TargetHasNoBehavior"/>
+    </CEffectApplyBehavior>
+    <CEffectCreatePersistent id="Mercenary_Colossus_ThermalLances_FireBeamCP">
+        <Name value="Effect/Name/Mercenary_Colossus_ThermalLances_FireBeamCP2"/>
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <TimeScaleSource Value="Caster"/>
+        <PeriodCount value="10"/>
+        <PeriodicEffectArray value="Mercenary_Colossus_ThermalLances_FireBeamSearch"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicPeriodArray value="0.5"/>
+    </CEffectCreatePersistent>
+    <CEffectDamage id="Mercenary_Colossus_ThermalLances_FireBeamDamage" parent="CommandersKineticDamage">
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <Amount value="10"/>
+    </CEffectDamage>
+    <CEffectEnumArea id="Mercenary_Colossus_ThermalLances_FireBeamSearch">
+        <Name value="Effect/Name/Mercenary_Colossus_ThermalLances_FireBeamSearch2"/>
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <AINotifyFlags index="HurtEnemy" value="1"/>
+        <SearchFilters value="-;Self,Player,Ally,Neutral,Psionic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="0.5" Effect="Mercenary_Colossus_ThermalLances_FireBeamAB"/>
+        <SearchFlags index="CallForHelp" value="1"/>
+    </CEffectEnumArea>
+    <CEffectCreatePersistent id="Mercenary_Colossus_FireBeam_InitialPersistent">
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <Marker Duration="0.5">
+            <MatchFlags index="Id" value="1"/>
+        </Marker>
+        <InitialEffect value="Mercenary_Colossus_FireBeam_CreateBeamUnit"/>
+        <WhichLocation Value="CasterUnit"/>
+        <InitialOffset value="0,-5.75,0"/>
+    </CEffectCreatePersistent>
+    <CEffectApplyBehavior id="Mercenary_Colossus_FireBeam_ApplyRotatorDelayBehavior">
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <Behavior value="Mercenary_Colossus_FireBeam_RotatorDelayBehavior"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyKinetic id="Mercenary_Colossus_FireBeam_ApplyKineticRotator">
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <Kinetic value="Mercenary_Colossus_FireBeam_RotateKinetic"/>
+    </CEffectApplyKinetic>
+    <CEffectCreateUnit id="Mercenary_Colossus_FireBeam_CreateBeamUnit">
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <WhichLocation Value="TargetPoint"/>
+        <Origin Value="TargetPoint"/>
+        <CreateFlags index="Placement" value="0"/>
+        <SpawnEffect value="Mercenary_Colossus_FireBeam_SpawnSet"/>
+        <SpawnUnit value="Mercenary_Colossus_FireBeam_BeamTargetUnit"/>
+    </CEffectCreateUnit>
+    <CEffectApplyKinetic id="Mercenary_Colossus_FireBeam_CutterApplyFollow">
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <Kinetic value="Mercenary_Colossus_FireBeam_FollowCasterKinetic"/>
+    </CEffectApplyKinetic>
+    <CEffectSet id="Mercenary_Colossus_FireBeam_SpawnSet">
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <EffectArray value="Mercenary_Colossus_FireBeam_ApplyTimedLifeBehavior"/>
+        <EffectArray value="Mercenary_Colossus_FireBeam_LockTurret"/>
+        <EffectArray value="Mercenary_Colossus_FireBeam_ApplyRotatorDelayBehavior"/>
+        <EffectArray value="FenixPlasmaCutterApplyUnitTimestopCheckBehavior"/>
+    </CEffectSet>
+    <CAbilEffectInstant id="Mercenary_Colossus_FireBeam">
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Mercenaries"/>
+        <SharedFlags index="DisableWhileDead" value="0"/>
+        <Effect index="0" value="Mercenary_Colossus_FireBeam_InitialPersistent"/>
+        <Flags index="AllowMovement" value="1"/>
+        <Flags index="ChannelingMinimum" value="0"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Cooldown Location="Unit" TimeUse="12"/>
+        </Cost>
+        <CastIntroTime value="1.5"/>
+        <UninterruptibleArray index="Cast" value="1"/>
+        <UninterruptibleArray index="Channel" value="1"/>
+        <UninterruptibleArray index="Finish" value="1"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Mercenary_Colossus_FireBeam"/>
+        <ShowProgressArray index="Cast" value="1"/>
+        <FinishTime value="2"/>
+    </CAbilEffectInstant>
+    <CAbilEffectTarget id="Mercenary_Colossus_ChargedBlast">
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Mercenaries"/>
+        <PrepEffect value="Mercenary_Colossus_ChargedBlast_CreateWarningUnit"/>
+        <Effect index="0" value="Mercenary_Colossus_ChargedBlast_LM"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Cooldown Location="Unit" TimeUse="8"/>
+        </Cost>
+        <Range value="6"/>
+        <Arc value="360"/>
+        <CastIntroTime value="1.5"/>
+        <ShowProgressArray index="Cast" value="1"/>
+        <UninterruptibleArray index="Cast" value="1"/>
+        <UninterruptibleArray index="Channel" value="1"/>
+        <UninterruptibleArray index="Finish" value="1"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Mercenary_Colossus_ChargedBlast"/>
+        <FinishTime value="1"/>
+    </CAbilEffectTarget>
+    <CValidatorUnitCompareBehaviorCount id="Mercenary_Colossus_ThermalLances_TargetHasNoMarker" parent="TargetNotParent">
+        <Behavior value="Mercenary_Colossus_ThermalLances_Marker"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="Mercenary_Colossus_ThermalLances_TargetHasNoBehavior" parent="TargetNotParent">
+        <Behavior value="Mercenary_Colossus_ThermalLancesFireBeam"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="Mercenary_Colossus_FireBeam_HasNoMarker">
+        <Behavior value="Mercenary_Colossus_FireBeam_MarkerBehavior"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CButton id="Mercenary_Colossus_ChargedBlast">
+        <Icon value="Assets\Textures\btn-ability-protoss-chargedblast.dds"/>
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+    </CButton>
+    <CButton id="Mercenary_Colossus_FireBeam">
+        <Icon value="Assets\Textures\btn-ability-protoss-firebeam.dds"/>
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+    </CButton>
+    <CActorModel id="Mercenary_Colossus_FireBeam_SplatInner" parent="CommandersModelAnimationStyleContinuous">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Mercenaries"/>
+        <On Terms="Abil.Mercenary_Colossus_FireBeam.SourceCastStart" Send="Create"/>
+        <On Terms="Effect.Mercenary_Colossus_FireBeam_ClearTurret.Start; At Caster" Send="Destroy"/>
+    </CActorModel>
+    <CActorModel id="Mercenary_Colossus_FireBeam_SplatOuter" parent="CommandersModelAnimationStyleContinuous">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Mercenaries"/>
+        <On Terms="Abil.Mercenary_Colossus_FireBeam.SourceCastStart" Send="Create"/>
+        <On Terms="Effect.Mercenary_Colossus_FireBeam_ClearTurret.Start; At Caster" Send="Destroy"/>
+    </CActorModel>
+    <CActorModel id="Mercenary_Colossus_FireBeam_BeamHitModel" parent="ModelAnimationStyleContinuous">
+        <Filter index="All" value="1"/>
+        <VisibleTo index="Self" value="1"/>
+        <VisibleTo index="Ally" value="1"/>
+        <VisibleTo index="Enemy" value="1"/>
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Mercenaries"/>
+        <On Terms="Behavior.Mercenary_Colossus_FireBeam_BeamUnitTimedLife.On" Send="Create"/>
+        <On Terms="Behavior.Mercenary_Colossus_FireBeam_BeamUnitTimedLife.Off" Send="AnimBracketStop BSD"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachHead"/>
+    </CActorModel>
+    <CActorModel id="Mercenary_Colossus_FireBeam_GroundFireImpactModel" parent="ModelAnimationStyleOneShot">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Mercenaries"/>
+        <On Terms="Effect.Mercenary_Colossus_FireBeam_BeamImpactSet.Start" Send="Create"/>
+        <Scale value="2.000000,1.000000,1.000000"/>
+        <AutoScaleFactor value="1.000000"/>
+    </CActorModel>
+    <CActorSound id="Mercenary_Colossus_FireBeam_SoundBeamDamage" parent="SoundOneShot">
+        <Flags index="SuppressSaveLoad" value="0"/>
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Mercenaries"/>
+        <On Terms="SupporterDestruction" Send="Destroy"/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <On Terms="ActorCreation" Send="SoundSetPitch Linear 0.000000@0.000000,20.000000@3000.000000"/>
+        <On Terms="Effect.Mercenary_Colossus_FireBeam_BeamImpactSet.Start; At Target" Send="Create"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpCasterUnit"/>
+    </CActorSound>
+    <CActorSound id="Mercenary_Colossus_FireBeam_SoundEnd" parent="SoundOneShot">
+        <Flags index="SuppressSaveLoad" value="0"/>
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Mercenaries"/>
+        <On Terms="SupporterDestruction" Send="Destroy"/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <On Terms="ActorCreation" Send="SoundSetPitch Linear 0.000000@0.000000,20.000000@3000.000000"/>
+        <On Terms="Effect.Mercenary_Colossus_FireBeam_ClearTurret.Start; At Caster" Send="Create"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpCasterUnit"/>
+    </CActorSound>
+    <CActorSound id="Mercenary_Colossus_FireBeam_SoundLoop" parent="SoundContinuous">
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <On Terms="Effect.Mercenary_Colossus_FireBeam_SpawnSet.Start; At Caster" Send="Create"/>
+        <On Terms="Effect.Mercenary_Colossus_FireBeam_ClearTurret.Start" Send="Destroy"/>
+    </CActorSound>
+    <CActorSound id="Mercenary_Colossus_ChargedBlast_LaunchSound" parent="SoundOneShot">
+        <Flags index="SuppressSaveLoad" value="0"/>
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Mercenaries"/>
+        <On Terms="SupporterDestruction" Send="Destroy"/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <On Terms="Effect.Mercenary_Colossus_ChargedBlast_LM.Start; At Caster" Send="Create"/>
+        <Host Subject="_Unit"/>
+    </CActorSound>
+    <CActorModel id="Mercenary_Colossus_ChargedBlast_GroundImpactModel" parent="ModelAnimationStyleOneShot">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Mercenaries"/>
+        <On Terms="Effect.Mercenary_Colossus_ChargedBlast_Search.Start" Send="Create"/>
+        <Model value="Mercenary_Colossus_ChargedBlast_GroundImpact"/>
+    </CActorModel>
+    <CActorSound id="Mercenary_Colossus_FireBeam_SoundLaunch" parent="SoundOneShot">
+        <Flags index="SuppressSaveLoad" value="0"/>
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Mercenaries"/>
+        <On Terms="SupporterDestruction" Send="Destroy"/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <On Terms="ActorCreation" Send="SoundSetPitch Linear 0.000000@0.000000,20.000000@3000.000000"/>
+        <On Terms="Effect.Mercenary_Colossus_FireBeam_InitialPersistent.Start; At Caster" Send="Create"/>
+        <Host Subject="_Unit"/>
+    </CActorSound>
+    <CActorSound id="Mercenary_Colossus_ChargedBlast_GroundImpactSound" parent="SoundOneShot">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Mercenaries"/>
+        <On Terms="Effect.Mercenary_Colossus_ChargedBlast_Search.Start" Send="Create"/>
+    </CActorSound>
+    <CActorSound id="Mercenary_Colossus_FireBeam_PowerUpSound" parent="SoundOneShot">
+        <Flags index="SuppressSaveLoad" value="0"/>
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Mercenaries"/>
+        <On Terms="SupporterDestruction" Send="Destroy"/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <On Terms="ActorCreation" Send="SoundSetPitch Linear 0.000000@0.000000,20.000000@3000.000000"/>
+        <On Terms="Abil.Mercenary_Colossus_FireBeam.SourceCastStart" Send="Create"/>
+        <On Terms="Abil.Mercenary_Colossus_FireBeam.SourceCastStop" Send="Destroy"/>
+        <Host Subject="_Unit"/>
+    </CActorSound>
+    <CActorModel id="Mercenary_Colossus_FireBeam_BeamTargetModel" parent="ModelAnimationStyleContinuous">
+        <Filter index="All" value="1"/>
+        <VisibleTo index="Self" value="1"/>
+        <VisibleTo index="Ally" value="1"/>
+        <VisibleTo index="Enemy" value="1"/>
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Mercenaries"/>
+        <On Terms="Behavior.Mercenary_Colossus_FireBeam_BeamUnitTimedLife.On" Send="Create"/>
+        <On Terms="Behavior.Mercenary_Colossus_FireBeam_BeamUnitTimedLife.Off" Send="AnimBracketStop BSD"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachHead"/>
+    </CActorModel>
+    <CActorModel id="Mercenary_Colossus_FireBeam_GroundFireModel" parent="ModelAnimationStyleContinuous">
+        <Filter index="All" value="1"/>
+        <VisibleTo index="Self" value="1"/>
+        <VisibleTo index="Ally" value="1"/>
+        <VisibleTo index="Enemy" value="1"/>
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Mercenaries"/>
+        <On Terms="Effect.Mercenary_Colossus_FireBeam_ImpactPointPersistent.Start" Send="Create"/>
+        <On Terms="Effect.Mercenary_Colossus_FireBeam_ImpactPointPersistent.Start" Send="TimerSet 3.000000 {Timed Life}"/>
+        <On Terms="TimerExpired; TimerName {Timed Life}" Send="AnimBracketStop BSD"/>
+        <HostSiteOps Ops="SOpForwardCasterCenterInverted" HoldRotation="1"/>
+    </CActorModel>
+    <CActorModel id="Mercenary_Colossus_FireBeam_PowerUpModel" parent="ModelAnimationStyleOneShot">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Mercenaries"/>
+        <On Terms="Abil.Mercenary_Colossus_FireBeam.SourceCastStart" Send="Create"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachHead"/>
+    </CActorModel>
+    <CActorBeamSimple id="Mercenary_Colossus_FireBeam_Model" parent="BeamSimpleAnimationStyleContinuous">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Mercenaries"/>
+        <On Terms="Effect.Mercenary_Colossus_FireBeam_CutterApplyFollow.Start; At Caster" Send="Create"/>
+        <On Terms="Behavior.Mercenary_Colossus_FireBeam_BeamUnitTimedLife.Off" Send="AnimBracketStop BSD"/>
+        <HostLaunch Subject="_Unit" Scope="Caster" Actor="Find"/>
+        <HostLaunchSiteOps Ops="SOpAttachHead"/>
+        <HostImpact Subject="_Unit" Scope="Target" Actor="Find"/>
+        <HostImpactSiteOps Ops="SOpAttachCenter"/>
+    </CActorBeamSimple>
+    <CActorUnit id="Mercenary_Colossus_FireBeam_BeamTargetUnit" unitName="Mercenary_Colossus_FireBeam_BeamTargetUnit">
+        <Filter index="All" value="1"/>
+        <VisibleTo index="Self" value="1"/>
+        <VisibleTo index="Ally" value="1"/>
+        <VisibleTo index="Enemy" value="1"/>
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <On Terms="UnitBirth.Mercenary_Colossus_FireBeam_BeamTargetUnit" Send="Create"/>
+        <On Terms="UnitBirth" Send="AnimBracketStart Lifetime Birth Stand"/>
+        <On Terms="UnitDeath" Send="Destroy"/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <Model value="Invisible"/>
+        <Aliases value="_Unit"/>
+    </CActorUnit>
+    <CActorModel id="Mercenary_Colossus_ThermalLances_AttackBeamImpact">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Mercenaries"/>
+        <Supporter Subject="::Creator"/>
+        <On Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death"/>
+        <On Terms="ActorCreation" Send="Create ColossusPurifierAttackImpactSound"/>
+        <On Terms="SupporterDestruction" Send="AnimBracketStop BSD"/>
+        <On Terms="AnimBracketState.*.AfterClosing; AnimName BSD" Send="Destroy"/>
+        <Host Subject="Mercenary_Colossus_ThermalLances_AttackImpactSite"/>
+        <AutoScaleFactor value="2.000000"/>
+    </CActorModel>
+    <CActorUnit id="Mercenary_Colossus_ChargedBlast_WarningUnit" unitName="Common_InvisibleUnit">
+        <Filter index="All" value="1"/>
+        <VisibleTo index="Self" value="1"/>
+        <VisibleTo index="Ally" value="1"/>
+        <VisibleTo index="Enemy" value="1"/>
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <On Terms="UnitBirth.Mercenary_Colossus_ChargedBlast_WarningUnit" Send="Create"/>
+        <On Terms="UnitBirth" Send="AnimBracketStart Lifetime Birth Stand"/>
+        <On Terms="UnitDeath" Send="Destroy"/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
+    </CActorUnit>
+    <CActorModel id="Mercenary_Colossus_ChargedBlast_PowerUpModel" parent="ModelAnimationStyleOneShot">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Mercenaries"/>
+        <On Terms="Abil.Mercenary_Colossus_ChargedBlast.SourceCastStart" Send="Create"/>
+        <On Terms="Abil.Mercenary_Colossus_ChargedBlast.SourceCastStop" Send="AnimBracketStop BSD"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachHead"/>
+    </CActorModel>
+    <CActorSound id="Mercenary_Colossus_ChargedBlast_PowerUpSound" parent="SoundOneShot">
+        <Flags index="SuppressSaveLoad" value="0"/>
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Mercenaries"/>
+        <On Terms="SupporterDestruction" Send="Destroy"/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <On Terms="ActorCreation" Send="SoundSetPitch Linear 0.000000@0.000000,20.000000@3000.000000"/>
+        <On Terms="Abil.Mercenary_Colossus_ChargedBlast.SourceCastStart" Send="Create"/>
+        <On Terms="Abil.Mercenary_Colossus_ChargedBlast.SourceCastStop" Send="Destroy"/>
+        <Host Subject="_Unit"/>
+    </CActorSound>
+    <CActorTurret id="Mercenary_Colossus_Turret">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Mercenaries"/>
+        <On Terms="TurretEnable.Mercenary_Colossus_Turret" Send="Create"/>
+    </CActorTurret>
+    <CActorModel id="Mercenary_Colossus_AttackBeamImpactReverse">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Mercenaries"/>
+        <Supporter Subject="::Creator"/>
+        <On Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death"/>
+        <On Terms="SupporterDestruction" Send="AnimBracketStop BSD"/>
+        <On Terms="AnimBracketState.*.AfterClosing; AnimName BSD" Send="Destroy"/>
+        <Host Subject="Mercenary_Colossus_ThermalLances_AttackImpactSiteReverse"/>
+        <Model value="Mercenary_Colossus_ThermalLances_AttackBeamImpact"/>
+    </CActorModel>
+    <CActorAction id="Mercenary_Colossus_ChargedBlast_Attack" parent="GenericAttack" effectImpact="Mercenary_Colossus_ChargedBlast_ImpactSet" effectLaunch="Mercenary_Colossus_ChargedBlast_LM">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Mercenaries"/>
+        <LaunchAttachQuery Methods="AMFilterHead"/>
+        <LaunchSiteOps Ops="SOpAttachHead"/>
+    </CActorAction>
+    <CActorBeamSimple id="Mercenary_Colossus_ThermalLances_AttackBeam">
+        <Terms value="Cap 1"/>
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Mercenaries"/>
+        <On Terms="ActorCreation" Send="Create Mercenary_Colossus_ThermalLances_AttackBeamImpact"/>
+        <On Terms="ActorCreation" Send="Create ColossusPurifierAttackLaunchSound"/>
+        <On Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death"/>
+        <On Terms="Signal.*.Arrival" Send="AnimBracketStop BSD"/>
+        <On Terms="AnimBracketState.*.AfterOpening; AnimName BSD" Target="Mercenary_Colossus_ThermalLances_AttackImpactSite" Send="MoverMove"/>
+        <On Terms="AnimBracketState.*.AfterClosing; AnimName BSD" Send="Destroy"/>
+        <On Terms="Effect.Mercenary_Colossus_ThermalLances_Search.Impact" Send="Create"/>
+        <HostLaunch Subject="ColossusPurifierAttackLaunchSite" Scope="Caster" Actor="Create"/>
+        <HostImpact Subject="Mercenary_Colossus_ThermalLances_AttackImpactSite"/>
+    </CActorBeamSimple>
+    <CActorBeamSimple id="Mercenary_Colossus_ThermalLances_AttackBeamReverse">
+        <Terms value="Cap 1"/>
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Mercenaries"/>
+        <On Terms="ActorCreation" Send="Create Mercenary_Colossus_AttackBeamImpactReverse"/>
+        <On Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death"/>
+        <On Terms="Signal.*.Arrival" Send="AnimBracketStop BSD"/>
+        <On Terms="AnimBracketState.*.AfterOpening; AnimName BSD" Target="Mercenary_Colossus_ThermalLances_AttackImpactSiteReverse" Send="MoverMove"/>
+        <On Terms="AnimBracketState.*.AfterClosing; AnimName BSD" Send="Destroy"/>
+        <On Terms="Effect.Mercenary_Colossus_ThermalLances_SearchReverse.Impact" Send="Create"/>
+        <Model value="Mercenary_Colossus_ThermalLances_AttackBeam"/>
+        <HostLaunch Subject="ColossusPurifierAttackLaunchSiteReverse" Scope="Caster" Actor="Create"/>
+        <HostImpact Subject="Mercenary_Colossus_ThermalLances_AttackImpactSiteReverse"/>
+    </CActorBeamSimple>
+    <CActorMissile id="Mercenary_Colossus_ChargedBlast_AttackMissile" parent="GenericAttackMissileWithDeathAnim" unitName="Mercenary_Colossus_ChargedBlast_Weapon">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Mercenaries"/>
+    </CActorMissile>
+    <CActorSiteMover id="Mercenary_Colossus_ThermalLances_AttackImpactSite">
+        <Terms value="Cap 1"/>
+        <Sharing value="PerEffectTree"/>
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Mercenaries"/>
+        <On Terms="Effect.Mercenary_Colossus_ThermalLances_Search.Impact" Send="Create"/>
+        <On Terms="Effect.Mercenary_Colossus_ThermalLances_Search.Impact; At Effect" Send="MoverSetDestination2D"/>
+        <On Terms="MoverArrived" Target="Mercenary_Colossus_ThermalLances_AttackBeam" Send="Signal Arrival"/>
+        <HostSiteOps Ops="SOpShadow"/>
+        <Acceleration value="40.000000"/>
+        <Deceleration value="40.000000"/>
+        <Speed value="2.000000"/>
+        <SpeedMax value="4.100000"/>
+    </CActorSiteMover>
+    <CActorSiteMover id="Mercenary_Colossus_ThermalLances_AttackImpactSiteReverse">
+        <Terms value="Cap 1"/>
+        <Sharing value="PerEffectTree"/>
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Mercenaries"/>
+        <On Terms="Effect.Mercenary_Colossus_ThermalLances_SearchReverse.Impact" Send="Create"/>
+        <On Terms="Effect.Mercenary_Colossus_ThermalLances_SearchReverse.Impact; At Effect" Send="MoverSetDestination2D"/>
+        <On Terms="MoverArrived" Target="Mercenary_Colossus_ThermalLances_AttackBeamReverse" Send="Signal Arrival"/>
+        <HostSiteOps Ops="SOpShadow"/>
+        <Acceleration value="40.000000"/>
+        <Deceleration value="40.000000"/>
+        <Speed value="2.000000"/>
+        <SpeedMax value="4.100000"/>
+    </CActorSiteMover>
+    <CActorModel id="Mercenary_Colossus_ThermalLances_AttackBeamUnitImpact" parent="ModelAnimationStyleContinuous">
+        <On Terms="Behavior.Mercenary_Colossus_ThermalLancesFireBeam.On" Send="Create"/>
+        <On Terms="Behavior.Mercenary_Colossus_ThermalLancesFireBeam.Off" Send="AnimBracketStop BSD"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <Model value="MercenaryColossus_ThermalLances_AttackBeamUnitImpact"/>
+        <AutoScaleFactor value="1.000000"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Mercenaries"/>
+    </CActorModel>
+    <CActorAction id="Mercenary_Colossus_TermalLances_AttackShieldHitter" parent="AoEAttackShieldHitter" effectHit="Mercenary_Colossus_ThermalLances_Damage">
+        <LaunchRequest Subject="ColossusPurifierAttackLaunchSite" Scope="Caster"/>
+        <ActionFlags index="VictimRevealsAttacker" value="1"/>
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Mercenaries"/>
+    </CActorAction>
+    <CActorUnit id="MercenaryColossusDefender" parent="CommandersCreepStandard" unitName="MercenaryColossusDefender">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Mercenaries"/>
+        <On index="30" Terms="UnitDeathCustomize" Send="DeathCustomize RagdollBasic"/>
+        <On index="31" Terms="Behavior.FaceMeltDance.On" Send="AnimPlay Spell Dance PlayForever"/>
+        <On index="32" Terms="Behavior.FaceMeltDance.Off" Send="AnimClear Spell"/>
+        <On Terms="Behavior.TalentBucketPromote.On" Send="SetScale 1.250000 1.000000"/>
+        <On Terms="WeaponStart.Mercenary_Colossus_ThermalLances.AttackStart" Send="AnimPlay Attack Stand,Channel,Start"/>
+        <On Terms="WeaponStop.Mercenary_Colossus_ThermalLances.AttackStop" Send="AnimClear Attack"/>
+        <On Terms="UnitBirth" Send="Create Generic_ModelWarpIn"/>
+        <On Terms="ActorCreation" Send="SetMinimapVisibility"/>
+        <On Terms="UnitDeathCustomize" Send="DeathCustomize RagdollBasic"/>
+        <On Terms="Effect.Mercenary_Colossus_ThermalLances_Forward.Start" Send="AnimBracketStart Attack Stand,Channel,Start Stand,Channel Stand,Channel,End"/>
+        <On Terms="Effect.Mercenary_Colossus_ThermalLances_Forward.Stop" Send="AnimBracketStop Attack"/>
+        <Model value="Mercenary_Colossus"/>
+        <DeathArray index="Normal" ModelLink="Mercenary_Colossus_Death" SoundLink="" VoiceLink=""/>
+        <DeathCustoms ActorModel="ColossusDeathRagdoll" ModelLink="Mercenary_Colossus_DeathRagdoll" Name="RagdollBasic">
+            <BodySquibs/>
+        </DeathCustoms>
+        <PlacementModel value="Mercenary_Colossus"/>
+        <WalkAnimMoveSpeed value="2.1445"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\ui_targetportrait_bbay_minions_footman_blue.dds"/>
+        </GroupIcon>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <StatusBarFlags index="Workers" value="0"/>
+        <UnitIcon value="Assets\Textures\btn-unit-protoss-colossus.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\ui_targetportrait_bbay_minions_footman_red.dds"/>
+        </Wireframe>
+        <CustomUnitStatusFrame value="UnitStatus/SuperCreepNeutralUnitStatusFrameTemplate"/>
+    </CActorUnit>
+    <CActorUnit id="MercenaryColossusLaner" parent="CommandersMinionStandard" unitName="MercenaryColossusLaner">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Mercenaries"/>
+        <On index="26" Terms="UnitHighlightLocal.*.Start" Send="StatusIncrement PreTargetingTint"/>
+        <On index="27" Terms="UnitHighlightLocal.*.Stop" Send="StatusDecrement PreTargetingTint"/>
+        <On index="28" Terms="Behavior.L90ETCMoshPitStun.On" Send="AnimPlay Spell Dance PlayForever"/>
+        <On index="29" Terms="Behavior.L90ETCMoshPitStun.Off" Send="AnimClear Spell"/>
+        <On index="30" Terms="Behavior.FaceMeltDance.On" Send="AnimPlay Spell Dance PlayForever"/>
+        <On index="31" Terms="Behavior.FaceMeltDance.Off" Send="AnimClear Spell"/>
+        <On index="32" Terms="Behavior.TalentBucketPromote.On" Send="SetScale 1.250000 1.000000"/>
+        <On index="33" Terms="WeaponStart.*.AttackStart" Send="AnimClear Attack"/>
+        <On index="34" Terms="WeaponStart.*.AttackStart" Send="AnimPlay Attack Attack"/>
+        <On index="35" Terms="WeaponStart.*.AttackStart; AnimPlaying Birth" Send="AnimClear Birth"/>
+        <On index="36" Terms="UnitMovementUpdate.*.Walk; AnimPlaying Attack" Send="AnimClear Attack"/>
+        <On index="37" Terms="WeaponStart.Mercenary_Colossus_ThermalLances.AttackStart" Send="AnimPlay Attack Stand,Channel,Start"/>
+        <On Terms="WeaponStop.Mercenary_Colossus_ThermalLances.AttackStop" Send="AnimClear Attack"/>
+        <On Terms="UnitBirth" Send="Create Generic_ModelWarpIn"/>
+        <On Terms="ActorCreation" Send="SetMinimapVisibility"/>
+        <On Terms="UnitDeathCustomize" Send="DeathCustomize RagdollBasic"/>
+        <On Terms="Effect.Mercenary_Colossus_ThermalLances_Forward.Start" Send="AnimBracketStart Attack Stand,Channel,Start Stand,Channel Stand,Channel,End"/>
+        <On Terms="Effect.Mercenary_Colossus_ThermalLances_Forward.Stop" Send="AnimBracketStop Attack"/>
+        <Model value="Mercenary_Colossus"/>
+        <DeathArray index="Normal" ModelLink="Mercenary_Colossus_Death" SoundLink="" VoiceLink=""/>
+        <DeathCustoms index="1">
+            <ActorModel value="ColossusDeathRagdoll"/>
+            <ModelLink value="Mercenary_Colossus_DeathRagdoll"/>
+            <SoundLink value=""/>
+            <Name value="RagdollBasic"/>
+            <BodySquibs/>
+        </DeathCustoms>
+        <PlacementModel value="Mercenary_Colossus"/>
+        <WalkAnimMoveSpeed value="2.1445"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\ui_targetportrait_bbay_minions_footman_blue.dds"/>
+        </GroupIcon>
+        <UnitIcon value="Assets\Textures\btn-unit-protoss-colossus.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\ui_targetportrait_bbay_minions_footman_red.dds"/>
+        </Wireframe>
+        <MinimapIconIsTeamColored value="1"/>
+        <CustomUnitStatusFrame value="UnitStatus/SuperCreepUnitStatusFrameTemplate"/>
+    </CActorUnit>
+    <CActorModel id="Mercenary_Colossus_ThermalLances_FireBeamModel" parent="ModelAnimationStyleContinuous">
+        <On Terms="Effect.Mercenary_Colossus_ThermalLances_FireBeamCP.Start" Send="Create"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.500000"/>
+        <On Terms="Effect.Mercenary_Colossus_ThermalLances_FireBeamCP.Stop" Send="Destroy"/>
+        <HostSiteOps Ops="SOpForwardTargetPointFireBeam SOp90" HoldPosition="1" HoldRotation="1"/>
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Mercenaries"/>
+    </CActorModel>
+    <CActorModel id="Mercenary_Colossus_ThermalLances_FireBeamTargetModel" parent="ModelAnimationStyleContinuous">
+        <Aliases value="_ThermalLancesFireBeamTargetModel"/>
+        <On Terms="Effect.Mercenary_Colossus_ThermalLances_FireBeam.Start; At Target" Send="Create"/>
+        <On Terms="Effect.Mercenary_Colossus_ThermalLances_FireBeam.Stop; FromEffectTreeDescendant" Send="Destroy"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpShadow"/>
+        <Model value="Invisible"/>
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Mercenaries"/>
+    </CActorModel>
+    <CModel id="Mercenary_Colossus_ChargedBlast_PowerUpModel" parent="OneShotSpellFX">
+        <Model value="assets\Effects\Mercenariess\Effect_Merc_ColossusKhala_Powerup\Effect_Merc_ColossusKhala_Powerup.m3"/>
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+    </CModel>
+    <CModelFoliage id="Mercenary_Colossus_FireBeam_SplatInner">
+        <Model value="assets\Effects\Heroes\Base_Fenix\Effect_Fenix_Base_Sweep_Reticle_InnerTC\Effect_Fenix_Base_Sweep_Reticle_InnerTC.m3"/>
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <ScaleMax value="5.000000,5.000000,5.000000"/>
+        <ScaleMin value="5.000000,5.000000,5.000000"/>
+    </CModelFoliage>
+    <CModelFoliage id="Mercenary_Colossus_FireBeam_SplatOuter">
+        <Model value="assets\Effects\Heroes\Base_Fenix\Effect_Fenix_Base_Sweep_Reticle_OuterTC\Effect_Fenix_Base_Sweep_Reticle_OuterTC.m3"/>
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <ScaleMax value="6.500000,6.500000,6.500000"/>
+        <ScaleMin value="6.500000,6.500000,6.500000"/>
+    </CModelFoliage>
+    <CModel id="Mercenary_Colossus_FireBeam_BeamHitModel" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Protoss\ColossusBeamImpact\ColossusBeamImpact.m3"/>
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+    </CModel>
+    <CModel id="Mercenary_Colossus_FireBeam_GroundFireImpactModel" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Protoss\Colossus_FireBeam_Impact\Colossus_FireBeam_Impact.m3"/>
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+    </CModel>
+    <CModel id="Mercenary_Colossus_FireBeam_GroundFireModel" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Protoss\Colossus_FireBeam_GroundFire\Colossus_FireBeam_GroundFire.m3"/>
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+    </CModel>
+    <CModel id="Mercenary_Colossus_FireBeam_BeamTargetModel" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Protoss\Colossus_FireBeam_Impact\Colossus_FireBeam_Impact.m3"/>
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+    </CModel>
+    <CModel id="Mercenary_Colossus_FireBeam_Model" parent="MissileFX">
+        <Model value="Assets\Effects\Protoss\Colossus_FireBeam\Colossus_FireBeam.m3"/>
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <ScaleMax value="1.250000,1.250000,1.250000"/>
+        <ScaleMin value="1.250000,1.250000,1.250000"/>
+        <SelectionRadius value="1.000000"/>
+        <ShadowRadius value="1.000000"/>
+    </CModel>
+    <CModel id="Mercenary_Colossus_FireBeam_PowerUpModel" parent="OneShotSpellFX">
+        <Model value="assets\Effects\Mercenariess\Effect_Merc_ColossusKhala_Powerup\Effect_Merc_ColossusKhala_Powerup.m3"/>
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+    </CModel>
+    <CModel id="Mercenary_Colossus_ChargedBlast_WarningUnit" parent="PersistentSpellFX">
+        <Model value="assets\UI\Cursors\UI_Cursor_Circle_Modern_TeamColor\UI_Cursor_Circle_Modern_TeamColor.m3"/>
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <ScaleMax value="2.000000,2.000000,2.000000"/>
+        <ScaleMin value="2.000000,2.000000,2.000000"/>
+    </CModel>
+    <CModel id="Mercenary_Colossus_ChargedBlast_GroundImpact" parent="ImpactFX">
+        <Model value="Assets\Effects\Zerg\HybridPlasmaMissileImpact\HybridPlasmaMissileImpact.m3"/>
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <ScaleMax value="0.750000,0.750000,0.750000"/>
+        <ScaleMin value="0.750000,0.750000,0.750000"/>
+    </CModel>
+    <CModel id="Mercenary_Colossus_ThermalLances_AttackBeamImpact" parent="ImpactFX">
+        <Model value="Assets\Effects\Protoss\Colossus_FireBeam_Impact\Colossus_FireBeam_Impact.m3"/>
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+    </CModel>
+    <CModel id="Mercenary_Colossus_ChargedBlast_Weapon" parent="MissileFX">
+        <Model value="Assets\Effects\Zerg\HybridPlasmaMissile\HybridPlasmaMissile.m3"/>
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+    </CModel>
+    <CModel id="Mercenary_Colossus_ThermalLances_AttackBeam" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Protoss\Colossus_FireBeam\Colossus_FireBeam.m3"/>
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <RadiusLoose value="1.000000"/>
+    </CModel>
+    <CModel id="MercenaryColossus_ThermalLances_AttackBeamUnitImpact" parent="ImpactFX">
+        <Model value="Assets\Effects\Protoss\Colossus_FireBeam_Unit_Impact\Colossus_FireBeam_Unit_Impact.m3"/>
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+    </CModel>
+    <CModel id="Mercenary_Colossus" parent="Unit">
+        <Model value="Assets\Units\Protoss\Colossus_Golden\Colossus_Golden.m3"/>
+        <RequiredAnims value="Assets\Units\Protoss\Colossus_SwarmAnims\Colossus_SwarmAnims.m3a"/>
+        <AttachProps Id="Ref_Target 02">
+            <Keys index="Ground" value="0"/>
+        </AttachProps>
+        <AttachProps Id="Ref_Target 03">
+            <Keys index="Ground" value="0"/>
+        </AttachProps>
+        <AttachProps Id="Ref_Target 04">
+            <Keys index="Ground" value="0"/>
+        </AttachProps>
+        <AttachProps Id="Ref_Target 05">
+            <Keys index="Ground" value="0"/>
+        </AttachProps>
+        <AttachProps Id="Ref_Weapon 02">
+            <Keys index="CustomA" value="2"/>
+        </AttachProps>
+        <AttachProps Id="Ref_Weapon 03">
+            <Keys index="CustomA" value="3"/>
+        </AttachProps>
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <PlanetPanelCamera value="Star2CameraHigher22"/>
+        <Radius value="1.000000"/>
+        <SelectionRadius value="1.333200"/>
+        <ShadowRadius value="1.333200"/>
+        <SquibTypeDefault value="Metal"/>
+        <TechPurchaseCamera value="Star2CameraHigher22"/>
+        <UnitGlossaryCamera value="Star2CameraHigher22"/>
+    </CModel>
+    <CModel id="Mercenary_Colossus_Death" parent="UnitDeath">
+        <Model value="Assets\Units\Protoss\Colossus_Golden_Death\Colossus_Golden_Death_00.m3"/>
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Colossus_Explode_Small"/>
+            <Type value="Sound"/>
+            <Payload value="Colossus_Explode_Small"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Colossus_Explode_Small"/>
+            <Type value="Sound"/>
+            <Time value="0.200000"/>
+            <Payload value="Colossus_Explode_Small"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Colossus_Explode_Small"/>
+            <Type value="Sound"/>
+            <Time value="0.400000"/>
+            <Payload value="Colossus_Explode_Small"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Colossus_Explode_Large"/>
+            <Type value="Sound"/>
+            <Time value="1.200000"/>
+            <Payload value="Colossus_Explode_Large"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Colossus_Explode_Vocalize"/>
+            <Type value="Sound"/>
+            <Payload value="Colossus_Explode_Vocalize"/>
+        </Events>
+        <Events>
+            <Anim value="Death,01"/>
+            <Name value="Colossus_Explode_Small"/>
+            <Type value="Sound"/>
+            <Payload value="Colossus_Explode_Small"/>
+        </Events>
+        <Events>
+            <Anim value="Death,01"/>
+            <Name value="Colossus_Explode_Small"/>
+            <Type value="Sound"/>
+            <Time value="0.200000"/>
+            <Payload value="Colossus_Explode_Small"/>
+        </Events>
+        <Events>
+            <Anim value="Death,01"/>
+            <Name value="Colossus_Explode_Small"/>
+            <Type value="Sound"/>
+            <Time value="0.400000"/>
+            <Payload value="Colossus_Explode_Small"/>
+        </Events>
+        <Events>
+            <Anim value="Death,01"/>
+            <Name value="Colossus_Explode_Large"/>
+            <Type value="Sound"/>
+            <Time value="1.200000"/>
+            <Payload value="Colossus_Explode_Large"/>
+        </Events>
+        <Events>
+            <Anim value="Death,01"/>
+            <Name value="Colossus_Explode_Vocalize"/>
+            <Type value="Sound"/>
+            <Payload value="Colossus_Explode_Vocalize"/>
+        </Events>
+        <Events>
+            <Anim value="Death,02"/>
+            <Name value="Colossus_Explode_Small"/>
+            <Type value="Sound"/>
+            <Payload value="Colossus_Explode_Small"/>
+        </Events>
+        <Events>
+            <Anim value="Death,02"/>
+            <Name value="Colossus_Explode_Small"/>
+            <Type value="Sound"/>
+            <Time value="0.200000"/>
+            <Payload value="Colossus_Explode_Small"/>
+        </Events>
+        <Events>
+            <Anim value="Death,02"/>
+            <Name value="Colossus_Explode_Small"/>
+            <Type value="Sound"/>
+            <Time value="0.400000"/>
+            <Payload value="Colossus_Explode_Small"/>
+        </Events>
+        <Events>
+            <Anim value="Death,02"/>
+            <Name value="Colossus_Explode_Large"/>
+            <Type value="Sound"/>
+            <Time value="1.200000"/>
+            <Payload value="Colossus_Explode_Large"/>
+        </Events>
+        <Events>
+            <Anim value="Death,02"/>
+            <Name value="Colossus_Explode_Vocalize"/>
+            <Type value="Sound"/>
+            <Payload value="Colossus_Explode_Vocalize"/>
+        </Events>
+        <Events>
+            <Anim value="Death,03"/>
+            <Name value="Colossus_Explode_Small"/>
+            <Type value="Sound"/>
+            <Payload value="Colossus_Explode_Small"/>
+        </Events>
+        <Events>
+            <Anim value="Death,03"/>
+            <Name value="Colossus_Explode_Small"/>
+            <Type value="Sound"/>
+            <Time value="0.200000"/>
+            <Payload value="Colossus_Explode_Small"/>
+        </Events>
+        <Events>
+            <Anim value="Death,03"/>
+            <Name value="Colossus_Explode_Small"/>
+            <Type value="Sound"/>
+            <Time value="0.400000"/>
+            <Payload value="Colossus_Explode_Small"/>
+        </Events>
+        <Events>
+            <Anim value="Death,03"/>
+            <Name value="Colossus_Explode_Large"/>
+            <Type value="Sound"/>
+            <Time value="1.200000"/>
+            <Payload value="Colossus_Explode_Large"/>
+        </Events>
+        <Events>
+            <Anim value="Death,03"/>
+            <Name value="Colossus_Explode_Vocalize"/>
+            <Type value="Sound"/>
+            <Payload value="Colossus_Explode_Vocalize"/>
+        </Events>
+        <Events>
+            <Anim value="Death,04"/>
+            <Name value="Colossus_Explode_Large"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="Colossus_Explode_Large"/>
+        </Events>
+        <Events>
+            <Anim value="Death,04"/>
+            <Name value="Colossus_Explode_Legs_Whoosh"/>
+            <Type value="Sound"/>
+            <Time value="0.437000"/>
+            <Payload value="Colossus_Explode_Legs_Whoosh"/>
+        </Events>
+        <Events>
+            <Anim value="Death,04"/>
+            <Name value="Colossus_Explode_Legs_Impact"/>
+            <Type value="Sound"/>
+            <Time value="2.000000"/>
+            <Payload value="Colossus_Explode_Legs_Impact"/>
+        </Events>
+        <Events>
+            <Anim value="Death,04"/>
+            <Name value="Colossus_Explode_Legs_Spark_A"/>
+            <Type value="Sound"/>
+            <Time value="2.981000"/>
+            <Payload value="Colossus_Explode_Legs_Spark_A"/>
+        </Events>
+        <Events>
+            <Anim value="Death,04"/>
+            <Name value="Colossus_Explode_Legs_Spark_B"/>
+            <Type value="Sound"/>
+            <Time value="4.445000"/>
+            <Payload value="Colossus_Explode_Legs_Spark_B"/>
+        </Events>
+    </CModel>
+    <CModel id="Mercenary_Colossus_DeathRagdoll" parent="UnitDeathRagdoll">
+        <Model value="Assets\Units\Protoss\Colossus_Golden_DeathRagdoll\Colossus_Golden_DeathRagdoll.m3"/>
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Colossus_Explode_Ragdoll_A"/>
+            <Type value="Sound"/>
+            <Time value="0.507000"/>
+            <Payload value="Colossus_Explode_Ragdoll_A"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Colossus_Explode_Ragdoll_B"/>
+            <Type value="Sound"/>
+            <Time value="1.167000"/>
+            <Payload value="Colossus_Explode_Ragdoll_B"/>
+        </Events>
+    </CModel>
+    <CModel id="Mercenary_Colossus_ThermalLances_FireBeamModel" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Protoss\Colossus_FireBeam_GroundFire\Colossus_FireBeam_GroundFire.m3"/>
+        <Occlusion value="Show"/>
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+    </CModel>
+    <CWeaponLegacy id="Mercenary_Colossus_ThermalLances">
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <Icon value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel0.dds"/>
+        <DisplayEffect value="Mercenary_Colossus_ThermalLances_Damage"/>
+        <DisplayAttackCount value="2"/>
+        <TargetFilters value="Visible;Player,Ally,Neutral,Psionic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AcquireFilters value="-;Player,Ally,Neutral,Enemy"/>
+        <Range value="6"/>
+        <RangeSlop value="0"/>
+        <Arc value="90"/>
+        <Period value="1.75"/>
+        <DamagePoint value="0.1"/>
+        <Effect value="Mercenary_Colossus_ThermalLances_InitialSet"/>
+        <LegacyOptions index="KeepChanneling" value="1"/>
+        <Backswing value="1"/>
+    </CWeaponLegacy>
+    <CSound id="Mercenary_Colossus_FireBeam_SoundBeamDamage" parent="Combat">
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <AssetArray File="Assets\Sounds\ColossusTaldarim_Beam_AttackImpact01_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ColossusTaldarim_Beam_AttackImpact02_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ColossusTaldarim_Beam_AttackImpact03_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ColossusTaldarim_Beam_AttackImpact04_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ColossusTaldarim_Beam_AttackImpact05_1ch.wav" FacialGroup=""/>
+        <DupeMaximumMethod value="Replace"/>
+        <DupeMuteCount value="4"/>
+        <Pitch value="-1.000000,1.000000"/>
+        <Volume value="-3.000000,-3.000000"/>
+        <VolumeRolloffPoints index="0" removed="1"/>
+        <VolumeRolloffPoints index="1" removed="1"/>
+    </CSound>
+    <CSound id="Mercenary_Colossus_FireBeam_PowerUpSound" parent="Combat">
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <AssetArray File="Assets\Sounds\ColossusTaldarim_Missile_PowerUpPreLaunch01_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ColossusTaldarim_Missile_PowerUpPreLaunch02_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ColossusTaldarim_Missile_PowerUpPreLaunch03_1ch.wav" FacialGroup=""/>
+        <DupeMaximumMethod value="Replace"/>
+        <DupeMuteCount value="4"/>
+        <Pitch value="-1.000000,1.000000"/>
+        <Volume value="-3.000000,-3.000000"/>
+        <VolumeRolloffPoints index="0" removed="1"/>
+        <VolumeRolloffPoints index="1" removed="1"/>
+    </CSound>
+    <CSound id="Mercenary_Colossus_FireBeam_SoundLaunch" parent="Combat">
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <AssetArray File="Assets\Sounds\ColossusTaldarim_Beam_AttackLaunch01_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ColossusTaldarim_Beam_AttackLaunch02_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ColossusTaldarim_Beam_AttackLaunch03_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ColossusTaldarim_Beam_AttackLaunch04_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ColossusTaldarim_Beam_AttackLaunch05_1ch.wav" FacialGroup=""/>
+        <DupeMaximumMethod value="Replace"/>
+        <DupeMuteCount value="4"/>
+        <Pitch value="-1.000000,1.000000"/>
+        <Volume value="-3.000000,-3.000000"/>
+        <VolumeRolloffPoints index="0" removed="1"/>
+        <VolumeRolloffPoints index="1" removed="1"/>
+    </CSound>
+    <CSound id="Mercenary_Colossus_FireBeam_SoundEnd" parent="Combat">
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <AssetArray File="Assets\Sounds\ColossusTaldarim_Beam_AttackEndRelease01_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ColossusTaldarim_Beam_AttackEndRelease02_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ColossusTaldarim_Beam_AttackEndRelease03_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ColossusTaldarim_Beam_AttackEndRelease04_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ColossusTaldarim_Beam_AttackEndRelease05_1ch.wav" FacialGroup=""/>
+        <DupeMaximumMethod value="Replace"/>
+        <DupeMuteCount value="4"/>
+        <Pitch value="-1.000000,1.000000"/>
+        <Volume value="-3.000000,-3.000000"/>
+        <VolumeRolloffPoints index="0" removed="1"/>
+        <VolumeRolloffPoints index="1" removed="1"/>
+    </CSound>
+    <CSound id="Mercenary_Colossus_FireBeam_SoundLoop" parent="Spell">
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <AssetArray File="Assets\Sounds\Clolarion_WeponBeam_Loop.wav" FacialGroup=""/>
+        <LoopCount value="-1"/>
+        <OffsetFadeIn Volume="-96.000000"/>
+        <OffsetFadeIn Time="1290" Volume="-0.120000"/>
+        <Pitch value="-1.000000,1.000000"/>
+        <Volume value="2.000000,2.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="Mercenary_Colossus_ChargedBlast_LaunchSound" parent="Combat">
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <AssetArray File="Assets\Sounds\ColossusTaldarim_Missile_Launch01_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ColossusTaldarim_Missile_Launch02_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ColossusTaldarim_Missile_Launch03_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ColossusTaldarim_Missile_Launch04_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ColossusTaldarim_Missile_Launch05_1ch.wav" FacialGroup=""/>
+        <Volume value="-2.200000,-1.200000"/>
+    </CSound>
+    <CSound id="Mercenary_Colossus_ChargedBlast_PowerUpSound" parent="Combat">
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <AssetArray File="Assets\Sounds\ColossusTaldarim_Missile_PowerUpPreLaunch01_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ColossusTaldarim_Missile_PowerUpPreLaunch02_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ColossusTaldarim_Missile_PowerUpPreLaunch03_1ch.wav" FacialGroup=""/>
+        <DupeMaximumMethod value="Replace"/>
+        <DupeMuteCount value="4"/>
+        <Pitch value="-1.000000,1.000000"/>
+        <Volume value="-3.000000,-3.000000"/>
+        <VolumeRolloffPoints index="0" removed="1"/>
+        <VolumeRolloffPoints index="1" removed="1"/>
+    </CSound>
+    <CSound id="Mercenary_Colossus_ChargedBlast_GroundImpactSound" parent="Combat">
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <AssetArray File="Assets\Sounds\ColossusTaldarim_Missile_Impact01_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ColossusTaldarim_Missile_Impact02_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ColossusTaldarim_Missile_Impact03_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ColossusTaldarim_Missile_Impact04_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ColossusTaldarim_Missile_Impact05_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ColossusTaldarim_Missile_Impact06_1ch.wav" FacialGroup=""/>
+        <Pitch value="-2.000000,1.000000"/>
+        <Volume value="-6.000000,-6.000000"/>
+    </CSound>
+    <CTurret id="Mercenary_Colossus_Turret">
+        <Idle value="FollowMovement"/>
+        <YawArc value="360"/>
+        <YawRate value="999.8437"/>
+        <YawIdleRate value="90"/>
+        <Fidget DelayMax="30" DelayMin="10"/>
+    </CTurret>
+    <CUnit id="Mercenary_Colossus_FireBeam_BeamTargetUnit" parent="MISSILE_INVULNERABLE">
+        <FlagArray index="Missile" value="0"/>
+        <FlagArray index="Unstoppable" value="1"/>
+        <FlagArray index="PlayerRevivable" value="0"/>
+        <FlagArray index="CameraFollow" value="0"/>
+        <EditorCategories value="ObjectType:Other,CommandersHero:Mercenaries"/>
+    </CUnit>
+    <CUnit id="Mercenary_Colossus_ChargedBlast_WarningUnit" parent="MISSILE_INVULNERABLE">
+        <FlagArray index="Missile" value="0"/>
+        <FlagArray index="Unstoppable" value="1"/>
+        <FlagArray index="PlayerRevivable" value="0"/>
+        <FlagArray index="CameraFollow" value="0"/>
+        <EditorCategories value="ObjectType:Other,CommandersHero:Mercenaries"/>
+    </CUnit>
+    <CUnit id="MercenaryColossusDefender" parent="CommandersMinion">
+        <FlagArray index="Turnable" value="0"/>
+        <FlagArray index="Unstoppable" value="1"/>
+        <Collide index="Burrow" value="0"/>
+        <Attributes index="Light" value="1"/>
+        <Attributes index="Hover" value="1"/>
+        <LifeStart value="13000"/>
+        <LifeMax value="13000"/>
+        <AbilArray Link="Mercenary_Colossus_ChargedBlast"/>
+        <AbilArray Link="Mercenary_Colossus_FireBeam"/>
+        <WeaponArray Link="Mercenary_Colossus_ThermalLances" Turret="Mercenary_Colossus_Turret"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Mercenary_Colossus_ChargedBlast" Type="AbilCmd" AbilCmd="Mercenary_Colossus_ChargedBlast,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="Mercenary_Colossus_FireBeam" Type="AbilCmd" AbilCmd="Mercenary_Colossus_FireBeam,Execute" Row="0" Column="1"/>
+        </CardLayouts>
+        <Radius value="0.6875"/>
+        <InnerRadius value="0.6875"/>
+        <EditorCategories value="ObjectType:Unit,CommandersHero:Mercenaries"/>
+        <BehaviorArray Link="MinionProtoss_WarpingInvulnerable"/>
+        <BehaviorArray Link="MercenaryScaling_ColossusScalingDefender"/>
+    </CUnit>
+    <CUnit id="Mercenary_Colossus_ChargedBlast_Weapon" parent="MISSILE_INVULNERABLE">
+        <EditorCategories value="ObjectType:Projectile,CommandersHero:Mercenaries"/>
+    </CUnit>
+    <CUnit id="MercenaryColossusLaner" parent="CommandersMinion">
+        <Name value="Unit/Name/MercenaryColossusLaner2"/>
+        <FlagArray index="Turnable" value="0"/>
+        <FlagArray index="Unstoppable" value="1"/>
+        <FogVisibility value="Dimmed"/>
+        <Collide index="Burrow" value="0"/>
+        <Response value="Acquire"/>
+        <Attributes index="Robotic" value="1"/>
+        <Attributes index="Hover" value="1"/>
+        <LifeStart value="16000"/>
+        <LifeMax value="16000"/>
+        <AbilArray Link="Mercenary_Colossus_ChargedBlast"/>
+        <AbilArray Link="Mercenary_Colossus_FireBeam"/>
+        <WeaponArray Link="Mercenary_Colossus_ThermalLances" Turret="Mercenary_Colossus_Turret"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Mercenary_Colossus_ChargedBlast" Type="AbilCmd" AbilCmd="Mercenary_Colossus_ChargedBlast,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="Mercenary_Colossus_FireBeam" Type="AbilCmd" AbilCmd="Mercenary_Colossus_FireBeam,Execute" Row="0" Column="1"/>
+        </CardLayouts>
+        <Radius value="0.6875"/>
+        <InnerRadius value="0.6875"/>
+        <EditorCategories value="ObjectType:Unit,CommandersHero:Mercenaries"/>
+        <BehaviorArray Link="MinionProtoss_WarpingInvulnerable"/>
+        <BehaviorArray Link="MercenaryScaling_ColossusScalingLaner"/>
+        <BehaviorArray Link="TowerAIPrioritizedTarget1"/>
+    </CUnit>
+    <CBehaviorBuff id="Mercenary_Colossus_ThermalLances_Marker">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Mercenaries"/>
+        <Duration value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorVeterancy id="MercenaryScaling_ColossusScalingDefender">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <XPFraction index="Kills" value="0"/>
+        <VeterancyLevelArray/>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Ranged" value="4.5"/>
+                <DamageDealtFraction index="Spell" value="0.05"/>
+                <VitalMaxArray index="Life" value="300"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="10">
+                <DamageDealtScaled index="Ranged" value="4.5"/>
+                <DamageDealtFraction index="Spell" value="0.05"/>
+                <VitalMaxArray index="Life" value="300"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="10">
+                <DamageDealtScaled index="Ranged" value="4.5"/>
+                <DamageDealtFraction index="Spell" value="0.05"/>
+                <VitalMaxArray index="Life" value="300"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="10">
+                <DamageDealtScaled index="Ranged" value="4.5"/>
+                <DamageDealtFraction index="Spell" value="0.05"/>
+                <VitalMaxArray index="Life" value="300"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="10">
+                <DamageDealtScaled index="Ranged" value="4.5"/>
+                <DamageDealtFraction index="Spell" value="0.05"/>
+                <VitalMaxArray index="Life" value="300"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="10">
+                <DamageDealtScaled index="Ranged" value="6.75"/>
+                <DamageDealtFraction index="Spell" value="0.06"/>
+                <VitalMaxArray index="Life" value="450"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="10">
+                <DamageDealtScaled index="Ranged" value="6.75"/>
+                <DamageDealtFraction index="Spell" value="0.06"/>
+                <VitalMaxArray index="Life" value="450"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="10">
+                <DamageDealtScaled index="Ranged" value="6.75"/>
+                <DamageDealtFraction index="Spell" value="0.06"/>
+                <VitalMaxArray index="Life" value="450"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="10">
+                <DamageDealtScaled index="Ranged" value="6.75"/>
+                <DamageDealtFraction index="Spell" value="0.06"/>
+                <VitalMaxArray index="Life" value="450"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="10">
+                <DamageDealtScaled index="Ranged" value="6.75"/>
+                <DamageDealtFraction index="Spell" value="0.06"/>
+                <VitalMaxArray index="Life" value="450"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="10">
+                <DamageDealtScaled index="Ranged" value="9"/>
+                <DamageDealtFraction index="Spell" value="0.07"/>
+                <VitalMaxArray index="Life" value="600"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="10">
+                <DamageDealtScaled index="Ranged" value="9"/>
+                <DamageDealtFraction index="Spell" value="0.07"/>
+                <VitalMaxArray index="Life" value="600"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="10">
+                <DamageDealtScaled index="Ranged" value="9"/>
+                <DamageDealtFraction index="Spell" value="0.07"/>
+                <VitalMaxArray index="Life" value="600"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="10">
+                <DamageDealtScaled index="Ranged" value="9"/>
+                <DamageDealtFraction index="Spell" value="0.07"/>
+                <VitalMaxArray index="Life" value="600"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="10">
+                <DamageDealtScaled index="Ranged" value="9"/>
+                <DamageDealtFraction index="Spell" value="0.07"/>
+                <VitalMaxArray index="Life" value="600"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="10">
+                <DamageDealtScaled index="Ranged" value="11.25"/>
+                <DamageDealtFraction index="Spell" value="0.08"/>
+                <VitalMaxArray index="Life" value="750"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="10">
+                <DamageDealtScaled index="Ranged" value="11.25"/>
+                <DamageDealtFraction index="Spell" value="0.08"/>
+                <VitalMaxArray index="Life" value="750"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="10">
+                <DamageDealtScaled index="Ranged" value="11.25"/>
+                <DamageDealtFraction index="Spell" value="0.08"/>
+                <VitalMaxArray index="Life" value="750"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="10">
+                <DamageDealtScaled index="Ranged" value="11.25"/>
+                <DamageDealtFraction index="Spell" value="0.08"/>
+                <VitalMaxArray index="Life" value="750"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="10">
+                <DamageDealtScaled index="Ranged" value="11.25"/>
+                <DamageDealtFraction index="Spell" value="0.08"/>
+                <VitalMaxArray index="Life" value="750"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="10">
+                <DamageDealtScaled index="Ranged" value="13.5"/>
+                <DamageDealtFraction index="Spell" value="0.09"/>
+                <VitalMaxArray index="Life" value="900"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="10">
+                <DamageDealtScaled index="Ranged" value="13.5"/>
+                <DamageDealtFraction index="Spell" value="0.09"/>
+                <VitalMaxArray index="Life" value="900"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="10">
+                <DamageDealtScaled index="Ranged" value="13.5"/>
+                <DamageDealtFraction index="Spell" value="0.09"/>
+                <VitalMaxArray index="Life" value="900"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="10">
+                <DamageDealtScaled index="Ranged" value="13.5"/>
+                <DamageDealtFraction index="Spell" value="0.09"/>
+                <VitalMaxArray index="Life" value="900"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="10">
+                <DamageDealtScaled index="Ranged" value="13.5"/>
+                <DamageDealtFraction index="Spell" value="0.09"/>
+                <VitalMaxArray index="Life" value="900"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="10">
+                <DamageDealtScaled index="Ranged" value="13.5"/>
+                <DamageDealtFraction index="Spell" value="0.1"/>
+                <VitalMaxArray index="Life" value="900"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="10">
+                <DamageDealtScaled index="Ranged" value="13.5"/>
+                <DamageDealtFraction index="Spell" value="0.1"/>
+                <VitalMaxArray index="Life" value="900"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="10">
+                <DamageDealtScaled index="Ranged" value="13.5"/>
+                <DamageDealtFraction index="Spell" value="0.1"/>
+                <VitalMaxArray index="Life" value="900"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="10">
+                <DamageDealtScaled index="Ranged" value="13.5"/>
+                <DamageDealtFraction index="Spell" value="0.1"/>
+                <VitalMaxArray index="Life" value="900"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Ranged" value="13.5"/>
+                <DamageDealtFraction index="Spell" value="0.1"/>
+                <VitalMaxArray index="Life" value="900"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Mercenaries"/>
+    </CBehaviorVeterancy>
+    <CBehaviorBuff id="Mercenary_Colossus_ChargedBlast_Debuff" parent="CommandersUnitStatsModificator">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\btn-ability-terran-emp-color.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Mercenaries"/>
+        <Duration value="3"/>
+        <Modification>
+            <AdditiveMoveSpeedFactor value="-0.25"/>
+            <AttributeChangeArray index="0" Points="-25"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorVeterancy id="MercenaryScaling_ColossusScalingLaner">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Mercenaries"/>
+        <XPFraction index="Kills" value="0"/>
+        <VeterancyLevelArray/>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Ranged" value="10"/>
+                <DamageDealtFraction index="Spell" value="0.05"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Ranged" value="10"/>
+                <DamageDealtFraction index="Spell" value="0.05"/>
+                <VitalMaxArray index="Life" value="600"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Ranged" value="10"/>
+                <DamageDealtFraction index="Spell" value="0.05"/>
+                <VitalMaxArray index="Life" value="600"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Ranged" value="10"/>
+                <DamageDealtFraction index="Spell" value="0.05"/>
+                <VitalMaxArray index="Life" value="600"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Ranged" value="10"/>
+                <DamageDealtFraction index="Spell" value="0.05"/>
+                <VitalMaxArray index="Life" value="600"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Ranged" value="15"/>
+                <DamageDealtFraction index="Spell" value="0.06"/>
+                <VitalMaxArray index="Life" value="900"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Ranged" value="15"/>
+                <DamageDealtFraction index="Spell" value="0.06"/>
+                <VitalMaxArray index="Life" value="900"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Ranged" value="15"/>
+                <DamageDealtFraction index="Spell" value="0.06"/>
+                <VitalMaxArray index="Life" value="900"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Ranged" value="15"/>
+                <DamageDealtFraction index="Spell" value="0.06"/>
+                <VitalMaxArray index="Life" value="900"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Ranged" value="15"/>
+                <DamageDealtFraction index="Spell" value="0.06"/>
+                <VitalMaxArray index="Life" value="900"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Ranged" value="20"/>
+                <DamageDealtFraction index="Spell" value="0.07"/>
+                <VitalMaxArray index="Life" value="1200"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Ranged" value="20"/>
+                <DamageDealtFraction index="Spell" value="0.07"/>
+                <VitalMaxArray index="Life" value="1200"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Ranged" value="20"/>
+                <DamageDealtFraction index="Spell" value="0.07"/>
+                <VitalMaxArray index="Life" value="1200"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Ranged" value="20"/>
+                <DamageDealtFraction index="Spell" value="0.07"/>
+                <VitalMaxArray index="Life" value="1200"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Ranged" value="20"/>
+                <DamageDealtFraction index="Spell" value="0.07"/>
+                <VitalMaxArray index="Life" value="1200"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Ranged" value="25"/>
+                <DamageDealtFraction index="Spell" value="0.08"/>
+                <VitalMaxArray index="Life" value="1500"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Ranged" value="25"/>
+                <DamageDealtFraction index="Spell" value="0.08"/>
+                <VitalMaxArray index="Life" value="1500"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Ranged" value="25"/>
+                <DamageDealtFraction index="Spell" value="0.08"/>
+                <VitalMaxArray index="Life" value="1500"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Ranged" value="25"/>
+                <DamageDealtFraction index="Spell" value="0.08"/>
+                <VitalMaxArray index="Life" value="1500"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Ranged" value="25"/>
+                <DamageDealtFraction index="Spell" value="0.08"/>
+                <VitalMaxArray index="Life" value="1500"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Ranged" value="30"/>
+                <DamageDealtFraction index="Spell" value="0.09"/>
+                <VitalMaxArray index="Life" value="1800"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Ranged" value="30"/>
+                <DamageDealtFraction index="Spell" value="0.09"/>
+                <VitalMaxArray index="Life" value="1800"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Ranged" value="30"/>
+                <DamageDealtFraction index="Spell" value="0.09"/>
+                <VitalMaxArray index="Life" value="1800"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Ranged" value="30"/>
+                <DamageDealtFraction index="Spell" value="0.09"/>
+                <VitalMaxArray index="Life" value="1800"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Ranged" value="30"/>
+                <DamageDealtFraction index="Spell" value="0.09"/>
+                <VitalMaxArray index="Life" value="1800"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Ranged" value="30"/>
+                <DamageDealtFraction index="Spell" value="0.1"/>
+                <VitalMaxArray index="Life" value="1800"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Ranged" value="30"/>
+                <DamageDealtFraction index="Spell" value="0.1"/>
+                <VitalMaxArray index="Life" value="1800"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Ranged" value="30"/>
+                <DamageDealtFraction index="Spell" value="0.1"/>
+                <VitalMaxArray index="Life" value="1800"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Ranged" value="30"/>
+                <DamageDealtFraction index="Spell" value="0.1"/>
+                <VitalMaxArray index="Life" value="1800"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Ranged" value="30"/>
+                <DamageDealtFraction index="Spell" value="0.1"/>
+                <VitalMaxArray index="Life" value="1800"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Ranged" value="30"/>
+                <DamageDealtFraction index="Spell" value="0.11"/>
+                <VitalMaxArray index="Life" value="1800"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Ranged" value="30"/>
+                <DamageDealtFraction index="Spell" value="0.11"/>
+                <VitalMaxArray index="Life" value="1800"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Ranged" value="30"/>
+                <DamageDealtFraction index="Spell" value="0.11"/>
+                <VitalMaxArray index="Life" value="1800"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Ranged" value="30"/>
+                <DamageDealtFraction index="Spell" value="0.11"/>
+                <VitalMaxArray index="Life" value="1800"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Ranged" value="30"/>
+                <DamageDealtFraction index="Spell" value="0.11"/>
+                <VitalMaxArray index="Life" value="1800"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Ranged" value="30"/>
+                <DamageDealtFraction index="Spell" value="0.12"/>
+                <VitalMaxArray index="Life" value="1800"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Ranged" value="30"/>
+                <DamageDealtFraction index="Spell" value="0.12"/>
+                <VitalMaxArray index="Life" value="1800"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Ranged" value="30"/>
+                <DamageDealtFraction index="Spell" value="0.12"/>
+                <VitalMaxArray index="Life" value="1800"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Ranged" value="30"/>
+                <DamageDealtFraction index="Spell" value="0.12"/>
+                <VitalMaxArray index="Life" value="1800"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Ranged" value="30"/>
+                <DamageDealtFraction index="Spell" value="0.12"/>
+                <VitalMaxArray index="Life" value="1800"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Ranged" value="30"/>
+                <DamageDealtFraction index="Spell" value="0.13"/>
+                <VitalMaxArray index="Life" value="1800"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Ranged" value="30"/>
+                <DamageDealtFraction index="Spell" value="0.13"/>
+                <VitalMaxArray index="Life" value="1800"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Ranged" value="30"/>
+                <DamageDealtFraction index="Spell" value="0.13"/>
+                <VitalMaxArray index="Life" value="1800"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Ranged" value="30"/>
+                <DamageDealtFraction index="Spell" value="0.13"/>
+                <VitalMaxArray index="Life" value="1800"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Ranged" value="30"/>
+                <DamageDealtFraction index="Spell" value="0.13"/>
+                <VitalMaxArray index="Life" value="1800"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Ranged" value="30"/>
+                <DamageDealtFraction index="Spell" value="0.16"/>
+                <VitalMaxArray index="Life" value="1800"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Ranged" value="30"/>
+                <DamageDealtFraction index="Spell" value="0.16"/>
+                <VitalMaxArray index="Life" value="1800"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Ranged" value="30"/>
+                <DamageDealtFraction index="Spell" value="0.16"/>
+                <VitalMaxArray index="Life" value="1800"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Ranged" value="30"/>
+                <DamageDealtFraction index="Spell" value="0.16"/>
+                <VitalMaxArray index="Life" value="1800"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Ranged" value="30"/>
+                <DamageDealtFraction index="Spell" value="0.16"/>
+                <VitalMaxArray index="Life" value="1800"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Ranged" value="30"/>
+                <DamageDealtFraction index="Spell" value="0.17"/>
+                <VitalMaxArray index="Life" value="1800"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Ranged" value="30"/>
+                <DamageDealtFraction index="Spell" value="0.17"/>
+                <VitalMaxArray index="Life" value="1800"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Ranged" value="30"/>
+                <DamageDealtFraction index="Spell" value="0.17"/>
+                <VitalMaxArray index="Life" value="1800"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Ranged" value="30"/>
+                <DamageDealtFraction index="Spell" value="0.17"/>
+                <VitalMaxArray index="Life" value="1800"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Ranged" value="30"/>
+                <DamageDealtFraction index="Spell" value="0.17"/>
+                <VitalMaxArray index="Life" value="1800"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Ranged" value="30"/>
+                <DamageDealtFraction index="Spell" value="0.18"/>
+                <VitalMaxArray index="Life" value="1800"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Ranged" value="30"/>
+                <DamageDealtFraction index="Spell" value="0.18"/>
+                <VitalMaxArray index="Life" value="1800"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Ranged" value="30"/>
+                <DamageDealtFraction index="Spell" value="0.18"/>
+                <VitalMaxArray index="Life" value="1800"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Ranged" value="30"/>
+                <DamageDealtFraction index="Spell" value="0.18"/>
+                <VitalMaxArray index="Life" value="1800"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Ranged" value="30"/>
+                <DamageDealtFraction index="Spell" value="0.18"/>
+                <VitalMaxArray index="Life" value="1800"/>
+            </Modification>
+        </VeterancyLevelArray>
+    </CBehaviorVeterancy>
+    <CBehaviorVeterancy id="MercenaryColossusScaling">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Mercenaries"/>
+        <XPFraction index="Kills" value="0"/>
+        <VeterancyLevelArray/>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtFraction index="Spell" value="0.1"/>
+                <DamageDealtFraction index="Melee" value="0.1"/>
+                <DamageDealtFraction index="Ranged" value="0.1"/>
+                <DamageDealtFraction index="Splash" value="0.1"/>
+                <DamageDealtFraction index="NoProc" value="0.1"/>
+                <VitalMaxFractionArray index="Life" value="0.1"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtFraction index="Spell" value="0.1"/>
+                <DamageDealtFraction index="Melee" value="0.1"/>
+                <DamageDealtFraction index="Ranged" value="0.1"/>
+                <DamageDealtFraction index="Splash" value="0.1"/>
+                <DamageDealtFraction index="NoProc" value="0.1"/>
+                <VitalMaxFractionArray index="Life" value="0.1"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtFraction index="Spell" value="0.1"/>
+                <DamageDealtFraction index="Melee" value="0.1"/>
+                <DamageDealtFraction index="Ranged" value="0.1"/>
+                <DamageDealtFraction index="Splash" value="0.1"/>
+                <DamageDealtFraction index="NoProc" value="0.1"/>
+                <VitalMaxFractionArray index="Life" value="0.1"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtFraction index="Spell" value="0.1"/>
+                <DamageDealtFraction index="Melee" value="0.1"/>
+                <DamageDealtFraction index="Ranged" value="0.1"/>
+                <DamageDealtFraction index="Splash" value="0.1"/>
+                <DamageDealtFraction index="NoProc" value="0.1"/>
+                <VitalMaxFractionArray index="Life" value="0.1"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtFraction index="Spell" value="0.1"/>
+                <DamageDealtFraction index="Melee" value="0.1"/>
+                <DamageDealtFraction index="Ranged" value="0.1"/>
+                <DamageDealtFraction index="Splash" value="0.1"/>
+                <DamageDealtFraction index="NoProc" value="0.1"/>
+                <VitalMaxFractionArray index="Life" value="0.1"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtFraction index="Spell" value="0.1"/>
+                <DamageDealtFraction index="Melee" value="0.1"/>
+                <DamageDealtFraction index="Ranged" value="0.1"/>
+                <DamageDealtFraction index="Splash" value="0.1"/>
+                <DamageDealtFraction index="NoProc" value="0.1"/>
+                <VitalMaxFractionArray index="Life" value="0.1"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtFraction index="Spell" value="0.1"/>
+                <DamageDealtFraction index="Melee" value="0.1"/>
+                <DamageDealtFraction index="Ranged" value="0.1"/>
+                <DamageDealtFraction index="Splash" value="0.1"/>
+                <DamageDealtFraction index="NoProc" value="0.1"/>
+                <VitalMaxFractionArray index="Life" value="0.1"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtFraction index="Spell" value="0.1"/>
+                <DamageDealtFraction index="Melee" value="0.1"/>
+                <DamageDealtFraction index="Ranged" value="0.1"/>
+                <DamageDealtFraction index="Splash" value="0.1"/>
+                <DamageDealtFraction index="NoProc" value="0.1"/>
+                <VitalMaxFractionArray index="Life" value="0.1"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtFraction index="Spell" value="0.1"/>
+                <DamageDealtFraction index="Melee" value="0.1"/>
+                <DamageDealtFraction index="Ranged" value="0.1"/>
+                <DamageDealtFraction index="Splash" value="0.1"/>
+                <DamageDealtFraction index="NoProc" value="0.1"/>
+                <VitalMaxFractionArray index="Life" value="0.1"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtFraction index="Spell" value="0.1"/>
+                <DamageDealtFraction index="Melee" value="0.1"/>
+                <DamageDealtFraction index="Ranged" value="0.1"/>
+                <DamageDealtFraction index="Splash" value="0.1"/>
+                <DamageDealtFraction index="NoProc" value="0.1"/>
+                <VitalMaxFractionArray index="Life" value="0.1"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtFraction index="Spell" value="0.1"/>
+                <DamageDealtFraction index="Melee" value="0.1"/>
+                <DamageDealtFraction index="Ranged" value="0.1"/>
+                <DamageDealtFraction index="Splash" value="0.1"/>
+                <DamageDealtFraction index="NoProc" value="0.1"/>
+                <VitalMaxFractionArray index="Life" value="0.1"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtFraction index="Spell" value="0.1"/>
+                <DamageDealtFraction index="Melee" value="0.1"/>
+                <DamageDealtFraction index="Ranged" value="0.1"/>
+                <DamageDealtFraction index="Splash" value="0.1"/>
+                <DamageDealtFraction index="NoProc" value="0.1"/>
+                <VitalMaxFractionArray index="Life" value="0.1"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtFraction index="Spell" value="0.1"/>
+                <DamageDealtFraction index="Melee" value="0.1"/>
+                <DamageDealtFraction index="Ranged" value="0.1"/>
+                <DamageDealtFraction index="Splash" value="0.1"/>
+                <DamageDealtFraction index="NoProc" value="0.1"/>
+                <VitalMaxFractionArray index="Life" value="0.1"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtFraction index="Spell" value="0.1"/>
+                <DamageDealtFraction index="Melee" value="0.1"/>
+                <DamageDealtFraction index="Ranged" value="0.1"/>
+                <DamageDealtFraction index="Splash" value="0.1"/>
+                <DamageDealtFraction index="NoProc" value="0.1"/>
+                <VitalMaxFractionArray index="Life" value="0.1"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtFraction index="Spell" value="0.1"/>
+                <DamageDealtFraction index="Melee" value="0.1"/>
+                <DamageDealtFraction index="Ranged" value="0.1"/>
+                <DamageDealtFraction index="Splash" value="0.1"/>
+                <DamageDealtFraction index="NoProc" value="0.1"/>
+                <VitalMaxFractionArray index="Life" value="0.1"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtFraction index="Spell" value="0.1"/>
+                <DamageDealtFraction index="Melee" value="0.1"/>
+                <DamageDealtFraction index="Ranged" value="0.1"/>
+                <DamageDealtFraction index="Splash" value="0.1"/>
+                <DamageDealtFraction index="NoProc" value="0.1"/>
+                <VitalMaxFractionArray index="Life" value="0.1"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtFraction index="Spell" value="0.1"/>
+                <DamageDealtFraction index="Melee" value="0.1"/>
+                <DamageDealtFraction index="Ranged" value="0.1"/>
+                <DamageDealtFraction index="Splash" value="0.1"/>
+                <DamageDealtFraction index="NoProc" value="0.1"/>
+                <VitalMaxFractionArray index="Life" value="0.1"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtFraction index="Spell" value="0.1"/>
+                <DamageDealtFraction index="Melee" value="0.1"/>
+                <DamageDealtFraction index="Ranged" value="0.1"/>
+                <DamageDealtFraction index="Splash" value="0.1"/>
+                <DamageDealtFraction index="NoProc" value="0.1"/>
+                <VitalMaxFractionArray index="Life" value="0.1"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtFraction index="Spell" value="0.1"/>
+                <DamageDealtFraction index="Melee" value="0.1"/>
+                <DamageDealtFraction index="Ranged" value="0.1"/>
+                <DamageDealtFraction index="Splash" value="0.1"/>
+                <DamageDealtFraction index="NoProc" value="0.1"/>
+                <VitalMaxFractionArray index="Life" value="0.1"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtFraction index="Spell" value="0.1"/>
+                <DamageDealtFraction index="Melee" value="0.1"/>
+                <DamageDealtFraction index="Ranged" value="0.1"/>
+                <DamageDealtFraction index="Splash" value="0.1"/>
+                <DamageDealtFraction index="NoProc" value="0.1"/>
+                <VitalMaxFractionArray index="Life" value="0.1"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtFraction index="Spell" value="0.1"/>
+                <DamageDealtFraction index="Melee" value="0.1"/>
+                <DamageDealtFraction index="Ranged" value="0.1"/>
+                <DamageDealtFraction index="Splash" value="0.1"/>
+                <DamageDealtFraction index="NoProc" value="0.1"/>
+                <VitalMaxFractionArray index="Life" value="0.1"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtFraction index="Spell" value="0.1"/>
+                <DamageDealtFraction index="Melee" value="0.1"/>
+                <DamageDealtFraction index="Ranged" value="0.1"/>
+                <DamageDealtFraction index="Splash" value="0.1"/>
+                <DamageDealtFraction index="NoProc" value="0.1"/>
+                <VitalMaxFractionArray index="Life" value="0.1"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtFraction index="Spell" value="0.1"/>
+                <DamageDealtFraction index="Melee" value="0.1"/>
+                <DamageDealtFraction index="Ranged" value="0.1"/>
+                <DamageDealtFraction index="Splash" value="0.1"/>
+                <DamageDealtFraction index="NoProc" value="0.1"/>
+                <VitalMaxFractionArray index="Life" value="0.1"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtFraction index="Spell" value="0.1"/>
+                <DamageDealtFraction index="Melee" value="0.1"/>
+                <DamageDealtFraction index="Ranged" value="0.1"/>
+                <DamageDealtFraction index="Splash" value="0.1"/>
+                <DamageDealtFraction index="NoProc" value="0.1"/>
+                <VitalMaxFractionArray index="Life" value="0.1"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtFraction index="Spell" value="0.1"/>
+                <DamageDealtFraction index="Melee" value="0.1"/>
+                <DamageDealtFraction index="Ranged" value="0.1"/>
+                <DamageDealtFraction index="Splash" value="0.1"/>
+                <DamageDealtFraction index="NoProc" value="0.1"/>
+                <VitalMaxFractionArray index="Life" value="0.1"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtFraction index="Spell" value="0.1"/>
+                <DamageDealtFraction index="Melee" value="0.1"/>
+                <DamageDealtFraction index="Ranged" value="0.1"/>
+                <DamageDealtFraction index="Splash" value="0.1"/>
+                <DamageDealtFraction index="NoProc" value="0.1"/>
+                <VitalMaxFractionArray index="Life" value="0.1"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtFraction index="Spell" value="0.1"/>
+                <DamageDealtFraction index="Melee" value="0.1"/>
+                <DamageDealtFraction index="Ranged" value="0.1"/>
+                <DamageDealtFraction index="Splash" value="0.1"/>
+                <DamageDealtFraction index="NoProc" value="0.1"/>
+                <VitalMaxFractionArray index="Life" value="0.1"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtFraction index="Spell" value="0.1"/>
+                <DamageDealtFraction index="Melee" value="0.1"/>
+                <DamageDealtFraction index="Ranged" value="0.1"/>
+                <DamageDealtFraction index="Splash" value="0.1"/>
+                <DamageDealtFraction index="NoProc" value="0.1"/>
+                <VitalMaxFractionArray index="Life" value="0.1"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtFraction index="Spell" value="0.1"/>
+                <DamageDealtFraction index="Melee" value="0.1"/>
+                <DamageDealtFraction index="Ranged" value="0.1"/>
+                <DamageDealtFraction index="Splash" value="0.1"/>
+                <DamageDealtFraction index="NoProc" value="0.1"/>
+                <VitalMaxFractionArray index="Life" value="0.1"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtFraction index="Spell" value="0.1"/>
+                <DamageDealtFraction index="Melee" value="0.1"/>
+                <DamageDealtFraction index="Ranged" value="0.1"/>
+                <DamageDealtFraction index="Splash" value="0.1"/>
+                <DamageDealtFraction index="NoProc" value="0.1"/>
+                <VitalMaxFractionArray index="Life" value="0.1"/>
+            </Modification>
+        </VeterancyLevelArray>
+    </CBehaviorVeterancy>
+    <CBehaviorBuff id="Mercenary_Colossus_FireBeam_MarkerBehavior">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Mercenaries"/>
+        <Duration value="0.5"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Mercenary_Colossus_ThermalLancesFireBeam">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Mercenaries"/>
+        <RemoveValidatorArray value="SYS_HasNotResetBehavior"/>
+        <Duration value="0.625"/>
+        <Period value="0.5"/>
+        <PeriodicEffect value="Mercenary_Colossus_ThermalLances_FireBeamDamage"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Mercenary_Colossus_FireBeam_BeamUnitTimedLife">
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Mercenaries"/>
+        <RemoveValidatorArray value="CasterNotDead"/>
+        <TimeScaleSource Value="Caster"/>
+        <Duration value="1.5"/>
+        <FinalEffect value="Mercenary_Colossus_FireBeam_FinalSet"/>
+        <PeriodicEffect value="Mercenary_Colossus_FireBeam_ImpactPointPersistent"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Mercenary_Colossus_FireBeam_RotatorDelayBehavior">
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Mercenaries"/>
+        <Duration value="0.0625"/>
+        <Period value="0.0625"/>
+        <InitialEffect value="Mercenary_Colossus_FireBeam_CutterApplyFollow"/>
+        <PeriodicEffect value="Mercenary_Colossus_FireBeam_ApplyKineticRotator"/>
+    </CBehaviorBuff>
+</Catalog>

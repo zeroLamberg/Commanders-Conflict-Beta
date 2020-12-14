@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CItem default="1">
+        <Flags index="EnabledWhileDead" value="1"/>
+    </CItem>
+    <CItemAbil default="1">
+        <Flags index="EnabledWhileDead" value="1"/>
+    </CItemAbil>
+    <CItemEffect default="1">
+        <Flags index="CanDrop" value="0"/>
+        <Flags index="EnabledWhileDead" value="1"/>
+    </CItemEffect>
+    <CItem default="1" id="StormPotion">
+        <Class value="Potion"/>
+    </CItem>
+    <CItemAbil id="CalldownMule">
+        <Face value="TalentBucketCalldownMuleHotbar"/>
+        <Flags index="CanDrop" value="0"/>
+        <Class value="Item"/>
+        <Abil value="TalentBucketCalldownMule"/>
+    </CItemAbil>
+    <CItemAbil id="TalentEnrage">
+        <Flags index="CanDrop" value="0"/>
+        <Class value="Item"/>
+    </CItemAbil>
+    <CItemAbil id="TalentCleanse">
+        <Face value="TalentCleanseActivated"/>
+        <Flags index="CanDrop" value="0"/>
+        <Class value="Item"/>
+    </CItemAbil>
+    <CItemAbil id="TalentOverdrive">
+        <Flags index="CanDrop" value="0"/>
+        <Class value="Item"/>
+        <Face value="BucketOverdriveFace"/>
+    </CItemAbil>
+    <CItemAbil id="TalentDashSupport">
+        <Flags index="CanDrop" value="0"/>
+        <Class value="Item"/>
+        <CarryBehaviorArray value="TalentDashCarryBehavior"/>
+    </CItemAbil>
+    <CItemAbil id="TalentOverdriveResourceless">
+        <Flags index="CanDrop" value="0"/>
+        <Class value="Item"/>
+    </CItemAbil>
+    <CItemAbil id="ItemCannonball">
+        <Flags index="CanDrop" value="0"/>
+        <Class value="Cannonball"/>
+        <Abil value="ItemDoubloon"/>
+    </CItemAbil>
+    <CItemAbil id="TalentDeafeningRoar">
+        <Flags index="CanDrop" value="0"/>
+        <Class value="Item"/>
+        <CarryBehaviorArray value="TalentDeafeningRoarCarryBehavior"/>
+    </CItemAbil>
+    <CItemAbil id="TalentDash">
+        <Flags index="CanDrop" value="0"/>
+        <Class value="Item"/>
+        <CarryBehaviorArray value="TalentDashCarryBehavior"/>
+    </CItemAbil>
+    <CItemAbil id="TalentBerserk">
+        <Flags index="CanDrop" value="0"/>
+        <Class value="Item"/>
+    </CItemAbil>
+    <CItemAbil id="TalentPlaguebringer">
+        <Face value="ItemPlaguebringer"/>
+        <Flags index="CanDrop" value="0"/>
+        <Class value="Item"/>
+        <Abil value="ItemPlaguebringer"/>
+    </CItemAbil>
+</Catalog>

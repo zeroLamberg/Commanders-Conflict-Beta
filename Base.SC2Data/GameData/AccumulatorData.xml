@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CAccumulatorArithmetic id="CommandersHealingCreatedModificator">
+        <ApplicationRule value="Multiply"/>
+        <Parameters value="1">
+            <AccumulatorArray value="CommandersHealingCreatedCustomValue"/>
+        </Parameters>
+    </CAccumulatorArithmetic>
+    <CAccumulatorArithmetic id="CommandersHealingTakenModificator">
+        <ApplicationRule value="Multiply"/>
+        <Parameters value="1">
+            <AccumulatorArray value="CommandersHealingTakenCustomValue"/>
+        </Parameters>
+    </CAccumulatorArithmetic>
+    <CAccumulatorUnitCustomValue id="CommandersHealingTakenCustomValue">
+        <Index value="40"/>
+        <UnitSource Value="Target"/>
+    </CAccumulatorUnitCustomValue>
+    <CAccumulatorUnitCustomValue id="CommandersHealingCreatedCustomValue">
+        <Index value="36"/>
+    </CAccumulatorUnitCustomValue>
+    <CAccumulatorUnitCustomValue id="CommandersHealingVampiricStorm">
+        <Index value="39"/>
+    </CAccumulatorUnitCustomValue>
+    <CAccumulatorUnitCustomValue id="CommandersHealingVampiricKinetic">
+        <Index value="37"/>
+    </CAccumulatorUnitCustomValue>
+    <CAccumulatorUnitCustomValue id="CommandersHealingVampiricEnergetic">
+        <Index value="38"/>
+    </CAccumulatorUnitCustomValue>
+</Catalog>

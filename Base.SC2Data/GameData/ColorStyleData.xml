@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CColorStyle id="StandardEnergy">
+        <ColorEntry index="DefaultNeutral">
+            <Value index="Default" value="0.247050,0.863000,1.000000,1.000000"/>
+            <Value index="Colorblind" value="0.247050,0.863000,1.000000,1.000000"/>
+        </ColorEntry>
+        <ColorEntry index="Owner">
+            <Value index="Default" value="0.247050,0.863000,1.000000,1.000000"/>
+            <Value index="Colorblind" value="0.247050,0.863000,1.000000,1.000000"/>
+        </ColorEntry>
+        <ColorEntry index="Ally">
+            <Value index="Default" value="0.247050,0.863000,1.000000,1.000000"/>
+            <Value index="Colorblind" value="0.247050,0.863000,1.000000,1.000000"/>
+        </ColorEntry>
+        <ColorEntry index="Enemy">
+            <Value index="Default" value="0.247050,0.863000,1.000000,1.000000"/>
+            <Value index="Colorblind" value="0.247050,0.863000,1.000000,1.000000"/>
+        </ColorEntry>
+        <ColorEntry index="TeamHostile">
+            <Value index="Default" value="0.247050,0.863000,1.000000,1.000000"/>
+            <Value index="Colorblind" value="0.247050,0.863000,1.000000,1.000000"/>
+        </ColorEntry>
+        <ColorEntry index="TeamOrder">
+            <Value index="Default" value="0.247050,0.863000,1.000000,1.000000"/>
+            <Value index="Colorblind" value="0.247050,0.863000,1.000000,1.000000"/>
+        </ColorEntry>
+        <ColorEntry index="TeamChaos">
+            <Value index="Default" value="0.247050,0.863000,1.000000,1.000000"/>
+            <Value index="Colorblind" value="0.247050,0.863000,1.000000,1.000000"/>
+        </ColorEntry>
+    </CColorStyle>
+</Catalog>

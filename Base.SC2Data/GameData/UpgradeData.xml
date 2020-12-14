@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CUpgrade default="1" id="HeroAbilityPowerTalent">
+        <Flags index="UpgradeCheat" value="0"/>
+        <Alert value=""/>
+        <MaxLevel value="2"/>
+    </CUpgrade>
+    <CUpgrade id="Tileset_Taldarim">
+        <EditorCategories value="CommandersHero:Tileset"/>
+    </CUpgrade>
+    <!-- Level Up Default Upgrades -->
+    <CUpgrade id="LevelUp_StandardUpgrades">
+        <EditorCategories value="UpgradeType:LevelUpgrade"/>
+        <EffectArray Reference="Effect,BurningRageDamage1,Amount" Value="2"/>
+        <EffectArray Reference="Effect,PrestigePoisonDart@Damage,Amount" Value="5"/>
+        <EffectArray Reference="Behavior,CarapaceEvolutionShield,DamageResponse.ModifyLimit" Value="30"/>
+        <EffectArray Reference="Behavior,PrestigeSprint,Modification.UnifiedMoveSpeedFactor" Value="0.01"/>
+        <EffectArray Reference="Behavior,CommandersBaseSprint,Modification.UnifiedMoveSpeedFactor" Value="0.01"/>
+        <MaxLevel value="30"/>
+    </CUpgrade>
+    <!-- Level Up Mount Upgrades -->
+    <CUpgrade id="LevelUp_MountUpgrades">
+        <EditorCategories value="UpgradeType:LevelUpgrade"/>
+        <LeaderLevel value="20"/>
+        <EffectArray Reference="Behavior,Mounted,Modification.UnifiedMoveSpeedFactor" Value="0.01"/>
+    </CUpgrade>
+    <CUpgrade id="ChaosTeam">
+        <Flags index="UpgradeCheat" value="0"/>
+        <Alert value=""/>
+        <AffectedUnitArray value="KingsCore"/>
+    </CUpgrade>
+    <CUpgrade id="PlayerIsInBlueTeam_Heroes">
+        <EffectArray Operation="Set" Reference="Unit,HeroAbathur,Collide[Land2]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,HeroArthas,Collide[Land2]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,HeroDemonHunter,Collide[Land2]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,HeroDiablo,Collide[Land2]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,HeroL90ETC,Collide[Land2]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,HeroFalstad,Collide[Land2]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,HeroTinker,Collide[Land2]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,HeroIllidan,Collide[Land2]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,HeroKerrigan,Collide[Land2]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,HeroMalfurion,Collide[Land2]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,HeroMuradin,Collide[Land2]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,HeroNova,Collide[Land2]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,HeroRaynor,Collide[Land2]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,HeroSgtHammer,Collide[Land2]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,HeroBarbarian,Collide[Land2]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,HeroStitches,Collide[Land2]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,HeroTassadar,Collide[Land2]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,HeroTychus,Collide[Land2]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,HeroTychusOdin,Collide[Land2]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,HeroTyrael,Collide[Land2]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,HeroTyrande,Collide[Land2]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,HeroUther,Collide[Land2]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,HeroWitchDoctor,Collide[Land2]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,HeroZeratul,Collide[Land2]" Value="0"/>
+        <EditorCategories value="Race:InfestedTerran"/>
+        <AffectedUnitArray value="HeroAbathur"/>
+        <AffectedUnitArray value="HeroArthas"/>
+        <AffectedUnitArray value="HeroDemonHunter"/>
+        <AffectedUnitArray value="HeroDiablo"/>
+        <AffectedUnitArray value="HeroL90ETC"/>
+        <AffectedUnitArray value="HeroFalstad"/>
+        <AffectedUnitArray value="HeroTinker"/>
+        <AffectedUnitArray value="HeroKerrigan"/>
+        <AffectedUnitArray value="HeroIllidan"/>
+        <AffectedUnitArray value="HeroKerrigan"/>
+        <AffectedUnitArray value="HeroMalfurion"/>
+        <AffectedUnitArray value="HeroMuradin"/>
+        <AffectedUnitArray value="HeroNova"/>
+        <AffectedUnitArray value="HeroRaynor"/>
+        <AffectedUnitArray value="HeroSgtHammer"/>
+        <AffectedUnitArray value="HeroBarbarian"/>
+        <AffectedUnitArray value="HeroStitches"/>
+        <AffectedUnitArray value="HeroTassadar"/>
+        <AffectedUnitArray value="HeroTychus"/>
+        <AffectedUnitArray value="HeroTyrael"/>
+        <AffectedUnitArray value="HeroTyrande"/>
+        <AffectedUnitArray value="HeroUther"/>
+        <AffectedUnitArray value="HeroWitchDoctor"/>
+        <AffectedUnitArray value="HeroZeratul"/>
+    </CUpgrade>
+    <CUpgrade id="PlayerIsInRedTeam_Heroes">
+        <EffectArray Operation="Set" Reference="Unit,HeroAbathur,Collide[Land9]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,HeroArthas,Collide[Land9]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,HeroDemonHunter,Collide[Land9]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,HeroDiablo,Collide[Land9]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,HeroL90ETC,Collide[Land9]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,HeroFalstad,Collide[Land9]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,HeroTinker,Collide[Land9]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,HeroIllidan,Collide[Land9]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,HeroKerrigan,Collide[Land9]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,HeroMalfurion,Collide[Land9]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,HeroMuradin,Collide[Land9]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,HeroNova,Collide[Land9]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,HeroRaynor,Collide[Land9]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,HeroSgtHammer,Collide[Land9]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,HeroBarbarian,Collide[Land9]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,HeroStitches,Collide[Land9]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,HeroTassadar,Collide[Land9]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,HeroTychus,Collide[Land9]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,HeroTychusOdin,Collide[Land9]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,HeroTyrael,Collide[Land9]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,HeroTyrande,Collide[Land9]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,HeroUther,Collide[Land9]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,HeroWitchDoctor,Collide[Land9]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,HeroZeratul,Collide[Land9]" Value="0"/>
+        <EditorCategories value="Race:InfestedTerran"/>
+        <AffectedUnitArray value="HeroAbathur"/>
+        <AffectedUnitArray value="HeroArthas"/>
+        <AffectedUnitArray value="HeroDemonHunter"/>
+        <AffectedUnitArray value="HeroDiablo"/>
+        <AffectedUnitArray value="HeroL90ETC"/>
+        <AffectedUnitArray value="HeroFalstad"/>
+        <AffectedUnitArray value="HeroTinker"/>
+        <AffectedUnitArray value="HeroKerrigan"/>
+        <AffectedUnitArray value="HeroIllidan"/>
+        <AffectedUnitArray value="HeroKerrigan"/>
+        <AffectedUnitArray value="HeroMalfurion"/>
+        <AffectedUnitArray value="HeroMuradin"/>
+        <AffectedUnitArray value="HeroNova"/>
+        <AffectedUnitArray value="HeroRaynor"/>
+        <AffectedUnitArray value="HeroSgtHammer"/>
+        <AffectedUnitArray value="HeroBarbarian"/>
+        <AffectedUnitArray value="HeroStitches"/>
+        <AffectedUnitArray value="HeroTassadar"/>
+        <AffectedUnitArray value="HeroTychus"/>
+        <AffectedUnitArray value="HeroTyrael"/>
+        <AffectedUnitArray value="HeroTyrande"/>
+        <AffectedUnitArray value="HeroUther"/>
+        <AffectedUnitArray value="HeroWitchDoctor"/>
+        <AffectedUnitArray value="HeroZeratul"/>
+    </CUpgrade>
+    <CUpgrade id="PlayerIsInBlueTeam_HeroSummons">
+        <EffectArray Operation="Set" Reference="Unit,AbathurLocustAssaultStrain,Collide[Land9]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,AbathurLocustBombardStrain,Collide[Land9]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,AbathurLocustNormal,Collide[Land9]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,ArthasGhoul,Collide[Land9]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,ImmortalServitudeSkeleton,Collide[Land9]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,EntanglingRootsRelicTreant,Collide[Land9]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,StitchesStinkling,Collide[Land9]" Value="0"/>
+        <EditorCategories value="Race:InfestedTerran"/>
+        <AffectedUnitArray value="AbathurLocustAssaultStrain"/>
+        <AffectedUnitArray value="AbathurLocustNormal"/>
+        <AffectedUnitArray value="AbathurLocustBombardStrain"/>
+        <AffectedUnitArray value="ArthasGhoul"/>
+        <AffectedUnitArray value="ImmortalServitudeSkeleton"/>
+        <AffectedUnitArray value="EntanglingRootsRelicTreant"/>
+        <AffectedUnitArray value="StitchesStinkling"/>
+    </CUpgrade>
+    <CUpgrade id="PlayerIsInRedTeam_HeroSummons">
+        <EffectArray Operation="Set" Reference="Unit,AbathurLocustAssaultStrain,Collide[Land2]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,AbathurLocustBombardStrain,Collide[Land2]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,AbathurLocustNormal,Collide[Land2]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,ArthasGhoul,Collide[Land2]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,ImmortalServitudeSkeleton,Collide[Land2]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,EntanglingRootsRelicTreant,Collide[Land2]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,StitchesStinkling,Collide[Land2]" Value="0"/>
+        <EditorCategories value="Race:InfestedTerran"/>
+    </CUpgrade>
+    <CUpgrade id="ComputerIsBlueTeam">
+        <EditorCategories value="Race:InfestedTerran"/>
+        <EffectArray Operation="Set" Reference="Unit,RangedMinion,Collide[Land9]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,CatapultMinion,Collide[Land9]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,FootmanMinion,Collide[Land9]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,WizardMinion,Collide[Land9]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,MercLanerRangedOgre,Collide[Land9]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,MercLanerMeleeOgre,Collide[Land9]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,MercLanerSiegeGiant,Collide[Land9]" Value="0"/>
+        <AffectedUnitArray value="RangedMinion"/>
+        <AffectedUnitArray value="CatapultMinion"/>
+        <AffectedUnitArray value="FootmanMinion"/>
+        <AffectedUnitArray value="WizardMinion"/>
+        <AffectedUnitArray value="MercLanerMeleeOgre"/>
+        <AffectedUnitArray value="MercLanerRangedOgre"/>
+        <AffectedUnitArray value="MercLanerSiegeGiant"/>
+    </CUpgrade>
+    <CUpgrade id="ComputerIsRedTeam">
+        <EditorCategories value="Race:InfestedTerran"/>
+        <EffectArray Operation="Set" Reference="Unit,RangedMinion,Collide[Land2]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,CatapultMinion,Collide[Land2]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,FootmanMinion,Collide[Land2]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,WizardMinion,Collide[Land2]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,MercLanerRangedOgre,Collide[Land2]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,MercLanerMeleeOgre,Collide[Land2]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,MercLanerSiegeGiant,Collide[Land2]" Value="0"/>
+        <AffectedUnitArray value="RangedMinion"/>
+        <AffectedUnitArray value="CatapultMinion"/>
+        <AffectedUnitArray value="FootmanMinion"/>
+        <AffectedUnitArray value="WizardMinion"/>
+        <AffectedUnitArray value="MercLanerMeleeOgre"/>
+        <AffectedUnitArray value="MercLanerRangedOgre"/>
+        <AffectedUnitArray value="MercLanerSiegeGiant"/>
+    </CUpgrade>
+    <CUpgrade id="LevelUp_SwiftStorm">
+        <EffectArray Operation="Set" Reference="Behavior,Mounted,Modification.UnifiedMoveSpeedFactor" Value="0.6"/>
+        <EditorCategories value="UpgradeType:LevelUpgrade"/>
+    </CUpgrade>
+    <CUpgrade id="Tileset_Khala">
+        <EditorCategories value="CommandersHero:Tileset"/>
+    </CUpgrade>
+</Catalog>

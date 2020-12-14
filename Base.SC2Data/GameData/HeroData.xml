@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CHero default="1">
+        <Model value="Hero##id##"/>
+        <Unit value="Hero##id##"/>
+        <LevelScalingArray Ability="StormInventory">
+            <Modifications>
+                <Catalog value="Effect"/>
+                <Entry value="BurningRageDamage1"/>
+                <Field value="Amount"/>
+                <Value value="2.000000"/>
+            </Modifications>
+            <Modifications>
+                <Catalog value="Effect"/>
+                <Entry value="PoisonEnemyDamage"/>
+                <Field value="Amount"/>
+                <Value value="5.000000"/>
+            </Modifications>
+            <Modifications>
+                <Catalog value="Behavior"/>
+                <Entry value="TalentShieldAlly"/>
+                <Field value="DamageResponse.ModifyLimit"/>
+                <Value value="30.000000"/>
+            </Modifications>
+        </LevelScalingArray>
+        <VOArray index="AIAttack" value="##id##_AI_Attack"/>
+        <VOArray index="AICaution" value="##id##_AI_Caution"/>
+        <VOArray index="AIGoodJob" value="##id##_AI_GoodJob"/>
+        <VOArray index="AIMercCapture" value="##id##_AI_MercCapture"/>
+        <VOArray index="AIOnMyWay" value="##id##_AI_OnMyWay"/>
+        <VOArray index="AIRetreat" value="##id##_AI_Retreat"/>
+        <VOArray index="EndEnemyKillSpree" value="##id##_KillSpreeEnd"/>
+        <VOArray index="GetHit" value="##id##_VOX_GetHit"/>
+        <VOArray index="GlueExamineLocked" value="##id##_UI_ExLocked"/>
+        <VOArray index="GlueExaminePurchased" value="##id##_UI_ExPurchased"/>
+        <VOArray index="GlueGift" value="##id##_UI_Gift"/>
+        <VOArray index="GluePurchase" value="##id##_UI_Purchase"/>
+        <VOArray index="GlueTrial" value="##id##_UI_Trial"/>
+        <VOArray index="GlueWaitLocked" value="##id##_UI_WaitLocked"/>
+        <VOArray index="GlueWaitPurchased" value="##id##_UI_WaitPurchased"/>
+        <VOArray index="Healed" value="##id##_Healed"/>
+        <VOArray index="IntroAgree" value="##id##_IntroAgree"/>
+        <VOArray index="IntroBoast" value="##id##_IntroBoast"/>
+        <VOArray index="IntroQuestion" value="##id##_IntroQuestion"/>
+        <VOArray index="IntroResponse" value="##id##_IntroRespond"/>
+        <VOArray index="KillGeneric" value="##id##_Kill"/>
+        <VOArray index="Laugh" value="##id##_Laugh"/>
+        <VOArray index="PingAssistHero" value="##id##_Ping_AssistHero"/>
+        <VOArray index="PingAssistMe" value="##id##_Ping_AssistMe"/>
+        <VOArray index="PingAttackCore" value="##id##_Ping_AttackCastle"/>
+        <VOArray index="PingAttackHere" value="##id##_Ping_Attack"/>
+        <VOArray index="PingAttackHero" value="##id##_Ping_KillHero"/>
+        <VOArray index="PingAttackMercCamp" value="##id##_Ping_AttackMerc"/>
+        <VOArray index="PingAttackTown" value="##id##_Ping_AttackOutpost"/>
+        <VOArray index="PingAttackWatchTower" value="##id##_Ping_AttackTower"/>
+        <VOArray index="PingDefendCore" value="##id##_Ping_DefendCastle"/>
+        <VOArray index="PingDefendHere" value="##id##_Ping_Defend"/>
+        <VOArray index="PingDefendTown" value="##id##_Ping_DefendOutpost"/>
+        <VOArray index="PingDefendWatchTower" value="##id##_Ping_DefendTower"/>
+        <VOArray index="Pissed" value="##id##_Pissed"/>
+        <VOArray index="Resurrected" value="##id##_Resurrected"/>
+        <VOArray index="Revive" value="##id##_Revive"/>
+        <VOArray index="SpecChosen" value="##id##_Spec"/>
+        <VOArray index="TeamKilled" value="##id##_TeamKilled"/>
+        <HeroSelectCutsceneFile value="Cutscenes\HeroSelect##id##.StormCutscene"/>
+        <MiniPortraitCutsceneFile value="Cutscenes\MiniPortrait##id##.StormCutscene"/>
+        <PreviewCutsceneFile value="Cutscenes\Store##id##.StormCutscene"/>
+        <TileCutsceneFile value="Cutscenes\Frame##id##.StormCutscene"/>
+        <TalentTreeArray Talent="TalentBucket_RegenerationMaster_Stacks" Tier="1" Column="1"/>
+        <TalentTreeArray Talent="TalentBucket_ConjurersPursuit_Stacks" Tier="1" Column="2"/>
+        <TalentTreeArray Talent="KineticBlock" Tier="1" Column="3"/>
+        <TalentTreeArray Talent="TalentBucket_EnergeticBlock" Tier="1" Column="4"/>
+        <TalentTreeArray Talent="TalentBucket_MercenaryLord_Stacks" Tier="1" Column="5"/>
+        <TalentTreeArray Talent="TalentBucket_GatheringPower_Stacks" Tier="1" Column="6"/>
+        <TalentTreeArray Talent="TalentBucket_HardenedFocus" Tier="1" Column="7"/>
+        <TalentTreeArray Tier="2" Column="1"/>
+        <TalentTreeArray Tier="2" Column="2"/>
+        <TalentTreeArray Tier="2" Column="3"/>
+        <TalentTreeArray Tier="2" Column="4"/>
+        <TalentTreeArray Tier="2" Column="5"/>
+        <TalentTreeArray Talent="TalentBucket_ThirstForLife" Tier="2" Column="6"/>
+        <TalentTreeArray Talent="TalentBucket_LifeForce" Tier="2" Column="7"/>
+        <TalentTreeArray Tier="3" Column="1"/>
+        <TalentTreeArray Tier="3" Column="2"/>
+        <TalentTreeArray Tier="3" Column="3"/>
+        <TalentTreeArray Tier="3" Column="4"/>
+        <TalentTreeArray Tier="3" Column="5"/>
+        <TalentTreeArray Tier="3" Column="6"/>
+        <TalentTreeArray Tier="3" Column="7"/>
+        <TalentTreeArray Tier="4" Column="1"/>
+        <TalentTreeArray Tier="4" Column="2"/>
+        <TalentTreeArray Tier="4" Column="3"/>
+        <TalentTreeArray Tier="4" Column="4"/>
+        <TalentTreeArray Tier="4" Column="5"/>
+        <TalentTreeArray Tier="4" Column="6"/>
+        <TalentTreeArray Tier="4" Column="7"/>
+        <TalentTreeArray Tier="5" Column="1"/>
+        <TalentTreeArray Tier="5" Column="2"/>
+        <TalentTreeArray Tier="5" Column="3"/>
+        <TalentTreeArray Tier="5" Column="4"/>
+        <TalentTreeArray Tier="5" Column="5"/>
+        <TalentTreeArray Tier="5" Column="6"/>
+        <TalentTreeArray Tier="5" Column="7"/>
+        <TalentTreeArray Talent="TalentBucket_ResurgenceOfTheStorm" Tier="6" Column="1"/>
+        <TalentTreeArray Talent="TalentBucket_Rewind" Tier="6" Column="2"/>
+        <TalentTreeArray Tier="6" Column="3"/>
+        <TalentTreeArray Tier="6" Column="4"/>
+        <TalentTreeArray Tier="6" Column="5"/>
+        <TalentTreeArray Tier="6" Column="6"/>
+        <TalentTreeArray Tier="6" Column="7"/>
+        <TalentTreeArray Tier="7" Column="1"/>
+        <TalentTreeArray Tier="7" Column="2"/>
+        <TalentTreeArray Tier="7" Column="3"/>
+        <TalentTreeArray Tier="7" Column="4"/>
+        <TalentTreeArray Tier="7" Column="5"/>
+        <TalentTreeArray Tier="7" Column="6"/>
+        <TalentTreeArray Tier="7" Column="7"/>
+        <LeaderboardImage value="Assets\Textures\storm_ui_ingame_hero_leaderboard_##id##.dds"/>
+        <PartyPanelButtonImage value="Assets\Textures\storm_ui_ingame_partyframe_##id##.dds"/>
+        <Portrait value="Assets\Textures\storm_ui_ingame_heroselect_btn_##id##.dds"/>
+    </CHero>
+    <CHero id="Random">
+        <AttributeId value="Rand"/>
+        <Flags index="Random" value="1"/>
+        <SelectScreenButtonImage value="Assets\Textures\UI\HeroIcons\Selection\storm_ui_ingame_heroselect_btn_placeholder.dds"/>
+        <TalentTreeArray index="0" removed="1"/>
+        <TalentTreeArray index="1" removed="1"/>
+        <TalentTreeArray index="2" removed="1"/>
+        <TalentTreeArray index="3" removed="1"/>
+        <TalentTreeArray index="4" removed="1"/>
+        <TalentTreeArray index="5" removed="1"/>
+        <TalentTreeArray index="6" removed="1"/>
+        <TalentTreeArray index="7" removed="1"/>
+        <TalentTreeArray index="8" removed="1"/>
+        <TalentTreeArray index="9" removed="1"/>
+        <TalentTreeArray index="10" removed="1"/>
+        <TalentTreeArray index="11" removed="1"/>
+        <TalentTreeArray index="12" removed="1"/>
+        <TalentTreeArray index="13" removed="1"/>
+        <TalentTreeArray index="14" removed="1"/>
+        <TalentTreeArray index="15" removed="1"/>
+        <TalentTreeArray index="16" removed="1"/>
+        <TalentTreeArray index="17" removed="1"/>
+        <TalentTreeArray index="18" removed="1"/>
+        <TalentTreeArray index="19" removed="1"/>
+        <TalentTreeArray index="20" removed="1"/>
+        <TalentTreeArray index="21" removed="1"/>
+        <TalentTreeArray index="22" removed="1"/>
+        <TalentTreeArray index="23" removed="1"/>
+        <TalentTreeArray index="24" removed="1"/>
+        <TalentTreeArray index="25" removed="1"/>
+        <TalentTreeArray index="26" removed="1"/>
+        <TalentTreeArray index="27" removed="1"/>
+        <TalentTreeArray index="28" removed="1"/>
+        <TalentTreeArray index="29" removed="1"/>
+        <TalentTreeArray index="30" removed="1"/>
+        <TalentTreeArray index="31" removed="1"/>
+        <TalentTreeArray index="32" removed="1"/>
+        <TalentTreeArray index="33" removed="1"/>
+        <TalentTreeArray index="34" removed="1"/>
+        <TalentTreeArray index="35" removed="1"/>
+        <TalentTreeArray index="36" removed="1"/>
+        <TalentTreeArray index="37" removed="1"/>
+        <TalentTreeArray index="38" removed="1"/>
+        <TalentTreeArray index="39" removed="1"/>
+        <TalentTreeArray index="40" removed="1"/>
+        <TalentTreeArray index="41" removed="1"/>
+        <TalentTreeArray index="42" removed="1"/>
+        <TalentTreeArray index="43" removed="1"/>
+        <TalentTreeArray index="44" removed="1"/>
+        <TalentTreeArray index="45" removed="1"/>
+        <TalentTreeArray index="46" removed="1"/>
+        <TalentTreeArray index="47" removed="1"/>
+        <TalentTreeArray index="48" removed="1"/>
+        <LeaderboardImage value="Assets\Textures\UI_targetportrait_Hero_Random.dds"/>
+    </CHero>
+    <CHero id="AI">
+        <TalentTreeArray index="0" removed="1"/>
+        <TalentTreeArray index="1" removed="1"/>
+        <TalentTreeArray index="2" removed="1"/>
+        <TalentTreeArray index="3" removed="1"/>
+        <TalentTreeArray index="4" removed="1"/>
+        <TalentTreeArray index="5" removed="1"/>
+        <TalentTreeArray index="6" removed="1"/>
+        <TalentTreeArray index="7" removed="1"/>
+        <TalentTreeArray index="8" removed="1"/>
+        <TalentTreeArray index="9" removed="1"/>
+        <TalentTreeArray index="10" removed="1"/>
+        <TalentTreeArray index="11" removed="1"/>
+        <TalentTreeArray index="12" removed="1"/>
+        <TalentTreeArray index="13" removed="1"/>
+        <TalentTreeArray index="14" removed="1"/>
+        <TalentTreeArray index="15" removed="1"/>
+        <TalentTreeArray index="16" removed="1"/>
+        <TalentTreeArray index="17" removed="1"/>
+        <TalentTreeArray index="18" removed="1"/>
+        <TalentTreeArray index="19" removed="1"/>
+        <TalentTreeArray index="20" removed="1"/>
+        <TalentTreeArray index="21" removed="1"/>
+        <TalentTreeArray index="22" removed="1"/>
+        <TalentTreeArray index="23" removed="1"/>
+        <TalentTreeArray index="24" removed="1"/>
+        <TalentTreeArray index="25" removed="1"/>
+        <TalentTreeArray index="26" removed="1"/>
+        <TalentTreeArray index="27" removed="1"/>
+        <TalentTreeArray index="28" removed="1"/>
+        <TalentTreeArray index="29" removed="1"/>
+        <TalentTreeArray index="30" removed="1"/>
+        <TalentTreeArray index="31" removed="1"/>
+        <TalentTreeArray index="32" removed="1"/>
+        <TalentTreeArray index="33" removed="1"/>
+        <TalentTreeArray index="34" removed="1"/>
+        <TalentTreeArray index="35" removed="1"/>
+        <TalentTreeArray index="36" removed="1"/>
+        <TalentTreeArray index="37" removed="1"/>
+        <TalentTreeArray index="38" removed="1"/>
+        <TalentTreeArray index="39" removed="1"/>
+        <TalentTreeArray index="40" removed="1"/>
+        <TalentTreeArray index="41" removed="1"/>
+        <TalentTreeArray index="42" removed="1"/>
+        <TalentTreeArray index="43" removed="1"/>
+        <TalentTreeArray index="44" removed="1"/>
+        <TalentTreeArray index="45" removed="1"/>
+        <TalentTreeArray index="46" removed="1"/>
+        <TalentTreeArray index="47" removed="1"/>
+        <TalentTreeArray index="48" removed="1"/>
+    </CHero>
+    <CHero id="Talandar">
+        <AttributeId value="HTal"/>
+        <UserReference value="Champions;Zeratul"/>
+        <Role value="Damage"/>
+        <Melee value="1"/>
+        <IntroCutsceneSize value="Medium"/>
+        <HeroAbilArray Abil="HeroTalandarThunderousCharge" Button="HeroTalandarThunderousCharge">
+            <Flags index="ShowInHeroSelect" value="1"/>
+            <Flags index="AffectedByCooldownReduction" value="1"/>
+        </HeroAbilArray>
+        <HeroAbilArray Abil="HeroTalandarDragoonArmorSuit" Button="HeroTalandarDragoonArmorSuit">
+            <Flags index="ShowInHeroSelect" value="1"/>
+            <Flags index="AffectedByCooldownReduction" value="1"/>
+        </HeroAbilArray>
+        <HeroAbilArray Abil="HeroTalandarWhirlwind" Button="HeroTalandarWhirlwind">
+            <Flags index="ShowInHeroSelect" value="1"/>
+        </HeroAbilArray>
+        <HeroAbilArray Abil="Selendis_VindicatorCalldown" Button="Selendis_VindicatorCalldown">
+            <Flags index="ShowInHeroSelect" value="1"/>
+            <Flags index="AffectedByCooldownReduction" value="1"/>
+            <Flags index="Heroic" value="1"/>
+        </HeroAbilArray>
+        <HeroAbilArray Abil="HeroTalandarShieldCapacitor" Button="HeroTalandarShieldCapacitor">
+            <Flags index="ShowInHeroSelect" value="1"/>
+            <Flags index="Trait" value="1"/>
+            <Flags index="HideHotkey" value="1"/>
+        </HeroAbilArray>
+        <HeroSelectCutsceneFile value=""/>
+        <MiniPortraitCutsceneFile value=""/>
+        <VariationIcon value="Assets\Textures\UI_Glues_Swatch_Purple_Bright.dds"/>
+        <Difficulty value="Hard"/>
+        <UniverseIcon value="Assets\Textures\UI_Glues_Store_GameIcon_SC2.dds"/>
+        <TileCutsceneFile value=""/>
+        <HyperlinkId value="Selendis"/>
+    </CHero>
+    <CHero id="_Empty">
+        <SelectScreenButtonImage value="Assets\Textures\UI\HeroIcons\Selection\storm_ui_ingame_heroselect_btn_empty.dds"/>
+        <TalentTreeArray index="0" removed="1"/>
+        <TalentTreeArray index="1" removed="1"/>
+        <TalentTreeArray index="2" removed="1"/>
+        <TalentTreeArray index="3" removed="1"/>
+        <TalentTreeArray index="4" removed="1"/>
+        <TalentTreeArray index="5" removed="1"/>
+        <TalentTreeArray index="6" removed="1"/>
+        <TalentTreeArray index="7" removed="1"/>
+        <TalentTreeArray index="8" removed="1"/>
+        <TalentTreeArray index="9" removed="1"/>
+        <TalentTreeArray index="10" removed="1"/>
+        <TalentTreeArray index="11" removed="1"/>
+        <TalentTreeArray index="12" removed="1"/>
+        <TalentTreeArray index="13" removed="1"/>
+        <TalentTreeArray index="14" removed="1"/>
+        <TalentTreeArray index="15" removed="1"/>
+        <TalentTreeArray index="16" removed="1"/>
+        <TalentTreeArray index="17" removed="1"/>
+        <TalentTreeArray index="18" removed="1"/>
+        <TalentTreeArray index="19" removed="1"/>
+        <TalentTreeArray index="20" removed="1"/>
+        <TalentTreeArray index="21" removed="1"/>
+        <TalentTreeArray index="22" removed="1"/>
+        <TalentTreeArray index="23" removed="1"/>
+        <TalentTreeArray index="24" removed="1"/>
+        <TalentTreeArray index="25" removed="1"/>
+        <TalentTreeArray index="26" removed="1"/>
+        <TalentTreeArray index="27" removed="1"/>
+        <TalentTreeArray index="28" removed="1"/>
+        <TalentTreeArray index="29" removed="1"/>
+        <TalentTreeArray index="30" removed="1"/>
+        <TalentTreeArray index="31" removed="1"/>
+        <TalentTreeArray index="32" removed="1"/>
+        <TalentTreeArray index="33" removed="1"/>
+        <TalentTreeArray index="34" removed="1"/>
+        <TalentTreeArray index="35" removed="1"/>
+        <TalentTreeArray index="36" removed="1"/>
+        <TalentTreeArray index="37" removed="1"/>
+        <TalentTreeArray index="38" removed="1"/>
+        <TalentTreeArray index="39" removed="1"/>
+        <TalentTreeArray index="40" removed="1"/>
+        <TalentTreeArray index="41" removed="1"/>
+        <TalentTreeArray index="42" removed="1"/>
+        <TalentTreeArray index="43" removed="1"/>
+        <TalentTreeArray index="44" removed="1"/>
+        <TalentTreeArray index="45" removed="1"/>
+        <TalentTreeArray index="46" removed="1"/>
+        <TalentTreeArray index="47" removed="1"/>
+        <TalentTreeArray index="48" removed="1"/>
+        <LeaderboardImage value="Assets\Textures\UI_targetportrait_Hero__Empty.dds"/>
+    </CHero>
+</Catalog>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CItemClass id="Cannonball"/>
+    <CItemClass id="Consumable"/>
+    <CItemClass id="Item"/>
+    <CItemClass id="Pickup"/>
+    <CItemClass id="Weapon"/>
+    <CItemClass id="Potion"/>
+</Catalog>

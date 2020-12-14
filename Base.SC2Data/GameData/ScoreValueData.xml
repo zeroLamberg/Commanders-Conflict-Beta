@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CScoreValueCustom default="1" id="QuestScoreValue" parent="BaseScoreValue">
+        <Flags index="TriggerAchievement" value="1"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="IngameDamageDealtHeroicEnergetic" parent="StatScoreValue">
+        <Icon value="Assets\Textures\storm_ui_play_filter_support-on.dds"/>
+        <Flags index="TriggerAchievement" value="1"/>
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="IngameDamageDealtHeroicStorm" parent="StatScoreValue">
+        <Icon value="Assets\Textures\storm_ui_play_filter_support-on.dds"/>
+        <Flags index="TriggerAchievement" value="1"/>
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="IngameDamageDealtSiegeBuilding" parent="StatScoreValue">
+        <Icon value="Assets\Textures\storm_ui_play_filter_support-on.dds"/>
+        <Flags index="TriggerAchievement" value="1"/>
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="IngameDamageDealtSiegeTotal" parent="StatScoreValue">
+        <Icon value="Assets\Textures\storm_ui_play_filter_support-on.dds"/>
+        <Flags index="TriggerAchievement" value="1"/>
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="IngameDamageDealtSiegeSummoned" parent="StatScoreValue">
+        <Icon value="Assets\Textures\storm_ui_play_filter_support-on.dds"/>
+        <Flags index="TriggerAchievement" value="1"/>
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="IngameDamageDealtSiegeDefender" parent="StatScoreValue">
+        <Icon value="Assets\Textures\storm_ui_play_filter_support-on.dds"/>
+        <Flags index="TriggerAchievement" value="1"/>
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="IngameDamageDealtSiegeCreep" parent="StatScoreValue">
+        <Icon value="Assets\Textures\storm_ui_play_filter_support-on.dds"/>
+        <Flags index="TriggerAchievement" value="1"/>
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="IngameDamageDealtSiegeMinion" parent="StatScoreValue">
+        <Icon value="Assets\Textures\storm_ui_play_filter_support-on.dds"/>
+        <Flags index="TriggerAchievement" value="1"/>
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="IngameDamageDealtHeroicTotal" parent="StatScoreValue">
+        <Icon value="Assets\Textures\storm_ui_play_filter_support-on.dds"/>
+        <Flags index="TriggerAchievement" value="1"/>
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="IngameDamageDealtHeroicKinetic" parent="StatScoreValue">
+        <Icon value="Assets\Textures\storm_ui_play_filter_support-on.dds"/>
+        <Flags index="TriggerAchievement" value="1"/>
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="IngameDamageDealtSiegeMercenary" parent="StatScoreValue">
+        <Icon value="Assets\Textures\storm_ui_play_filter_support-on.dds"/>
+        <Flags index="TriggerAchievement" value="1"/>
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="IngameHealingAndShieldingReceivedTotal" parent="StatScoreValue">
+        <Icon value="Assets\Textures\storm_ui_play_filter_support-on.dds"/>
+        <Flags index="TriggerAchievement" value="1"/>
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="IngameHealingAndShieldingCreatedTotal" parent="StatScoreValue">
+        <Icon value="Assets\Textures\storm_ui_play_filter_support-on.dds"/>
+        <Flags index="TriggerAchievement" value="1"/>
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="IngameShieldingCreatedToAllyBuilding" parent="StatScoreValue">
+        <Icon value="Assets\Textures\storm_ui_play_filter_support-on.dds"/>
+        <Flags index="TriggerAchievement" value="1"/>
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="IngameShieldingCreatedToAllyHero" parent="StatScoreValue">
+        <Icon value="Assets\Textures\storm_ui_play_filter_support-on.dds"/>
+        <Flags index="TriggerAchievement" value="1"/>
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="IngameShieldingCreatedToAllyMinion" parent="StatScoreValue">
+        <Icon value="Assets\Textures\storm_ui_play_filter_support-on.dds"/>
+        <Flags index="TriggerAchievement" value="1"/>
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="IngameShieldingCreatedToAllySummoned" parent="StatScoreValue">
+        <Icon value="Assets\Textures\storm_ui_play_filter_support-on.dds"/>
+        <Flags index="TriggerAchievement" value="1"/>
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="IngameHealingReceivedToSelf" parent="StatScoreValue">
+        <Icon value="Assets\Textures\storm_ui_play_filter_support-on.dds"/>
+        <Flags index="TriggerAchievement" value="1"/>
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="IngameHealingCreatedToAllyMinion" parent="StatScoreValue">
+        <Icon value="Assets\Textures\storm_ui_play_filter_support-on.dds"/>
+        <Flags index="TriggerAchievement" value="1"/>
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="IngameHealingCreatedToAllySummoned" parent="StatScoreValue">
+        <Icon value="Assets\Textures\storm_ui_play_filter_support-on.dds"/>
+        <Flags index="TriggerAchievement" value="1"/>
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="IngameHealingCreatedToAllyBuilding" parent="StatScoreValue">
+        <Icon value="Assets\Textures\storm_ui_play_filter_support-on.dds"/>
+        <Flags index="TriggerAchievement" value="1"/>
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="IngameShieldingReceivedSelf" parent="StatScoreValue">
+        <Icon value="Assets\Textures\storm_ui_play_filter_support-on.dds"/>
+        <Flags index="TriggerAchievement" value="1"/>
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="IngameHealingCreatedTotal" parent="StatScoreValue">
+        <Icon value="Assets\Textures\storm_ui_play_filter_support-on.dds"/>
+        <Flags index="TriggerAchievement" value="1"/>
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="IngameShieldingCreatedTotal" parent="StatScoreValue">
+        <Icon value="Assets\Textures\storm_ui_play_filter_support-on.dds"/>
+        <Flags index="TriggerAchievement" value="1"/>
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="IngameHealingReceivedAlly" parent="StatScoreValue">
+        <Icon value="Assets\Textures\storm_ui_play_filter_support-on.dds"/>
+        <Flags index="TriggerAchievement" value="1"/>
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="IngameShieldingReceivedAlly" parent="StatScoreValue">
+        <Icon value="Assets\Textures\storm_ui_play_filter_support-on.dds"/>
+        <Flags index="TriggerAchievement" value="1"/>
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="IngameHealingReceivedMoonwell" parent="StatScoreValue">
+        <Icon value="Assets\Textures\storm_ui_play_filter_support-on.dds"/>
+        <Flags index="TriggerAchievement" value="1"/>
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="IngameHealingReceivedGlobe" parent="StatScoreValue">
+        <Icon value="Assets\Textures\storm_ui_play_filter_support-on.dds"/>
+        <Flags index="TriggerAchievement" value="1"/>
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="IngameHealingReceivedTotal" parent="StatScoreValue">
+        <Icon value="Assets\Textures\storm_ui_play_filter_support-on.dds"/>
+        <Flags index="TriggerAchievement" value="1"/>
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="IngameShieldingReceivedTotal" parent="StatScoreValue">
+        <Icon value="Assets\Textures\storm_ui_play_filter_support-on.dds"/>
+        <Flags index="TriggerAchievement" value="1"/>
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="IngameDamageTakenTotal" parent="StatScoreValue">
+        <Icon value="Assets\Textures\storm_ui_play_filter_warrior-on.dds"/>
+        <UniqueTag value="DmgT"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="IngameHealingCreatedToAllyHero" parent="StatScoreValue">
+        <Icon value="Assets\Textures\storm_ui_play_filter_support-on.dds"/>
+        <Flags index="TriggerAchievement" value="1"/>
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <!-- Score Screen values not used for quests -->
+    <CScoreValueCustom id="Level" parent="BaseScoreValue"/>
+    <CScoreValueCustom id="StormhammerPerfectStormBonusDamage"/>
+    <CScoreValueCustom id="TeamTakedowns" parent="QuestScoreValue"/>
+    <CScoreValueCustom id="TeamTownKills" parent="BaseScoreValue"/>
+    <CScoreValueCustom id="TeamMercCampCaptures" parent="BaseScoreValue"/>
+    <CScoreValueCustom id="RavenTributesCollected" parent="BaseScoreValue">
+        <Icon value="Assets\Textures\scorescreen_Icons_Raven.dds"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="RavenTeamNumberOfTimesCursedTheEnemy" parent="BaseScoreValue"/>
+    <CScoreValueCustom id="BlackheartDoubloonsCollected" parent="BaseScoreValue">
+        <Icon value="Assets\Textures\scorescreen_Icons_Doubloons.dds"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="BlackheartDoubloonsDropped" parent="BaseScoreValue">
+        <Icon value="Assets\Textures\scorescreen_Icons_Doubloons.dds"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="BlackheartDoubloonsTurnedIn" parent="BaseScoreValue">
+        <Icon value="Assets\Textures\scorescreen_Icons_Doubloons.dds"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="BlackheartTeamNumberOfTimesFiredTheCannon" parent="BaseScoreValue"/>
+    <CScoreValueCustom id="DragonNumberOfDragonCaptures" parent="BaseScoreValue">
+        <Icon value="Assets\Textures\scorescreen_Icons_Shine.dds"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="DragonTeamNumberOfDragonCaptures" parent="BaseScoreValue"/>
+    <CScoreValueCustom id="MinesSkullsCollected" parent="BaseScoreValue">
+        <Icon value="Assets\Textures\scorescreen_Icons_Skulls.dds"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="MinesTeamSkullsCollected" parent="BaseScoreValue"/>
+    <!-- Misc tracking values -->
+    <CScoreValueCustom id="BarbarianBashDamageCorrected"/>
+    <CScoreValueCustom id="BarbarianWhirlwindDamageCorrected"/>
+    <CScoreValueCustom id="BetrayersStrikeDamageCorrected"/>
+    <CScoreValueCustom id="StrafeDamageCorrected"/>
+    <CScoreValueCustom id="TychusOverkillTargetedDamageCorrected"/>
+    <CScoreValueCustom id="ExperienceFromTownsDestroyed" parent="BaseScoreValue"/>
+    <CScoreValueCustom id="ExperienceFromMinionsAndCreeps" parent="BaseScoreValue"/>
+    <CScoreValueCustom id="ExperienceFromTrickle" parent="BaseScoreValue"/>
+    <CScoreValueCustom id="ExperienceFromTakedowns" parent="BaseScoreValue"/>
+    <!-- Heroes general game statistics - used to drive quest achievements -->
+    <CScoreValueStandard id="MetaExperience"/>
+    <CScoreValueCustom id="Takedowns" parent="QuestScoreValue"/>
+    <CScoreValueCustom id="Deaths" parent="BaseScoreValue"/>
+    <CScoreValueCustom id="TownKills" parent="QuestScoreValue"/>
+    <CScoreValueCustom id="MercCampCaptures" parent="QuestScoreValue"/>
+    <CScoreValueCustom id="MyTestScore" parent="AchievementScoreValue"/>
+    <CScoreValueCustom id="WatchTowerCaptures" parent="QuestScoreValue"/>
+    <CScoreValueCustom id="SoloKill" parent="QuestScoreValue"/>
+    <CScoreValueCustom id="TeamWinsDiablo" parent="BaseScoreValue"/>
+    <CScoreValueCustom id="TeamWinsFemale" parent="BaseScoreValue"/>
+    <CScoreValueCustom id="TeamWinsMale" parent="BaseScoreValue"/>
+    <CScoreValueCustom id="TeamWinsStarCraft" parent="BaseScoreValue"/>
+    <CScoreValueCustom id="TeamWinsWarcraft" parent="BaseScoreValue"/>
+    <CScoreValueCustom id="WinsWarrior" parent="QuestScoreValue"/>
+    <CScoreValueCustom id="WinsAssassin" parent="QuestScoreValue"/>
+    <CScoreValueCustom id="WinsSupport" parent="QuestScoreValue"/>
+    <CScoreValueCustom id="WinsSpecialist" parent="QuestScoreValue"/>
+    <CScoreValueCustom id="WinsStarCraft" parent="QuestScoreValue"/>
+    <CScoreValueCustom id="WinsDiablo" parent="QuestScoreValue"/>
+    <CScoreValueCustom id="WinsWarcraft" parent="QuestScoreValue"/>
+    <CScoreValueCustom id="WinsMale" parent="QuestScoreValue"/>
+    <CScoreValueCustom id="WinsFemale" parent="QuestScoreValue"/>
+    <!-- Hero specific statistics -->
+    <!-- Abathur -->
+    <CScoreValueCustom id="SymbioteStabEnemyHeroHit" parent="QuestScoreValue"/>
+    <CScoreValueCustom id="ToxicNestEnemyHeroDamage" parent="QuestScoreValue"/>
+    <!-- Arthas -->
+    <CScoreValueCustom id="FrostStrikeEnemyHeroHits" parent="QuestScoreValue"/>
+    <CScoreValueCustom id="HowlingBlastEnemyHeroHits" parent="QuestScoreValue"/>
+    <!-- Diablo -->
+    <CScoreValueCustom id="ShadowChargeEnemyHeroStun" parent="QuestScoreValue"/>
+    <CScoreValueCustom id="OverpowerEnemyHeroHit" parent="QuestScoreValue"/>
+    <!-- Falstad -->
+    <CScoreValueCustom id="HammerangEnemyHeroHit" parent="QuestScoreValue"/>
+    <CScoreValueCustom id="ThunderstormEnemyHeroDamageDealt" parent="QuestScoreValue"/>
+    <!-- Gazlowe -->
+    <CScoreValueCustom id="GazloweEnemyStructureDamage" parent="QuestScoreValue"/>
+    <CScoreValueCustom id="DethLazorDamage" parent="QuestScoreValue"/>
+    <!-- Illidan -->
+    <CScoreValueCustom id="BetrayersStrikeEnemyHeroHit" parent="QuestScoreValue"/>
+    <CScoreValueCustom id="CrescentSweepEnemyHeroKill" parent="QuestScoreValue"/>
+    <!-- Kerrigan -->
+    <CScoreValueCustom id="ImpalingBladesEnemyHeroHit" parent="QuestScoreValue"/>
+    <CScoreValueCustom id="RavageEnemyHeroHit" parent="QuestScoreValue"/>
+    <!-- Malfurion -->
+    <CScoreValueCustom id="MalfurionHealAllyHealth" parent="QuestScoreValue"/>
+    <CScoreValueCustom id="EntanglingRootsEnemyHeroRooted" parent="QuestScoreValue"/>
+    <!-- Naziba -->
+    <CScoreValueCustom id="NazibaStructureDamage" parent="QuestScoreValue"/>
+    <CScoreValueCustom id="PlagueofToadsDamage" parent="QuestScoreValue"/>
+    <!-- Nova -->
+    <CScoreValueCustom id="HoloDecoyAbsorbDamage" parent="QuestScoreValue"/>
+    <CScoreValueCustom id="SnipeEnemyHeroHit" parent="QuestScoreValue"/>
+    <!-- Raynor -->
+    <CScoreValueCustom id="PenetratingRoundEnemyHeroHit" parent="QuestScoreValue"/>
+    <CScoreValueCustom id="InspireAllyHero" parent="QuestScoreValue"/>
+    <!-- Sonya -->
+    <CScoreValueCustom id="AncientSpearEnemyHeroHit" parent="QuestScoreValue"/>
+    <CScoreValueCustom id="WhirlwindDamage" parent="QuestScoreValue"/>
+    <!-- Stitches -->
+    <CScoreValueCustom id="HookEnemyHeroHit" parent="QuestScoreValue"/>
+    <CScoreValueCustom id="DevourHealthRegenerated" parent="QuestScoreValue"/>
+    <!-- Tassadar -->
+    <CScoreValueCustom id="ProtectiveShieldAllyHero" parent="QuestScoreValue"/>
+    <CScoreValueCustom id="TimeWarpEnemyDamage" parent="QuestScoreValue"/>
+    <!-- Tyrael -->
+    <CScoreValueCustom id="PunishingBladeEnemyHeroHit" parent="QuestScoreValue"/>
+    <CScoreValueCustom id="HandofSacrificeAllyHero" parent="QuestScoreValue"/>
+    <!-- Uther -->
+    <CScoreValueCustom id="UtherHealAllyHealth" parent="QuestScoreValue"/>
+    <CScoreValueCustom id="HammerofJusticeEnemyHeroStun" parent="QuestScoreValue"/>
+    <!-- Valla -->
+    <CScoreValueCustom id="HungeringArrowEnemyHit" parent="QuestScoreValue"/>
+    <CScoreValueCustom id="MultishotEnemyDamage" parent="QuestScoreValue"/>
+    <!-- Muradin -->
+    <CScoreValueCustom id="StormhammerEnemyHeroHit" parent="QuestScoreValue"/>
+    <CScoreValueCustom id="ThunderclapEnemyHeroHit" parent="QuestScoreValue"/>
+    <!-- Zeratul -->
+    <CScoreValueCustom id="SustainedAnomalyEnemyHeroHit" parent="QuestScoreValue"/>
+    <CScoreValueCustom id="CleaveEnemyHeroHit" parent="QuestScoreValue"/>
+    <!-- Tychus -->
+    <CScoreValueCustom id="FragGrenadeEnemyHeroHit" parent="QuestScoreValue"/>
+    <CScoreValueCustom id="OverkillDamage" parent="QuestScoreValue"/>
+    <CScoreValueCustom id="BanelingBarrageEnemyHeroHit" parent="QuestScoreValue"/>
+    <!-- Sgt. Hammer -->
+    <CScoreValueCustom id="100CaliberBlastEnemyHeroHit" parent="QuestScoreValue"/>
+    <CScoreValueCustom id="SgtHammerStructureDamage" parent="QuestScoreValue"/>
+    <!-- Tyrande -->
+    <CScoreValueCustom id="TyrandeHealAllyHealth" parent="QuestScoreValue"/>
+    <CScoreValueCustom id="SentinelEnemyHeroHit" parent="QuestScoreValue"/>
+    <!-- Anub'arak -->
+    <CScoreValueCustom id="ImpaleEnemyHeroHit" parent="QuestScoreValue"/>
+    <CScoreValueCustom id="RegeneratingCarapaceAbsorbDamage" parent="QuestScoreValue"/>
+    <!-- ETC -->
+    <CScoreValueCustom id="PowerSlideEnemyHeroHit" parent="QuestScoreValue"/>
+    <CScoreValueCustom id="GuitarSoloHealAmount" parent="QuestScoreValue"/>
+</Catalog>

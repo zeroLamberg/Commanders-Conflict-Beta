@@ -1,0 +1,624 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CEffectApplyBehavior id="MercDefender_SlaynElemental_EssenceLeech_ApplyStunBehavior">
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <Behavior value="MercDefender_SlaynElemental_EssenceLeech_Encased"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="MercDefender_SlaynElemental_EssenceLeech_ImpactSet">
+        <ValidatorArray value="noMarkers"/>
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <EffectArray value="MercDefender_SlaynElemental_EssenceLeech_ApplyStunBehavior"/>
+    </CEffectSet>
+    <CEffectEnumArea id="MercDefender_SlaynElemental_EssenceLeech_InitialSearch">
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <Marker>
+            <MatchFlags index="Id" value="1"/>
+        </Marker>
+        <SearchFilters value="Heroic,Visible;Player,Ally,Neutral,Stasis,Dead,Invulnerable"/>
+        <AreaArray Radius="10" Effect="MercDefender_SlaynElemental_EssenceLeech_CreateWarningPersistent"/>
+    </CEffectEnumArea>
+    <CEffectCreatePersistent id="MercDefender_SlaynElemental_EssenceLeech_CreateWarningPersistent">
+        <ValidatorArray value="noMarkers"/>
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <AINotifyFlags index="HurtEnemy" value="1"/>
+        <InitialDelay value="1"/>
+        <InitialEffect value="MercDefender_SlaynElemental_EssenceLeech_SearchToStun"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="MercDefender_SlaynElemental_EssenceLeech_SearchToStun">
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <SearchFilters value="Heroic,Visible;Player,Ally,Neutral,Mechanical,Structure,Missile,Stasis,Dead,Invulnerable"/>
+        <AreaArray Radius="1.5" Effect="MercDefender_SlaynElemental_EssenceLeech_ImpactSet"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="MercDefender_SlaynElementalWeapon_SearchArea">
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <AreaArray Radius="6.75" Effect="MercDefender_SlaynElementalWeapon_Damage"/>
+        <LaunchLocation Value="CasterUnit"/>
+        <ImpactLocation Value="CasterUnit"/>
+        <SearchFilters value="Visible;Player,Ally,Neutral,Missile,Cloaked,Stasis,Dead,Hidden,Invulnerable,Benign"/>
+    </CEffectEnumArea>
+    <CEffectDamage id="MercDefender_SlaynElementalWeapon_Damage" parent="CommandersKineticDamage">
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <Amount value="100"/>
+    </CEffectDamage>
+    <CAbilEffectInstant id="MercDefender_SlaynElemental_EssenceLeech">
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Mercenaries"/>
+        <Effect index="0" value="MercDefender_SlaynElemental_EssenceLeech_InitialSearch"/>
+        <Cost>
+            <Cooldown Location="Unit" TimeUse="10"/>
+        </Cost>
+        <CastIntroTime value="0.15"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="MercDefender_SlaynElemental_EssenceLeech"/>
+    </CAbilEffectInstant>
+    <CValidatorUnitCompareBehaviorCount id="MercDefender_SlaynElemental_EssenceLeech_Encased">
+        <Value value="1"/>
+        <Behavior value="MercDefender_SlaynElemental_EssenceLeech_Encased"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CButton id="MercDefender_SlaynElemental_EssenceLeech">
+        <Icon value="Assets\Textures\btn-ability-zerg-corrosivebile.dds"/>
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+    </CButton>
+    <CActorRange id="MercDefender_SlaynElemental_WeaponRange" parent="RangeWeapon">
+        <Filter index="Self" value="1"/>
+        <Filter index="Neutral" value="1"/>
+        <Inherits index="TeamColor" value="1"/>
+        <FogVisibility value="Hidden"/>
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Mercenaries"/>
+        <On Terms="Behavior.MercDefender_SlaynElemental_WeaponRangeIndicator.On" Send="Create"/>
+        <On Terms="Behavior.MercDefender_SlaynElemental_WeaponRangeIndicator.Off" Send="Destroy"/>
+        <Range value="5.500000"/>
+        <Icon value="assets\Textures\UI_Ingame_Radius_Tower.dds"/>
+        <IconArcLength value="4.000000"/>
+    </CActorRange>
+    <CActorModel id="MercDefender_SlaynElemental_EssenceLeech_ModelCage" parent="CommandersModelAnimationStyleContinuous">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Mercenaries"/>
+        <On Terms="Behavior.MercDefender_SlaynElemental_EssenceLeech_Encased.On" Send="Create"/>
+        <On Terms="Behavior.MercDefender_SlaynElemental_EssenceLeech_Encased.Off" Send="AnimBracketStop BSD"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <AutoScaleFactor value="2.000000"/>
+    </CActorModel>
+    <CActorSound id="MercDefender_SlaynElemental_EssenceLeech_SoundCageEnd" parent="SoundContinuous">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Mercenaries"/>
+        <On Terms="Behavior.MercDefender_SlaynElemental_EssenceLeech_Encased.Off" Send="Create"/>
+    </CActorSound>
+    <CActorSound id="MercDefender_SlaynElemental_EssenceLeech_SoundCageStart" parent="SoundOneShot">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Mercenaries"/>
+        <On Terms="Behavior.MercDefender_SlaynElemental_EssenceLeech_Encased.On" Send="Create"/>
+    </CActorSound>
+    <CActorUnit id="MercDefender_SlaynElemental" parent="CommandersCreepStandard" unitName="MercDefender_SlaynElemental">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Mercenaries"/>
+        <On Terms="Behavior.FaceMeltDance.On" Send="AnimPlay Spell Dance PlayForever"/>
+        <On Terms="Behavior.FaceMeltDance.Off" Send="AnimClear Spell"/>
+        <On Terms="Behavior.TalentBucketPromote.On" Send="SetScale 1.250000 1.000000"/>
+        <On Terms="UnitDeathCustomize" Send="DeathCustomize RagdollBasic"/>
+        <On Terms="ActorCreation" Send="SetMinimapVisibility"/>
+        <On Terms="ActorCreation" Send="$Birth,A DontResetOnUnhide 0.000000 -1.000000 -1.000000 AsAutomatic 0.000000 40"/>
+        <Model value="Mercenary_SlaynElemental"/>
+        <BuildModel value="Mercenary_SlaynElemental"/>
+        <DeathArray index="Normal" ModelLink="Mercenary_SlaynElemental_Death" SoundLink="" VoiceLink=""/>
+        <DeathCustoms ModelLink="MassHallucinationDeath" SoundLink="Tassadar_MassHallucination_DeathLarge" Name="Hallucination"/>
+        <DeathCustoms ActorModel="SlaynElementalDeathRagdoll" ModelLink="Mercenary_SlaynElemental_Death_Ragdoll" Name="RagdollBasic">
+            <BodySquibs Name="None"/>
+        </DeathCustoms>
+        <PlacementModel value="Mercenary_SlaynElemental"/>
+        <WalkAnimMoveSpeed value="4"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <StatusBarFlags index="Workers" value="0"/>
+        <UnitIcon value="Assets\Textures\tip_slaynelemental.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\ui_targetportrait_bbay_minions_footman_red.dds"/>
+        </Wireframe>
+        <MinimapIconIsTeamColored value="0"/>
+        <MinimapUseSelfColor value="1"/>
+        <MinimapUseSelectionColor value="1"/>
+        <CustomUnitStatusFrame value="UnitStatus/SuperCreepNeutralUnitStatusFrameTemplate"/>
+    </CActorUnit>
+    <CActorModel id="MercDefender_SlaynElemental_EssenceLeech_Warning" parent="CommandersModelAnimationStyleContinuous">
+        <AcceptedHostedPropTransfers index="TeamColor" value="1"/>
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Mercenaries"/>
+        <On Terms="Effect.MercDefender_SlaynElemental_EssenceLeech_CreateWarningPersistent.Start" Send="Create"/>
+        <On Terms="Effect.MercDefender_SlaynElemental_EssenceLeech_CreateWarningPersistent.Stop" Send="Destroy"/>
+        <HostSiteOps Ops="SOpTargetPointStationary"/>
+    </CActorModel>
+    <CActorSound id="MercDefender_SlaynElemental_EssenceLeech_SoundCageLoop" parent="SoundContinuous">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Mercenaries"/>
+        <On Terms="Behavior.MercDefender_SlaynElemental_EssenceLeech_Encased.On" Send="Create"/>
+        <On Terms="Behavior.MercDefender_SlaynElemental_EssenceLeech_Encased.Off" Send="Destroy"/>
+    </CActorSound>
+    <CActorBeamSimple id="MercDefender_SlaynElementalWeapon_AttackBeam" parent="BeamSimpleAnimationStyleOneShot">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Mercenaries"/>
+        <On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD Birth {} Death ContentPlayOnce"/>
+    </CActorBeamSimple>
+    <CActorAction id="MercDefender_SlaynElementalWeapon_Attack" parent="GenericAttack" effectAttack="MercDefender_SlaynElementalWeapon_Damage">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Mercenaries"/>
+        <LaunchSiteOps Ops="SOpAttachWeapon"/>
+        <LaunchAttachQuery Methods="Weapon"/>
+    </CActorAction>
+    <CModel id="MercDefender_SlaynElemental_ElementalPower_ModelCreationBeam" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Protoss\SOA_Reinforcements_Beam\SOA_Reinforcements_Beam.m3"/>
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+    </CModel>
+    <CModel id="MercDefender_SlaynElemental_EssenceLeech_ModelCage" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Neutral\SlaynElemental_BeamCage\SlaynElemental_BeamCage.m3"/>
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+    </CModel>
+    <CModel id="Mercenary_SlaynElemental_Death" parent="UnitDeath" Race="Zerg">
+        <Model value="Assets\Units\Neutral\Slayn_Elemental_Death\Slayn_Elemental_Death.m3"/>
+        <EditorCategories value="Race:Zerg,CommandersHero:Mercenaries"/>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="SlaynElemental_Death_Charge"/>
+            <Type value="Sound"/>
+            <Payload value="SlaynElemental_Death_Charge"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="SlaynElemental_Death_A"/>
+            <Type value="Sound"/>
+            <Time value="0.707000"/>
+            <Payload value="SlaynElemental_Death_A"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="SlaynElemental_Death_B"/>
+            <Type value="Sound"/>
+            <Time value="0.990000"/>
+            <Payload value="SlaynElemental_Death_B"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="SlaynElemental_Death_Explo"/>
+            <Type value="Sound"/>
+            <Time value="0.995000"/>
+            <Payload value="SlaynElemental_Death_Explo"/>
+        </Events>
+        <Occlusion value="Show"/>
+        <Flags index="TeenSafe" value="1"/>
+    </CModel>
+    <CModel id="Mercenary_SlaynElemental_Death_Ragdoll" parent="UnitDeathRagdoll" Race="Zerg">
+        <Model value="Assets\Units\Neutral\Slayn_Elemental_Ragdoll_Death\Slayn_Elemental_Ragdoll_Death.m3"/>
+        <EditorCategories value="Race:Zerg,CommandersHero:Mercenaries"/>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="SlaynElemental_Death_Charge"/>
+            <Type value="Sound"/>
+            <Payload value="SlaynElemental_Death_Charge"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="SlaynElemental_Death_A"/>
+            <Type value="Sound"/>
+            <Time value="0.707000"/>
+            <Payload value="SlaynElemental_Death_A"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="SlaynElemental_Death_B"/>
+            <Type value="Sound"/>
+            <Time value="0.990000"/>
+            <Payload value="SlaynElemental_Death_B"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="SlaynElemental_Death_Explo"/>
+            <Type value="Sound"/>
+            <Time value="0.995000"/>
+            <Payload value="SlaynElemental_Death_Explo"/>
+        </Events>
+    </CModel>
+    <CModel id="SlaynElementalGrabWeapon2" parent="MissileFX">
+        <Model value="Assets\Units\Test\InvisibleUnit\InvisibleUnit.m3"/>
+        <EditorCategories value="CommandersHero:Tileset"/>
+    </CModel>
+    <CModel id="Mercenary_SlaynElemental" parent="Unit" Race="Zerg">
+        <Model value="Assets\Units\Neutral\Slayn_ElementalEX3\Slayn_ElementalEX3.m3"/>
+        <EditorCategories value="Race:Zerg,CommandersHero:Mercenaries"/>
+        <Events>
+            <Anim value="Birth"/>
+            <Name value="Mercenary_SlaynElemental_Spawn"/>
+            <Type value="Sound"/>
+            <Payload value="MercDefender_SlaynElemental_Spawn"/>
+        </Events>
+        <SelectionRadius value="2.000000"/>
+        <ShadowRadius value="2.000000"/>
+    </CModel>
+    <CModel id="MercDefender_SlaynElemental_EssenceLeech_Warning" parent="PersistentSpellFX">
+        <Model value="assets\UI\Cursors\UI_Cursor_Circle_Fantasy_TeamColor\UI_Cursor_Circle_Fantasy_TeamColor.m3"/>
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <ScaleMax value="1.500000,1.500000,1.500000"/>
+        <ScaleMin value="1.500000,1.500000,1.500000"/>
+    </CModel>
+    <CModel id="MercDefender_SlaynElementalWeapon_AttackBeam" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Terran\ArcadeTerraTronBeam\ArcadeTerraTronBeam.m3"/>
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <ScaleMax value="0.250000,0.250000,0.250000"/>
+        <ScaleMin value="0.250000,0.250000,0.250000"/>
+    </CModel>
+    <CModel id="MercDefender_SlaynElementalWeapon_AttackImpact" parent="ImpactFX">
+        <Model value="Assets\Effects\Protoss\ArchonBeamImpact\ArchonBeamImpact.m3"/>
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+    </CModel>
+    <CWeaponLegacy id="MercDefender_SlaynElementalWeapon">
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <TargetFilters value="Visible;Psionic,Missile,Stasis,Dead,Hidden,Invulnerable,Benign"/>
+        <Effect value="MercDefender_SlaynElementalWeapon_SearchArea"/>
+        <AcquireFilters value="-;Player,Ally,Neutral,Enemy"/>
+        <Period value="1.5"/>
+    </CWeaponLegacy>
+    <CSound id="MercDefender_SlaynElemental_EssenceLeech_SoundCageStart" parent="Combat">
+        <EditorCategories value="Race:Neutral,CommandersHero:Mercenaries"/>
+        <AssetArray File="Assets\Sounds\Adept_AttackLaunch00.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Adept_AttackLaunch01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Adept_AttackLaunch02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Adept_AttackLaunch03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Adept_AttackLaunch04.wav" FacialGroup=""/>
+        <DupeMaximumMethod value="Replace"/>
+        <DupeMuteCount value="6"/>
+        <DupePrioritization value="Oldest"/>
+        <Pitch value="-1.500000,2.500000"/>
+        <Volume value="2.000000,2.000000"/>
+        <VolumeRolloffPoints index="0" removed="1"/>
+        <VolumeRolloffPoints index="1" removed="1"/>
+    </CSound>
+    <CSound id="MercDefender_SlaynElemental_Spawn" parent="Combat">
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <AssetArray File="Assets\Sounds\Gen_Explo_Fire_01.wav" FacialGroup=""/>
+        <Flags index="Ignorable" value="1"/>
+        <Flags index="Purgable" value="0"/>
+        <Category value="Death"/>
+        <Pitch value="-3.000000,-1.000000"/>
+        <Volume value="-3.000000,-1.000000"/>
+        <VolumeRolloffPoints index="0" removed="1"/>
+        <VolumeRolloffPoints index="1" removed="1"/>
+    </CSound>
+    <CSound id="MercDefender_SlaynElemental_EssenceLeech_SoundCageLoop" parent="Combat">
+        <EditorCategories value="Race:Neutral,CommandersHero:Mercenaries"/>
+        <AssetArray File="Assets\Sounds\SlaynElemental_DeathGrip_Beam_01b.wav" FacialGroup=""/>
+        <DupeMaximumMethod value="Replace"/>
+        <DupeMuteCount value="6"/>
+        <DupePrioritization value="Oldest"/>
+        <LoopCount value="-1"/>
+        <Pitch value="-6.500000,-6.500000"/>
+        <VolumeRolloffPoints index="1" Distance="25.000000" Volume="-96.000000"/>
+        <Volume value="-2.000000,-2.000000"/>
+    </CSound>
+    <CSound id="MercDefender_SlaynElemental_EssenceLeech_SoundCageEnd" parent="Combat">
+        <EditorCategories value="Race:Neutral,CommandersHero:Mercenaries"/>
+        <AssetArray File="Assets\Sounds\SlaynElemental_BeamEnd_01b.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\SlaynElemental_BeamStart_01b.wav" FacialGroup=""/>
+        <DupeMaximumMethod value="Replace"/>
+        <DupeMuteCount value="6"/>
+        <DupePrioritization value="Oldest"/>
+        <VolumeRolloffPoints index="0" removed="1"/>
+        <VolumeRolloffPoints index="1" removed="1"/>
+        <Volume value="-2.000000,-2.000000"/>
+    </CSound>
+    <CSound id="MercDefender_SlaynElementalWeapon_AttackImpact" parent="Combat">
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <AssetArray File="Assets\Sounds\SlaynElemental_AttackImpact01_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\SlaynElemental_AttackImpact02_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\SlaynElemental_AttackImpact03_1ch.wav" FacialGroup=""/>
+        <Volume value="-2.000000,-2.000000"/>
+    </CSound>
+    <CSound id="MercDefender_SlaynElementalWeapon_AttackLaunch" parent="Spell">
+        <EditorCategories value="CommandersHero:Mercenaries"/>
+        <AssetArray File="Assets\Sounds\SlaynElemental_AttackLaunch01_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\SlaynElemental_AttackLaunch02_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\SlaynElemental_AttackLaunch03_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\SlaynElemental_AttackLaunch04_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\SlaynElemental_AttackLaunch05_1ch.wav" FacialGroup=""/>
+        <Volume value="-8.500000,-8.500000"/>
+        <VolumeRolloffPoints Distance="16.016714"/>
+        <VolumeRolloffPoints Distance="38.161560" Volume="-96.000000"/>
+    </CSound>
+    <CUnit id="MercDefender_SlaynElemental" parent="CommandersMinion">
+        <FlagArray index="Unstoppable" value="1"/>
+        <Collide index="Burrow" value="0"/>
+        <Attributes index="Light" value="1"/>
+        <LifeStart value="15000"/>
+        <LifeMax value="15000"/>
+        <StationaryTurningRate value="399.9023"/>
+        <Height value="3.75"/>
+        <AbilArray index="3" Link="MercDefender_SlaynElemental_EssenceLeech"/>
+        <BehaviorArray Link="MercDefender_SlaynElemental_BirthInvulnerability"/>
+        <BehaviorArray Link="MercenaryScaling_SlaynElementalScalingDefender"/>
+        <WeaponArray Link="MercDefender_SlaynElementalWeapon"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="5" Face="MercDefender_SlaynElemental_EssenceLeech" Type="AbilCmd" AbilCmd="MercDefender_SlaynElemental_EssenceLeech,255" Row="0" Column="0"/>
+        </CardLayouts>
+        <Radius value="0.6875"/>
+        <InnerRadius value="0.6875"/>
+        <EditorCategories value="ObjectType:Unit,CommandersHero:Mercenaries"/>
+    </CUnit>
+    <CBehaviorVeterancy id="MercenaryScaling_SlaynElementalScalingDefender">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Mercenaries"/>
+        <XPFraction index="Kills" value="0"/>
+        <VeterancyLevelArray/>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Ranged" value="4.5"/>
+                <DamageDealtFraction index="Spell" value="0.05"/>
+                <VitalMaxArray index="Life" value="300"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="10">
+                <DamageDealtScaled index="Ranged" value="4.5"/>
+                <DamageDealtFraction index="Spell" value="0.05"/>
+                <VitalMaxArray index="Life" value="300"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="10">
+                <DamageDealtScaled index="Ranged" value="4.5"/>
+                <DamageDealtFraction index="Spell" value="0.05"/>
+                <VitalMaxArray index="Life" value="300"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="10">
+                <DamageDealtScaled index="Ranged" value="4.5"/>
+                <DamageDealtFraction index="Spell" value="0.05"/>
+                <VitalMaxArray index="Life" value="300"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="10">
+                <DamageDealtScaled index="Ranged" value="4.5"/>
+                <DamageDealtFraction index="Spell" value="0.05"/>
+                <VitalMaxArray index="Life" value="300"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="10">
+                <DamageDealtScaled index="Ranged" value="6.75"/>
+                <DamageDealtFraction index="Spell" value="0.06"/>
+                <VitalMaxArray index="Life" value="450"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="10">
+                <DamageDealtScaled index="Ranged" value="6.75"/>
+                <DamageDealtFraction index="Spell" value="0.06"/>
+                <VitalMaxArray index="Life" value="450"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="10">
+                <DamageDealtScaled index="Ranged" value="6.75"/>
+                <DamageDealtFraction index="Spell" value="0.06"/>
+                <VitalMaxArray index="Life" value="450"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="10">
+                <DamageDealtScaled index="Ranged" value="6.75"/>
+                <DamageDealtFraction index="Spell" value="0.06"/>
+                <VitalMaxArray index="Life" value="450"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="10">
+                <DamageDealtScaled index="Ranged" value="6.75"/>
+                <DamageDealtFraction index="Spell" value="0.06"/>
+                <VitalMaxArray index="Life" value="450"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="10">
+                <DamageDealtScaled index="Ranged" value="9"/>
+                <DamageDealtFraction index="Spell" value="0.07"/>
+                <VitalMaxArray index="Life" value="600"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="10">
+                <DamageDealtScaled index="Ranged" value="9"/>
+                <DamageDealtFraction index="Spell" value="0.07"/>
+                <VitalMaxArray index="Life" value="600"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="10">
+                <DamageDealtScaled index="Ranged" value="9"/>
+                <DamageDealtFraction index="Spell" value="0.07"/>
+                <VitalMaxArray index="Life" value="600"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="10">
+                <DamageDealtScaled index="Ranged" value="9"/>
+                <DamageDealtFraction index="Spell" value="0.07"/>
+                <VitalMaxArray index="Life" value="600"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="10">
+                <DamageDealtScaled index="Ranged" value="9"/>
+                <DamageDealtFraction index="Spell" value="0.07"/>
+                <VitalMaxArray index="Life" value="600"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="10">
+                <DamageDealtScaled index="Ranged" value="11.25"/>
+                <DamageDealtFraction index="Spell" value="0.08"/>
+                <VitalMaxArray index="Life" value="750"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="10">
+                <DamageDealtScaled index="Ranged" value="11.25"/>
+                <DamageDealtFraction index="Spell" value="0.08"/>
+                <VitalMaxArray index="Life" value="750"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="10">
+                <DamageDealtScaled index="Ranged" value="11.25"/>
+                <DamageDealtFraction index="Spell" value="0.08"/>
+                <VitalMaxArray index="Life" value="750"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="10">
+                <DamageDealtScaled index="Ranged" value="11.25"/>
+                <DamageDealtFraction index="Spell" value="0.08"/>
+                <VitalMaxArray index="Life" value="750"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="10">
+                <DamageDealtScaled index="Ranged" value="11.25"/>
+                <DamageDealtFraction index="Spell" value="0.08"/>
+                <VitalMaxArray index="Life" value="750"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="10">
+                <DamageDealtScaled index="Ranged" value="13.5"/>
+                <DamageDealtFraction index="Spell" value="0.09"/>
+                <VitalMaxArray index="Life" value="900"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="10">
+                <DamageDealtScaled index="Ranged" value="13.5"/>
+                <DamageDealtFraction index="Spell" value="0.09"/>
+                <VitalMaxArray index="Life" value="900"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="10">
+                <DamageDealtScaled index="Ranged" value="13.5"/>
+                <DamageDealtFraction index="Spell" value="0.09"/>
+                <VitalMaxArray index="Life" value="900"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="10">
+                <DamageDealtScaled index="Ranged" value="13.5"/>
+                <DamageDealtFraction index="Spell" value="0.09"/>
+                <VitalMaxArray index="Life" value="900"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="10">
+                <DamageDealtScaled index="Ranged" value="13.5"/>
+                <DamageDealtFraction index="Spell" value="0.09"/>
+                <VitalMaxArray index="Life" value="900"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="10">
+                <DamageDealtScaled index="Ranged" value="13.5"/>
+                <DamageDealtFraction index="Spell" value="0.1"/>
+                <VitalMaxArray index="Life" value="900"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="10">
+                <DamageDealtScaled index="Ranged" value="13.5"/>
+                <DamageDealtFraction index="Spell" value="0.1"/>
+                <VitalMaxArray index="Life" value="900"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="10">
+                <DamageDealtScaled index="Ranged" value="13.5"/>
+                <DamageDealtFraction index="Spell" value="0.1"/>
+                <VitalMaxArray index="Life" value="900"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification KillXPBonus="10">
+                <DamageDealtScaled index="Ranged" value="13.5"/>
+                <DamageDealtFraction index="Spell" value="0.1"/>
+                <VitalMaxArray index="Life" value="900"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1">
+            <Modification>
+                <DamageDealtScaled index="Ranged" value="13.5"/>
+                <DamageDealtFraction index="Spell" value="0.1"/>
+                <VitalMaxArray index="Life" value="900"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+        <VeterancyLevelArray MinVeterancyXP="1"/>
+    </CBehaviorVeterancy>
+    <CBehaviorBuff id="MercDefender_SlaynElemental_WeaponRangeIndicator">
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Mercenaries"/>
+        <RemoveValidatorArray value="SourceHasnotJungleSoftLeashing"/>
+        <RemoveValidatorArray value="SourceHasnotJungleSoftLeashingNoHeal"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="MercDefender_SlaynElemental_BirthInvulnerability">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Mercenaries"/>
+        <Duration value="3.35"/>
+        <Modification>
+            <StateFlags index="Invulnerable" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="MercDefender_SlaynElemental_EssenceLeech_Encased" parent="CommandersUnitStatsModificator">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\btn-ability-slaynelemental-solaritecocoon.dds"/>
+        <BehaviorCategories index="Stun" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Mercenaries"/>
+        <Duration value="2"/>
+        <Modification>
+            <StateFlags index="Stun" value="1"/>
+            <AttributeChangeArray index="0" Points="-50"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="MercDefender_SlaynElemental_ElementalPower" parent="CommandersUnitStatsModificator">
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\btn-progression-stetmann-02-energyconfiguration.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Mercenaries"/>
+        <RemoveValidatorArray value="SYS_HasNotResetBehavior"/>
+        <Duration value="100"/>
+        <Modification>
+            <AdditiveMoveSpeedFactor value="0.2"/>
+            <AdditiveAttackSpeedFactor value="0.2"/>
+            <AttributeChangeArray index="0" Points="20"/>
+            <AttributeChangeArray index="22" Points="20"/>
+        </Modification>
+    </CBehaviorBuff>
+</Catalog>

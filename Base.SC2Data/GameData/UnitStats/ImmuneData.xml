@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CValidatorUnitCompareBehaviorCount id="TargetDoesNotHaveImmuneToStormDamage">
+        <Behavior value="CommandersImmuneToStormDamage"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="TargetDoesNotHaveImmuneToKineticDamage">
+        <Behavior value="CommandersImmuneToDamage"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="TargetDoesNotHaveImmuneToEnergeticDamage">
+        <Behavior value="CommandersImmuneToEnergeticDamage"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="TargetDoesNotHaveImmuneToCrowdControlBehavior">
+        <Behavior value="CommandersImmuneToCrowdControlBehavior"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CBehaviorBuff id="CommandersImmuneToCrowdControlBehavior">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Common"/>
+        <InfoIcon value="assets\Icons\Common_LAO\The battle\achieve_09_3.DDS"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CommandersImmuneToDamage">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoIcon value="assets\Icons\Common_LAO\Dungeon\achieve_14_47.DDS"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Common"/>
+        <DamageResponse ModifyFraction="0">
+            <Kind index="Spell" value="0"/>
+            <Kind index="Melee" value="0"/>
+            <Kind index="Splash" value="0"/>
+            <Kind index="NoProc" value="0"/>
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CommandersImmuneToEnergeticDamage">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoIcon value="assets\Icons\Common_LAO\Dungeon\achieve_14_48.DDS"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Common"/>
+        <DamageResponse ModifyFraction="0">
+            <Kind index="Melee" value="0"/>
+            <Kind index="Ranged" value="0"/>
+            <Kind index="Splash" value="0"/>
+            <Kind index="NoProc" value="0"/>
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CommandersImmuneToStormDamage">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoIcon value="assets\Icons\Common_LAO\Dungeon\achieve_14_46.DDS"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Common"/>
+        <DamageResponse ModifyFraction="0">
+            <Kind index="Spell" value="0"/>
+            <Kind index="Melee" value="0"/>
+            <Kind index="Ranged" value="0"/>
+            <Kind index="NoProc" value="0"/>
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+</Catalog>

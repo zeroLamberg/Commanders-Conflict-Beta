@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CRequirement id="CasterNotRooted">
+        <NodeArray index="Use" Link="AndEqCountBehaviorHowlingBlastCompleteOnlyAtUnit0EqCountBehaviorWebBlastRootCompleteOnlyAtUnit0EqCountBehaviorEntanglingRootsRootCompleteOnlyAtUnit0EqCountBehaviorBindingRootsTargetBehaviorCompleteOnlyAtUnit0EqCountBehaviorUnderworldBossRootsTargetBehaviorCompleteOnlyAtUnit0EqCountBehaviorUnderworldSummonedBossRootsTargetBehaviorCompleteOnlyAtUnit0EqCountBehaviorLungeRootCompleteOnlyAtUnit0"/>
+    </CRequirement>
+    <CRequirement id="HasPathOfTheAssassinEnabler">
+        <NodeArray index="Use" Link="CountBehaviorPathOfTheAssassinEnablerCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="HasPathOfTheWarriorEnabler">
+        <NodeArray index="Use" Link="CountBehaviorPathOfTheWarriorEnablerCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="HasPathOfTheWizardEnabler">
+        <NodeArray index="Use" Link="CountBehaviorPathOfTheWizardEnablerCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="HeroTalandar@CasterIsPraetor">
+        <EditorCategories value="CommandersHero:Talandar,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountBehaviorHeroTalandarPraetorArmorSuit@PraetorCarryBehaviorCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountBehaviorHeroTalandarPraetorArmorSuit@PraetorCarryBehaviorCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="HeroTalandar@CasterIsDragoon">
+        <EditorCategories value="CommandersHero:Talandar,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountBehaviorHeroTalandarDragoonArmorSuit@DragoonCarryBehaviorCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountBehaviorHeroTalandarDragoonArmorSuit@DragoonCarryBehaviorCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="PlayerHas40StacksOfBribe">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="GTECountBehaviorBribeStacksCompleteOnlyAtUnit40"/>
+    </CRequirement>
+    <CRequirement id="HeroHasNoDeadBehavior">
+        <NodeArray index="Use" Link="EqCountBehaviorDeadQueuedOrBetterAtUnit0"/>
+    </CRequirement>
+    <CRequirement id="NotMounted">
+        <NodeArray index="Show" Link="AndEqCountBehaviorMountedCompleteOnlyAtUnit0EqCountBehaviorMountedFlyerCompleteOnlyAtUnit0"/>
+    </CRequirement>
+    <CRequirement id="HasNoTotalInvis">
+        <NodeArray index="Show" Link="EqCountBehaviorVoidShiftInProgressOrBetterAtUnit0"/>
+    </CRequirement>
+    <CRequirement id="HasAbility3Relic">
+        <NodeArray index="Show" Link="EqCountBehaviorAbility3RelicCompleteOnlyAtUnit1"/>
+    </CRequirement>
+    <CRequirement id="IsMounted">
+        <NodeArray index="Show" Link="OrEqCountBehaviorMountedCompleteOnlyAtUnit1EqCountBehaviorMountedFlyerCompleteOnlyAtUnit1"/>
+    </CRequirement>
+    <CRequirement id="NoMountTalent">
+        <NodeArray index="Show" Link="EqCountBehaviorMountEnablerCompleteOnlyAtUnit0"/>
+    </CRequirement>
+    <CRequirement id="ETCHasPassive">
+        <NodeArray index="Show" Link="AndEqCountBehaviorL90ETCWeaponUberRockstarBehaviorCompleteOnlyAtUnit0"/>
+    </CRequirement>
+    <CRequirement id="HasMountEnabled">
+        <NodeArray index="Show" Link="AndCountBehaviorMountEnablerCompleteOnlyAtUnitEqCountBehaviorMountedCompleteOnlyAtUnit0"/>
+    </CRequirement>
+    <CRequirement id="HasAbility1Relic">
+        <NodeArray index="Show" Link="AndEqCountBehaviorAbility1RelicCompleteOnlyAtUnit1"/>
+    </CRequirement>
+    <CRequirement id="FlyerOnPathable">
+        <NodeArray index="Use" Link="EqCountBehaviorFlyerControllerQueuedOrBetterAtUnit1"/>
+    </CRequirement>
+    <CRequirement id="FlyerToggleOn">
+        <NodeArray index="Show" Link="EqCountBehaviorFlyerControllerCompleteOnlyAtUnit1"/>
+    </CRequirement>
+    <CRequirement id="FlyerNotOnPathable">
+        <NodeArray index="Use" Link="EqCountBehaviorFlyerControllerCompleteOnlyAtUnit1"/>
+        <NodeArray index="Show" Link="AndEqCountBehaviorFlyerControllerCompleteOnlyAtUnit1EqCountBehaviorMountedFlyerCompleteOnlyAtUnit1"/>
+    </CRequirement>
+    <CRequirement id="HeroHasDownedState">
+        <NodeArray index="Show" Link="EqCountBehaviorHeroGravestonedCompleteOnlyAtUnit1"/>
+    </CRequirement>
+    <CRequirement id="HeroHasDeadBehavior">
+        <NodeArray index="Use" Link="EqCountBehaviorDeadCompleteOnlyAtUnit1"/>
+    </CRequirement>
+    <CRequirement id="HasActiveGrave">
+        <NodeArray index="Show" Link="GTTechTreeCheatCountUnitGravestoneInProgressOrBetter0"/>
+    </CRequirement>
+    <CRequirement id="NoAbility2Relic">
+        <NodeArray index="Show" Link="EqCountBehaviorAbility2RelicCompleteOnlyAtUnit0"/>
+    </CRequirement>
+    <CRequirement id="NoAbility1Relic">
+        <NodeArray index="Show" Link="AndEqCountBehaviorAbility1RelicCompleteOnlyAtUnit0"/>
+    </CRequirement>
+    <CRequirement id="HasAbility2Relic">
+        <NodeArray index="Show" Link="EqCountBehaviorAbility2RelicCompleteOnlyAtUnit1"/>
+    </CRequirement>
+    <CRequirement id="BlueTeam">
+        <NodeArray index="Use" Link="LTCountUpgradeChaosTeamCompleteOnlyTechTreeCheat1"/>
+        <NodeArray index="Show" Link="LTCountUpgradeChaosTeamCompleteOnlyTechTreeCheat1"/>
+    </CRequirement>
+    <CRequirement id="BurrowActive">
+        <NodeArray index="Show" Link="CountBehaviorBurrowCasterBehaviorCompleteOnlyAtUnitTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="BurrowDelayActive">
+        <NodeArray index="Show" Link="CountBehaviorBurrowBurrowDelayBehaviorCompleteOnlyAtUnitTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="Disabled">
+        <NodeArray index="Use" Link="0"/>
+    </CRequirement>
+    <CRequirement id="HasInfestation">
+        <NodeArray index="Use" Link="CountBehaviorVirophageMindControlCompleteOnlyAtUnitTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="TheHuntActive">
+        <NodeArray index="Show" Link="CountBehaviorIllidanTheHuntCancellableCompleteOnlyAtUnitTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="Tileset_Khala">
+        <EditorCategories value="TechType:Ability,CommandersHero:Tileset"/>
+        <NodeArray index="Use" Link="CountUpgradeTileset_KhalaCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="TrebuchetPackedMode">
+        <NodeArray index="Show" Link="CountBehaviorTrebuchetUnpackedModeCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="Ultimate1Unlocked">
+        <NodeArray index="Show" Link="EqCountBehaviorUltimate1UnlockedCompleteOnlyAtUnit1"/>
+    </CRequirement>
+    <CRequirement id="UltimateUnlocked">
+        <EditorCategories value="CommandersHero:Common"/>
+        <NodeArray index="Use" Link="And1271523976CountBehaviorHeroicAbilityUnlockedCompleteOnlyAtUnit1"/>
+    </CRequirement>
+    <CRequirement id="Ultimate2Unlocked">
+        <NodeArray index="Show" Link="GTECountBehaviorUltimate2UnlockedCompleteOnlyAtUnit1"/>
+    </CRequirement>
+    <CRequirement id="Ultimate1or2Unlocked">
+        <NodeArray index="Show" Link="OrAndCountBehaviorUltimate2UnlockedCompleteOnlyAtUnit1AndCountBehaviorUltimate1UnlockedCompleteOnlyAtUnit1"/>
+    </CRequirement>
+    <CRequirement id="NotIncapacitated">
+        <NodeArray index="Use" Link="EqCountBehaviorDeadCompleteOnlyAtUnit0"/>
+    </CRequirement>
+    <CRequirement id="NotIncapacitatedOrMounted">
+        <NodeArray index="Use" Link="AndEqCountBehaviorDeadCompleteOnlyAtUnit0EqCountBehaviorMountedCompleteOnlyAtUnit0"/>
+    </CRequirement>
+    <CRequirement id="OrangeTeam">
+        <NodeArray index="Use" Link="CountUpgradeChaosTeamCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeChaosTeamCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="Tileset_Taldarim">
+        <EditorCategories value="TechType:Ability,CommandersHero:Tileset"/>
+        <NodeArray index="Use" Link="CountUpgradeTileset_TaldarimCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HearthstoneHasNoUnit">
+        <NodeArray index="Show" Link="EqCountUnitHeroGenericHearthstoneUnitCompleteOnly0"/>
+    </CRequirement>
+</Catalog>

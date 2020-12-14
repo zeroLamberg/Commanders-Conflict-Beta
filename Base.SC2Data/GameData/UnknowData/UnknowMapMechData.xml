@@ -1,0 +1,1219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CSound id="Brightwing_Ping_AssistHero" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Brightwing_Ping_AssistHero00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="Brightwing_Ping_AssistMe" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Brightwing_Ping_AssistMe00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Brightwing_Ping_AssistMe01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="Brightwing_Ping_Attack" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Brightwing_Ping_Attack00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="Brightwing_Ping_AttackCastle" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Brightwing_Ping_AttackCastle00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="Brightwing_Ping_AttackMerc" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Brightwing_Ping_AttackMerc00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="Brightwing_Ping_AttackOutpost" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Brightwing_Ping_AttackOutpost00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="Brightwing_Ping_Capture" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Brightwing_Ping_Capture00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Brightwing_Ping_Capture01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="Brightwing_Ping_Collect" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Brightwing_Ping_Collect00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Brightwing_Ping_Collect01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="Brightwing_Ping_Danger" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Brightwing_Ping_Danger00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Brightwing_Ping_Danger01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="Brightwing_Ping_Defend" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Brightwing_Ping_Defend00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="Brightwing_Ping_DefendCastle" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Brightwing_Ping_DefendCastle00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="Brightwing_Ping_DefendOutpost" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Brightwing_Ping_DefendOutpost00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="Brightwing_Ping_DefendThing" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Brightwing_Ping_DefendThing00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Brightwing_Ping_DefendThing01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="Brightwing_Ping_DestroyStructure" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Brightwing_Ping_DestroyStructure00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Brightwing_Ping_DestroyStructure01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="Brightwing_Ping_DestroyThing" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Brightwing_Ping_DestroyThing00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Brightwing_Ping_DestroyThing01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="Brightwing_Ping_EnemyMissing" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Brightwing_Ping_EnemyMissing00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Brightwing_Ping_EnemyMissing01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="Brightwing_Ping_KillHero" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Brightwing_Ping_KillHero00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="Brightwing_Ping_OnMyWay" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Brightwing_Ping_OnMyWay00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Brightwing_Ping_OnMyWay01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="Brightwing_Ping_Transport" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Brightwing_Ping_Transport00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Brightwing_Ping_Transport01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="Brightwing_Ping_TurnIn" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Brightwing_Ping_TurnIn00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Brightwing_Ping_TurnIn01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="Rehgar_Ping_AttackCastle" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Rehgar_Ping_AttackCastle00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="-4.000000,-4.000000"/>
+    </CSound>
+    <CSound id="Rehgar_Ping_AttackMerc" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Rehgar_Ping_AttackMerc00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="Rehgar_Ping_AttackOutpost" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Rehgar_Ping_AttackOutpost00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="Rehgar_Ping_DefendCastle" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Rehgar_Ping_DefendCastle00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="Rehgar_Ping_DefendOutpost" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Rehgar_Ping_DefendOutpost00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="Jaina_Ping_AssistMe" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Jaina_Ping_AssistMe00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Jaina_Ping_AssistMe01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Jaina_Ping_Danger" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Jaina_Ping_Danger00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Jaina_Ping_Danger01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Jaina_Ping_EnemyMissing" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Jaina_Ping_EnemyMissing00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Jaina_Ping_EnemyMissing01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Jaina_Ping_OnMyWay" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Jaina_Ping_OnMyWay00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Jaina_Ping_OnMyWay01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Chogall_Ping_Attack" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Chogall_Ping_Attack00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+        <Volume value="-4.000000,-4.000000"/>
+    </CSound>
+    <CSound id="Chogall_Ping_AttackCastle" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Chogall_Ping_AttackCastle00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+        <Volume value="-4.000000,-4.000000"/>
+    </CSound>
+    <CSound id="Chogall_Ping_AttackMerc" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Chogall_Ping_AttackMerc00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Chogall_Ping_AttackOutpost" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Chogall_Ping_AttackOutpost00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Chogall_Ping_Defend" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Chogall_Ping_Defend00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Chogall_Ping_DefendCastle" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Chogall_Ping_DefendCastle00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Chogall_Ping_DefendOutpost" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Chogall_Ping_DefendOutpost00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Anubarak_Ping_AssistHero" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Anubarak_Ping_AssistHero00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Anubarak_Ping_AssistMe" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Anubarak_Ping_AssistMe00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Anubarak_Ping_AssistMe01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Anubarak_Ping_Attack" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Anubarak_Ping_Attack00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+        <Volume value="-4.000000,-4.000000"/>
+    </CSound>
+    <CSound id="Anubarak_Ping_AttackCastle" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Anubarak_Ping_AttackCastle00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+        <Volume value="-4.000000,-4.000000"/>
+    </CSound>
+    <CSound id="Anubarak_Ping_AttackMerc" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Anubarak_Ping_AttackMerc00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Anubarak_Ping_AttackOutpost" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Anubarak_Ping_AttackOutpost00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Anubarak_Ping_Danger" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Anubarak_Ping_Danger00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Anubarak_Ping_Danger01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Anubarak_Ping_Defend" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Anubarak_Ping_Defend00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Anubarak_Ping_DefendCastle" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Anubarak_Ping_DefendCastle00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Anubarak_Ping_DefendOutpost" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Anubarak_Ping_DefendOutpost00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Anubarak_Ping_EnemyMissing" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Anubarak_Ping_EnemyMissing00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Anubarak_Ping_EnemyMissing01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Anubarak_Ping_KillHero" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Anubarak_Ping_KillHero00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Anubarak_Ping_OnMyWay" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Anubarak_Ping_OnMyWay00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Anubarak_Ping_OnMyWay01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Azmodan_Ping_AssistMe" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Azmodan_Ping_AssistMe00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Azmodan_Ping_AssistMe01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Azmodan_Ping_Danger" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Azmodan_Ping_Danger00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Azmodan_Ping_Danger01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Azmodan_Ping_EnemyMissing" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Azmodan_Ping_EnemyMissing00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Azmodan_Ping_EnemyMissing01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Azmodan_Ping_OnMyWay" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Azmodan_Ping_OnMyWay00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Azmodan_Ping_OnMyWay01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Chen_Ping_AssistMe" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Chen_Ping_AssistMe00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Chen_Ping_AssistMe01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Chen_Ping_Danger" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Chen_Ping_Danger00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Chen_Ping_Danger01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Chen_Ping_EnemyMissing" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Chen_Ping_EnemyMissing00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Chen_Ping_EnemyMissing01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Chen_Ping_OnMyWay" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Chen_Ping_OnMyWay00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Chen_Ping_OnMyWay01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Kaelthas_Ping_AssistMe" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Kaelthas_Ping_AssistMe00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Kaelthas_Ping_AssistMe01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Kaelthas_Ping_Danger" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Kaelthas_Ping_Danger00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Kaelthas_Ping_Danger01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Kaelthas_Ping_EnemyMissing" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Kaelthas_Ping_EnemyMissing00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Kaelthas_Ping_EnemyMissing01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Kaelthas_Ping_OnMyWay" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Kaelthas_Ping_OnMyWay00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Kaelthas_Ping_OnMyWay01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Leoric_Ping_Attack" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Leoric_Ping_Attack00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+        <Volume value="-4.000000,-4.000000"/>
+    </CSound>
+    <CSound id="Leoric_Ping_AttackCastle" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Leoric_Ping_AttackCastle00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+        <Volume value="-4.000000,-4.000000"/>
+    </CSound>
+    <CSound id="Leoric_Ping_AttackMerc" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Leoric_Ping_AttackMerc00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Leoric_Ping_AttackOutpost" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Leoric_Ping_AttackOutpost00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Leoric_Ping_Defend" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Leoric_Ping_Defend00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Leoric_Ping_DefendCastle" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Leoric_Ping_DefendCastle00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Leoric_Ping_DefendOutpost" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Leoric_Ping_DefendOutpost00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="LiLi_Ping_Attack" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\LiLi_Ping_Attack00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+        <Volume value="-4.000000,-4.000000"/>
+    </CSound>
+    <CSound id="LiLi_Ping_Defend" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\LiLi_Ping_Defend00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Mekkatorque_Ping_Attack" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Mekkatorque_Ping_Attack00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+        <Volume value="-4.000000,-4.000000"/>
+    </CSound>
+    <CSound id="Mekkatorque_Ping_AttackCastle" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Mekkatorque_Ping_AttackCastle00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+        <Volume value="-4.000000,-4.000000"/>
+    </CSound>
+    <CSound id="Mekkatorque_Ping_AttackMerc" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Mekkatorque_Ping_AttackMerc00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Mekkatorque_Ping_AttackOutpost" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Mekkatorque_Ping_AttackOutpost00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Mekkatorque_Ping_Defend" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Mekkatorque_Ping_Defend00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Mekkatorque_Ping_DefendCastle" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Mekkatorque_Ping_DefendCastle00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Mekkatorque_Ping_DefendOutpost" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Mekkatorque_Ping_DefendOutpost00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Murky_Ping_AssistHero" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Murky_Ping_AssistHero00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Murky_Ping_AssistMe" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Murky_Ping_AssistMe00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Murky_Ping_AssistMe01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Murky_Ping_Attack" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Murky_Ping_Attack00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+        <Volume value="-4.000000,-4.000000"/>
+    </CSound>
+    <CSound id="Murky_Ping_AttackCastle" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Murky_Ping_AttackCastle00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+        <Volume value="-4.000000,-4.000000"/>
+    </CSound>
+    <CSound id="Murky_Ping_AttackMerc" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Murky_Ping_AttackMerc00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Murky_Ping_AttackOutpost" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Murky_Ping_AttackOutpost00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Murky_Ping_Danger" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Murky_Ping_Danger00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Murky_Ping_Danger01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Murky_Ping_Defend" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Murky_Ping_Defend00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Murky_Ping_DefendCastle" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Murky_Ping_DefendCastle00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Murky_Ping_DefendOutpost" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Murky_Ping_DefendOutpost00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Murky_Ping_EnemyMissing" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Murky_Ping_EnemyMissing00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Murky_Ping_EnemyMissing01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Murky_Ping_KillHero" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Murky_Ping_KillHero00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Murky_Ping_OnMyWay" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Murky_Ping_OnMyWay00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Murky_Ping_OnMyWay01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Samuro_Ping_Attack" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Samuro_Ping_Attack00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+        <Volume value="-4.000000,-4.000000"/>
+    </CSound>
+    <CSound id="Samuro_Ping_AttackCastle" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Samuro_Ping_AttackCastle00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+        <Volume value="-4.000000,-4.000000"/>
+    </CSound>
+    <CSound id="Samuro_Ping_AttackMerc" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Samuro_Ping_AttackMerc00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Samuro_Ping_AttackOutpost" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Samuro_Ping_AttackOutpost00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Samuro_Ping_Defend" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Samuro_Ping_Defend00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Samuro_Ping_DefendCastle" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Samuro_Ping_DefendCastle00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Samuro_Ping_DefendOutpost" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Samuro_Ping_DefendOutpost00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="SiegeTank_Ping_AssistMe" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\SiegeTank_Ping_AssistMe00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\SiegeTank_Ping_AssistMe01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="SiegeTank_Ping_Danger" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\SiegeTank_Ping_Danger00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\SiegeTank_Ping_Danger01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="SiegeTank_Ping_EnemyMissing" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\SiegeTank_Ping_EnemyMissing00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\SiegeTank_Ping_EnemyMissing01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="SiegeTank_Ping_OnMyWay" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\SiegeTank_Ping_OnMyWay00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\SiegeTank_Ping_OnMyWay01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Sylvanas_Ping_Attack" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Sylvanas_Ping_Attack00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="-4.000000,-4.000000"/>
+    </CSound>
+    <CSound id="Thrall_Ping_AssistMe" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Thrall_Ping_AssistMe00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Thrall_Ping_AssistMe01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Thrall_Ping_Danger" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Thrall_Ping_Danger00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Thrall_Ping_Danger01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Thrall_Ping_EnemyMissing" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Thrall_Ping_EnemyMissing00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Thrall_Ping_EnemyMissing01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Thrall_Ping_OnMyWay" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Thrall_Ping_OnMyWay00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Thrall_Ping_OnMyWay01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Kaelthas_Ping_AssistHero" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Kaelthas_Ping_AssistHero00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Kaelthas_Ping_Attack" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Kaelthas_Ping_Attack00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+        <Volume value="-4.000000,-4.000000"/>
+    </CSound>
+    <CSound id="Kaelthas_Ping_AttackCastle" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Kaelthas_Ping_AttackCastle00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+        <Volume value="-4.000000,-4.000000"/>
+    </CSound>
+    <CSound id="Kaelthas_Ping_AttackMerc" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Kaelthas_Ping_AttackMerc00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Kaelthas_Ping_AttackOutpost" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Kaelthas_Ping_AttackOutpost00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Kaelthas_Ping_Defend" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Kaelthas_Ping_Defend00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Kaelthas_Ping_DefendCastle" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Kaelthas_Ping_DefendCastle00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Kaelthas_Ping_DefendOutpost" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Kaelthas_Ping_DefendOutpost00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Kaelthas_Ping_KillHero" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Kaelthas_Ping_KillHero00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Azmodan_Ping_AssistHero" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Azmodan_Ping_AssistHero00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Azmodan_Ping_Attack" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Azmodan_Ping_Attack00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+        <Volume value="-4.000000,-4.000000"/>
+    </CSound>
+    <CSound id="Azmodan_Ping_AttackCastle" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Azmodan_Ping_AttackCastle00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+        <Volume value="-4.000000,-4.000000"/>
+    </CSound>
+    <CSound id="Azmodan_Ping_AttackMerc" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Azmodan_Ping_AttackMerc00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Azmodan_Ping_AttackOutpost" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Azmodan_Ping_AttackOutpost00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Azmodan_Ping_Defend" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Azmodan_Ping_Defend00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Azmodan_Ping_DefendCastle" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Azmodan_Ping_DefendCastle00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Azmodan_Ping_DefendOutpost" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Azmodan_Ping_DefendOutpost00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Azmodan_Ping_KillHero" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Azmodan_Ping_KillHero00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Chen_Ping_AssistHero" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Chen_Ping_AssistHero00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Chen_Ping_Attack" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Chen_Ping_Attack00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+        <Volume value="-4.000000,-4.000000"/>
+    </CSound>
+    <CSound id="Chen_Ping_AttackCastle" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Chen_Ping_AttackCastle00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+        <Volume value="-4.000000,-4.000000"/>
+    </CSound>
+    <CSound id="Chen_Ping_AttackMerc" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Chen_Ping_AttackMerc00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Chen_Ping_AttackOutpost" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Chen_Ping_AttackOutpost00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Chen_Ping_Defend" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Chen_Ping_Defend00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Chen_Ping_DefendCastle" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Chen_Ping_DefendCastle00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Chen_Ping_DefendOutpost" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Chen_Ping_DefendOutpost00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Chen_Ping_KillHero" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Chen_Ping_KillHero00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Jaina_Ping_AssistHero" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Jaina_Ping_AssistHero00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Jaina_Ping_Attack" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Jaina_Ping_Attack00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+        <Volume value="-4.000000,-4.000000"/>
+    </CSound>
+    <CSound id="Jaina_Ping_AttackCastle" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Jaina_Ping_AttackCastle00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+        <Volume value="-4.000000,-4.000000"/>
+    </CSound>
+    <CSound id="Jaina_Ping_AttackMerc" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Jaina_Ping_AttackMerc00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Jaina_Ping_AttackOutpost" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Jaina_Ping_AttackOutpost00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Jaina_Ping_Defend" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Jaina_Ping_Defend00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Jaina_Ping_DefendCastle" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Jaina_Ping_DefendCastle00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Jaina_Ping_DefendOutpost" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Jaina_Ping_DefendOutpost00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Jaina_Ping_KillHero" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Jaina_Ping_KillHero00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="SiegeTank_Ping_AssistHero" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\SiegeTank_Ping_AssistHero00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="SiegeTank_Ping_AttackCastle" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\SiegeTank_Ping_AttackCastle00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+        <Volume value="-4.000000,-4.000000"/>
+    </CSound>
+    <CSound id="SiegeTank_Ping_AttackMerc" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\SiegeTank_Ping_AttackMerc00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="SiegeTank_Ping_AttackOutpost" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\SiegeTank_Ping_AttackOutpost00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="SiegeTank_Ping_AttackTower" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\SiegeTank_Ping_AttackTower00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+        <Volume value="-4.000000,-4.000000"/>
+    </CSound>
+    <CSound id="SiegeTank_Ping_DefendCastle" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\SiegeTank_Ping_DefendCastle00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="SiegeTank_Ping_DefendOutpost" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\SiegeTank_Ping_DefendOutpost00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="SiegeTank_Ping_DefendTower" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\SiegeTank_Ping_DefendTower00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="SiegeTank_Ping_KillHero" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\SiegeTank_Ping_KillHero00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Thrall_Ping_AssistHero" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Thrall_Ping_AssistHero00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Thrall_Ping_Attack" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Thrall_Ping_Attack00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+        <Volume value="-4.000000,-4.000000"/>
+    </CSound>
+    <CSound id="Thrall_Ping_AttackCastle" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Thrall_Ping_AttackCastle00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+        <Volume value="-4.000000,-4.000000"/>
+    </CSound>
+    <CSound id="Thrall_Ping_AttackMerc" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Thrall_Ping_AttackMerc00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Thrall_Ping_AttackOutpost" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Thrall_Ping_AttackOutpost00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Thrall_Ping_Defend" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Thrall_Ping_Defend00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Thrall_Ping_DefendCastle" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Thrall_Ping_DefendCastle00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Thrall_Ping_DefendOutpost" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Thrall_Ping_DefendOutpost00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Thrall_Ping_KillHero" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Thrall_Ping_KillHero00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Blademaster_Ping_Attack" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\HeroD5_Blademaster_118.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\HeroD5_Blademaster_119.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\HeroD5_Blademaster_120.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\HeroD5_Blademaster_121.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\HeroD5_Blademaster_122.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="-4.000000,-4.000000"/>
+    </CSound>
+    <CSound id="Blademaster_Ping_Defend" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\HeroD5_Blademaster_123.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\HeroD5_Blademaster_124.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\HeroD5_Blademaster_125.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\HeroD5_Blademaster_126.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="Rehgar_Ping_Attack" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Rehgar_Ping_Attack00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+        <Volume value="-4.000000,-4.000000"/>
+    </CSound>
+    <CSound id="Rehgar_Ping_Defend" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Rehgar_Ping_Defend00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="SiegeTank_Ping_Attack" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\SiegeTank_Ping_Attack00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+        <Volume value="-4.000000,-4.000000"/>
+    </CSound>
+    <CSound id="SiegeTank_Ping_Defend" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\SiegeTank_Ping_Defend00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Zagara_Ping_AssistHero" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Zagara_Ping_AssistHero00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Zagara_Ping_AssistMe" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Zagara_Ping_AssistMe00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Zagara_Ping_AssistMe01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Zagara_Ping_Attack" parent="Hero_High">
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Zagara_Ping_Attack00.ogg"/>
+        <DupeWait value="10000,10000"/>
+        <Volume value="-4.000000,-4.000000"/>
+    </CSound>
+    <CSound id="Zagara_Ping_AttackCastle" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Zagara_Ping_AttackCastle00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+        <Volume value="-4.000000,-4.000000"/>
+    </CSound>
+    <CSound id="Zagara_Ping_AttackMerc" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Zagara_Ping_AttackMerc00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Zagara_Ping_AttackOutpost" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Zagara_Ping_AttackOutpost00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Zagara_Ping_Danger" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Zagara_Ping_Danger00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Zagara_Ping_Danger01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Zagara_Ping_Defend" parent="Hero_High">
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Zagara_Ping_Defend00.ogg"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Zagara_Ping_DefendCastle" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Zagara_Ping_DefendCastle00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Zagara_Ping_DefendOutpost" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Zagara_Ping_DefendOutpost00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Zagara_Ping_EnemyMissing" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Zagara_Ping_EnemyMissing00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Zagara_Ping_EnemyMissing01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Zagara_Ping_KillHero" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Zagara_Ping_KillHero00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Zagara_Ping_OnMyWay" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Zagara_Ping_OnMyWay00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Zagara_Ping_OnMyWay01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Zuljin_Ping_AssistHero" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Zuljin_Ping_AssistHero00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Zuljin_Ping_AssistMe" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Zuljin_Ping_AssistMe00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Zuljin_Ping_AssistMe01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Zuljin_Ping_Attack" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Zuljin_Ping_Attack00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+        <Volume value="-4.000000,-4.000000"/>
+    </CSound>
+    <CSound id="Zuljin_Ping_AttackCastle" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Zuljin_Ping_AttackCastle00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+        <Volume value="-4.000000,-4.000000"/>
+    </CSound>
+    <CSound id="Zuljin_Ping_AttackMerc" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Zuljin_Ping_AttackMerc00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Zuljin_Ping_AttackOutpost" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Zuljin_Ping_AttackOutpost00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Zuljin_Ping_Danger" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Zuljin_Ping_Danger00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Zuljin_Ping_Danger01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Zuljin_Ping_Defend" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Zuljin_Ping_Defend00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Zuljin_Ping_DefendCastle" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Zuljin_Ping_DefendCastle00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Zuljin_Ping_DefendOutpost" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Zuljin_Ping_DefendOutpost00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Zuljin_Ping_EnemyMissing" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Zuljin_Ping_EnemyMissing00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Zuljin_Ping_EnemyMissing01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Zuljin_Ping_KillHero" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Zuljin_Ping_KillHero00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="Zuljin_Ping_OnMyWay" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\Zuljin_Ping_OnMyWay00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Zuljin_Ping_OnMyWay01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+</Catalog>

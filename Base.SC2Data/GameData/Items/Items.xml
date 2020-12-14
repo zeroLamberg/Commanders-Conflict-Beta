@@ -1,0 +1,3628 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CEffectApplyBehavior id="MinionKillerApplySummonedUnitBehavior">
+        <EditorCategories value=""/>
+        <Chance value="0"/>
+        <Behavior value="MinionKillerForSummons"/>
+    </CEffectApplyBehavior>
+    <CEffectDamage id="BribeKillEffect">
+        <Marker Link="Effect/Kill"/>
+        <Flags index="Kill" value="1"/>
+    </CEffectDamage>
+    <CEffectApplyBehavior id="ShieldAllyApplyBehavior">
+        <Behavior value="TalentShieldAlly"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="BribeRemoveStackBehavior">
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="BribeStacks"/>
+        <Count value="40"/>
+    </CEffectRemoveBehavior>
+    <CEffectSet id="BribeSet">
+        <ValidatorArray value="BribeDisallowedTargetsCombine"/>
+        <EffectArray value="BribeRemoveStackBehavior"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="EnrageApplyBehavior">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="TalentEnrage"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="BattleMomentumDamageResponseDummy"/>
+    <CEffectSet id="GiantKillerDamageResponseDummySet">
+        <ValidatorArray value="TargetNotDead"/>
+        <ValidatorArray value="NotInStasisorInvulnerable"/>
+        <EditorCategories value=""/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="ApplyBlock2">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Source"/>
+        <Behavior value="Block2"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="ApplyBlockDummy">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Source"/>
+        <Behavior value="BlockDummy"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="ApplyMightandMagic1">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="TalentGenericMightAndMagic1"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="ApplyMightandMagic2">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="TalentGenericMightAndMagic2"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="ApplyMightandMagic3">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="TalentGenericMightAndMagic3"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="ApplyBucketMightandMagic">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="TalentBucketMightAndMagic"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="ApplyRevenge1">
+        <ValidatorArray index="0" value="HasRevenge1"/>
+        <EditorCategories value=""/>
+        <WhichUnit Value="Source"/>
+        <Behavior value="Revenge1"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="ApplyRevenge2">
+        <ValidatorArray index="0" value="HasRevenge2"/>
+        <EditorCategories value=""/>
+        <WhichUnit Value="Source"/>
+        <Behavior value="Revenge2"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="ApplyRevenge3">
+        <ValidatorArray index="0" value="HasRevenge3"/>
+        <EditorCategories value=""/>
+        <WhichUnit Value="Source"/>
+        <Behavior value="Revenge3"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="ApplyRevengeSet">
+        <EditorCategories value=""/>
+        <EffectArray value="ApplyRevenge1"/>
+        <EffectArray value="ApplyRevenge2"/>
+        <EffectArray value="ApplyRevenge3"/>
+    </CEffectSet>
+    <CEffectDamage id="GiantKiller1">
+        <EditorCategories value=""/>
+        <Kind value="Ranged"/>
+        <VitalFractionMax index="Life" value="0.005"/>
+    </CEffectDamage>
+    <CEffectDamage id="GiantKiller2">
+        <EditorCategories value=""/>
+        <Kind value="Ranged"/>
+        <VitalFractionMax index="Life" value="0.01"/>
+    </CEffectDamage>
+    <CEffectDamage id="GiantKiller3">
+        <EditorCategories value=""/>
+        <Kind value="Ranged"/>
+        <VitalFractionMax index="Life" value="0.015"/>
+    </CEffectDamage>
+    <CEffectApplyBehavior id="OverdriveApplyBehavior">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="TalentOverdrive"/>
+    </CEffectApplyBehavior>
+    <CEffectCreateHealer id="VictoryRush1CreateHealer">
+        <EditorCategories value=""/>
+        <PeriodCount value="1"/>
+        <PeriodicPeriod value="1"/>
+        <RechargeVitalMax value="0.0195"/>
+    </CEffectCreateHealer>
+    <CEffectCreateHealer id="VictoryRush2CreateHealer">
+        <EditorCategories value=""/>
+        <PeriodCount value="1"/>
+        <PeriodicPeriod value="1"/>
+        <RechargeVitalFraction value="0.039"/>
+    </CEffectCreateHealer>
+    <CEffectSet id="RemoveBlock2Set">
+        <EditorCategories value=""/>
+        <EffectArray value="RemoveBlock2"/>
+        <EffectArray value="ApplyRevengeSet"/>
+        <EffectArray value="TalentBuckt_Block_DummyDamage"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="BerserkApplyBehavior">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="TalentBerserk"/>
+    </CEffectApplyBehavior>
+    <CEffectDamage id="Corruption1UpfrontDamage">
+        <EditorCategories value=""/>
+        <Flags index="NoLeech" value="1"/>
+        <Flags index="NoScaledDealtBonus" value="1"/>
+        <Flags index="NoFractionDealtBonus" value="1"/>
+        <Flags index="NoUnscaledDealtBonus" value="1"/>
+        <Flags index="NoVitalLeechLife" value="1"/>
+        <Flags index="NoVitalLeechShields" value="1"/>
+        <Flags index="NoVitalLeechEnergy" value="1"/>
+        <VitalFractionMax index="Life" value="0.02"/>
+    </CEffectDamage>
+    <CEffectDamage id="Corruption2UpfrontDamage">
+        <EditorCategories value=""/>
+        <Flags index="NoLeech" value="1"/>
+        <Flags index="NoScaledDealtBonus" value="1"/>
+        <Flags index="NoFractionDealtBonus" value="1"/>
+        <Flags index="NoUnscaledDealtBonus" value="1"/>
+        <Flags index="NoVitalLeechLife" value="1"/>
+        <Flags index="NoVitalLeechShields" value="1"/>
+        <Flags index="NoVitalLeechEnergy" value="1"/>
+        <VitalFractionMax index="Life" value="0.04"/>
+    </CEffectDamage>
+    <CEffectDamage id="Corruption3UpfrontDamage">
+        <EditorCategories value=""/>
+        <Flags index="NoLeech" value="1"/>
+        <Flags index="NoScaledDealtBonus" value="1"/>
+        <Flags index="NoFractionDealtBonus" value="1"/>
+        <Flags index="NoUnscaledDealtBonus" value="1"/>
+        <Flags index="NoVitalLeechLife" value="1"/>
+        <Flags index="NoVitalLeechShields" value="1"/>
+        <Flags index="NoVitalLeechEnergy" value="1"/>
+        <VitalFractionMax index="Life" value="0.06"/>
+    </CEffectDamage>
+    <CEffectDamage id="GiantKillerDummyDamage">
+        <EditorCategories value=""/>
+        <Kind value="Melee"/>
+        <Flags index="NoLeech" value="1"/>
+        <Flags index="NoScaledDealtBonus" value="1"/>
+        <Flags index="NoFractionDealtBonus" value="1"/>
+        <Flags index="NoUnscaledDealtBonus" value="1"/>
+        <Flags index="NoVitalLeechLife" value="1"/>
+        <Flags index="NoVitalLeechShields" value="1"/>
+        <Flags index="NoVitalLeechEnergy" value="1"/>
+        <ValidatorArray value="TargetNotDead"/>
+        <ValidatorArray value="NotInStasisorInvulnerable"/>
+    </CEffectDamage>
+    <CEffectRemoveBehavior id="RemoveBlock2">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Source"/>
+        <BehaviorLink value="Block2"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectSet id="RemoveBlock1Set">
+        <EditorCategories value=""/>
+        <EffectArray value="TalentBuckt_Block_DummyDamage"/>
+        <EffectArray value="RemoveBlock1"/>
+    </CEffectSet>
+    <CEffectRemoveBehavior id="RemoveBlock1">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Source"/>
+        <BehaviorLink value="Block1"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectDamage id="TalentCullTheWeakDummyDamage">
+        <EditorCategories value=""/>
+    </CEffectDamage>
+    <CEffectApplyBehavior id="ImposingPresenceApplyBehavior2">
+        <ValidatorArray index="0" value="ImposingPresenceApplyBehavior1TargetFilters"/>
+        <EditorCategories value=""/>
+        <Behavior value="ImposingPresenceTalentSlow2"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="TalentArcaneTeachingApplySlow1">
+        <EditorCategories value=""/>
+        <Behavior value="TalentArcaneTeachingsSlow1"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="TalentArcaneTeachingApplySlow2">
+        <EditorCategories value=""/>
+        <Behavior value="TalentArcaneTeachingsSlow2"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="TalentBattleFury1ApplyBehavior">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="TalentBattleFury1Buff"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="TalentBattleFury2ApplyBehavior">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="TalentBattleFury2Buff"/>
+    </CEffectApplyBehavior>
+    <CEffectDamage id="TalentCorruptionDamage2">
+        <EditorCategories value=""/>
+        <Flags index="NoLeech" value="1"/>
+        <Flags index="NoScaledDealtBonus" value="1"/>
+        <Flags index="NoFractionDealtBonus" value="1"/>
+        <Flags index="NoUnscaledDealtBonus" value="1"/>
+        <Flags index="NoVitalLeechLife" value="1"/>
+        <Flags index="NoVitalLeechShields" value="1"/>
+        <Flags index="NoVitalLeechEnergy" value="1"/>
+        <VitalFractionMax index="Life" value="0.013"/>
+        <ValidatorArray value="TargetDoesNotHaveCorruption3"/>
+    </CEffectDamage>
+    <CEffectDamage id="TalentCorruptionDamage3">
+        <EditorCategories value=""/>
+        <Flags index="NoLeech" value="1"/>
+        <Flags index="NoScaledDealtBonus" value="1"/>
+        <Flags index="NoFractionDealtBonus" value="1"/>
+        <Flags index="NoUnscaledDealtBonus" value="1"/>
+        <Flags index="NoVitalLeechLife" value="1"/>
+        <Flags index="NoVitalLeechShields" value="1"/>
+        <Flags index="NoVitalLeechEnergy" value="1"/>
+        <VitalFractionMax index="Life" value="0.02"/>
+    </CEffectDamage>
+    <CEffectCreateHealer id="TalentRegenerativeShieldingHealer">
+        <EditorCategories value=""/>
+        <ImpactUnit Value="Source"/>
+        <PeriodCount value="1"/>
+        <PeriodicPeriod value="1"/>
+        <RechargeVitalFraction value="0.0117"/>
+    </CEffectCreateHealer>
+    <CEffectCreateHealer id="VictoryRush1Heal">
+        <EditorCategories value=""/>
+        <PeriodCount value="1"/>
+        <PeriodicPeriod value="1"/>
+        <RechargeVitalFraction value="0.0195"/>
+    </CEffectCreateHealer>
+    <CEffectCreateHealer id="VictoryRush2Heal">
+        <EditorCategories value=""/>
+        <Marker Link="Effect/VictoryRush1Heal"/>
+        <PeriodCount value="1"/>
+        <PeriodicPeriod value="1"/>
+        <RechargeVitalFraction value="0.039"/>
+    </CEffectCreateHealer>
+    <CEffectApplyBehavior id="ForceofWillApplyCooldownBehavior">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="TalentForceofWillCooldown"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="ImposingPresenceApplyBehavior1">
+        <EditorCategories value=""/>
+        <Behavior value="ImposingPresenceTalentSlow1"/>
+    </CEffectApplyBehavior>
+    <CEffectDamage id="TalentCorruptionDamage">
+        <EditorCategories value=""/>
+        <VitalFractionMax index="Life" value="0.0065"/>
+        <Flags index="NoLeech" value="1"/>
+        <Flags index="NoScaledDealtBonus" value="1"/>
+        <Flags index="NoFractionDealtBonus" value="1"/>
+        <Flags index="NoUnscaledDealtBonus" value="1"/>
+        <Flags index="NoVitalLeechLife" value="1"/>
+        <Flags index="NoVitalLeechShields" value="1"/>
+        <Flags index="NoVitalLeechEnergy" value="1"/>
+        <ValidatorArray value="TargetDoesNotHaveCorruption2and3"/>
+    </CEffectDamage>
+    <CEffectApplyBehavior id="TalentDashApplyAllyBehavior">
+        <EditorCategories value=""/>
+        <Behavior value="TalentDashAlly"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="TalentDashApplyBehavior">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Source"/>
+        <Behavior value="TalentDash"/>
+    </CEffectApplyBehavior>
+    <CEffectEnumArea id="TalentDashAllySearch">
+        <ValidatorArray value="IsSupportHero"/>
+        <EditorCategories value=""/>
+        <ImpactLocation Value="TargetUnit"/>
+        <SearchFilters value="-;Neutral,Enemy,Structure,Hover,Worker,Missile,Item,Stasis,Dead,Hidden"/>
+        <AreaArray Radius="4" Effect="TalentDashApplyAllyBehavior"/>
+        <ExcludeArray Value="Source"/>
+    </CEffectEnumArea>
+    <CEffectSet id="TalentDashSet">
+        <EditorCategories value=""/>
+        <EffectArray value="TalentDashApplyBehavior"/>
+        <EffectArray value="TalentDashAllySearch"/>
+        <EffectArray value="TalentDashApplySprintCleanse"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="TalentDeafeningRoarApplyBehavior">
+        <EditorCategories value=""/>
+        <Behavior value="TalentDeafeningRoarSlow"/>
+    </CEffectApplyBehavior>
+    <CEffectEnumArea id="TalentDeafeningRoarSeachArea">
+        <EditorCategories value=""/>
+        <SearchFilters value="-;Self,Player,Ally,Neutral,Mechanical,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="4" Effect="TalentDeafeningRoarApplyBehavior"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+    </CEffectEnumArea>
+    <CEffectSet id="NaturesGiftCreateHealerUnitSet">
+        <EditorCategories value=""/>
+        <EffectArray value="NaturesGiftCreateLifeHealer"/>
+        <EffectArray value="NaturesGiftCreateManaHealer"/>
+    </CEffectSet>
+    <CEffectCreateHealer id="NaturesGiftCreateManaHealer">
+        <EditorCategories value=""/>
+        <ImpactUnit Value="Caster"/>
+        <Flags index="Channeled" value="0"/>
+        <PeriodCount value="1"/>
+        <PeriodicPeriod value="1"/>
+        <RechargeVital value="Energy"/>
+        <RechargeVitalFraction value="0.0156"/>
+    </CEffectCreateHealer>
+    <CEffectApplyBehavior id="PurityApplyUnstoppable">
+        <WhichUnit Value="Caster"/>
+        <Behavior value="PurityUnstoppable"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="PurityApplyCleanse">
+        <WhichUnit Value="Caster"/>
+        <Behavior value="PrestigeCleanse@Debuffs"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="ItemPlaguebringerApplyBehavior">
+        <EditorCategories value=""/>
+        <Behavior value="ItemPlaguebringerDebuff"/>
+    </CEffectApplyBehavior>
+    <CEffectDamage id="ItemPlaguebringerHealingDamage">
+        <EditorCategories value=""/>
+        <ImpactLocation Value="TargetUnit"/>
+        <CasterHistory value="Damage"/>
+    </CEffectDamage>
+    <CEffectDamage id="ItemPlaguebringerPeriodicDamage">
+        <EditorCategories value=""/>
+        <ImpactLocation Value="TargetUnit"/>
+        <VitalFractionMax index="Life" value="0.04"/>
+        <Flags index="NoScaledDealtBonus" value="1"/>
+        <Flags index="NoFractionDealtBonus" value="1"/>
+        <Flags index="NoUnscaledDealtBonus" value="1"/>
+        <CasterHistory value="Damage"/>
+    </CEffectDamage>
+    <CEffectRemoveBehavior id="ItemPlaguebringerRemoveBehavior">
+        <EditorCategories value=""/>
+        <BehaviorLink value="ItemPlaguebringerDebuff"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectCreateHealer id="NaturesGiftCreateLifeHealer">
+        <EditorCategories value=""/>
+        <ImpactUnit Value="Caster"/>
+        <Flags index="Channeled" value="0"/>
+        <PeriodCount value="1"/>
+        <PeriodicPeriod value="1"/>
+        <RechargeVitalFraction value="0.0312"/>
+    </CEffectCreateHealer>
+    <CEffectModifyUnit id="ItemEssenceDrainModifyUnit">
+        <EditorCategories value=""/>
+        <ImpactUnit Value="Caster"/>
+        <VitalArray index="Life">
+            <Change value="20"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectModifyUnit id="JuggernautModifyUnit">
+        <EditorCategories value=""/>
+        <VitalArray index="Life">
+            <ChangeFraction value="0.0024"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectModifyUnit id="NecromancyHealModifyUnit">
+        <EditorCategories value=""/>
+        <VitalArray index="Life">
+            <Change value="1"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectModifyUnit id="ItemNecromancyCastHealModifyUnit">
+        <EditorCategories value=""/>
+        <VitalArray index="Life">
+            <Change value="50"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectApplyBehavior id="ItemNuclearStrikeStructureApplyBehavior">
+        <ValidatorArray index="0" value="TargetNotHero"/>
+        <Behavior value="NuclearStrikeBuildingStun"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="ItemJuggernautApplyBehavior">
+        <EditorCategories value=""/>
+        <Behavior value="JuggernautStack"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="ItemJuggernautRemoveBehavior">
+        <EditorCategories value=""/>
+        <BehaviorLink value="JuggernautStack"/>
+        <Count value="4"/>
+    </CEffectRemoveBehavior>
+    <CEffectApplyBehavior id="JuggernautInitialApplyApplyBehavior">
+        <ValidatorArray index="0" value="SupplyLines0"/>
+        <EditorCategories value=""/>
+        <Behavior value="JuggernautStack"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="MarineDropDummy">
+        <EditorCategories value=""/>
+        <TargetLocationType value="Point"/>
+        <EffectArray value="RaynorsRaidersApplyLeaderBehavior"/>
+    </CEffectSet>
+    <CEffectRemoveBehavior id="BlindingLightRemoveBlindStack">
+        <EditorCategories value=""/>
+        <BehaviorLink value="ItemBlindingLightBlindStackingBehavior"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectApplyBehavior id="BlindingLightSlowApplyBehavior">
+        <EditorCategories value=""/>
+        <Behavior value="ItemBlindingLightSlow"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="ItemBlindingLightAddBlindStacks">
+        <EditorCategories value=""/>
+        <Behavior value="ItemBlindingLightBlindStackingBehavior"/>
+        <Count value="10"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="ItemBlindingLightRevealABReveal">
+        <Behavior value="ItemBlindingLightReveal"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="ItemBlindingLightRevealSet">
+        <EditorCategories value=""/>
+        <EffectArray value="ItemBlindingLightRevealerPersistent"/>
+        <EffectArray value="ItemBlindingLightRevealABReveal"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="ItemBlindingLightRevealerPersistent">
+        <WhichLocation Value="TargetUnit"/>
+        <ExpireDelay value="3"/>
+        <RevealRadius value="2"/>
+        <RevealFlags index="Unfog" value="1"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="ItemBlindingLightSAReveal">
+        <EditorCategories value=""/>
+        <SearchFilters value="-;Self,Player,Ally,Structure,RawResource,HarvestableResource,Missile,Dead"/>
+        <AreaArray Radius="2" Effect="ItemBlindingLightRevealSet"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="ItemBlindingLightSASlow">
+        <EditorCategories value=""/>
+        <SearchFilters value="-;Self,Player,Ally,Structure,RawResource,HarvestableResource,Missile,Dead,Hallucination,Invulnerable"/>
+        <AreaArray Radius="2" Effect="BlindingLightSlowApplyBehavior"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="ItemShamansBlessingApplyBehavior">
+        <Behavior value="ItemShamansBlessingHeal"/>
+    </CEffectApplyBehavior>
+    <CEffectCreateUnit id="ItemShamansBlessingCreateUnit">
+        <WhichLocation Value="TargetPoint"/>
+        <SpawnUnit value="ItemShamansBlessingTotem"/>
+        <SpawnRange value="1"/>
+        <ValidatorArray value="GenericDisabledStateCombine"/>
+    </CEffectCreateUnit>
+    <CEffectCreateHealer id="ItemShamansBlessingHeal">
+        <PeriodCount value="1"/>
+        <PeriodicPeriod value="1"/>
+        <RechargeVitalFraction value="0.0312"/>
+    </CEffectCreateHealer>
+    <CEffectEnumArea id="ItemShamansBlessingSearch">
+        <SearchFilters value="-;Neutral,Enemy,Massive,Structure,Hover,Worker,Missile,Stasis,Dead,Hidden"/>
+        <AreaArray Radius="7" Effect="ItemShamansBlessingApplyBehavior"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+    </CEffectEnumArea>
+    <CEffectCreatePersistent id="MarineDropAcendDelay">
+        <EditorCategories value=""/>
+        <FinalEffect value="MarineDropApplyAscend"/>
+        <PeriodCount value="1"/>
+        <PeriodicPeriodArray value="1"/>
+    </CEffectCreatePersistent>
+    <CEffectApplyBehavior id="MarineDropApplyAscend">
+        <EditorCategories value=""/>
+        <Behavior value="MarineDropMedivacAcend"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="MarineDropMoveOutDummy">
+        <EditorCategories value=""/>
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="MarineDropPersistent">
+        <EditorCategories value=""/>
+        <InitialEffect value="MarineDropDummy"/>
+        <ValidatorArray value="MarineDropPlacementCheck"/>
+        <ValidatorArray value="GenericDisabledStateCombine"/>
+        <PeriodCount value="1"/>
+        <PeriodicPeriodArray value="7"/>
+    </CEffectCreatePersistent>
+    <CEffectApplyBehavior id="TeleportApplyCasterBehavior">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="ItemSkillPortalCarryBehavior"/>
+    </CEffectApplyBehavior>
+    <CEffectCreatePersistent id="TeleportChannel">
+        <EditorCategories value=""/>
+        <Flags index="Channeled" value="1"/>
+        <InitialEffect value="TeleportApplyCasterBehavior"/>
+        <ExpireEffect value="TeleportTeleport"/>
+        <FinalEffect value="TeleportRemoveCasterBehavior"/>
+        <PeriodCount value="1"/>
+        <PeriodicPeriodArray value="4"/>
+    </CEffectCreatePersistent>
+    <CEffectRemoveBehavior id="TeleportRemoveCasterBehavior">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="ItemSkillPortalCarryBehavior"/>
+    </CEffectRemoveBehavior>
+    <CEffectTeleport id="TeleportTeleport">
+        <ValidatorArray value="HeroNotInCombat"/>
+        <ValidatorArray value="TargetIsPortableTo"/>
+        <ValidatorArray value="GenericDisabledStateCombine"/>
+        <WhichUnit Value="Caster"/>
+        <ClearQueuedOrders value="0"/>
+        <MinDistance value="0"/>
+        <PlacementArc value="360"/>
+        <PlacementRange value="4"/>
+        <TargetLocation Value="TargetUnitOrPoint"/>
+        <TeleportFlags index="TestFog" value="0"/>
+    </CEffectTeleport>
+    <CEffectEnumArea id="BlindingLightSAHeroes">
+        <EditorCategories value=""/>
+        <SearchFilters value="Heroic;Self,Player,Ally,Structure,RawResource,HarvestableResource,Missile,Dead"/>
+        <AreaArray Radius="2" Effect="ItemBlindingLightABHeroBlind"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="ItemBlindingLightABHeroBlind">
+        <Behavior value="ItemBlindingLightHeroBlind"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="ItemBlindingLightABMinionStun">
+        <Behavior value="ItemBlindingLightMinionStun"/>
+    </CEffectApplyBehavior>
+    <CEffectCreatePersistent id="ItemBlindingLightCP">
+        <InitialEffect value="ItemBlindingLightLaunchMissile"/>
+        <PeriodCount value="1"/>
+        <PeriodicPeriodArray value="0.5"/>
+    </CEffectCreatePersistent>
+    <CEffectSet id="ItemBlindingLightImpactSet">
+        <EditorCategories value=""/>
+        <EffectArray value="BlindingLightSAHeroes"/>
+        <EffectArray value="ItemBlindingLightSAMinions"/>
+        <EffectArray value="ItemBlindingLightSAReveal"/>
+        <EffectArray value="ItemBlindingLightSASlow"/>
+    </CEffectSet>
+    <CEffectLaunchMissile id="ItemBlindingLightLaunchMissile">
+        <EditorCategories value=""/>
+        <LaunchLocation Effect="ItemBlindingLightCP" Value="CasterUnit"/>
+        <ImpactLocation Effect="ItemBlindingLightCP" Value="TargetPoint"/>
+        <ImpactEffect value="ItemBlindingLightImpactSet"/>
+        <AmmoUnit value="ItemBlindingLightMissile"/>
+    </CEffectLaunchMissile>
+    <CEffectEnumArea id="ItemBlindingLightSAMinions">
+        <EditorCategories value=""/>
+        <SearchFilters value="-;Self,Player,Ally,Structure,Heroic,RawResource,HarvestableResource,Missile,Dead,Hallucination,Invulnerable"/>
+        <AreaArray Radius="2" Effect="ItemBlindingLightABMinionStun"/>
+    </CEffectEnumArea>
+    <CEffectModifyUnit id="VampiricDaggerHeal">
+        <ImpactUnit Value="Caster"/>
+        <VitalArray index="Life">
+            <Change value="25"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectModifyPlayer id="BucketBerserk">
+        <EditorCategories value="Race:TalentBucket"/>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="BucketClairvoyance">
+        <EditorCategories value="Race:TalentBucket"/>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="BucketShieldAlly">
+        <EditorCategories value="Race:TalentBucket"/>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="BucketShrinkRay">
+        <EditorCategories value="Race:TalentBucket"/>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="BucketMarksman">
+        <EditorCategories value="Race:TalentBucket"/>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="BucketSwiftStorm">
+        <EditorCategories value="Race:TalentBucket"/>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="MercenaryLord">
+        <EditorCategories value="Race:TalentBucket"/>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="BucketPromote">
+        <EditorCategories value="Race:TalentBucket"/>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="BucketOverdrive">
+        <EditorCategories value="Race:TalentBucket"/>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="BucketImposingPresence">
+        <EditorCategories value="Race:TalentBucket"/>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="BucketFlashoftheStorms">
+        <EditorCategories value="Race:TalentBucket"/>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="BucketGiantKiller">
+        <EditorCategories value="Race:TalentBucket"/>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="BucketBattleMomentum">
+        <EditorCategories value="Race:TalentBucket"/>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="BucketMinionKiller">
+        <EditorCategories value="Race:TalentBucket"/>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="BucketStormShield">
+        <EditorCategories value="Race:TalentBucket"/>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="BucketVampiricAssault">
+        <EditorCategories value="Race:TalentBucket"/>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="BucketCalldownMULE">
+        <EditorCategories value="Race:TalentBucket"/>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="BucketBlock">
+        <EditorCategories value="Race:TalentBucket"/>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="BucketRelentless">
+        <EditorCategories value="Race:TalentBucket"/>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="BucketSearingAttacks">
+        <EditorCategories value="Race:TalentBucket"/>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="BucketAmplifiedHealing">
+        <EditorCategories value="Race:TalentBucket"/>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="BucketDemolitionist">
+        <EditorCategories value="Race:TalentBucket"/>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="TalentBucketPathOfTheWarrior">
+        <EditorCategories value="Race:TalentBucket"/>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="TalentBucketPathOfTheWizard">
+        <EditorCategories value="Race:TalentBucket"/>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="BucketSuperiority">
+        <EditorCategories value="Race:TalentBucket"/>
+    </CEffectModifyPlayer>
+    <CEffectSwitch id="SearingAttacksSwitch">
+        <CaseArray Validator="IsTychus" Effect="SearingAttacksApplyBehaviorTychus"/>
+        <CaseDefault value="SearingAttacksApplyBehavior"/>
+    </CEffectSwitch>
+    <CEffectModifyPlayer id="TalentBucketPathOfTheAssassin">
+        <EditorCategories value="Race:TalentBucket"/>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="BucketBribe">
+        <EditorCategories value="Race:TalentBucket"/>
+    </CEffectModifyPlayer>
+    <CEffectApplyBehavior id="CalldownMULEApplyTimedLifeBehavior">
+        <EditorCategories value=""/>
+        <Behavior value="CalldownMULETimedLife"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="CalldownMULEInitialSet">
+        <EditorCategories value=""/>
+        <EffectArray value="CalldownMULECreateUnit"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="ClairvoyanceApplyBehavior">
+        <EditorCategories value=""/>
+        <Behavior value="Clairvoyance"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="ClairvoyanceImpactSet">
+        <EditorCategories value=""/>
+        <EffectArray value="ClairvoyanceApplyBehavior"/>
+        <EffectArray value="ClairvoyanceRevealedPersistent"/>
+    </CEffectSet>
+    <CEffectSet id="ClairvoyanceInitialSet">
+        <EditorCategories value=""/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="ClairvoyanceRevealPersistent">
+        <EditorCategories value=""/>
+        <InitialEffect value="ClairvoyanceSearchArea"/>
+        <PeriodCount value="160"/>
+        <PeriodicEffectArray value="ClairvoyanceSearchArea"/>
+        <PeriodicPeriodArray value="0.0625"/>
+        <RevealRadius value="10"/>
+        <RevealFlags index="Unfog" value="1"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="ClairvoyanceRevealedPersistent">
+        <EditorCategories value=""/>
+        <WhichLocation Value="TargetUnit"/>
+        <ExpireDelay value="4"/>
+        <RevealRadius value="1"/>
+        <RevealFlags index="Unfog" value="1"/>
+        <RevealFlags index="Detect" value="1"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="ClairvoyanceSearchArea">
+        <EditorCategories value=""/>
+        <SearchFilters value="Heroic;Self,Player,Ally,Neutral,Missile,Dead"/>
+        <AreaArray Radius="10" Effect="ClairvoyanceImpactSet"/>
+    </CEffectEnumArea>
+    <CEffectModifyUnit id="MULERepairEnergy">
+        <EditorCategories value="Race:Terran"/>
+        <VitalArray index="Energy">
+            <Change value="1"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectSet id="MULERepairInitialSet">
+        <EditorCategories value=""/>
+        <EffectArray value="MULERepairHealthPersistent"/>
+        <EffectArray value="MuleRepairEnergyPersistent"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="MuleRepairEnergyPersistent">
+        <EditorCategories value=""/>
+        <WhichLocation Value="TargetUnit"/>
+        <TimeScaleSource Value="Caster"/>
+        <Flags index="Channeled" value="1"/>
+        <Flags index="PersistUntilDestroyed" value="1"/>
+        <PeriodicEffectArray value="MULERepairEnergy"/>
+        <PeriodicPeriodArray value="5"/>
+    </CEffectCreatePersistent>
+    <CEffectSet id="MuleRepairSet">
+        <EditorCategories value=""/>
+        <EffectArray value="MuleRepairSuicide"/>
+        <EffectArray value="MULERepairHealth"/>
+    </CEffectSet>
+    <CEffectDamage id="MuleRepairSuicide" parent="Suicide">
+        <Name value="Effect/Name/MuleRepairSuicide"/>
+        <ValidatorArray value="RepairTargetIsDead"/>
+        <EditorCategories value=""/>
+        <ImpactLocation Value="CasterUnit"/>
+    </CEffectDamage>
+    <CEffectApplyBehavior id="CalldownMULEAliveApplyBehavior">
+        <EditorCategories value="Race:Terran"/>
+        <WhichUnit Effect="CalldownMULECreateUnit"/>
+        <Behavior value="CalldownMULEAlive"/>
+    </CEffectApplyBehavior>
+    <CEffectCreatePersistent id="CalldownMULEAlivePersistent">
+        <EditorCategories value="Race:Terran"/>
+        <WhichLocation Value="TargetUnit"/>
+        <TimeScaleSource Value="Caster"/>
+        <Flags index="PersistUntilDestroyed" value="1"/>
+        <InitialEffect value="CalldownMULEAliveApplyBehavior"/>
+        <FinalEffect value="CalldownMULEAliveRemoveBehavior"/>
+        <PeriodicValidator value="SourceNotDead"/>
+        <PeriodicPeriodArray value="0.5"/>
+    </CEffectCreatePersistent>
+    <CEffectRemoveBehavior id="CalldownMULEAliveRemoveBehavior">
+        <EditorCategories value="Race:Terran"/>
+        <WhichUnit Effect="CalldownMULECreateUnit"/>
+        <BehaviorLink value="CalldownMULEAlive"/>
+    </CEffectRemoveBehavior>
+    <CEffectCreatePersistent id="CalldownMULECreatePersistent"/>
+    <CEffectSet id="CalldownMULECreateSet">
+        <EffectArray value="MakePrecursor"/>
+        <EffectArray value="CalldownMULECreatePersistent"/>
+        <EffectArray value="CalldownMULEAlivePersistent"/>
+        <EffectArray value="CalldownMULEApplyTimedLifeBehavior"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="MULERepairHealthPersistent">
+        <EditorCategories value="Race:Terran"/>
+        <WhichLocation Value="TargetUnit"/>
+        <TimeScaleSource Value="Caster"/>
+        <Flags index="Channeled" value="1"/>
+        <Flags index="PersistUntilDestroyed" value="1"/>
+        <PeriodicEffectArray value="MuleRepairSet"/>
+        <PeriodicPeriodArray value="1"/>
+    </CEffectCreatePersistent>
+    <CEffectSet id="CalldownMULEFinalSet">
+        <EffectArray value="RemovePrecursor"/>
+        <EffectArray value="CalldownMULEIssueOrder"/>
+    </CEffectSet>
+    <CEffectCreateUnit id="CalldownMULECreateUnit">
+        <SpawnUnit value="ItemMULE"/>
+    </CEffectCreateUnit>
+    <CEffectIssueOrder id="CalldownMULEIssueOrder">
+        <Abil value="MULERepair"/>
+    </CEffectIssueOrder>
+    <CEffectModifyUnit id="MULERepairHealth">
+        <EditorCategories value="Race:Terran"/>
+        <VitalArray index="Life">
+            <Change value="100"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectApplyBehavior id="SearingAttacksApplyBehavior">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="SearingAttacks"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="TalentBucketPromoteApplyBuff">
+        <EditorCategories value=""/>
+        <Behavior value="TalentBucketPromote"/>
+        <ValidatorArray index="0" value="TargetNotPromoted"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="TalentBucketStormShieldApplyBehavior">
+        <EditorCategories value=""/>
+        <Behavior value="TalentBucketStormShield"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="TalentBucketStormShieldApplyDummyBehavior">
+        <EditorCategories value=""/>
+        <Behavior value="TalentBucketStormShieldDummyBehavior"/>
+    </CEffectApplyBehavior>
+    <CEffectEnumArea id="TalentBucketStormShieldSearch">
+        <EditorCategories value=""/>
+        <SearchFilters value="Heroic;Neutral,Enemy"/>
+        <AreaArray Radius="5" Effect="TalentBucketStormShieldApplyDummyBehavior"/>
+    </CEffectEnumArea>
+    <CEffectModifyUnit id="DemolitionistRemoveAmmoModifyUnit">
+        <EditorCategories value=""/>
+        <VitalArray index="Energy">
+            <Change value="-2"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectApplyBehavior id="TalentBucketInvigorateApplyBehavior">
+        <ValidatorArray index="0" value="DoesNotHaveInvigorateCD"/>
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="Invigorate"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="TalentBucketInvigorateCooldownApplyBehavior">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Source"/>
+        <Behavior value="TalentBucketInvigorateCooldown"/>
+        <Chance value="0"/>
+    </CEffectApplyBehavior>
+    <CEffectCreateHealer id="TalentBucketInvigorateCreateHealer">
+        <EditorCategories value=""/>
+        <PeriodCount value="1"/>
+        <PeriodicPeriod value="1"/>
+        <RechargeVitalRate value="15"/>
+        <ValidatorArray value="NotVehicle"/>
+    </CEffectCreateHealer>
+    <CEffectCreateHealer id="TalentBucketVampiricAssaultLifeGain">
+        <EditorCategories value=""/>
+        <ImpactUnit Value="Caster"/>
+        <PeriodCount value="1"/>
+        <PeriodicPeriod value="1"/>
+        <RechargeVitalRate value="25"/>
+    </CEffectCreateHealer>
+    <CEffectCreateHealer id="TalentBucketVictoryRushCreateHealer">
+        <EditorCategories value=""/>
+        <PeriodCount value="1"/>
+        <PeriodicPeriod value="1"/>
+        <ImpactUnit Value="Source"/>
+        <RechargeVitalFraction value="0.0312"/>
+    </CEffectCreateHealer>
+    <CEffectDamage id="TalentBucketGiantKillerDamage">
+        <EditorCategories value=""/>
+        <Kind value="Ranged"/>
+        <VitalFractionMax index="Life" value="0.015"/>
+    </CEffectDamage>
+    <CEffectApplyBehavior id="TalentBucketImposingPresenceApplyBehavior">
+        <Behavior value="TalentBucketImposingPresenceSlow"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="TalentBucketArcaneTeachingsApplySlow">
+        <Behavior value="TalentBucketArcaneTeachingsSlow"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="TalentBucketBattleFuryApplyBehavior">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="TalentBucketBattleFuryBuff"/>
+    </CEffectApplyBehavior>
+    <CAbilEffectInstant id="TalentEnrage">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <SharedFlags index="DisableWhileDead" value="0"/>
+        <Effect index="0" value="EnrageApplyBehavior"/>
+        <Flags index="Transient" value="1"/>
+        <Cost>
+            <Charge Link="Abil/TalentBerserk"/>
+            <Cooldown Location="Unit" TimeUse="60"/>
+        </Cost>
+        <CmdButtonArray index="Execute" DefaultButtonFace="TalentEnrage" Requirements="HeroHasNoDeadBehavior"/>
+    </CAbilEffectInstant>
+    <CAbilEffectTarget id="TalentCleanse">
+        <OrderArray Model="Assets\UI\Feedback\WayPointConfirm\WayPointConfirm.m3"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="PrestigeCleanse@ApplyCleanse"/>
+        <Flags index="BestUnit" value="0"/>
+        <Cost>
+            <Cooldown Location="Unit" TimeUse="60"/>
+        </Cost>
+        <TargetFilters value="Heroic;Neutral,Enemy,Structure,Summoned"/>
+        <Range value="7"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="TalentCleanseActivated"/>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="TalentOverdrive">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <SharedFlags index="DisableWhileDead" value="0"/>
+        <Effect index="0" value="BucketOverdriveApplyBehavior"/>
+        <Flags index="Transient" value="1"/>
+        <Cost>
+            <Cooldown Location="Unit" TimeUse="25"/>
+        </Cost>
+        <CmdButtonArray index="Execute" DefaultButtonFace="TalentOverdrive" Requirements="HeroHasNoDeadBehavior"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="TalentOverdriveResourceless">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <SharedFlags index="DisableWhileDead" value="0"/>
+        <Effect index="0" value="OverdriveApplyBehavior"/>
+        <Cost>
+            <Charge Link="Abil/TalentOverdrive"/>
+            <Cooldown Link="Abil/TalentOverdrive" Location="Unit" TimeUse="60"/>
+        </Cost>
+        <CmdButtonArray index="Execute" DefaultButtonFace="TalentOverdriveResourceless" Requirements="HeroHasNoDeadBehavior"/>
+        <Flags index="Transient" value="1"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="TalentDashSupport">
+        <SharedFlags index="DisableWhileDead" value="0"/>
+        <Effect index="0" value="TalentDashSet"/>
+        <Flags index="AllowMovement" value="1"/>
+        <Flags index="NoDeceleration" value="1"/>
+        <Flags index="Transient" value="1"/>
+        <Flags index="UpdateChargesOnLevelChange" value="0"/>
+        <Cost>
+            <Cooldown Location="Unit" TimeUse="45"/>
+        </Cost>
+        <AINotifyEffect value="TalentDash"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="TalentDashSupport">
+            <Flags index="AllowSelfCast" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="TalentDash">
+        <SharedFlags index="DisableWhileDead" value="0"/>
+        <Effect index="0" value="TalentDashSet"/>
+        <Flags index="AllowMovement" value="1"/>
+        <Flags index="NoDeceleration" value="1"/>
+        <Flags index="Transient" value="1"/>
+        <Flags index="UpdateChargesOnLevelChange" value="0"/>
+        <Cost>
+            <Cooldown Location="Unit" TimeUse="45"/>
+        </Cost>
+        <CmdButtonArray index="Execute" DefaultButtonFace="TalentDash" Requirements="HeroHasNoDeadBehavior">
+            <Flags index="AllowSelfCast" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="TalentDeafeningRoar">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Cost>
+            <Charge Link="Abil/DeafeningRoar"/>
+            <Cooldown Link="Abil/DeafeningRoar" Location="Unit" TimeUse="60"/>
+        </Cost>
+        <CmdButtonArray index="Execute" DefaultButtonFace="TalentDeafeningRoar">
+            <Flags index="AllowSelfCast" value="1"/>
+        </CmdButtonArray>
+        <SharedFlags index="DisableWhileDead" value="0"/>
+        <Effect index="0" value="TalentDeafeningRoarSeachArea"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="TalentBerserk">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <SharedFlags index="DisableWhileDead" value="0"/>
+        <Effect index="0" value="BerserkApplyBehavior"/>
+        <Cost>
+            <Cooldown Location="Unit" TimeUse="60"/>
+        </Cost>
+        <CmdButtonArray index="Execute" DefaultButtonFace="TalentBerserk" Requirements="HeroHasNoDeadBehavior"/>
+        <Flags index="Transient" value="1"/>
+    </CAbilEffectInstant>
+    <CAbilEffectTarget id="MULERepair">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="MULERepairInitialSet"/>
+        <Range value="1"/>
+        <AINotifyEffect value="MULERepairHealthPersistent"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="CalldownMULERepair"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <TargetFilters index="0" value="Structure,Visible;Self,Player,Neutral,Enemy,Missile,Stasis,UnderConstruction,Dead,Hidden"/>
+        <AutoCastValidatorArray index="0" value="LifeNotFullOrEnergyNotFull"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="TalentBucketCalldownMule">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="CalldownMULECreateUnit"/>
+        <Cost>
+            <Cooldown Location="Unit" TimeUse="60"/>
+        </Cost>
+        <TargetFilters value="Structure;Neutral,Enemy,Dead"/>
+        <Range value="500"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="TalentBucketClairvoyance">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="ClairvoyanceRevealPersistent"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Charge Link="Abil/Clairvoyance"/>
+            <Cooldown Link="Abil/Clairvoyance" Location="Unit" TimeUse="45"/>
+        </Cost>
+        <Range value="500"/>
+        <CursorEffect value="ClairvoyanceSearchArea"/>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="SearingAttacks">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="SearingAttacksSwitch"/>
+        <Flags index="Transient" value="1"/>
+        <Cost>
+            <Cooldown Location="Unit" TimeUse="25"/>
+        </Cost>
+    </CAbilEffectInstant>
+    <CAbilEffectTarget id="TalentBucketPromote">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="TalentBucketPromoteApplyBuff"/>
+        <Flags index="TransientPreferred" value="1"/>
+        <Cost>
+            <Cooldown Location="Unit" TimeUse="60"/>
+        </Cost>
+        <TargetFilters value="-;Self,Player,Neutral,Enemy,Robotic,Structure,Hover,Heroic,Missile,Item,Stasis,Dead,Hidden,Summoned"/>
+        <Range value="7"/>
+        <Arc value="360"/>
+        <ArcSlop value="360"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="TalentBucketPromoteHotbar"/>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="TalentBucketStormShield">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <SharedFlags index="DisableWhileDead" value="0"/>
+        <Effect index="0" value="TalentBucketStormShieldSearch"/>
+        <Flags index="AllowMovement" value="1"/>
+        <Flags index="NoDeceleration" value="1"/>
+        <Flags index="Transient" value="1"/>
+        <Flags index="UpdateChargesOnLevelChange" value="0"/>
+        <Cost>
+            <Cooldown Location="Unit" TimeUse="45"/>
+        </Cost>
+        <CmdButtonArray index="Execute" DefaultButtonFace="TalentBucketStormShieldHotbar"/>
+    </CAbilEffectInstant>
+    <CAbilEffectTarget id="TalentShieldAlly">
+        <Effect index="0" value="ShieldAllyApplyBehavior"/>
+        <Cost>
+            <Charge Link="Abil/ShieldAlly"/>
+            <Cooldown Link="Abil/ShieldAlly" Location="Unit" TimeUse="60"/>
+        </Cost>
+        <TargetFilters value="Heroic;Neutral,Enemy,Light,Mechanical,Massive,Structure,Hover,Missile,Item,Stasis,Dead"/>
+        <Range value="7"/>
+        <CastIntroTime value="0"/>
+        <FinishTime value="0.1"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="TalentBucketBribe">
+        <Effect index="0" value="BribeSet"/>
+        <TargetFilters value="Light;Player,Ally,Structure,Dead,Invulnerable"/>
+        <Range value="6"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="TalentBucketBribe" Requirements="PlayerHas40StacksOfBribe"/>
+        <Flags index="ClearLastMoveTarget" value="1"/>
+        <CastIntroTime value="0.1"/>
+        <FinishTime value="0.1"/>
+    </CAbilEffectTarget>
+    <CValidatorUnitCompareBehaviorCount id="TargetDoesNotHaveBlock">
+        <Behavior value="TalentBucket_Block_FirstImpact"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="DoesNotHaveInvigorateCD">
+        <WhichUnit Value="Caster"/>
+        <Behavior value="TalentBucketInvigorateCooldown"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CButton id="ClairvoyanceHotbar" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnmagicalsentry.dds"/>
+    </CButton>
+    <CButton id="ClairvoyanceFace" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnmagicalsentry.dds"/>
+    </CButton>
+    <CButton id="BucketConstantHeroismSHLD" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btntransmute.dds"/>
+        <HotkeyAlias value="TalentBucketConstantHeroism"/>
+    </CButton>
+    <CButton id="BucketConstantHeroismSHLD_Simple" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btntransmute.dds"/>
+        <HotkeyAlias value="TalentBucketConstantHeroismSimple"/>
+    </CButton>
+    <CButton id="FlashoftheStormFace" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipVitalName index="Energy" value=""/>
+        <Icon value="Assets\Textures\storm_temp_btn-ability-protoss-blink-color.dds"/>
+        <HotkeyAlias value="PrestigeBoltOfTheStorms@Slot2"/>
+    </CButton>
+    <CButton id="TalentBucketCalldownMULEFace" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_btn-ability-terran-calldownextrasupplies-color.dds"/>
+    </CButton>
+    <CButton id="TalentBucketCalldownMuleHotbar" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_btn-ability-terran-calldownextrasupplies-color.dds"/>
+    </CButton>
+    <CButton id="TalentBucketCalldownMuleSimple" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_btn-ability-terran-calldownextrasupplies-color.dds"/>
+    </CButton>
+    <CButton id="TalentBucketClairvoyanceSimple" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnmagicalsentry.dds"/>
+    </CButton>
+    <CButton id="TalentShieldAlly" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_temp_btn-upgrade-protoss-shieldslevel2.dds"/>
+        <EditorCategories value="Race:Neutral"/>
+    </CButton>
+    <CButton id="TalentShieldAllyHotbar" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_btn-upgrade-protoss-shieldslevel2.dds"/>
+        <EditorCategories value="Race:Neutral"/>
+    </CButton>
+    <CButton id="TalentShieldAllySimple" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_temp_btn-upgrade-protoss-shieldslevel2.dds"/>
+        <EditorCategories value="Race:Neutral"/>
+    </CButton>
+    <CButton id="SearingAttacks">
+        <TooltipFlags index="ShowLevel" value="0"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipFlags index="ShowAutocast" value="0"/>
+        <TooltipVitalName index="Energy" value="UI/Tooltip/Abil/Mana"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnselfdestruct.dds"/>
+        <TooltipAppender Validator="IsTychus" Text="SearingAttacks_IsTychus"/>
+        <TooltipAppender Validator="IsNotTychus" Text="SearingAttacks_IsNotTychus"/>
+        <TooltipCooldownOverrideText value="Button/Tooltip/SearingAttacks/Info"/>
+        <SimpleDisplayText value="Button/Tooltip/SearingAttacksSimple"/>
+    </CButton>
+    <CButton id="SearingAttacksHotbar" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnselfdestruct.dds"/>
+        <TooltipAppender Validator="IsTychus" Text="SearingAttacks_IsTychus"/>
+        <TooltipAppender Validator="IsNotTychus" Text="SearingAttacks_IsNotTychus"/>
+    </CButton>
+    <CButton id="TalentBucketPromote" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_temp_war3_btngnollcommandaura.dds"/>
+    </CButton>
+    <CButton id="TalentBucketPromoteHotbar" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btngnollcommandaura.dds"/>
+    </CButton>
+    <CButton id="TalentBucketPromoteSimple">
+        <Icon value="Assets\Textures\storm_temp_war3_btngnollcommandaura.dds"/>
+    </CButton>
+    <CButton id="TalentBucketStormShield" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_temp_btn-tips-terran-psishield.dds"/>
+    </CButton>
+    <CButton id="TalentBucketStormShieldHotbar" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_btn-tips-terran-psishield.dds"/>
+    </CButton>
+    <CButton id="TalentBucketStormShieldSimple" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_temp_btn-tips-terran-psishield.dds"/>
+    </CButton>
+    <CButton id="TalentBucketSwiftStorm">
+        <Icon value="Assets\Textures\storm_temp_war3_btnheartofaszune.dds"/>
+    </CButton>
+    <CButton id="TalentBucketSwiftStormSimple">
+        <Icon value="Assets\Textures\storm_temp_war3_btnheartofaszune.dds"/>
+    </CButton>
+    <CButton id="TalentBribeHotbar" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_btn-tips-credit.dds"/>
+    </CButton>
+    <CButton id="BucketBattleMomentumBaseSimple" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_btn_d3_barbarian_rend.dds"/>
+        <HotkeyAlias value="BattleMomentumBase"/>
+    </CButton>
+    <CButton id="BucketMentalAgilitySimple" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_ui_temp_icon_mentalclarity_3.dds"/>
+        <HotkeyAlias value="TalentGenericBrilliance1"/>
+    </CButton>
+    <CButton id="BucketOverdriveSimple" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_btn_d3_wizard_archon.dds"/>
+        <HotkeyAlias value="PrestigeFirstAid@Slot1"/>
+    </CButton>
+    <CButton id="BucketOverdriveFace" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_btn_d3_wizard_archon.dds"/>
+        <HotkeyAlias value="PrestigeFirstAid@Slot1"/>
+    </CButton>
+    <CButton id="BucketRelentlessSimple" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnreincarnation.dds"/>
+        <HotkeyAlias value="TalentRelentlessBase"/>
+    </CButton>
+    <CButton id="TalentBucketT7_AD25_AP10_HP400_SHD300_Simple" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnscatterrockets.dds"/>
+    </CButton>
+    <CButton id="TalentBucketT7_AD25_AP10_HP400_SHD300" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnscatterrockets.dds"/>
+    </CButton>
+    <CButton id="TalentBucketAmplifiedHealing" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_ui_temp_icon_spellprojection.dds"/>
+    </CButton>
+    <CButton id="TalentBucketAmplifiedHealingSimple" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_ui_temp_icon_spellprojection.dds"/>
+    </CButton>
+    <CButton id="TalentBucketArcaneTeachingsSimple" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnorboffrost.dds"/>
+    </CButton>
+    <CButton id="TalentBucketBattleFurySimple" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_btn_d3_demonhunter_rapidfire.dds"/>
+    </CButton>
+    <CButton id="TalentBucketBrillianceSimple" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnbrilliance.dds"/>
+    </CButton>
+    <CButton id="BucketBattleMomentumBase" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_btn_d3_barbarian_rend.dds"/>
+        <HotkeyAlias value="BattleMomentumBase"/>
+    </CButton>
+    <CButton id="BucketBerserk" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowCooldown" value="1"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnberserk.dds"/>
+        <HotkeyAlias value="PrestigeFirstAid@Slot1"/>
+        <TooltipCooldownOverrideText value="Button/Tooltip/BucketBerserk/Info"/>
+        <SimpleDisplayText value="Button/Tooltip/BucketBerserkSimple"/>
+    </CButton>
+    <CButton id="TalentBucketBribe" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_btn-tips-credit.dds"/>
+        <SimpleDisplayText value="Button/Tooltip/TalentBucketBribeSimple"/>
+    </CButton>
+    <CButton id="TalentBucketBattleFury" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_btn_d3_demonhunter_rapidfire.dds"/>
+    </CButton>
+    <CButton id="TalentBucketDemolitionist" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_btn_d3_barbarian_cleave.dds"/>
+        <SimpleDisplayText value="Button/Tooltip/TalentBucketDemolitionistSimple"/>
+    </CButton>
+    <CButton id="TalentBucketEmpoweredAbilitiesSimple" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_ui_temp_icon_rapidcasting.dds"/>
+    </CButton>
+    <CButton id="TalentBucketForceofWill" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_btn_d3_monk_mantraofevasion.dds"/>
+    </CButton>
+    <CButton id="TalentBucketForceofWillSimple" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_btn_d3_monk_mantraofevasion.dds"/>
+    </CButton>
+    <CButton id="TalentBucketGiantKiller" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnseagiant.dds"/>
+        <SimpleDisplayText value="Button/Tooltip/TalentBucketGiantKillerSimple"/>
+    </CButton>
+    <CButton id="TalentBucketImposingPresenceSimple" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_btn_d3_barbarian_calloftheancients.dds"/>
+    </CButton>
+    <CButton id="TalentBucketInvigorate" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_btn_d3_barbarian_frenzy.dds"/>
+    </CButton>
+    <CButton id="TalentBucketInvigorateSimple" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_btn_d3_barbarian_frenzy.dds"/>
+    </CButton>
+    <CButton id="TalentBucketMightAndMagicSimple" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btncontrolmagic.dds"/>
+    </CButton>
+    <CButton id="TalentBucketRapidRegenerationSimple" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnregenerate.dds"/>
+    </CButton>
+    <CButton id="TalentBucketShielding" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_btn-upgrade-protoss-shieldslevel0.dds"/>
+    </CButton>
+    <CButton id="TalentBucketMightAndMagic" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btncontrolmagic.dds"/>
+    </CButton>
+    <CButton id="TalentBucketImposingPresence" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_btn_d3_barbarian_calloftheancients.dds"/>
+    </CButton>
+    <CButton id="TalentBucketArcaneTeachings" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnorboffrost.dds"/>
+    </CButton>
+    <CButton id="TalentBucketShieldingSimple" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_btn-upgrade-protoss-shieldslevel0.dds"/>
+    </CButton>
+    <CButton id="TalentBucketEmpoweredAbilities" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_ui_temp_icon_rapidcasting.dds"/>
+    </CButton>
+    <CButton id="TalentBucketRapidRegeneration" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnregenerate.dds"/>
+    </CButton>
+    <CButton id="TalentBucketSuperiority" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnstarwand.dds"/>
+    </CButton>
+    <CButton id="TalentBucketSuperioritySimple" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnstarwand.dds"/>
+    </CButton>
+    <CButton id="TalentBucketUnleashed" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\war3_pasbtnmagicalsentry.dds"/>
+    </CButton>
+    <CButton id="TalentBucketBrilliance" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnbrilliance.dds"/>
+    </CButton>
+    <CButton id="TalentBucketVampiricAssault" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnundeadshrine.dds"/>
+        <SimpleDisplayText value="Button/Tooltip/TalentBucketVampiricAssaultSimple"/>
+    </CButton>
+    <CButton id="TalentBucketMarksman" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnmarksmanship.dds"/>
+        <SimpleDisplayText value="Button/Tooltip/TalentBucketMarksmanSimple"/>
+    </CButton>
+    <CButton id="BucketRelentless" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnreincarnation.dds"/>
+        <HotkeyAlias value="TalentRelentlessBase"/>
+    </CButton>
+    <CButton id="BucketMentalAgility" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_ui_temp_icon_mentalclarity_3.dds"/>
+        <HotkeyAlias value="TalentGenericBrilliance1"/>
+    </CButton>
+    <CButton id="BucketOverdrive" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_btn_d3_wizard_archon.dds"/>
+        <HotkeyAlias value="PrestigeFirstAid@Slot1"/>
+    </CButton>
+    <CButton id="TalentBucketVictoryRush" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_btn_d3_wizard_energyarmor.dds"/>
+    </CButton>
+    <CButton id="CalldownMULERepair" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_temp_btn-ability-terran-repair.dds"/>
+        <AlertIcon value="Assets\Textures\storm_temp_btn-ability-terran-repair.dds"/>
+        <EditorCategories value="Race:Terran"/>
+        <TintRacially value="1"/>
+        <Universal value="1"/>
+    </CButton>
+    <CTalent id="BucketCalldownMULE">
+        <Face value="TalentBucketCalldownMULEFace"/>
+        <RankArray Face="TalentBucketCalldownMuleSimple" Item="TalentBucketCalldownMule"/>
+    </CTalent>
+    <CTalent id="BucketClairvoyance">
+        <Face value="ClairvoyanceFace"/>
+        <RankArray Face="TalentBucketClairvoyanceSimple" Item="TalentBucketClairvoyance"/>
+    </CTalent>
+    <CTalent id="BucketPromote">
+        <Face value="TalentBucketPromote"/>
+        <RankArray Face="TalentBucketPromoteSimple" Item="TalentBucketPromote">
+            <BehaviorArray value="TalentBucketPromoteCarryBehavior"/>
+        </RankArray>
+    </CTalent>
+    <CTalent id="BucketSearingAttacks">
+        <Face value="SearingAttacks"/>
+        <RankArray Face="SearingAttacksSimple" Item="SearingAttacks">
+            <BehaviorArray value="SearingAttacksCarryBehavior"/>
+        </RankArray>
+    </CTalent>
+    <CTalent id="BucketShieldAlly">
+        <Face value="TalentShieldAlly"/>
+        <RankArray Face="TalentShieldAllySimple" Item="ShieldAlly"/>
+    </CTalent>
+    <CTalent id="BucketStormShield">
+        <Face value="TalentBucketStormShield"/>
+        <RankArray Face="TalentBucketStormShieldSimple" Item="TalentBucketStormShield">
+            <BehaviorArray value="TalentBucketStormShieldCarryBehavior"/>
+        </RankArray>
+    </CTalent>
+    <CTalent id="BucketSwiftStorm">
+        <Face value="TalentBucketSwiftStorm"/>
+        <RankArray Face="TalentBucketSwiftStormSimple">
+            <BehaviorArray value="TalentBucketSwiftStormCarryBehavior"/>
+        </RankArray>
+    </CTalent>
+    <CTalent id="BucketMinionKiller">
+        <Face value="MinionKillerTalent"/>
+        <RankArray Face="MinionKillerTalentSimple">
+            <BehaviorArray value="MinionKillerTalent"/>
+        </RankArray>
+        <AbilityModificationArray>
+            <Modifications>
+                <Type value="FlatModification"/>
+                <Catalog value="Effect"/>
+                <Entry value="MinionKillerApplySummonedUnitBehavior"/>
+                <Field value="Chance"/>
+                <Value value="1.000000"/>
+            </Modifications>
+        </AbilityModificationArray>
+    </CTalent>
+    <CTalent id="ResourclessOverdrive">
+        <Face value="TalentOverdriveResourceless"/>
+        <RankArray Face="TalentOverdriveResourceless" Item="TalentOverdriveResourceless"/>
+    </CTalent>
+    <!--CTalent id="IllidanBrilliance2">-->
+    <!--        <Face value="TalentIllidanBrilliance3Base"/>-->
+    <!--        <RankArray Face="TalentIllidanBrilliance3">-->
+    <!--            <BehaviorArray value="IllidanBrilliance3"/>-->
+    <!--        </RankArray>-->
+    <!--        <RankArray Face="TalentIllidanBrilliance4">-->
+    <!--            <BehaviorArray value="IllidanBrilliance4"/>-->
+    <!--        </RankArray>-->
+    <!--    </CTalent-->
+    <CTalent id="PlaceholderRangedCombatStyle">
+        <Face value="RangedPlaceholder"/>
+        <RankArray Face="RangedPlaceholder">
+            <BehaviorArray value="RangedPlaceholder"/>
+        </RankArray>
+    </CTalent>
+    <CTalent id="GenericDoesNothing">
+        <Face value="TALENTBUGGED"/>
+    </CTalent>
+    <!-- .................. -->
+    <!-- New bucket talents -->
+    <!-- .................. -->
+    <CTalent id="BucketEmpoweredAbilities">
+        <Face value="TalentBucketEmpoweredAbilities"/>
+        <RankArray Face="TalentBucketEmpoweredAbilitiesSimple"/>
+    </CTalent>
+    <CTalent id="BucketRapidRegeneration">
+        <Face value="TalentBucketRapidRegeneration"/>
+        <RankArray Face="TalentBucketRapidRegenerationSimple">
+            <BehaviorArray value="TalentBucketRapidRegeneration"/>
+        </RankArray>
+    </CTalent>
+    <CTalent id="BucketBrilliance">
+        <Face value="TalentBucketBrilliance"/>
+        <RankArray Face="TalentBucketBrillianceSimple">
+            <BehaviorArray value="TalentBucketBrilliance"/>
+        </RankArray>
+    </CTalent>
+    <CTalent id="BucketBribe">
+        <Face value="TalentBucketBribe"/>
+        <RankArray Face="TalentBucketBribeSimple" Item="TalentBucketBribe">
+            <BehaviorArray value="BribeCarryBehavior"/>
+        </RankArray>
+        <Active value="1"/>
+    </CTalent>
+    <CTalent id="BucketUnleashed">
+        <Face value="TalentBucketUnleashed"/>
+        <RankArray Face="TalentBucketUnleashed">
+            <BehaviorArray value="TalentBucketUnleashedController"/>
+        </RankArray>
+    </CTalent>
+    <CTalent id="BucketVictoryRush">
+        <Face value="TalentBucketVictoryRush"/>
+        <RankArray Face="TalentBucketVictoryRush">
+            <BehaviorArray value="TalentBucketVictoryRushController"/>
+        </RankArray>
+    </CTalent>
+    <CTalent id="BucketMarksman">
+        <Face value="TalentBucketMarksman"/>
+        <RankArray>
+            <BehaviorArray value="TalentBucketMarksman"/>
+        </RankArray>
+    </CTalent>
+    <CTalent id="BucketVampiricAssault">
+        <Face value="TalentBucketVampiricAssault"/>
+        <RankArray>
+            <BehaviorArray value="TalentBucketVampiricAssault"/>
+        </RankArray>
+    </CTalent>
+    <CTalent id="BucketRelentless">
+        <Face value="BucketRelentless"/>
+        <RankArray Face="BucketRelentlessSimple">
+            <BehaviorArray value="50PercentCCReduction"/>
+        </RankArray>
+    </CTalent>
+    <CTalent id="BucketOverdrive">
+        <Face value="BucketOverdrive"/>
+        <RankArray Face="BucketOverdriveSimple" Item="TalentOverdrive">
+            <BehaviorArray value="OverdriveCarryBehavior"/>
+        </RankArray>
+    </CTalent>
+    <CTalent id="BucketMentalAgility">
+        <Face value="BucketMentalAgility"/>
+        <RankArray Face="BucketMentalAgilitySimple">
+            <BehaviorArray value="BucketMentalAgility"/>
+        </RankArray>
+    </CTalent>
+    <CTalent id="BucketBattleMomentum">
+        <Face value="BucketBattleMomentumBase"/>
+        <RankArray Face="BucketBattleMomentumBaseSimple">
+            <BehaviorArray value="BucketBattleMomentumCarryBehavior"/>
+        </RankArray>
+    </CTalent>
+    <CTalent id="BucketBerserk">
+        <Face value="BucketBerserk"/>
+        <RankArray Item="TalentBerserk">
+            <BehaviorArray value="BerserkCarryBehavior"/>
+        </RankArray>
+        <Active value="1"/>
+    </CTalent>
+    <CTalent id="BucketMightAndMagic">
+        <Face value="TalentBucketMightAndMagic"/>
+        <RankArray Face="TalentBucketMightAndMagicSimple">
+            <BehaviorArray value="TalentBucketMightAndMagicController"/>
+        </RankArray>
+    </CTalent>
+    <CTalent id="BucketForceOfWill">
+        <Face value="TalentBucketForceofWill"/>
+        <RankArray Face="TalentBucketForceofWillSimple">
+            <BehaviorArray value="TalentBucketForceOfWillCarryBehavior"/>
+        </RankArray>
+    </CTalent>
+    <CTalent id="BucketShielding">
+        <Face value="TalentBucketShielding"/>
+        <RankArray Face="TalentBucketShieldingSimple">
+            <BehaviorArray value="TalentBucketShielding"/>
+            <BehaviorArray value="TalentBucketShieldingVisualController"/>
+        </RankArray>
+    </CTalent>
+    <CTalent id="BucketBattleFury">
+        <Face value="TalentBucketBattleFury"/>
+        <RankArray Face="TalentBucketBattleFurySimple">
+            <BehaviorArray value="TalentBucketBattleFuryCarryBehavior"/>
+        </RankArray>
+    </CTalent>
+    <CTalent id="BucketImposingPresence">
+        <Face value="TalentBucketImposingPresence"/>
+        <RankArray Face="TalentBucketImposingPresenceSimple">
+            <BehaviorArray value="TalentBucketImposingPresenceCarryBehavior"/>
+        </RankArray>
+    </CTalent>
+    <CTalent id="BucketGiantKiller">
+        <Face value="TalentBucketGiantKiller"/>
+        <RankArray>
+            <BehaviorArray value="TalentBucketGiantKiller"/>
+        </RankArray>
+    </CTalent>
+    <CTalent id="BucketArcaneTeachings">
+        <Face value="TalentBucketArcaneTeachings"/>
+        <RankArray Face="TalentBucketArcaneTeachingsSimple">
+            <BehaviorArray value="TalentBucketArcaneTeachings"/>
+        </RankArray>
+    </CTalent>
+    <CTalent id="BucketAmplifiedHealing">
+        <Face value="TalentBucketAmplifiedHealing"/>
+        <RankArray Face="TalentBucketAmplifiedHealingSimple">
+            <BehaviorArray value="TalentBucketAmplifiedHealing"/>
+        </RankArray>
+    </CTalent>
+    <CTalent id="BucketCleanse">
+        <Face value="TalentCleanse"/>
+        <RankArray Face="TalentCleanseSimple" Item="TalentBucketCleanse"/>
+    </CTalent>
+    <CTalent id="BucketDemolitionist">
+        <Face value="TalentBucketDemolitionist"/>
+        <RankArray>
+            <BehaviorArray value="TalentBucketDemolitionist"/>
+        </RankArray>
+    </CTalent>
+    <CTalent id="BucketInvigorate">
+        <Face value="TalentBucketInvigorate"/>
+        <RankArray Face="TalentBucketInvigorateSimple">
+            <BehaviorArray value="TalentBucketInvigorateCarryBehavior"/>
+        </RankArray>
+    </CTalent>
+    <CTalent id="BucketSuperiority">
+        <Face value="TalentBucketSuperiority"/>
+        <RankArray Face="TalentBucketSuperioritySimple">
+            <BehaviorArray value="TalentBucketSuperiority"/>
+        </RankArray>
+    </CTalent>
+    <CActorAction id="ItemCannonballAttack" parent="GenericAttackPointCommanders" effectImpact="DropCannonballsCreateCannonballItem" effectLaunch="DropCannonballsLaunchMissile">
+        <ImpactMap index="None" Model="" Sound=""/>
+        <ImpactMap index="Shield" Sound="Gen_Hero_Ranged_AttackImpact_Shield"/>
+        <LaunchSiteOps Ops="CannonballDropOffset"/>
+    </CActorAction>
+    <CActorSplat id="BribeRangeSplat" parent="UI_RangeSplat">
+        <EditorCategories value="DoodadType:NotDoodad"/>
+        <Scale value="6.000000"/>
+    </CActorSplat>
+    <CActorRange id="BribeRange" parent="CommandersRangeAbilPlusSplat" abil="TalentBucketBribe"/>
+    <CActorSplat id="ItemCalldownMULERangeSplat" parent="UI_RangeSplat">
+        <EditorCategories value="DoodadType:NotDoodad"/>
+        <Scale value="7.000000"/>
+    </CActorSplat>
+    <CActorSplat id="ItemMarineDropRangeSplat" parent="UI_RangeSplat">
+        <EditorCategories value="DoodadType:NotDoodad"/>
+        <Scale value="6.000000"/>
+    </CActorSplat>
+    <!-- MULE/Orbital Drop                                                                            -->
+    <CActorRange id="ItemCalldownMULERange" parent="CommandersRangeAbilPlusSplat" abil="ItemOrbitalDrop"/>
+    <!-- Necromancy                                                                    -->
+    <CActorSplat id="ItemNecromancyRangeSplat" parent="UI_RangeSplat">
+        <EditorCategories value="DoodadType:NotDoodad"/>
+        <Scale value="6.000000"/>
+    </CActorSplat>
+    <!-- Marine Drop                                                                                -->
+    <CActorRange id="ItemMarineDropRange" parent="CommandersRangeAbilPlusSplat" abil="ItemMarineDrop"/>
+    <CActorRange id="ItemNecromancyRange" parent="CommandersRangeAbilPlusSplat" abil="ItemNecromancy"/>
+    <CActorSplat id="ItemPlaguebringerRangeSplat" parent="UI_RangeSplat">
+        <EditorCategories value="DoodadType:NotDoodad"/>
+        <Scale value="7.000000"/>
+    </CActorSplat>
+    <CActorSplat id="ShrinkRayRangeSplat" parent="UI_RangeSplat">
+        <EditorCategories value="DoodadType:NotDoodad"/>
+        <Scale value="7.000000"/>
+    </CActorSplat>
+    <CActorSplat id="TalentBucketPromoteRangeSplat" parent="UI_RangeSplat">
+        <EditorCategories value="DoodadType:NotDoodad"/>
+        <Scale value="7.000000"/>
+    </CActorSplat>
+    <!-- Nuclear Strike                                                                     -->
+    <CActorSplat id="ItemNuclearStrikeRangeSplat" parent="UI_RangeSplat">
+        <EditorCategories value="DoodadType:NotDoodad"/>
+        <Scale value="8.000000"/>
+    </CActorSplat>
+    <CActorSplat id="TalentBucketShieldAllyRangeSplat" parent="UI_RangeSplat">
+        <EditorCategories value="DoodadType:NotDoodad"/>
+        <Scale value="7.500000"/>
+    </CActorSplat>
+    <CActorSplat id="TalentBucketStormShieldRangeSplat" parent="UI_RangeSplat">
+        <EditorCategories value="DoodadType:NotDoodad"/>
+        <Scale value="5.000000"/>
+    </CActorSplat>
+    <CActorRange id="ItemNuclearStrikeRange" parent="CommandersRangeAbilPlusSplat" abil="ItemNuclearStrike"/>
+    <CActorRange id="ItemPlaguebringerRange" parent="CommandersRangeAbilPlusSplat" abil="ItemPlaguebringer"/>
+    <CActorRange id="TalentBucketPromoteRange" parent="CommandersRangeAbilPlusSplat" abil="TalentBucketPromote"/>
+    <CActorRange id="TalentBucketShieldAllyRange" parent="CommandersRangeAbilPlusSplat" abil="TalentShieldAlly"/>
+    <CActorRange id="TalentBucketStormShieldRange" parent="CommandersRangeAbilPlusSplat" abil="TalentBucketStormShield"/>
+    <CActorModel id="SearingAttackImpact" parent="GenericAttackModel">
+        <Host Subject="::Creator"/>
+        <Model value="SearingAttackImpact"/>
+        <On Terms="ActorCreation" Send="Create SearingAttackImpactSound"/>
+    </CActorModel>
+    <CActorSound id="SearingAttackImpactSound" parent="SoundOneShot">
+        <Sound value="Talent_SearingAttacks_Impact"/>
+        <Host Subject="::Creator"/>
+    </CActorSound>
+    <CActorSound id="SearingAttackActivate" parent="SoundOneShot">
+        <On Terms="Behavior.SearingAttacks.On" Send="Create"/>
+        <On Terms="Behavior.TyrandeSearingArrows.On" Send="Create"/>
+        <On Terms="Behavior.TalentBucketSearingAttacksTychus.On" Send="Create"/>
+        <Sound value="Talent_SearingAttacks_Launch"/>
+    </CActorSound>
+    <CActorModel id="SearingAttackImpactDelayed">
+        <Host Subject="::Creator"/>
+        <Model value="SearingAttackImpact"/>
+        <On Terms="ActorCreation" Send="SetOpacity"/>
+        <On Terms="ActorCreation" Send="TimerSet 0.062500 Start"/>
+        <On Terms="TimerExpired; TimerName Start" Send="SetOpacity 1.000000"/>
+        <On Terms="TimerExpired; TimerName Start" Send="AnimBracketStart BSD Birth Stand Death ContentPlayOnce"/>
+        <On Terms="AnimBracketState.*.AfterClosing; AnimName BSD" Send="Destroy"/>
+        <On Terms="ActorCreation" Send="Create SearingAttackImpactSound"/>
+        <Flags index="SuppressCreationErrors" value="1"/>
+        <Flags index="SuppressSaveLoad" value="1"/>
+        <Filter index="All" value="1"/>
+        <VisibleTo index="Self" value="1"/>
+        <VisibleTo index="Ally" value="1"/>
+        <VisibleTo index="Enemy" value="1"/>
+    </CActorModel>
+    <CActorModel id="MercenaryLordBuff" parent="StormModelAnimationStyleContinuous">
+        <Inherits index="Scale" value="1"/>
+        <On Terms="Behavior.TalentMercenaryLordGiantBuff.On" Send="Create"/>
+        <On Terms="Behavior.TalentMercenaryLordGiantBuff.Off" Send="AnimBracketStop BSD"/>
+        <On Terms="Behavior.TalentMercenaryLordKnightBuff.On" Send="Create"/>
+        <On Terms="Behavior.TalentMercenaryLordKnightBuff.Off" Send="AnimBracketStop BSD"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <AutoScaleFactor value="0.750000"/>
+        <Filter index="All" value="0"/>
+        <VisibleTo index="Self" value="0"/>
+        <VisibleTo index="Ally" value="0"/>
+        <VisibleTo index="Enemy" value="0"/>
+    </CActorModel>
+    <CActorSound id="BribeImpactSound" parent="SoundOneShot">
+        <On Terms="Effect.BribeKillEffect.Start; At Target" Send="Create"/>
+    </CActorSound>
+    <CActorSound id="BribeReadySound" parent="SoundOneShot">
+        <On Terms="BehaviorLevel.BribeStacks.Start; Level 40" Send="Create"/>
+        <Sound value="BribeReady_Sound"/>
+    </CActorSound>
+    <!--                                                                                         -->
+    <!-- Item Shop                                                                               -->
+    <!--                                                                                         -->
+    <CActorUnit id="ItemShop" parent="GenericUnitStandard" unitName="ItemShop">
+        <BarOffset value="0"/>
+        <UnitFlags index="ShowBlobShadow" value="0"/>
+    </CActorUnit>
+    <CActorModel id="ItemCannonballLaunchSite">
+        <Aliases value="_LaunchGuide"/>
+        <Model value="Invisible"/>
+    </CActorModel>
+    <CActorMissile id="ItemCannonballAttackMissile" parent="GenericAttackMissile" unitName="ItemCannonballMissile">
+        <ModelAspectSets>
+            <Aspects RegardsAs="Neutral" Model="Invisible"/>
+        </ModelAspectSets>
+    </CActorMissile>
+    <!--CActorModel id="ItemCannonballDropImpact" parent="StormModelAnimationStyleOneShot">-->
+    <!--        <On Terms="Effect.DropCannonballsCreateCannonballItem.Start" Send="Create"/>-->
+    <!--    </CActorModel-->
+    <CActorSound id="ItemCannonballDropLaunchSound" parent="SoundOneShot">
+        <On Terms="Effect.DropCannonballsLaunchMissile.Start" Send="Create"/>
+        <Sound value="UI_Cannonball_Drop"/>
+    </CActorSound>
+    <CActorSound id="ItemCannonballDropSound" parent="SoundOneShot">
+        <On Terms="Effect.DropCannonballsSoundDummy.Start" Send="Create"/>
+        <Sound value="UI_Doubloon_Drop"/>
+    </CActorSound>
+    <CActorUnit id="TalentDash" parent="StormItemBase" unitName="TalentDash"/>
+    <CActorUnit id="TalentDeafeningRoar" parent="StormItemBase" unitName="TalentDeafeningRoar"/>
+    <CActorUnit id="TalentBerserk" parent="StormItemBase" unitName="TalentBerserk"/>
+    <CActorUnit id="TalentOverdrive" parent="StormItemBase" unitName="TalentOverdrive"/>
+    <CActorUnit id="TalentOverdriveResourceless" parent="StormItemBase" unitName="TalentOverdriveResourceless"/>
+    <CActorUnit id="ItemDemonicGaze" parent="StormItemBase" unitName="TalentBucketShrinkRay">
+        <HighlightTooltip value="Unit/Name/ItemDemonicGaze"/>
+    </CActorUnit>
+    <CActorUnit id="TalentBucketStormShield" parent="StormItemBase" unitName="TalentBucketStormShield"/>
+    <CActorModel id="ItemJuggernautAura" parent="StormModelAddition">
+        <On Terms="Behavior.JuggernautStack.On" Send="Create"/>
+        <On Terms="Behavior.JuggernautStack.Off" Send="AnimBracketStop BSD"/>
+        <On Terms="TimerExpired; TimerName Size; ValidateUnit Juggernaut0" Send="AnimBracketStop BSD"/>
+        <On Terms="ActorCreation" Send="TimerSet 1.000000 Size"/>
+        <On Terms="TimerExpired; TimerName Size; ValidateUnit JuggernautNot0" Send="TimerSet 1.000000 Size"/>
+        <On Terms="TimerExpired; TimerName Size; ValidateUnit Juggernaut2" Send="SetScale 1.120000 1.000000"/>
+        <On Terms="TimerExpired; TimerName Size; ValidateUnit Juggernaut3" Send="SetScale 1.260000 1.000000"/>
+        <On Terms="TimerExpired; TimerName Size; ValidateUnit Juggernaut4" Send="SetScale 1.340000 1.000000"/>
+        <On Terms="ActorCreation" Send="SetScale 0.500000"/>
+        <On Terms="ActorCreation" Send="SetScale 0.900000 1.000000"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachOrigin"/>
+        <AutoScaleFactor value="1.000000"/>
+        <Filter index="All" value="0"/>
+        <VisibleTo index="Self" value="0"/>
+        <VisibleTo index="Ally" value="0"/>
+        <VisibleTo index="Enemy" value="0"/>
+    </CActorModel>
+    <!-- Nature's Gift                                                                     -->
+    <CActorModel id="ItemNaturesGiftHeal" parent="ModelAnimationStyleContinuousUNIT">
+        <Inherits index="CloakEffect" value="1"/>
+        <Inherits index="Visibility" value="1"/>
+        <On Terms="Behavior.ItemNaturesGiftChannel.On" Send="Create"/>
+        <On Terms="Behavior.ItemNaturesGiftChannel.Off" Send="Destroy"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+    </CActorModel>
+    <CActorSound id="ItemNaturesGiftLoop" parent="SoundContinuous">
+        <On Terms="Effect.NaturesGiftCreateLifeHealer.SourceStart" Send="Create"/>
+        <On Terms="Effect.NaturesGiftCreateLifeHealer.SourceStop" Send="Destroy"/>
+        <Sound value="Malfurion_NaturesGift_Loop"/>
+        <Filter index="Neutral" value="0"/>
+        <Filter index="All" value="1"/>
+        <VisibleTo index="Self" value="1"/>
+        <VisibleTo index="Ally" value="1"/>
+        <VisibleTo index="Enemy" value="1"/>
+    </CActorSound>
+    <CActorModel id="ItemPurityCast" parent="StormModelAnimationStyleOneShot">
+        <On Terms="Behavior.PurityUnstoppable.On" Send="Create"/>
+        <HostSiteOps Ops="SOpAttachCenter" HoldRotation="1"/>
+        <Host Subject="_Unit"/>
+        <AutoScaleFactor value="1.000000"/>
+        <Filter index="All" value="0"/>
+        <VisibleTo index="Self" value="0"/>
+        <VisibleTo index="Ally" value="0"/>
+        <VisibleTo index="Enemy" value="0"/>
+    </CActorModel>
+    <CActorModel id="ItemPurityUnstoppable" parent="StormModelAnimationStyleContinuous">
+        <On Terms="Behavior.PurityUnstoppable.On" Send="Create"/>
+        <On Terms="Behavior.PurityUnstoppable.Off" Send="AnimBracketStop BSD"/>
+        <HostSiteOps Ops="SOpAttachCenter" HoldRotation="1"/>
+        <Host Subject="_Unit"/>
+        <Filter index="All" value="0"/>
+        <VisibleTo index="Self" value="0"/>
+        <VisibleTo index="Ally" value="0"/>
+        <VisibleTo index="Enemy" value="0"/>
+    </CActorModel>
+    <!-- Blinding Light                        -->
+    <CActorAction id="ItemBlindingLightAttack" parent="GenericAttack" effectImpact="ItemBlindingLightImpactSet" effectLaunch="ItemBlindingLightLaunchMissile">
+        <LaunchSiteOps Ops="SOpAttachCenter"/>
+        <ImpactMap index="None" Model="" Sound="Talent_FlashBang_Explode"/>
+    </CActorAction>
+    <CActorMissile id="ItemBlindingLightAttackMissile" parent="GenericAttackMissile" unitName="ItemBlindingLightMissile">
+        <On Terms="ActorCreation" Send="AnimPlay Walk Walk PlayForever"/>
+        <ModelAspectSets>
+            <Aspects RegardsAs="Neutral" Model="Invisible"/>
+        </ModelAspectSets>
+    </CActorMissile>
+    <CActorModel id="ItemBlindingLightHeroBlind" parent="StormModelAddition">
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachOverhead"/>
+        <AutoScaleFactor value="1.000000"/>
+        <On Terms="Behavior.ItemBlindingLightHeroBlind.On" Send="Create"/>
+        <On Terms="Behavior.ItemBlindingLightHeroBlind.Off" Send="AnimBracketStop BSD"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.000000 7.500000"/>
+        <Model value="ItemBlindingLightHeroBlindBuff"/>
+        <Filter index="All" value="0"/>
+        <VisibleTo index="Self" value="0"/>
+        <VisibleTo index="Ally" value="0"/>
+        <VisibleTo index="Enemy" value="0"/>
+    </CActorModel>
+    <CActorModel id="ItemBlindingLightImpactModel" parent="StormModelAnimationStyleOneShot">
+        <On Terms="Effect.BlindingLightSAHeroes.Start; At Effect" Send="Create"/>
+        <Model value="ItemBlindingLightExplosion"/>
+        <Filter index="All" value="0"/>
+        <VisibleTo index="Self" value="0"/>
+        <VisibleTo index="Ally" value="0"/>
+        <VisibleTo index="Enemy" value="0"/>
+    </CActorModel>
+    <CActorSound id="ItemBlindingLightImpactSound" parent="SoundOneShot">
+        <On Terms="Effect.ItemBlindingLightSearchHeroes.Start" Send="Create"/>
+        <Sound value="Talent_FlashBang_Explode"/>
+    </CActorSound>
+    <CActorModel id="ItemBlindingLightMinionStun" parent="StormModelAddition">
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachOverhead"/>
+        <AutoScaleFactor value="1.000000"/>
+        <On Terms="Behavior.ItemBlindingLightMinionStun.On" Send="Create"/>
+        <On Terms="Behavior.ItemBlindingLightMinionStun.Off" Send="AnimBracketStop BSD"/>
+        <Model value="StormStun"/>
+        <Filter index="All" value="0"/>
+        <VisibleTo index="Self" value="0"/>
+        <VisibleTo index="Ally" value="0"/>
+        <VisibleTo index="Enemy" value="0"/>
+    </CActorModel>
+    <CActorRange id="ItemBlindingLightRange" parent="RangeAbil" abil="ItemBlindingLight"/>
+    <CActorModel id="ItemBlindingLightReveal" parent="StormModelAddition">
+        <On Terms="Effect.ItemBlindingLightRevealerPersistent.Start; At Target" Send="Create"/>
+        <On Terms="Effect.ItemBlindingLightRevealerPersistent.Stop; At Target" Send="AnimBracketStop BSD"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachOverhead"/>
+        <Filter index="All" value="0"/>
+        <VisibleTo index="Self" value="0"/>
+        <VisibleTo index="Ally" value="0"/>
+        <VisibleTo index="Enemy" value="0"/>
+    </CActorModel>
+    <CActorModel id="ItemBlindingLightWarningModel" parent="StormModelAnimationStyleOneShot">
+        <Inherits index="TeamColor" value="1"/>
+        <On Terms="Effect.ItemBlindingLightCP.Start" Send="Create"/>
+        <On Terms="Effect.ItemBlindingLightCP.Stop" Send="AnimBracketStop BSD"/>
+        <Filter index="All" value="0"/>
+        <VisibleTo index="Self" value="0"/>
+        <VisibleTo index="Ally" value="0"/>
+        <VisibleTo index="Enemy" value="0"/>
+    </CActorModel>
+    <!-- Plaguebringer                                                                         -->
+    <CActorSound id="ItemPlaguebringerBeamSound" parent="SoundOneShot">
+        <On Terms="Effect.ItemPlaguebringerApplyBehavior.Start; At Caster" Send="Create"/>
+        <Sound value="Talent_Plaguebringer_Beam"/>
+    </CActorSound>
+    <CActorSound id="ItemPlaguebringerOffSound" parent="SoundOneShot">
+        <On Terms="Behavior.ItemPlaguebringerDebuff.Off" Send="Create"/>
+        <Sound value="Talent_Plaguebringer_Off"/>
+    </CActorSound>
+    <CActorSound id="ItemPlaguebringerOnSound" parent="SoundOneShot">
+        <On Terms="Behavior.ItemPlaguebringerDebuff.On" Send="Create"/>
+        <Sound value="Talent_Plaguebringer_On"/>
+    </CActorSound>
+    <CActorModel id="ItemPlaguebringerDebuff" parent="StormModelAddition">
+        <On Terms="Behavior.ItemPlaguebringerDebuff.On" Send="Create"/>
+        <On Terms="Behavior.ItemPlaguebringerDebuff.Off" Send="AnimBracketStop BSD"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachOverhead"/>
+        <AutoScaleFactor value="1.000000"/>
+        <Filter index="All" value="0"/>
+        <VisibleTo index="Self" value="0"/>
+        <VisibleTo index="Ally" value="0"/>
+        <VisibleTo index="Enemy" value="0"/>
+    </CActorModel>
+    <CActorBeamSimple id="ItemPlaguebringerBeam" parent="BeamSimpleAnimationStyleOneShot">
+        <On Terms="Effect.ItemPlaguebringerApplyBehavior.Start" Send="Create"/>
+        <On Terms="ActorCreation" Send="SetTintColor 0,128,0"/>
+        <HostLaunch Subject="_Unit" Scope="Caster" Actor="Find"/>
+        <HostLaunchSiteOps Ops="SOpAttachCenter"/>
+        <HostImpact Subject="_Unit" Scope="Target" Actor="Find"/>
+        <HostImpactSiteOps Ops="SOpAttachCenter"/>
+    </CActorBeamSimple>
+    <!-- Healing Ward/Shaman's Blessing                                                                            -->
+    <CActorRange id="ItemShamansBlessingRange" parent="RangeAbil" abil="ItemShamansBlessing"/>
+    <!-- Arcane Healer                                                                   -->
+    <CActorModel id="ItemArcaneHealerBuff" parent="StormModelAnimationStyleContinuous">
+        <On Terms="Behavior.ItemArcaneHealerBuff.On" Send="Create"/>
+        <On Terms="Behavior.ItemArcaneHealerBuff.Off" Send="AnimBracketStop BSD"/>
+        <On Terms="ActorCreation" Send="SetTintColor 128,128,0"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <Filter index="All" value="0"/>
+        <VisibleTo index="Self" value="0"/>
+        <VisibleTo index="Ally" value="0"/>
+        <VisibleTo index="Enemy" value="0"/>
+    </CActorModel>
+    <!--CActorBeamSimple id="ItemNecromancyImpactBeam" parent="BeamSimpleAnimationStyleOneShot">-->
+    <!--        <On Terms="Effect.ItemNecromancyActivatedDamage.Start; At Target" Send="Create"/>-->
+    <!--        <On Terms="ActorCreation" Send="SetTintColor 128,0,0"/>-->
+    <!--        <HostLaunch Subject="_Unit" Scope="Target" Actor="Find"/>-->
+    <!--        <HostLaunchSiteOps Ops="SOpAttachCenter"/>-->
+    <!--        <HostImpact Subject="_Unit" Scope="Caster" Actor="Find"/>-->
+    <!--        <HostImpactSiteOps Ops="SOpAttachCenter"/>-->
+    <!--    </CActorBeamSimple-->
+    <CActorModel id="NecromancyImpactModel" parent="StormModelAnimationStyleOneShot">
+        <On Terms="Effect.ItemNecromancyActivatedDamage.Start" Send="Create"/>
+        <On Terms="ActorCreation" Send="SetTintColor 255,0,0"/>
+        <AutoScaleFactor value="1.000000"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
+        <Filter index="All" value="0"/>
+        <VisibleTo index="Self" value="0"/>
+        <VisibleTo index="Ally" value="0"/>
+        <VisibleTo index="Enemy" value="0"/>
+    </CActorModel>
+    <CActorModel id="ItemNuclearStrikeImpact" parent="StormModelAnimationStyleOneShot">
+        <FogVisibility value="Visible"/>
+        <On Terms="Effect.ItemNuclearStrikeSearch.Start" Send="Create"/>
+        <HostSiteOps Ops="SOpTargetPoint"/>
+        <Filter index="All" value="0"/>
+        <VisibleTo index="Self" value="0"/>
+        <VisibleTo index="Ally" value="0"/>
+        <VisibleTo index="Enemy" value="0"/>
+    </CActorModel>
+    <CActorModel id="ItemNuclearStrikeWarning" parent="StormModelAnimationStyleContinuous">
+        <Inherits index="TeamColor" value="1"/>
+        <On Terms="Effect.ItemNuclearStrikeInitialCreatePersistent.Start" Send="Create"/>
+        <On Terms="Effect.ItemNuclearStrikeInitialCreatePersistent.Stop" Send="Destroy"/>
+        <Filter index="All" value="0"/>
+        <VisibleTo index="Self" value="0"/>
+        <VisibleTo index="Ally" value="0"/>
+        <VisibleTo index="Enemy" value="0"/>
+    </CActorModel>
+    <CActorModel id="ItemNuclearStrikeWarningSuppliment" parent="StormModelAnimationStyleContinuous">
+        <Inherits index="TeamColor" value="1"/>
+        <On Terms="Effect.ItemNuclearStrikeInitialCreatePersistent.Start" Send="Create"/>
+        <On Terms="Effect.ItemNuclearStrikeInitialCreatePersistent.Stop" Send="Destroy"/>
+        <Filter index="All" value="0"/>
+        <VisibleTo index="Self" value="0"/>
+        <VisibleTo index="Ally" value="0"/>
+        <VisibleTo index="Enemy" value="0"/>
+    </CActorModel>
+    <CActorSquib id="ItemNuclearStrikeMissileDrop">
+        <On Terms="Effect.ItemNuclearStrikeCreatePersistent.Start" Send="Create"/>
+        <HostSiteOps Ops="SOpTargetPointStationary"/>
+        <Map index="None" Sound="Talent_NuclearStrike_MissileDrop"/>
+    </CActorSquib>
+    <CActorSquib id="ItemNuclearStrikeMissileExplode">
+        <On Terms="Effect.ItemNuclearStrikeSearch.Start; At Effect" Send="Create"/>
+        <HostSiteOps Ops="SOpTargetPointStationary"/>
+        <Map index="None" Model="ItemNuclearStrikeImpact" Sound="Talent_NuclearStrike_Impact"/>
+    </CActorSquib>
+    <!-- Sharpshooter 2 Radar (Heartbeat Sensor)                                                    -->
+    <CActorUnit id="ItemHeartbeatSensor" parent="StormItemBase" unitName="ItemHeartbeatSensor"/>
+    <CActorModel id="ItemHeartbeatSensorActivate" parent="StormModelAnimationStyleOneShot">
+        <On Terms="Behavior.HeartbeatSensorCasterBehavior.On" Send="Create"/>
+        <On Terms="ActorCreation" Send="SetScale 10.000000,10.000000,1.000000 0.500000"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachOrigin"/>
+        <AcceptedHostedPropTransfers index="Visibility" value="1"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
+        <Filter index="All" value="0"/>
+        <VisibleTo index="Self" value="0"/>
+        <VisibleTo index="Ally" value="0"/>
+        <VisibleTo index="Enemy" value="0"/>
+    </CActorModel>
+    <CActorSound id="ItemHeartbeatSensorActivateSound" parent="SoundOneShot">
+        <On Terms="Behavior.HeartbeatSensorCasterBehavior.On" Send="Create"/>
+        <Sound value="Talent_HeartbeatSensor_Activate"/>
+    </CActorSound>
+    <CActorModel id="ItemHeartbeatSensorDetected" parent="StormModelAnimationStyleContinuous">
+        <On Terms="Behavior.HeartbeatSensorTargetBehavior.On; ValidateUnit TargetIsHero" Send="Create"/>
+        <On Terms="Behavior.HeartbeatSensorTargetBehavior.Off" Send="AnimBracketStop BSD"/>
+        <HostSiteOps Ops="SOpAttachOrigin" HoldRotation="1"/>
+        <Host Subject="_Unit"/>
+        <Model value="HeartbeatSensorDetected"/>
+        <Filter index="All" value="0"/>
+        <VisibleTo index="Self" value="0"/>
+        <VisibleTo index="Ally" value="0"/>
+        <VisibleTo index="Enemy" value="0"/>
+    </CActorModel>
+    <!-- Storm Shield                                                                               -->
+    <CActorModel id="TalentBucketStormShieldBuff" parent="StormModelAddition">
+        <On Terms="Behavior.TalentBucketStormShield.On" Send="Create"/>
+        <On Terms="Behavior.TalentBucketStormShield.Off" Send="AnimBracketStop BSD"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <Inherits index="CloakEffect" value="0"/>
+        <Inherits index="Visibility" value="0"/>
+        <AutoScaleFactor value="1.000000"/>
+        <Macros value="GlobalLoopMacroMore"/>
+        <Macros value="CloakedEffectActorMacro"/>
+        <Filter index="All" value="0"/>
+        <VisibleTo index="Self" value="0"/>
+        <VisibleTo index="Ally" value="0"/>
+        <VisibleTo index="Enemy" value="0"/>
+    </CActorModel>
+    <CActorSound id="TalentBucketStormShieldLaunchSound" parent="SoundOneShot">
+        <On Terms="Behavior.TalentBucketStormShield.On" Send="Create"/>
+        <Sound value="Talent_StormShield_Activate"/>
+    </CActorSound>
+    <CActorSound id="TalentBucketStormShieldAbsorbSound" parent="SoundOneShot">
+        <On Terms="Behavior.TalentBucketStormShield.DamageHandled" Send="Create"/>
+        <Sound value="Talent_StormShield_Impact"/>
+    </CActorSound>
+    <!-- Promote                                                                            -->
+    <CActorBeamSimple id="TalentBucketPromoteBeam" parent="BeamSimpleAnimationStyleOneShot">
+        <On Terms="Effect.TalentBucketPromoteApplyBuff.Start" Send="Create"/>
+        <On Terms="ActorCreation" Send="SetTintColor 255,236,0"/>
+        <HostLaunch Subject="_Unit" Scope="Caster" Actor="Find"/>
+        <HostLaunchSiteOps Ops="SOpAttachCenter"/>
+        <HostImpact Subject="_Unit" Scope="Target" Actor="Find"/>
+        <HostImpactSiteOps Ops="SOpAttachCenter"/>
+        <Model value="HolyShockBeam"/>
+    </CActorBeamSimple>
+    <CActorModel id="TalentBucketPromoteImpactModel" parent="StormModelAnimationStyleOneShot">
+        <On Terms="Effect.TalentBucketPromoteApplyBuff.Start; At Target" Send="Create"/>
+        <Model value="UtherHolyShockImpact"/>
+        <Filter index="All" value="0"/>
+        <VisibleTo index="Self" value="0"/>
+        <VisibleTo index="Ally" value="0"/>
+        <VisibleTo index="Enemy" value="0"/>
+    </CActorModel>
+    <CActorModel id="TalentBucketPromoteBuff" parent="StormModelAnimationStyleContinuous">
+        <On Terms="Behavior.TalentBucketPromote.On" Send="Create"/>
+        <On Terms="Behavior.TalentBucketStormShield.Off" Send="AnimBracketStop BSD"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <Inherits index="Scale" value="1"/>
+        <AutoScaleFactor value="0.750000"/>
+        <Filter index="All" value="0"/>
+        <VisibleTo index="Self" value="0"/>
+        <VisibleTo index="Ally" value="0"/>
+        <VisibleTo index="Enemy" value="0"/>
+    </CActorModel>
+    <CActorSound id="TalentBucketPromoteCastSound" parent="SoundOneShot">
+        <On Terms="Effect.TalentBucketPromoteApplyBuff.Start; At Target" Send="Create"/>
+        <Sound value="TalentPromoteCast"/>
+    </CActorSound>
+    <CActorUnit id="TalentBucketPromote" parent="StormItemBase" unitName="TalentBucketPromote">
+        <HighlightTooltip value="Unit/Name/Bogus"/>
+    </CActorUnit>
+    <CActorSiteOpShadow id="ItemCalldownMULEDropSOpShadow">
+        <HeightSourceType value="AsyncPrecise"/>
+        <HeightTests value="0.000000,-0.200000"/>
+        <HeightTests value="0.000000,0.200000"/>
+        <HeightTests value="-0.200000,0.000000"/>
+        <HeightTests value="0.200000,0.000000"/>
+        <HeightTestType value="Highest"/>
+    </CActorSiteOpShadow>
+    <CActorModel id="ItemCalldownMULEDropModel" parent="ModelAnimationStyleOneShotNoOrphan">
+        <Model value="ItemOrbitalDropDropPod"/>
+        <On Terms="Effect.CalldownMULECreatePersistent.Start" Send="Create"/>
+        <On Terms="Effect.CalldownMULECreatePersistent.Stop" Send="AnimBracketStop BSD"/>
+        <HostSiteOps Ops="ItemCalldownMULEDropSOpShadow"/>
+    </CActorModel>
+    <CActorSound id="ItemCalldownMULEDrop" parent="SoundOneShot">
+        <On Terms="Effect.CalldownMULECreatePersistent.Start; At Target" Send="Create"/>
+        <On Terms="ActorCreation" Send="TimerSet 2.100000 DelayDropPod"/>
+        <On Terms="TimerExpired; TimerName DelayDropPod" Send="Create ItemCalldownMULEImpact"/>
+        <On Terms="TimerExpired; TimerName DelayDropPod" Send="Destroy"/>
+        <Sound value="Talent_CalldownMULE_Drop"/>
+    </CActorSound>
+    <CActorSound id="ItemCalldownMULEImpact" parent="SoundOneShot">
+        <On Terms="ActorCreation" Send="Print Create_Talent_CalldownMULE_Impact"/>
+        <Sound value="Talent_CalldownMULE_Impact"/>
+    </CActorSound>
+    <CActorUnit id="ItemOrbitalDropMULE" parent="StormMinionStandard" unitName="ItemMULE">
+        <On Terms="Abil.MULERepair.SourceChannelStart" Send="AnimBracketStart Work Work,Start Work Work,End"/>
+        <On Terms="Abil.MULERepair.SourceChannelStop" Send="AnimBracketStop Work"/>
+        <On Terms="Abil.MULERepair.SourceChannelStart" Send="TimerSet 0.000000,0.300000 Repair"/>
+        <On Terms="Abil.MULERepair.SourceChannelStop" Send="TimerKill Repair"/>
+        <On Terms="Abil.MULERepair.SourceChannelStop" Send="AnimClear Repair"/>
+        <On Terms="AnimDone.*.Complete; AnimName Repair" Send="TimerSet 0.000000,0.300000 Repair"/>
+        <On Terms="TimerExpired; TimerName Repair" Send="AnimPlay Repair Work NonLooping"/>
+        <On Terms="TimerExpired; TimerName Repair" Send="Create ItemMULERepairSound"/>
+        <On Terms="UnitHighlightLocal.*.Start" Send="StatusIncrement PreTargetingTint"/>
+        <On Terms="UnitHighlightLocal.*.Stop" Send="StatusDecrement PreTargetingTint"/>
+        <On Terms="UnitMovementUpdate.*.Walk; AnimPlaying Attack" Send="AnimClear Attack"/>
+        <On Terms="UnitMovementUpdate.*.Walk; AnimPlaying Unburrow" Send="AnimClear Unburrow"/>
+        <DeathArray index="Normal" ModelLink="ItemOrbitalDropMULEDeath" SoundLink="Talent_CalldownMULE_Death"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\storm_ui_ingame_hero_icon_placeholder.dds"/>
+        </GroupIcon>
+        <LifeArmorIcon value="Assets\Textures\storm_temp_btn-upgrade-zerg-groundcarapace-level0.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\storm_ui_ingame_hero_icon_placeholder.dds"/>
+        </Wireframe>
+        <Model value="ItemOrbitalDropMULE"/>
+        <BuildModel value="ItemOrbitalDropMULE"/>
+        <PlacementModel value="ItemOrbitalDropMULE"/>
+    </CActorUnit>
+    <CActorSound id="ItemMULERepairSound" parent="SoundOneShot">
+        <Sound value="Talent_CalldownMULE_Repair"/>
+    </CActorSound>
+    <CActorModel id="ItemMULESpeedupBuff" parent="StormModelAnimationStyleContinuous">
+        <On Terms="Behavior.MULETrainingSpeedup.On" Send="Create"/>
+        <On Terms="Behavior.MULETrainingSpeedup.Off" Send="Destroy"/>
+        <Filter index="All" value="0"/>
+        <VisibleTo index="Self" value="0"/>
+        <VisibleTo index="Ally" value="0"/>
+        <VisibleTo index="Enemy" value="0"/>
+    </CActorModel>
+    <!-- SUPER INFECTIOUS NEW TALENT ISLAND                                                                            -->
+    <CActorModel id="ImposingPresenceSlowDebuff" parent="StormSlow">
+        <On Terms="Behavior.ImposingPresenceTalentSlow1.On" Send="Create"/>
+        <On Terms="Behavior.ImposingPresenceTalentSlow1.Off" Send="AnimBracketStop BSD"/>
+        <On Terms="Behavior.ImposingPresenceTalentSlow2.On" Send="Create"/>
+        <On Terms="Behavior.ImposingPresenceTalentSlow2.Off" Send="AnimBracketStop BSD"/>
+    </CActorModel>
+    <CActorModel id="TalentShieldingBuff" parent="ModelAddition">
+        <Macros value="GlobalLoopMacro"/>
+        <On Terms="Behavior.TalentBucketShieldingVisualController.On" Send="Create"/>
+        <On Terms="Behavior.TalentBucketShieldingVisualController.Off" Send="AnimBracketStop BSD"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachCenter" HoldRotation="1"/>
+        <Inherits index="TeamColor" value="0"/>
+    </CActorModel>
+    <CActorSound id="ShieldingBuffActivateSound" parent="SoundOneShot">
+        <On Terms="Behavior.TalentBucketShielding.On" Send="Create"/>
+        <Sound value="Talent_Shielding_Cast"/>
+    </CActorSound>
+    <CActorModel id="TalentBerserkOn" parent="StormModelAddition">
+        <Host Subject="_Unit"/>
+        <Macros value="GlobalLoopMacroMore"/>
+        <Macros value="CloakedEffectActorMacro"/>
+        <Inherits index="CloakEffect" value="0"/>
+        <Inherits index="Visibility" value="0"/>
+        <On Terms="Behavior.TalentBerserk.On" Send="Create"/>
+        <On Terms="Behavior.TalentBerserk.Off" Send="Destroy"/>
+        <HostSiteOps Ops="SOpShadow"/>
+        <Filter index="All" value="0"/>
+        <VisibleTo index="Self" value="0"/>
+        <VisibleTo index="Ally" value="0"/>
+        <VisibleTo index="Enemy" value="0"/>
+    </CActorModel>
+    <CActorModel id="TalentEnrageOn" parent="ModelAnimationStyleContinuousUNIT">
+        <Inherits index="CloakEffect" value="1"/>
+        <Inherits index="Visibility" value="1"/>
+        <On Terms="Behavior.TalentEnrage.On" Send="Create"/>
+        <On Terms="Behavior.TalentEnrage.Off" Send="Destroy"/>
+        <HostSiteOps Ops="SOpShadow"/>
+    </CActorModel>
+    <CActorSound id="TalentEnrageSound" parent="SoundOneShot">
+        <Flags index="SuppressSaveLoad" value="0"/>
+        <InheritType value="Continuous"/>
+        <On Terms="Behavior.TalentEnrage.On" Send="Create"/>
+        <Sound value="Talent_Enrage_Cast"/>
+    </CActorSound>
+    <CActorModel id="TalentOverdriveOn" parent="ModelAnimationStyleContinuousUNIT">
+        <Inherits index="CloakEffect" value="1"/>
+        <Inherits index="Visibility" value="1"/>
+        <On Terms="Behavior.TalentOverdrive.On" Send="Create"/>
+        <On Terms="Behavior.TalentOverdrive.Off" Send="AnimBracketStop BSD"/>
+        <On Terms="Behavior.BucketOverdrive.On" Send="Create"/>
+        <On Terms="Behavior.BucketOverdrive.Off" Send="AnimBracketStop BSD"/>
+        <HostSiteOps Ops="SOpAttachOverhead"/>
+    </CActorModel>
+    <CActorSound id="TalentOverdriveSound" parent="SoundOneShot">
+        <Flags index="SuppressSaveLoad" value="0"/>
+        <InheritType value="Continuous"/>
+        <On Terms="Behavior.TalentOverdrive.On" Send="Create"/>
+        <On Terms="Behavior.BucketOverdrive.On" Send="Create"/>
+        <Sound value="Talent_Overdrive_Cast"/>
+    </CActorSound>
+    <CActorModel id="TalentCullTheWeakCrit" parent="StormModelAnimationStyleOneShot">
+        <On Terms="Effect.TalentCullTheWeakDummyDamage.Start; At Target" Send="Create"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <Filter index="Ally" value="1"/>
+        <Filter index="Neutral" value="1"/>
+        <Filter index="Enemy" value="1"/>
+        <Filter index="All" value="0"/>
+        <Model value="GenericCriticalFX"/>
+        <VisibleTo index="Self" value="0"/>
+        <VisibleTo index="Ally" value="0"/>
+        <VisibleTo index="Enemy" value="0"/>
+    </CActorModel>
+    <CActorSound id="TalentBerserkSound" parent="SoundOneShot">
+        <Flags index="SuppressSaveLoad" value="0"/>
+        <InheritType value="Continuous"/>
+        <On Terms="Behavior.TalentBerserk.On" Send="Create"/>
+        <Sound value="Talent_Berserk_Cast"/>
+    </CActorSound>
+    <CActorModel id="TalentCorruptionDoT" parent="StormModelAddition">
+        <On Terms="Behavior.TalentCorruption.On" Send="Create"/>
+        <On Terms="Behavior.TalentCorruption.Off" Send="AnimBracketStop BSD"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <Model value="CorruptionDoT"/>
+        <Filter index="All" value="0"/>
+        <VisibleTo index="Self" value="0"/>
+        <VisibleTo index="Ally" value="0"/>
+        <VisibleTo index="Enemy" value="0"/>
+    </CActorModel>
+    <CActorModel id="TalentAttackDamageBuff" parent="StormModelOneShotUnit">
+        <Inherits index="BaseModelScale" value="1"/>
+        <Inherits index="Scale" value="1"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <AutoScaleFactor value="1.000000"/>
+        <VisibleToAtCreation index="Caster" value="1"/>
+        <VisibleToAtCreation index="Target" value="1"/>
+        <On Terms="Effect.GiantKillerDummyDamage.Start; At Target" Send="Create"/>
+        <On Terms="Effect.TalentExecutionerBonusDamage1.Start; At Target" Send="Create"/>
+        <On Terms="Effect.TalentExecutionerBonusDamage2.Start; At Target" Send="Create"/>
+        <VisibleTo index="Self" value="0"/>
+        <VisibleTo index="Ally" value="0"/>
+        <VisibleTo index="Enemy" value="0"/>
+    </CActorModel>
+    <CActorModel id="TalentSpellDamageBuff" parent="StormModelOneShotUnit">
+        <Inherits index="BaseModelScale" value="1"/>
+        <Inherits index="Scale" value="1"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <AutoScaleFactor value="1.000000"/>
+        <VisibleToAtCreation index="Caster" value="1"/>
+        <VisibleToAtCreation index="Target" value="1"/>
+        <VisibleTo index="Self" value="0"/>
+        <VisibleTo index="Ally" value="0"/>
+        <VisibleTo index="Enemy" value="0"/>
+    </CActorModel>
+    <CActorModel id="TalentHPBuff" parent="StormModelOneShotUnit">
+        <Inherits index="BaseModelScale" value="1"/>
+        <Inherits index="Scale" value="1"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <AutoScaleFactor value="1.000000"/>
+        <VisibleToAtCreation index="Caster" value="1"/>
+        <VisibleToAtCreation index="Target" value="1"/>
+        <On Terms="Effect.TalentBucketVampiricAssaultLifeGain.TargetStart" Send="Create"/>
+        <On Terms="Effect.TalentBucketVictoryRushCreateHealer.TargetStart" Send="Create"/>
+        <On Terms="Effect.TalentBucketInvigorateCreateHealer.TargetStart" Send="Create"/>
+        <On Terms="Effect.TalentBucketInvigorateCreateHealer.TargetStart" Send="Create"/>
+        <VisibleTo index="Self" value="0"/>
+        <VisibleTo index="Ally" value="0"/>
+        <VisibleTo index="Enemy" value="0"/>
+    </CActorModel>
+    <CActorModel id="TalentMPBuff" parent="StormModelOneShotUnit">
+        <Inherits index="BaseModelScale" value="1"/>
+        <Inherits index="Scale" value="1"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <AutoScaleFactor value="1.000000"/>
+        <VisibleToAtCreation index="Caster" value="1"/>
+        <VisibleToAtCreation index="Target" value="1"/>
+        <On Terms="Effect.TalentBarbarianVampiricAssault1ModifyUnit.Start" Send="Create"/>
+        <On Terms="Effect.TalentBarbarianVampiricAssault2ModifyUnit.Start" Send="Create"/>
+        <VisibleTo index="Self" value="0"/>
+        <VisibleTo index="Ally" value="0"/>
+        <VisibleTo index="Enemy" value="0"/>
+    </CActorModel>
+    <CActorModel id="TalentForceOfWill" parent="StormModelAddition">
+        <On Terms="Behavior.TalentForceofWill.On" Send="Create"/>
+        <On Terms="Behavior.TalentForceofWill.Off" Send="AnimBracketStop BSD"/>
+        <HostSiteOps Ops="SOpAttachCenter" HoldRotation="1"/>
+        <Filter index="All" value="0"/>
+        <VisibleTo index="Self" value="0"/>
+        <VisibleTo index="Ally" value="0"/>
+        <VisibleTo index="Enemy" value="0"/>
+    </CActorModel>
+    <CActorModel id="PrestigeFirstAidHealModel" parent="CommandersModelAddition">
+        <Macros value="GlobalLoopMacroMore"/>
+        <Macros value="CloakedEffectActorMacro"/>
+        <Inherits index="CloakEffect" value="0"/>
+        <Inherits index="Visibility" value="0"/>
+        <On Terms="Behavior.PrestigeFirstAid.On" Send="Create"/>
+        <On Terms="Behavior.PrestigeFirstAid.Off" Send="AnimBracketStop BSD"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachOverhead"/>
+        <Model value="PrestigeFirstAid@HealModel"/>
+    </CActorModel>
+    <CActorSound id="PrestigeFirstAidHealSound" parent="SoundContinuous">
+        <Filter index="Neutral" value="0"/>
+        <Filter index="All" value="1"/>
+        <VisibleTo index="Self" value="1"/>
+        <VisibleTo index="Ally" value="1"/>
+        <VisibleTo index="Enemy" value="1"/>
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Common"/>
+        <On Terms="Behavior.PrestigeFirstAid.On" Send="Create"/>
+        <On Terms="Behavior.PrestigeFirstAid.Off" Send="Destroy"/>
+        <Sound value="PrestigeFirstAid@HealSound"/>
+    </CActorSound>
+    <!--CActorModel id="TalentStoneskinCastAlly" parent="ModelAnimationStyleContinuousUNIT">-->
+    <!--        <Inherits index="CloakEffect" value="1"/>-->
+    <!--        <Inherits index="Visibility" value="1"/>-->
+    <!--        <On Terms="Behavior.TalentStoneskinAlly.On" Send="Create"/>-->
+    <!--        <On Terms="Behavior.TalentStoneskinAlly.Off" Send="Destroy"/>-->
+    <!--        <HostSiteOps Ops="SOpAttachCenter"/>-->
+    <!--    </CActorModel>-->
+    <!--    <CActorSound id="TalentStoneskinCastAllySound" parent="SoundContinuous">-->
+    <!--        <On Terms="Behavior.TalentStoneskinAlly.On" Send="Create"/>-->
+    <!--        <On Terms="Behavior.TalentStoneskinAlly.Off" Send="Destroy"/>-->
+    <!--    </CActorSound-->
+    <CActorModel id="TalentDashCast" parent="ModelAnimationStyleContinuousUNIT">
+        <Inherits index="CloakEffect" value="1"/>
+        <Inherits index="Visibility" value="1"/>
+        <On Terms="Behavior.TalentDash.On" Send="Create"/>
+        <On Terms="Behavior.TalentDash.Off" Send="Destroy"/>
+        <HostSiteOps Ops="SOpAttachOrigin"/>
+    </CActorModel>
+    <CActorSound id="TalentDashCastSound" parent="SoundContinuous">
+        <On Terms="Behavior.TalentDash.On" Send="Create"/>
+        <On Terms="Behavior.TalentDash.Off" Send="Destroy"/>
+        <Sound value="PrestigeSprint@SoundCast"/>
+        <Filter index="Neutral" value="0"/>
+        <Filter index="All" value="1"/>
+        <VisibleTo index="Self" value="1"/>
+        <VisibleTo index="Ally" value="1"/>
+        <VisibleTo index="Enemy" value="1"/>
+    </CActorSound>
+    <CActorModel id="TalentDashCastAlly" parent="ModelAnimationStyleContinuousUNIT">
+        <Inherits index="CloakEffect" value="1"/>
+        <Inherits index="Visibility" value="1"/>
+        <On Terms="Behavior.TalentDashAlly.On" Send="Create"/>
+        <On Terms="Behavior.TalentDashAlly.Off" Send="Destroy"/>
+        <HostSiteOps Ops="SOpAttachOrigin"/>
+    </CActorModel>
+    <CActorSound id="TalentDashCastAllySound" parent="SoundContinuous">
+        <On Terms="Behavior.TalentDashAlly.On" Send="Create"/>
+        <On Terms="Behavior.TalentDashAlly.Off" Send="Destroy"/>
+        <Sound value="Talent_Dash_Cast_Ally"/>
+        <Filter index="Neutral" value="0"/>
+        <Filter index="All" value="1"/>
+        <VisibleTo index="Self" value="1"/>
+        <VisibleTo index="Ally" value="1"/>
+        <VisibleTo index="Enemy" value="1"/>
+    </CActorSound>
+    <CActorModel id="TalentDeafeningRoarCast" parent="ModelAnimationStyleOneShot">
+        <Inherits index="CloakEffect" value="1"/>
+        <Inherits index="Visibility" value="1"/>
+        <On Terms="Effect.TalentDeafeningRoarSeachArea; At Caster" Send="Create"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+    </CActorModel>
+    <CActorSound id="TalentDeafeningRoarCastSound" parent="SoundOneShot">
+        <On Terms="Effect.TalentDeafeningRoarSeachArea; At Caster" Send="Create"/>
+        <Sound value="Talent_DeafeningRoar_Cast"/>
+    </CActorSound>
+    <CActorModel id="TalentDeafeningRoarImpact" parent="StormSlow">
+        <On Terms="Behavior.TalentDeafeningRoarSlow.On" Send="Create"/>
+        <On Terms="Behavior.TalentDeafeningRoarSlow.Off" Send="Destroy"/>
+    </CActorModel>
+    <CActorSound id="TalentDeafeningRoarImpactSound" parent="SoundContinuous">
+        <On Terms="Behavior.TalentDeafeningRoarSlow.On" Send="Create"/>
+        <On Terms="Behavior.TalentDeafeningRoarSlow.Off" Send="Destroy"/>
+        <Sound value="Talent_DeafeningRoar_Impact"/>
+        <Filter index="Neutral" value="0"/>
+        <Filter index="All" value="1"/>
+        <VisibleTo index="Self" value="1"/>
+        <VisibleTo index="Ally" value="1"/>
+        <VisibleTo index="Enemy" value="1"/>
+    </CActorSound>
+    <CActorSound id="FocusedAttackCritSound" parent="SoundOneShot">
+        <Filter index="Ally" value="1"/>
+        <Filter index="Neutral" value="1"/>
+        <Filter index="Enemy" value="1"/>
+        <FogVisibility value="Visible"/>
+        <On Terms="Effect.TalentGenericMarksmanDummy.Start; At Effect" Send="Create"/>
+        <Sound value="Talent_FocusedAttack_Crit_Impact"/>
+    </CActorSound>
+    <CActorUnit id="TalentBucketSearingAttacks" parent="StormItemBase" unitName="SearingAttacks">
+        <HighlightTooltip value="Unit/Name/Bogus"/>
+    </CActorUnit>
+    <CActorSound id="TalentBucketShieldAllyCastSound" parent="SoundOneShot">
+        <On Terms="Effect.ShieldAllyApplyBehavior.Start; At Effect" Send="Create"/>
+        <Sound value="Talent_Shield_Ally_Cast"/>
+    </CActorSound>
+    <CActorUnit id="TalentBucketShieldAlly" parent="StormItemBase" unitName="ShieldAlly"/>
+    <CActorModel id="TalentBucketShieldAllyBuff" parent="ModelAddition">
+        <Macros value="GlobalLoopMacro"/>
+        <On Terms="Behavior.TalentShieldAlly.On" Send="Create"/>
+        <On Terms="Behavior.TalentShieldAlly.Off" Send="Destroy"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <Model value="TalentShieldAllyBuff"/>
+        <Inherits index="TeamColor" value="0"/>
+    </CActorModel>
+    <CActorUnit id="TalentBucketBribe" parent="StormItemBase" unitName="TalentBucketBribe">
+        <HighlightTooltip value="Unit/Name/Bogus"/>
+    </CActorUnit>
+    <CActorSound id="PrestigeBoltOfTheStorms@Sound" parent="SoundOneShot">
+        <EditorCategories value="CommandersHero:Common"/>
+        <On Terms="Abil.PrestigeBoltOfTheStorms@Slot1.SourceCastStart" Send="Create"/>
+        <On Terms="Abil.PrestigeBoltOfTheStorms@Slot2.SourceCastStart" Send="Create"/>
+    </CActorSound>
+    <CModel id="TalentBucketPromoteBuff" parent="BuffFX">
+        <Model value="Assets\Effects\Storm_Effect_Talent_Berserk_Impact\Storm_Effect_Talent_Berserk_Impact.m3"/>
+    </CModel>
+    <CModel id="TalentBucketStormShieldBuff" parent="BuffFX">
+        <Model value="Assets\Effects\Storm_Effect_Talent_StormShield\Storm_Effect_Talent_StormShield.m3"/>
+    </CModel>
+    <CSound id="PrestigeBoltOfTheStorms@Sound" parent="Spell">
+        <EditorCategories value="CommandersHero:Common"/>
+        <AssetArray File="assets\Sounds\Talents\Talent_Bolt_of_the_Storm1.ogg" FacialGroup=""/>
+    </CSound>
+    <CItemAbil id="TalentBucketClairvoyance">
+        <Face value="ClairvoyanceHotbar"/>
+        <Flags index="CanDrop" value="0"/>
+        <Class value="Item"/>
+    </CItemAbil>
+    <CItemAbil id="FlashoftheStorms">
+        <Class value="Item"/>
+        <Face value="FlashoftheStormFace"/>
+        <Flags index="CanDrop" value="0"/>
+        <Abil value="PrestigeBoltOfTheStorms@Slot2"/>
+    </CItemAbil>
+    <CItemAbil id="SearingAttacks">
+        <Face value="SearingAttacksHotbar"/>
+        <Flags index="CanDrop" value="0"/>
+        <Class value="Item"/>
+    </CItemAbil>
+    <CItemAbil id="ShieldAlly">
+        <Face value="TalentShieldAllyHotbar"/>
+        <Flags index="CanDrop" value="0"/>
+        <Class value="Item"/>
+        <Abil value="TalentShieldAlly"/>
+    </CItemAbil>
+    <CItemAbil id="TalentBucketBribe">
+        <Face value="TalentBribeHotbar"/>
+        <Flags index="CanDrop" value="0"/>
+        <Class value="Item"/>
+        <Requirements value="PlayerHas40StacksOfBribe"/>
+    </CItemAbil>
+    <CItemAbil id="TalentBucketPromote">
+        <Face value="TalentBucketPromoteHotbar"/>
+        <Flags index="CanDrop" value="0"/>
+        <Class value="Item"/>
+    </CItemAbil>
+    <CItemAbil id="TalentBucketStormShield">
+        <Flags index="CanDrop" value="0"/>
+        <Class value="Item"/>
+        <Face value="TalentBucketStormShieldHotbar"/>
+    </CItemAbil>
+    <CUnit id="TalentBucketCalldownMule">
+        <Race value="Terr"/>
+        <EditorCategories value="ObjectType:Item"/>
+        <Item value="CalldownMule"/>
+        <FlagArray index="Invulnerable" value="1"/>
+    </CUnit>
+    <CUnit id="TalentBucketClairvoyance" parent="ITEM"/>
+    <CUnit id="SearingAttacks" parent="ITEM"/>
+    <CUnit id="ShieldAlly">
+        <DeathRevealRadius value="0"/>
+        <DeathRevealDuration value="0"/>
+        <Mob value="Multiplayer"/>
+        <FlagArray index="Turnable" value="0"/>
+        <FlagArray index="Uncommandable" value="1"/>
+        <FlagArray index="KillCredit" value="0"/>
+        <FlagArray index="Invulnerable" value="1"/>
+        <FlagArray index="Pawnable" value="1"/>
+        <Response value="Nothing"/>
+        <LifeStart value="10"/>
+        <LifeMax value="10"/>
+        <StationaryTurningRate value="0"/>
+        <TurningRate value="0"/>
+        <Sight value="2.5"/>
+        <MinimapRadius value="0"/>
+        <EditorCategories value="ObjectFamily:Campaign,ObjectType:Item"/>
+        <Item value="ShieldAlly"/>
+        <Fidget DelayMax="0" DelayMin="0"/>
+        <ReviveInfoBase>
+            <Charge Link="PoisonEnemy/Revive"/>
+            <Cooldown Link="PoisonEnemy/Revive"/>
+        </ReviveInfoBase>
+    </CUnit>
+    <CUnit id="TalentBucketPromote" parent="ITEM"/>
+    <CUnit id="TalentBucketStormShield" parent="ITEM">
+        <Mob value="Multiplayer"/>
+        <FlagArray index="Pawnable" value="1"/>
+    </CUnit>
+    <CUnit id="TalentBucketBribe">
+        <DeathRevealRadius value="0"/>
+        <DeathRevealDuration value="0"/>
+        <Mob value="Multiplayer"/>
+        <FlagArray index="Turnable" value="0"/>
+        <FlagArray index="Uncommandable" value="1"/>
+        <FlagArray index="KillCredit" value="0"/>
+        <FlagArray index="Invulnerable" value="1"/>
+        <FlagArray index="Pawnable" value="1"/>
+        <Response value="Nothing"/>
+        <LifeStart value="10"/>
+        <LifeMax value="10"/>
+        <StationaryTurningRate value="0"/>
+        <TurningRate value="0"/>
+        <Sight value="2.5"/>
+        <MinimapRadius value="0"/>
+        <EditorCategories value="ObjectFamily:Campaign,ObjectType:Item"/>
+        <Item value="TalentBucketBribe"/>
+        <Fidget DelayMax="0" DelayMin="0"/>
+    </CUnit>
+    <CUnit id="TalentBucketShrinkRay" parent="ITEM">
+        <Mob value="Multiplayer"/>
+        <FlagArray index="Pawnable" value="1"/>
+        <CostResource index="Minerals" value="750"/>
+        <EditorCategories value="ObjectType:Item,ObjectFamily:Campaign"/>
+    </CUnit>
+    <CBehaviorBuff id="ItemArcaneHealerCooldown">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="10"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ItemNaturesGiftChannel">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="6"/>
+        <Modification>
+            <StateFlags index="Passive" value="1"/>
+        </Modification>
+        <InfoFlags index="Hidden" value="1"/>
+        <Period value="0.375"/>
+        <PeriodicEffect value="NaturesGiftCreateHealerUnitSet"/>
+        <PeriodicDisplayEffect value="NaturesGiftCreateManaHealer"/>
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AttackPower8">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <Modification>
+            <DamageDealtScaled index="Ranged" value="80"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AttackPower9">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <Modification>
+            <DamageDealtScaled index="Ranged" value="72"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AttackPower10">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <Modification>
+            <DamageDealtScaled index="Ranged" value="80"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Cooldown8">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Cooldown9">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Cooldown10">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ItemNaturesGiftCarryBehavior" parent="CarryBehaviorParent">
+        <Modification>
+            <VitalRegenArray index="Life" value="15"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ItemArcaneHealerBuff">
+        <Alignment value="Positive"/>
+        <BehaviorFlags index="Permanent" value="1"/>
+        <InfoIcon value="Assets\Textures\storm_ui_temp_icon_spellprojection.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="2"/>
+        <Modification UnifiedMoveSpeedFactor="0.2"/>
+        <BehaviorCategories index="Fast" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ItemArcaneHealerCarryBehavior" parent="CarryBehaviorParent"/>
+    <CBehaviorBuff id="ItemOrbitalDropCarryBehavior" parent="CarryBehaviorParent">
+        <Modification>
+            <DamageDealtAttributeMultiplier index="Light" value="0.2"/>
+            <DamageDealtAttributeMultiplier index="Biological" value="0.2"/>
+            <DamageDealtAttributeMultiplier index="Robotic" value="0.2"/>
+            <DamageDealtAttributeMultiplier index="Structure" value="0.2"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ItemShamansBlessingCarryBehavior" parent="CarryBehaviorParent">
+        <Modification>
+            <VitalRegenArray index="Life" value="25"/>
+            <VitalRegenArray index="Energy" value="1.5"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ItemMagiciansWard">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <Modification>
+            <VitalMaxArray index="Shields" value="400"/>
+            <VitalRegenArray index="Shields" value="400"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ItemEssenceDrain">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <Modification>
+            <VitalMaxArray index="Life" value="300"/>
+            <VitalDamageLeechArray index="Life">
+                <KindArray index="Ranged" value="0.1"/>
+            </VitalDamageLeechArray>
+        </Modification>
+        <!--DamageResponse Chance="1" Handled="ItemEssenceDrainModifyUnit" Location="Attacker">
+            <Kind index="Spell" value="0"/>
+            <Kind index="Melee" value="0"/>
+            <Kind index="Splash" value="0"/>
+        </DamageResponse-->
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ItemVampiricReach">
+        <Alignment value="Positive"/>
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <InfoIcon value="Assets\Textures\war3_pasbtncriticalstrike.dds"/>
+        <Modification>
+            <DamageDealtScaled index="Ranged" value="50"/>
+            <VitalDamageLeechArray index="Life">
+                <KindArray index="Ranged" value="0.1"/>
+            </VitalDamageLeechArray>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AttackPower7">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <Modification>
+            <DamageDealtScaled index="Ranged" value="70"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ItemPurityCarryBehavior" parent="CarryBehaviorParent"/>
+    <CBehaviorBuff id="Cooldown7">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ItemPlaguebringerDebuff">
+        <InfoIcon value="Assets\Textures\storm_btn_d3_witchdoctor_acidcloud.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="5"/>
+        <RemoveValidatorArray value="TargetCleanseDebuffRemoval"/>
+        <Period value="1"/>
+        <PeriodicEffect value="ItemPlaguebringerPeriodicDamage"/>
+        <PeriodicDisplayEffect value="ItemPlaguebringerPeriodicDamage"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SkillRegeneration7">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <Modification>
+            <VitalRegenArray index="Life" value="21"/>
+            <VitalRegenArray index="Energy" value="2.0976"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AbilityPower7">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AbilityPower8">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AbilityPower9">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AbilityPower10">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SkillRegeneration8">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <Modification>
+            <VitalRegenArray index="Life" value="24"/>
+            <VitalRegenArray index="Energy" value="2.3984"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SkillRegeneration9">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <Modification>
+            <VitalRegenArray index="Life" value="27"/>
+            <VitalRegenArray index="Energy" value="2.6992"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SkillRegeneration10">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <Modification>
+            <VitalRegenArray index="Life" value="30"/>
+            <VitalRegenArray index="Energy" value="3"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Vitality7">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <Modification>
+            <VitalMaxArray index="Life" value="1400"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Vitality8">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <Modification>
+            <VitalMaxArray index="Life" value="1600"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Vitality9">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <Modification>
+            <VitalMaxArray index="Life" value="1800"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Vitality10">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <Modification>
+            <VitalMaxArray index="Life" value="2000"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Cooldown2">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Cooldown3">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ItemManaShieldController">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <DamageResponse Fatal="1" Handled="ItemManaShieldSet" ModifyFraction="0">
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ItemManaShieldActive">
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\storm_temp_war3_btnreplenishmana.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="10"/>
+        <ExpireEffect value="ManaShieldCooldownApplyBehavior"/>
+        <Modification>
+            <BehaviorLinkDisableArray value="ItemManaShieldController"/>
+        </Modification>
+        <DamageResponse ModifyFraction="0" ModifyLimit="1">
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ItemVampiricTouch">
+        <Alignment value="Positive"/>
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <InfoIcon value="Assets\Textures\war3_pasbtncriticalstrike.dds"/>
+        <Modification>
+            <DamageDealtScaled index="Ranged" value="60"/>
+            <VitalDamageLeechArray index="Life">
+                <KindArray index="Ranged" value="0.15"/>
+            </VitalDamageLeechArray>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="itemManaShieldCarryBehavior" parent="CarryBehaviorParent">
+        <Modification>
+            <VitalMaxArray index="Energy" value="200"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ItemMarineDropCarryBehavior" parent="CarryBehaviorParent">
+        <Modification>
+            <DamageDealtAttributeMultiplier index="Light" value="0.2"/>
+            <DamageDealtAttributeMultiplier index="Biological" value="0.2"/>
+            <DamageDealtAttributeMultiplier index="Robotic" value="0.2"/>
+            <DamageDealtAttributeMultiplier index="Structure" value="0.2"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ManaShieldCooldown">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoIcon value="Assets\Textures\storm_temp_war3_btnreplenishmana.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="120"/>
+        <Modification>
+            <BehaviorLinkDisableArray value="ItemManaShieldController"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="NuclearStrikeBuildingStun">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\storm_temp_btn-ability-terran-nuclearstrike-color.dds"/>
+        <BuffFlags index="UpdateDurationWhileDisabled" value="1"/>
+        <Duration value="3"/>
+        <Modification>
+            <StateFlags index="Stun" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Juggernaut40PercentCCReduction" parent="CarryBehaviorParent"/>
+    <CBehaviorBuff id="ItemJuggernautCarryBehavior" parent="CarryBehaviorParent"/>
+    <CBehaviorBuff id="NuclearStrikeCarryBehavior" parent="CarryBehaviorParent">
+        <Modification>
+            <DamageDealtAttributeMultiplier index="Light" value="0.25"/>
+            <DamageDealtAttributeMultiplier index="Biological" value="0.25"/>
+            <DamageDealtAttributeMultiplier index="Robotic" value="0.25"/>
+            <DamageDealtAttributeMultiplier index="Structure" value="0.25"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ItemNecromancy">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="FlameAuraHealthBonus">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <Modification>
+            <VitalMaxArray index="Life" value="400"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="FrostShield">
+        <Alignment value="Positive"/>
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <DamageResponse Handled="FrostShieldApplySlowDebuff">
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="FrostShieldSlow">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\storm_temp_war3_btnfrostarmor.dds"/>
+        <DisableValidatorArray value="TargetNotUnstoppable"/>
+        <RemoveValidatorArray value="TargetCleanseDebuffRemoval"/>
+        <BuffFlags index="UpdateDurationWhileDisabled" value="1"/>
+        <Duration value="1"/>
+        <Modification UnifiedMoveSpeedFactor="-0.35"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Cooldown4">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Cooldown5">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Cooldown6">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ItemAttackPower4">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <Modification>
+            <DamageDealtScaled index="Ranged" value="40"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ItemAttackPower5">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <Modification>
+            <DamageDealtScaled index="Ranged" value="50"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ItemAttackPower6">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <Modification>
+            <DamageDealtScaled index="Ranged" value="60"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ItemAttackSpeed4">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <Modification>
+            <AdditiveAttackSpeedFactor value="0.4"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ItemAttackSpeed5">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <Modification>
+            <AdditiveAttackSpeedFactor value="0.5"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ItemAttackSpeed6">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <Modification>
+            <AdditiveAttackSpeedFactor value="0.6"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SkillRegeneration4">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <Modification>
+            <VitalRegenArray index="Life" value="12"/>
+            <VitalRegenArray index="Energy" value="1.1992"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SkillRegeneration5">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <Modification>
+            <VitalRegenArray index="Life" value="15"/>
+            <VitalRegenArray index="Energy" value="1.5"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SkillRegeneration6">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <Modification>
+            <VitalRegenArray index="Life" value="18"/>
+            <VitalRegenArray index="Energy" value="1.7968"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AbilityPower4">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AbilityPower5">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AbilityPower6">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ItemAttackPower1">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <Modification>
+            <DamageDealtScaled index="Ranged" value="10"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ItemAttackPower2">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <Modification>
+            <DamageDealtScaled index="Ranged" value="20"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ItemAttackPower3">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <Modification>
+            <DamageDealtScaled index="Ranged" value="30"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Cooldown1">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ItemLockdownDebuff">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="10"/>
+        <Modification>
+            <AbilClassDisableArray index="CAbilAttack" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SkillRegeneration1">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <Modification>
+            <VitalRegenArray index="Life" value="3"/>
+            <VitalRegenArray index="Energy" value="0.2968"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SkillRegeneration2">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <Modification>
+            <VitalRegenArray index="Life" value="6"/>
+            <VitalRegenArray index="Energy" value="0.5976"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SkillRegeneration3">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <Modification>
+            <VitalRegenArray index="Life" value="9"/>
+            <VitalRegenArray index="Energy" value="0.8984"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AbilityPower1">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AbilityPower2">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AbilityPower3">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ItemProtector">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Vitality4">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <Modification>
+            <VitalMaxArray index="Life" value="800"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Vitality5">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <Modification>
+            <VitalMaxArray index="Life" value="1000"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Vitality6">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <Modification>
+            <VitalMaxArray index="Life" value="1200"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ItemPsiShield">
+        <Alignment value="Positive"/>
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <InfoIcon value="Assets\Textures\storm_temp_btn-upgrade-protoss-shieldslevel3.dds"/>
+        <Modification>
+            <VitalMaxArray index="Shields" value="600"/>
+            <VitalRegenArray index="Shields" value="600"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Juggernaut">
+        <Alignment value="Positive"/>
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <InfoIcon value="Assets\Textures\storm_btn_d3_barbarian_ignorepain.dds"/>
+        <Modification>
+            <VitalMaxArray index="Life" value="650"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Plunder">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ItemSkillPortalCarryBehavior" parent="CarryBehaviorParent">
+        <InfoIcon value="Assets\Textures\storm_temp_war3_btnscrollofprotection.dds"/>
+        <Modification>
+            <VitalMaxArray index="Energy" value="200"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Vitality1">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <Modification>
+            <VitalMaxArray index="Life" value="200"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Vitality2">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <Modification>
+            <VitalMaxArray index="Life" value="400"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Vitality3">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <Modification>
+            <VitalMaxArray index="Life" value="600"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ItemShamansBlessingHeal">
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\storm_temp_btn-building-protoss-energycrystal.dds"/>
+        <BehaviorCategories index="Permanent" value="1"/>
+        <Duration value="0.5625"/>
+        <Period value="1"/>
+        <PeriodicEffect value="ItemShamansBlessingHeal"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ItemBlindingLightBlindStackingBehavior">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <MaxStackCount value="10"/>
+        <Modification SightBonus="-1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ItemBlindingLightHeroBlind">
+        <Duration value="5"/>
+        <InfoIcon value="Assets\Textures\storm_btn_d3_demonhunter_grenades.dds"/>
+        <Period value="0.5"/>
+        <PeriodCount value="10"/>
+        <InitialEffect value="ItemBlindingLightAddBlindStacks"/>
+        <PeriodicEffect value="BlindingLightRemoveBlindStack"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ItemShamansBlessingTimedLife">
+        <InfoFlags index="Hidden" value="1"/>
+        <DisplayDuration index="Self" value="1"/>
+        <DisplayDuration index="Ally" value="1"/>
+        <Duration value="15"/>
+        <Period value="0.5"/>
+        <InitialEffect value="ItemShamansBlessingSearch"/>
+        <PeriodicEffect value="ItemShamansBlessingSearch"/>
+        <ExpireEffect value="Suicide"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ItemBlindingLightMinionStun" parent="StormStun">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\storm_temp_war3_btnstun.dds"/>
+        <Duration value="3"/>
+        <RemoveValidatorArray value="TargetCleanseDebuffRemoval"/>
+        <DisableValidatorArray value="TargetNotUnstoppable"/>
+        <BuffFlags index="UpdateDurationWhileDisabled" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ItemBlindingLightReveal">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\storm_btn_d3_demonhunter_grenades.dds"/>
+        <Duration value="3"/>
+        <Modification>
+            <StateFlags index="SuppressCloak" value="1"/>
+        </Modification>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ItemBlindingLightSlow">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\storm_btn_d3_demonhunter_grenades.dds"/>
+        <DisableValidatorArray value="TargetNotUnstoppable"/>
+        <RemoveValidatorArray value="TargetCleanseDebuffRemoval"/>
+        <BuffFlags index="UpdateDurationWhileDisabled" value="1"/>
+        <Duration value="3"/>
+        <Modification UnifiedMoveSpeedFactor="-0.15"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="PurityUnstoppable">
+        <InfoFlags index="Hidden" value="1"/>
+        <Duration value="2"/>
+        <Modification>
+            <StateFlags index="Unstoppable" value="1"/>
+        </Modification>
+        <FinalEffect value="PrestigeCleanseDebuffsUnstoppable"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="FlameAura">
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\storm_ui_icon_cloakofflames.dds"/>
+        <DisableValidatorArray value="NotMounted"/>
+        <DisableValidatorArray value="CasterNotStasis"/>
+        <Period value="1"/>
+        <PeriodicEffect value="FlameAuraSearch"/>
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="FlameAuraSightRangePassive">
+        <InfoFlags index="Hidden" value="1"/>
+        <Modification SightBonus="4">
+            <VitalMaxArray index="Life" value="250"/>
+        </Modification>
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ItemDropPod">
+        <Alignment value="Positive"/>
+        <Modification>
+            <StateFlags index="Invulnerable" value="1"/>
+            <StateFlags index="SuppressCollision" value="1"/>
+            <StateFlags index="Unstoppable" value="1"/>
+        </Modification>
+        <InfoIcon value="Assets\Textures\storm_temp_btn-tips-hyperion.dds"/>
+        <Duration value="2"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BribeCarryBehavior" parent="CarryBehaviorParent"/>
+    <CBehaviorBuff id="CalldownMULEAlive">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Clairvoyance">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\storm_temp_war3_btnmagicalsentry.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BuffFlags index="RefreshStack" value="1"/>
+        <Duration value="4"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SearingAttacks">
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\storm_temp_war3_btnselfdestruct.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BuffFlags index="RemoveDamageResponseExhausted" value="0"/>
+        <Duration value="5"/>
+        <DamageResponse Location="Attacker" ModifyFraction="1.5" ModifyMinimumDamage="1">
+            <Kind index="Spell" value="0"/>
+            <Kind index="Melee" value="0"/>
+            <Kind index="Splash" value="0"/>
+            <Kind index="NoProc" value="0"/>
+            <Chance value="1"/>
+            <Cost>
+                <Vital index="Energy" value="20"/>
+            </Cost>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SearingAttacksCarryBehavior" parent="CarryBehaviorParent"/>
+    <CBehaviorBuff id="TalentBucketPromote">
+        <Alignment value="Positive"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Modification>
+            <DamageDealtFraction index="Spell" value="1"/>
+            <DamageDealtFraction index="Ranged" value="1"/>
+            <VitalMaxAdditiveMultiplierArray index="Life" value="2"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TalentBucketPromoteCarryBehavior">
+        <Alignment value="Positive"/>
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TalentBucketStormShield">
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\storm_temp_btn-tips-terran-psishield.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BuffFlags index="UpdateDurationWhileDisabled" value="1"/>
+        <Duration value="3"/>
+        <DamageResponse ModifyFraction="0" ModifyLimit="1">
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TalentBucketStormShieldCarryBehavior">
+        <Alignment value="Positive"/>
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TalentBucketStormShieldDummyBehavior">
+        <Alignment value="Positive"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BuffFlags index="UpdateDurationWhileDisabled" value="1"/>
+        <Duration value="3"/>
+        <DamageResponse ModifyFraction="0" ModifyLimit="1">
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TalentBucketSwiftStormCarryBehavior">
+        <Alignment value="Positive"/>
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="MarksmanCarryBehavior" parent="CarryBehaviorParent"/>
+    <CBehaviorBuff id="FocusedAttackDamageResponseDistortionBeam">
+        <Alignment value="Positive"/>
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoIcon value="Assets\Textures\storm_temp_btn-ability-terran-snipe.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <DamageResponse Handled="TalentGenericMarksmanDummySet" Location="Attacker" ModifyFraction="1.5">
+            <Kind index="Spell" value="0"/>
+            <Kind index="Melee" value="0"/>
+            <Kind index="Splash" value="0"/>
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TalentBucketAmplifiedHealing">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Modification HealTakenMultiplier="1.3">
+            <VitalRegenMultiplier index="Life" value="0.3"/>
+        </Modification>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Invigorate">
+        <InfoIcon value="Assets\Textures\storm_btn_d3_barbarian_frenzy.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="3"/>
+        <Period value="1"/>
+        <PeriodCount value="3"/>
+        <InitialEffect value="TalentBucketInvigorateCooldownApplyBehavior"/>
+        <PeriodicEffect value="TalentBucketInvigorateCreateHealer"/>
+        <PeriodicDisplayEffect value="TalentBucketInvigorateCreateHealer"/>
+        <BuffFlags index="RefreshStack" value="1"/>
+        <Alignment value="Positive"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BucketBattleMomentumCarryBehavior" parent="CarryBehaviorParent">
+        <DamageResponse Handled="BattleMomentumDamageResponseDummy" Location="Attacker">
+            <Kind index="Spell" value="0"/>
+            <Kind index="Melee" value="0"/>
+            <Kind index="Splash" value="0"/>
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TalentBucketDemolitionist">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <DamageResponse Handled="DemolitionistRemoveAmmoModifyUnit" Location="Attacker" TargetFilters="-;Player,Ally,Neutral">
+            <Kind index="Spell" value="0"/>
+            <Kind index="Melee" value="0"/>
+            <Kind index="Splash" value="0"/>
+            <ValidatorArray value="TargetIsCannonTowerOrFort"/>
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TalentBucketInvigorateCarryBehavior" parent="CarryBehaviorParent">
+        <Alignment value="Positive"/>
+        <DamageResponse Handled="TalentBucketInvigorateApplyBehavior" Location="Attacker">
+            <Kind index="Melee" value="0"/>
+            <Kind index="Ranged" value="0"/>
+            <Kind index="Splash" value="0"/>
+            <ExcludeEffectArray value="WitchDoctorDeathRitualDamage"/>
+            <ExcludeEffectArray value="WitchDoctorDeathRitualImprovedDamage"/>
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TalentBucketInvigorateCooldown">
+        <InfoIcon value="Assets\Textures\storm_btn_d3_barbarian_frenzy.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="3"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TalentBucketSuperiority">
+        <Alignment value="Positive"/>
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <DamageResponse ModifyFraction="0.5">
+            <ValidatorArray value="TargetIsNotHeroic"/>
+            <Chance value="1"/>
+        </DamageResponse>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BerserkCarryBehavior" parent="CarryBehaviorParent"/>
+    <CBehaviorBuff id="RelentlessCarryBehavior" parent="CarryBehaviorParent"/>
+    <CBehaviorBuff id="TalentBucketEmpoweredAbilities">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TalentBucketRapidRegeneration">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <Modification>
+            <VitalRegenArray index="Life" value="5"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TalentBucketHastyStrikes">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <Modification>
+            <AdditiveAttackSpeedFactor value="0.15"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TalentBucketUnleashedController">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TalentBucketBrilliance">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <Modification>
+            <VitalMaxArray index="Energy" value="200"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TalentBucketVictoryRushController">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Modification>
+            <VitalMaxArray index="Life" value="550"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TalentBucketVampiricAssault">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <Modification>
+            <VitalDamageLeechArray index="Life">
+                <KindArray index="Ranged" value="0.15"/>
+            </VitalDamageLeechArray>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TalentBucketMarksman">
+        <Alignment value="Positive"/>
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoIcon value="Assets\Textures\storm_temp_btn-ability-terran-snipe.dds"/>
+        <DamageResponse Handled="TalentGenericMarksmanDummySet" Location="Attacker" ModifyFraction="1.5">
+            <Kind index="Spell" value="0"/>
+            <Kind index="Melee" value="0"/>
+            <Kind index="Splash" value="0"/>
+            <ValidatorArray value="TargetNotDocksTreasureChest"/>
+            <Chance value="1"/>
+        </DamageResponse>
+        <BehaviorCategories index="User3" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TalentBucketMarksmanCooldown">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <Duration value="5"/>
+        <Modification>
+            <BehaviorLinkDisableArray value="TalentBucketMarksman"/>
+            <BehaviorLinkDisableArray value="FocusedAttackDamageResponseDistortionBeam"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TalentBucketUnleashed">
+        <InfoIcon value="Assets\Textures\war3_pasbtnmagicalsentry.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="5"/>
+        <Modification>
+            <VitalRegenArray index="Energy" value="5"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TalentBucketUnleashedRefresh">
+        <InfoIcon value="Assets\Textures\war3_pasbtnmagicalsentry.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="5"/>
+        <Modification>
+            <VitalRegenArray index="Energy" value="5"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TalentBucketVictoryRush">
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\storm_btn_d3_wizard_energyarmor.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="5"/>
+        <Period value="1"/>
+        <PeriodCount value="5"/>
+        <PeriodicEffect value="TalentBucketVictoryRushCreateHealer"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TalentBucketImposingPresenceCarryBehavior" parent="CarryBehaviorParent">
+        <DamageResponse Handled="TalentBucketImposingPresenceApplyBehavior" TargetFilters="-;Structure">
+            <Kind index="Spell" value="0"/>
+            <Kind index="Melee" value="0"/>
+            <Kind index="Splash" value="0"/>
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TalentBucketImposingPresenceSlow">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\storm_btn_d3_barbarian_wrathoftheberserker.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="2"/>
+        <Modification>
+            <AdditiveAttackSpeedFactor value="-0.3"/>
+        </Modification>
+        <BehaviorCategories index="User10" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TalentBucketArcaneTeachings">
+        <Alignment value="Positive"/>
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TalentBucketArcaneTeachingsSlow">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\storm_temp_war3_btnorboffrost.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BuffFlags index="UpdateDurationWhileDisabled" value="1"/>
+        <Duration value="2"/>
+        <Modification UnifiedMoveSpeedFactor="-0.3"/>
+        <BehaviorCategories index="Slow" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TalentBucketBattleFuryBuff">
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\storm_btn_d3_demonhunter_rapidfire.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BuffFlags index="RefreshStack" value="1"/>
+        <MaxStackCount value="5"/>
+        <Duration value="5"/>
+        <Modification>
+            <AdditiveAttackSpeedFactor value="0.05"/>
+            <DamageDealtScaled index="Ranged" value="8"/>
+        </Modification>
+        <BehaviorCategories index="User3" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TalentBucketBattleFuryCarryBehavior" parent="CarryBehaviorParent">
+        <DamageResponse Handled="TalentBucketBattleFuryApplyBehavior" Location="Attacker">
+            <Kind index="Spell" value="0"/>
+            <Kind index="Melee" value="0"/>
+            <Kind index="Splash" value="0"/>
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TalentBucketForceOfWillCarryBehavior" parent="CarryBehaviorParent">
+        <DisableValidatorArray value="CasterLifeLT20Percent"/>
+        <Period value="0.0625"/>
+        <PeriodicEffect value="ForceofWillApplyCooldownBehavior"/>
+        <Modification>
+            <VitalMaxArray index="Energy" value="100"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CalldownMULETimedLife">
+        <InfoFlags index="Hidden" value="1"/>
+        <Duration value="90"/>
+        <FinalEffect value="Suicide"/>
+        <Modification>
+            <StateFlags index="SuppressCollision" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TalentBucketShrinkRayCarryBehavior" parent="CarryBehaviorParent"/>
+    <CBehaviorBuff id="TalentBucketShieldingVisualController">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <DisableValidatorArray value="HasTalentBucketShieldingAndGT0Shields"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TalentBucketShielding">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <Modification>
+            <VitalMaxArray index="Shields" value="550"/>
+            <VitalRegenArray index="Shields" value="110"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TalentBucketMightAndMagicController">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoIcon value="Assets\Textures\storm_temp_war3_btncontrolmagic.dds"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <DamageResponse Handled="ApplyBucketMightandMagic" Location="Attacker">
+            <Kind index="Spell" value="0"/>
+            <Kind index="Melee" value="0"/>
+            <Kind index="Splash" value="0"/>
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TalentBucketGiantKiller">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <DamageResponse Handled="GiantKillerDamageResponseDummySet" Location="Attacker" TargetFilters="Heroic;Structure">
+            <Kind index="Spell" value="0"/>
+            <Kind index="Melee" value="0"/>
+            <Kind index="Splash" value="0"/>
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+</Catalog>

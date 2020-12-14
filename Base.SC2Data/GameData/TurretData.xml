@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CTurret id="BileLauncherTurret" parent="FreeRotate">
+        <YawIdleRate value="-45"/>
+    </CTurret>
+    <CTurret id="Tower_MonolithCannon_Turret" parent="FreeRotate">
+        <Fidget TurnAngle="0"/>
+    </CTurret>
+    <CTurret id="Tower_KhaydarinMonolith_Standalone_Turret" parent="FreeRotate">
+        <Idle value="Spin"/>
+        <Fidget TurnAngle="0"/>
+        <YawStart value="-135"/>
+        <YawIdleRate value="9.8437"/>
+    </CTurret>
+    <CTurret id="BuildingProtoss_Weapon_Town_Turret" parent="FreeRotate">
+        <Idle value="Spin"/>
+        <YawStart value="-135"/>
+        <YawIdleRate value="9.8437"/>
+        <Fidget TurnAngle="0"/>
+    </CTurret>
+    <CTurret id="GuardTower" parent="FreeRotate"/>
+    <CTurret id="RookTower" parent="FreeRotate"/>
+    <CTurret id="KnightTower" parent="FreeRotate">
+        <Fidget TurnAngle="0"/>
+    </CTurret>
+    <CTurret id="KingsCore" parent="FreeRotate">
+        <!-- Had to remove this to stop the turret from trying to snap back upon death -->
+        <!--Idle value="Reset"/-->
+        <YawIdleRate value="24.961"/>
+        <Fidget TurnAngle="0"/>
+    </CTurret>
+    <CTurret id="NodeTurret" parent="FreeRotate">
+        <Idle value="Spin"/>
+        <YawIdleRate value="-45"/>
+    </CTurret>
+    <CTurret id="GoblinShredderTower" parent="FreeRotate">
+        <Idle value="Spin"/>
+        <YawIdleRate value="-45"/>
+    </CTurret>
+</Catalog>
