@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <!-- Guide Visuals -->
+    <CActorArc default="1" id="GuideVisualArc">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Common"/>
+        <!-- Guide color default -->
+        <On Terms="ActorCreation" Send="SetTintColor 225,160,25 0.000000 OneShot BaseTint"/>
+    </CActorArc>
+    <CActorRegion default="1" id="GuideRegionNormal">
+        <On index="1" Send="ClearTintColor 0.100000 BaseTint"/>
+        <On index="2" Terms="RegionSubject.*.AddedFirst" Send="SetTintColor 0,255,0 0.100000 OneShot Active"/>
+        <On Terms="RegionSubject.*.RemovedLast" Target="_GuideVisual" Send="SetTintColor 225,160,25 0.000000 OneShot BaseTint"/>
+        <On Terms="RegionSubject.*.RemovedLast" Target="_GuideVisual" Send="ClearTintColor 0.100000 Active"/>
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Common"/>
+    </CActorRegion>
+    <CActorRegion default="1" id="GuideRegionScaledClosest">
+        <On index="1" Send="ClearTintColor 0.100000 BaseTint"/>
+        <On index="2" Terms="RegionSubject.*.AddedFirst" Send="SetTintColor 0,255,0 0.100000 OneShot Active"/>
+        <On Terms="RegionSubject.*.RemovedLast" Target="_GuideVisual" Send="SetTintColor 225,160,25 0.000000 OneShot BaseTint"/>
+        <On Terms="RegionSubject.*.RemovedLast" Target="_GuideVisual" Send="ClearTintColor 0.100000 Active"/>
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Common"/>
+    </CActorRegion>
+    <CActorRegion default="1" id="GuideRegionClosest">
+        <On index="1" Send="ClearTintColor 0.100000 BaseTint"/>
+        <On index="2" Terms="RegionSubject.*.AddedFirst" Send="SetTintColor 0,255,0 0.100000 OneShot Active"/>
+        <On Terms="RegionSubject.*.RemovedLast" Target="_GuideVisual" Send="SetTintColor 225,160,25 0.000000 OneShot BaseTint"/>
+        <On Terms="RegionSubject.*.RemovedLast" Target="_GuideVisual" Send="ClearTintColor 0.100000 Active"/>
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Common"/>
+    </CActorRegion>
+    <CActorRegion default="1" id="GuideRegionScaled">
+        <On index="1" Send="ClearTintColor 0.100000 BaseTint"/>
+        <On index="2" Terms="RegionSubject.*.AddedFirst" Send="SetTintColor 0,255,0 0.100000 OneShot Active"/>
+        <On Terms="RegionSubject.*.RemovedLast" Target="_GuideVisual" Send="SetTintColor 225,160,25 0.000000 OneShot BaseTint"/>
+        <On Terms="RegionSubject.*.RemovedLast" Target="_GuideVisual" Send="ClearTintColor 0.100000 Active"/>
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Common"/>
+    </CActorRegion>
+    <!-- Guide Regions -->
+    <CActorRegion default="1" id="GuideRegion">
+        <On index="1" Send="ClearTintColor 0.100000 BaseTint"/>
+        <On index="2" Terms="RegionSubject.*.AddedFirst" Send="SetTintColor 0,255,0 0.100000 OneShot Active"/>
+        <On Terms="RegionSubject.*.RemovedLast" Target="_GuideVisual" Send="SetTintColor 225,160,25 0.000000 OneShot BaseTint"/>
+        <On Terms="RegionSubject.*.RemovedLast" Target="_GuideVisual" Send="ClearTintColor 0.100000 Active"/>
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Common"/>
+    </CActorRegion>
+    <!-- Single Target Halo                                                                      -->
+    <CActorModel default="1" id="SingleTargetCursorHighlight" parent="StormModelAnimationStyleContinuous">
+        <?token id="abil"?>
+        <FogVisibility value="Visible"/>
+        <HostSiteOps Ops="SOpBasicScopePositionFollowHoldRotation"/>
+        <Model value="Invisible"/>
+        <On Terms="Abil.##abil##.Cursor" Send="Create"/>
+        <On Terms="ActorCreation" Send="Create SingleTargetCursorRegion"/>
+        <On Terms="ActorDestruction" Target="SingleTargetCursorRegion" Send="Destroy"/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
+    </CActorModel>
+    <!-- Cursor Splats                                                                           -->
+    <CActorSplat default="1" id="StormAOECursorSplat">
+        <Aliases value="_Scalable"/>
+        <Flags index="SuppressSaveLoad" value="1"/>
+        <FogVisibility value="Visible"/>
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Common"/>
+        <On Terms="Abil.Cursor" Send="Create"/>
+        <On Terms="ActorCreation" Send="Create CursorRegion"/>
+        <On Terms="ActorDestruction" Target="CursorRegion" Send="Destroy"/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <HostSiteOps Ops="SOpBasicScopeFollow"/>
+        <FadeOut value="0.000000"/>
+        <HoldTime value="-1.000000"/>
+        <Layer value="AOELayer"/>
+        <Model value="CommandersAOECursorSplat"/>
+    </CActorSplat>
+    <CActorRegionArc id="GuideRegionArc">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Common"/>
+        <On index="1" Send="SetTintColor 0,255,0 0.100000 OneShot Active"/>
+        <On index="2" Send="ClearTintColor 0.100000 Active"/>
+        <On Terms="RegionSubject.*.AddedFirst" Send="ClearTintColor 0.100000 BaseTint"/>
+        <On Terms="RegionSubject.*.RemovedLast" Target="_GuideVisual" Send="SetTintColor 225,160,25 0.000000 OneShot BaseTint"/>
+    </CActorRegionArc>
+    <CActorModel id="HeroRing_Parent" parent="ModelAddition">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Common"/>
+        <Model value="Invisible"/>
+        <Inherits index="BaseModelScale" value="0"/>
+        <On Terms="Behavior.VideoDebug.On" Send="SetVisibility"/>
+        <On Terms="Behavior.VideoDebug.Off" Send="SetVisibility 1"/>
+        <On Terms="Behavior.HeroGenericDisableHeroRingBehavior.On" Send="SetVisibility"/>
+        <On Terms="Behavior.HeroGenericDisableHeroRingBehavior.Off" Send="SetVisibility 1"/>
+        <On Terms="Behavior.StageDiveChannel.On" Send="SetVisibility"/>
+        <On Terms="Behavior.StageDiveChannel.Off" Send="SetVisibility 1"/>
+        <On Terms="Behavior.UsingVehicle.On" Send="SetVisibility"/>
+        <On Terms="Behavior.UsingVehicle.Off" Send="SetVisibility 1"/>
+        <On Terms="Behavior.Dead.On; ValidateUnit CasterUnitTypeIsSamuro" Send="SetVisibility"/>
+        <On Terms="Behavior.Dead.Off; ValidateUnit CasterUnitTypeIsSamuro" Send="SetVisibility 1"/>
+        <On Terms="ActorCreation" Send="Create HitTestDisc"/>
+        <On Terms="ActorDestruction" Target="HitTestDisc" Send="Destroy"/>
+        <HostSiteOps Ops="SOpBasicScopeFollow SOpShadow SOpMoveUpByDot1"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
+    </CActorModel>
+    <CActorUnitRing id="HeroRingUnitRadiusDot75" parent="HeroRing_Parent">
+        <ModelAspectSets>
+            <Aspects RegardsAs="Friendly" Model="HeroRing_Teammate"/>
+            <Aspects RegardsAs="Self" Model="HeroRing_Player"/>
+            <Aspects RegardsAs="Enemy" Model="HeroRing_Enemy"/>
+            <Aspects>
+                <Person value="Observer"/>
+                <ObservingPoV value="DefaultObservedPlayerId"/>
+                <ModelOwnerHasTeamId value="1"/>
+                <Model value="HeroRing_Enemy"/>
+            </Aspects>
+            <Aspects>
+                <Person value="Observer"/>
+                <ObservingPoV value="DefaultObservedPlayerId"/>
+                <ModelOwnerHasTeamId value="0"/>
+                <Model value="HeroRing_Teammate"/>
+            </Aspects>
+        </ModelAspectSets>
+        <Scale value="0.750000"/>
+    </CActorUnitRing>
+    <CActorUnitRing id="HeroRingUnitRadius1Dot25" parent="HeroRing_Parent">
+        <ModelAspectSets>
+            <Aspects RegardsAs="Friendly" Model="HeroRing_Teammate"/>
+            <Aspects RegardsAs="Self" Model="HeroRing_Player"/>
+            <Aspects RegardsAs="Enemy" Model="HeroRing_Enemy"/>
+            <Aspects>
+                <Person value="Observer"/>
+                <ObservingPoV value="DefaultObservedPlayerId"/>
+                <ModelOwnerHasTeamId value="1"/>
+                <Model value="HeroRing_Enemy"/>
+            </Aspects>
+            <Aspects>
+                <Person value="Observer"/>
+                <ObservingPoV value="DefaultObservedPlayerId"/>
+                <ModelOwnerHasTeamId value="0"/>
+                <Model value="HeroRing_Teammate"/>
+            </Aspects>
+        </ModelAspectSets>
+        <Scale value="1.250000"/>
+    </CActorUnitRing>
+    <CActorUnitRing id="HeroRing_Multi" parent="HeroRing_Parent">
+        <ModelAspectSets>
+            <Aspects RegardsAs="Friendly" Model="HeroRing_Multi_Teammate"/>
+            <Aspects RegardsAs="Self" Model="HeroRing_Multi_Player"/>
+            <Aspects RegardsAs="Enemy" Model="HeroRing_Multi_Enemy"/>
+            <Aspects>
+                <Person value="Observer"/>
+                <ObservingPoV value="DefaultObservedPlayerId"/>
+                <ModelOwnerHasTeamId value="0"/>
+                <Model value="HeroRing_Multi_Teammate"/>
+            </Aspects>
+            <Aspects>
+                <Person value="Observer"/>
+                <ObservingPoV value="DefaultObservedPlayerId"/>
+                <ModelOwnerHasTeamId value="1"/>
+                <Model value="HeroRing_Multi_Enemy"/>
+            </Aspects>
+        </ModelAspectSets>
+        <RingRadius value="1.250000"/>
+    </CActorUnitRing>
+    <!-- Overkill facing -->
+    <CActorSiteOpForward id="SOpOverkillForwardGuide">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Common"/>
+        <HostForward Subject="::actor.OverkillTarget" Actor="Find"/>
+    </CActorSiteOpForward>
+    <CActorUnitRing id="HeroRing_Holo" parent="HeroRing_Parent">
+        <ModelAspectSets>
+            <Aspects RegardsAs="Enemy" Model="HeroRing_Enemy"/>
+        </ModelAspectSets>
+    </CActorUnitRing>
+    <CActorUnitRing id="HeroRing" parent="HeroRing_Parent">
+        <ModelAspectSets>
+            <Aspects RegardsAs="Friendly" Model="HeroRing_Teammate"/>
+            <Aspects RegardsAs="Self" Model="HeroRing_Player"/>
+            <Aspects RegardsAs="Enemy" Model="HeroRing_Enemy"/>
+            <Aspects>
+                <Person value="Observer"/>
+                <ObservingPoV value="DefaultObservedPlayerId"/>
+                <ModelOwnerHasTeamId value="1"/>
+                <Model value="HeroRing_Enemy"/>
+            </Aspects>
+            <Aspects>
+                <Person value="Observer"/>
+                <ObservingPoV value="DefaultObservedPlayerId"/>
+                <ModelOwnerHasTeamId value="0"/>
+                <Model value="HeroRing_Teammate"/>
+            </Aspects>
+        </ModelAspectSets>
+    </CActorUnitRing>
+    <CActorSplat id="GuideVisualQuadSplatCenter">
+        <On Terms="ActorOrphan" Send="Destroy"/>
+    </CActorSplat>
+    <CActorSplat id="GuideVisualQuadSplatImpact">
+        <On Terms="ActorOrphan" Send="Destroy"/>
+    </CActorSplat>
+    <CActorSplat id="GuideVisualQuadSplatLaunch">
+        <On Terms="ActorOrphan" Send="Destroy"/>
+    </CActorSplat>
+    <!-- Translucent Skillshot Actors                                                            -->
+    <CActorSplat id="GuideVisualQuadLaunchTranslucent" parent="GuideVisualQuadSplatModel">
+        <Model value="AOEStretchLineStartTranslucent"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.900000"/>
+        <Filter index="Ally" value="1"/>
+        <Filter index="Neutral" value="1"/>
+        <Filter index="Enemy" value="1"/>
+        <Inherits index="TeamColor" value="0"/>
+    </CActorSplat>
+    <CActorSplat id="GuideVisualQuadCenterTranslucent" parent="GuideVisualQuadSplatModel">
+        <Model value="AOEStretchLineMidTranslucent"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.900000"/>
+        <Filter index="Ally" value="1"/>
+        <Filter index="Neutral" value="1"/>
+        <Filter index="Enemy" value="1"/>
+        <Inherits index="TeamColor" value="0"/>
+    </CActorSplat>
+    <CActorSplat id="GuideVisualQuadImpactTranslucent" parent="GuideVisualQuadSplatModel">
+        <Model value="AOEStretchLineEndTranslucent"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.900000"/>
+        <Filter index="Ally" value="1"/>
+        <Filter index="Neutral" value="1"/>
+        <Filter index="Enemy" value="1"/>
+        <Inherits index="TeamColor" value="0"/>
+    </CActorSplat>
+    <CActorRegionCircle id="SingleTargetCursorRegion">
+        <Radius value="0.062500"/>
+        <HostSiteOps Ops="SOpBasicScopeFollow"/>
+        <On Terms="ActorCreation" Send="QueryPersistent GuideRegionAdd GuideRegionRemove AgainstRadiusContact"/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
+    </CActorRegionCircle>
+    <CActorModel id="GuideVisualQuadSanctification" parent="GuideVisualQuadModel">
+        <Model value="TyraelSanctificationQuadImpact"/>
+    </CActorModel>
+    <!--.........................................................................................-->
+    <!--.........................................................................................-->
+    <!-- Item Effects ========================================================================== -->
+    <!--.........................................................................................-->
+    <!--.........................................................................................-->
+    <!-- Juggernaut                                                                              -->
+    <!--.........................................................................................-->
+    <CActorSplat id="ClairvoyanceCursorSplat" parent="GuideVisualCircle" abil="TalentBucketClairvoyance">
+        <Model value="ClairvoyanceCursorSplat"/>
+        <On Terms="ActorCreation" Send="SetTintColor 225,160,25 0.000000 OneShot BaseTint"/>
+        <Filter index="Neutral" value="0"/>
+    </CActorSplat>
+    <CActorSplat id="ItemBlindingLightCursorSplat" parent="GuideVisualCircle" abil="ItemBlindingLight">
+        <Model value="ItemBlindingLightCursorSplat"/>
+        <On Terms="ActorCreation" Send="SetTintColor 225,160,25 0.000000 OneShot BaseTint"/>
+        <On Terms="ActorCreation" Send="SetScale 1.500000"/>
+        <On Terms="ActorCreation" Send="SetScale 1.000000 3.000000"/>
+        <Filter index="Neutral" value="0"/>
+    </CActorSplat>
+    <CActorSplat id="ItemNuclearStrikeCursorSplat" parent="GuideVisualCircle" abil="ItemNuclearStrike">
+        <On Terms="ActorCreation" Send="SetTintColor 225,160,25 0.000000 OneShot BaseTint"/>
+        <On Terms="ActorCreation" Send="SetScale 2.500000"/>
+        <Model value="ItemNuclearStrikeCursorSplat"/>
+        <Filter index="Neutral" value="0"/>
+    </CActorSplat>
+    <CActorSplat id="TestSplatModelSplatA">
+        <Model value="RaynorOrbitalDropCursorSplat"/>
+        <Scale value="11.000000"/>
+        <Aliases value="_Scalable"/>
+        <Flags index="SuppressSaveLoad" value="1"/>
+        <FogVisibility value="Visible"/>
+        <On Terms="Abil.Cursor" Send="Create"/>
+        <On Terms="ActorCreation" Send="Create CursorRegion"/>
+        <On Terms="ActorDestruction" Target="CursorRegion" Send="Destroy"/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <HostSiteOps Ops="SOpBasicScopeFollow"/>
+        <HoldTime value="-1.000000"/>
+        <Layer value="AOELayer"/>
+    </CActorSplat>
+    <CActorSplat id="TestSplatModelSplatB">
+        <Model value="RaynorOrbitalDropCursorSplat"/>
+        <Scale value="22.000000"/>
+        <Aliases value="_Scalable"/>
+        <Flags index="SuppressSaveLoad" value="1"/>
+        <FogVisibility value="Visible"/>
+        <On Terms="Abil.Cursor" Send="Create"/>
+        <On Terms="ActorCreation" Send="Create CursorRegion"/>
+        <On Terms="ActorDestruction" Target="CursorRegion" Send="Destroy"/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <HostSiteOps Ops="SOpBasicScopeFollow"/>
+        <HoldTime value="-1.000000"/>
+        <Layer value="AOELayer"/>
+    </CActorSplat>
+    <CModel id="AOEStretchLineEndTranslucent" parent="UI">
+        <Model value="assets\UI\Cursors\UI_Cursor_StretchLine_End\UI_Cursor_StretchLine_End.m3"/>
+        <EditorCategories value="CommandersHero:Common"/>
+    </CModel>
+    <CModel id="AOEStretchLineMidTranslucent" parent="UI">
+        <Model value="assets\UI\Cursors\UI_Cursor_StretchLine_Mid\UI_Cursor_StretchLine_Mid.m3"/>
+        <EditorCategories value="CommandersHero:Common"/>
+    </CModel>
+    <CModel id="AOEStretchLineStartTranslucent" parent="UI">
+        <Model value="assets\UI\Cursors\UI_Cursor_StretchLine_Start\UI_Cursor_StretchLine_Start.m3"/>
+        <EditorCategories value="CommandersHero:Common"/>
+    </CModel>
+    <CModel id="AOEStretchLineEnd" parent="UI">
+        <Model value="assets\UI\Cursors\UI_Cursor_StretchLine_End\UI_Cursor_StretchLine_End.m3"/>
+        <EditorCategories value="CommandersHero:Common"/>
+    </CModel>
+    <CModel id="AOEStretchLineMid" parent="UI">
+        <Model value="assets\UI\Cursors\UI_Cursor_StretchLine_Mid\UI_Cursor_StretchLine_Mid.m3"/>
+        <EditorCategories value="CommandersHero:Common"/>
+    </CModel>
+    <CModel id="AOEStretchLineStart" parent="UI">
+        <Model value="assets\UI\Cursors\UI_Cursor_StretchLine_Start\UI_Cursor_StretchLine_Start.m3"/>
+        <EditorCategories value="CommandersHero:Common"/>
+    </CModel>
+    <CModel id="UI_Cursor_StretchLine_Scroll" parent="UI">
+        <Model value="Assets\UI\Cursors\UI_Cursor_StretchLine_Scroll_Fantasy\UI_Cursor_StretchLine_Scroll_Fantasy.m3"/>
+        <EditorCategories value="CommandersHero:Common"/>
+    </CModel>
+    <CModel id="UI_Cursor_StretchLine_End_Fantasy" parent="UI">
+        <Model value="Assets\UI\Cursors\UI_Cursor_StretchLine_End_Fantasy\UI_Cursor_StretchLine_End_Fantasy.m3"/>
+        <EditorCategories value="CommandersHero:Common"/>
+    </CModel>
+    <CModel id="UI_Cursor_StretchLine_Mid_Fantasy" parent="UI">
+        <Model value="Assets\UI\Cursors\UI_Cursor_StretchLine_Mid_Fantasy\UI_Cursor_StretchLine_Mid_Fantasy.m3"/>
+        <EditorCategories value="CommandersHero:Common"/>
+    </CModel>
+    <CModel id="UI_Cursor_StretchLine_Start_Fantasy" parent="UI">
+        <Model value="Assets\UI\Cursors\UI_Cursor_StretchLine_Start_Fantasy\UI_Cursor_StretchLine_Start_Fantasy.m3"/>
+        <EditorCategories value="CommandersHero:Common"/>
+    </CModel>
+    <CModel id="UI_Cursor_StretchLine_Scroll_Fantasy" parent="UI">
+        <Model value="Assets\UI\Cursors\UI_Cursor_StretchLine_Scroll_Fantasy\UI_Cursor_StretchLine_Scroll_Fantasy.m3"/>
+        <EditorCategories value="CommandersHero:Common"/>
+    </CModel>
+    <CModel id="UI_Cursor_StretchLine_End_Fantasy_Low" parent="UI">
+        <Model value="Assets\UI\Cursors\UI_Cursor_StretchLine_End_Fantasy\UI_Cursor_StretchLine_End_Fantasy_Low.m3"/>
+        <EditorCategories value="CommandersHero:Common"/>
+    </CModel>
+    <CModel id="UI_Cursor_StretchLine_Mid_Fantasy_Low" parent="UI">
+        <Model value="Assets\UI\Cursors\UI_Cursor_StretchLine_Mid_Fantasy\UI_Cursor_StretchLine_Mid_Fantasy_Low.m3"/>
+        <EditorCategories value="CommandersHero:Common"/>
+    </CModel>
+    <CModel id="UI_Cursor_StretchLine_Start_Fantasy_Low" parent="UI">
+        <Model value="Assets\UI\Cursors\UI_Cursor_StretchLine_Start_Fantasy\UI_Cursor_StretchLine_Start_Fantasy_Low.m3"/>
+        <EditorCategories value="CommandersHero:Common"/>
+    </CModel>
+    <CModel id="UI_Cursor_StretchLine_End_SciFi" parent="UI">
+        <Model value="Assets\UI\Cursors\UI_Cursor_StretchLine_End_SciFi\UI_Cursor_StretchLine_End_SciFi.m3"/>
+        <EditorCategories value="CommandersHero:Common"/>
+    </CModel>
+    <CModel id="UI_Cursor_StretchLine_Mid_SciFi" parent="UI">
+        <Model value="Assets\UI\Cursors\UI_Cursor_StretchLine_Mid_SciFi\UI_Cursor_StretchLine_Mid_SciFi.m3"/>
+        <EditorCategories value="CommandersHero:Common"/>
+    </CModel>
+    <CModel id="UI_Cursor_StretchLine_Start_SciFi" parent="UI">
+        <Model value="Assets\UI\Cursors\UI_Cursor_StretchLine_Start_SciFi\UI_Cursor_StretchLine_Start_SciFi.m3"/>
+        <EditorCategories value="CommandersHero:Common"/>
+    </CModel>
+    <CModel id="UI_Cursor_StretchLine_Scroll_SciFi" parent="UI">
+        <Model value="Assets\UI\Cursors\UI_Cursor_StretchLine_Scroll_SciFi\UI_Cursor_StretchLine_Scroll_SciFi_Low.m3"/>
+        <EditorCategories value="CommandersHero:Common"/>
+    </CModel>
+    <CModel id="UI_Cursor_Circle_FantasyOld" parent="UI">
+        <Model value="Assets\UI\Cursors\UI_Cursor_Circle_Fantasy_Old\UI_Cursor_Circle_Fantasy_Old.m3"/>
+        <EditorCategories value="CommandersHero:Common"/>
+    </CModel>
+    <CModel id="UI_Cursor_Circle_FantasyOld_TeamColored" parent="UI">
+        <Model value="Assets\UI\Cursors\UI_Cursor_Circle_Fantasy_Old_TeamColor\UI_Cursor_Circle_Fantasy_Old_TeamColor.m3"/>
+        <EditorCategories value="CommandersHero:Common"/>
+    </CModel>
+    <CModel id="UI_Cursor_Circle_Fantasy" parent="UI">
+        <Model value="Assets\UI\Cursors\UI_Cursor_Circle_Fantasy\UI_Cursor_Circle_Fantasy.m3"/>
+        <EditorCategories value="CommandersHero:Common"/>
+    </CModel>
+    <CModel id="UI_Cursor_Circle_Modern" parent="UI">
+        <Model value="Assets\UI\Cursors\UI_Cursor_Circle_Modern\UI_Cursor_Circle_Modern.m3"/>
+        <EditorCategories value="CommandersHero:Common"/>
+    </CModel>
+    <CModel id="UI_Cursor_Circle_SciFi_TeamColored" parent="UI">
+        <Model value="Assets\UI\Cursors\UI_Cursor_Circle_SciFi_TeamColor\UI_Cursor_Circle_SciFi_TeamColor.m3"/>
+        <EditorCategories value="CommandersHero:Common"/>
+    </CModel>
+    <CModel id="UI_Cursor_Circle_Fantasy_TeamColored" parent="UI">
+        <Model value="Assets\UI\Cursors\UI_Cursor_Circle_Fantasy_TeamColor\UI_Cursor_Circle_Fantasy_TeamColor.m3"/>
+        <EditorCategories value="CommandersHero:Common"/>
+    </CModel>
+    <CModel id="UI_Cursor_Circle_Modern_TeamColored" parent="UI">
+        <Model value="Assets\UI\Cursors\UI_Cursor_Circle_Modern_TeamColor\UI_Cursor_Circle_Modern_TeamColor.m3"/>
+        <EditorCategories value="CommandersHero:Common"/>
+    </CModel>
+    <CModel id="UI_Cursor_Circle_SciFi" parent="UI">
+        <Model value="Assets\UI\Cursors\UI_Cursor_Circle_SciFi\UI_Cursor_Circle_SciFi.m3"/>
+        <EditorCategories value="CommandersHero:Common"/>
+    </CModel>
+    <CModel id="UI_Cursor_StretchLine_StartFade_Fantasy" parent="UI">
+        <Model value="Assets\UI\Cursors\UI_Cursor_StretchLine_StartFade_Fantasy\UI_Cursor_StretchLine_StartFade_Fantasy.m3"/>
+        <EditorCategories value="CommandersHero:Common"/>
+    </CModel>
+    <CModel id="ItemNuclearStrikeCursorSplat" parent="UI">
+        <Model value="Assets\UI\Cursors\Storm_Effect_AOECursor_Tech\Storm_Effect_AOECursor_Tech.m3"/>
+    </CModel>
+    <CModel id="ItemBlindingLightCursorSplat" parent="PersistentSpellFX">
+        <Model value="Assets\UI\Cursors\Storm_Effect_AOECursor_Tech\Storm_Effect_AOECursor_Tech.m3"/>
+    </CModel>
+    <CModel id="Storm_UI_AOEDualRadius_Outer" parent="UI">
+        <Model value="Assets\UI\Cursors\Storm_UI_AOEDualRadius_Inner\Storm_UI_AOEDualRadius_Outer.m3"/>
+        <EditorCategories value="CommandersHero:Common"/>
+    </CModel>
+    <CModel id="CommandersAOECursorSplat" parent="UI">
+        <Model value="Assets\UI\Cursors\Storm_Effect_AOECursor\Storm_Effect_AOECursor.m3"/>
+        <EditorCategories value="CommandersHero:Common"/>
+    </CModel>
+    <CModel id="ClairvoyanceCursorSplat" parent="UI">
+        <Model value="Assets\UI\Cursors\Storm_Effect_AOECursor_Tech\Storm_Effect_AOECursor_Tech.m3"/>
+        <SelectionRadius value="2.500000"/>
+        <ShadowRadius value="2.500000"/>
+    </CModel>
+    <CModel id="Storm_UI_AOEDualRadius_Inner" parent="UI">
+        <Model value="Assets\UI\Cursors\Storm_UI_AOEDualRadius_Inner\Storm_UI_AOEDualRadius_Inner.m3"/>
+        <EditorCategories value="CommandersHero:Common"/>
+    </CModel>
+    <CModel id="HeroRing_Player" parent="PersistentSpellFX">
+        <Model value="Assets\UI\Game\HeroRing_Player\HeroRing_Player.m3"/>
+        <LowQualityModel value="HeroRing_Player_Low"/>
+        <Flags index="EmbeddedSplatsRespectOpacity" value="1"/>
+    </CModel>
+    <CModel id="HeroRing_Player_Low" parent="PersistentSpellFX">
+        <Model value="Assets\UI\Game\HeroRing_Player\HeroRing_Player_Low.m3"/>
+    </CModel>
+    <CModel id="HeroRing_Teammate" parent="PersistentSpellFX">
+        <Model value="Assets\UI\Game\HeroRing_Teammate\HeroRing_Teammate.m3"/>
+        <LowQualityModel value="HeroRing_Teammate_Low"/>
+        <Flags index="EmbeddedSplatsRespectOpacity" value="1"/>
+    </CModel>
+    <CModel id="HeroRing_Teammate_Low" parent="PersistentSpellFX">
+        <Model value="Assets\UI\Game\HeroRing_Teammate\HeroRing_Teammate_Low.m3"/>
+    </CModel>
+    <CModel id="HeroRing_Enemy" parent="PersistentSpellFX">
+        <Model value="Assets\UI\Game\HeroRing_Enemy\HeroRing_Enemy.m3"/>
+        <LowQualityModel value="HeroRing_Enemy_Low"/>
+        <Flags index="EmbeddedSplatsRespectOpacity" value="1"/>
+    </CModel>
+    <CModel id="HeroRing_Enemy_Low" parent="PersistentSpellFX">
+        <Model value="Assets\UI\Game\HeroRing_Enemy\HeroRing_Enemy_Low.m3"/>
+    </CModel>
+    <CModel id="HeroRing_Multi_Player" parent="PersistentSpellFX">
+        <Model value="Assets\UI\Game\HeroRing_Multi_Player\HeroRing_Multi_Player.m3"/>
+        <LowQualityModel value="HeroRing_Multi_Player_Low"/>
+    </CModel>
+    <CModel id="HeroRing_Multi_Player_Low" parent="PersistentSpellFX">
+        <Model value="Assets\UI\Game\HeroRing_Multi_Player\HeroRing_Multi_Player_Low.m3"/>
+    </CModel>
+    <CModel id="HeroRing_Multi_Teammate" parent="PersistentSpellFX">
+        <Model value="Assets\UI\Game\HeroRing_Multi_Teammate\HeroRing_Multi_Teammate.m3"/>
+        <LowQualityModel value="HeroRing_Multi_Teammate_Low"/>
+    </CModel>
+    <CModel id="HeroRing_Multi_Teammate_Low" parent="PersistentSpellFX">
+        <Model value="Assets\UI\Game\HeroRing_Multi_Teammate\HeroRing_Multi_Teammate_Low.m3"/>
+    </CModel>
+    <CModel id="HeroRing_Multi_Enemy" parent="PersistentSpellFX">
+        <Model value="Assets\UI\Game\HeroRing_Multi_Enemy\HeroRing_Multi_Enemy.m3"/>
+        <LowQualityModel value="HeroRing_Multi_Enemy_Low"/>
+    </CModel>
+    <CModel id="HeroRing_Multi_Enemy_Low" parent="PersistentSpellFX">
+        <Model value="Assets\UI\Game\HeroRing_Multi_Enemy\HeroRing_Multi_Enemy_Low.m3"/>
+    </CModel>
+</Catalog>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CEffectSet id="Common_TriggerSet_AbilityUsed#2">
+        <EditorCategories value="CommandersHero:Common"/>
+    </CEffectSet>
+    <CEffectSet id="Common_TriggerSet_AbilityUsed#3">
+        <EditorCategories value="CommandersHero:Common"/>
+    </CEffectSet>
+    <CEffectSet id="Common_TriggerSet_AbilityUsed#4">
+        <EditorCategories value="CommandersHero:Common"/>
+    </CEffectSet>
+    <CEffectSet id="Common_TriggerSet_AbilityUsed#1">
+        <EditorCategories value="CommandersHero:Common"/>
+    </CEffectSet>
+    <CActorSplat default="1" id="UI_RangeSplat">
+        <Aliases value="_RangeSplat"/>
+        <Aliases value="_Scalable"/>
+        <Flags index="SuppressSaveLoad" value="1"/>
+        <FogVisibility value="Visible"/>
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Common"/>
+        <Preload value="##id##"/>
+        <On Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death"/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <On Terms="AnimBracketState.*.AfterClosing; !AnimBracketExitReason ModelSwap; AnimName BSD" Send="Destroy"/>
+        <On Terms="ActorCreation" Send="SetTintColor 225,160,25 0.000000 OneShot BaseTint"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpBasicScopeFollow SOpShadow SOp2DRotation" HoldRotation="1"/>
+        <Color value="255,0,0,0"/>
+        <FadeOut value="0.000000"/>
+        <HoldTime value="-1.000000"/>
+        <Layer value="AOELayer"/>
+        <Model value="UI_RangeSplat"/>
+    </CActorSplat>
+    <CActorSplat default="1" id="CommandersRangeSplat">
+        <Model value="UI_RangeSplat"/>
+        <Aliases value="_RangeSplat"/>
+        <Aliases value="_Scalable"/>
+        <FogVisibility value="Visible"/>
+        <HoldTime value="-1.000000"/>
+        <FadeOut value="0.000000"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpBasicScopeFollow SOpShadow SOp2DRotation" HoldRotation="1"/>
+        <Layer value="AOELayer"/>
+        <Flags index="SuppressSaveLoad" value="1"/>
+        <On Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death"/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <On Terms="AnimBracketState.*.AfterClosing; !AnimBracketExitReason ModelSwap; AnimName BSD" Send="Destroy"/>
+        <On Terms="ActorCreation" Send="SetTintColor 225,160,25 0.000000 OneShot BaseTint"/>
+        <Preload value="##id##"/>
+        <Color value="255,0,0,0"/>
+    </CActorSplat>
+    <CModel id="UI_RangeSplat" parent="UI">
+        <Model value="Assets\UI\Cursors\UI_Base_TargetingRadiusReticle\UI_Base_TargetingRadiusReticle.m3"/>
+        <EditorCategories value="CommandersHero:Common"/>
+        <SelectionRadius value="1.000000"/>
+        <ShadowRadius value="1.000000"/>
+    </CModel>
+    <CModel id="CommandersHeroRing">
+        <Model value="Assets\ui\cursors\storm_effect_targetingradiussplat\storm_effect_targetingradiussplat.m3"/>
+    </CModel>
+    <CBehaviorBuff default="1" id="CommandersDamageResposeAttackParent">
+        <Name value="Behavior/Name/CommandersDamageResposeAttackParent"/>
+        <Tooltip value="Behavior/Tooltip/CommandersDamageResposeAttackParent"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Common"/>
+        <DamageResponse>
+            <RequireEffectInChainArray value="Raynor_Weapon_Damage"/>
+            <RequireEffectInChainArray value="Raynor_Powershot_Damage"/>
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff default="1" id="CommandersIsolationParent">
+        <Name value="Behavior/Name/CommandersIsolationParent"/>
+        <Tooltip value="Behavior/Tooltip/CommandersIsolationParent"/>
+        <Alignment value="Negative"/>
+        <Cost>
+            <Charge Link="Behavior/CommandersIsolationParent"/>
+            <Cooldown Link="Behavior/CommandersIsolationParent"/>
+        </Cost>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Common"/>
+        <DisplayDuration index="Self" value="1"/>
+        <DisplayDuration index="Ally" value="1"/>
+        <DisplayDuration index="Enemy" value="1"/>
+        <RemoveValidatorArray value="TargetCleanseDebuffRemoval"/>
+        <RemoveValidatorArray value="TargetNotUnstoppable"/>
+        <Modification SightMaximum="1"/>
+        <DamageResponse>
+            <Cost>
+                <Charge Link="Behavior/CommandersIsolationParent"/>
+                <Cooldown Link="Behavior/CommandersIsolationParent"/>
+            </Cost>
+        </DamageResponse>
+    </CBehaviorBuff>
+</Catalog>

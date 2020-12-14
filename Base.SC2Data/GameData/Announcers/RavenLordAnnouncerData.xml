@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CSound id="RL_Core_BlueTeamCoreIsUnderAttack" parent="UI">
+        <EditorCategories value="Race:RavenLord"/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_castleattack_blue00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_castleattack_blue01.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="RL_GameEnd_RedTeamWin" parent="UI">
+        <EditorCategories value="Race:RavenLord"/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_ending_red00.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="RL_GameEnd_BlueTeamWin" parent="UI">
+        <EditorCategories value="Race:RavenLord"/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_ending_blue00.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="RL_GameEnd_TeamWin" parent="UI">
+        <EditorCategories value="Race:RavenLord"/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_endingwin00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_endingwin01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_endingwin02.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="RL_Core_RedTeamCoreIsUnderAttack" parent="UI">
+        <EditorCategories value="Race:RavenLord"/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_castleattack_red00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_castleattack_red01.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="RL_GameEnd_TeamLose" parent="UI">
+        <EditorCategories value="Race:RavenLord"/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_endinglose00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_endinglose01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_endinglose02.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="RL_Kill_KillingSpree_SpreeEndYour" parent="UI">
+        <EditorCategories value="Race:RavenLord"/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_spreeend00.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="RL_Kill_KillingSpree_SpreeEndAlly" parent="UI">
+        <EditorCategories value="Race:RavenLord"/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_spreeend_ally00.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="RL_Levels_LevelUp" parent="UI">
+        <EditorCategories value="Race:RavenLord"/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_levelannounce01.ogg" Volume="6.000000,6.000000" FacialGroup=""/>
+    </CSound>
+    <CSound id="RL_Countdown_Countdown1s" parent="UI">
+        <EditorCategories value="Race:RavenLord"/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_countdown1sec00.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="RL_Countdown_GameStart" parent="UI">
+        <EditorCategories value="Race:RavenLord"/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_gamestart00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_gamestart01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_gamestart02.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="RL_Countdown_Countdown3s" parent="UI">
+        <EditorCategories value="Race:RavenLord"/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_countdown3sec00.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="RL_Countdown_Countdown5s" parent="UI">
+        <EditorCategories value="Race:RavenLord"/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_countdown5sec00.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="RL_Countdown_Countdown10s_Remain" parent="UI">
+        <EditorCategories value="Race:RavenLord"/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_countdownremain00.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="RL_Countdown_Countdown10s" parent="UI">
+        <EditorCategories value="Race:RavenLord"/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_countdown10sec00.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="RL_Countdown_Countdown4s" parent="UI">
+        <EditorCategories value="Race:RavenLord"/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_countdown4sec00.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="RL_Countdown_Countdown2s" parent="UI">
+        <EditorCategories value="Race:RavenLord"/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_countdown2sec00.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="RL_Core_CoreIsUnderAttack" parent="UI">
+        <EditorCategories value="Race:RavenLord"/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_castleattackally00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_castleattackally00_alt.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_castleattackally01.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="RL_Keep_AllyDestroyKeep" parent="UI">
+        <EditorCategories value="Race:RavenLord"/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_keepdestroy00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_keepdestroy01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_keepdestroy02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_keepdestroy03_alt.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="RL_Keep_AllyLostKeep" parent="UI">
+        <EditorCategories value="Race:RavenLord"/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_keeplost00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_keeplost01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_keeplost02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_keeplost03.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="RL_Keep_BlueTeamDestroyKeep" parent="UI">
+        <EditorCategories value="Race:RavenLord"/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_keepdestroy_blue00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_keepdestroy_blue01.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="RL_Keep_RedTeamDestroyKeep" parent="UI">
+        <EditorCategories value="Race:RavenLord"/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_keepdestroy_red00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_keepdestroy_red01.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="RL_Kill_KillingSpree_FirstUpgrade" parent="UI">
+        <EditorCategories value="Race:RavenLord"/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_spreefirstupgrade00.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="RL_Kill_KillingSpree_SecondUpgrade" parent="UI">
+        <EditorCategories value="Race:RavenLord"/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_spreesecondupgrade00.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="RL_Kill_KillingSpree_ThirdUpgrade" parent="UI">
+        <EditorCategories value="Race:RavenLord"/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_spreethirdupgrade00.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="RL_Kill_KillingSpree_MaxUpgrade" parent="UI">
+        <EditorCategories value="Race:RavenLord"/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_spreemax00.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="RL_Kill_RedTeamWipe" parent="UI">
+        <EditorCategories value="Race:RavenLord"/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_teamkill_red00.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="RL_Kill_DoubleKill" parent="UI">
+        <EditorCategories value="Race:RavenLord"/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_doublekill00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_doublekill01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_doublekill02.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="RL_Kill_Default_PlayerDied_Observer" parent="UI">
+        <EditorCategories value="Race:RavenLord"/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_kill_observer00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_kill_observer01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_kill_observer02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_kill_observer03.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_kill_observer04.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="RL_Kill_Default_PlayerKillEnemy" parent="UI">
+        <EditorCategories value="Race:RavenLord"/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_herokill00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_herokill01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_herokill02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_herokill03.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_herokill04.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_herokill05.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_herokill06.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_herokill07_alt.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_herokill08_alt1.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="RL_Kill_KillingSpree_SpreeStart" parent="UI">
+        <EditorCategories value="Race:RavenLord"/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_spreestart00.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="RL_Kill_TeamKill" parent="UI">
+        <EditorCategories value="Race:RavenLord"/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_teamkill00.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="RL_Kill_MegaKill" parent="UI">
+        <EditorCategories value="Race:RavenLord"/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_megakill00.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="RL_Kill_BlueTeamWipe" parent="UI">
+        <EditorCategories value="Race:RavenLord"/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_teamkill_blue00.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="RL_Kill_TripleKill" parent="UI">
+        <EditorCategories value="Race:RavenLord"/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_triplekill00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_triplekill01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_triplekill02.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="RL_Kill_FirstBlood_BlueTeam" parent="UI">
+        <EditorCategories value="Race:RavenLord"/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_firstblood_blue00.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="RL_Kill_Default_PlayerDied" parent="UI">
+        <EditorCategories value="Race:RavenLord"/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_heroslain00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_heroslain01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_heroslain02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_heroslain03.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_heroslain04.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_heroslain05.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_heroslain06.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_heroslain07.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="RL_Kill_FirstBlood_RedTeam" parent="UI">
+        <EditorCategories value="Race:RavenLord"/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_firstblood_red00.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="RL_Kill_FourKill" parent="UI">
+        <EditorCategories value="Race:RavenLord"/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_fourkill00.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="RL_Talent_TalentUnlocked" parent="UI">
+        <EditorCategories value="Race:RavenLord"/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_talentunlock00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_talentunlock01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_talentunlock02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_talentunlock03.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="RL_Fort_AllyLostFort" parent="UI">
+        <EditorCategories value="Race:RavenLord"/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_outpostlost00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_outpostlost01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_outpostlost02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_outpostlost03.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_outpostlost04.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_outpostlost05_alt1.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="RL_Fort_BlueTeamDestroyFort" parent="UI">
+        <EditorCategories value="Race:RavenLord"/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_outpostdestroy_blue00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_outpostdestroy_blue01.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="RL_Fort_RedTeamDestroyFort" parent="UI">
+        <EditorCategories value="Race:RavenLord"/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_outpostdestroy_red00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_outpostdestroy_red01.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="RL_Kill_FirstBlood_Ally" parent="UI">
+        <EditorCategories value="Race:RavenLord"/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_firstbloodally00.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="RL_Countdown_Countdown30s" parent="UI">
+        <EditorCategories value="Race:RavenLord"/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_countdown30sec00.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="RL_Fort_AllyDestroyFort" parent="UI">
+        <EditorCategories value="Race:RavenLord"/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_outpostdestroy00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_outpostdestroy01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_outpostdestroy02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_outpostdestroy03.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_outpostdestroy04_alt4.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\sounds\vo\ravenlord_outpostdestroy05_alt.ogg" FacialGroup=""/>
+    </CSound>
+</Catalog>

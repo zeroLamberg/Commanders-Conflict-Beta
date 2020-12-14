@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CEffectCreatePersistent id="HeroTalandarChargedBuster@CreatePersistent">
+        <EditorCategories value="Race:Neutral,CommandersHero:Talandar"/>
+        <Marker>
+            <MatchFlags index="Id" value="1"/>
+        </Marker>
+        <WhichLocation Value="SourceUnit"/>
+        <Flags index="PersistUntilDestroyed" value="1"/>
+        <PeriodicEffectArray value="HeroTalandarChargedBuster@Search"/>
+        <PeriodicPeriodArray value="0.0625"/>
+    </CEffectCreatePersistent>
+    <CEffectDamage id="HeroTalandarChargedBuster@Damage" parent="CommandersEnergyDamage">
+        <ValidatorArray value="noMarkers"/>
+        <EditorCategories value="CommandersHero:Talandar"/>
+        <Amount value="100"/>
+    </CEffectDamage>
+    <CEffectDestroyPersistent id="HeroTalandarChargedBuster@DestroyPersist">
+        <EditorCategories value="Race:Neutral,CommandersHero:Talandar"/>
+        <WhichLocation Value="SourceUnit"/>
+        <Effect value="HeroTalandarChargedBuster@CreatePersistent"/>
+    </CEffectDestroyPersistent>
+    <CEffectLaunchMissile id="HeroTalandarChargedBuster@Launch">
+        <EditorCategories value="Race:Neutral,CommandersHero:Talandar"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <LaunchOffset value="0,-0.4,0"/>
+        <LaunchEffect value="HeroTalandarChargedBuster@CreatePersistent"/>
+        <ImpactEffect value="HeroTalandarChargedBuster@FinalSet"/>
+        <AmmoUnit value="HeroTalandarChargedBuster@Missile"/>
+    </CEffectLaunchMissile>
+    <CEffectEnumArea id="HeroTalandarChargedBuster@Search">
+        <EditorCategories value="Race:Neutral,CommandersHero:Talandar"/>
+        <LaunchLocation Value="OriginPoint"/>
+        <SearchFilters value="-;Player,Ally,Neutral,Massive,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray RectangleWidth="3" RectangleHeight="2" Effect="HeroTalandarChargedBuster@Damage"/>
+        <RevealerParams Duration="0.75" ShapeExpansion="1">
+            <RevealFlags index="Unfog" value="1"/>
+        </RevealerParams>
+    </CEffectEnumArea>
+    <CEffectSet id="HeroTalandarChargedBuster@FinalSet">
+        <EditorCategories value="Race:Neutral,CommandersHero:Talandar"/>
+        <EffectArray value="Suicide"/>
+        <EffectArray value="HeroTalandarChargedBuster@DestroyPersist"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="HeroTalandarChargedBuster@Start">
+        <EditorCategories value="Race:Neutral,CommandersHero:Talandar"/>
+        <WhichLocation Value="SourcePoint"/>
+        <InitialEffect value="HeroTalandarChargedBuster@LaunchSwitch"/>
+        <InitialOffset value="0,-11,0"/>
+        <PeriodCount value="1"/>
+    </CEffectCreatePersistent>
+    <CEffectDamage id="HeroTalandarChargedBuster@UpgradedDamage" parent="CommandersEnergyDamage">
+        <ValidatorArray value="noMarkers"/>
+        <EditorCategories value="CommandersHero:Talandar"/>
+        <Amount value="100"/>
+    </CEffectDamage>
+    <CEffectSwitch id="HeroTalandarChargedBuster@LaunchSwitch">
+        <EditorCategories value="Race:Neutral,CommandersHero:Talandar"/>
+        <CaseArray Validator="HaveChargeBuster" Effect="HeroTalandarChargedBuster@UpgradedLaunch"/>
+        <CaseDefault value="HeroTalandarChargedBuster@Launch"/>
+    </CEffectSwitch>
+    <CEffectLaunchMissile id="HeroTalandarChargedBuster@UpgradedLaunch">
+        <EditorCategories value="Race:Neutral,CommandersHero:Talandar"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <LaunchOffset value="0,-0.4,0"/>
+        <LaunchEffect value="HeroTalandarChargedBuster@UpgradedCreatePersistent"/>
+        <ImpactEffect value="HeroTalandarChargedBuster@UpgradedFinalSet"/>
+        <AmmoUnit value="HeroTalandarChargedBuster@UpgradedMissile"/>
+    </CEffectLaunchMissile>
+    <CEffectSet id="HeroTalandarChargedBuster@StartSet">
+        <EditorCategories value="Race:Neutral,CommandersHero:Talandar"/>
+        <EffectArray value="HeroTalandarChargedBuster@Start"/>
+        <!--EffectArray value="ChargedBusterRemoveCharging"/-->
+        <!--EffectArray value="ChargedBusterRemoveExpiring"/-->
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectSet id="HeroTalandarChargedBuster@UpgradedCraterDummy">
+        <EditorCategories value="Race:Neutral,CommandersHero:Talandar"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="HeroTalandarChargedBuster@UpgradedCreatePersistent">
+        <EditorCategories value="Race:Neutral,CommandersHero:Talandar"/>
+        <Marker>
+            <MatchFlags index="Id" value="1"/>
+        </Marker>
+        <WhichLocation Value="SourceUnit"/>
+        <Flags index="PersistUntilDestroyed" value="1"/>
+        <PeriodicEffectArray value="HeroTalandarChargedBuster@UpgradedSearch"/>
+        <PeriodicEffectArray value="HeroTalandarChargedBuster@UpgradedCraterDummy"/>
+        <PeriodicPeriodArray value="0.0625"/>
+        <PeriodicPeriodArray value="0"/>
+    </CEffectCreatePersistent>
+    <CEffectDestroyPersistent id="HeroTalandarChargedBuster@UpgradedDestroyPersist">
+        <EditorCategories value="Race:Neutral,CommandersHero:Talandar"/>
+        <WhichLocation Value="SourceUnit"/>
+        <Effect value="HeroTalandarChargedBuster@UpgradedCreatePersistent"/>
+    </CEffectDestroyPersistent>
+    <CEffectEnumArea id="HeroTalandarChargedBuster@UpgradedSearch">
+        <EditorCategories value="Race:Neutral,CommandersHero:Talandar"/>
+        <LaunchLocation Value="OriginPoint"/>
+        <SearchFilters value="-;Player,Ally,Neutral,Massive,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray RectangleWidth="3" RectangleHeight="2" Effect="HeroTalandarChargedBuster@UpgradedDamage"/>
+        <RevealerParams Duration="0.75" ShapeExpansion="1">
+            <RevealFlags index="Unfog" value="1"/>
+        </RevealerParams>
+    </CEffectEnumArea>
+    <CEffectSet id="HeroTalandarChargedBuster@UpgradedFinalSet">
+        <EditorCategories value="Race:Neutral,CommandersHero:Talandar"/>
+        <EffectArray value="Suicide"/>
+        <EffectArray value="HeroTalandarChargedBuster@UpgradedDestroyPersist"/>
+    </CEffectSet>
+    <CAbilEffectTarget id="HeroTalandarChargedBuster">
+        <EditorCategories value="Race:Neutral,AbilityorEffectType:Units,CommandersHero:Talandar"/>
+        <Effect index="0" value="HeroTalandarChargedBuster@StartSet"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Cooldown Location="Unit" TimeUse="1"/>
+        </Cost>
+        <Range value="500"/>
+        <Arc value="360"/>
+        <CursorEffect value="HeroTalandarChargedBuster@Search"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="HeroTalandarChargedBuster" Requirements="HeroTalandar@CasterIsDragoon"/>
+    </CAbilEffectTarget>
+    <CButton id="HeroTalandarChargedBuster">
+        <Icon value="Assets\Textures\btn-upgrade-protoss-fenix-dragoongroundattack.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-protoss-fenix-dragoongroundattack.dds"/>
+        <EditorCategories value="CommandersHero:Talandar"/>
+    </CButton>
+    <CActorAction id="HeroTalandarChargedBuster@Attack" parent="CommandersGenericAttackPoint" effectImpact="HeroTalandarChargedBuster@FinalSet" effectLaunch="HeroTalandarChargedBuster@Launch">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Talandar"/>
+        <LaunchAttachQuery Methods="AMFilterWeapon"/>
+        <LaunchAssets Sound="ChargedBuster_AttackLaunch"/>
+        <ImpactPointSiteOps Ops="SOpTargetPoint SOpShadow SOpMoveUpBy1"/>
+    </CActorAction>
+    <CActorQuad id="HeroTalandarChargedBuster@Guide" parent="CommandersGuideVisualQuadDownSciFi" abil="HeroTalandarChargedBuster">
+        <EditorCategories value="CommandersHero:Talandar"/>
+        <Height value="12.000000"/>
+        <Width value="3.000000"/>
+    </CActorQuad>
+    <CActorMissile id="HeroTalandarChargedBuster@AttackMissile" parent="CommandersGenericAttackMissileWithDeath" unitName="HeroTalandarChargedBuster@Missile">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Talandar"/>
+        <On Terms="ActorCreation" Send="Create FenixDragoonChargedBusterMissileGroundTrail"/>
+        <DeathArray index="Normal" SoundLink="HeroTalandarChargedBuster@MissileDeath"/>
+    </CActorMissile>
+    <CActorSound id="ChargedBusterMissileGroundTrailOvercharged_AS" parent="SoundOneShot">
+        <EditorCategories value=""/>
+        <On Terms="Effect.HeroTalandarChargedBuster@UpgradedCraterDummy.Start" Send="Create"/>
+        <On Terms="Effect.FenixWarbringerColossusPowerShotDamageGroundDummy.Start; At Target" Send="Create"/>
+        <Sound value="AC_ThermalLance_FXFire"/>
+    </CActorSound>
+    <CActorModel id="HeroTalandarChargedBuster@ImpactModel" parent="CommandersModelAnimationStyleOneShot">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Talandar"/>
+        <On Terms="Effect.HeroTalandarChargedBuster@Damage; At Target" Send="Create"/>
+        <HostSiteOps Ops="SOpAttachCenter" HoldPosition="1" HoldRotation="1"/>
+    </CActorModel>
+    <CActorSound id="ChargedBusterMissileImpact_AS" parent="SoundOneShot">
+        <On Terms="Effect.HeroTalandarChargedBuster@FinalSet.Start" Send="Create"/>
+        <Sound value="ChargedBusterMissile_Impact"/>
+        <Layers Sound="ChargedBusterMissile_ImpactElectric">
+            <Chance value="100"/>
+            <Pitch value="0.000000,0.000000"/>
+            <PlayDelay value="0,0"/>
+            <Volume value="0.000000,0.000000"/>
+        </Layers>
+    </CActorSound>
+    <CActorSound id="HeroTalandarChargedBuster@UpgradedImpactSound" parent="SoundOneShot">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Talandar"/>
+        <On Terms="Effect.HeroTalandarChargedBuster@UpgradedDamage.Start; At Target" Send="Create"/>
+        <Sound value="ChargedBusterMissile_Impact_Level01"/>
+        <Layers Sound="ChargedBusterMissile_ImpactElectric">
+            <Chance value="100"/>
+            <Pitch value="0.000000,0.000000"/>
+            <PlayDelay value="0,0"/>
+            <Volume value="0.000000,0.000000"/>
+        </Layers>
+    </CActorSound>
+    <CActorModel id="ChargedBusterMissileImpactUpgraded" parent="ModelAnimationStyleOneShot">
+        <Flags index="SuppressCreationErrors" value="1"/>
+        <HostSiteOps Ops="SOpAttachCenter" HoldPosition="1" HoldRotation="1"/>
+        <On Terms="Effect.HeroTalandarChargedBuster@UpgradedDamage; At Target" Send="Create"/>
+        <Host Subject="_Unit"/>
+        <Inherits index="CloakEffect" value="1"/>
+        <Inherits index="Visibility" value="1"/>
+        <Model value="HeroTalandarChargedBuster@ImpactModel"/>
+    </CActorModel>
+    <CActorSound id="ChargedBusterMissileLaunch_AS" parent="SoundOneShot">
+        <On Terms="Effect.HeroTalandarChargedBuster@UpgradedLaunch.Start" Send="Create"/>
+        <Sound value="ChargedBuster_AttackLaunch_Wsh"/>
+        <Layers Sound="ChargedBuster_Launch_Mech">
+            <Chance value="100"/>
+            <Pitch value="0.000000,0.000000"/>
+            <PlayDelay value="0,0"/>
+            <Volume value="0.000000,0.000000"/>
+        </Layers>
+    </CActorSound>
+    <CActorAction id="ChargedBusterUpgradedAction" parent="GenericAttack" effectImpact="HeroTalandarChargedBuster@UpgradedFinalSet" effectLaunch="HeroTalandarChargedBuster@UpgradedLaunch">
+        <LaunchAttachQuery Methods="AMFilterWeapon"/>
+        <Missile value="ChargedBusterUpgradedMissile"/>
+        <ImpactPointSiteOps Ops="SOpTargetPoint SOpShadow SOpMoveUpBy1"/>
+        <LaunchAssets Sound="ChargedBuster_AttackLaunch"/>
+    </CActorAction>
+    <CActorMissile id="ChargedBusterUpgradedMissile" parent="GenericAttackMissileWithDeathAnim" unitName="HeroTalandarChargedBuster@UpgradedMissile">
+        <On Terms="ActorCreation" Send="Create FenixDragoonChargedBusterMissileGroundTrailOvercharged"/>
+    </CActorMissile>
+    <CActorModel id="FenixDargoonChargedBusterMissileCraterTrailOvercharged">
+        <On Terms="ActorCreation" Send="AnimBracketStart BSD Work,Start Work Work,End"/>
+        <On Terms="AnimBracketState.*.AfterClosing; !AnimBracketExitReason ModelSwap; AnimName BSD" Send="Destroy"/>
+        <On Terms="Effect.HeroTalandarChargedBuster@UpgradedCraterDummy.Start" Send="Create"/>
+        <On Terms="ActorCreation" Send="TimerSet 5.000000 DelayDestroy"/>
+        <On Terms="TimerExpired; TimerName DelayDestroy" Send="AnimBracketStop BSD"/>
+        <Model value="HeroTalandarChargedBuster@UpgradedMissileCraterTrail"/>
+        <HostSiteOps Ops="SOpForwardOriginPoint SOpShadowSyncGround SOp2DRotation" HoldPosition="1" HoldRotation="1"/>
+    </CActorModel>
+    <CActorModel id="HeroTalandarChargedBuster@Shot" parent="CommandersModelAnimationStyleOneShotUnit">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Talandar"/>
+        <On Terms="Effect.HeroTalandarChargedBuster@Launch.Start; At Caster" Send="Create"/>
+        <HostSiteOps Ops="SOpAttachWeapon01 SOpForwardTargetPoint SOp2DRotation" HoldPosition="1" HoldRotation="1"/>
+    </CActorModel>
+    <CActorModel id="HeroTalandarChargedBuster@UpgradedShot" parent="CommandersModelAnimationStyleOneShotUnit">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Talandar"/>
+        <On Terms="Effect.HeroTalandarChargedBuster@UpgradedLaunch.Start; At Caster" Send="Create"/>
+        <HostSiteOps Ops="SOpAttachWeapon01 SOpForwardTargetPoint SOp2DRotation" HoldPosition="1" HoldRotation="1"/>
+    </CActorModel>
+    <CActorArc id="YrelVindicationCastGuide">
+        <Aliases value="_VindicationGuideVisual"/>
+        <Filter index="All" value="1"/>
+        <VisibleTo index="Self" value="1"/>
+        <FogVisibility value="Visible"/>
+        <Host Subject="_VindicationGuideRegion"/>
+        <Flags index="SuppressSaveLoad" value="1"/>
+        <On Terms="Behavior.HeroTalandarDragoonArmorSuit@DragoonCarryBehavior.On" Send="Create"/>
+        <On Terms="Behavior.HeroTalandarDragoonArmorSuit@DragoonCarryBehavior.Off" Send="Destroy Immediate"/>
+        <On Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death"/>
+        <On Terms="ActorCreation" Send="Create YrelVindicationCastGuideRegionArc"/>
+        <On Terms="ActorDestruction" Target="_VindicationGuideRegion" Send="Destroy"/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <On Terms="Behavior.YrelVindicationMaxCharge.On" Send="$Stand PlayForever"/>
+        <!--<On Terms="Behavior.*.On; BehaviorCategory TimeStop" Send="AnimSetPausedAll" />
+    <On Terms="Behavior.*.Off; BehaviorCategory TimeStop" Send="AnimSetPausedAll 0" />-->
+        <On Terms="ActorCreation" Send="SetTintColor 225,160,25 0.000000 OneShot BaseTint"/>
+        <Scale value="4.000000"/>
+    </CActorArc>
+    <CActorRegionArc id="YrelVindicationCastGuideRegionArc">
+        <Aliases value="_VindicationGuideRegion"/>
+        <Flags index="SuppressSaveLoad" value="1"/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <On Terms="RegionSubject.*.AddedFirst" Target="_VindicationGuideVisual" Send="ClearTintColor 0.100000 BaseTint"/>
+        <On Terms="RegionSubject.*.AddedFirst" Target="_VindicationGuideVisual" Send="SetTintColor 0,255,0 0.100000 OneShot Active"/>
+        <On Terms="RegionSubject.*.RemovedLast" Target="_VindicationGuideVisual" Send="SetTintColor 225,160,25 0.000000 OneShot BaseTint"/>
+        <On Terms="RegionSubject.*.RemovedLast" Target="_VindicationGuideVisual" Send="ClearTintColor 0.100000 Active"/>
+        <On Terms="ActorCreation" Send="QueryPersistent YrelVindicationCastGuideRegionAdd GuideRegionRemove AgainstRadiusGame"/>
+        <HostSiteOps Ops="SOpPointSouthWorld" HoldRotation="1"/>
+        <Angle value="360.000000"/>
+        <Radius value="4.000000"/>
+    </CActorRegionArc>
+    <!--<Subject Filters="Snapshot,Unit,Missile" Terms="ValidateUnit YrelVindicationTargetUnitFilters 0 System_Snapshot_Dummy" />-->
+    <CActorQueryResponse id="YrelVindicationCastGuideRegionAdd">
+        <Subject Filters="Snapshot,Unit,Missile" Terms="ValidateUnit TargetNotDead 0 System_Snapshot_Dummy"/>
+        <OnResponse Send="StatusIncrement PreTargetingModel"/>
+        <OnResponse Send="StatusIncrement PreTargetingTint"/>
+        <OnResponse Send="RefSet ::actor.PreTargetingSource ::QueryDirector"/>
+    </CActorQueryResponse>
+    <CActorModel id="FenixDragoonChargedBusterMissileGroundTrail" parent="ModelAnimationStyleOneShot">
+        <Model value="FenixDragoonPurifierCoopSolarBeamGroundTrail"/>
+        <HostSiteOps Ops="SOpShadow SOp2DRotation"/>
+    </CActorModel>
+    <CModel id="HeroTalandarChargedBuster@Shot" parent="MissileFX">
+        <Model value="Assets\Effects\Protoss\Dragoon_Purifier_Coop_BusterShot\Dragoon_Purifier_Coop_BusterShot.m3"/>
+        <EditorCategories value="CommandersHero:Talandar"/>
+    </CModel>
+    <CModel id="HeroTalandarChargedBuster@ImpactModel" parent="ImpactFX">
+        <Model value="Assets\Effects\Protoss\Dragoon_Purifier_Coop_SolarBeam_Impact\Dragoon_Purifier_Coop_SolarBeam_Impact.m3"/>
+        <EditorCategories value="CommandersHero:Talandar"/>
+    </CModel>
+    <CModel id="HeroTalandarChargedBuster@UpgradedShot" parent="MissileFX">
+        <Model value="Assets\Effects\Protoss\Dragoon_Purifier_Coop_BusterShot_Charged\Dragoon_Purifier_Coop_BusterShot_Charged.m3"/>
+        <EditorCategories value="CommandersHero:Talandar"/>
+    </CModel>
+    <CModel id="DeathVoidShadowMedium" parent="UnitDeath">
+        <Model value="Assets\Units\Neutral\VoidUnit_Death\VoidUnit_Death.m3"/>
+        <EditorCategories value="Race:Zerg"/>
+        <ScaleMax value="1.500000,1.500000,1.500000"/>
+        <ScaleMin value="1.500000,1.500000,1.500000"/>
+    </CModel>
+    <CModel id="HeroTalandarChargedBuster@Missile" parent="MissileFX">
+        <Model value="Assets\Effects\Protoss\Dragoon_Purifier_Coop_SolarBeam\Dragoon_Purifier_Coop_SolarBeam.m3"/>
+        <EditorCategories value="CommandersHero:Talandar"/>
+    </CModel>
+    <CModel id="HeroTalandarChargedBuster@UpgradedMissile" parent="MissileFX">
+        <Model value="Assets\Effects\Protoss\Dragoon_Purifier_Coop_SolarBeam_Charged\Dragoon_Purifier_Coop_SolarBeam_Charged.m3"/>
+        <EditorCategories value="CommandersHero:Talandar"/>
+    </CModel>
+    <CModel id="HeroTalandarChargedBuster@UpgradedMissileCraterTrail">
+        <Model value="Assets\Effects\Protoss\Dragoon_Purifier_Coop_SolarBeam_RockTrail\Dragoon_Purifier_Coop_SolarBeam_RockTrail.m3"/>
+        <EditorCategories value="CommandersHero:Talandar"/>
+        <VariationCount value="5"/>
+    </CModel>
+    <CModel id="YrelVindicationCastGuide" parent="UI">
+        <Model value="assets\Effects\Heroes\Base_Yrel\Effect_Yrel_Base_SearingLight_Reticle\Effect_Yrel_Base_SearingLight_Reticle.m3"/>
+        <AnimSpeed value="2.000000"/>
+    </CModel>
+    <CModel id="FenixDragoonPurifierCoopSolarBeamGroundTrail" parent="MissileFX">
+        <Model value="Assets\Effects\Protoss\Dragoon_Purifier_Coop_SolarBeam_GroundTrail\Dragoon_Purifier_Coop_SolarBeam_GroundTrail.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CModel>
+    <CMoverMissile id="HeroTalandarChargedBuster@Mover" parent="MissileDefault">
+        <MotionPhases index="0">
+            <Driver value="Guidance"/>
+            <Acceleration value="3200"/>
+            <MaxSpeed value="20"/>
+            <ClearanceAcceleration value="75"/>
+            <ActorTracking value="Actual"/>
+            <Outro value="-1"/>
+            <RotationLaunchActorType value="LaunchToTarget2D"/>
+            <ThrowBandYaw value="-360,-360,-360,-360"/>
+            <ThrowBandPitch value="-360,-360,-360,-360"/>
+            <YawPitchRoll value="719.2968"/>
+        </MotionPhases>
+    </CMoverMissile>
+    <CSound id="ChargedBuster_AttackLaunch" parent="Combat">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Protoss\Immortal\Immortal_AttackLaunch0.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Immortal\Immortal_AttackLaunch1.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Immortal\Immortal_AttackLaunch2.wav"/>
+        <DupeMaximumMethod value="Replace"/>
+        <Pitch value="-2.000000,-1.000000"/>
+        <Volume value="-0.940000,-0.940000"/>
+    </CSound>
+    <CSound id="ChargedBuster_AttackLaunch_Wsh" parent="Combat">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Dragoon_AttackLaunch01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Dragoon_AttackLaunch02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Dragoon_AttackLaunch03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Dragoon_AttackLaunch04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Dragoon_AttackLaunch05.wav" FacialGroup=""/>
+        <DupeThresholdPoints/>
+        <DupeThresholdPoints Count="16" Volume="-6.000000"/>
+        <Pitch value="-1.000000,0.000000"/>
+        <Volume value="-4.000000,-2.000000"/>
+    </CSound>
+    <CSound id="ChargedBusterMissile_Impact" parent="Combat">
+        <AssetArray File="Assets\Sounds\VoidShard_Zone_Launch_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\VoidShard_Zone_Launch_01a.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\VoidShard_Zone_Launch_01b.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\VoidShard_Zone_Launch_03a.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\VoidShard_Zone_Launch_03b.wav" FacialGroup=""/>
+        <DupeMaximumMethod value="Replace"/>
+        <Pitch value="-2.000000,1.000000"/>
+        <Volume value="-10.000000,-8.000000"/>
+        <SustainFade index="1" Time="1000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="22.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="ChargedBusterMissile_Impact_Level01" parent="Combat">
+        <AssetArray File="Assets\Sounds\VoidShard_Zone_Impact_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\VoidShard_Zone_Impact_03b.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\VoidShard_Zone_Impact_03c.wav" FacialGroup=""/>
+        <Category value="Doodad"/>
+        <DupeMaximumMethod value="Replace"/>
+        <SpeakerMix index="LFE" value="0.250000"/>
+        <Spread value="15.000000"/>
+        <SustainFade index="1" Time="1000"/>
+        <Pitch value="-2.000000,0.000000"/>
+        <Volume value="-6.000000,-4.000000"/>
+    </CSound>
+    <CUnit id="HeroTalandarChargedBuster@Missile" parent="MISSILE_INVULNERABLE">
+        <Mover value="HeroTalandarChargedBuster@Mover"/>
+        <EditorCategories value="ObjectType:Projectile,CommandersHero:Talandar"/>
+    </CUnit>
+    <CUnit id="HeroTalandarChargedBuster@UpgradedMissile" parent="MISSILE_INVULNERABLE">
+        <Race value="Prot"/>
+        <Mover value="HeroTalandarChargedBuster@Mover"/>
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:FactionPurifier,CommandersHero:Talandar"/>
+    </CUnit>
+</Catalog>

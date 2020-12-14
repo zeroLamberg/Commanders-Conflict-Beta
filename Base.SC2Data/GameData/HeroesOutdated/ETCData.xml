@@ -1,0 +1,3369 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CEffectDamage id="FaceMeltDamage" parent="CommandersSpellDamage">
+        <Amount value="50"/>
+        <ResponseFlags index="Acquire" value="0"/>
+    </CEffectDamage>
+    <CEffectDamage id="L90ETCWeaponDamage" parent="CommandersWeaponDamage">
+        <Amount value="59"/>
+        <KindSplash value="Spell"/>
+    </CEffectDamage>
+    <CEffectDamage id="PowerSlideDamage" parent="CommandersSpellDamage">
+        <Amount value="60"/>
+        <ResponseFlags index="Acquire" value="0"/>
+    </CEffectDamage>
+    <CEffectDamage id="StageDiveDamage" parent="CommandersSpellDamage">
+        <Amount value="100"/>
+        <ResponseFlags index="Acquire" value="0"/>
+    </CEffectDamage>
+    <CEffectModifyPlayer id="ETCCombatStyleEchoPedal">
+        <EditorCategories value="Race:ETC"/>
+    </CEffectModifyPlayer>
+    <!-- Awww yea ghetto trig! My high school trigonometry teacher is literally crying right now -->
+    <CEffectModifyPlayer id="ETCMasteryFaceSmelt">
+        <EditorCategories value="Race:ETC"/>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="ETCMasteryGuitarHero">
+        <EditorCategories value="Race:ETC"/>
+        <EffectArray Reference="Effect,L90ETCGuitarSoloApplyBonusDamageRune,Chance" Value="1"/>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="ETCHeroicAbilityMoshPit">
+        <EditorCategories value="Race:ETC"/>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="ETCCombatStyleUberRockstar">
+        <EditorCategories value="Race:ETC"/>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="ETCMasteryMonsterSlide">
+        <EditorCategories value="Race:ETC"/>
+        <EffectArray Reference="Actor,L90ETCPowerslideGuide,Height" Value="1.200000"/>
+        <EffectArray Operation="Set" Reference="Effect,PowerSlideTargetSearch,AreaArray[0].RectangleWidth" Value="3.2"/>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="ETCHeroicAbilityStageDive">
+        <EditorCategories value="Race:ETC"/>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="L90ETCMasteryMoshPitDeathMetal">
+        <EditorCategories value="Race:ETC"/>
+        <EffectArray Reference="Effect,MoshPitApplyVulnerableBehavior,Chance" Value="1"/>
+        <EffectArray Reference="Effect,MoshPitRemoveVulnerableBehavior,Chance" Value="1"/>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="L90ETCMasteryPowerslideDamageSlide">
+        <EditorCategories value="Race:ETC"/>
+        <EffectArray Reference="Effect,PowerSlideDamage,AttributeFactor[Armored]" Value="0.3"/>
+        <EffectArray Reference="Effect,PowerSlideDamage,AttributeFactor[Biological]" Value="0.3"/>
+        <EffectArray Reference="Effect,PowerSlideDamage,AttributeFactor[Heroic]" Value="0.3"/>
+        <EffectArray Reference="Effect,PowerSlideDamage,AttributeFactor[Light]" Value="0.3"/>
+        <EffectArray Reference="Effect,PowerSlideDamage,AttributeFactor[Psionic]" Value="0.3"/>
+        <EffectArray Reference="Effect,PowerSlideDamage,AttributeFactor[Robotic]" Value="0.3"/>
+        <EffectArray Reference="Effect,PowerSlideDamage,AttributeFactor[Structure]" Value="0.3"/>
+        <EffectArray Reference="Effect,PowerSlideDamage,AttributeFactor[Summoned]" Value="0.3"/>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="L90ETCMasteryPowerslideHeadCrack">
+        <EditorCategories value="Race:ETC"/>
+        <EffectArray Reference="Behavior,PowerslideStun,Duration" Value="1.500000"/>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="L90ETCMasteryStageDiveRockGod">
+        <EditorCategories value="Race:ETC"/>
+        <EffectArray Reference="Effect,StageDiveDamage,AttributeFactor[Light]" Value="0.4"/>
+        <EffectArray Reference="Effect,StageDiveDamage,AttributeFactor[Armored]" Value="0.4"/>
+        <EffectArray Reference="Effect,StageDiveDamage,AttributeFactor[Biological]" Value="0.4"/>
+        <EffectArray Reference="Effect,StageDiveDamage,AttributeFactor[Robotic]" Value="0.4"/>
+        <EffectArray Reference="Effect,StageDiveDamage,AttributeFactor[Psionic]" Value="0.4"/>
+        <EffectArray Reference="Effect,StageDiveDamage,AttributeFactor[Structure]" Value="0.4"/>
+        <EffectArray Reference="Effect,StageDiveDamage,AttributeFactor[Heroic]" Value="0.4"/>
+        <EffectArray Reference="Effect,StageDiveDamage,AttributeFactor[Summoned]" Value="0.4"/>
+        <EffectArray Reference="Abil,L90ETCStageDive,CastIntroTime[0]" Value="-0.625"/>
+        <EffectArray Reference="Effect,StageDivePersistent,PeriodicPeriodArray[0]" Value="0.5"/>
+        <EffectArray Reference="Effect,StageDivePersistent,PeriodicPeriodArray[1]" Value="0.5"/>
+        <EffectArray Reference="Effect,StageDivePersistent,PeriodicPeriodArray[2]" Value="0.5"/>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="L90ETCMasteryFaceMeltLoudSpeakers">
+        <EditorCategories value="Race:ETC"/>
+        <EffectArray Reference="Actor,L90ETCFaceMeltRangeSplat,Scale" Value="1.5"/>
+        <EffectArray Reference="Effect,FaceMeltSearch,AreaArray[0].Radius" Value="1.5"/>
+        <EffectArray Reference="Effect,FaceMeltPersistent,PeriodCount" Value="2.0"/>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="L90ETCMasteryGuitarSoloGroupies">
+        <EditorCategories value="Race:ETC"/>
+        <EffectArray Reference="Effect,L90ETCGuitarSoloSearchAllies,Chance" Value="1"/>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="L90ETCMasteryGuitarSoloGuitarInstrumental">
+        <EditorCategories value="Race:ETC"/>
+        <EffectArray Reference="Behavior,L90ETCGuitarSoloHeroHeal,Duration" Value="2.000000"/>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="L90ETCMasteryGuitarSoloPwnShopGuitar">
+        <EditorCategories value="Race:ETC"/>
+        <EffectArray Operation="Divide" Reference="Abil,L90ETCGuitarSolo,Cost[0].Vital[Energy]" Value="2"/>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="L90ETCMasteryFaceMeltDanceYourPantsOff">
+        <EditorCategories value="Race:ETC"/>
+        <EffectArray Reference="Effect,FaceMeltDanceApplyBehavior,Chance" Value="1"/>
+    </CEffectModifyPlayer>
+    <CEffectApplyBehavior id="FaceMeltDanceApplyBehavior">
+        <ValidatorArray index="0" value="TargetIsMinion"/>
+        <Chance value="0"/>
+        <Behavior value="FaceMeltDance"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="GuitarSoloHealSet">
+        <EffectArray value="L90ETCGuitarSoloHeroHeal"/>
+        <EffectArray value="L90ETCGuitarSoloSearchAllies"/>
+    </CEffectSet>
+    <CEffectSet id="MoshPitApplyBehaviorSet">
+        <EffectArray value="L90ETCMoshPitApplyStunBehavior"/>
+        <EffectArray value="MoshPitApplyVulnerableBehavior"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="MoshPitApplyVulnerableBehavior">
+        <Behavior value="MoshPitDeathMetalVulnerable"/>
+        <Chance value="0"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="MoshPitRemoveBehaviorSet">
+        <EffectArray value="L90ETCMoshPitRemoveStunBehavior"/>
+        <EffectArray value="MoshPitRemoveVulnerableBehavior"/>
+    </CEffectSet>
+    <CEffectRemoveBehavior id="MoshPitRemoveVulnerableBehavior">
+        <Chance value="0"/>
+        <BehaviorLink value="MoshPitDeathMetalVulnerable"/>
+    </CEffectRemoveBehavior>
+    <CEffectApplyBehavior id="L90ETCFaceMeltApplyPostCastSuppression">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="L90ETCFaceMeltPostCastSuppression"/>
+        <Chance value="0"/>
+    </CEffectApplyBehavior>
+    <CEffectModifyUnit id="L90ETCFaceMeltModifyAttack">
+        <EditorCategories value=""/>
+        <ImpactUnit Value="Caster"/>
+        <Cost Abil="L90ETCWeaponCooldown,Execute">
+            <Fraction Cooldown="3"/>
+        </Cost>
+    </CEffectModifyUnit>
+    <CEffectApplyBehavior id="L90ETCGuitarSoloApplySuppressionBehavior">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="L90ETCGuitarSoloPostCastSuppression"/>
+        <Chance value="0"/>
+    </CEffectApplyBehavior>
+    <CEffectModifyUnit id="L90ETCGuitarSoloModifyAttack">
+        <EditorCategories value=""/>
+        <ImpactUnit Value="Caster"/>
+        <Cost Abil="L90ETCWeaponCooldown,Execute">
+            <Fraction Cooldown="3"/>
+        </Cost>
+    </CEffectModifyUnit>
+    <CEffectSet id="RockstarDummyEffect">
+        <ValidatorArray value="UnitIsDragonShrine"/>
+    </CEffectSet>
+    <CEffectSet id="MoshPitDummySwitchCase">
+        <EditorCategories value=""/>
+    </CEffectSet>
+    <CEffectSet id="GuitarSoloGuitarHeroImpactDummy">
+        <ValidatorArray value="ETCHasGuitarHero"/>
+        <EditorCategories value=""/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="ApplyFaceSmelting">
+        <ValidatorArray index="0" value="Ability2Relic"/>
+        <EditorCategories value=""/>
+        <WhichUnit Effect="FaceMeltSet"/>
+        <Behavior value="FaceSmelting"/>
+        <Count value="16"/>
+    </CEffectApplyBehavior>
+    <CEffectCreatePersistent id="RemoveFaceSmeltPersistent">
+        <EditorCategories value=""/>
+        <WhichLocation Effect="FaceMeltSet" Value="TargetUnit"/>
+        <PeriodCount value="16"/>
+        <PeriodicEffectArray value="RemoveFaceSmeltingStack"/>
+        <PeriodicPeriodArray value="0.125"/>
+    </CEffectCreatePersistent>
+    <CEffectRemoveBehavior id="RemoveFaceSmeltingStack">
+        <EditorCategories value=""/>
+        <WhichUnit Effect="FaceMeltSet"/>
+        <BehaviorLink value="FaceSmelting"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectApplyBehavior id="L90ETCPassiveEchoPedalApplyBehavior">
+        <ValidatorArray index="0" value="L90ETCHasEchoPedalCarryBehavior"/>
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="L90ETCPassiveEchoPedal"/>
+    </CEffectApplyBehavior>
+    <CEffectDamage id="L90ETCPassiveEchoPedalDamage">
+        <EditorCategories value=""/>
+        <Amount value="10"/>
+        <CasterHistory value="Damage"/>
+    </CEffectDamage>
+    <CEffectRemoveBehavior id="L90ETCPassiveEchoPedalRemoveBehavior">
+        <ValidatorArray index="0" value="L90ETCHasEchoPedalCarryBehavior"/>
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="L90ETCPassiveEchoPedal"/>
+    </CEffectRemoveBehavior>
+    <CEffectEnumArea id="L90ETCPassiveEchoPedalSearch">
+        <EditorCategories value=""/>
+        <ImpactLocation Value="CasterPoint"/>
+        <SearchFilters value="-;Player,Ally,Neutral,Mechanical,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="4" Effect="L90ETCPassiveEchoPedalDamage"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="StageDiveApplySlowBehavior">
+        <EditorCategories value=""/>
+        <Behavior value="StageDiveSlow"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="L90ETCMoshPitDummySet">
+        <EditorCategories value=""/>
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectSwitch id="L90ETCMoshPitSearchAreaSwitch">
+        <EditorCategories value=""/>
+        <CaseArray Validator="CasterIsStasis" Effect="MoshPitDummySwitchCase"/>
+        <CaseArray Validator="CasterNotDeadOrStunnedorSilenced" Effect="L90ETCMoshPitApplyStunSearchArea"/>
+        <CaseDefault value="L90ETCMoshPitCleanupSet"/>
+    </CEffectSwitch>
+    <CEffectModifyUnit id="MoshPitCancelModifyCooldown">
+        <ImpactUnit Value="Caster"/>
+        <Cost Abil="L90ETCMoshPitCancel,Execute">
+            <Fraction Cooldown="1"/>
+        </Cost>
+    </CEffectModifyUnit>
+    <CEffectDestroyPersistent id="L90ETCMoshPitDestroyPersistent">
+        <EditorCategories value=""/>
+        <Effect value="L90ETCMoshPitPersistentPeriodic"/>
+        <Count value="1"/>
+        <Radius value="2"/>
+    </CEffectDestroyPersistent>
+    <CEffectCreateHealer id="L90ETCGuitarSoloAllyHeal">
+        <EditorCategories value=""/>
+        <PeriodCount value="1"/>
+        <PeriodicPeriod value="1"/>
+        <RechargeVitalRate value="12"/>
+    </CEffectCreateHealer>
+    <CEffectApplyBehavior id="L90ETCGuitarSoloApplyBonusDamageRune">
+        <EditorCategories value=""/>
+        <Chance value="0"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="L90ETCGuitarSoloBonusDamageRune"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="L90ETCGuitarSoloRemoveBonusDamageRune">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="L90ETCGuitarSoloBonusDamageRune"/>
+    </CEffectRemoveBehavior>
+    <CEffectEnumArea id="L90ETCGuitarSoloSearchAllies">
+        <EditorCategories value=""/>
+        <ImpactLocation Value="CasterUnit"/>
+        <ExcludeArray Value="Source"/>
+        <SearchFilters value="-;Neutral,Enemy,Mechanical,Structure,Missile,Item,Stasis,Dead,Hidden"/>
+        <AreaArray Radius="5" Effect="L90ETCGuitarSoloAllyHeal"/>
+        <Chance value="0"/>
+    </CEffectEnumArea>
+    <CEffectCreatePersistent id="L90ETCMoshPitPersistentPeriodic">
+        <ValidatorArray value="CasterNotDead"/>
+        <ValidatorArray value="NoMalfurionTwilightDream"/>
+        <EditorCategories value=""/>
+        <Flags index="Channeled" value="1"/>
+        <InitialEffect value="L90ETCMoshPitApplyChannelBar"/>
+        <FinalEffect value="L90ETCMoshPitCleanupSet"/>
+        <PeriodCount value="100"/>
+        <PeriodicEffectArray value="L90ETCMoshPitSearchAreaSwitch"/>
+        <PeriodicPeriodArray value="0.25"/>
+        <RevealRadius value="6"/>
+        <RevealFlags index="Unfog" value="1"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="L90ETCMoshPitApplyStunSearchArea">
+        <EditorCategories value=""/>
+        <ImpactLocation Value="CasterUnit"/>
+        <SearchFilters value="-;Player,Ally,Neutral,Mechanical,Structure,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="4" Effect="MoshPitApplyBehaviorSet"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="L90ETCMoshPitApplyChannelBar">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="L90ETCMoshPitChannel"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="L90ETCMoshPitApplyStunBehavior">
+        <EditorCategories value=""/>
+        <Behavior value="L90ETCMoshPitStun"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="L90ETCMoshPitCleanupSet">
+        <EditorCategories value=""/>
+        <EffectArray value="L90ETCMoshPitRemoveChannelBar"/>
+        <EffectArray value="L90ETCMoshPitRemoveStunSearchArea"/>
+    </CEffectSet>
+    <CEffectSet id="L90ETCMoshPitInitialSet">
+        <EditorCategories value=""/>
+        <EffectArray value="L90ETCPassiveRockstarSearchSet"/>
+        <EffectArray value="L90ETCMoshPitPersistentPeriodic"/>
+        <EffectArray value="MoshPitCancelModifyCooldown"/>
+        <EffectArray value="L90ETCPassiveEchoPedalRemoveBehavior"/>
+        <EffectArray value="L90ETCPassiveEchoPedalApplyBehavior"/>
+    </CEffectSet>
+    <CEffectRemoveBehavior id="L90ETCMoshPitRemoveChannelBar">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="L90ETCMoshPitChannel"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="L90ETCMoshPitRemoveStunBehavior">
+        <EditorCategories value=""/>
+        <BehaviorLink value="L90ETCMoshPitStun"/>
+    </CEffectRemoveBehavior>
+    <CEffectEnumArea id="L90ETCMoshPitRemoveStunSearchArea">
+        <EditorCategories value=""/>
+        <ImpactLocation Value="CasterUnit"/>
+        <SearchFilters value="-;Player,Ally,Neutral,Mechanical,Structure,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="200" Effect="MoshPitRemoveBehaviorSet"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="L90ETCPassiveRockstarApplyBuffHeroesRune">
+        <EditorCategories value=""/>
+        <Behavior value="UberRockstarHero"/>
+    </CEffectApplyBehavior>
+    <CEffectSwitch id="L90ETCPassiveRockstarApplyBuffHeroesSwitch">
+        <EditorCategories value=""/>
+        <CaseArray Validator="L90ETCUberRockstarOn" Effect="L90ETCPassiveRockstarApplyBuffHeroesRune"/>
+        <CaseDefault value="L90ETCPassiveRockstarApplyBuffHeroes"/>
+    </CEffectSwitch>
+    <CEffectApplyBehavior id="L90ETCPassiveRockstarApplyBuffMinionsRune">
+        <EditorCategories value=""/>
+        <Behavior value="UberRockstarMinion"/>
+    </CEffectApplyBehavior>
+    <CEffectSwitch id="L90ETCPassiveRockstarApplyBuffMinionsSwitch">
+        <EditorCategories value=""/>
+        <CaseArray Validator="L90ETCUberRockstarOn" Effect="L90ETCPassiveRockstarApplyBuffMinionsRune"/>
+        <CaseDefault value="L90ETCPassiveRockstarApplyBuffMinions"/>
+    </CEffectSwitch>
+    <CEffectEnumArea id="L90ETCPassiveRockstarHeroSearch">
+        <EditorCategories value=""/>
+        <ImpactLocation Value="CasterUnit"/>
+        <SearchFilters value="Heroic;Neutral,Enemy,Mechanical,Structure,Missile,Item,Stasis,Dead,Hidden"/>
+        <AreaArray Radius="5" Effect="L90ETCPassiveRockstarApplyBuffHeroesSwitch"/>
+    </CEffectEnumArea>
+    <CEffectSet id="L90ETCFaceMeltSearchSet">
+        <EditorCategories value=""/>
+        <EffectArray value="FaceMeltSearch"/>
+        <EffectArray value="L90ETCPassiveRockstarSearchSet"/>
+        <EffectArray value="L90ETCPassiveEchoPedalRemoveBehavior"/>
+        <EffectArray value="L90ETCPassiveEchoPedalApplyBehavior"/>
+        <EffectArray value="L90ETCFaceMeltApplyPostCastSuppression"/>
+        <EffectArray value="L90ETCFaceMeltModifyAttack"/>
+        <EffectArray value="CameraShakeMediumCasterDummySet"/>
+    </CEffectSet>
+    <CEffectSet id="PowerSlideOffsetSet">
+        <EditorCategories value=""/>
+        <EffectArray value="PowerSlideOffsetPersistent"/>
+        <EffectArray value="L90ETCPassiveRockstarSearchSet"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="L90ETCPassiveRockstarApplyBuffHeroes">
+        <EditorCategories value=""/>
+        <Behavior value="RockstarHero"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="L90ETCPassiveRockstarApplyBuffMinions">
+        <EditorCategories value=""/>
+        <Behavior value="RockstarMinion"/>
+    </CEffectApplyBehavior>
+    <CEffectEnumArea id="L90ETCPassiveRockstarMinionSearch">
+        <EditorCategories value=""/>
+        <ImpactLocation Value="CasterUnit"/>
+        <SearchFilters value="-;Neutral,Enemy,Mechanical,Structure,Heroic,Missile,Item,Stasis,Dead,Hidden"/>
+        <AreaArray Radius="5" Effect="L90ETCPassiveRockstarApplyBuffMinionsSwitch"/>
+    </CEffectEnumArea>
+    <CEffectSet id="L90ETCPassiveRockstarSearchSet">
+        <EditorCategories value=""/>
+        <EffectArray value="L90ETCPassiveRockstarHeroSearch"/>
+        <EffectArray value="L90ETCPassiveRockstarMinionSearch"/>
+    </CEffectSet>
+    <CEffectIssueOrder id="PowerSlideIssueOrder">
+        <WhichUnit Value="Caster"/>
+        <Abil value="move"/>
+        <Player Value="Caster"/>
+        <Target Effect="PowerSlideOffsetPersistent" Value="TargetPoint"/>
+    </CEffectIssueOrder>
+    <CEffectSet id="PowerSlideSet">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="PowerSlideApplyBehavior"/>
+        <EffectArray value="PowerSlideIssueOrder"/>
+    </CEffectSet>
+    <CEffectCancelOrder id="PowerSlideStopOrder">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <AbilCmd value="move,Move"/>
+    </CEffectCancelOrder>
+    <CEffectCreateHealer id="L90ETCGuitarSoloHeroHeal">
+        <PeriodCount value="1"/>
+        <PeriodicPeriod value="1"/>
+        <RechargeVitalRate value="25"/>
+    </CEffectCreateHealer>
+    <CEffectSet id="GuitarSoloInitialSet">
+        <EffectArray value="GuitarSoloApplyHeroHealBehavior"/>
+        <EffectArray value="L90ETCPassiveRockstarSearchSet"/>
+        <EffectArray value="L90ETCGuitarSoloApplyBonusDamageRune"/>
+        <EffectArray value="L90ETCPassiveEchoPedalRemoveBehavior"/>
+        <EffectArray value="L90ETCPassiveEchoPedalApplyBehavior"/>
+        <EffectArray value="L90ETCGuitarSoloApplySuppressionBehavior"/>
+        <EffectArray value="L90ETCGuitarSoloModifyAttack"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="GuitarSoloApplyHeroHealBehavior">
+        <WhichUnit Value="Caster"/>
+        <Behavior value="L90ETCGuitarSoloHeroHeal"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="StageDiveChannelApplyBehavior">
+        <Behavior value="StageDiveChannel"/>
+        <WhichUnit Value="Caster"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="StageDiveChannelRemoveBehavior">
+        <BehaviorLink value="StageDiveChannel"/>
+        <WhichUnit Value="Caster"/>
+    </CEffectRemoveBehavior>
+    <CEffectApplyBehavior id="StageDiveStunApplyBehavior">
+        <Behavior value="StageDiveStun"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="StageDiveLandDummySet"/>
+    <CEffectCreatePersistent id="StageDivePersistent">
+        <ValidatorArray value="Walkable"/>
+        <Flags index="Channeled" value="1"/>
+        <InitialEffect value="StageDiveInitialSet"/>
+        <PeriodCount value="3"/>
+        <PeriodicEffectArray value="StageDiveTeleport"/>
+        <PeriodicEffectArray value="StageDiveLandDummySet"/>
+        <PeriodicEffectArray value="StageDiveFinalSet"/>
+        <PeriodicPeriodArray value="0.625"/>
+        <PeriodicPeriodArray value="1"/>
+        <PeriodicPeriodArray value="0.0625"/>
+        <ExpireDelay value="0.25"/>
+        <FinalEffect value="StageDiveChannelRemoveBehavior"/>
+    </CEffectCreatePersistent>
+    <CEffectSet id="StageDiveInitialSet">
+        <EffectArray value="StageDiveChannelApplyBehavior"/>
+    </CEffectSet>
+    <CEffectSet id="StageDiveFinalSet">
+        <EffectArray value="StageDiveSearch"/>
+        <EffectArray value="L90ETCPassiveRockstarSearchSet"/>
+        <EffectArray value="L90ETCPassiveEchoPedalRemoveBehavior"/>
+        <EffectArray value="L90ETCPassiveEchoPedalApplyBehavior"/>
+        <EffectArray value="CameraShakeHeavyCasterDummySet"/>
+    </CEffectSet>
+    <CEffectTeleport id="StageDiveTeleport">
+        <WhichUnit Value="Caster"/>
+        <ClearQueuedOrders value="0"/>
+        <MinDistance value="0"/>
+        <PlacementRange value="3"/>
+        <TargetLocation Value="TargetPoint"/>
+        <TeleportFlags index="TestFog" value="0"/>
+    </CEffectTeleport>
+    <CEffectEnumArea id="StageDiveSearch">
+        <SearchFilters value="-;Player,Ally,Neutral,Mechanical,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="5" Effect="StageDiveImpactSet"/>
+        <ImpactLocation Value="CasterUnit"/>
+    </CEffectEnumArea>
+    <CEffectSet id="StageDiveImpactSet">
+        <EffectArray value="StageDiveDamage"/>
+        <EffectArray value="StageDiveApplySlowBehavior"/>
+        <EffectArray value="CameraShakeMediumTauntingTotemSet"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="PowerSlidePersistent">
+        <ValidatorArray value="CasterNotRooted_Old"/>
+        <Marker>
+            <MatchFlags index="Id" value="1"/>
+        </Marker>
+        <WhichLocation Value="CasterPoint"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="PowerSlideOffsetSet"/>
+        <PeriodicOffsetArray value="0,-6.5,0"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="PowerSlideOffsetPersistent">
+        <TimeScaleSource Value="Caster"/>
+        <InitialEffect value="PowerSlideSet"/>
+        <ExpireDelay value="0.4"/>
+        <FinalEffect value="PowerSlideFinalSet"/>
+    </CEffectCreatePersistent>
+    <CEffectApplyBehavior id="PowerSlideApplyBehavior">
+        <WhichUnit Value="Caster"/>
+        <Behavior value="Powerslide"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="PowerSlideFinalSet">
+        <EffectArray value="PowerSlideRemoveBehavior"/>
+        <EffectArray value="PowerSlideStopOrder"/>
+        <EffectArray value="L90ETCPassiveRockstarSearchSet"/>
+        <EffectArray value="L90ETCPassiveEchoPedalRemoveBehavior"/>
+        <EffectArray value="L90ETCPassiveEchoPedalApplyBehavior"/>
+    </CEffectSet>
+    <CEffectRemoveBehavior id="PowerSlideRemoveBehavior">
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="Powerslide"/>
+    </CEffectRemoveBehavior>
+    <CEffectEnumArea id="PowerSlideInitialTargetSearch">
+        <ImpactLocation Value="CasterUnit"/>
+        <SearchFilters value="-;Player,Ally,Neutral,Mechanical,Structure,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray>
+            <Arc value="90"/>
+            <MaxCount value="1"/>
+            <Radius value="1"/>
+            <Effect value="PowerSlideImpactSet"/>
+        </AreaArray>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="PowerSlideTargetSearch">
+        <ImpactLocation Value="CasterUnit"/>
+        <SearchFilters value="-;Player,Ally,Neutral,Mechanical,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray RectangleWidth="2" RectangleHeight="2.25" Effect="PowerSlideImpactSet"/>
+        <LaunchLocation Value="OriginPoint"/>
+    </CEffectEnumArea>
+    <CEffectSet id="PowerSlideImpactSet">
+        <ValidatorArray value="noMarkers"/>
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="PowerSlideDamage"/>
+        <EffectArray value="PowerSlideStun"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="PowerSlideStun">
+        <Behavior value="PowerslideStun"/>
+    </CEffectApplyBehavior>
+    <CEffectLaunchMissile id="L90ETCWeaponAirLaunchMissile">
+        <ImpactEffect value="L90ETCWeaponSet"/>
+        <AmmoUnit value="L90ETCWeaponAir"/>
+        <ValidatorArray index="0" value="TargetNotDead"/>
+        <Flags index="TravelValidation" value="1"/>
+    </CEffectLaunchMissile>
+    <CEffectSet id="L90ETCWeaponSet">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="GuitarSoloGuitarHeroImpactDummy"/>
+        <EffectArray value="L90ETCWeaponDamage"/>
+        <EffectArray value="L90ETCGuitarSoloRemoveBonusDamageRune"/>
+    </CEffectSet>
+    <CEffectEnumArea id="FaceMeltSearch">
+        <SearchFilters value="-;Player,Ally,Neutral,Mechanical,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="4" Effect="FaceMeltSet"/>
+        <ImpactLocation Value="CasterPoint"/>
+    </CEffectEnumArea>
+    <CEffectSet id="FaceMeltSet">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="FaceMeltPersistent"/>
+        <EffectArray value="FaceMeltDamage"/>
+        <EffectArray value="CameraShakeLightTauntingTotemSet"/>
+        <EffectArray value="FaceMeltDanceApplyBehavior"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="FaceMeltPersistent">
+        <WhichLocation Value="TargetUnit"/>
+        <PeriodCount value="4"/>
+        <PeriodicPeriodArray value="0.0625"/>
+        <PeriodicEffectArray value="FaceMeltApplyForce"/>
+        <InitialEffect value="FaceMeltApplyBehavior"/>
+        <PeriodicValidator value="TargetNotUnstoppable"/>
+        <!--FinalEffect value="FaceMeltRemoveBehavior"/-->
+    </CEffectCreatePersistent>
+    <CEffectApplyForce id="FaceMeltApplyForce">
+        <Amount value="10"/>
+        <WhichLocation Effect="FaceMeltPersistent" Value="CasterPoint"/>
+        <WhichUnit Effect="FaceMeltPersistent"/>
+    </CEffectApplyForce>
+    <CEffectApplyBehavior id="FaceMeltApplyBehavior">
+        <Behavior value="FaceMeltKnockback"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="FaceMeltRemoveBehavior">
+        <BehaviorLink value="FaceMeltKnockback"/>
+    </CEffectRemoveBehavior>
+    <CAbilEffectInstant id="RockstarDummy">
+        <Effect index="0" value="RockstarDummyEffect"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="RockstarHeroSelect"/>
+        <SharedFlags index="DisableWhileDead" value="0"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="L90ETCWeaponCooldown">
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Cooldown Location="Unit" TimeUse="0.25"/>
+        </Cost>
+        <CmdButtonArray index="Execute" DefaultButtonFace="L90ETCWeaponCooldown"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="L90ETCMoshPit">
+        <Effect index="0" value="L90ETCMoshPitInitialSet"/>
+        <Cost>
+            <Vital index="Energy" value="100"/>
+            <Cooldown Location="Unit" TimeUse="100"/>
+        </Cost>
+        <CastIntroTime value="0.75"/>
+        <CancelableArray index="Channel" value="1"/>
+        <UninterruptibleArray index="Cast" value="1"/>
+        <UninterruptibleArray index="Channel" value="1"/>
+        <UninterruptibleArray index="Finish" value="1"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="L90ETCMoshPitHeroSelectButton" Requirements="Ultimate2Unlocked"/>
+        <ShowProgressArray index="Cast" value="1"/>
+        <SharedFlags index="DisableWhileDead" value="0"/>
+        <Activity value="Abil/MoshPit"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="L90ETCMoshPitCancel">
+        <Effect index="0" value="L90ETCMoshPitDestroyPersistent"/>
+        <Flags index="ClearLastAttackTarget" value="1"/>
+        <Flags index="ClearLastMoveTarget" value="1"/>
+        <Flags index="Transient" value="1"/>
+        <Cost>
+            <Cooldown Location="Unit" TimeUse="1"/>
+        </Cost>
+        <CmdButtonArray index="Execute" DefaultButtonFace="L90ETCCancelMoshPit" Requirements="L90ETCMoshPitActive"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="L90ETCGuitarSolo">
+        <Effect index="0" value="GuitarSoloInitialSet"/>
+        <Cost>
+            <Vital index="Energy" value="60"/>
+            <Cooldown Location="Unit" TimeUse="8"/>
+        </Cost>
+        <CmdButtonArray index="Execute" DefaultButtonFace="LearnGuitarSolo"/>
+        <SharedFlags index="DisableWhileDead" value="0"/>
+    </CAbilEffectInstant>
+    <CAbilEffectTarget id="L90ETCPowerslide">
+        <Effect index="0" value="PowerSlidePersistent"/>
+        <Flags index="ClearLastAttackTarget" value="1"/>
+        <Flags index="ClearLastMoveTarget" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Vital index="Energy" value="50"/>
+            <Charge Link="Abil/L90ETCHeadBang"/>
+            <Cooldown Link="Abil/L90ETCHeadBang" Location="Unit" TimeUse="12"/>
+        </Cost>
+        <Range value="500"/>
+        <UninterruptibleArray index="Cast" value="1"/>
+        <UninterruptibleArray index="Channel" value="1"/>
+        <CursorEffect value="PowerSlideTargetSearch"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="PowerslideHeroSelectButton"/>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="L90ETCFaceMelt">
+        <Effect index="0" value="L90ETCFaceMeltSearchSet"/>
+        <Cost>
+            <Vital index="Energy" value="50"/>
+            <Cooldown Location="Unit" TimeUse="12"/>
+        </Cost>
+        <CmdButtonArray index="Execute" DefaultButtonFace="LearnFaceMelt"/>
+        <SharedFlags index="DisableWhileDead" value="0"/>
+    </CAbilEffectInstant>
+    <CAbilEffectTarget id="L90ETCStageDive">
+        <Effect index="0" value="StageDivePersistent"/>
+        <Cost>
+            <Vital index="Energy" value="100"/>
+            <Cooldown Location="Unit" TimeUse="100"/>
+        </Cost>
+        <Range value="500"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="LearnStageDive" Requirements="Ultimate1Unlocked">
+            <Flags index="AllowSelfCast" value="0"/>
+        </CmdButtonArray>
+        <CursorEffect value="StageDiveSearch"/>
+        <Flags index="ClearLastAttackTarget" value="1"/>
+        <Flags index="ClearLastMoveTarget" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <ShowProgressArray index="Cast" value="1"/>
+        <UninterruptibleArray index="Cast" value="1"/>
+        <UninterruptibleArray index="Channel" value="1"/>
+        <UninterruptibleArray index="Finish" value="1"/>
+        <CastIntroTime value="1.25"/>
+        <FinishTime value="0.75"/>
+        <Arc value="360"/>
+        <ArcSlop value="135"/>
+        <PauseableArray index="Approach" value="0"/>
+        <PauseableArray index="Prep" value="0"/>
+        <PauseableArray index="Cast" value="0"/>
+        <PauseableArray index="Channel" value="0"/>
+        <PauseableArray index="Finish" value="0"/>
+        <Activity value="Abil/StageDive"/>
+    </CAbilEffectTarget>
+    <CValidatorUnitCompareBehaviorCount id="NoPowerSlide">
+        <Behavior value="Powerslide"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="L90ETCUberRockstarOn">
+        <Behavior value="L90ETCWeaponUberRockstarBehavior"/>
+        <WhichUnit Value="Caster"/>
+        <Value value="1"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="HasGuitarSolo">
+        <WhichUnit Value="Caster"/>
+        <Value value="1"/>
+        <Behavior value="L90ETCGuitarSoloHeroHeal"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="L90ETCHasEchoPedalCarryBehavior">
+        <WhichUnit Value="Caster"/>
+        <Value value="1"/>
+        <Behavior value="L90ETCEchoPedalCarryBehavior"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorCombine id="HasPowerSlideAndNotDead">
+        <Type value="And"/>
+        <CombineArray value="HasPowerSlide"/>
+        <CombineArray value="CasterNotDead"/>
+    </CValidatorCombine>
+    <CValidatorUnitCompareBehaviorCount id="NoStageDiveChannel">
+        <Behavior value="StageDiveChannel"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="NotFacemeltKnockback">
+        <Behavior value="FaceMeltKnockback"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorPlayerTalent id="HasL90ETCEchoPedal">
+        <WhichPlayer Value="Caster"/>
+        <Find value="1"/>
+        <Value value="ETCCombatStyleEchoPedal"/>
+    </CValidatorPlayerTalent>
+    <CValidatorPlayerTalent id="HasL90ETCUberRockstar">
+        <WhichPlayer Value="Caster"/>
+        <Find value="1"/>
+        <Value value="ETCCombatStyleUberRockstar"/>
+    </CValidatorPlayerTalent>
+    <CValidatorPlayerTalent id="HasL90ETCFaceMeltFaceSmelt">
+        <WhichPlayer Value="Caster"/>
+        <Find value="1"/>
+        <Value value="ETCMasteryFaceSmelt"/>
+    </CValidatorPlayerTalent>
+    <CValidatorPlayerTalent id="HasL90ETCGuitarSoloGuitarHero">
+        <WhichPlayer Value="Caster"/>
+        <Find value="1"/>
+        <Value value="ETCMasteryGuitarHero"/>
+    </CValidatorPlayerTalent>
+    <CValidatorPlayerTalent id="HasL90ETCPowerslideMonsterSlide">
+        <WhichPlayer Value="Caster"/>
+        <Find value="1"/>
+        <Value value="ETCMasteryMonsterSlide"/>
+    </CValidatorPlayerTalent>
+    <CValidatorPlayerTalent id="HasL90ETCFaceMeltDanceYourPantsOff">
+        <WhichPlayer Value="Caster"/>
+        <Find value="1"/>
+        <Value value="L90ETCMasteryFaceMeltDanceYourPantsOff"/>
+    </CValidatorPlayerTalent>
+    <CValidatorPlayerTalent id="HasL90ETCFaceMeltLoudSpeakers">
+        <WhichPlayer Value="Caster"/>
+        <Find value="1"/>
+        <Value value="L90ETCMasteryFaceMeltLoudSpeakers"/>
+    </CValidatorPlayerTalent>
+    <CValidatorPlayerTalent id="HasL90ETCGuitarSoloGroupies">
+        <WhichPlayer Value="Caster"/>
+        <Find value="1"/>
+        <Value value="L90ETCMasteryGuitarSoloGroupies"/>
+    </CValidatorPlayerTalent>
+    <CValidatorPlayerTalent id="HasL90ETCGuitarSoloGuitarInstrumental">
+        <WhichPlayer Value="Caster"/>
+        <Find value="1"/>
+        <Value value="L90ETCMasteryGuitarSoloGuitarInstrumental"/>
+    </CValidatorPlayerTalent>
+    <CValidatorPlayerTalent id="HasL90ETCGuitarSoloPwnShopGuitar">
+        <WhichPlayer Value="Caster"/>
+        <Find value="1"/>
+        <Value value="L90ETCMasteryGuitarSoloPwnShopGuitar"/>
+    </CValidatorPlayerTalent>
+    <CValidatorPlayerTalent id="HasL90ETCMoshPitDeathMetal">
+        <WhichPlayer Value="Caster"/>
+        <Find value="1"/>
+        <Value value="L90ETCMasteryMoshPitDeathMetal"/>
+    </CValidatorPlayerTalent>
+    <CValidatorPlayerTalent id="HasL90ETCPowerslideDamageSlide">
+        <WhichPlayer Value="Caster"/>
+        <Find value="1"/>
+        <Value value="L90ETCMasteryPowerslideDamageSlide"/>
+    </CValidatorPlayerTalent>
+    <CValidatorPlayerTalent id="HasL90ETCPowerslideHeadCrack">
+        <WhichPlayer Value="Caster"/>
+        <Find value="1"/>
+        <Value value="L90ETCMasteryPowerslideHeadCrack"/>
+    </CValidatorPlayerTalent>
+    <CValidatorPlayerTalent id="HasL90ETCStageDiveRockGod">
+        <WhichPlayer Value="Caster"/>
+        <Find value="1"/>
+        <Value value="L90ETCMasteryStageDiveRockGod"/>
+    </CValidatorPlayerTalent>
+    <CValidatorPlayerTalent id="DoesNotHaveL90ETCStageDiveRockGod">
+        <WhichPlayer Value="Caster"/>
+        <Value value="L90ETCMasteryStageDiveRockGod"/>
+    </CValidatorPlayerTalent>
+    <CValidatorUnitCompareBehaviorCount id="HasPowerSlide">
+        <WhichUnit Value="Caster"/>
+        <Value value="1"/>
+        <Behavior value="Powerslide"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CRequirement id="L90ETCMoshPitActive">
+        <NodeArray index="Show" Link="CountBehaviorL90ETCMoshPitChannelCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CButton id="L90ETCFaceMeltDanceYourPantsOffTalent" parent="StormButtonParent">
+        <EditorCategories value="Race:Neutral"/>
+        <Icon value="Assets\Textures\storm_ui_icon_deathpact_2.dds"/>
+    </CButton>
+    <CButton id="L90ETCFaceMeltDanceYourPantsOffTalentSimple" parent="StormButtonParent">
+        <EditorCategories value="Race:Neutral"/>
+        <Icon value="Assets\Textures\storm_ui_icon_deathpact_2.dds"/>
+    </CButton>
+    <CButton id="L90ETCFaceMeltLoudSpeakersTalent" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_ui_icon_deathpact_2.dds"/>
+        <EditorCategories value="Race:Neutral"/>
+    </CButton>
+    <CButton id="L90ETCFaceMeltLoudSpeakersTalentSimple" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_ui_icon_deathpact_2.dds"/>
+        <EditorCategories value="Race:Neutral"/>
+    </CButton>
+    <CButton id="L90ETCGuitarSoloPwnShopGuitarTalent" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_ui_icon_hatestrike.dds"/>
+        <EditorCategories value="Race:Neutral"/>
+    </CButton>
+    <CButton id="L90ETCGuitarSoloPwnShopGuitarTalentSimple" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_ui_icon_hatestrike.dds"/>
+        <EditorCategories value="Race:Neutral"/>
+    </CButton>
+    <CButton id="L90ETCGuitarSoloGroupiesTalent" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_ui_icon_hatestrike.dds"/>
+        <EditorCategories value="Race:Neutral"/>
+    </CButton>
+    <CButton id="L90ETCGuitarSoloGroupiesTalentSimple" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_ui_icon_hatestrike.dds"/>
+        <EditorCategories value="Race:Neutral"/>
+    </CButton>
+    <CButton id="L90ETCGuitarSoloGuitarInstrumentalTalent" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_ui_icon_hatestrike.dds"/>
+        <EditorCategories value="Race:Neutral"/>
+    </CButton>
+    <CButton id="L90ETCGuitarSoloGuitarInstrumentalTalentSimple" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_ui_icon_hatestrike.dds"/>
+        <EditorCategories value="Race:Neutral"/>
+    </CButton>
+    <CButton id="L90ETCMoshPitDeathMetalTalent" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_temp_war3_btnbattleroar.dds"/>
+        <EditorCategories value="Race:Neutral"/>
+    </CButton>
+    <CButton id="L90ETCMoshPitDeathMetalTalentSimple" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_temp_war3_btnbattleroar.dds"/>
+        <EditorCategories value="Race:Neutral"/>
+    </CButton>
+    <CButton id="L90ETCPowerslideDamageSlideTalent" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_ui_icon_psionicblast_2.dds"/>
+        <EditorCategories value="Race:Neutral"/>
+    </CButton>
+    <CButton id="L90ETCPowerslideDamageSlideTalentSimple" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_ui_icon_psionicblast_2.dds"/>
+        <EditorCategories value="Race:Neutral"/>
+    </CButton>
+    <CButton id="L90ETCPowerslideHeadCrackTalent" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_ui_icon_psionicblast_2.dds"/>
+        <EditorCategories value="Race:Neutral"/>
+    </CButton>
+    <CButton id="L90ETCPowerslideHeadCrackTalentSimple" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_ui_icon_psionicblast_2.dds"/>
+        <EditorCategories value="Race:Neutral"/>
+    </CButton>
+    <CButton id="L90ETCStageDiveRockGodTalent" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_ui_icon_dwarftoss.dds"/>
+        <EditorCategories value="Race:Neutral"/>
+    </CButton>
+    <CButton id="L90ETCStageDiveRockGodTalentSimple" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_ui_icon_dwarftoss.dds"/>
+        <EditorCategories value="Race:Neutral"/>
+    </CButton>
+    <CButton id="L90ETCWeaponCooldown">
+        <Icon value="Assets\Textures\storm_temp_war3_btnbloodluston.dds"/>
+    </CButton>
+    <CButton id="L90ETCFaceMeltMastery1Simple" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_ui_icon_deathpact_2.dds"/>
+    </CButton>
+    <CButton id="L90ETCGuitarSoloMastery1Simple" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_ui_icon_hatestrike.dds"/>
+        <HotkeyAlias value="GuitarSolo"/>
+    </CButton>
+    <CButton id="L90ETCPowerslideMastery1Simple" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_ui_icon_psionicblast_2.dds"/>
+    </CButton>
+    <CButton id="L90ETCMoshPitTalentSimple" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_temp_war3_btnbattleroar.dds"/>
+        <HotkeyAlias value="L90ETCMoshPit"/>
+    </CButton>
+    <CButton id="StageDiveTalentSimple" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_ui_icon_dwarftoss.dds"/>
+        <HotkeyAlias value="StageDive"/>
+    </CButton>
+    <CButton id="RockstarHeroSelect" parent="StormButtonParent">
+        <TooltipFlags index="ShowHotkey" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_btn_d3_barbarian_warcry.dds"/>
+        <TintRacially value="1"/>
+        <UseHotkeyLabel value="0"/>
+    </CButton>
+    <CButton id="WeaponL90ETCEchoPedal" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_btn_d3_monk_mantraofconviction.dds"/>
+    </CButton>
+    <CButton id="WeaponL90ETCEchoPedalSimple" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_btn_d3_monk_mantraofconviction.dds"/>
+    </CButton>
+    <CButton id="WeaponL90ETCUberRockstarSimple" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_btn_d3_barbarian_warcry.dds"/>
+        <TooltipFlags index="ShowHotkey" value="0"/>
+        <UseHotkeyLabel value="0"/>
+    </CButton>
+    <CButton id="L90ETCMoshPitTalent" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_temp_war3_btnbattleroar.dds"/>
+        <HotkeyAlias value="L90ETCMoshPit"/>
+    </CButton>
+    <CButton id="StageDiveTalent" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_ui_icon_dwarftoss.dds"/>
+        <HotkeyAlias value="StageDive"/>
+    </CButton>
+    <CButton id="L90ETCFaceMeltMastery1" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_ui_icon_deathpact_2.dds"/>
+    </CButton>
+    <CButton id="L90ETCPowerslideMastery1" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_ui_icon_psionicblast_2.dds"/>
+    </CButton>
+    <CButton id="L90ETCMoshPitHeroSelectButton" parent="StormButtonParent">
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnbattleroar.dds"/>
+    </CButton>
+    <CButton id="L90ETCCancelMoshPit" parent="StormButtonParent">
+        <Icon value="assets\Textures\hud_btn_bg_ability_cancel.dds"/>
+    </CButton>
+    <CButton id="L90ETCGuitarSoloMastery1" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_ui_icon_hatestrike.dds"/>
+        <HotkeyAlias value="GuitarSolo"/>
+    </CButton>
+    <CButton id="L90ETCMoshPit" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_temp_war3_btnbattleroar.dds"/>
+        <TooltipAppender Validator="HasL90ETCMoshPitDeathMetal" Text="L90ETC_R1_Talent_1"/>
+    </CButton>
+    <CButton id="L90ETCRockstarPassive" parent="StormButtonParent">
+        <TooltipFlags index="ShowHotkey" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_btn_d3_barbarian_warcry.dds"/>
+        <UseHotkeyLabel value="0"/>
+        <TooltipAppender Validator="HasL90ETCEchoPedal" Text="L90ETC_D_Talent_1"/>
+        <TooltipAppender Validator="HasL90ETCUberRockstar" Text="L90ETC_D_Talent_2"/>
+    </CButton>
+    <CButton id="WeaponL90ETCUberRockstar" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_btn_d3_barbarian_warcry.dds"/>
+        <TooltipFlags index="ShowHotkey" value="0"/>
+        <UseHotkeyLabel value="0"/>
+    </CButton>
+    <CButton id="LearnGuitarSolo" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_ui_icon_hatestrike.dds"/>
+        <TintRacially value="1"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+    </CButton>
+    <CButton id="GuitarSolo" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_ui_icon_hatestrike.dds"/>
+        <TooltipAppender Validator="HasL90ETCGuitarSoloPwnShopGuitar" Text="L90ETC_E_Talent_1"/>
+        <TooltipAppender Validator="HasL90ETCGuitarSoloGroupies" Text="L90ETC_E_Talent_2"/>
+        <TooltipAppender Validator="HasL90ETCGuitarSoloGuitarHero" Text="L90ETC_E_Talent_3"/>
+        <TooltipAppender Validator="HasL90ETCGuitarSoloGuitarInstrumental" Text="L90ETC_E_Talent_4"/>
+    </CButton>
+    <CButton id="Powerslide" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_ui_icon_psionicblast_2.dds"/>
+        <TooltipAppender Validator="HasL90ETCPowerslideDamageSlide" Text="L90ETC_Q_Talent_1"/>
+        <TooltipAppender Validator="HasL90ETCPowerslideMonsterSlide" Text="L90ETC_Q_Talent_2"/>
+        <TooltipAppender Validator="HasL90ETCPowerslideHeadCrack" Text="L90ETC_Q_Talent_3"/>
+    </CButton>
+    <CButton id="PowerslideHeroSelectButton" parent="StormButtonParent">
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_ui_icon_psionicblast_2.dds"/>
+        <TintRacially value="1"/>
+    </CButton>
+    <CButton id="LearnStageDive" parent="StormButtonParent">
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_ui_icon_dwarftoss.dds"/>
+        <TintRacially value="1"/>
+    </CButton>
+    <CButton id="FaceMelt" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_ui_icon_deathpact_2.dds"/>
+        <TooltipAppender Validator="HasL90ETCFaceMeltDanceYourPantsOff" Text="L90ETC_W_Talent_1"/>
+        <TooltipAppender Validator="HasL90ETCFaceMeltLoudSpeakers" Text="L90ETC_W_Talent_2"/>
+        <TooltipAppender Validator="HasL90ETCFaceMeltFaceSmelt" Text="L90ETC_W_Talent_3"/>
+    </CButton>
+    <CButton id="LearnFaceMelt" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_ui_icon_deathpact_2.dds"/>
+        <TintRacially value="1"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+    </CButton>
+    <CButton id="StageDive" parent="StormButtonParent">
+        <Icon value="Assets\Textures\storm_ui_icon_dwarftoss.dds"/>
+        <TooltipAppender Validator="HasL90ETCStageDiveRockGod" Text="L90ETC_R2_Talent_1"/>
+    </CButton>
+    <!-- ...... -->
+    <!-- L90ETC ETC -->
+    <!-- ...... -->
+    <CTalent id="ETCCombatStyleUberRockstar">
+        <Face value="WeaponL90ETCUberRockstar"/>
+        <RankArray Face="WeaponL90ETCUberRockstarSimple">
+            <BehaviorArray value="L90ETCWeaponUberRockstarBehavior"/>
+        </RankArray>
+    </CTalent>
+    <CTalent id="ETCMasteryFaceSmelt">
+        <Face value="L90ETCFaceMeltMastery1"/>
+        <RankArray Face="L90ETCFaceMeltMastery1Simple">
+            <BehaviorArray value="Ability2Relic"/>
+            <BehaviorArray value="L90ETCFaceMeltMasteryCarryBehavior"/>
+        </RankArray>
+        <AbilityModificationArray/>
+    </CTalent>
+    <CTalent id="ETCHeroicAbilityMoshPit">
+        <Face value="L90ETCMoshPitTalent"/>
+        <RankArray Face="L90ETCMoshPitTalentSimple">
+            <BehaviorArray value="Ultimate2Unlocked"/>
+            <BehaviorArray value="L90ETCMoshPitCarryBehavior"/>
+        </RankArray>
+    </CTalent>
+    <CTalent id="ETCMasteryMonsterSlide">
+        <Face value="L90ETCPowerslideMastery1"/>
+        <AbilityModificationArray>
+            <Modifications>
+                <Type value="FlatModification"/>
+                <Catalog value="Effect"/>
+                <Entry value="PowerSlideTargetSearch"/>
+                <Field value="AreaArray[0].RectangleWidth"/>
+                <Value value="1.200000"/>
+            </Modifications>
+            <Modifications>
+                <Type value="FlatModification"/>
+                <Catalog value="Actor"/>
+                <Entry value="L90ETCPowerslideGuide"/>
+                <Field value="Width"/>
+                <Value value="1.200000"/>
+            </Modifications>
+        </AbilityModificationArray>
+        <RankArray Face="L90ETCPowerslideMastery1Simple">
+            <BehaviorArray value="L90ETCPowerSlideMasteryCarryBehavior"/>
+        </RankArray>
+    </CTalent>
+    <CTalent id="ETCMasteryGuitarHero">
+        <Face value="L90ETCGuitarSoloMastery1"/>
+        <AbilityModificationArray>
+            <Modifications>
+                <Type value="FlatModification"/>
+                <Catalog value="Effect"/>
+                <Entry value="L90ETCGuitarSoloApplyBonusDamageRune"/>
+                <Field value="Chance"/>
+                <Value value="1.000000"/>
+            </Modifications>
+        </AbilityModificationArray>
+        <RankArray Face="L90ETCGuitarSoloMastery1Simple">
+            <BehaviorArray value="Ability3Relic"/>
+            <BehaviorArray value="L90ETCGuitarSoloMasteryCarryBehavior"/>
+        </RankArray>
+    </CTalent>
+    <CTalent id="ETCHeroicAbilityStageDive">
+        <Face value="StageDiveTalent"/>
+        <RankArray Face="StageDiveTalentSimple">
+            <BehaviorArray value="Ultimate1Unlocked"/>
+            <BehaviorArray value="L90ETCStageDiveCarryBehavior"/>
+        </RankArray>
+    </CTalent>
+    <CTalent id="L90ETCMasteryFaceMeltDanceYourPantsOff">
+        <Face value="L90ETCFaceMeltDanceYourPantsOffTalent"/>
+        <RankArray Face="L90ETCFaceMeltDanceYourPantsOffTalentSimple"/>
+        <AbilityModificationArray>
+            <Modifications>
+                <Type value="FlatModification"/>
+                <Catalog value="Effect"/>
+                <Entry value="FaceMeltDanceApplyBehavior"/>
+                <Field value="Chance"/>
+                <Value value="1.000000"/>
+            </Modifications>
+        </AbilityModificationArray>
+    </CTalent>
+    <CTalent id="L90ETCMasteryGuitarSoloPwnShopGuitar">
+        <Face value="L90ETCGuitarSoloPwnShopGuitarTalent"/>
+        <RankArray Face="L90ETCGuitarSoloPwnShopGuitarTalentSimple"/>
+        <AbilityModificationArray>
+            <Modifications>
+                <Type value="MultiplyLevelModification"/>
+                <Entry value="L90ETCGuitarSolo"/>
+                <Field value="Cost[0].Vital[Energy]"/>
+                <Value value="0.500000"/>
+            </Modifications>
+        </AbilityModificationArray>
+    </CTalent>
+    <CTalent id="L90ETCMasteryGuitarSoloGroupies">
+        <Face value="L90ETCGuitarSoloGroupiesTalent"/>
+        <RankArray Face="L90ETCGuitarSoloGroupiesTalentSimple"/>
+        <AbilityModificationArray>
+            <Modifications>
+                <Type value="FlatModification"/>
+                <Catalog value="Effect"/>
+                <Entry value="L90ETCGuitarSoloSearchAllies"/>
+                <Field value="Chance"/>
+                <Value value="1.000000"/>
+            </Modifications>
+        </AbilityModificationArray>
+    </CTalent>
+    <CTalent id="L90ETCMasteryMoshPitDeathMetal">
+        <Face value="L90ETCMoshPitDeathMetalTalent"/>
+        <RankArray Face="L90ETCMoshPitDeathMetalTalentSimple"/>
+        <AbilityModificationArray>
+            <Modifications>
+                <Type value="FlatModification"/>
+                <Catalog value="Effect"/>
+                <Entry value="MoshPitApplyVulnerableBehavior"/>
+                <Field value="Chance"/>
+                <Value value="1.000000"/>
+            </Modifications>
+            <Modifications>
+                <Type value="FlatModification"/>
+                <Catalog value="Effect"/>
+                <Entry value="MoshPitRemoveVulnerableBehavior"/>
+                <Field value="Chance"/>
+                <Value value="1.000000"/>
+            </Modifications>
+            <Modifications>
+                <Type value="CatalogReplacement"/>
+                <Catalog value="Sound"/>
+                <Entry value="ETC_MoshPit_Cast"/>
+                <StringReplacement value="ETC_MoshPit_DeathMetal_Cast"/>
+            </Modifications>
+        </AbilityModificationArray>
+    </CTalent>
+    <CTalent id="L90ETCMasteryPowerslideDamageSlide">
+        <Face value="L90ETCPowerslideDamageSlideTalent"/>
+        <RankArray Face="L90ETCPowerslideDamageSlideTalentSimple"/>
+        <AbilityModificationArray>
+            <Modifications>
+                <Type value="FlatModification"/>
+                <Catalog value="Effect"/>
+                <Entry value="PowerSlideDamage"/>
+                <Field value="AttributeFactor[Light]"/>
+                <Value value="0.300000"/>
+            </Modifications>
+            <Modifications>
+                <Type value="FlatModification"/>
+                <Catalog value="Effect"/>
+                <Entry value="PowerSlideDamage"/>
+                <Field value="AttributeFactor[Armored]"/>
+                <Value value="0.300000"/>
+            </Modifications>
+            <Modifications>
+                <Type value="FlatModification"/>
+                <Catalog value="Effect"/>
+                <Entry value="PowerSlideDamage"/>
+                <Field value="AttributeFactor[Biological]"/>
+                <Value value="0.300000"/>
+            </Modifications>
+            <Modifications>
+                <Type value="FlatModification"/>
+                <Catalog value="Effect"/>
+                <Entry value="PowerSlideDamage"/>
+                <Field value="AttributeFactor[Robotic]"/>
+                <Value value="0.300000"/>
+            </Modifications>
+            <Modifications>
+                <Type value="FlatModification"/>
+                <Catalog value="Effect"/>
+                <Entry value="PowerSlideDamage"/>
+                <Field value="AttributeFactor[Psionic]"/>
+                <Value value="0.300000"/>
+            </Modifications>
+            <Modifications>
+                <Type value="FlatModification"/>
+                <Catalog value="Effect"/>
+                <Entry value="PowerSlideDamage"/>
+                <Field value="AttributeFactor[Structure]"/>
+                <Value value="0.300000"/>
+            </Modifications>
+            <Modifications>
+                <Type value="FlatModification"/>
+                <Catalog value="Effect"/>
+                <Entry value="PowerSlideDamage"/>
+                <Field value="AttributeFactor[Heroic]"/>
+                <Value value="0.300000"/>
+            </Modifications>
+            <Modifications>
+                <Type value="FlatModification"/>
+                <Catalog value="Effect"/>
+                <Entry value="PowerSlideDamage"/>
+                <Field value="AttributeFactor[Summoned]"/>
+                <Value value="0.300000"/>
+            </Modifications>
+        </AbilityModificationArray>
+    </CTalent>
+    <CTalent id="L90ETCMasteryPowerslideHeadCrack">
+        <Face value="L90ETCPowerslideHeadCrackTalent"/>
+        <RankArray Face="L90ETCPowerslideHeadCrackTalentSimple"/>
+        <AbilityModificationArray>
+            <Modifications>
+                <Type value="MultiplyLevelModification"/>
+                <Catalog value="Behavior"/>
+                <Entry value="PowerslideStun"/>
+                <Field value="Duration"/>
+                <Value value="1.500000"/>
+            </Modifications>
+        </AbilityModificationArray>
+    </CTalent>
+    <CTalent id="L90ETCMasteryGuitarSoloGuitarInstrumental">
+        <Face value="L90ETCGuitarSoloGuitarInstrumentalTalent"/>
+        <RankArray Face="L90ETCGuitarSoloGuitarInstrumentalTalentSimple"/>
+        <AbilityModificationArray>
+            <Modifications>
+                <Type value="MultiplyLevelModification"/>
+                <Catalog value="Behavior"/>
+                <Entry value="L90ETCGuitarSoloHeroHeal"/>
+                <Field value="Duration"/>
+                <Value value="2.000000"/>
+            </Modifications>
+        </AbilityModificationArray>
+    </CTalent>
+    <CTalent id="L90ETCMasteryStageDiveRockGod">
+        <Face value="L90ETCStageDiveRockGodTalent"/>
+        <RankArray Face="L90ETCStageDiveRockGodTalentSimple"/>
+        <AbilityModificationArray>
+            <Modifications>
+                <Type value="FlatModification"/>
+                <Catalog value="Effect"/>
+                <Entry value="StageDiveDamage"/>
+                <Field value="AttributeFactor[Light]"/>
+                <Value value="0.400000"/>
+            </Modifications>
+            <Modifications>
+                <Type value="FlatModification"/>
+                <Catalog value="Effect"/>
+                <Entry value="StageDiveDamage"/>
+                <Field value="AttributeFactor[Armored]"/>
+                <Value value="0.400000"/>
+            </Modifications>
+            <Modifications>
+                <Type value="FlatModification"/>
+                <Catalog value="Effect"/>
+                <Entry value="StageDiveDamage"/>
+                <Field value="AttributeFactor[Biological]"/>
+                <Value value="0.400000"/>
+            </Modifications>
+            <Modifications>
+                <Type value="FlatModification"/>
+                <Catalog value="Effect"/>
+                <Entry value="StageDiveDamage"/>
+                <Field value="AttributeFactor[Robotic]"/>
+                <Value value="0.400000"/>
+            </Modifications>
+            <Modifications>
+                <Type value="FlatModification"/>
+                <Catalog value="Effect"/>
+                <Entry value="StageDiveDamage"/>
+                <Field value="AttributeFactor[Psionic]"/>
+                <Value value="0.400000"/>
+            </Modifications>
+            <Modifications>
+                <Type value="FlatModification"/>
+                <Catalog value="Effect"/>
+                <Entry value="StageDiveDamage"/>
+                <Field value="AttributeFactor[Structure]"/>
+                <Value value="0.400000"/>
+            </Modifications>
+            <Modifications>
+                <Type value="FlatModification"/>
+                <Catalog value="Effect"/>
+                <Entry value="StageDiveDamage"/>
+                <Field value="AttributeFactor[Heroic]"/>
+                <Value value="0.400000"/>
+            </Modifications>
+            <Modifications>
+                <Type value="FlatModification"/>
+                <Catalog value="Effect"/>
+                <Entry value="StageDiveDamage"/>
+                <Field value="AttributeFactor[Summoned]"/>
+                <Value value="0.400000"/>
+            </Modifications>
+            <Modifications>
+                <Type value="FlatModification"/>
+                <Entry value="L90ETCStageDive"/>
+                <Field value="CastIntroTime[0]"/>
+                <Value value="-0.625000"/>
+            </Modifications>
+            <Modifications>
+                <Type value="MultiplyLevelModification"/>
+                <Catalog value="Effect"/>
+                <Entry value="StageDivePersistent"/>
+                <Field value="PeriodicPeriodArray[0]"/>
+                <Value value="0.500000"/>
+            </Modifications>
+            <Modifications>
+                <Type value="MultiplyLevelModification"/>
+                <Catalog value="Effect"/>
+                <Entry value="StageDivePersistent"/>
+                <Field value="PeriodicPeriodArray[1]"/>
+                <Value value="0.500000"/>
+            </Modifications>
+            <Modifications>
+                <Type value="MultiplyLevelModification"/>
+                <Catalog value="Effect"/>
+                <Entry value="StageDivePersistent"/>
+                <Field value="PeriodicPeriodArray[2]"/>
+                <Value value="0.500000"/>
+            </Modifications>
+            <Modifications>
+                <Type value="CatalogReplacement"/>
+                <Catalog value="Sound"/>
+                <Entry value="ETC_StageDive_Charge"/>
+                <StringReplacement value="ETC_StageDive_RockGod_Charge"/>
+            </Modifications>
+            <Modifications>
+                <Type value="CatalogReplacement"/>
+                <Catalog value="Sound"/>
+                <Entry value="ETC_StageDive_Impact"/>
+                <StringReplacement value="ETC_StageDive_RockGod_Impact"/>
+            </Modifications>
+            <Modifications>
+                <Type value="CatalogReplacement"/>
+                <Catalog value="Sound"/>
+                <Entry value="ETC_StageDive_Launch"/>
+                <StringReplacement value="ETC_StageDive_RockGod_Launch"/>
+            </Modifications>
+            <Modifications>
+                <Type value="CatalogReplacement"/>
+                <Catalog value="Sound"/>
+                <Entry value="ETC_StageDive_PreImpact"/>
+                <StringReplacement value="ETC_StageDive_RockGod_PreImpact"/>
+            </Modifications>
+        </AbilityModificationArray>
+    </CTalent>
+    <CTalent id="ETCCombatStyleEchoPedal">
+        <Face value="WeaponL90ETCEchoPedal"/>
+        <RankArray Face="WeaponL90ETCEchoPedalSimple">
+            <BehaviorArray value="L90ETCEchoPedalCarryBehavior"/>
+        </RankArray>
+    </CTalent>
+    <CTalent id="L90ETCMasteryFaceMeltLoudSpeakers">
+        <Face value="L90ETCFaceMeltLoudSpeakersTalent"/>
+        <RankArray Face="L90ETCFaceMeltLoudSpeakersTalentSimple"/>
+        <AbilityModificationArray>
+            <Modifications>
+                <Type value="MultiplyLevelModification"/>
+                <Catalog value="Effect"/>
+                <Entry value="FaceMeltSearch"/>
+                <Field value="AreaArray[0].Radius"/>
+                <Value value="1.500000"/>
+            </Modifications>
+            <Modifications>
+                <Type value="MultiplyLevelModification"/>
+                <Catalog value="Actor"/>
+                <Entry value="L90ETCFaceMeltRangeSplat"/>
+                <Field value="Scale"/>
+                <Value value="1.500000"/>
+            </Modifications>
+            <Modifications>
+                <Type value="FlatModification"/>
+                <Catalog value="Effect"/>
+                <Entry value="FaceMeltPersistent"/>
+                <Field value="PeriodCount"/>
+                <FieldIsInteger value="1"/>
+                <Value value="2.000000"/>
+            </Modifications>
+        </AbilityModificationArray>
+    </CTalent>
+    <CTalentProfile id="TalentBucketL90ETC">
+        <Talents value="TalentBucketPathOfTheWarrior"/>
+        <Talents value="L90ETCMasteryGuitarSoloPwnShopGuitar"/>
+        <Talents value="L90ETCMasteryGuitarSoloGroupies"/>
+        <Talents value="L90ETCMasteryPowerslideDamageSlide"/>
+        <Talents value="BucketSuperiority"/>
+        <Talents value="ETCCombatStyleEchoPedal"/>
+        <Talents value="L90ETCMasteryFaceMeltDanceYourPantsOff"/>
+        <Talents value="L90ETCMasteryFaceMeltLoudSpeakers"/>
+        <Talents value="BucketBattleMomentum"/>
+        <Talents value="KineticBlock"/>
+        <Talents value="ETCMasteryMonsterSlide"/>
+        <Talents value="ETCMasteryGuitarHero"/>
+        <Talents value="ETCHeroicAbilityStageDive"/>
+        <Talents value="ETCHeroicAbilityMoshPit"/>
+        <Talents value="BucketRelentless"/>
+        <Talents value="ETCCombatStyleUberRockstar"/>
+        <Talents value="ETCMasteryFaceSmelt"/>
+        <Talents value="BucketImposingPresence"/>
+        <Talents value="BucketStoneskin"/>
+        <Talents value="L90ETCMasteryPowerslideHeadCrack"/>
+        <Talents value="L90ETCMasteryGuitarSoloGuitarInstrumental"/>
+        <Talents value="TalentBucket_ResurgenceOfTheStorm"/>
+        <Talents value="L90ETCMasteryStageDiveRockGod"/>
+        <Talents value="L90ETCMasteryMoshPitDeathMetal"/>
+        <Talents value="TalentBucket_FuryOfTheStorm"/>
+        <Talents value="BucketFlashoftheStorms"/>
+    </CTalentProfile>
+    <CActorModel id="HeroL90ETCDeathRagdoll" parent="CommandersHeroDeathRagdoll">
+        <EditorCategories value="DoodadType:NotDoodad"/>
+    </CActorModel>
+    <CActorSplat id="L90ETCFaceMeltRangeSplat" parent="UI_RangeSplat">
+        <EditorCategories value="DoodadType:NotDoodad"/>
+        <Scale value="3.750000"/>
+    </CActorSplat>
+    <CActorSplat id="L90ETCMoshPitRangeSplat" parent="UI_RangeSplat">
+        <EditorCategories value="DoodadType:NotDoodad"/>
+        <Scale value="4.000000"/>
+    </CActorSplat>
+    <CActorSplat id="RockstarRangeSplat" parent="UI_RangeSplat">
+        <EditorCategories value="DoodadType:NotDoodad"/>
+        <Scale value="5.000000"/>
+    </CActorSplat>
+    <CActorRange id="L90ETCFaceMeltRange" parent="CommandersRangeAbilPlusSplat" abil="L90ETCFaceMelt"/>
+    <CActorRange id="L90ETCGuitarSoloRange" parent="CommandersRangeAbilPlusSplat" abil="L90ETCGuitarSolo"/>
+    <!-- Mosh Pit                                                                               -->
+    <CActorRange id="L90ETCMoshPitRange" parent="CommandersRangeAbilPlusSplat" abil="L90ETCMoshPit"/>
+    <CActorRange id="RockstarRange" parent="CommandersRangeAbilPlusSplat" abil="RockstarDummy"/>
+    <CActorRange id="RockstarRangeImproved" parent="CommandersRangeAbilPlusSplat" abil="RockstarDummyImproved">
+        <On index="1" Terms="ActorCreation" Send="Create RockstarRangeSplat"/>
+        <On index="2" Terms="ActorDestruction" Target="RockstarRangeSplat" Send="Destroy"/>
+    </CActorRange>
+    <!-- Stage Dive                                                                         -->
+    <CActorSplat id="StageDiveCursorSplat" parent="GuideVisualCircle" abil="L90ETCStageDive">
+        <Model value="StageDiveCursorSplat"/>
+    </CActorSplat>
+    <CActorModel id="StageDiveWarning" parent="StormModelAnimationStyleOneShot">
+        <On Terms="Effect.StageDivePersistent.Start" Send="Create"/>
+        <On Terms="Effect.StageDivePersistent.Stop" Send="Destroy"/>
+        <On Terms="ActorCreation; ValidateCreationEffect DoesNotHaveL90ETCStageDiveRockGod" Send="$Stand 0 0.000000 0.000000 2.500000 AsDuration"/>
+        <On Terms="ActorCreation; ValidateCreationEffect HasL90ETCStageDiveRockGod" Send="$Stand 0 0.000000 0.000000 1.250000 AsDuration"/>
+        <HostSiteOps Ops="SOpShadow"/>
+    </CActorModel>
+    <CActorSound id="StageDiveChargeSound" parent="SoundContinuous">
+        <Flags index="SuppressSaveLoad" value="1"/>
+        <On Terms="Abil.L90ETCStageDive.SourceCastStart" Send="Create"/>
+        <On Terms="Abil.L90ETCStageDive.SourcePause" Send="Destroy"/>
+        <Sound value="ETC_StageDive_Charge"/>
+    </CActorSound>
+    <CActorSound id="StageDiveLaunchSound" parent="SoundContinuous">
+        <Flags index="SuppressSaveLoad" value="1"/>
+        <On Terms="Effect.StageDiveInitialSet.Start; At Caster" Send="Create"/>
+        <On Terms="Effect.StageDiveFinalSet.Start" Send="Destroy"/>
+        <Sound value="ETC_StageDive_Launch"/>
+    </CActorSound>
+    <CActorSound id="StageDivePreImpactSound" parent="SoundContinuous">
+        <Flags index="SuppressSaveLoad" value="1"/>
+        <On Terms="Effect.StageDiveInitialSet.Start; At Effect" Send="Create"/>
+        <On Terms="Effect.StageDiveFinalSet.Start" Send="Destroy"/>
+        <Sound value="ETC_StageDive_PreImpact"/>
+    </CActorSound>
+    <CActorSound id="StageDiveImpactSound" parent="SoundOneShot">
+        <On Terms="Effect.StageDiveSearch.Start" Send="Create"/>
+        <Sound value="ETC_StageDive_Impact"/>
+    </CActorSound>
+    <CActorModel id="StageDiveLaunch" parent="StormModelAnimationStyleContinuous">
+        <On Terms="Abil.L90ETCStageDive.SourceCastStart" Send="Create"/>
+        <On Terms="Abil.L90ETCStageDive.SourcePause" Send="Destroy Immediate"/>
+        <On Terms="Abil.L90ETCStageDive.SourceCastStop" Send="AnimBracketStop BSD"/>
+        <HostSiteOps Ops="SOpAttachOriginHoldPosition" HoldRotation="1"/>
+    </CActorModel>
+    <CActorModel id="StageDiveImpact" parent="StormModelAnimationStyleOneShot">
+        <On Terms="Effect.StageDiveLandDummySet.Stop" Send="Create"/>
+        <HostSiteOps Ops="SOpSourcePointSationary SOpShadow"/>
+        <Inherits index="TeamColor" value="1"/>
+    </CActorModel>
+    <CActorEventMacroRunnable id="ETCRedMacro">
+        <Do Send="TextureSelectById Lvl90ETC_Red_Diff"/>
+    </CActorEventMacroRunnable>
+    <CActorEventMacroRunnable id="ETCGlamBlueMacro">
+        <Do Send="TextureSelectById Storm_ETC_Glam_Blue_Diff"/>
+        <Do Send="TextureSelectById Storm_ETC_Glam_Blue_Emis"/>
+    </CActorEventMacroRunnable>
+    <CActorEventMacroRunnable id="ETCGlamWhiteMacro">
+        <Do Send="TextureSelectById Storm_ETC_Glam_White_Diff"/>
+        <Do Send="TextureSelectById Storm_ETC_Glam_White_Emis"/>
+    </CActorEventMacroRunnable>
+    <CActorEventMacroRunnable id="ETCPureCountryCheckeredMacro">
+        <Do Send="TextureSelectById Storm_ETC_PureCountryCheckered_Spec"/>
+        <Do Send="TextureSelectById Storm_ETC_PureCountryCheckered_Diff"/>
+        <Do Send="TextureSelectById Storm_ETC_PureCountryCheckered_Norm"/>
+    </CActorEventMacroRunnable>
+    <CActorEventMacroRunnable id="ETCPureCountryFireMacro">
+        <Do Send="TextureSelectById Storm_ETC_PureCountryFire_Spec"/>
+        <Do Send="TextureSelectById Storm_ETC_PureCountryFire_Diff"/>
+        <Do Send="TextureSelectById Storm_ETC_PureCountryFire_Norm"/>
+    </CActorEventMacroRunnable>
+    <CActorSound id="FaceMeltImpactSound" parent="SoundOneShot">
+        <Sound value="ETC_FaceMelt_Impact"/>
+    </CActorSound>
+    <CActorModel id="FaceMeltImpact" parent="StormModelOneShotUnit">
+        <On Terms="Effect.FaceMeltDamage.Start; At Target" Send="Create"/>
+        <On Terms="ActorCreation" Send="Create FaceMeltImpactSound"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+    </CActorModel>
+    <CActorModel id="FaceMeltDanceStun" parent="StormModelAnimationStyleContinuous">
+        <On Terms="Behavior.FaceMeltDance.On" Send="Create"/>
+        <On Terms="Behavior.FaceMeltDance.Off" Send="Destroy"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachOverhead"/>
+        <Model value="StormStun"/>
+        <AutoScaleFactor value="1.000000"/>
+    </CActorModel>
+    <CActorModel id="FaceSmeltSlow" parent="StormSlow">
+        <On Terms="Behavior.FaceSmelting.On" Send="Create"/>
+        <On Terms="Behavior.FaceSmelting.Off" Send="AnimBracketStop BSD"/>
+    </CActorModel>
+    <!--                                                                                         -->
+    <!-- L90ETC                                                                                  -->
+    <!--                                                                                         -->
+    <CActorUnit id="HeroL90ETC" parent="StormHeroBasePredictive" unitName="HeroL90ETC">
+        <AnimBlendTime value="0.200000"/>
+        <!-- need this due to the odd named animation -->
+        <On Terms="Abil.attack.ReadyStart" Send="AnimClear Powerslide"/>
+        <!-- Clear animations from stagedive if he starts attacking to prevent bugs -->
+        <On Terms="Abil.attack.ReadyStart" Send="AnimClear StandWork"/>
+        <!-- Powerslide -->
+        <On Terms="Abil.L90ETCPowerslide.SourceCastStart" Send="AnimPlay Powerslide Spell,E 0 -1.000000 -1.000000 1.000000 AsTimeScale"/>
+        <!--On Terms="Behavior.HeadBang.On" Send="$Spell,E PlayForever"/>
+        <On Terms="Behavior.HeadBang.Off" Send="AnimClear Spell"/-->
+        <!-- Face Melt -->
+        <On Terms="Abil.L90ETCFaceMelt.SourceCastStart" Send="$Spell,C 0 -1.000000 -1.000000 1.000000 AsTimeScale"/>
+        <!-- Guitar Solo -->
+        <On Terms="Abil.L90ETCGuitarSolo.SourceCastStart" Send="$Spell,A 0 -1.000000 -1.000000 1.000000 AsTimeScale"/>
+        <!-- Stage Dive -->
+        <!--On Terms="Abil.L90ETCStageDive.SourcePrepStart" Send="Create StageDiveChargeSound"/-->
+        <On Terms="Abil.L90ETCStageDive.SourceCastStart" Send="AnimClear Attack"/>
+        <On Terms="Abil.L90ETCStageDive.SourceCastStart; ValidateUnit DoesNotHaveL90ETCStageDiveRockGod" Send="AnimPlay StageDiveStart Spell,D 0 -1.000000 -1.000000 1.100000 AsTimeScale"/>
+        <On Terms="Effect.StageDivePersistent.Start; At Caster" Send="AnimBracketStart StandWork Stand,Work,Start Stand,Work Stand,Work,End"/>
+        <On Terms="Effect.StageDivePersistent.Start; At Caster" Send="SetShowStatusBar"/>
+        <On Terms="Effect.StageDiveLandDummySet.Start; At Caster" Send="AnimBracketStop StandWork"/>
+        <On Terms="Effect.StageDivePersistent.Stop; At Caster" Send="SetShowStatusBar 1"/>
+        <!-- Stage Dive Upgraded -->
+        <On Terms="Abil.L90ETCStageDive.SourceCastStart; ValidateUnit HasL90ETCStageDiveRockGod" Send="AnimPlay StageDiveStart Spell,D 0 -1.000000 -1.000000 2.200000 AsTimeScale"/>
+        <!-- Mosh Pit -->
+        <On Terms="Abil.L90ETCMoshPit.SourceCastStart; AnimBaselineState Stand" Send="AnimPlay Taunt Taunt PlayForever -1.000000 -1.000000 3.000000 AsTimeScaleAbsolute"/>
+        <On Terms="Abil.L90ETCMoshPit.SourceCastStop" Send="AnimClear Taunt"/>
+        <On Terms="Behavior.L90ETCMoshPitChannel.On" Send="AnimPlay Spell Dance PlayForever"/>
+        <On Terms="Behavior.L90ETCMoshPitChannel.Off" Send="AnimClear Spell"/>
+        <On Terms="UnitDeathCustomize; CanApplyActionPhysics RagdollBasic" Send="DeathCustomize RagdollBasic"/>
+        <On Terms="Abil.L90ETCGuitarSolo.SourceCastStart" Send="Create L90ETCGuitarSoloCast"/>
+        <DeathArray index="Normal" SoundLink="ETC_Death"/>
+        <DeathCustoms ActorModel="HeroL90ETCDeathRagdoll" ModelLink="L90ETCDeathRagdoll" Name="RagdollBasic">
+            <BodySquibs Name="None"/>
+        </DeathCustoms>
+        <WalkAnimMoveSpeed value="4"/>
+        <AbilSoundArray AbilCmd="L90ETCGuitarSolo,Execute" Sound="ETC_VOX_Casting"/>
+        <AbilSoundArray AbilCmd="L90ETCPowerslide,Execute" Sound="ETC_VOX_Casting"/>
+        <AbilSoundArray AbilCmd="L90ETCFaceMelt,Execute" Sound="ETC_VOX_Casting"/>
+        <AbilSoundArray AbilCmd="L90ETCStageDive,Execute" Sound="ETC_Ultimate1Used"/>
+        <AbilSoundArray AbilCmd="L90ETCMoshPit,Execute" Sound="ETC_Ultimate2Used"/>
+        <ErrorArray Error="NotEnoughEnergy" Sound="ETC_LowMana"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\ui_targetportrait_hero_l90etc.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\UI\HeroIcons\PartyFrame\storm_ui_ingame_partyframe_l90etc.dds"/>
+        <LifeArmorIcon value="Assets\Textures\storm_temp_btn-research-terran-vanadiumplating.dds"/>
+        <MinimapIcon value="Assets\Textures\storm_ui_minimapicon_etc.dds"/>
+        <SoundArray index="Ready" value="ETC_Revive"/>
+        <SoundArray index="Yes" value="ETC_Yes"/>
+        <SoundArray index="Attack" value="ETC_Attack"/>
+        <SoundArray index="Pissed" value="ETC_Pissed"/>
+        <UnitIcon value="Assets\Textures\UI\HeroIcons\PartyFrame\storm_ui_ingame_partyframe_l90etc.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\ui_targetportrait_hero_l90etc.dds"/>
+        </Wireframe>
+        <PortraitActor value="L90ETCPortrait"/>
+        <PortraitModel value="L90ETCPortrait"/>
+        <Baselines index="Walk" AnimProps="Walk,A"/>
+        <Macros index="18" removed="1"/>
+    </CActorUnit>
+    <CActorPortrait id="L90ETCPortrait" parent="CompositePortrait"/>
+    <CActorModel id="L90ETCPortraitAddition" parent="CompositePortraitAddition">
+        <Filter index="All" value="1"/>
+    </CActorModel>
+    <CActorPortrait id="L90ETCSkinTemp1Portrait" parent="CompositePortrait"/>
+    <CActorModel id="L90ETCSkinTemp1PortraitAddition" parent="CompositePortraitAddition">
+        <Filter index="All" value="1"/>
+    </CActorModel>
+    <CActorPortrait id="L90ETCSkinTemp2Portrait" parent="CompositePortrait"/>
+    <CActorModel id="L90ETCSkinTemp2PortraitAddition" parent="CompositePortraitAddition">
+        <Filter index="All" value="1"/>
+    </CActorModel>
+    <CActorPortrait id="L90ETCSkinGlamPortrait" parent="CompositePortrait"/>
+    <CActorModel id="L90ETCSkinGlamPortraitAddition" parent="CompositePortraitAddition">
+        <Filter index="All" value="1"/>
+    </CActorModel>
+    <CActorPortrait id="L90ETCSkinPureCountryCheckeredPortrait" parent="CompositePortrait"/>
+    <CActorModel id="L90ETCSkinPureCountryCheckeredPortraitAddition" parent="CompositePortraitAddition">
+        <Filter index="All" value="1"/>
+    </CActorModel>
+    <CActorPortrait id="L90ETCSkinPureCountryFirePortrait" parent="CompositePortrait"/>
+    <CActorModel id="L90ETCSkinPureCountryFirePortraitAddition" parent="CompositePortraitAddition">
+        <Filter index="All" value="1"/>
+    </CActorModel>
+    <CActorPortrait id="L90ETCSkinPureCountryPortrait" parent="CompositePortrait"/>
+    <CActorModel id="L90ETCSkinPureCountryPortraitAddition" parent="CompositePortraitAddition">
+        <Filter index="All" value="1"/>
+    </CActorModel>
+    <!-- Attack                                                                                  -->
+    <!-- Air Attack                                                                                  -->
+    <CActorForceSphere id="L90ETCAttackDeathForceAir" parent="RangedAttackDeathForce">
+        <HostSiteOps Ops="SOpForwardWeapon SOpMoveByDot25 SOp180"/>
+    </CActorForceSphere>
+    <CActorMissile id="HeroL90ETCAirAttackMissile" parent="GenericAttackMissile" unitName="L90ETCWeaponAir"/>
+    <!--CActorModel id="GuitarSoloStart" parent="StormModelOneShotUnit">-->
+    <!--        <On Terms="Behavior.L90ETCGuitarSoloHeroHeal.On" Send="Create"/>-->
+    <!--        <HostSiteOps Ops="SOpAttachCenter SOpGuitarSoloOffset" HoldRotation="1"/>-->
+    <!--        <Model value="L90ETCGuitarSoloBuff"/>-->
+    <!--    </CActorModel>-->
+    <!--    <CActorModel id="GuitarSoloEnd" parent="StormModelOneShotUnit">-->
+    <!--        <On Terms="Behavior.L90ETCGuitarSoloHeroHeal.Off" Send="Create"/>-->
+    <!--        <HostSiteOps Ops="SOpAttachCenter SOpGuitarSoloOffset" HoldRotation="1"/>-->
+    <!--    </CActorModel-->
+    <CActorSound id="L90ETCGuitarSoloCast" parent="SoundOneShot">
+        <Sound value="ETC_GuitarSolo_Cast"/>
+    </CActorSound>
+    <CActorModel id="L90ETCGuitarSoloImpact" parent="StormModelAddition">
+        <!--On Terms="Behavior.L90ETCGuitarSoloHeroHeal.On" Send="Create"/>
+        <On Terms="Behavior.L90ETCGuitarSoloHeroHeal.Off" Send="AnimBracketStop BSD"/-->
+        <On Terms="Behavior.L90ETCGuitarSoloAllyHeal.On" Send="Create"/>
+        <On Terms="Behavior.L90ETCGuitarSoloAllyHeal.Off" Send="AnimBracketStop BSD"/>
+        <HostSiteOps Ops="SOpAttachCenter" HoldRotation="1"/>
+    </CActorModel>
+    <CActorModel id="L90ETCGuitarSolo" parent="StormModelAddition">
+        <On Terms="Behavior.L90ETCGuitarSoloHeroHeal.On" Send="Create"/>
+        <On Terms="Behavior.L90ETCGuitarSoloHeroHeal.Off" Send="Destroy"/>
+        <HostSiteOps Ops="SOpAttachCenter" HoldRotation="1"/>
+    </CActorModel>
+    <CActorSound id="L90ETCGuitarSolo_Impact" parent="SoundOneShot">
+        <On Terms="Behavior.L90ETCGuitarSoloHeroHeal.On" Send="Create"/>
+        <On Terms="Behavior.L90ETCGuitarSoloAllyHeal.On" Send="Create"/>
+        <Sound value="ETC_GuitarSolo_Impact"/>
+    </CActorSound>
+    <CActorSound id="L90ETCGuitarSolo_Groupies_Impact" parent="SoundOneShot">
+        <On Terms="Effect.L90ETCGuitarSoloAllyHeal.Start; At Target" Send="Create"/>
+        <Sound value="ETC_GuitarSolo_Groupies_Impact"/>
+    </CActorSound>
+    <CActorModel id="L90ETCGuitarSoloRune" parent="StormModelAddition">
+        <On Terms="Behavior.L90ETCGuitarSoloBonusDamageRune.On" Send="Create"/>
+        <On Terms="Behavior.L90ETCGuitarSoloBonusDamageRune.Off" Send="Destroy"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+    </CActorModel>
+    <CActorModel id="L90ETCGuitarHeroImpact" parent="StormModelOneShotUnit">
+        <Inherits index="BaseModelScale" value="1"/>
+        <Inherits index="Scale" value="1"/>
+        <On Terms="Effect.GuitarSoloGuitarHeroImpactDummy.Start; At Target" Send="Create"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <AutoScaleFactor value="1.000000"/>
+    </CActorModel>
+    <CActorModel id="L90ETCGuitarHeroCriticalFX" parent="StormModelOneShotUnit">
+        <On Terms="Effect.GuitarSoloGuitarHeroImpactDummy.Start; At Target" Send="Create"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <VisibleToAtCreation index="Caster" value="1"/>
+        <VisibleToAtCreation index="Source" value="1"/>
+        <VisibleToAtCreation index="Target" value="1"/>
+        <Inherits index="Visibility" value="0"/>
+    </CActorModel>
+    <!-- Head Bang (Powerslide)                                                                   -->
+    <CActorQuad id="L90ETCPowerslideGuide" parent="GuideVisualQuadSplatDown" abil="IGNORE">
+        <On Terms="Abil.L90ETCPowerslide.Guide" Send="Create"/>
+        <Height value="6.375000"/>
+        <Width value="2.000000"/>
+    </CActorQuad>
+    <CActorModel id="L90ETCPowerslideImpact" parent="StormModelOneShotUnit">
+        <Inherits index="BaseModelScale" value="1"/>
+        <Inherits index="Scale" value="1"/>
+        <On Terms="Effect.PowerSlideDamage.Start; At Target" Send="Create"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <AutoScaleFactor value="1.000000"/>
+    </CActorModel>
+    <CActorModel id="L90ETCPowerslideCaster" parent="StormModelAddition">
+        <On Terms="Behavior.Powerslide.On" Send="Create"/>
+        <On Terms="Behavior.Powerslide.Off" Send="AnimBracketStop BSD"/>
+        <HostSiteOps Ops="SOpAttachOrigin"/>
+    </CActorModel>
+    <CActorSound id="PowerslideCastSound" parent="SoundOneShot">
+        <On Terms="Behavior.Powerslide.On" Send="Create"/>
+        <Sound value="ETC_Powerslide_Cast"/>
+    </CActorSound>
+    <CActorSound id="PowerslideImpactSound" parent="SoundOneShot">
+        <On Terms="Effect.PowerSlideDamage.Start; At Target" Send="Create"/>
+        <Sound value="ETC_Powerslide_Impact"/>
+    </CActorSound>
+    <CActorForceSphere id="L90ETCPowerslideForce">
+        <On Terms="Effect.PowerSlideTargetSearch.Stop" Send="Create"/>
+        <Host Subject="SOpTargetPoint SOpSplashDamagePositionVariance"/>
+        <Duration value="0.150000"/>
+        <Magnitude value="50.000000"/>
+        <Radius value="2.000000"/>
+    </CActorForceSphere>
+    <CActorForceSphere id="L90ETCFaceMeltOutForce">
+        <Host Subject="SOpTargetPoint SOpSplashDamagePositionVariance"/>
+        <Duration value="0.150000"/>
+        <Magnitude value="50.000000"/>
+        <Radius value="3.000000"/>
+    </CActorForceSphere>
+    <CActorForceCylinder id="L90ETCFaceMeltUpForce">
+        <On Terms="Effect.FaceMeltSearch.Stop; At Caster" Send="Create"/>
+        <On Terms="ActorCreation" Send="Create L90ETCFaceMeltOutForce"/>
+        <HostSiteOps Ops="SOpTargetPoint"/>
+        <Duration value="0.012500"/>
+        <Magnitude value="75.000000"/>
+        <HostEndSiteOps Ops="SOpTargetPoint SOpHigherBy3"/>
+        <Radius value="4.500000"/>
+    </CActorForceCylinder>
+    <CActorModel id="StageDiveSlow" parent="StormSlow">
+        <On Terms="Behavior.StageDiveSlow.On" Send="Create"/>
+        <On Terms="Behavior.StageDiveSlow.Off" Send="AnimBracketStop BSD"/>
+    </CActorModel>
+    <CActorForceSphere id="L90ETCStageDiveOutForce">
+        <Host Subject="SOpTargetPoint SOpSplashDamagePositionVariance"/>
+        <Duration value="0.150000"/>
+        <Magnitude value="75.000000"/>
+        <Radius value="5.500000"/>
+    </CActorForceSphere>
+    <CActorForceCylinder id="L90ETCStageDiveUpForce">
+        <On Terms="Effect.StageDiveSearch.Stop; At Caster" Send="Create"/>
+        <On Terms="ActorCreation" Send="Create L90ETCStageDiveOutForce"/>
+        <HostSiteOps Ops="SOpTargetPoint"/>
+        <Duration value="0.012500"/>
+        <Magnitude value="75.000000"/>
+        <HostEndSiteOps Ops="SOpTargetPoint SOpHigherBy3"/>
+        <Radius value="6.000000"/>
+    </CActorForceCylinder>
+    <CActorModel id="L90ETCMoshPitModelRange" parent="StormModelAnimationStyleContinuous">
+        <Flags index="SuppressSaveLoad" value="1"/>
+        <On Terms="Behavior.L90ETCMoshPitChannel.On" Send="Create"/>
+        <On Terms="Behavior.L90ETCMoshPitChannel.Off" Send="Destroy"/>
+        <ModelFlags index="AutomateGlobalLoops" value="0"/>
+    </CActorModel>
+    <CActorModel id="L90ETCMoshPitModelNotes" parent="StormModelAnimationStyleContinuous">
+        <Flags index="SuppressSaveLoad" value="1"/>
+        <On Terms="Behavior.L90ETCMoshPitChannel.On" Send="Create"/>
+        <On Terms="Behavior.L90ETCMoshPitChannel.Off" Send="Destroy"/>
+        <ModelFlags index="AutomateGlobalLoops" value="0"/>
+    </CActorModel>
+    <CActorSound id="L90ETC_MoshPitCast" parent="SoundContinuous">
+        <On Terms="Abil.L90ETCMoshPit.SourceCastStart" Send="Create"/>
+        <On Terms="Behavior.L90ETCMoshPitChannel.Off" Send="Destroy"/>
+        <On Terms="Behavior.VoidPrison.On" Send="SoundSetPaused 1 0"/>
+        <On Terms="Behavior.VoidPrison.Off" Send="SoundSetPaused 0 0"/>
+        <Sound value="ETC_MoshPit_Cast"/>
+    </CActorSound>
+    <CActorModel id="L90ETCMoshPitImpactModelStun" parent="StormModelAnimationStyleContinuous">
+        <Flags index="SuppressSaveLoad" value="1"/>
+        <Inherits index="Scale" value="1"/>
+        <On Terms="Behavior.L90ETCMoshPitStun.On" Send="Create"/>
+        <On Terms="Behavior.L90ETCMoshPitStun.Off" Send="Destroy"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachOverhead"/>
+        <AutoScaleFactor value="1.000000"/>
+    </CActorModel>
+    <CActorModel id="L90ETCMoshPitImpactModelNotes" parent="StormModelAnimationStyleOneShot">
+        <Inherits index="Scale" value="1"/>
+        <On Terms="Behavior.L90ETCMoshPitStun.On" Send="Create"/>
+        <On Terms="Behavior.L90ETCMoshPitStun.Off" Send="Destroy"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <AutoScaleFactor value="1.000000"/>
+    </CActorModel>
+    <CActorModel id="L90ETCMoshPitDeath" parent="StormModelAnimationStyleOneShot">
+        <On Terms="Effect.L90ETCMoshPitDummySet.Start; At Source" Send="Create"/>
+    </CActorModel>
+    <CActorModel id="L90ETCMoshPitDeathFireworkRed" parent="StormModelAnimationStyleOneShot">
+        <On Terms="Effect.L90ETCMoshPitDummySet.Start; At Source" Send="Create"/>
+        <Scale value="0.100000"/>
+    </CActorModel>
+    <CActorModel id="L90ETCMoshPitDeathFireworkYellow" parent="StormModelAnimationStyleOneShot">
+        <On Terms="Effect.L90ETCMoshPitDummySet.Start; At Source" Send="Create"/>
+        <Scale value="0.100000"/>
+    </CActorModel>
+    <CActorModel id="L90ETCMoshPitDeathFireworkBlue" parent="StormModelAnimationStyleOneShot">
+        <On Terms="Effect.L90ETCMoshPitDummySet.Start; At Source" Send="Create"/>
+        <Scale value="0.100000"/>
+    </CActorModel>
+    <!-- Rockstar Passive                                                                        -->
+    <CActorModel id="L90ETCRockstarPassiveBuff" parent="StormModelAddition">
+        <On Terms="Behavior.RockstarHero.On" Send="Create"/>
+        <On Terms="Behavior.RockstarHero.Off" Send="Destroy Immediate"/>
+        <On Terms="Behavior.RockstarMinion.On" Send="Create"/>
+        <On Terms="Behavior.RockstarMinion.Off" Send="Destroy Immediate"/>
+        <On Terms="Behavior.UberRockstarHero.On" Send="Create"/>
+        <On Terms="Behavior.UberRockstarHero.Off" Send="Destroy Immediate"/>
+        <On Terms="Behavior.UberRockstarMinion.On" Send="Create"/>
+        <On Terms="Behavior.UberRockstarMinion.Off" Send="Destroy Immediate"/>
+        <HostSiteOps Ops="SOpAttachOrigin" HoldRotation="1"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
+    </CActorModel>
+    <!-- Echo Pedal Passive                                                             -->
+    <CActorModel id="L90ETCEchoPedalSearch" parent="StormModelOneShotUnit">
+        <On Terms="Effect.L90ETCPassiveEchoPedalSearch.Start" Send="Create"/>
+        <HostSiteOps Ops="SOpSourcePointStationary SOpAttachOrigin"/>
+    </CActorModel>
+    <CActorModel id="L90ETCEchoPedalImpact" parent="StormModelOneShotUnit">
+        <On Terms="Effect.L90ETCPassiveEchoPedalDamage.Start; At Target" Send="Create"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+    </CActorModel>
+    <CActorSound id="L90ETCEchoPedalCast" parent="SoundOneShot">
+        <On Terms="Effect.L90ETCPassiveEchoPedalSearch.Start" Send="Create"/>
+        <Sound value="ETC_EchoPedal_Cast"/>
+    </CActorSound>
+    <CModel id="L90ETCGuitarHeroCriticalFX" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Storm_Effect_ExecutionerCrit_Impact\Storm_Effect_ExecutionerCrit_Impact.m3"/>
+    </CModel>
+    <CModel id="L90ETCEchoPedalImpact" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Hero_Base_ETC\Effect_Hero_ETC_Base_EchoPedal_Impact\Effect_Hero_ETC_Base_EchoPedal_Impact.m3"/>
+    </CModel>
+    <CModel id="L90ETCGuitarHeroImpact" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Hero_Base_ETC\Effect_Hero_ETC_Base_GuitarHero_Impact\Effect_Hero_ETC_Base_GuitarHero_Impact.m3"/>
+    </CModel>
+    <CModel id="L90ETCPowerslideCaster" parent="BuffFX">
+        <Model value="Assets\Effects\Hero_Base_ETC\Effect_Hero_ETC_Base_PowerSlide\Effect_Hero_ETC_Base_PowerSlide.m3"/>
+    </CModel>
+    <CModel id="L90ETCEchoPedalSearch" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Hero_Base_ETC\Effect_Hero_ETC_Base_EchoPedal_Cast\Effect_Hero_ETC_Base_EchoPedal_Cast.m3"/>
+        <AnimSpeed value="1.500000"/>
+        <RadiusLoose value="1.000000"/>
+        <ScaleMax value="1.200000,1.200000,1.200000"/>
+        <ScaleMin value="1.200000,1.200000,1.200000"/>
+    </CModel>
+    <CModel id="L90ETCPowerslideImpact" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Hero_Base_ETC\Effect_Hero_ETC_Base_PowerSlide_Impact\Effect_Hero_ETC_Base_PowerSlide_Impact.m3"/>
+    </CModel>
+    <CModel id="L90ETCMoshPitDeath" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Hero_Base_ETC\Effect_Hero_ETC_Base_MoshPit_PyroDeath_Impact\Effect_Hero_ETC_Base_MoshPit_PyroDeath_Impact.m3"/>
+        <ScaleMax value="1.250000,1.250000,1.250000"/>
+        <ScaleMin value="1.250000,1.250000,1.250000"/>
+    </CModel>
+    <CModel id="L90ETCMoshPitDeathFireworkBlue" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Hero_Base_ETC\Effect_Hero_ETC_Base_MoshPit_PyroDeath_Impact\Effect_Hero_ETC_Base_MoshPit_PyroDeath_Impact.m3"/>
+    </CModel>
+    <CModel id="L90ETCMoshPitDeathFireworkRed" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Hero_Base_ETC\Effect_Hero_ETC_Base_MoshPit_PyroDeath_Impact\Effect_Hero_ETC_Base_MoshPit_PyroDeath_Impact.m3"/>
+    </CModel>
+    <CModel id="L90ETCMoshPitDeathFireworkYellow" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Hero_Base_ETC\Effect_Hero_ETC_Base_MoshPit_PyroDeath_Impact\Effect_Hero_ETC_Base_MoshPit_PyroDeath_Impact.m3"/>
+    </CModel>
+    <CModel id="L90ETCMoshPitImpactModelNotes" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Hero_Base_ETC\Effect_Hero_ETC_Base_MoshPit_Impact\Effect_Hero_ETC_Base_MoshPit_Impact.m3"/>
+    </CModel>
+    <CModel id="L90ETCMoshPitModelNotes" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Hero_Base_ETC\Effect_Hero_ETC_Base_MoshPit\Effect_Hero_ETC_Base_MoshPit.m3"/>
+        <Lighting value="L90ETCMoshPitModel"/>
+    </CModel>
+    <CModel id="L90ETCGuitarSolo" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Hero_Base_ETC\Effect_Hero_ETC_Base_GuitarSolo\Effect_Hero_ETC_Base_GuitarSolo.m3"/>
+    </CModel>
+    <CModel id="L90ETCPortrait" parent="Portrait">
+        <Model value="assets\Portraits\Portrait_Background_ETC_Base\Portrait_Background_ETC_Base.m3"/>
+        <Lighting value="Storm_Portrait_ETC_Base"/>
+        <Flags index="ForcePortraitModel" value="1"/>
+    </CModel>
+    <CModel id="L90ETCPortraitAddition" parent="Portrait">
+        <Model value="Assets\Units\Heroes\Hero_Base_ETC\Hero_Base_ETC.m3"/>
+        <RequiredAnims value="assets\Portraits\Hero_PortraitAnims_ETC\Hero_PortraitAnims_ETC.m3a"/>
+        <Flags index="ForcePortraitModel" value="1"/>
+        <TextureDeclares Prefix="Lvl90ETC" Slot="main"/>
+    </CModel>
+    <CModel id="L90ETCSkinPureCountryPortraitAddition" parent="L90ETCPortraitAddition">
+        <Model value="Assets\Units\Heroes\Storm_Hero_ETC_PureCountry\Storm_Hero_ETC_PureCountry.m3"/>
+        <EditorCategories value="Race:Terran"/>
+        <TextureDeclares Prefix="Storm_ETC_PureCountry_Nrm" Slot="main.normal"/>
+        <TextureDeclares Prefix="Storm_ETC_PureCountry" Slot="main"/>
+        <RequiredAnims index="0" value="Assets\Portraits\Storm_Hero_ETC_PortraitAnims\Storm_Hero_ETC_PortraitAnims.m3a"/>
+    </CModel>
+    <CModel id="L90ETCSkinPureCountryPortrait" parent="L90ETCPortrait">
+        <Lighting value="Storm_ETC_PureCountry_Portrait"/>
+        <EditorCategories value="Race:Terran"/>
+        <Model value="Assets\Portraits\Storm_Portrait_ETC_Base_Background\Storm_Portrait_ETC_Base_Background.m3"/>
+    </CModel>
+    <CModel id="L90ETCSkinTemp1Portrait" parent="L90ETCPortrait">
+        <Model value="Assets\Portraits\Storm_Portrait_ETC_Base_Background\Storm_Portrait_ETC_Base_Background.m3"/>
+    </CModel>
+    <CModel id="L90ETCSkinTemp1PortraitAddition" parent="L90ETCPortraitAddition">
+        <Model value="Assets\Units\Heroes\Storm_Hero_ETC_TempSkin1\Storm_Hero_ETC_TempSkin1.m3"/>
+        <RequiredAnims index="0" value="Assets\Portraits\Storm_Hero_ETC_PortraitAnims\Storm_Hero_ETC_PortraitAnims.m3a"/>
+    </CModel>
+    <CModel id="L90ETCSkinTemp2Portrait" parent="L90ETCPortrait">
+        <Model value="Assets\Portraits\Storm_Portrait_ETC_Base_Background\Storm_Portrait_ETC_Base_Background.m3"/>
+    </CModel>
+    <CModel id="L90ETCSkinTemp2PortraitAddition" parent="L90ETCPortraitAddition">
+        <Model value="Assets\Units\Heroes\Storm_Hero_ETC_TempSkin2\Storm_Hero_ETC_TempSkin2.m3"/>
+        <RequiredAnims index="0" value="Assets\Portraits\Storm_Hero_ETC_PortraitAnims\Storm_Hero_ETC_PortraitAnims.m3a"/>
+    </CModel>
+    <CModel id="L90ETCSkinGlamPortrait" parent="L90ETCPortrait">
+        <Lighting value="Storm_ETC_Glam_Portrait"/>
+        <Model value="Assets\Portraits\Storm_Portrait_ETC_Base_Background\Storm_Portrait_ETC_Base_Background.m3"/>
+    </CModel>
+    <CModel id="L90ETCSkinGlamPortraitAddition" parent="L90ETCPortraitAddition">
+        <Model value="Assets\Units\Heroes\Storm_Hero_ETC_Glam\Storm_Hero_ETC_Glam.m3"/>
+        <TextureDeclares Prefix="Storm_ETC_Glam" Slot="main"/>
+        <RequiredAnims index="0" value="Assets\Portraits\Storm_Hero_ETC_PortraitAnims\Storm_Hero_ETC_PortraitAnims.m3a"/>
+    </CModel>
+    <CModel id="L90ETCMoshPitImpactModelStun" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Storm_Effect_Stun_Impact\Storm_Effect_Stun_Impact.m3"/>
+    </CModel>
+    <CModel id="L90ETCGuitarSoloImpact" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Hero_Base_ETC\Effect_Hero_ETC_Base_GuitarSolo_Impact\Effect_Hero_ETC_Base_GuitarSolo_Impact.m3"/>
+    </CModel>
+    <CModel id="L90ETCGuitarSoloRune" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Hero_Base_ETC\Effect_Hero_ETC_Base_GuitarHero\Effect_Hero_ETC_Base_GuitarHero.m3"/>
+        <AnimSpeed value="2.000000"/>
+    </CModel>
+    <CModel id="L90ETCMoshPitModelRange" parent="PersistentSpellFX">
+        <Model value="Assets\UI\Cursors\Storm_Effect_AOECursor_Fantasy\Storm_Effect_AOECursor_Fantasy.m3"/>
+        <ScaleMax value="4.500000,4.500000,4.500000"/>
+        <ScaleMin value="4.500000,4.500000,4.500000"/>
+        <RadiusLoose value="0.500000"/>
+    </CModel>
+    <CModel id="L90ETCRockstarPassiveBuff" parent="BuffFX">
+        <Model value="Assets\Effects\Hero_Base_ETC\Effect_Hero_ETC_Base_UberRockStar\Effect_Hero_ETC_Base_UberRockStar.m3"/>
+        <AnimSpeed value="1.700000"/>
+        <EditorCategories value="Race:Neutral"/>
+    </CModel>
+    <CModel id="HeroL90ETCDeathRagdoll" Prefix="Units\" Race="Neutral" low="">
+        <Model value="Assets\Units\Heroes\Hero_ETC_Base_DeathRagdoll\Hero_ETC_Base_DeathRagdoll.m3"/>
+        <TextureDeclares Prefix="Lvl90ETC" Slot="main"/>
+        <RequiredAnims value="assets\Effects\Common\Effect_Common_DeathRagdollDissipate\Effect_Common_DeathRagdollDissipate.m3a"/>
+        <EditorCategories value="Race:Neutral"/>
+        <Events>
+            <Anim value="Dissipate,00"/>
+            <Name value="Hero_Death_Ragdoll_Dissolve"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="Gen_Hero_Death_Ragdoll_Dissolve"/>
+        </Events>
+        <Flags index="PreventedWhenPhysicsPerformanceConstrained" value="1"/>
+        <Flags index="RequiresPhysicsToOperate" value="1"/>
+        <Flags index="TeenSafe" value="1"/>
+        <Lighting value="HeroDeathRagdoll"/>
+        <Occlusion value="Show"/>
+    </CModel>
+    <CModel id="L90ETCGlamDeathRagdoll" parent="HeroL90ETCDeathRagdoll">
+        <Model value="Assets\Units\Heroes\Storm_Hero_ETC_Glam_DeathRagdoll\Storm_Hero_ETC_Glam_DeathRagdoll.m3"/>
+        <TextureDeclares Prefix="Storm_ETC_Glam" Slot="main"/>
+        <RequiredAnims index="0" value="Assets\Effects\Storm_Effect_DeathRagdollDissipate\Storm_Effect_DeathRagdollDissipate.m3a"/>
+    </CModel>
+    <CModel id="L90ETCPureCountryDeathRagdoll" parent="HeroL90ETCDeathRagdoll">
+        <Model value="Assets\Units\Heroes\Storm_Hero_ETC_PureCountry_DeathRagdoll\Storm_Hero_ETC_PureCountry_DeathRagdoll.m3"/>
+        <EditorCategories value=""/>
+        <TextureDeclares Prefix="Storm_ETC_PureCountry_Nrm" Slot="main.normal"/>
+        <TextureDeclares Prefix="Storm_ETC_PureCountry" Slot="main"/>
+    </CModel>
+    <CModel id="L90ETCTempSkin1DeathRagdoll" parent="HeroL90ETCDeathRagdoll">
+        <Model value="Assets\Units\Heroes\Storm_Hero_ETC_TempSkin1_DeathRagdoll\Storm_Hero_ETC_TempSkin1_DeathRagdoll.m3"/>
+        <RequiredAnims index="0" value="Assets\Effects\Storm_Effect_DeathRagdollDissipate\Storm_Effect_DeathRagdollDissipate.m3a"/>
+    </CModel>
+    <CModel id="L90ETCTempSkin2DeathRagdoll" parent="HeroL90ETCDeathRagdoll">
+        <Model value="Assets\Units\Heroes\Storm_Hero_ETC_TempSkin2_DeathRagdoll\Storm_Hero_ETC_TempSkin2_DeathRagdoll.m3"/>
+        <RequiredAnims index="0" value="Assets\Effects\Storm_Effect_DeathRagdollDissipate\Storm_Effect_DeathRagdollDissipate.m3a"/>
+    </CModel>
+    <CModel id="HeroL90ETCDeath" parent="UnitDeath">
+        <Model value="Assets\Effects\Storm_Effect_HeroDeath\Storm_Effect_HeroDeath.m3"/>
+        <RadiusLoose value="0.500000"/>
+    </CModel>
+    <CModel id="StageDiveBuff" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Storm_Effect_Placeholder_Fire_Medium\Storm_Effect_Placeholder_Fire_Medium.m3"/>
+        <RadiusLoose value="1.000000"/>
+    </CModel>
+    <CModel id="StageDiveCharge" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Storm_Effect_Placeholder_Fire_Medium\Storm_Effect_Placeholder_Fire_Medium.m3"/>
+        <RadiusLoose value="1.000000"/>
+    </CModel>
+    <CModel id="StageDiveLaunch" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Hero_Base_ETC\Effect_Hero_ETC_Base_StageDive_Cast\Effect_Hero_ETC_Base_StageDive_Cast.m3"/>
+        <RadiusLoose value="0.500000"/>
+    </CModel>
+    <CModel id="StageDiveImpact" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Hero_Base_ETC\Effect_Hero_ETC_Base_StageDive_Impact\Effect_Hero_ETC_Base_StageDive_Impact.m3"/>
+        <RadiusLoose value="5.000000"/>
+    </CModel>
+    <CModel id="StageDiveWarning" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Hero_Base_ETC\Effect_Hero_ETC_Base_StageDive_WarningCursor\Effect_Hero_ETC_Base_StageDive_WarningCursor.m3"/>
+        <EditorCategories value="Race:Neutral"/>
+        <RadiusLoose value="0.000000"/>
+    </CModel>
+    <CModel id="StageDiveCursorSplat" parent="UI">
+        <Model value="Assets\UI\Cursors\Storm_Effect_AOECursor_Fantasy\Storm_Effect_AOECursor_Fantasy.m3"/>
+        <ScaleMax value="1.100000,1.100000,1.100000"/>
+        <ScaleMin value="1.100000,1.100000,1.100000"/>
+        <!--
+        <Model value="Assets\Effects\Storm_Effect_Placeholder_NukeCursor\Storm_Placeholder_NukeCursor.m3"/>
+        <ScaleMax value="0.200000,0.200000,0.200000"/>
+        <ScaleMin value="0.200000,0.200000,0.200000"/>
+        <SelectionRadius value="2.500000"/>
+        <ShadowRadius value="2.500000"/>
+        <EditorCategories value="Race:Terran"/>-->
+    </CModel>
+    <CModel id="FaceMeltCast" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Hero_Base_ETC\Effect_Hero_ETC_Base_FaceMelt_Cast\Effect_Hero_ETC_Base_FaceMelt_Cast.m3"/>
+        <RadiusLoose value="0.750000"/>
+    </CModel>
+    <CModel id="L90ETCWeaponAir" parent="MissileFX">
+        <Model value="Assets\Effects\Storm_Effect_Placeholder_Magic_Missile\Storm_Effect_Placeholder_Magic_Missile.m3"/>
+        <EditorCategories value="Race:Terran"/>
+        <ScaleMax value="0.500000,0.500000,0.500000"/>
+        <ScaleMin value="0.500000,0.500000,0.500000"/>
+    </CModel>
+    <CModel id="L90ETCWeaponAirImpact" parent="ImpactFX">
+        <Model value="Assets\Effects\Storm_Effect_Placeholder_Magic_Impact\Storm_Effect_Placeholder_Magic_Impact.m3"/>
+        <EditorCategories value="Race:Neutral"/>
+        <ScaleMax value="0.700000,0.700000,0.700000"/>
+        <ScaleMin value="0.700000,0.700000,0.700000"/>
+    </CModel>
+    <CModel id="HeroL90ETC" parent="Unit" Race="Terran">
+        <Model value="Assets\Units\Heroes\Hero_Base_ETC\Hero_Base_ETC.m3"/>
+        <RequiredAnims value="assets\Units\Heroes\Hero_ETC_RequiredAnims\Hero_ETC_RequiredAnims.m3a"/>
+        <TextureDeclares Prefix="Lvl90ETC" Slot="main"/>
+        <Events>
+            <Anim value="Attack,00"/>
+            <Name value="L90ETCAttackLaunch"/>
+            <Type value="Sound"/>
+            <Time value="0.151000"/>
+            <Payload value="ETC_AttackLaunch"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,01"/>
+            <Name value="L90ETCAttackLaunch"/>
+            <Type value="Sound"/>
+            <Time value="0.151000"/>
+            <Payload value="ETC_AttackLaunch"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,02"/>
+            <Name value="L90ETCAttackLaunch"/>
+            <Type value="Sound"/>
+            <Time value="0.151000"/>
+            <Payload value="ETC_AttackLaunch"/>
+        </Events>
+        <Events>
+            <Anim value="Walk,A"/>
+            <Name value="ETC_Fs_Mv"/>
+            <Type value="Sound"/>
+            <Time value="0.276000"/>
+            <Payload value="ETC_Footstep_Mv"/>
+        </Events>
+        <Events>
+            <Anim value="Walk,A"/>
+            <Name value="ETC_Fs_Mv"/>
+            <Type value="Sound"/>
+            <Time value="0.707000"/>
+            <Payload value="ETC_Footstep_Mv"/>
+        </Events>
+        <Flags index="ForcePortraitModel" value="1"/>
+        <Occlusion value="Show"/>
+        <Radius value="0.750000"/>
+        <ScaleMax value="1.100000,1.100000,1.100000"/>
+        <ScaleMin value="1.100000,1.100000,1.100000"/>
+        <SelectionRadius value="0.600000"/>
+        <ShadowRadius value="0.600000"/>
+        <TechPurchaseCamera value="Star2CameraLow05"/>
+    </CModel>
+    <CModel id="L90ETCSkinPureCountry" parent="HeroL90ETC">
+        <Model value="Assets\Units\Heroes\Storm_Hero_ETC_PureCountry\Storm_Hero_ETC_PureCountry.m3"/>
+        <TextureDeclares Prefix="Storm_ETC_PureCountry_Nrm" Slot="main.normal"/>
+        <TextureDeclares Prefix="Storm_ETC_PureCountry" Slot="main"/>
+        <RequiredAnims index="0" value="Assets\Units\Heroes\Storm_Hero_ETC_RequiredAnims\Storm_Hero_ETC_RequiredAnims.m3a"/>
+    </CModel>
+    <CModel id="L90ETCSkinTemp1" parent="HeroL90ETC" Race="Neutral">
+        <Model value="Assets\Units\Heroes\Storm_Hero_ETC_TempSkin1\Storm_Hero_ETC_TempSkin1.m3"/>
+        <RequiredAnims index="0" value="Assets\Units\Heroes\Storm_Hero_ETC_RequiredAnims\Storm_Hero_ETC_RequiredAnims.m3a"/>
+    </CModel>
+    <CModel id="L90ETCSkinTemp2" parent="HeroL90ETC" Race="Neutral">
+        <Model value="Assets\Units\Heroes\Storm_Hero_ETC_TempSkin2\Storm_Hero_ETC_TempSkin2.m3"/>
+        <RequiredAnims index="0" value="Assets\Units\Heroes\Storm_Hero_ETC_RequiredAnims\Storm_Hero_ETC_RequiredAnims.m3a"/>
+    </CModel>
+    <CModel id="L90ETCSkinGlam" parent="HeroL90ETC" Race="Neutral">
+        <Model value="Assets\Units\Heroes\Storm_Hero_ETC_Glam\Storm_Hero_ETC_Glam.m3"/>
+        <TextureDeclares Prefix="Storm_ETC_Glam" Slot="main"/>
+        <RequiredAnims index="0" value="Assets\Units\Heroes\Storm_Hero_ETC_RequiredAnims\Storm_Hero_ETC_RequiredAnims.m3a"/>
+    </CModel>
+    <CWeaponLegacy id="HeroL90ETC" parent="StormHeroMediumWeapon">
+        <Icon value="Assets\Textures\storm_temp_btn-upgrade-zerg-meleeattacks-level3.dds"/>
+        <DisplayEffect value="L90ETCWeaponDamage"/>
+        <TargetFilters value="Visible;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <MinScanRange value="4"/>
+        <Range value="1.5"/>
+        <RangeSlop value="2.125"/>
+        <Period value="0.9"/>
+        <RandomDelayMin value="0"/>
+        <RandomDelayMax value="0"/>
+        <Effect value="L90ETCWeaponSet"/>
+        <Options index="Melee" value="1"/>
+        <Options index="ContinuousScan" value="1"/>
+        <Options index="HoldFileInShrubs" value="1"/>
+        <Cost>
+            <Cooldown Link="Abil/L90ETCWeaponCooldown" Location="Unit" TimeUse="0.25"/>
+        </Cost>
+        <DamagePoint value="0.125"/>
+        <Backswing value="0"/>
+    </CWeaponLegacy>
+    <CSound id="ETC_GuitarSolo_Groupies_Impact" parent="Spell">
+        <AssetArray File="Assets\Sounds\Heroes\ETC_Base\ETC_GuitarSolo_Heal01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\ETC_Base\ETC_GuitarSolo_Heal02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\ETC_Base\ETC_GuitarSolo_Heal06.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\ETC_Base\ETC_GuitarSolo_Heal07.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\ETC_Base\ETC_GuitarSolo_Heal08.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\ETC_Base\ETC_GuitarSolo_Heal09.wav" FacialGroup=""/>
+        <Category value="Combat"/>
+        <Pitch value="-2.000000,2.000000"/>
+        <Volume value="-24.000000,-20.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="ETC_DamageSlide_Cast" parent="Combat">
+        <AssetArray File="Assets\Sounds\Heroes\ETC_Base\ETC_FaceMelt_Launch01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\ETC_Base\ETC_FaceMelt_Launch02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\ETC_Base\ETC_FaceMelt_Launch03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\ETC_Base\ETC_FaceMelt_Launch04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\ETC_Base\ETC_FaceMelt_Launch05.wav" FacialGroup=""/>
+        <Category value="Spell"/>
+        <Volume value="-3.000000,-3.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="ETC_DamageSlide_Impact" parent="Combat">
+        <AssetArray File="Assets\Sounds\Impact_FX\Impact_Blunt_Large_Unit01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Impact_FX\Impact_Blunt_Large_Unit02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Impact_FX\Impact_Blunt_Large_Unit03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Impact_FX\Impact_Blunt_Large_Unit04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Impact_FX\Impact_Blunt_Large_Unit05.wav" FacialGroup=""/>
+        <Category value="Spell"/>
+        <Volume value="-7.000000,-7.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="ETC_MoshPit_DeathMetal_Cast" parent="Spell">
+        <AssetArray File="Assets\Sounds\Heroes\ETC_Base\ETC_MoshPit_Launch01.wav" FacialGroup=""/>
+        <Category value="TV"/>
+        <Volume value="-5.000000,-5.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="ETC_StageDive_RockGod_Charge" parent="Spell">
+        <AssetArray File="Assets\Sounds\Heroes\ETC_Base\ETC_StageDive_PreLaunch01.wav" FacialGroup=""/>
+        <Category value="TV"/>
+        <DupeDestroyCount value="1"/>
+        <DupeMuteCount value="1"/>
+        <Select value="Sequential"/>
+        <Volume value="-12.000000,-12.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="ETC_StageDive_RockGod_Launch" parent="Spell">
+        <AssetArray File="Assets\Sounds\Heroes\ETC_Base\ETC_StageDive_Launch01.wav" FacialGroup=""/>
+        <Category value="TV"/>
+        <Volume value="-6.000000,-6.000000"/>
+        <VolumeRolloffFadeIn Volume="-96.000000"/>
+        <VolumeRolloffFadeIn Time="74"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="ETC_StageDive_RockGod_PreImpact" parent="Spell">
+        <AssetArray File="Assets\Sounds\Heroes\ETC_Base\ETC_StageDive_PreImpact.wav" FacialGroup=""/>
+        <Category value="Combat"/>
+        <Volume value="-6.000000,-6.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="ETC_StageDive_RockGod_Impact" parent="Spell">
+        <AssetArray File="Assets\Sounds\Heroes\ETC_Base\ETC_StageDive_Impact01.wav" FacialGroup=""/>
+        <Category value="TV"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="ETC_StageDive_PreImpact" parent="Spell">
+        <AssetArray File="Assets\Sounds\Heroes\ETC_Base\ETC_StageDive_PreImpact.wav" FacialGroup=""/>
+        <Category value="Combat"/>
+        <Volume value="-6.000000,-6.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="ETC_UI_VOX_Spun" parent="Hero_Store">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_VOX_GetHit02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_VOX_GetHit03.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_VOX_GetHit05.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_VOX_GetHit06.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_VOX_GetHit08.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_VOX_GetHit09.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_VOX_GetHit10.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_VOX_GetHit12.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_VOX_GetHit13.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_VOX_GetHit14.ogg" FacialGroup=""/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="40.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="ETC_AI_Uhoh" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_AI_Uhoh00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_AI_Uhoh01.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_AI_Uhoh02.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="ETC_Celebrate" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Celebrate00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Celebrate01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="ETC_LowLifeHeal" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_LowLifeHeal00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_LowLifeHeal01.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_LowLifeHeal02.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="ETC_RevengeEnd" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_RevengeEnd00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_RevengeEnd01.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_RevengeEnd02.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="ETC_RevengeStart" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_RevengeStart00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_RevengeStart01.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_RevengeStart02.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_RevengeStart03.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="ETC_UI_ExLocked" parent="Hero_Store">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_UI_ExLocked00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="ETC_UI_ExPurchased" parent="Hero_Store">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_UI_ExPurchased00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="ETC_UI_Gift" parent="Hero_Store">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_UI_Gift00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="ETC_UI_HeroSelect_GuitarSolo" parent="Hero_Store">
+        <AssetArray File="Assets\Sounds\Heroes\ETC_Base\ETC_GuitarSolo01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\ETC_Base\ETC_GuitarSolo02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\ETC_Base\ETC_GuitarSolo03.wav" FacialGroup=""/>
+        <Flags index="Purgable" value="1"/>
+        <Flags index="Stream" value="0"/>
+        <Category value="Spell"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="ETC_UI_Lockin" parent="Hero_Store">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_UI_Lockin00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="ETC_UI_Purchase" parent="Hero_Store">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_UI_Purchase00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="ETC_UI_Trial" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_UI_Trial00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_UI_Trial01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="ETC_UI_WaitLocked" parent="Hero_Store">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_UI_WaitLocked00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_UI_WaitLocked01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="ETC_UI_WaitPurchased" parent="Hero_Store">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_UI_WaitPurchased00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_UI_WaitPurchased01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="ETC_VOX_Cheer" parent="Hero_Vox">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_VOX_Cheer00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Exclusivity value="DefaultMediumVOPriority"/>
+    </CSound>
+    <CSound id="ETC_AI_Retreat" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_AI_Retreat00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_AI_Retreat01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <SustainFade index="1" Time="500" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="ETC_Attack_Evo" parent="Hero_Medium">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Attack_Evo00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Attack_Evo01.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Attack_Evo02.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Attack_Evo03.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Attack_Evo04.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="-4.000000,-4.000000"/>
+    </CSound>
+    <CSound id="ETC_Healed_Evo" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Healed_Evo00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Healed_Evo01.ogg" FacialGroup=""/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="-2.000000,-2.000000"/>
+        <DupeWait value="10000,15000"/>
+    </CSound>
+    <CSound id="ETC_LowMana_Evo" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_LowMana_Evo00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="ETC_Pissed_Evo" parent="Hero_Pissed">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Pissed_Evo00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Pissed_Evo01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <VolumeRolloffPoints index="0" Distance="10.000000"/>
+    </CSound>
+    <CSound id="ETC_Taunt_Evo" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Taunt_Evo00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Taunt_Evo01.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Taunt_Evo02.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="ETC_Ultimate1Used_Evo" parent="Hero_Critical">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Ultimate1Used_Evo00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="ETC_Ultimate2Used_Evo" parent="Hero_Critical">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Ultimate2Used_Evo00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Ultimate2Used_Evo01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Ultimate2Used_Evo02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Ultimate2Used_Evo03.ogg" FacialGroup=""/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="ETC_Yes_Evo" parent="Hero_Low">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Yes_Evo00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Yes_Evo01.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Yes_Evo02.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Yes_Evo03.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Yes_Evo04.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="-4.000000,-4.000000"/>
+        <VolumeRolloffPoints index="0" Distance="216.304337"/>
+    </CSound>
+    <CSound id="ETC_KillSkeletonKing" parent="Hero_Critical">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_KillSkeletonKing00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="ETC_IntroQuestion_Deathwing" parent="Hero_Critical">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_IntroQuestion_Deathwing00.wav" FacialGroup=""/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="ETC_IntroQuestion_FairyDragon" parent="Hero_Critical">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_IntroQuestion_FairyDragon00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="ETC_IntroQuestion_Thrall" parent="Hero_Critical">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_IntroQuestion_Thrall00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="ETC_IntroResponse_Deathwing" parent="Hero_Critical">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_IntroResponse_Deathwing00.wav" FacialGroup=""/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="ETC_IntroResponse_FairyDragon" parent="Hero_Critical">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_IntroResponse_FairyDragon00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="ETC_IntroResponse_Thrall" parent="Hero_Critical">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_IntroResponse_Thrall00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="ETC_KillMalfurion" parent="Hero_Critical">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_KillMalfurion00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="ETC_EchoPedal_Cast" parent="Spell">
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Fire_Launch01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Fire_Launch02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Fire_Launch03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Fire_Launch04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Fire_Launch05.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Fire_Launch06.wav" FacialGroup=""/>
+        <Volume value="-18.000000,-12.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+        <Pitch value="-4.000000,0.000000"/>
+    </CSound>
+    <CSound id="ETC_Footstep_Mv" parent="Movement">
+        <AssetArray File="Assets\Sounds\Heroes\ETC_Base\ETC_FS01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\ETC_Base\ETC_FS02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\ETC_Base\ETC_FS03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\ETC_Base\ETC_FS04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\ETC_Base\ETC_FS05.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\ETC_Base\ETC_FS06.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\ETC_Base\ETC_FS07.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\ETC_Base\ETC_FS08.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\ETC_Base\ETC_FS09.wav" FacialGroup=""/>
+        <Pitch value="-2.000000,0.000000"/>
+        <Volume value="-22.000000,-20.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+        <PlayDelay value="0,10"/>
+    </CSound>
+    <CSound id="ETC_IntroAgree" parent="Hero_Critical">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_IntroAgree00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_IntroAgree01.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_IntroAgree02.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="ETC_IntroBoast" parent="Hero_Critical">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_IntroBoast00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="ETC_IntroQuestion" parent="Hero_Critical">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_IntroQuestion00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="ETC_IntroRespond" parent="Hero_Critical">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_IntroRespond00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_IntroRespond01.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_IntroRespond02.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="ETC_KillSpreeEnd" parent="Hero_Critical">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_KillSpreeEnd00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="ETC_Ping_AssistMe" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Ping_AssistMe00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Ping_AssistMe01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="ETC_Ping_Danger" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Ping_Danger00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Ping_Danger01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="ETC_Ping_EnemyMissing" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Ping_EnemyMissing00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Ping_EnemyMissing01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="ETC_Ping_OnMyWay" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Ping_OnMyWay00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Ping_OnMyWay01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="ETC_TeamKilled" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_TeamKilled00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="ETC_Ultimate2Used" parent="Hero_Critical">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Ultimate2Used00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Ultimate2Used01.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Ultimate2Used02.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Ultimate2Used03.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="ETC_CantMove" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_CantMove00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="ETC_Ping_AssistHero" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Ping_AssistHero00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="ETC_Ping_AttackCastle" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Ping_AttackCastle00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+        <Volume value="-4.000000,-4.000000"/>
+    </CSound>
+    <CSound id="ETC_Ping_AttackMerc" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Ping_AttackMerc00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="ETC_Ping_AttackOutpost" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Ping_AttackOutpost00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="ETC_Ping_AttackTower" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Ping_AttackTower00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+        <Volume value="-4.000000,-4.000000"/>
+    </CSound>
+    <CSound id="ETC_Ping_DefendCastle" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Ping_DefendCastle00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="ETC_Ping_DefendOutpost" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Ping_DefendOutpost00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="ETC_Ping_DefendTower" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Ping_DefendTower00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="ETC_Ping_KillHero" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Ping_KillHero00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="ETC_VOX_Attack" parent="Hero_Vox">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_VOX_Attack00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_VOX_Attack01.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_VOX_Attack02.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_VOX_Attack03.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_VOX_Attack04.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="-4.000000,-4.000000"/>
+    </CSound>
+    <CSound id="ETC_VOX_Casting" parent="Hero_Vox">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_VOX_Casting00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_VOX_Casting01.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_VOX_Casting02.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_VOX_Casting03.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_VOX_Casting04.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="ETC_VOX_GetHit" parent="Hero_Vox">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_VOX_GetHit00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_VOX_GetHit02.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_VOX_GetHit03.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_VOX_GetHit04.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_VOX_GetHit10.ogg" FacialGroup=""/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="ETC_VOX_Pulled" parent="Hero_Vox">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_VOX_Pulled00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_VOX_Pulled01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="ETC_KillETC" parent="Hero_Critical">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_KillETC00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="ETC_KillMurky" parent="Hero_Critical">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_KillMurky00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="ETC_KillUnknown" parent="Hero_Critical">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_KillUnknown00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_KillUnknown00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_KillUnknown00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="ETC_Death" parent="Hero_Death">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Death00.wav" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Death01.wav" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Death02.wav" FacialGroup=""/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="ETC_AI_Attack" parent="Hero_Medium">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_AI_Attack00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="-4.000000,-4.000000"/>
+    </CSound>
+    <CSound id="ETC_AI_Caution" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_AI_Caution00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="ETC_AI_GoodJob" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_AI_GoodJob00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_AI_GoodJob01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="-2.000000,-2.000000"/>
+    </CSound>
+    <CSound id="ETC_AI_MercCapture" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_AI_MercCapture00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="ETC_AI_OnMyWay" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_AI_OnMyWay00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_AI_OnMyWay01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="ETC_Attack" parent="Hero_Medium">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Attack00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Attack01.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Attack02.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Attack03.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Attack04.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="-4.000000,-4.000000"/>
+    </CSound>
+    <CSound id="ETC_Healed" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Healed00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Healed01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="-2.000000,-2.000000"/>
+        <DupeWait value="10000,15000"/>
+    </CSound>
+    <CSound id="ETC_Kill" parent="Hero_Critical">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Kill00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Kill01.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Kill02.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Kill03.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="ETC_Laugh" parent="Hero_Vox">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Laugh00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="ETC_LowHealth" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_LowHealth00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="ETC_LowMana" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_LowMana00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="ETC_No" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_No00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_No01.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_No02.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="ETC_Ping_Attack" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Ping_Attack00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+        <Volume value="-4.000000,-4.000000"/>
+    </CSound>
+    <CSound id="ETC_Ping_Defend" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Ping_Defend00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="ETC_Pissed" parent="Hero_Pissed">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Pissed00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Pissed01.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Pissed02.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Pissed03.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Pissed04.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Pissed05.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Pissed06.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Pissed07SFX.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Pissed09.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Pissed10.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Pissed11SFX.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Pissed12SFX.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Pissed13.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Pissed14.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Pissed15.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Pissed16.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <VolumeRolloffPoints index="0" Distance="10.000000"/>
+    </CSound>
+    <CSound id="ETC_Resurrected" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Resurrected00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Resurrected01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="ETC_Revive" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Revive00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Revive01.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="ETC_Spec" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Spec00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Spec01.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Spec02.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Spec03.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Spec04.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="ETC_Taunt" parent="Hero_High">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Taunt00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Taunt01.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Taunt02.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <DupeWait value="10000,10000"/>
+    </CSound>
+    <CSound id="ETC_Ultimate1Used" parent="Hero_Critical">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Ultimate1Used00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="ETC_Yes" parent="Hero_Low">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Yes00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Yes01.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Yes02.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Yes03.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_Yes04.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="-4.000000,-4.000000"/>
+        <VolumeRolloffPoints index="0" Distance="216.304337"/>
+    </CSound>
+    <CSound id="ETC_AttackLaunch" parent="Combat">
+        <EditorCategories value="Race:Neutral"/>
+        <AssetArray File="Assets\Sounds\Heroes\ETC_Base\ETC_Attack_Launch01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\ETC_Base\ETC_Attack_Launch02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\ETC_Base\ETC_Attack_Launch03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\ETC_Base\ETC_Attack_Launch04.wav" FacialGroup=""/>
+        <DupeMaximumMethod value="Replace"/>
+        <Pitch value="-3.000000,-1.000000"/>
+        <Volume value="-10.040000,-7.040000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="ETC_GuitarSolo_Impact" parent="Spell">
+        <AssetArray File="Assets\Sounds\Heroes\ETC_Base\ETC_GuitarSolo_Heal01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\ETC_Base\ETC_GuitarSolo_Heal02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\ETC_Base\ETC_GuitarSolo_Heal06.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\ETC_Base\ETC_GuitarSolo_Heal07.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\ETC_Base\ETC_GuitarSolo_Heal08.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\ETC_Base\ETC_GuitarSolo_Heal09.wav" FacialGroup=""/>
+        <Volume value="-11.000000,-11.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+        <Category value="Combat"/>
+    </CSound>
+    <CSound id="ETC_MoshPit_Cast" parent="Spell">
+        <AssetArray File="Assets\Sounds\Heroes\ETC_Base\ETC_MoshPit_Launch01.wav" FacialGroup=""/>
+        <Category value="TV"/>
+        <Volume value="-5.000000,-5.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="ETC_GuitarSolo_Cast" parent="Spell">
+        <AssetArray File="Assets\Sounds\Heroes\ETC_Base\ETC_GuitarSolo01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\ETC_Base\ETC_GuitarSolo02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\ETC_Base\ETC_GuitarSolo03.wav" FacialGroup=""/>
+        <Volume value="-7.000000,-7.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="ETC_AttackImpact_Unit" parent="Impact_Sharp_Large_Unit">
+        <AssetArray index="0" File="Assets\Sounds\Impact_FX\Impact_Sharp_Large_Unit01.wav" FacialGroup=""/>
+        <AssetArray index="1" File="Assets\Sounds\Impact_FX\Impact_Sharp_Large_Unit02.wav" FacialGroup=""/>
+        <AssetArray index="2" File="Assets\Sounds\Impact_FX\Impact_Sharp_Large_Unit03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Impact_FX\Impact_Sharp_Large_Unit04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Impact_FX\Impact_Sharp_Large_Unit05.wav" FacialGroup=""/>
+        <Pitch value="0.000000,0.000000"/>
+        <SpeakerMix index="FrontLeft" value="1.000000"/>
+        <SpeakerMix index="FrontRight" value="1.000000"/>
+        <SpeakerMix index="Center" value="1.000000"/>
+        <SpeakerMix index="BackLeft" value="1.000000"/>
+        <SpeakerMix index="BackRight" value="1.000000"/>
+        <SpeakerMix index="SideLeft" value="1.000000"/>
+        <SpeakerMix index="SideRight" value="1.000000"/>
+        <Volume value="-2.040000,-0.040000"/>
+    </CSound>
+    <CSound id="ETC_AttackImpact_Building" parent="Impact_Sharp_Large_Stone">
+        <AssetArray index="3" removed="1"/>
+        <AssetArray index="4" removed="1"/>
+        <AssetArray index="5" removed="1"/>
+        <AssetArray index="6" removed="1"/>
+        <Pitch value="0.000000,0.000000"/>
+        <Select value="Shuffle"/>
+        <SpeakerMix index="FrontLeft" value="1.000000"/>
+        <SpeakerMix index="FrontRight" value="1.000000"/>
+        <SpeakerMix index="Center" value="1.000000"/>
+        <SpeakerMix index="BackLeft" value="1.000000"/>
+        <SpeakerMix index="BackRight" value="1.000000"/>
+        <SpeakerMix index="SideLeft" value="1.000000"/>
+        <SpeakerMix index="SideRight" value="1.000000"/>
+        <Volume value="-2.040000,-0.040000"/>
+    </CSound>
+    <CSound id="ETC_StageDive_Launch" parent="Spell">
+        <AssetArray File="Assets\Sounds\Heroes\ETC_Base\ETC_StageDive_Launch01.wav" FacialGroup=""/>
+        <Volume value="-6.000000,-6.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+        <Category value="TV"/>
+        <VolumeRolloffFadeIn Volume="-96.000000"/>
+        <VolumeRolloffFadeIn Time="74"/>
+    </CSound>
+    <CSound id="ETC_StageDive_Impact" parent="Spell">
+        <AssetArray File="Assets\Sounds\Heroes\ETC_Base\ETC_StageDive_Impact01.wav" FacialGroup=""/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+        <Category value="TV"/>
+    </CSound>
+    <CSound id="ETC_StageDive_Approach" parent="Spell">
+        <Chance value="0"/>
+        <Volume value="-6.000000,-6.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+        <Category value="TV"/>
+    </CSound>
+    <CSound id="ETC_StageDive_Charge" parent="Spell">
+        <AssetArray File="Assets\Sounds\Heroes\ETC_Base\ETC_StageDive_PreLaunch01.wav" FacialGroup=""/>
+        <Category value="TV"/>
+        <DupeDestroyCount value="1"/>
+        <DupeMuteCount value="1"/>
+        <Select value="Sequential"/>
+        <Volume value="-12.000000,-12.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="ETC_FaceMelt_Cast" parent="Spell">
+        <AssetArray File="Assets\Sounds\Heroes\ETC_Base\ETC_HeadBang_Launch01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\ETC_Base\ETC_HeadBang_Launch02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\ETC_Base\ETC_HeadBang_Launch03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\ETC_Base\ETC_HeadBang_Launch04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\ETC_Base\ETC_HeadBang_Launch05.wav" FacialGroup=""/>
+        <Pitch value="-1.000000,1.000000"/>
+        <Volume value="-5.000000,-5.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="ETC_FaceMelt_Impact" parent="Combat">
+        <AssetArray File="Assets\Sounds\Talents\Talent_Block_Launch01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Talents\Talent_Block_Launch02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Talents\Talent_Block_Launch03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Talents\Talent_Block_Launch04.wav" FacialGroup=""/>
+        <DupeDestroyCount value="7"/>
+        <DupeMaximumMethod value="Replace"/>
+        <DupeMuteCount value="7"/>
+        <Volume value="-3.590000,-3.590000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+        <Category value="Spell"/>
+    </CSound>
+    <CSound id="ETC_Powerslide_Cast" parent="Combat">
+        <AssetArray File="Assets\Sounds\Heroes\ETC_Base\ETC_FaceMelt_Launch01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\ETC_Base\ETC_FaceMelt_Launch02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\ETC_Base\ETC_FaceMelt_Launch03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\ETC_Base\ETC_FaceMelt_Launch04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\ETC_Base\ETC_FaceMelt_Launch05.wav" FacialGroup=""/>
+        <Category value="Spell"/>
+        <Volume value="-3.000000,-3.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="ETC_Powerslide_Impact" parent="Combat">
+        <AssetArray File="Assets\Sounds\Impact_FX\Impact_Blunt_Large_Unit01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Impact_FX\Impact_Blunt_Large_Unit02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Impact_FX\Impact_Blunt_Large_Unit03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Impact_FX\Impact_Blunt_Large_Unit04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Impact_FX\Impact_Blunt_Large_Unit05.wav" FacialGroup=""/>
+        <Volume value="-7.000000,-7.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+        <Category value="Spell"/>
+    </CSound>
+    <CSound id="ETC_IntroQuestion_Diablo" parent="Hero_Critical">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_IntroQuestion_Diablo00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="ETC_IntroResponse_Diablo" parent="Hero_Critical">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_IntroResponse_Diablo00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="ETC_KillDiablo" parent="Hero_Critical">
+        <AssetArray File="LocalizedData\Sounds\VO\ETC_KillDiablo00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CHero id="L90ETC">
+        <AttributeId value="L90E"/>
+        <Melee value="1"/>
+        <SelectScreenButtonImage value="Assets\Textures\UI\HeroIcons\Selection\storm_ui_ingame_heroselect_btn_l90etc.dds"/>
+        <ScoreScreenImage value="Assets\Textures\UI\HeroIcons\LeaderBoard\storm_ui_ingame_hero_leaderboard_l90etc.dds"/>
+        <UniverseIcon value="Assets\Textures\UI_Glues_Store_GameIcon_Wow.dds"/>
+        <VariationIcon value="Assets\Textures\UI_Glues_Swatch_Brown.dds"/>
+        <IntroCutsceneSize value="Medium"/>
+        <PassiveButton value="RockstarHeroSelect"/>
+        <SpecificKillVOArray Target="HeroL90ETC" Sound="ETC_KillETC"/>
+        <SpecificKillVOArray Target="HeroDiablo" Sound="ETC_KillDiablo"/>
+        <VariationArray value="ETCDark"/>
+        <VariationArray value="ETCLight"/>
+        <SkinArray value="ETCGlam"/>
+        <SkinArray value="ETCPureCountry"/>
+        <HeroicAbilArray Abil="L90ETCStageDive"/>
+        <HeroicAbilArray Abil="L90ETCMoshPit"/>
+        <VOArray index="AIAttack" value="ETC_AI_Attack"/>
+        <VOArray index="AICaution" value="ETC_AI_Caution"/>
+        <VOArray index="AIGoodJob" value="ETC_AI_GoodJob"/>
+        <VOArray index="AIMercCapture" value="ETC_AI_MercCapture"/>
+        <VOArray index="AIOnMyWay" value="ETC_AI_OnMyWay"/>
+        <VOArray index="AIRetreat" value="ETC_AI_Retreat"/>
+        <VOArray index="EndEnemyKillSpree" value="ETC_KillSpreeEnd"/>
+        <VOArray index="GetHit" value="ETC_VOX_GetHit"/>
+        <VOArray index="GlueExamineLocked" value="ETC_UI_ExLocked"/>
+        <VOArray index="GlueExaminePurchased" value="ETC_UI_ExPurchased"/>
+        <VOArray index="GlueGift" value="ETC_UI_Gift"/>
+        <VOArray index="GluePurchase" value="ETC_UI_Purchase"/>
+        <VOArray index="GlueTrial" value="ETC_UI_Trial"/>
+        <VOArray index="GlueWaitLocked" value="ETC_UI_WaitLocked"/>
+        <VOArray index="GlueWaitPurchased" value="ETC_UI_WaitPurchased"/>
+        <VOArray index="Healed" value="ETC_Healed"/>
+        <VOArray index="IntroAgree" value="ETC_IntroAgree"/>
+        <VOArray index="IntroBoast" value="ETC_IntroBoast"/>
+        <VOArray index="IntroQuestion" value="ETC_IntroQuestion"/>
+        <VOArray index="IntroResponse" value="ETC_IntroRespond"/>
+        <VOArray index="KillGeneric" value="ETC_Kill"/>
+        <VOArray index="Laugh" value="ETC_Laugh"/>
+        <VOArray index="PingAssistHero" value="ETC_Ping_AssistHero"/>
+        <VOArray index="PingAssistMe" value="ETC_Ping_AssistMe"/>
+        <VOArray index="PingAttackCore" value="ETC_Ping_AttackCastle"/>
+        <VOArray index="PingAttackHere" value="ETC_Ping_Attack"/>
+        <VOArray index="PingAttackHero" value="ETC_Ping_KillHero"/>
+        <VOArray index="PingAttackMercCamp" value="ETC_Ping_AttackMerc"/>
+        <VOArray index="PingAttackTown" value="ETC_Ping_AttackOutpost"/>
+        <VOArray index="PingAttackWatchTower" value="ETC_Ping_AttackTower"/>
+        <VOArray index="PingDefendCore" value="ETC_Ping_DefendCastle"/>
+        <VOArray index="PingDefendHere" value="ETC_Ping_Defend"/>
+        <VOArray index="PingDefendTown" value="ETC_Ping_DefendOutpost"/>
+        <VOArray index="PingDefendWatchTower" value="ETC_Ping_DefendTower"/>
+        <VOArray index="Pissed" value="ETC_Pissed"/>
+        <VOArray index="Resurrected" value="ETC_Resurrected"/>
+        <VOArray index="Revive" value="ETC_Revive"/>
+        <VOArray index="SpecChosen" value="ETC_Spec"/>
+        <VOArray index="TeamKilled" value="ETC_TeamKilled"/>
+        <Difficulty value="Medium"/>
+        <TalentTreeArray index="35" Talent="" Tier="6" Column="1"/>
+        <!-- Tier 1 -->
+        <TalentTreeArray Talent="TalentBucketPathOfTheWarrior" Tier="1" Column="1"/>
+        <TalentTreeArray Talent="L90ETCMasteryPowerslideDamageSlide" Tier="1" Column="2"/>
+        <TalentTreeArray Talent="L90ETCMasteryGuitarSoloPwnShopGuitar" Tier="1" Column="3"/>
+        <TalentTreeArray Talent="L90ETCMasteryGuitarSoloGroupies" Tier="1" Column="4"/>
+        <!-- Tier 2 -->
+        <TalentTreeArray Talent="BucketSuperiority" Tier="2" Column="1"/>
+        <TalentTreeArray Talent="ETCCombatStyleEchoPedal" Tier="2" Column="2"/>
+        <TalentTreeArray Talent="L90ETCMasteryFaceMeltDanceYourPantsOff" Tier="2" Column="3"/>
+        <TalentTreeArray Talent="L90ETCMasteryFaceMeltLoudSpeakers" Tier="2" Column="4"/>
+        <!-- Tier 3 -->
+        <TalentTreeArray Talent="KineticBlock" Tier="3" Column="1"/>
+        <TalentTreeArray Talent="BucketBattleMomentum" Tier="3" Column="2"/>
+        <TalentTreeArray Talent="ETCMasteryMonsterSlide" Tier="3" Column="3"/>
+        <TalentTreeArray Talent="ETCMasteryGuitarHero" Tier="3" Column="4"/>
+        <!-- Tier 4 -->
+        <TalentTreeArray Talent="ETCHeroicAbilityMoshPit" Tier="4" Column="1"/>
+        <TalentTreeArray Talent="ETCHeroicAbilityStageDive" Tier="4" Column="2"/>
+        <!-- Tier 5 -->
+        <TalentTreeArray Talent="BucketRelentless" Tier="5" Column="1"/>
+        <TalentTreeArray Talent="ETCCombatStyleUberRockstar" Tier="5" Column="2"/>
+        <TalentTreeArray Talent="ETCMasteryFaceSmelt" Tier="5" Column="3"/>
+        <!-- Tier 6 -->
+        <TalentTreeArray Talent="BucketImposingPresence" Tier="6" Column="1"/>
+        <TalentTreeArray Talent="L90ETCMasteryPowerslideHeadCrack" Tier="6" Column="2"/>
+        <TalentTreeArray Talent="L90ETCMasteryGuitarSoloGuitarInstrumental" Tier="6" Column="3"/>
+        <TalentTreeArray Talent="BucketStoneskin" Tier="6" Column="4"/>
+        <!-- Tier 7 -->
+        <TalentTreeArray Talent="TalentBucket_ResurgenceOfTheStorm" Tier="7" Column="1"/>
+        <TalentTreeArray Talent="TalentBucket_FuryOfTheStorm" Tier="7" Column="2"/>
+        <TalentTreeArray Talent="L90ETCMasteryMoshPitDeathMetal" Tier="7" Column="3"/>
+        <TalentTreeArray Talent="L90ETCMasteryStageDiveRockGod" Tier="7" Column="4"/>
+        <TalentTreeArray Talent="BucketFlashoftheStorms" Tier="7" Column="5"/>
+        <SpecificIntroVOArray Target="HeroDiablo" Question="ETC_IntroQuestion_Diablo" Response="ETC_IntroResponse_Diablo"/>
+        <SpecificIntroVOArray/>
+        <TalentProfileArray value="TalentBucketL90ETC"/>
+        <Universe value="Warcraft"/>
+        <LevelScalingArray Ability="L90ETCPowerslide">
+            <Modifications>
+                <Catalog value="Effect"/>
+                <Entry value="PowerSlideDamage"/>
+                <Field value="Amount"/>
+                <Value value="7.000000"/>
+                <AffectedByAbilityPower value="1"/>
+                <AffectedByOverdrive value="1"/>
+            </Modifications>
+        </LevelScalingArray>
+        <LevelScalingArray Ability="L90ETCFaceMelt">
+            <Modifications>
+                <Catalog value="Effect"/>
+                <Entry value="FaceMeltDamage"/>
+                <Field value="Amount"/>
+                <Value value="5.000000"/>
+                <AffectedByAbilityPower value="1"/>
+                <AffectedByOverdrive value="1"/>
+            </Modifications>
+        </LevelScalingArray>
+        <LevelScalingArray Ability="L90ETCGuitarSolo">
+            <Modifications>
+                <Catalog value="Effect"/>
+                <Entry value="L90ETCGuitarSoloHeroHeal"/>
+                <Field value="RechargeVitalRate"/>
+                <Value value="6.000000"/>
+                <AffectedByAbilityPower value="1"/>
+                <AffectedByOverdrive value="1"/>
+            </Modifications>
+            <Modifications>
+                <Catalog value="Effect"/>
+                <Entry value="L90ETCGuitarSoloAllyHeal"/>
+                <Field value="RechargeVitalRate"/>
+                <Value value="3.000000"/>
+                <AffectedByAbilityPower value="1"/>
+                <AffectedByOverdrive value="1"/>
+            </Modifications>
+        </LevelScalingArray>
+        <LevelScalingArray Ability="L90ETCStageDive">
+            <Modifications>
+                <Catalog value="Effect"/>
+                <Entry value="StageDiveDamage"/>
+                <Field value="Amount"/>
+                <Value value="12.000000"/>
+                <AffectedByAbilityPower value="1"/>
+                <AffectedByOverdrive value="1"/>
+            </Modifications>
+        </LevelScalingArray>
+        <LevelScalingArray>
+            <Modifications>
+                <Catalog value="Effect"/>
+                <Entry value="L90ETCPassiveEchoPedalDamage"/>
+                <Field value="Amount"/>
+                <Value value="3.000000"/>
+                <AffectedByAbilityPower value="1"/>
+                <AffectedByOverdrive value="1"/>
+            </Modifications>
+        </LevelScalingArray>
+        <Portrait value="Assets\Textures\UI\HeroIcons\Selection\storm_ui_ingame_heroselect_btn_l90etc.dds"/>
+        <PartyPanelButtonImage value="Assets\Textures\UI\HeroIcons\PartyPanel\storm_ui_ingame_partypanel_btn_l90etc.dds"/>
+        <LeaderboardImage value="Assets\Textures\UI\HeroIcons\PartyFrame\storm_ui_ingame_partyframe_l90etc.dds"/>
+        <CollectionIcon value="Assets\Textures\UI\HeroIcons\Draft\storm_ui_glues_draft_portrait_l90etc.dds"/>
+    </CHero>
+    <CUnit id="HeroL90ETC" parent="CommandersHero">
+        <PlaneArray index="Ground" value="1"/>
+        <Collide index="Larva" value="1"/>
+        <Collide index="FlyingEscorts" value="1"/>
+        <LifeStart value="1040"/>
+        <LifeMax value="1040"/>
+        <LifeRegenRate value="2.168"/>
+        <Speed value="4.4023"/>
+        <AbilArray index="6" Link="HeroGeneric_Hearthstone_2"/>
+        <AbilArray Link="L90ETCGuitarSolo"/>
+        <AbilArray Link="L90ETCPowerslide"/>
+        <AbilArray Link="L90ETCFaceMelt"/>
+        <AbilArray Link="L90ETCStageDive"/>
+        <AbilArray Link="L90ETCMoshPit"/>
+        <AbilArray Link="L90ETCMoshPitCancel"/>
+        <AbilArray Link="RockstarDummy"/>
+        <AbilArray Link="L90ETCWeaponCooldown"/>
+        <BehaviorArray Link="PathOfTheAssassin"/>
+        <BehaviorArray Link="PathOfTheWarrior"/>
+        <BehaviorArray Link="PathOfTheWizard"/>
+        <BehaviorArray Link="240Health"/>
+        <BehaviorArray Link="8Damage"/>
+        <BehaviorArray Link="SlowAttackSpeed"/>
+        <BehaviorArray Link="ExcellentMana"/>
+        <BehaviorArray Link="Default_StartAllSystems"/>
+        <WeaponArray Link="HeroL90ETC"/>
+        <CardLayouts>
+            <LayoutButtons Face="Powerslide" Type="AbilCmd" AbilCmd="L90ETCPowerslide,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="FaceMelt" Type="AbilCmd" AbilCmd="L90ETCFaceMelt,Execute" Row="0" Column="1"/>
+            <LayoutButtons Face="GuitarSolo" Type="AbilCmd" AbilCmd="L90ETCGuitarSolo,Execute" Row="0" Column="2"/>
+            <LayoutButtons Face="L90ETCCancelMoshPit" Type="AbilCmd" AbilCmd="L90ETCMoshPitCancel,Execute" Row="0" Column="3"/>
+            <LayoutButtons Face="L90ETCMoshPit" Type="AbilCmd" AbilCmd="L90ETCMoshPit,Execute" Row="0" Column="3"/>
+            <LayoutButtons Face="AbathurCancelAssumingDirectControl" Type="AbilCmd" AbilCmd="AbathurAssumingDirectControlCancel,Execute" Row="0" Column="3"/>
+            <LayoutButtons Face="StageDive" Type="AbilCmd" AbilCmd="L90ETCStageDive,Execute" Row="0" Column="3"/>
+            <LayoutButtons Face="HeroGeneric_Hearthstone" Type="AbilCmd" AbilCmd="HeroGeneric_Hearthstone_2,255" Row="2" Column="3"/>
+            <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="AcquireMove" Type="AbilCmd" AbilCmd="move,AcquireMove" Row="2" Column="0"/>
+            <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="2" Column="1"/>
+            <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="2" Column="2"/>
+            <LayoutButtons Face="SummonMount" Type="AbilCmd" AbilCmd="Mount,Execute" Row="0" Column="4"/>
+            <LayoutButtons Face="UnsummonMount" Type="AbilCmd" AbilCmd="Dismount,Execute" Row="0" Column="4"/>
+            <LayoutButtons Face="Cancel" Type="CancelTargetMode" Row="2" Column="4"/>
+            <LayoutButtons Face="HeroGeneric_FountainDrink" Type="AbilCmd" AbilCmd="HeroGeneric_FountainDrink,255" Row="1" Column="4"/>
+            <LayoutButtons Face="L90ETCWeaponCooldown" Type="AbilCmd" AbilCmd="L90ETCWeaponCooldown,Execute" Row="1" Column="4"/>
+            <LayoutButtons>
+                <Face value="L90ETCRockstarPassive"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="RockstarDummy,Execute"/>
+                <Requirements value="ETCHasPassive"/>
+                <Row value="1"/>
+                <Column value="0"/>
+            </LayoutButtons>
+        </CardLayouts>
+        <CardLayouts CardId="0004">
+            <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="2" Column="4"/>
+        </CardLayouts>
+        <Radius value="0.9375"/>
+        <InnerRadius value="0.9375"/>
+        <TacticalAIThink value="AIThinkL90ETC"/>
+        <TacticalAIChannel value="AIChannelL90ETC"/>
+    </CUnit>
+    <CBehaviorBuff id="FaceMeltDance" parent="StormStun">
+        <Alignment value="Negative"/>
+        <BehaviorCategories index="Stun" value="1"/>
+        <BuffFlags index="UpdateDurationWhileDisabled" value="1"/>
+        <Duration value="5"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="MoshPitDeathMetalVulnerable">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\storm_temp_war3_btnbattleroar.dds"/>
+        <BehaviorCategories index="User9" value="1"/>
+        <BuffFlags index="RefreshStack" value="1"/>
+        <Duration value="0.5"/>
+        <DamageResponse ModifyFraction="1.3" ModifyMinimumDamage="1">
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="L90ETCFaceMeltPostCastSuppression">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BuffFlags index="UpdateDurationWhileDisabled" value="1"/>
+        <Duration value="0.3"/>
+        <Modification>
+            <AbilClassDisableArray index="CAbilEffectInstant" value="1"/>
+            <AbilClassDisableArray index="CAbilEffectTarget" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="L90ETCGuitarSoloPostCastSuppression">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BuffFlags index="UpdateDurationWhileDisabled" value="1"/>
+        <Duration value="0.3"/>
+        <Modification>
+            <AbilClassDisableArray index="CAbilEffectInstant" value="1"/>
+            <AbilClassDisableArray index="CAbilEffectTarget" value="1"/>
+            <DeathResponse>
+                <Cost>
+                    <Charge Link="Behavior/L90ETCFaceMeltPostCastSuppression"/>
+                    <Cooldown Link="Behavior/L90ETCFaceMeltPostCastSuppression"/>
+                </Cost>
+            </DeathResponse>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="L90ETCFaceMeltMasteryCarryBehavior" parent="CarryBehaviorParent"/>
+    <CBehaviorBuff id="L90ETCGuitarSoloMasteryCarryBehavior" parent="CarryBehaviorParent"/>
+    <CBehaviorBuff id="L90ETCMoshPitCarryBehavior" parent="CarryBehaviorParent"/>
+    <CBehaviorBuff id="L90ETCPowerSlideMasteryCarryBehavior" parent="CarryBehaviorParent"/>
+    <CBehaviorBuff id="L90ETCStageDiveCarryBehavior" parent="CarryBehaviorParent"/>
+    <CBehaviorBuff id="FaceSmelting">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\storm_ui_icon_deathpact_2.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="TargetNotUnstoppable"/>
+        <RemoveValidatorArray value="TargetCleanseDebuffRemoval"/>
+        <BuffFlags index="UpdateDurationWhileDisabled" value="1"/>
+        <MaxStackCount value="16"/>
+        <Duration value="2"/>
+        <InitialEffect value="RemoveFaceSmeltPersistent"/>
+        <Modification>
+            <AdditiveMoveSpeedFactor value="-0.05"/>
+        </Modification>
+        <BehaviorCategories index="Slow" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="L90ETCEchoPedalCarryBehavior" parent="CarryBehaviorParent"/>
+    <CBehaviorBuff id="L90ETCPassiveEchoPedal">
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\storm_btn_d3_monk_mantraofconviction.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="2"/>
+        <Period value="1"/>
+        <PeriodCount value="2"/>
+        <PeriodicEffect value="L90ETCPassiveEchoPedalSearch"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="StageDiveSlow">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\storm_ui_icon_dwarftoss.dds"/>
+        <BehaviorCategories index="Slow" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="TargetNotUnstoppable"/>
+        <RemoveValidatorArray value="TargetCleanseDebuffRemoval"/>
+        <Duration value="3"/>
+        <Modification UnifiedMoveSpeedFactor="-0.5"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="L90ETCGuitarSoloBonusDamageRune">
+        <Alignment value="Positive"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="5"/>
+        <Modification>
+            <DamageTotalMultiplier index="Ranged" value="1"/>
+            <VitalDamageLeechArray index="Life">
+                <KindArray index="Ranged" value="0.5"/>
+            </VitalDamageLeechArray>
+        </Modification>
+        <InfoIcon value="Assets\Textures\storm_temp_war3_btnadvancedunholystrength.dds"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="L90ETCMoshPitStun" parent="StormStun">
+        <Alignment value="Negative"/>
+        <InfoIcon value="assets\Icons\Hero_ETC\Icon_Hero_ETC_MoshPit.dds"/>
+        <DisableValidatorArray value="TargetNotUnstoppable"/>
+        <BuffFlags index="UpdateDurationWhileDisabled" value="1"/>
+        <Duration value="0.5"/>
+        <DamageResponse Fatal="1" Handled="L90ETCMoshPitDummySet">
+            <Chance value="1"/>
+        </DamageResponse>
+        <BehaviorCategories index="Stun" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="L90ETCMoshPitChannel">
+        <Alignment value="Positive"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <InfoIcon value="Assets\Textures\storm_temp_war3_btnbattleroar.dds"/>
+        <Duration value="4"/>
+        <BehaviorCategories index="Restorable" value="1"/>
+        <Modification>
+            <AbilLinkDisableArray value="L90ETCFaceMelt"/>
+            <AbilLinkDisableArray value="L90ETCGuitarSolo"/>
+            <AbilLinkDisableArray value="L90ETCPowerslide"/>
+        </Modification>
+        <FinalEffect value="L90ETCMoshPitDestroyPersistent"/>
+        <ExpireEffect value="L90ETCMoshPitDestroyPersistent"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="RockstarHero">
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\storm_btn_d3_barbarian_warcry.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BuffFlags index="RefreshStack" value="1"/>
+        <Duration value="3"/>
+        <Modification>
+            <AdditiveAttackSpeedFactor value="0.25"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="UberRockstarHero">
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\storm_btn_d3_barbarian_warcry.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BuffFlags index="RefreshStack" value="1"/>
+        <Duration value="3"/>
+        <Modification UnifiedMoveSpeedFactor="0.25">
+            <AdditiveAttackSpeedFactor value="0.25"/>
+        </Modification>
+        <BehaviorCategories index="Fast" value="1"/>
+        <BehaviorCategories index="User3" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="RockstarMinion">
+        <Alignment value="Positive"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BuffFlags index="RefreshStack" value="1"/>
+        <Duration value="3"/>
+        <Modification>
+            <AdditiveAttackSpeedFactor value="0.125"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="UberRockstarMinion">
+        <Alignment value="Positive"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BuffFlags index="RefreshStack" value="1"/>
+        <Duration value="3"/>
+        <Modification UnifiedMoveSpeedFactor="0.125">
+            <AdditiveAttackSpeedFactor value="0.125"/>
+        </Modification>
+        <BehaviorCategories index="Fast" value="1"/>
+        <BehaviorCategories index="User3" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="L90ETCWeaponUberRockstarBehavior">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="L90ETCGuitarSoloHeroHeal">
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\storm_ui_icon_hatestrike.dds"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Duration value="4"/>
+        <Period value="1"/>
+        <PeriodicEffect value="GuitarSoloHealSet"/>
+        <PeriodicDisplayEffect value="L90ETCGuitarSoloHeroHeal"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="FaceMeltKnockback" parent="PushPullParent">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\storm_ui_icon_deathpact_2.dds"/>
+        <DisableValidatorArray value="TargetNotUnstoppable"/>
+        <RemoveValidatorArray value="TargetCleanseDebuffRemoval"/>
+        <BuffFlags index="UpdateDurationWhileDisabled" value="1"/>
+        <Duration value="0.5"/>
+        <Modification MoveSpeedMaximum="12" MoveSpeedMinimum="12">
+            <StateFlags index="SuppressCollision" value="1"/>
+        </Modification>
+        <ExpireEffect value="ApplyFaceSmelting"/>
+        <BehaviorCategories index="Stun" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="StageDiveChannel">
+        <Alignment value="Positive"/>
+        <Modification>
+            <!-- Added SuppressMoving to fix bug 115369 -->
+            <ModifyFlags index="SuppressMoving" value="1"/>
+            <StateFlags index="Invulnerable" value="1"/>
+            <StateFlags index="Benign" value="1"/>
+            <StateFlags index="SuppressCollision" value="1"/>
+            <StateFlags index="Unstoppable" value="1"/>
+            <AbilClassDisableArray index="CAbilAttack" value="1"/>
+            <BehaviorLinkDisableArray value="TalentBucketBurningRage"/>
+        </Modification>
+        <InfoIcon value="Assets\Textures\storm_ui_icon_dwarftoss.dds"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="StageDiveStun" parent="StormStun">
+        <Alignment value="Negative"/>
+        <Duration value="1.25"/>
+        <InfoIcon value="Assets\Textures\storm_ui_icon_dwarftoss.dds"/>
+        <RemoveValidatorArray value="TargetCleanseDebuffRemoval"/>
+        <DisableValidatorArray value="TargetNotUnstoppable"/>
+        <BuffFlags index="UpdateDurationWhileDisabled" value="1"/>
+        <BehaviorCategories index="Stun" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="PowerslideStun" parent="StormStun">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\storm_temp_btn-ability-protoss-blackhole-color.dds"/>
+        <DisableValidatorArray value="TargetNotUnstoppable"/>
+        <RemoveValidatorArray value="TargetCleanseDebuffRemoval"/>
+        <BuffFlags index="UpdateDurationWhileDisabled" value="1"/>
+        <Duration value="1"/>
+        <BehaviorCategories index="Stun" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Powerslide">
+        <Alignment value="Positive"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <InfoIcon value="Assets\Textures\storm_ui_icon_psionicblast_2.dds"/>
+        <RemoveValidatorArray value="PowerSlideTargetNotClose"/>
+        <Duration value="1"/>
+        <InitialEffect value="PowerSlideInitialTargetSearch"/>
+        <PeriodicEffect value="PowerSlideTargetSearch"/>
+        <Modification MoveSpeedMaximum="12" MoveSpeedMinimum="12">
+            <ModifyFlags index="OrdersUninterruptible" value="1"/>
+            <StateFlags index="SuppressCollision" value="1"/>
+            <StateFlags index="LineMovement" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <!-- E.T.C. -->
+    <CUpgrade id="LevelUp_L90ETC">
+        <EditorCategories value="UpgradeType:LevelUpgrade"/>
+        <MaxLevel value="30"/>
+        <!-- 1 -->
+        <EffectArray Reference="Effect,PowerSlideDamage,Amount" Value="7"/>
+        <!-- 2 -->
+        <EffectArray Reference="Effect,FaceMeltDamage,Amount" Value="5"/>
+        <!-- 3 -->
+        <EffectArray Reference="Effect,L90ETCGuitarSoloHeroHeal,RechargeVitalRate" Value="6"/>
+        <EffectArray Reference="Effect,L90ETCGuitarSoloAllyHeal,RechargeVitalRate" Value="3"/>
+        <!-- 4 -->
+        <EffectArray Reference="Effect,StageDiveDamage,Amount" Value="12"/>
+        <!-- 5 -->
+        <EffectArray Reference="Effect,L90ETCPassiveEchoPedalDamage,Amount" Value="3"/>
+        <!-- L90ETC Stats -->
+        <EffectArray Reference="Unit,HeroL90ETC,LifeMax" Value="240"/>
+        <EffectArray Reference="Unit,HeroL90ETC,LifeStart" Value="240"/>
+        <EffectArray Reference="Unit,HeroL90ETC,LifeRegenRate" Value="0.42"/>
+        <EffectArray Reference="Unit,HeroL90ETC,EnergyMax" Value="10"/>
+        <EffectArray Reference="Unit,HeroL90ETC,EnergyStart" Value="10"/>
+        <EffectArray Reference="Unit,HeroL90ETC,EnergyRegenRate" Value="0.2"/>
+    </CUpgrade>
+</Catalog>

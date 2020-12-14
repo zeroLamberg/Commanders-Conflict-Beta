@@ -1,0 +1,923 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CEffectSet id="TalentBucket_Rewind_TriggerDummySet">
+        <EditorCategories value="CommandersHero:Talents"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="TalentBucketResurgenceOfTheStormApplyCooldownBehavior">
+        <ValidatorArray index="0" value="CasterIsDead"/>
+        <EditorCategories value="CommandersHero:Talents"/>
+        <Behavior value="TalentBucket_ResurgenceoftheStorm_Cooldown"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="TalentBucket_EnergeticBlock_RemoveFirstImpact">
+        <EditorCategories value="CommandersHero:Common"/>
+        <WhichUnit Value="Source"/>
+        <BehaviorLink value="TalentBucket_EnergeticBlock_FirstImpact"/>
+    </CEffectRemoveBehavior>
+    <CEffectApplyBehavior id="TalentBucket_EnergeticBlock_ApplyTimed">
+        <EditorCategories value="CommandersHero:Common"/>
+        <WhichUnit Value="Source"/>
+        <Behavior value="TalentBucket_EnergeticBlock_Timed"/>
+    </CEffectApplyBehavior>
+    <CEffectDamage id="TalentBucket_EnergeticBlock_DummyDamage">
+        <EditorCategories value="CommandersHero:Common"/>
+        <ImpactLocation Value="TargetUnit"/>
+        <Flags index="NoScaledDealtBonus" value="1"/>
+        <Flags index="NoFractionDealtBonus" value="1"/>
+        <Flags index="NoUnscaledDealtBonus" value="1"/>
+    </CEffectDamage>
+    <CEffectSet id="TalentBucket_EnergeticBlock_RemoveFirstImpactSet">
+        <EditorCategories value="CommandersHero:Common"/>
+        <EffectArray value="TalentBucket_EnergeticBlock_RemoveFirstImpact"/>
+        <EffectArray value="TalentBucket_EnergeticBlock_ApplyTimed"/>
+        <EffectArray value="TalentBucket_EnergeticBlock_DummyDamage"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="TalentBucket_EnergeticBlock_ApplyFirstImpact">
+        <EditorCategories value="CommandersHero:Common"/>
+        <WhichUnit Value="Source"/>
+        <Behavior value="TalentBucket_EnergeticBlock_FirstImpact"/>
+    </CEffectApplyBehavior>
+    <CEffectDamage id="TalentBucket_FuryOfTheStorm_Damage2" parent="CommandersWeaponDamage"/>
+    <CEffectDamage id="TalentBucket_FuryOfTheStorm_Damage3" parent="CommandersWeaponDamage"/>
+    <CEffectDamage id="TalentBucket_FuryOfTheStorm_Damage1" parent="CommandersWeaponDamage"/>
+    <CEffectCreatePersistent id="TalentBucket_FuryoftheStorm_Delay3">
+        <EditorCategories value="Race:Zerg"/>
+        <Chance value="0"/>
+        <WhichLocation Value="TargetUnit"/>
+        <ExpireDelay value="0.125"/>
+        <FinalEffect value="TalentBucket_FuryoftheStorm_Search3"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="TalentBucket_FuryoftheStorm_Delay2">
+        <EditorCategories value="Race:Zerg"/>
+        <WhichLocation Value="TargetUnit"/>
+        <ExpireDelay value="0.125"/>
+        <FinalEffect value="TalentBucket_FuryoftheStorm_Search2"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="TalentBucket_FuryoftheStorm_Delay1">
+        <EditorCategories value="Race:Zerg"/>
+        <WhichLocation Value="TargetUnit"/>
+        <ExpireDelay value="0.125"/>
+        <FinalEffect value="TalentBucket_FuryoftheStorm_Search1"/>
+    </CEffectCreatePersistent>
+    <CEffectSet id="TalentBucket_FuryoftheStorm_ImpactSet3">
+        <ValidatorArray value="IsNotConjoinedGate"/>
+        <ValidatorArray value="noMarkers"/>
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="TalentBucket_FuryOfTheStorm_Damage3"/>
+    </CEffectSet>
+    <CEffectEnumArea id="TalentBucket_FuryoftheStorm_Search3">
+        <EditorCategories value="Race:Zerg"/>
+        <ImpactLocation Effect="TalentBucket_FuryoftheStorm_Delay3" Value="TargetPoint"/>
+        <ExcludeArray Value="Target"/>
+        <SearchFilters value="Visible;Player,Ally,Neutral,Mechanical,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <TargetSorts>
+            <SortArray value="TSEngaged"/>
+            <SortArray value="TSNoBounce"/>
+            <SortArray value="TSDistanceToTarget"/>
+        </TargetSorts>
+        <AreaArray MaxCount="1" Radius="5" Effect="TalentBucket_FuryoftheStorm_ImpactSet3"/>
+        <Chance value="0"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="TalentBucket_FuryoftheStorm_Search1">
+        <EditorCategories value="Race:Zerg"/>
+        <ImpactLocation Effect="TalentBucket_FuryoftheStorm_Delay1" Value="TargetPoint"/>
+        <ExcludeArray Value="Target"/>
+        <SearchFilters value="Visible;Player,Ally,Neutral,Mechanical,Missile,Item,Stasis,Dead,Hidden,Invulnerable,Passive"/>
+        <TargetSorts>
+            <SortArray value="TSEngaged"/>
+            <SortArray value="TSNoBounce"/>
+            <SortArray value="TSDistanceToTarget"/>
+        </TargetSorts>
+        <AreaArray MaxCount="1" Radius="5" Effect="TalentBucket_FuryOfTheStorm_ImpactSet1"/>
+    </CEffectEnumArea>
+    <CEffectSet id="TalentBucket_FuryoftheStorm_ImpactSet2">
+        <ValidatorArray value="IsNotConjoinedGate"/>
+        <ValidatorArray value="noMarkers"/>
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="TalentBucket_FuryOfTheStorm_Damage2"/>
+        <EffectArray value="TalentBucket_FuryoftheStorm_Search3"/>
+    </CEffectSet>
+    <CEffectSet id="TalentBucket_FuryOfTheStorm_ImpactSet1">
+        <ValidatorArray value="IsNotConjoinedGate"/>
+        <ValidatorArray value="noMarkers"/>
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="TalentBucket_FuryOfTheStorm_Damage1"/>
+        <EffectArray value="TalentBucket_FuryoftheStorm_Delay2"/>
+    </CEffectSet>
+    <CEffectEnumArea id="TalentBucket_FuryoftheStorm_Search2">
+        <EditorCategories value="Race:Zerg"/>
+        <ImpactLocation Effect="TalentBucket_FuryoftheStorm_Delay2" Value="TargetPoint"/>
+        <ExcludeArray Value="Target"/>
+        <ExcludeArray Effect="TalentBucket_FuryoftheStorm_Delay1" Value="Target"/>
+        <SearchFilters value="Visible;Player,Ally,Neutral,Mechanical,Missile,Item,Stasis,Dead,Hidden,Invulnerable,Passive"/>
+        <TargetSorts>
+            <SortArray value="TSEngaged"/>
+            <SortArray value="TSNoBounce"/>
+            <SortArray value="TSDistanceToTarget"/>
+        </TargetSorts>
+        <AreaArray MaxCount="1" Radius="5" Effect="TalentBucket_FuryoftheStorm_ImpactSet2"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="TalentBucket_KineticBlock_ApplyTimedBlock">
+        <EditorCategories value="CommandersHero:Common"/>
+        <WhichUnit Value="Source"/>
+        <Behavior value="TalentBucket_KineticBlock_Timed"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="TalentBucket_KineticBlock_ApplyBlock">
+        <EditorCategories value="CommandersHero:Common"/>
+        <WhichUnit Value="Source"/>
+        <Behavior value="TalentBucket_KineticBlock_FirstImpact"/>
+    </CEffectApplyBehavior>
+    <CEffectDamage id="TalentBucket_KineticBlock_DummyDamage">
+        <EditorCategories value="CommandersHero:Common"/>
+        <ImpactLocation Value="TargetUnit"/>
+        <Flags index="NoScaledDealtBonus" value="1"/>
+        <Flags index="NoFractionDealtBonus" value="1"/>
+        <Flags index="NoUnscaledDealtBonus" value="1"/>
+        <Kind value="NoProc"/>
+    </CEffectDamage>
+    <CEffectSet id="TalentBucket_KineticBlock_RemoveImpactSet">
+        <ValidatorArray value="TargetNotDead"/>
+        <EditorCategories value="CommandersHero:Common"/>
+        <EffectArray value="TalentBucket_KineticBlock_RemoveBlockFirstImpact"/>
+        <EffectArray value="TalentBucket_KineticBlock_ApplyTimedBlock"/>
+        <EffectArray value="TalentBucket_KineticBlock_DummyDamage"/>
+    </CEffectSet>
+    <CEffectRemoveBehavior id="TalentBucket_KineticBlock_RemoveBlockFirstImpact">
+        <EditorCategories value="CommandersHero:Common"/>
+        <WhichUnit Value="Source"/>
+        <BehaviorLink value="TalentBucket_KineticBlock_FirstImpact"/>
+    </CEffectRemoveBehavior>
+    <CEffectApplyBehavior id="TalentBucket_MercenaryLord_ApplyCasterStack">
+        <ValidatorArray index="0" value="TalentBucket_MercenaryLord_CasterHasCarryBehavior"/>
+        <EditorCategories value="CommandersHero:Talents"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="TalentBucket_MercenaryLord_Stacks"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="TalentBucket_MercenaryLord_ApplyMinionBehavior">
+        <EditorCategories value="CommandersHero:Talents"/>
+        <Behavior value="TalentBucket_MercenaryLord_MinionBehavior"/>
+    </CEffectApplyBehavior>
+    <CEffectEnumArea id="TalentRewindAllySearch">
+        <ValidatorArray value="IsSupportHero"/>
+        <EditorCategories value=""/>
+        <ImpactLocation Value="TargetUnit"/>
+        <ExcludeArray Value="Source"/>
+        <SearchFilters value="-;Neutral,Enemy,Structure,Hover,Worker,Missile,Item,Stasis,Dead,Hidden"/>
+        <AreaArray Radius="4" Effect="TalentRewindAllyDummy"/>
+    </CEffectEnumArea>
+    <CEffectSet id="TalentBucket_Rewind_InitialSet">
+        <EditorCategories value="CommandersHero:Talents"/>
+        <EffectArray value="TalentBucketRewindRestoreMana"/>
+        <EffectArray value="TalentBucket_Rewind_TriggerDummySet"/>
+    </CEffectSet>
+    <CEffectSet id="TalentRewindAllyDummy">
+        <EditorCategories value=""/>
+    </CEffectSet>
+    <CEffectModifyPlayer id="BucketRewind">
+        <EditorCategories value="Race:TalentBucket"/>
+    </CEffectModifyPlayer>
+    <CEffectCreateHealer id="TalentBucketRewindRestoreMana" parent="CommandersCreateHealer">
+        <EditorCategories value="CommandersHero:Talents"/>
+        <ImpactUnit Value="Caster"/>
+        <RechargeVital value="Energy"/>
+        <RechargeVitalRate value="100"/>
+    </CEffectCreateHealer>
+    <CAbilEffectInstant id="TalentBucketResurgenceOfTheStorm">
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Talents"/>
+        <Effect index="0" value="TalentBucketResurgenceOfTheStormApplyCooldownBehavior"/>
+        <Cost>
+            <Cooldown Location="Unit" TimeStart="30" TimeUse="200"/>
+        </Cost>
+        <CmdButtonArray index="Execute" DefaultButtonFace="TalentBucketResurgenceOfTheStorm" Requirements="HeroHasDeadBehavior"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="TalentBucket_Rewind">
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Talents"/>
+        <SharedFlags index="DisableWhileDead" value="0"/>
+        <Effect index="0" value="TalentBucket_Rewind_InitialSet"/>
+        <Flags index="Transient" value="1"/>
+        <Cost>
+            <Cooldown Location="Unit" TimeUse="60"/>
+        </Cost>
+        <CmdButtonArray index="Execute" DefaultButtonFace="TalentBucket_Rewind" Requirements="HeroHasNoDeadBehavior">
+            <Flags index="AllowSelfCast" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectInstant>
+    <CValidatorCombine id="TalentBucket_LifeForce_CasterHasNotTalentOrCasterNotDeadAndHasTalent">
+        <CombineArray value="TalentBucket_LifeForce_HasNoTalent"/>
+        <CombineArray value="TalentBucket_LifeForce_CasterNotDeadAndHasTalent"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="TalentBucket_LifeForce_HasNoTalent">
+        <CombineArray value="TalentBucket_LifeForce_HasTalent"/>
+        <Negate value="1"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="TalentBucket_LifeForce_CasterNotDeadAndHasTalent">
+        <Type value="And"/>
+        <CombineArray value="CasterNotDead"/>
+        <CombineArray value="TalentBucket_LifeForce_HasTalent"/>
+    </CValidatorCombine>
+    <CValidatorPlayerTalent id="TalentBucket_LifeForce_HasTalent">
+        <WhichPlayer Value="Caster"/>
+        <Find value="1"/>
+        <Value value="TalentBucket_LifeForce"/>
+    </CValidatorPlayerTalent>
+    <CValidatorUnitCompareBehaviorCount id="TalentBucket_MercenaryLord_CasterHasCarryBehavior">
+        <WhichUnit Value="Caster"/>
+        <Compare value="GT"/>
+        <Behavior value="TalentBucket_MercenaryLord_CarryBehavior"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CButton id="TalentBucket_EnergeticBlock">
+        <Icon value="Assets\Icons\Common_General\Icon_General_Block_Energetic.dds"/>
+        <SimpleDisplayText value="Button/Tooltip/TalentBucket_EnergeticBlockSimple"/>
+        <EditorCategories value="CommandersHero:Talents"/>
+    </CButton>
+    <CButton id="TalentBucketBattleMomentum" parent="StormButtonParent">
+        <Icon value="Assets\Icons\Common_General\Icon_General_AutoAttack_Cooldown.dds"/>
+        <EditorCategories value="CommandersHero:Talents"/>
+    </CButton>
+    <CButton id="TalentBucket_ConjurersPursuit">
+        <Icon value="Assets\Icons\Common_General\Icon_General_ConjurersPursuit.dds"/>
+        <EditorCategories value="CommandersHero:Talents"/>
+        <SimpleDisplayText value="Button/Tooltip/TalentBucket_ConjurersPursuit/Simple"/>
+    </CButton>
+    <CButton id="TalentBucket_Executioner_60">
+        <Icon value="Assets\Icons\Common_General\Icon_General_AutoAttack_Damage.dds"/>
+        <SimpleDisplayText value="Button/Tooltip/TalentBucket_Executioner_Simple"/>
+        <EditorCategories value="CommandersHero:Talents"/>
+    </CButton>
+    <CButton id="TalentBucket_Executioner_30">
+        <Icon value="Assets\Icons\Common_General\Icon_General_AutoAttack_Damage.dds"/>
+        <SimpleDisplayText value="Button/Tooltip/TalentBucket_Executioner_Simple"/>
+        <EditorCategories value="CommandersHero:Talents"/>
+    </CButton>
+    <CButton id="TalentBucketFarflightAmmo">
+        <Icon value="Assets\Icons\Common_General\Icon_General_AutoAttack_Range"/>
+        <SimpleDisplayText value="Button/Tooltip/TalentBucketFarflightAmmo_Simple"/>
+        <EditorCategories value="CommandersHero:Talents"/>
+    </CButton>
+    <CButton id="TalentFuryoftheStorm" parent="StormButtonParent">
+        <TooltipFlags index="ShowName" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <Icon value="Assets\Textures\storm_temp_war3_btnpurge.dds"/>
+    </CButton>
+    <CButton id="TalentBucket_FuryOfTheStorm">
+        <Icon value="Assets\Textures\storm_temp_war3_btnpurge.dds"/>
+        <EditorCategories value="CommandersHero:Talents"/>
+        <SimpleDisplayText value="Button/Tooltip/TalentBucket_FuryOfTheStormSimple"/>
+    </CButton>
+    <CButton id="TalentBucket_GatheringPower">
+        <Icon value="Assets\Icons\Common_General\Icon_General_GatheringPower.dds"/>
+        <EditorCategories value="CommandersHero:Talents"/>
+        <SimpleDisplayText value="Button/Tooltip/TalentBucket_GatheringPower_Simple"/>
+    </CButton>
+    <CButton id="TalentBucket_HardenedFocus">
+        <Icon value="Assets\Icons\Common_General\Icon_General_HardenedFocus.dds"/>
+        <EditorCategories value="CommandersHero:Talents"/>
+        <SimpleDisplayText value="Button/Tooltip/TalentBucket_HardenedFocus/Simple"/>
+    </CButton>
+    <CButton id="TalentBucket_KineticBlock">
+        <Icon value="Assets\Icons\Common_General\Icon_General_Block_Kinetic.dds"/>
+        <EditorCategories value="CommandersHero:Talents"/>
+        <SimpleDisplayText value="Button/Tooltip/TalentBucket_KineticBlock_Simple"/>
+    </CButton>
+    <CButton id="TalentBucket_LifeForce">
+        <Icon value="Assets\Icons\Common_General\Icon_General_Gidbin_2.dds"/>
+        <EditorCategories value="CommandersHero:Talents"/>
+        <SimpleDisplayText value="Button/Tooltip/TalentBucket_LifeForce_Simple"/>
+    </CButton>
+    <CButton id="TalentBuckeet_MercenaryLord">
+        <Icon value="Assets\Icons\Common_General\Icon_General_MercenaryLord.dds"/>
+        <EditorCategories value="CommandersHero:Talents"/>
+        <SimpleDisplayText value="Button/Tooltip/TalentBuckeet_MercenaryLordSimple"/>
+    </CButton>
+    <CButton id="TalentBucket_QuickFingers">
+        <Icon value="Assets\Icons\Common_General\Icon_General_AutoAttack_Speed.dds"/>
+        <EditorCategories value="CommandersHero:Talents"/>
+        <SimpleDisplayText value="Button/Tooltip/TalentBucket_QuickFingers_Simple"/>
+    </CButton>
+    <CButton id="TalentBucketResurgenceOfTheStorm">
+        <TooltipCooldownOverrideText value="Button/Tooltip/TalentBucketResurgenceOfTheStorm/Info"/>
+        <Icon value="Assets\Icons\Common_General\Icon_General_ResurgenceOfTheStorm.dds"/>
+        <EditorCategories value="CommandersHero:Talents"/>
+        <SimpleDisplayText value="Button/Tooltip/TalentBucketResurgenceOfTheStormSimple"/>
+    </CButton>
+    <CButton id="TalentBucket_RegenerationMaster">
+        <Icon value="Assets\Icons\Common_General\Icon_General_RegenerationMaster.dds"/>
+        <EditorCategories value="CommandersHero:Talents"/>
+        <SimpleDisplayText value="Button/Tooltip/TalentBucket_RegenerationMasterSimple"/>
+    </CButton>
+    <CButton id="TalentBucket_Rewind">
+        <TooltipCooldownOverrideText value="Button/Tooltip/TalentBucket_Rewind/Info"/>
+        <Icon value="Assets\Icons\Common_General\Icon_General_Rewind.dds"/>
+        <EditorCategories value="CommandersHero:Talents"/>
+        <SimpleDisplayText value="Button/Tooltip/TalentBucket_Rewind/Simple"/>
+    </CButton>
+    <CButton id="TalentBucket_ThirstForLife">
+        <Icon value="Assets\Icons\Common_General\Icon_General_Gidbin_1.dds"/>
+        <EditorCategories value="CommandersHero:Talents"/>
+        <SimpleDisplayText value="Button/Tooltip/TalentBucket_ThirstForLife_Simple"/>
+    </CButton>
+    <CTalent id="TalentBucket_EnergeticBlock" parent="TalentBucket">
+        <Face value="TalentBucket_EnergeticBlock"/>
+        <RankArray>
+            <BehaviorArray value="TalentBucket_EnergeticBlock_Controller"/>
+        </RankArray>
+    </CTalent>
+    <CTalent id="TalentBucketBattleMomentum" parent="TalentBucket">
+        <Face value="TalentBucketBattleMomentum"/>
+    </CTalent>
+    <CTalent id="TalentBucket_ConjurersPursuit_Stacks" parent="TalentBucket">
+        <Face value="TalentBucket_ConjurersPursuit"/>
+        <RankArray>
+            <BehaviorArray value="TalentBucket_ConjurersPursuit_Stacks_Manausers"/>
+        </RankArray>
+    </CTalent>
+    <CTalent id="TalentBucket_Executioner_30" parent="TalentBucket">
+        <Face value="TalentBucket_Executioner_30"/>
+        <RankArray>
+            <BehaviorArray value="TalentBucket_Executioner_30"/>
+        </RankArray>
+    </CTalent>
+    <CTalent id="TalentBucket_Executioner_60" parent="TalentBucket">
+        <Face value="TalentBucket_Executioner_60"/>
+        <RankArray>
+            <BehaviorArray value="TalentBucket_Executioner_60"/>
+        </RankArray>
+    </CTalent>
+    <CTalent id="TalentBucketFarflightAmmo" parent="TalentBucket">
+        <Face value="TalentBucketFarflightAmmo"/>
+        <RankArray>
+            <BehaviorArray value="TalentBucketFarflightAmmo"/>
+        </RankArray>
+    </CTalent>
+    <CTalent id="TalentBucket_FuryOfTheStorm" parent="TalentBucket">
+        <Face value="TalentBucket_FuryOfTheStorm"/>
+        <RankArray>
+            <BehaviorArray value="TalentBucket_FuryoftheStorm_CarryBehavior"/>
+        </RankArray>
+    </CTalent>
+    <CTalent id="TalentBucket_FuryOfTheStorm_Tychus" parent="TalentBucket">
+        <Face value="TalentBucketFuryOfTheStormTychus"/>
+        <RankArray Face="TalentBucketFuryOfTheStormSimpleTychus">
+            <BehaviorArray value="TalentBucket_FuryoftheStorm_CarryBehavior_Tychus"/>
+        </RankArray>
+    </CTalent>
+    <CTalent id="TalentBucket_GatheringPower_Stacks" parent="TalentBucket">
+        <Face value="TalentBucket_GatheringPower"/>
+        <RankArray>
+            <BehaviorArray value="TalentBucket_GatheringPower_Stacks"/>
+        </RankArray>
+    </CTalent>
+    <CTalent id="TalentBucket_HardenedFocus" parent="TalentBucket">
+        <Face value="TalentBucket_HardenedFocus"/>
+        <RankArray>
+            <BehaviorArray value="TalentBucket_HardenedFocus_CarryBehavior"/>
+        </RankArray>
+    </CTalent>
+    <CTalent id="KineticBlock" parent="TalentBucket">
+        <Face value="TalentBucket_KineticBlock"/>
+        <RankArray>
+            <BehaviorArray value="TalentBucket_KineticBlock_Controller"/>
+        </RankArray>
+    </CTalent>
+    <CTalent id="TalentBucket_LifeForce" parent="TalentBucket">
+        <Face value="TalentBucket_LifeForce"/>
+    </CTalent>
+    <CTalent id="TalentBucket_MercenaryLord_Stacks" parent="TalentBucket">
+        <Face value="TalentBuckeet_MercenaryLord"/>
+        <RankArray>
+            <BehaviorArray value="TalentBucket_MercenaryLord_CarryBehavior"/>
+        </RankArray>
+    </CTalent>
+    <CTalent id="TalentBucket_QuickFingers" parent="TalentBucket">
+        <Face value="TalentBucket_QuickFingers"/>
+        <RankArray>
+            <BehaviorArray value="TalentBucket_QuickFingers_CarryBehavior"/>
+        </RankArray>
+    </CTalent>
+    <CTalent id="TalentBucket_RegenerationMaster_Stacks" parent="TalentBucket">
+        <Face value="TalentBucket_RegenerationMaster"/>
+        <RankArray>
+            <BehaviorArray value="TalentBucket_RegenerationMaster_Stacks"/>
+        </RankArray>
+    </CTalent>
+    <CTalent id="TalentBucket_ResurgenceOfTheStorm" parent="TalentBucket">
+        <Face value="TalentBucketResurgenceOfTheStorm"/>
+        <RankArray Item="TalentBucketResurgenceOfTheStorm">
+            <BehaviorArray value="TalentBucket_ResurgenceoftheStorm_ReadyBehavior"/>
+        </RankArray>
+        <Active value="1"/>
+    </CTalent>
+    <CTalent id="TalentBucket_Rewind" parent="TalentBucket">
+        <Face value="TalentBucket_Rewind"/>
+        <RankArray Item="TalentBucket_Rewind"/>
+        <Active value="1"/>
+    </CTalent>
+    <CTalent id="TalentBucket_ThirstForLife" parent="TalentBucket">
+        <Face value="TalentBucket_ThirstForLife"/>
+    </CTalent>
+    <CActorUnit id="TalentBucketResurgenceOfTheStorm" parent="CommandersItemBase" unitName="TalentBucketResurgenceOfTheStorm">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Talents"/>
+    </CActorUnit>
+    <CActorModel id="TalentBucket_EnergeticBlock_ModelImpact" parent="CommandersModelAnimationStyleOneShot">
+        <Inherits index="Visibility" value="1"/>
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Common"/>
+        <On Terms="Effect.TalentBucket_EnergeticBlock_DummyDamage.Start" Send="Create"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachCenter SOpForwardTargetPoint" HoldRotation="1"/>
+        <Model value="TalentBucket_EnergeticBlock_Impact"/>
+        <AutoScaleFactor value="1.000000"/>
+    </CActorModel>
+    <CActorModel id="TalentBucket_FuryoftheStorm_HostingActor" parent="StormModelAnimationStyleOneShot">
+        <Host Subject="::Creator"/>
+        <Model value="TalentBucket_FuryOfTheStorm_Impact"/>
+    </CActorModel>
+    <CActorModel id="TalentBucket_KineticBlock_ModelImpact" parent="CommandersModelAnimationStyleOneShot">
+        <Inherits index="Visibility" value="1"/>
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Common"/>
+        <On Terms="Effect.TalentBucket_KineticBlock_DummyDamage.Start" Send="Create"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachCenter SOpForwardTargetPoint" HoldRotation="1"/>
+        <Model value="TalentBucket_KineticBlock_Impact"/>
+        <AutoScaleFactor value="1.000000"/>
+    </CActorModel>
+    <CActorModel id="TalentBucket_ResurgenceOfTheStorm_Buff" parent="CommandersModelAnimationStyleContinuousUnit">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Talents"/>
+        <On Terms="Behavior.TalentBucket_ResurgenceoftheStorm_ReadyBehavior.On" Send="Create"/>
+        <On Terms="Behavior.TalentBucket_ResurgenceoftheStorm_ReadyBehavior.Off" Send="AnimBracketStop BSD"/>
+        <HostSiteOps Ops="SOpAttachCenter" HoldRotation="1"/>
+    </CActorModel>
+    <CActorSound id="TalentBucket_EnergeticBlock_SoundBlock" parent="SoundOneShot">
+        <VisibleToAtCreation index="Source" value="1"/>
+        <VisibleToAtCreation index="Target" value="1"/>
+        <Inherits index="Visibility" value="0"/>
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Common"/>
+        <On Terms="Effect.TalentBucket_EnergeticBlock_DummyDamage.Start; At Caster" Send="Create"/>
+        <Host Subject="_Unit"/>
+        <Sound value="TalentBucket_EnergeticBlock_BlockAttack"/>
+    </CActorSound>
+    <CActorModel id="TalentBucket_EnergeticBlock_ModelBuff" parent="CommandersModelAnimationStyleContinuousUnit">
+        <On index="0" Send="AnimBracketStart BSD Birth Stand Death,A"/>
+        <!--<Macros value="GlobalLoopMacroMore"/>
+        <Macros value="CloakedEffectActorMacro"/>-->
+        <On Terms="Behavior.TalentBucket_EnergeticBlock_FirstImpact.On" Send="Create"/>
+        <On Terms="Behavior.TalentBucket_EnergeticBlock_Timed.Off" Send="AnimBracketStop BSD"/>
+        <HostSiteOps Ops="SOpAttachCenter" HoldRotation="1"/>
+        <AutoScaleFactor value="1.000000"/>
+    </CActorModel>
+    <CActorBeamSimple id="TalentBucket_FuryoftheStorm_1Beam">
+        <Flags index="SuppressSaveLoad" value="1"/>
+        <On Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death ContentPlayOnce"/>
+        <On Terms="AnimBracketState.*.AfterClosing; AnimName BSD" Send="Destroy"/>
+        <Model value="TalentBucket_ForyoftheStorm_Beam"/>
+        <HostLaunch Subject="::scope.Chain1Launch"/>
+        <HostImpact Subject="::Creator"/>
+    </CActorBeamSimple>
+    <CActorBeamSimple id="TalentBucket_FuryoftheStorm_2Beam">
+        <Flags index="SuppressSaveLoad" value="1"/>
+        <On Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death ContentPlayOnce"/>
+        <On Terms="AnimBracketState.*.AfterClosing; AnimName BSD" Send="Destroy"/>
+        <Model value="TalentBucket_ForyoftheStorm_Beam"/>
+        <HostLaunch Subject="::scope.Chain2Launch"/>
+        <HostImpact Subject="::Creator"/>
+    </CActorBeamSimple>
+    <CActorBeamSimple id="TalentBucket_FuryoftheStorm_3Beam">
+        <Flags index="SuppressSaveLoad" value="1"/>
+        <On Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death ContentPlayOnce"/>
+        <On Terms="AnimBracketState.*.AfterClosing; AnimName BSD" Send="Destroy"/>
+        <Model value="TalentBucket_ForyoftheStorm_Beam"/>
+        <HostLaunch Subject="::scope.Chain3Launch"/>
+        <HostImpact Subject="::Creator"/>
+    </CActorBeamSimple>
+    <CActorSite id="TalentBucket_FuryoftheStorm_1ImpactSite" parent="SiteCenter">
+        <On Terms="Effect.TalentBucket_FuryOfTheStorm_ImpactSet1.Start; At Target" Send="Create"/>
+        <On Terms="ActorCreation" Send="RefSetFromRequest ::scope.Chain1Launch TalentBucket_FuryoftheStorm_1LaunchSite Implicit Find"/>
+        <On Terms="ActorCreation" Send="Create TalentBucket_FuryoftheStorm_1Beam"/>
+    </CActorSite>
+    <CActorSite id="TalentBucket_FuryoftheStorm_1LaunchSite" parent="SiteCenter">
+        <On Terms="Effect.TalentBucket_FuryoftheStorm_Delay1.Start; At Target" Send="Create"/>
+        <On Terms="ActorCreation" Send="Create TalentBucket_FuryoftheStorm_HostingActor"/>
+    </CActorSite>
+    <CActorSite id="TalentBucket_FuryoftheStorm_2ImpactSite" parent="SiteCenter">
+        <On Terms="Effect.TalentBucket_FuryoftheStorm_ImpactSet2.Start; At Target" Send="Create"/>
+        <On Terms="ActorCreation" Send="RefSetFromRequest ::scope.Chain2Launch TalentBucket_FuryoftheStorm_2LaunchSite Implicit Find"/>
+        <On Terms="ActorCreation" Send="Create TalentBucket_FuryoftheStorm_2Beam"/>
+    </CActorSite>
+    <CActorSite id="TalentBucket_FuryoftheStorm_2LaunchSite" parent="SiteCenter">
+        <On Terms="Effect.TalentBucket_FuryoftheStorm_ImpactSet2.Start; At Target" Send="Create"/>
+        <On Terms="ActorCreation" Send="Create TalentBucket_FuryoftheStorm_HostingActor"/>
+    </CActorSite>
+    <CActorSite id="TalentBucket_FuryoftheStorm_3ImpactSite" parent="SiteCenter">
+        <On Terms="Effect.TalentBucket_FuryoftheStorm_ImpactSet3.Start; At Target" Send="Create"/>
+        <On Terms="ActorCreation" Send="RefSetFromRequest ::scope.Chain3Launch TalentBucket_FuryoftheStorm_3LaunchSite Implicit Find"/>
+        <On Terms="ActorCreation" Send="Create TalentBucket_FuryoftheStorm_3Beam"/>
+    </CActorSite>
+    <CActorSite id="TalentBucket_FuryoftheStorm_3LaunchSite" parent="SiteCenter">
+        <On Terms="Effect.FuryoftheStormHop2Damage.Start; At Target" Send="Create"/>
+        <On Terms="ActorCreation" Send="Create FuryoftheStormHostingActor"/>
+    </CActorSite>
+    <CActorSound id="TalentBucket_FuryoftheStorm_SoundImpact" parent="SoundOneShot">
+        <On Terms="Effect.TalentBucket_FuryOfTheStorm_ImpactSet1.Start; At Target" Send="Create"/>
+        <On Terms="Effect.TalentBucket_FuryoftheStorm_ImpactSet2.Start; At Target" Send="Create"/>
+        <On Terms="Effect.TalentBucket_FuryoftheStorm_ImpactSet3.Start; At Target" Send="Create"/>
+    </CActorSound>
+    <CActorModel id="TalentBucket_FuryOfTheStorm_ModelBuff" parent="CommandersModelAnimationStyleContinuousUnit">
+        <EditorCategories value="DoodadType:NotDoodad"/>
+        <On Terms="Behavior.TalentBucket_FuryoftheStorm_CarryBehavior.On" Send="Create"/>
+        <On Terms="Behavior.TalentBucket_FuryoftheStorm_CarryBehavior.Off" Send="AnimBracketStop BSD"/>
+        <On Terms="Behavior.TalentBucket_FuryoftheStorm_CarryBehavior_Tychus.On" Send="Create"/>
+        <On Terms="Behavior.TalentBucket_FuryoftheStorm_CarryBehavior_Tychus.Off" Send="AnimBracketStop BSD"/>
+        <HostSiteOps Ops="SOpAttachCenter" HoldRotation="1"/>
+    </CActorModel>
+    <CActorModel id="TalentBucket_KineticBlock_ModelBuff" parent="CommandersModelAnimationStyleContinuousUnit">
+        <On index="0" Send="AnimBracketStart BSD Birth Stand Death,A"/>
+        <On Terms="Behavior.TalentBucket_KineticBlock_FirstImpact.On" Send="Create"/>
+        <On Terms="Behavior.TalentBucket_KineticBlock_FirstImpact.Off" Send="AnimBracketStop BSD"/>
+        <HostSiteOps Ops="SOpAttachCenter" HoldRotation="1"/>
+        <AutoScaleFactor value="1.000000"/>
+    </CActorModel>
+    <CActorUnit id="TalentBucket_Rewind" parent="StormItemBase" unitName="TalentBucket_Rewind"/>
+    <!-- Block                                                                              -->
+    <CActorSound id="TalentBucket_KineticBlock_SoundBlock" parent="SoundOneShot">
+        <VisibleToAtCreation index="Source" value="1"/>
+        <VisibleToAtCreation index="Target" value="1"/>
+        <Inherits index="Visibility" value="0"/>
+        <On Terms="Effect.TalentBucket_KineticBlock_DummyDamage.Start; At Caster" Send="Create"/>
+        <Host Subject="_Unit"/>
+        <Sound value="TalentBucket_KineticBlock_BlockAttack"/>
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Common"/>
+    </CActorSound>
+    <CActorModel id="TalentBucket_Rewind_ModelCast" parent="CommandersModelAnimationStyleOneShotUnit">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Talents"/>
+        <On Terms="Effect.TalentBucket_Rewind_InitialSet.Start; At Caster" Send="Create"/>
+        <On Terms="Effect.KatarinaBucket_Rewind_InitialSet.Start; At Caster" Send="Create"/>
+        <HostSiteOps Ops="SOpAttachOverhead"/>
+    </CActorModel>
+    <CActorSound id="TalentBucket_Rewind_SoundCast" parent="SoundOneShot">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Talents"/>
+        <On Terms="Effect.TalentBucket_Rewind_InitialSet.Start; At Caster" Send="Create"/>
+        <On Terms="Effect.KatarinaBucket_Rewind_InitialSet.Start; At Caster" Send="Create"/>
+        <Sound value="TalentBucket_Rewind_Cast"/>
+    </CActorSound>
+    <CModel id="TalentBucket_ResurgenceOfTheStorm_Buff" parent="BuffFX">
+        <Model value="assets\Effects\Talents\Talent_Old_EyeOfTheStorm_Buff\Talent_Old_EyeOfTheStorm_Buff.m3"/>
+        <EditorCategories value="CommandersHero:Talents"/>
+    </CModel>
+    <CModel id="TalentBucket_EnergeticBlock_Impact">
+        <Model value="assets\Effects\Talents\Talent_Old_SpellShield_ImpactFX\Talent_Old_SpellShield_ImpactFX.m3"/>
+        <EditorCategories value="CommandersHero:Common"/>
+        <RadiusLoose value="0.000000"/>
+    </CModel>
+    <CModel id="TalentBucket_EnergeticBlock_ModelBuff" parent="BuffFX">
+        <Model value="assets\Effects\Talents\Talent_Old_SpellShield\Talent_Old_SpellShield.m3"/>
+        <EditorCategories value="CommandersHero:Common"/>
+        <RadiusLoose value="0.000000"/>
+    </CModel>
+    <CModel id="TalentBucket_FuryOfTheStorm_ModelBuff" parent="BuffFX">
+        <Model value="Assets\Effects\Storm_Effect_Talent_FuryoftheStorm_Buff\Storm_Effect_Talent_FuryoftheStorm_Buff.m3"/>
+    </CModel>
+    <CModel id="TalentBucket_FuryOfTheStorm_Impact" parent="ImpactFX">
+        <Model value="Assets\Effects\Storm_Effect_Talent_FuryoftheStorm_Impact\Storm_Effect_Talent_FuryoftheStorm_Impact.m3"/>
+        <RadiusLoose value="0.750000"/>
+    </CModel>
+    <CModel id="TalentBucket_ForyoftheStorm_Beam" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Storm_Effect_Kerrigan_Base_ChainLightning\Storm_Effect_Kerrigan_Base_ChainLightning.m3"/>
+        <RadiusLoose value="0.750000"/>
+    </CModel>
+    <CModel id="TalentBucket_KineticBlock_ModelBuff" parent="BuffFX">
+        <Model value="assets\Effects\Talents\Talent_Old_Block\Talent_Old_Block.m3"/>
+        <EditorCategories value="CommandersHero:Common"/>
+        <RadiusLoose value="0.000000"/>
+    </CModel>
+    <CModel id="TalentBucket_KineticBlock_Impact">
+        <Model value="assets\Effects\Talents\Talent_Old_Block_ImpactFX\Talent_Old_Block_ImpactFX.m3"/>
+        <EditorCategories value="CommandersHero:Common"/>
+        <RadiusLoose value="0.000000"/>
+    </CModel>
+    <CModel id="TalentBucket_Rewind_ModelCast" parent="OneShotSpellFX">
+        <Model value="assets\Effects\Talents\Talent_Old_Rewind_Impact\Talent_Old_Rewind_Impact.m3"/>
+        <EditorCategories value="CommandersHero:Talents"/>
+    </CModel>
+    <CSound id="TalentBucket_EnergeticBlock_BlockAttack" parent="Spell">
+        <EditorCategories value="CommandersHero:Talents"/>
+        <AssetArray File="assets\Sounds\Talents\Talent_ImmortalShield_Impact01.ogg" FacialGroup=""/>
+        <AssetArray File="assets\Sounds\Talents\Talent_ImmortalShield_Impact02.ogg" FacialGroup=""/>
+        <AssetArray File="assets\Sounds\Talents\Talent_ImmortalShield_Impact03.ogg" FacialGroup=""/>
+        <Volume value="-6.000000,-6.000000"/>
+    </CSound>
+    <CSound id="TalentBucket_FuryoftheStorm_SoundImpact" parent="Spell">
+        <EditorCategories value="CommandersHero:Talents"/>
+        <AssetArray File="assets\Sounds\Generic\Gen_Spell_Lightning_Launch01.ogg" FacialGroup=""/>
+        <AssetArray File="assets\Sounds\Generic\Gen_Spell_Lightning_Launch02.ogg" FacialGroup=""/>
+        <AssetArray File="assets\Sounds\Generic\Gen_Spell_Lightning_Launch03.ogg" FacialGroup=""/>
+        <AssetArray File="assets\Sounds\Generic\Gen_Spell_Lightning_Launch04.ogg" FacialGroup=""/>
+        <AssetArray File="assets\Sounds\Generic\Gen_Spell_Lightning_Launch05.ogg" FacialGroup=""/>
+        <AssetArray File="assets\Sounds\Generic\Gen_Spell_Lightning_Launch06.ogg" FacialGroup=""/>
+        <AssetArray File="assets\Sounds\Generic\Gen_Spell_Lightning_Launch07.ogg" FacialGroup=""/>
+        <Category value="Combat"/>
+        <Pitch value="0.000000,4.000000"/>
+        <Select value="Sequential"/>
+        <Volume value="-11.000000,-11.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="TalentBucket_KineticBlock_BlockAttack" parent="Spell">
+        <EditorCategories value="CommandersHero:Talents"/>
+        <AssetArray File="assets\Sounds\Talents\Talent_Block_Launch01.ogg" FacialGroup=""/>
+        <AssetArray File="assets\Sounds\Talents\Talent_Block_Launch02.ogg" FacialGroup=""/>
+        <AssetArray File="assets\Sounds\Talents\Talent_Block_Launch03.ogg" FacialGroup=""/>
+        <AssetArray File="assets\Sounds\Talents\Talent_Block_Launch04.ogg" FacialGroup=""/>
+        <Volume value="-6.000000,-6.000000"/>
+    </CSound>
+    <CSound id="TalentBucket_Rewind_Cast" parent="Spell">
+        <EditorCategories value="CommandersHero:Talents"/>
+        <AssetArray File="assets\Sounds\Talents\Talent_Rewind_Launch01.ogg" FacialGroup=""/>
+        <Flags index="Purgable" value="0"/>
+        <ReverbBalance Room="-10000"/>
+        <Volume value="-6.000000,-6.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CItemAbil id="TalentBucketResurgenceOfTheStorm">
+        <Flags index="CanDrop" value="0"/>
+        <Class value="Item"/>
+        <Requirements value="HeroHasDeadBehavior"/>
+    </CItemAbil>
+    <CItemAbil id="TalentBucket_Rewind">
+        <Flags index="CanDrop" value="0"/>
+        <Class value="Item"/>
+        <CarryBehaviorArray value="TalentBucket_Rewind_CarryBehavior"/>
+        <Requirements value="HeroHasNoDeadBehavior"/>
+    </CItemAbil>
+    <CUnit id="TalentBucketResurgenceOfTheStorm" parent="ITEM">
+        <Mob value="Multiplayer"/>
+        <FlagArray index="Pawnable" value="1"/>
+        <EditorCategories value="ObjectType:Item,CommandersHero:Talents"/>
+    </CUnit>
+    <CUnit id="TalentBucket_Rewind" parent="ITEM">
+        <Mob value="Multiplayer"/>
+        <FlagArray index="Pawnable" value="1"/>
+        <EditorCategories value="ObjectType:Item,ObjectFamily:Campaign"/>
+    </CUnit>
+    <CBehaviorBuff id="TalentBucket_GatheringPower_Stacks" parent="CommandersUnitStatsAndQuest">
+        <Face value="TalentBucket_GatheringPower"/>
+        <InfoIcon value="Assets\Icons\Common_General\Icon_General_GatheringPower.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Talents"/>
+        <MaxStackCount value="15"/>
+        <MaxStackCountPerCaster value="15"/>
+        <Modification>
+            <AttributeChangeArray index="22" Points="2"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TalentBucket_ConjurersPursuit_Stacks_Manausers" parent="CommandersUnitStatsAndQuest">
+        <InfoIcon value="Assets\Icons\Common_General\Icon_General_ConjurersPursuit.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Talents"/>
+        <MaxStackCount value="15"/>
+        <Modification>
+            <VitalRegenArray index="Energy" value="0.1015"/>
+            <AttributeChangeArray index="1" Points="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TalentBucket_MercenaryLord_Stacks" parent="CommandersStacksBehaviorParent">
+        <InfoIcon value="Assets\Icons\Common_General\Icon_General_MercenaryLord.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Talents"/>
+        <RemoveValidatorArray value="TalentBucket_MercenaryLord_CasterHasCarryBehavior"/>
+        <MaxStackCount value="50"/>
+        <MaxStackCountPerCaster value="50"/>
+        <Modification>
+            <DamageDealtAttributeMultiplier index="Biological" value="0.04"/>
+        </Modification>
+        <DamageResponse ModifyFraction="0.99" DamageValue="Original">
+            <ValidatorArray value="TargetIsMinion"/>
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TalentBucket_EnergeticBlock_Controller" parent="CommandersTalentBehaviorParent">
+        <Alignment value="Negative"/>
+        <BehaviorFlags index="Permanent" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <InfoIcon value="Assets\Icons\Common_General\Icon_General_Block_Energetic.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Common"/>
+        <Period value="20"/>
+        <PeriodicEffect value="TalentBucket_EnergeticBlock_ApplyFirstImpact"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TalentBucket_EnergeticBlock_Timed" parent="CommandersUnitStatsModificator">
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Icons\Common_General\Icon_General_Block_Energetic.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Common"/>
+        <RemoveValidatorArray value="SYS_HasNotResetBehavior"/>
+        <BuffFlags index="RemoveDamageResponseExhausted" value="0"/>
+        <Duration value="2"/>
+        <Modification>
+            <BehaviorLinkDisableArray value="TalentBucket_EnergeticBlock_Controller"/>
+            <AttributeChangeArray index="5" Points="30"/>
+        </Modification>
+        <DamageResponse Handled="TalentBucket_EnergeticBlock_DummyDamage" TargetFilters="Heroic;Structure">
+            <Kind index="Melee" value="0"/>
+            <Kind index="Ranged" value="0"/>
+            <Kind index="Splash" value="0"/>
+            <Kind index="NoProc" value="0"/>
+            <ValidatorArray value="TargetDoesNotHaveBashBehavior"/>
+            <ValidatorArray value="TargetDoesNotHaveBetrayersStrikeBehavior"/>
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TalentBucket_EnergeticBlock_FirstImpact" parent="CommandersUnitStatsModificator">
+        <Alignment value="Positive"/>
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoIcon value="Assets\Icons\Common_General\Icon_General_Block_Energetic.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Common"/>
+        <RemoveValidatorArray value="SYS_HasNotResetBehavior"/>
+        <BuffFlags index="RemoveDamageResponseExhausted" value="0"/>
+        <MaxStackCountPerCaster value="1"/>
+        <Modification>
+            <BehaviorLinkDisableArray value="TalentBucket_EnergeticBlock_Controller"/>
+            <AttributeChangeArray index="5" Points="30"/>
+        </Modification>
+        <DamageResponse Handled="TalentBucket_EnergeticBlock_RemoveFirstImpactSet" TargetFilters="Heroic;-">
+            <Kind index="Melee" value="0"/>
+            <Kind index="Ranged" value="0"/>
+            <Kind index="Splash" value="0"/>
+            <Kind index="NoProc" value="0"/>
+            <ValidatorArray value="TargetDoesNotHaveBashBehavior"/>
+            <ValidatorArray value="TargetDoesNotHaveBetrayersStrikeBehavior"/>
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TalentBucket_BattleMomentum_CarryBehavior" parent="CommandersTalentCarryBehaviorParent"/>
+    <CBehaviorBuff id="TalentBucket_Executioner_60" parent="CommandersTalentCarryBehaviorParent">
+        <DamageResponse>
+            <Location value="Attacker"/>
+            <ModifyFraction value="1.6"/>
+            <TargetFilters value="-;Player,Ally,Neutral,Structure,Stasis,Dead,Invulnerable"/>
+            <DamageValue value="Original"/>
+            <Kind index="Spell" value="0"/>
+            <Kind index="Melee" value="0"/>
+            <Kind index="Splash" value="0"/>
+            <Kind index="NoProc" value="0"/>
+            <ValidatorArray value="TargetStunnedorRootedorSlowed"/>
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TalentBucket_Executioner_30" parent="CommandersTalentCarryBehaviorParent">
+        <DamageResponse>
+            <Location value="Attacker"/>
+            <ModifyFraction value="1.3"/>
+            <TargetFilters value="-;Player,Ally,Neutral,Structure,Stasis,Dead,Invulnerable"/>
+            <DamageValue value="Original"/>
+            <Kind index="Spell" value="0"/>
+            <Kind index="Melee" value="0"/>
+            <Kind index="Splash" value="0"/>
+            <Kind index="NoProc" value="0"/>
+            <ValidatorArray value="TargetStunnedorRootedorSlowed"/>
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TalentBucketFarflightAmmo" parent="CommandersTalentCarryBehaviorParent">
+        <Modification RangedWeaponRange="2.2" WeaponScanBonus="2.2"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TalentBucket_FuryoftheStorm_Cooldown">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="0.5"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TalentBucket_FuryoftheStorm_CarryBehavior" parent="CommandersTalentCarryBehaviorParent">
+        <DisableValidatorArray value="SourceNotDead"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TalentBucket_FuryoftheStorm_Cooldown_Tychus">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="0.1875"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TalentBucket_FuryoftheStorm_CarryBehavior_Tychus" parent="CommandersTalentCarryBehaviorParent">
+        <DisableValidatorArray value="SourceNotDead"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TalentBucket_HardenedFocus_CarryBehavior" parent="CommandersTalentCarryBehaviorParent">
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Talents"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TalentBucket_KineticBlock_Timed" parent="CommandersUnitStatsModificator">
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Icons\Common_General\Icon_General_Block_Kinetic.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Common"/>
+        <RemoveValidatorArray value="SYS_HasNotResetBehavior"/>
+        <BuffFlags index="RemoveDamageResponseExhausted" value="0"/>
+        <Duration value="2"/>
+        <Modification>
+            <BehaviorLinkDisableArray value="TalentBucket_KineticBlock_Controller"/>
+            <AttributeChangeArray index="11" Points="30"/>
+        </Modification>
+        <DamageResponse Handled="TalentBucket_KineticBlock_DummyDamage" TargetFilters="Heroic;Structure">
+            <Kind index="Spell" value="0"/>
+            <Kind index="Melee" value="0"/>
+            <Kind index="Splash" value="0"/>
+            <Kind index="NoProc" value="0"/>
+            <ValidatorArray value="TargetDoesNotHaveBashBehavior"/>
+            <ValidatorArray value="TargetDoesNotHaveBetrayersStrikeBehavior"/>
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TalentBucket_KineticBlock_Controller" parent="CommandersTalentBehaviorParent">
+        <Alignment value="Negative"/>
+        <BehaviorFlags index="Permanent" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <InfoIcon value="Assets\Icons\Common_General\Icon_General_Block_Kinetic.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Common"/>
+        <Period value="20"/>
+        <PeriodicEffect value="TalentBucket_KineticBlock_ApplyBlock"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TalentBucket_KineticBlock_FirstImpact" parent="CommandersUnitStatsModificator">
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Icons\Common_General\Icon_General_Block_Kinetic.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Common"/>
+        <RemoveValidatorArray value="SYS_HasNotResetBehavior"/>
+        <BuffFlags index="RemoveDamageResponseExhausted" value="0"/>
+        <MaxStackCountPerCaster value="1"/>
+        <Modification>
+            <BehaviorLinkDisableArray value="TalentBucket_KineticBlock_Controller"/>
+            <AttributeChangeArray index="11" Points="30"/>
+        </Modification>
+        <DamageResponse Handled="TalentBucket_KineticBlock_RemoveImpactSet" TargetFilters="Heroic;Structure">
+            <Kind index="Spell" value="0"/>
+            <Kind index="Melee" value="0"/>
+            <Kind index="Splash" value="0"/>
+            <Kind index="NoProc" value="0"/>
+            <ValidatorArray value="TargetDoesNotHaveBashBehavior"/>
+            <ValidatorArray value="TargetDoesNotHaveBetrayersStrikeBehavior"/>
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TalentBucket_MercenaryLord_CarryBehavior" parent="CommandersTalentCarryBehaviorParent">
+        <DamageResponse Handled="TalentBucket_MercenaryLord_ApplyMinionBehavior" Location="Attacker">
+            <Chance value="1"/>
+        </DamageResponse>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Talents"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TalentBucket_MercenaryLord_MinionBehavior">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Talents"/>
+        <MaxStackCount value="10"/>
+        <MaxStackCountPerCaster value="1"/>
+        <Duration value="2.5"/>
+        <DamageResponse Fatal="1" Handled="TalentBucket_MercenaryLord_ApplyCasterStack">
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TalentMercenaryLordKnightBuff">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoIcon value="Assets\Textures\storm_ui_temp_icon_teleport.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Modification>
+            <VitalMaxAdditiveMultiplierArray index="Life" value="0.5"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TalentMercenaryLordGiantBuff">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoIcon value="Assets\Textures\storm_ui_temp_icon_teleport.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Modification>
+            <DamageTotalMultiplier index="Ranged" value="0.5"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TalentBucket_QuickFingers_CarryBehavior" parent="CommandersTalentCarryBehaviorParent">
+        <Modification>
+            <AdditiveAttackSpeedFactor value="0.25"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TalentBucket_ResurgenceoftheStorm_ReadyBehavior" parent="CommandersTalentBehaviorParent">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoIcon value="Assets\Icons\Common_General\Icon_General_ResurgenceOfTheStorm.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Talents"/>
+        <DisableValidatorArray value="TalentBucket_ResurgenceoftheStorm_HaventCooldown"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TalentBucket_ResurgenceoftheStorm_Cooldown">
+        <Alignment value="Negative"/>
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoIcon value="Assets\Icons\Common_General\Icon_General_ResurgenceOfTheStorm.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Talents"/>
+        <Duration value="200"/>
+        <Modification>
+            <BehaviorLinkDisableArray value="TalentBucket_ResurgenceoftheStorm_ReadyBehavior"/>
+        </Modification>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TalentBucket_Rewind_CarryBehavior" parent="CommandersTalentCarryBehaviorParent">
+        <InfoIcon value="Assets\Icons\Common_General\Icon_General_Rewind.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Talents"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TalentBucket_ThirstForLife_HasCarryBehavior" parent="CommandersTalentCarryBehaviorParent">
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Talents"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TalentBucket_RegenerationMaster_Stacks" parent="CommandersUnitStatsAndQuest">
+        <InfoIcon value="Assets\Icons\Common_General\Icon_General_RegenerationMaster.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Talents"/>
+        <MaxStackCount value="15"/>
+        <Modification>
+            <VitalRegenArray index="Life" value="1"/>
+            <AttributeChangeArray index="2" Points="1"/>
+        </Modification>
+    </CBehaviorBuff>
+</Catalog>

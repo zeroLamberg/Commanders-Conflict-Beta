@@ -1,0 +1,1810 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CEffectModifyUnit id="RaynorBucket_TacticalShot_ModifyCasterCD_2Stacks">
+        <ImpactUnit Value="Caster"/>
+        <Cost Abil="Raynor_AerialBomb,Execute" CooldownOperation="Add" CooldownTimeUse="-1"/>
+        <Cost Abil="Raynor_DisorientingGrenade,Execute" CooldownOperation="Add" CooldownTimeUse="-1"/>
+        <Cost Abil="Raynor_IRememberYou,Execute" CooldownOperation="Add" CooldownTimeUse="-1"/>
+        <Cost CooldownOperation="Add" CooldownTimeUse="-1"/>
+        <EditorCategories value="Race:Neutral,CommandersHero:Raynor"/>
+    </CEffectModifyUnit>
+    <CEffectModifyUnit id="RaynorBucket_TacticalShot_ModifyCasterCD_3Stacks">
+        <ImpactUnit Value="Caster"/>
+        <Cost Abil="Raynor_AerialBomb,Execute" CooldownOperation="Add" CooldownTimeUse="-1.5"/>
+        <Cost Abil="Raynor_DisorientingGrenade,Execute" CooldownOperation="Add" CooldownTimeUse="-1.5"/>
+        <Cost Abil="Raynor_IRememberYou,Execute" CooldownOperation="Add" CooldownTimeUse="-1.5"/>
+        <Cost CooldownOperation="Add" CooldownTimeUse="-1.5"/>
+        <EditorCategories value="Race:Neutral,CommandersHero:Raynor"/>
+    </CEffectModifyUnit>
+    <CEffectApplyBehavior id="RaynorBucket_TacticalShot_Weapon_AB_1">
+        <WhichUnit Value="Source"/>
+        <Behavior value="RaynorBucket_TacticalShot_MissileBehavior"/>
+        <EditorCategories value="Race:Neutral,CommandersHero:Raynor"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="RaynorBucket_TacticalShot_Weapon_AB_2">
+        <WhichUnit Value="Source"/>
+        <Behavior value="RaynorBucket_TacticalShot_MissileBehavior"/>
+        <Count value="2"/>
+        <EditorCategories value="Race:Neutral,CommandersHero:Raynor"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="RaynorBucket_TacticalShot_Weapon_AB_3">
+        <WhichUnit Value="Source"/>
+        <Behavior value="RaynorBucket_TacticalShot_MissileBehavior"/>
+        <Count value="3"/>
+        <EditorCategories value="Race:Neutral,CommandersHero:Raynor"/>
+    </CEffectApplyBehavior>
+    <CEffectSwitch id="RaynorBucket_TacticalShot_Weapon_ImpactSwitch">
+        <ValidatorArray value="RaynorBucket_TacticalShot_HasTacticalShotTalent"/>
+        <CaseArray Validator="RaynorBucket_TacticalShot_MissileHas1Behavior" Effect="RaynorBucket_TacticalShot_ModifyCasterCD_1Stacks"/>
+        <CaseArray Validator="RaynorBucket_TacticalShot_MissileHas2Behaviors" Effect="RaynorBucket_TacticalShot_ModifyCasterCD_2Stacks"/>
+        <CaseArray Validator="RaynorBucket_TacticalShot_MissileHas3Behaviors" Effect="RaynorBucket_TacticalShot_ModifyCasterCD_3Stacks"/>
+        <EditorCategories value="Race:Neutral,CommandersHero:Raynor"/>
+    </CEffectSwitch>
+    <CEffectSwitch id="RaynorBucket_TacticalShot_Weapon_Switch">
+        <ValidatorArray value="RaynorBucket_TacticalShot_HasTacticalShotTalent"/>
+        <CaseArray Validator="Raynor_AdvancedOptics_CasterHas1Behavior" Effect="RaynorBucket_TacticalShot_Weapon_AB_1"/>
+        <CaseArray Validator="Raynor_AdvancedOptics_CasterHas2Behavior" Effect="RaynorBucket_TacticalShot_Weapon_AB_2"/>
+        <CaseArray Validator="Raynor_AdvancedOptics_CasterHas3Behavior" Effect="RaynorBucket_TacticalShot_Weapon_AB_3"/>
+        <EditorCategories value="Race:Neutral,CommandersHero:Raynor"/>
+    </CEffectSwitch>
+    <CEffectModifyUnit id="RaynorBucket_TacticalShot_ModifyCasterCD_1Stacks">
+        <ImpactUnit Value="Caster"/>
+        <Cost Abil="Raynor_AerialBomb,Execute" CooldownOperation="Add" CooldownTimeUse="-0.5"/>
+        <Cost Abil="Raynor_DisorientingGrenade,Execute" CooldownOperation="Add" CooldownTimeUse="-0.5"/>
+        <Cost Abil="Raynor_IRememberYou,Execute" CooldownOperation="Add" CooldownTimeUse="-0.5"/>
+        <Cost Abil="Raynor_Powershot,255" CooldownOperation="Add" CooldownTimeUse="-0.5"/>
+        <EditorCategories value="Race:Neutral,CommandersHero:Raynor"/>
+    </CEffectModifyUnit>
+    <CEffectApplyBehavior id="RaynorBucket_Stimpack_ApplyAADamage_ActivateBehavior">
+        <Behavior value="RaynorBucket_Stimpack_AADamage_ActivateBehavior"/>
+        <WhichUnit Value="Caster"/>
+        <EditorCategories value="Race:Neutral,CommandersHero:Raynor"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="RaynorBucket_Stimpack_ApplyAABonusDamage">
+        <Behavior value="RaynorBucket_Stimpack_AABonusDamage"/>
+        <WhichUnit Value="Caster"/>
+        <EditorCategories value="Race:Neutral,CommandersHero:Raynor"/>
+    </CEffectApplyBehavior>
+    <CEffectModifyUnit id="RaynorBucket_Stimpack_ModifyPowershotCD">
+        <ImpactUnit Value="Caster"/>
+        <Cost Abil="Raynor_Powershot,Execute" CooldownOperation="Add" CooldownTimeUse="-2"/>
+        <EditorCategories value="Race:Neutral,CommandersHero:Raynor"/>
+    </CEffectModifyUnit>
+    <CEffectRemoveBehavior id="RaynorBucket_Stimpack_RemoveBonusDamageBehavior">
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="RaynorBucket_Stimpack_AABonusDamage"/>
+        <EditorCategories value="Race:Neutral,CommandersHero:Raynor"/>
+    </CEffectRemoveBehavior>
+    <CEffectDamage id="Raynor_Weapon_Damage" parent="CommandersWeaponDamage">
+        <Amount value="63"/>
+        <EditorCategories value="Race:Neutral,CommandersHero:Raynor"/>
+    </CEffectDamage>
+    <CEffectSwitch id="Raynor_Weapon_InitialSwitch">
+        <CaseDefault value="Raynor_Weapon_LaunchMissile"/>
+        <EditorCategories value="Race:Neutral,CommandersHero:Raynor"/>
+    </CEffectSwitch>
+    <CEffectLaunchMissile id="Raynor_Weapon_LaunchMissile">
+        <ValidatorArray index="0" value="TargetNotDead"/>
+        <ImpactEffect value="Raynor_Weapon_ImpactSet"/>
+        <Flags index="TravelValidation" value="1"/>
+        <AmmoUnit value="Raynor_Weapon_Missile"/>
+        <Movers Link="RaynorAutoAttackMissile"/>
+        <LaunchEffect value="RaynorBucket_TacticalShot_Weapon_Switch"/>
+        <EditorCategories value="Race:Neutral,CommandersHero:Raynor"/>
+    </CEffectLaunchMissile>
+    <CEffectSet id="Raynor_Weapon_ImpactSet">
+        <EffectArray value="Storm_Weapon_HeroTraitWeaponSet"/>
+        <EffectArray value="Raynor_AdvancedOptics_InitialSwitch"/>
+        <EffectArray value="Raynor_Weapon_Damage"/>
+        <EffectArray value="RaynorBucket_TacticalShot_Weapon_ImpactSwitch"/>
+        <ValidatorArray value="TargetNotInvulnerable"/>
+        <ValidatorArray value="TargetNotStasis"/>
+        <ValidatorArray value="TargetNotDead"/>
+        <EditorCategories value="Race:Neutral,CommandersHero:Raynor"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="RaynorBucket_Stimpack_ApplyMainBehavior">
+        <Behavior value="RaynorBucket_Stimpack_PowershotCD"/>
+        <EditorCategories value="Race:Neutral,CommandersHero:Raynor"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="RaynorBucket_Stimpack_InitialSet">
+        <EditorCategories value="CommandersHero:Raynor"/>
+        <EffectArray value="RaynorBucket_Stimpack_ApplyMainBehavior"/>
+        <EffectArray value="RaynorBucket_Stimpack_ApplyAADamage_ActivateBehavior"/>
+    </CEffectSet>
+    <CEffectDamage id="Raynor_DisorientingGrenade_Damage" parent="CommandersSpellDamage">
+        <Amount value="70"/>
+        <EditorCategories value="Race:Neutral,CommandersHero:Raynor"/>
+    </CEffectDamage>
+    <CEffectEnumArea id="Raynor_DisorientingGrenade_Search">
+        <EditorCategories value="CommandersHero:Raynor"/>
+        <SearchFilters value="-;Self,Player,Ally,Neutral,Missile,Item,Stasis,Dead,Hidden"/>
+        <AreaArray Radius="2" Effect="Raynor_DisorientingGrenade_ImpactSet"/>
+    </CEffectEnumArea>
+    <CEffectSet id="Raynor_DisorientingGrenade_ImpactSet">
+        <EditorCategories value="CommandersHero:Raynor"/>
+        <EffectArray value="Raynor_DisorientingGrenade_ApplyTargetBehavior"/>
+        <EffectArray value="Raynor_DisorientingGrenade_Damage"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="Raynor_DisorientingGrenade_ApplyTargetBehavior">
+        <ValidatorArray index="0" value="TargetIsHero"/>
+        <ValidatorArray value="IsNotHallucination"/>
+        <EditorCategories value="CommandersHero:Raynor"/>
+        <Behavior value="Raynor_DisorientingGrenade_Disorientation"/>
+    </CEffectApplyBehavior>
+    <CEffectLaunchMissile id="Raynor_DisorientingGrenade_LM">
+        <EditorCategories value="CommandersHero:Raynor"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <LaunchOffset value="0,0.5,0"/>
+        <ImpactEffect value="Raynor_DisorientingGrenade_ImpactPointSet"/>
+        <AmmoUnit value="Raynor_DisorientingGrenade_Missile"/>
+        <ImpactRange value="0.4"/>
+    </CEffectLaunchMissile>
+    <CEffectSet id="Raynor_DisorientingGrenade_ImpactPointSet">
+        <EditorCategories value="CommandersHero:Raynor"/>
+        <EffectArray value="Raynor_DisorientingGrenade_CreatePersistentReveal"/>
+        <EffectArray value="Raynor_DisorientingGrenade_Search"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="Raynor_DisorientingGrenade_ApplyBlindBehavior">
+        <ValidatorArray index="0" value="TargetNotUnstoppable"/>
+        <ValidatorArray value="RaynorBucket_DisorientingGrenade_HasBlindGrenadeTalent"/>
+        <Behavior value="Raynor_DisorientingGrenade_BlindGrenade"/>
+        <EditorCategories value="Race:Neutral,CommandersHero:Raynor"/>
+    </CEffectApplyBehavior>
+    <CEffectCreatePersistent id="Raynor_DisorientingGrenade_CreatePersistentReveal">
+        <WhichLocation Effect="Raynor_DisorientingGrenade_ImpactPointSet"/>
+        <ExpireDelay value="0.5"/>
+        <RevealRadius value="2.5"/>
+        <RevealFlags index="Unfog" value="1"/>
+        <EditorCategories value="Race:Neutral,CommandersHero:Raynor"/>
+    </CEffectCreatePersistent>
+    <CEffectSwitch id="Raynor_Powershot_Switch">
+        <EditorCategories value="CommandersHero:Raynor"/>
+        <CaseArray Validator="RaynorBucket_Powershot_HasBurstingBullet" Effect="Raynor_Powershot_TargetSearch_BurstBullet"/>
+        <CaseDefault value="Raynor_Powershot_ImpactSet"/>
+    </CEffectSwitch>
+    <CEffectEnumArea id="Raynor_Powershot_TargetSearch_BurstBullet">
+        <LaunchLocation Value="CasterUnit"/>
+        <SearchFilters value="-;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="1.5" Effect="Raynor_Powershot_Damage"/>
+        <EditorCategories value="Race:Neutral,CommandersHero:Raynor"/>
+    </CEffectEnumArea>
+    <CEffectDamage id="Raynor_Powershot_Damage" parent="CommandersSpellDamage">
+        <Amount value="63"/>
+        <EditorCategories value="Race:Neutral,CommandersHero:Raynor"/>
+    </CEffectDamage>
+    <CEffectDamage id="Raynor_Powershot_PercentDamage" parent="CommandersSpellDamage">
+        <Chance value="0"/>
+        <Flags index="NoScaledDealtBonus" value="1"/>
+        <Flags index="NoFractionDealtBonus" value="1"/>
+        <Flags index="NoUnscaledDealtBonus" value="1"/>
+        <Amount value="1"/>
+        <VitalFractionMax index="Life" value="0.02"/>
+        <ResponseFlags index="Acquire" value="0"/>
+        <EditorCategories value="Race:Neutral,CommandersHero:Raynor"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="Raynor_Powershot_LM">
+        <ImpactEffect value="Raynor_Powershot_Switch"/>
+        <AmmoUnit value="Raynor_Powershot_Missile"/>
+        <Movers Link="Raynor_Powershot_Missile"/>
+        <EditorCategories value="Race:Neutral,CommandersHero:Raynor"/>
+    </CEffectLaunchMissile>
+    <CEffectEnumArea id="Raynor_Powershot_SearchArea">
+        <SearchFilters value="-;Self,Player,Ally,Neutral,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray RectangleWidth="1" RectangleHeight="2" Effect="Raynor_Powershot_ImpactSet"/>
+        <ExcludeArray Effect="Raynor_Powershot_InitialSet" Value="Target"/>
+        <EditorCategories value="Race:Neutral,CommandersHero:Raynor"/>
+    </CEffectEnumArea>
+    <CEffectCreatePersistent id="Raynor_Powershot_SecondPersistent">
+        <Marker>
+            <MatchFlags index="Id" value="1"/>
+        </Marker>
+        <OffsetVectorStartLocation Effect="Raynor_Powershot_InitialPersistent" Value="SourcePoint"/>
+        <PeriodCount value="9"/>
+        <PeriodicEffectArray value="Raynor_Powershot_SearchArea"/>
+        <PeriodicOffsetArray value="0,8,0"/>
+        <PeriodicOffsetArray value="0,7,0"/>
+        <PeriodicOffsetArray value="0,6,0"/>
+        <PeriodicOffsetArray value="0,5,0"/>
+        <PeriodicOffsetArray value="0,4,0"/>
+        <PeriodicOffsetArray value="0,3,0"/>
+        <PeriodicOffsetArray value="0,2,0"/>
+        <PeriodicOffsetArray value="0,1,0"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicOffsetArray value="0,-1,0"/>
+        <PeriodicOffsetArray value="0,-1,0"/>
+        <PeriodicOffsetArray value="0,-1,0"/>
+        <PeriodicOffsetArray value="0,-1,0"/>
+        <PeriodicOffsetArray value="0,-1,0"/>
+        <PeriodicOffsetArray value="0,-1,0"/>
+        <PeriodicOffsetArray value="0,-1,0"/>
+        <PeriodicOffsetArray value="0,-1,0"/>
+        <PeriodicOffsetArray value="0,-1,0"/>
+        <PeriodicOffsetArray value="0,-1,0"/>
+        <PeriodicOffsetArray value="0,-1,0"/>
+        <PeriodicPeriodArray value="0"/>
+        <PeriodicPeriodArray value="0"/>
+        <PeriodicPeriodArray value="0.1"/>
+        <PeriodicPeriodArray value="0"/>
+        <PeriodicPeriodArray value="0.1"/>
+        <PeriodicPeriodArray value="0"/>
+        <PeriodicPeriodArray value="0.1"/>
+        <PeriodicPeriodArray value="0"/>
+        <PeriodicPeriodArray value="0.1"/>
+        <PeriodicPeriodArray value="0"/>
+        <PeriodicPeriodArray value="0"/>
+        <PeriodicPeriodArray value="0"/>
+        <PeriodicPeriodArray value="0"/>
+        <PeriodicPeriodArray value="0"/>
+        <PeriodicPeriodArray value="0"/>
+        <PeriodicPeriodArray value="0"/>
+        <PeriodicPeriodArray value="0"/>
+        <PeriodicPeriodArray value="0"/>
+        <PeriodicPeriodArray value="0"/>
+        <PeriodicPeriodArray value="0"/>
+        <PeriodicPeriodArray value="0"/>
+        <PeriodicPeriodArray value="0"/>
+        <EditorCategories value="Race:Neutral,CommandersHero:Raynor"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="Raynor_Powershot_InitialPersistent">
+        <Chance value="0"/>
+        <WhichLocation Value="CasterPoint"/>
+        <InitialDelay value="0.1"/>
+        <InitialEffect value="Raynor_Powershot_SecondPersistent"/>
+        <InitialOffset value="0,-9,0"/>
+        <EditorCategories value="Race:Neutral,CommandersHero:Raynor"/>
+    </CEffectCreatePersistent>
+    <CEffectSet id="Raynor_Powershot_InitialSet">
+        <EditorCategories value="CommandersHero:Raynor"/>
+        <EffectArray value="Raynor_Powershot_LM"/>
+        <EffectArray value="Raynor_Powershot_InitialPersistent"/>
+    </CEffectSet>
+    <CEffectSet id="Raynor_Powershot_ImpactSet">
+        <ValidatorArray value="TargetNotInvulnerable"/>
+        <ValidatorArray value="noMarkers"/>
+        <EditorCategories value="CommandersHero:Raynor"/>
+        <EffectArray value="Raynor_Powershot_Damage"/>
+        <EffectArray value="Raynor_Powershot_PercentDamage"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="RaynorBansheeDummyPersistentFlyOut">
+        <EditorCategories value="CommandersHero:Raynor"/>
+        <WhichLocation Value="SourceUnit"/>
+        <ExpireDelay value="2"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="RaynorBansheeDummyPersistentFlyIn">
+        <EditorCategories value="CommandersHero:Raynor"/>
+        <WhichLocation Value="SourceUnit"/>
+        <ExpireDelay value="1.5"/>
+    </CEffectCreatePersistent>
+    <CEffectApplyBehavior id="Raynor_AerialBomb_AB_AerialBlitzStacks">
+        <ValidatorArray index="0" value="RaynorBucket_AerialBomb_HasAerialBlitzkriegTalent"/>
+        <ValidatorArray value="TargetIsHero"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="RaynorBucket_AerialBomb_AerialBlitzkrieg_Stacks"/>
+        <EditorCategories value="Race:Neutral,CommandersHero:Raynor"/>
+    </CEffectApplyBehavior>
+    <CEffectModifyUnit id="Raynor_AerialBombardment_ModifyCooldown_AerialBlitzkrieg">
+        <ValidatorArray value="RaynorBucket_AerialBomb_HasAerialBlitzkriegTalent"/>
+        <ValidatorArray value="RaynorBucket_AerialBomb_AerialBlitzkrieg_TargetIsHero"/>
+        <ImpactUnit Value="Caster"/>
+        <Cost Abil="Raynor_AerialBomb,Execute" CooldownTimeUse="-5"/>
+        <EditorCategories value="Race:Neutral,CommandersHero:Raynor"/>
+    </CEffectModifyUnit>
+    <CEffectDamage id="Raynor_AerialBomb_Damage" parent="CommandersSpellDamage">
+        <Amount value="200"/>
+        <ValidatorArray value="noMarkers"/>
+        <LaunchLocation Effect="Raynor_AerialBomb_InitialSet" Value="CasterUnit"/>
+        <EditorCategories value="Race:Neutral,CommandersHero:Raynor"/>
+    </CEffectDamage>
+    <CEffectSet id="Raynor_AerialBomb_InitialSet">
+        <EditorCategories value="CommandersHero:Raynor"/>
+        <EffectArray value="Raynor_AerialBomb_InitialCP"/>
+        <TargetLocationType value="Point"/>
+        <Marker>
+            <MatchFlags index="Id" value="1"/>
+            <MatchFlags index="Link" value="1"/>
+            <MatchFlags index="CasterUnit" value="1"/>
+        </Marker>
+    </CEffectSet>
+    <CEffectSet id="Raynor_AerialBomb_ImpactDamageSet">
+        <ValidatorArray value="noMarkers"/>
+        <ValidatorArray value="Commanders_TargetNotImmunedToDamage"/>
+        <EditorCategories value="CommandersHero:Raynor"/>
+        <EffectArray value="Raynor_AerialBomb_Damage"/>
+        <EffectArray value="Raynor_AerialBombardment_ModifyCooldown_AerialBlitzkrieg"/>
+        <EffectArray value="Raynor_AerialBomb_AB_AerialBlitzStacks"/>
+    </CEffectSet>
+    <CEffectLaunchMissile id="Raynor_AerialBomb_LM">
+        <EditorCategories value="Race:Terran,CommandersHero:Raynor"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <ImpactEffect value="Raynor_AerialBomb_DummyImpactSet"/>
+        <AmmoUnit value="Raynor_BansheeMissile"/>
+        <Movers Link="RaynorBansheeMissilesWeapon" IfRangeLTE="500"/>
+    </CEffectLaunchMissile>
+    <CEffectCreatePersistent id="Raynor_AerialBomb_VisualPersist">
+        <EditorCategories value="CommandersHero:Raynor"/>
+        <PeriodCount value="4"/>
+        <PeriodicEffectArray value="Raynor_AerialBomb_LM"/>
+        <PeriodicOffsetArray value="-2.25,0,0"/>
+        <PeriodicOffsetArray value="-0.75,0,0"/>
+        <PeriodicOffsetArray value="0.75,0,0"/>
+        <PeriodicOffsetArray value="2.25,0,0"/>
+        <PeriodicPeriodArray value="0"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="Raynor_AerialBomb_InitialCP">
+        <EditorCategories value="CommandersHero:Raynor"/>
+        <WhichLocation Effect="Raynor_AerialBomb_InitialSet"/>
+        <OffsetVectorEndLocation Effect="Raynor_AerialBomb_InitialSet"/>
+        <OffsetFacingFallback Value="CasterUnit"/>
+        <InitialEffect value="Raynor_AerialBomb_DummyGuideSearch"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="Raynor_AerialBomb_SecondPointCP"/>
+        <PeriodicOffsetArray value="0,12,0"/>
+        <PeriodicPeriodArray value="0"/>
+    </CEffectCreatePersistent>
+    <CEffectApplyBehavior id="Raynor_AerialBomb_ApplyAscend">
+        <WhichUnit Effect="Raynor_AerialBomb_CreatedUnitSet"/>
+        <Behavior value="Raynor_AerialBomb_BansheeAscend"/>
+        <EditorCategories value="Race:Neutral,CommandersHero:Raynor"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="Raynor_AerialBomb_CreatedUnitSet">
+        <EditorCategories value="CommandersHero:Raynor"/>
+        <EffectArray value="Raynor_AerialBomb_IssueOrderMove"/>
+        <EffectArray value="Raynor_AerialBomb_DelayPersistent"/>
+    </CEffectSet>
+    <CEffectIssueOrder id="Raynor_AerialBomb_IssueOrderMove">
+        <EditorCategories value="CommandersHero:Raynor"/>
+        <Abil value="move"/>
+        <Player Value="Source"/>
+        <Target Effect="Raynor_AerialBomb_LastPointSet" Value="TargetPoint"/>
+    </CEffectIssueOrder>
+    <CEffectCreateUnit id="Raynor_AerialBomb_CU">
+        <EditorCategories value="CommandersHero:Raynor"/>
+        <WhichLocation Effect="Raynor_AerialBomb_SecondPointCP" Value="TargetPoint"/>
+        <CreateFlags index="OffsetByRadius" value="0"/>
+        <CreateFlags index="PlacementIgnoreBlockers" value="1"/>
+        <CreateFlags index="PlacementIgnoreCliffTest" value="1"/>
+        <CreateFlags index="SetFacing" value="1"/>
+        <SpawnEffect value="Raynor_AerialBomb_CreatedUnitSet"/>
+        <SpawnUnit value="Raynor_Banshee"/>
+        <SpawnRange value="1"/>
+    </CEffectCreateUnit>
+    <CEffectCreatePersistent id="Raynor_AerialBomb_SecondPointCP">
+        <EditorCategories value="CommandersHero:Raynor"/>
+        <WhichLocation Effect="Raynor_AerialBomb_InitialSet"/>
+        <OffsetVectorEndLocation Effect="Raynor_AerialBomb_InitialSet"/>
+        <OffsetFacingFallback Value="CasterUnit"/>
+        <InitialEffect value="Raynor_AerialBomb_LastPointSet"/>
+        <InitialOffset value="0,-24,0"/>
+    </CEffectCreatePersistent>
+    <CEffectSet id="Raynor_AerialBomb_LastPointSet">
+        <EditorCategories value="CommandersHero:Raynor"/>
+        <EffectArray value="Raynor_AerialBomb_CU"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="Raynor_AerialBomb_AB_Attack">
+        <EditorCategories value="CommandersHero:Raynor"/>
+        <Behavior value="Raynor_AerialBomb_BansheeAttackBehavior"/>
+    </CEffectApplyBehavior>
+    <CEffectCreatePersistent id="Raynor_AerialBomb_AttackPersist">
+        <EditorCategories value="CommandersHero:Raynor"/>
+        <InitialEffect value="Raybor_AerialBomb_AttackSearch"/>
+        <InitialOffset value="0,-1,0"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="Raynor_AerialBomb_VisualPersist"/>
+        <PeriodicOffsetArray value="0,-1,0"/>
+        <PeriodicPeriodArray value="0"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="Raybor_AerialBomb_AttackSearch">
+        <EditorCategories value="CommandersHero:Raynor"/>
+        <SearchFilters value="-;Self,Player,Ally,Neutral,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray RectangleWidth="6" RectangleHeight="1" Effect="Raynor_AerialBomb_ImpactDamageSet"/>
+        <RevealerParams Duration="2.5" ShapeExpansion="0.1">
+            <RevealFlags index="Unfog" value="1"/>
+        </RevealerParams>
+    </CEffectEnumArea>
+    <CEffectSet id="Raynor_AerialBomb_DummyImpactSet">
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="Raynor_AerialBomb_DelayPersistent">
+        <EditorCategories value="CommandersHero:Raynor"/>
+        <WhichLocation Effect="Raynor_AerialBomb_CreatedUnitSet" Value="TargetUnit"/>
+        <InitialDelay value="1"/>
+        <InitialEffect value="Raynor_AerialBomb_AB_Attack"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="Raynor_AerialBomb_DummyGuideSearch">
+        <EditorCategories value="CommandersHero:Raynor"/>
+        <Chance value="0"/>
+        <SearchFilters value="-;Self,Player,Ally,Neutral,Missile,Item,Stasis,Dead,Invulnerable"/>
+        <AreaArray RectangleWidth="6" RectangleHeight="12"/>
+    </CEffectEnumArea>
+    <CEffectDamage id="Raynor_AdvancedOptics_DummyEffect">
+        <EditorCategories value="CommandersHero:Raynor"/>
+        <Amount value="350"/>
+    </CEffectDamage>
+    <CEffectDamage id="Raynor_AdvancedOptics_Damage" parent="CommandersWeaponDamage">
+        <KindSplash value="Spell"/>
+        <EditorCategories value="Race:Neutral,CommandersHero:Raynor"/>
+    </CEffectDamage>
+    <CEffectApplyBehavior id="Raynor_AdvancedOptics_ApplyTargetBehavior">
+        <ValidatorArray index="0" removed="1"/>
+        <EditorCategories value="CommandersHero:Raynor"/>
+        <Behavior value="Raynor_AdvancedOptics_Target"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="Raynor_AdvancedOptics_RemoveBehaviorsFromCaster">
+        <EditorCategories value="CommandersHero:Raynor"/>
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="Raynor_AdvancedOptics_CasterBehavior"/>
+    </CEffectRemoveBehavior>
+    <CEffectSwitch id="Raynor_AdvancedOptics_InitialSwitch">
+        <EditorCategories value="CommandersHero:Raynor"/>
+        <CaseArray Validator="Raynor_AdvancedOptics_TargetHasBehavior" Effect="Raynor_AdvancedOptics_TargetHasBehaviorSet"/>
+        <CaseDefault value="Raynor_AdvancedOptics_TargetHasNotBehaviorSet"/>
+    </CEffectSwitch>
+    <CEffectSet id="Raynor_AdvancedOptics_ImpactSet">
+        <EditorCategories value="CommandersHero:Raynor"/>
+        <EffectArray value="Raynor_AdvancedOptics_InitialSwitch"/>
+    </CEffectSet>
+    <CEffectSet id="Raynor_AdvancedOptics_TargetHasBehaviorSet">
+        <EditorCategories value="CommandersHero:Raynor"/>
+        <EffectArray value="Raynor_AdvancedOptics_RemoveBehaviorsFromCaster"/>
+    </CEffectSet>
+    <CEffectSet id="Raynor_AdvancedOptics_TargetHasNotBehaviorSet">
+        <EditorCategories value="CommandersHero:Raynor"/>
+        <EffectArray value="Raynor_AdvancedOptics_ApplyCasterBehavior"/>
+        <EffectArray value="Raynor_AdvancedOptics_FindLastTarget"/>
+        <EffectArray value="Raynor_AdvancedOptics_ApplyTargetBehavior"/>
+    </CEffectSet>
+    <CEffectEnumArea id="Raynor_AdvancedOptics_FindLastTarget">
+        <EditorCategories value="CommandersHero:Raynor"/>
+        <SearchFilters value="-;Player,Ally,Neutral"/>
+        <AreaArray Radius="500" Effect="Raynor_AdvancedOptics_RBFromLastTarget"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="Raynor_AdvancedOptics_ApplyCasterBehavior">
+        <ValidatorArray index="0" removed="1"/>
+        <EditorCategories value="CommandersHero:Raynor"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="Raynor_AdvancedOptics_CasterBehavior"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="Raynor_AdvancedOptics_RBFromLastTarget">
+        <EditorCategories value="CommandersHero:Raynor"/>
+        <BehaviorLink value="Raynor_AdvancedOptics_Target"/>
+        <RequireCasterUnit Value="Caster"/>
+    </CEffectRemoveBehavior>
+    <CEffectEnumArea id="Raynor_IRememberYou_AdditiveDamage_ExplosionMarkSearch">
+        <LaunchLocation Value="CasterUnit"/>
+        <SearchFilters value="-;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="0.25"/>
+        <Chance value="0"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <EditorCategories value="Race:Neutral,CommandersHero:Raynor"/>
+    </CEffectEnumArea>
+    <CEffectDamage id="Raynor_IRememberYou_AdditiveStormDamage" parent="CommandersStormDamage">
+        <Amount value="20"/>
+        <EditorCategories value="Race:Neutral,CommandersHero:Raynor"/>
+    </CEffectDamage>
+    <CEffectApplyBehavior id="Raynor_IRememberYou_ApplySpeedBehavior">
+        <ValidatorArray index="0" value="Raynor_IRememberYou_TargetHasBehavior"/>
+        <EditorCategories value="CommandersHero:Raynor"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="RaynorBucket_IRememberYou_PersecutionMania_SpeedBehavior"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="Raynor_IRememberYou_ApplySearchingBehavior">
+        <EditorCategories value="CommandersHero:Raynor"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="RaynorBucket_IRememberYou_PersecutionManiaSearchBehavior"/>
+    </CEffectApplyBehavior>
+    <CEffectEnumArea id="Raynor_IRememberYou_FindTargetWithMark">
+        <EditorCategories value="CommandersHero:Raynor"/>
+        <DebugTrace value="1"/>
+        <ImpactLocation Value="SourceUnit"/>
+        <SearchFilters value="Heroic;Self,Player,Ally,Neutral,Missile,Stasis,Dead"/>
+        <AreaArray>
+            <Arc value="135"/>
+            <MaxCount value="1"/>
+            <Radius value="10"/>
+            <Effect value="Raynor_IRememberYou_ApplySpeedBehavior"/>
+        </AreaArray>
+    </CEffectEnumArea>
+    <CEffectDamage id="Raynor_IRememberYou_AdditiveDamage_ExplosionMarkStormDamage" parent="Raynor_IRememberYou_AdditiveStormDamage">
+        <Name value="Effect/Name/Raynor_IRememberYou_ExplosionMarkDamage"/>
+        <ValidatorArray value="Raynor_IRememberYou_TargetHasBehavior"/>
+    </CEffectDamage>
+    <CEffectApplyBehavior id="Raunor_IRememberYou_ApplyBehavior">
+        <EditorCategories value="CommandersHero:Raynor"/>
+        <Behavior value="Raynor_IRememberYou"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="Raynor_IRememberYou_ImpactSet">
+        <EditorCategories value="CommandersHero:Raynor"/>
+        <EffectArray value="Raunor_IRememberYou_ApplyBehavior"/>
+        <EffectArray value="Raynor_IRememberYou_ApplySearchingBehavior"/>
+    </CEffectSet>
+    <CEffectEnumArea id="Raynor_IRememberYou_Search">
+        <EditorCategories value="CommandersHero:Raynor"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <SearchFilters value="-;Self,Player,Ally,Neutral,Structure,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Arc="45" Radius="6.375" Effect="Raynor_IRememberYou_ImpactSet"/>
+        <SearchFlags index="CenterAtLaunch" value="1"/>
+        <SearchFlags index="OffsetAreaByAngle" value="0"/>
+    </CEffectEnumArea>
+    <CEffectRemoveBehavior id="Raynor_IRememberYou_AdditiveStormDamage_RB">
+        <EditorCategories value="CommandersHero:Raynor"/>
+        <BehaviorLink value="Raynor_IRememberYou"/>
+        <Count value="1"/>
+        <RequireCasterUnit Value="Caster"/>
+    </CEffectRemoveBehavior>
+    <CEffectCreatePersistent id="Raynor_IRememberYou_InitialPersistent">
+        <Marker>
+            <MatchFlags index="Id" value="1"/>
+        </Marker>
+        <OffsetVectorStartLocation Value="CasterPoint"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="Raynor_IRememberYou_Search"/>
+        <EditorCategories value="Race:Neutral,CommandersHero:Raynor"/>
+    </CEffectCreatePersistent>
+    <CEffectSet id="Raynor_IRememberYou_AdditiveDamage_ImpactSet">
+        <EditorCategories value="CommandersHero:Raynor"/>
+        <EffectArray value="Raynor_IRememberYou_AdditiveStormDamage"/>
+        <EffectArray value="Raynor_IRememberYou_AdditiveStormDamage_RB"/>
+        <EffectArray value="Raynor_IRememberYou_AdditiveDamage_ExplosionMarkSearch"/>
+    </CEffectSet>
+    <CAbilEffectTarget id="RaynorPenetratingRound2">
+        <Effect index="0" value="Raynor_PenetratingRound_InitialSet"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Charge Link="Abil/RaynorPenetratingRound"/>
+            <Cooldown Link="Abil/RaynorSnipe" Location="Unit" TimeUse="1"/>
+        </Cost>
+        <Range value="500"/>
+        <Arc value="219.9902"/>
+        <CastIntroTime value="0.25"/>
+        <FinishTime value="0.25"/>
+        <UninterruptibleArray index="Cast" value="1"/>
+        <UninterruptibleArray index="Channel" value="1"/>
+        <UninterruptibleArray index="Finish" value="1"/>
+        <CursorEffect value="PenetratingRoundMissileScan"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="RaynorPenetratingRound"/>
+        <OrderArray Model="Assets\Units\Test\InvisibleUnit\InvisibleUnit.m3"/>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="RaynorBucket_Stimpack">
+        <SharedFlags index="DisableWhileDead" value="0"/>
+        <Effect index="0" value="RaynorBucket_Stimpack_InitialSet"/>
+        <Flags index="Transient" value="1"/>
+        <Cost>
+            <Vital index="Life" value="150"/>
+            <Cooldown Link="Abil/RaynorBucker_Stimpack" Location="Unit" TimeUse="45"/>
+        </Cost>
+        <CmdButtonArray index="Execute" DefaultButtonFace="RaynorBucket_Stimpack">
+            <Flags index="AllowSelfCast" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="Cancel">
+            <Flags index="AllowSelfCast" value="1"/>
+        </CmdButtonArray>
+        <EditorCategories value="Race:Neutral,AbilityorEffectType:Units,CommandersHero:Raynor"/>
+    </CAbilEffectInstant>
+    <CAbilEffectTarget id="Raynor_DisorientingGrenade">
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Raynor"/>
+        <Effect index="0" value="Raynor_DisorientingGrenade_LM"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Vital index="Energy" value="85"/>
+            <Charge Link="Abil/Raynor_SmokeGrenade"/>
+            <Cooldown Link="Abil/Raynor_SmokeGrenade" TimeUse="12"/>
+        </Cost>
+        <Range value="10"/>
+        <FinishTime value="0.225"/>
+        <UninterruptibleArray index="Cast" value="1"/>
+        <UninterruptibleArray index="Finish" value="1"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Raynor_DisorientingGrenade"/>
+        <CursorEffect value="Raynor_DisorientingGrenade_Search"/>
+        <CursorRangeMode value="Clamp"/>
+        <OrderArray index="0" removed="1"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="Raynor_Powershot">
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Raynor"/>
+        <Effect index="0" value="Raynor_Powershot_InitialSet"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Vital index="Energy" value="40"/>
+            <Cooldown TimeUse="9"/>
+        </Cost>
+        <TargetFilters value="-;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden"/>
+        <Range value="10"/>
+        <Arc value="9.9975"/>
+        <FinishTime value="0.25"/>
+        <UninterruptibleArray index="Finish" value="1"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Raynor_Powershot"/>
+        <OrderArray index="0" removed="1"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="Raynor_AerialBomb">
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Raynor"/>
+        <Effect index="0" value="Raynor_AerialBomb_InitialSet"/>
+        <Flags index="RangeUseCasterRadius" value="0"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Vital index="Energy" value="100"/>
+            <Cooldown TimeUse="60"/>
+        </Cost>
+        <Range value="20"/>
+        <Arc value="19.995"/>
+        <CursorEffect value="Raynor_AerialBomb_DummyGuideSearch"/>
+        <CursorRangeMode value="Clamp"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Raynor_AerialBomb"/>
+        <CastOutroTime value="0.75"/>
+        <OrderArray index="0" removed="1"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="Raynor_IRememberYou">
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Raynor"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Vital index="Energy" value="50"/>
+            <Charge Link="Abil/RaynorIRememberYou"/>
+            <Cooldown Link="Abil/IRememberYou" Location="Unit" TimeUse="9"/>
+        </Cost>
+        <Range value="500"/>
+        <Arc value="29.9926"/>
+        <CastIntroTime value="0.1"/>
+        <FinishTime value="0.1"/>
+        <UninterruptibleArray index="Cast" value="1"/>
+        <UninterruptibleArray index="Channel" value="1"/>
+        <UninterruptibleArray index="Finish" value="1"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Raynor_IRememberYou"/>
+        <Effect index="0" value="Raynor_IRememberYou_InitialPersistent"/>
+        <CursorEffect value="Raynor_IRememberYou_Search"/>
+        <OrderArray index="0" removed="1"/>
+    </CAbilEffectTarget>
+    <CValidatorPlayerTalent id="RaynorBucket_TacticalShot_HasTacticalShotTalent">
+        <WhichPlayer Value="Caster"/>
+        <Find value="1"/>
+        <Value value="TaynorBucket_TacticalShot"/>
+    </CValidatorPlayerTalent>
+    <CValidatorUnitCompareBehaviorCount id="RaynorBucket_TacticalShot_MissileHas2Behaviors">
+        <WhichUnit Value="Source"/>
+        <Value value="2"/>
+        <Behavior value="RaynorBucket_TacticalShot_MissileBehavior"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="RaynorBucket_TacticalShot_MissileHas3Behaviors">
+        <WhichUnit Value="Source"/>
+        <Value value="3"/>
+        <Behavior value="RaynorBucket_TacticalShot_MissileBehavior"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="RaynorBucket_TacticalShot_MissileHas1Behavior">
+        <WhichUnit Value="Source"/>
+        <Value value="1"/>
+        <Behavior value="RaynorBucket_TacticalShot_MissileBehavior"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="RaynorBucket_Stimpack_CasterHasActiveStimpack">
+        <WhichUnit Value="Caster"/>
+        <Compare value="GT"/>
+        <Behavior value="RaynorBucket_Stimpack_PowershotCD"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorPlayerTalent id="RaynorBucket_DisorientingGrenade_HasUpgradedGrenadeTalent">
+        <WhichPlayer Value="Caster"/>
+        <Find value="1"/>
+        <Value value="RaynorBucket_DisorientingGrenade_UpgradedGrenade"/>
+    </CValidatorPlayerTalent>
+    <CValidatorPlayerTalent id="RaynorBucket_DisorientingGrenade_HasBlindGrenadeTalent">
+        <WhichPlayer Value="Caster"/>
+        <Find value="1"/>
+        <Value value="RaynorBucket_DisorientingGrenade_BlindGrenade"/>
+    </CValidatorPlayerTalent>
+    <CValidatorPlayerTalent id="RaynorBucket_Powershot_HasHeavySlugsTalent">
+        <WhichPlayer Value="Caster"/>
+        <Find value="1"/>
+        <Value value="RaynorBucket_Powershot_HeavySlugs"/>
+    </CValidatorPlayerTalent>
+    <CValidatorPlayerTalent id="RaynorBucket_Powershot_HasMarkThemRedTalent">
+        <WhichPlayer Value="Caster"/>
+        <Find value="1"/>
+        <Value value="RaynorBucket_Powershot_MarkThemRed"/>
+    </CValidatorPlayerTalent>
+    <CValidatorPlayerTalent id="RaynorBucket_Powershot_HasBurstingBullet">
+        <WhichPlayer Value="Caster"/>
+        <Find value="1"/>
+        <Value value="RaynorBucket_Powershot_BurstingBullet"/>
+    </CValidatorPlayerTalent>
+    <CValidatorUnitFilters id="RaynorBucket_AerialBomb_AerialBlitzkrieg_TargetIsHero">
+        <WhichUnit Effect="Raynor_AerialBomb_ImpactDamageSet"/>
+        <Filters value="Heroic;-"/>
+    </CValidatorUnitFilters>
+    <CValidatorPlayerTalent id="RaynorBucket_AerialBomb_HasAerialBlitzkriegTalent">
+        <WhichPlayer Value="Caster"/>
+        <Find value="1"/>
+        <Value value="RaynorBucket_AerialBombardment_AerialBlitzkrieg_Stacks"/>
+    </CValidatorPlayerTalent>
+    <CValidatorUnitCompareBehaviorCount id="Raynor_AdvancedOptics_CasterHas1Behavior">
+        <WhichUnit Value="Caster"/>
+        <Value value="1"/>
+        <Behavior value="Raynor_AdvancedOptics_CasterBehavior"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="Raynor_AdvancedOptics_CasterHas2Behavior">
+        <WhichUnit Value="Caster"/>
+        <Value value="2"/>
+        <Behavior value="Raynor_AdvancedOptics_CasterBehavior"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="Raynor_AdvancedOptics_CasterHas3Behavior">
+        <WhichUnit Value="Caster"/>
+        <Value value="3"/>
+        <Behavior value="Raynor_AdvancedOptics_CasterBehavior"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorPlayerTalent id="Raynor_AdvancedOptics_HasAdvancedProtectionTalent">
+        <WhichPlayer Value="Caster"/>
+        <Find value="1"/>
+        <Value value="RaynorBucket_AdvancedOptics_AdvancedProtection"/>
+    </CValidatorPlayerTalent>
+    <CValidatorPlayerTalent id="Raynor_AdvancedOptics_HasHighPowerTalent">
+        <WhichPlayer Value="Caster"/>
+        <Find value="1"/>
+        <Value value="RaynorBucket_AdvancedOptics_HighPower"/>
+    </CValidatorPlayerTalent>
+    <CValidatorUnitCompareBehaviorCount id="RaynorBucket_AdvancedOptics_HasAdvancedProtection">
+        <WhichUnit Value="Caster"/>
+        <Compare value="GT"/>
+        <Behavior value="RaynorBucket_AdvancedOptics_AdvancedProtection"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="Raynor_AdvancedOptics_TargetHasBehavior">
+        <Compare value="GT"/>
+        <Behavior value="Raynor_AdvancedOptics_Target"/>
+        <RequireCasterUnit Value="Caster"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorPlayerTalent id="RaynorBucket_IRememberYou_HasEagleEyeTalent">
+        <WhichPlayer Value="Caster"/>
+        <Find value="1"/>
+        <Value value="RaynorBucket_IRememberYou_EagleEye"/>
+    </CValidatorPlayerTalent>
+    <CValidatorPlayerTalent id="RaynorBucket_IRememberYou_HasExplosionMaskTalent">
+        <WhichPlayer Value="Caster"/>
+        <Find value="1"/>
+        <Value value="RaynorBucket_IRememberYou_ExplosionMark"/>
+    </CValidatorPlayerTalent>
+    <CValidatorPlayerTalent id="RaynorBucket_IRememberYou_HasVampiricMarkTalent">
+        <WhichPlayer Value="Caster"/>
+        <Find value="1"/>
+        <Value value="RaynorBucket_IRememberYou_VampiricMark"/>
+    </CValidatorPlayerTalent>
+    <CValidatorPlayerTalent id="RaynorBucket_IRememberYou_HasPersecutionManiaTalent">
+        <WhichPlayer Value="Caster"/>
+        <Find value="1"/>
+        <Value value="RaynorBucket_IRememberYou_PersecutionMania"/>
+    </CValidatorPlayerTalent>
+    <CValidatorUnitCompareBehaviorCount id="Raynor_IRememberYou_TargetHasBehavior">
+        <Value value="1"/>
+        <Behavior value="Raynor_IRememberYou"/>
+        <RequireCasterUnit Value="Caster"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CButton id="RaynorBucket_TacticalShot">
+        <Icon value="Base.CCAssets\Icons\Talents\Commanders_ui_icon_talent_autoattack_cooldown.dds"/>
+        <SimpleDisplayText value="Button/Tooltip/RaynorBucket_TacticalShot_Simple"/>
+        <EditorCategories value="CommandersHero:Raynor"/>
+    </CButton>
+    <CButton id="RaynorBucket_Stimpack" parent="StormButtonParent">
+        <TooltipFlags index="ShowCooldown" value="1"/>
+        <TooltipCooldownOverrideText value="Button/Tooltip/RaynorAdrenalineRush/Info"/>
+        <Icon value="Assets\Textures\btn-ability-terran-stimpack-color.dds"/>
+        <SimpleDisplayText value="Button/Tooltip/RaynorBucket_Stimpack_Simple"/>
+        <EditorCategories value="CommandersHero:Raynor"/>
+    </CButton>
+    <CButton id="RaynorBucket_DisorientingGrenade_UpgradedGrenade">
+        <Icon value="Base.CCAssets\Icons\HeroTalents\commanders_ui_icon_raynor_disorientinggrenade_c.DDS"/>
+        <SimpleDisplayText value="Button/Tooltip/RaynorBucket_DisorientingGrenade_UpgradedGrenade_Simple"/>
+        <EditorCategories value="CommandersHero:Raynor"/>
+    </CButton>
+    <CButton id="RaynorBucket_DisorientingGrenade_BlindGrenade">
+        <Icon value="Base.CCAssets\Icons\HeroTalents\commanders_ui_icon_raynor_disorientinggrenade_a.DDS"/>
+        <SimpleDisplayText value="Button/Tooltip/RaynorBucket_DisorientingGrenade_BlindGrenade_Simple"/>
+        <EditorCategories value="CommandersHero:Raynor"/>
+    </CButton>
+    <CButton id="Raynor_DisorientingGrenade" parent="StormButtonParentFury">
+        <Icon value="Assets\Textures\btn-upgrade-nova-btn-upgrade-nova-pulsegrenade.dds"/>
+        <TooltipAppender Validator="RaynorBucket_DisorientingGrenade_HasBlindGrenadeTalent" Face="RaynorBucket_DisorientingGrenade_BlindGrenade"/>
+        <TooltipAppender Validator="RaynorBucket_DisorientingGrenade_HasUpgradedGrenadeTalent" Face="RaynorBucket_DisorientingGrenade_UpgradedGrenade"/>
+        <TooltipFlags index="ShowCooldown" value="1"/>
+        <TooltipCooldownOverrideText value="Button/Tooltip/Raynor_DisorientingGrenade/Time"/>
+        <SimpleDisplayText value="Button/Tooltip/Raynor_DisorientingGrenade_Simple"/>
+        <EditorCategories value="CommandersHero:Raynor"/>
+    </CButton>
+    <CButton id="RaynorBucket_Powershot_BurstingBullet" parent="StormButtonParent">
+        <Icon value="Base.CCAssets\Icons\HeroTalents\commanders_ui_icon_raynor_powershot_a.DDS"/>
+        <SimpleDisplayText value="Button/Tooltip/RaynorBucket_Powershot_BurstingBullet_Simple"/>
+        <TooltipFlags index="ShowCooldown" value="1"/>
+        <EditorCategories value="CommandersHero:Raynor"/>
+    </CButton>
+    <CButton id="RaynorBucket_Powershot_HeavySlugs" parent="StormButtonParent">
+        <Icon value="Base.CCAssets\Icons\HeroTalents\commanders_ui_icon_raynor_powershot_b.DDS"/>
+        <SimpleDisplayText value="Button/Tooltip/RaynorBucket_Powershot_HeavySlugs_Simple"/>
+        <EditorCategories value="CommandersHero:Raynor"/>
+    </CButton>
+    <CButton id="RaynorBucket_Powershot_MarkThemRed" parent="StormButtonParent">
+        <Icon value="Base.CCAssets\Icons\HeroTalents\commanders_ui_icon_raynor_powershot_c.DDS"/>
+        <SimpleDisplayText value="Button/Tooltip/RaynorBucket_Powershot_MarkThemRed_Simple"/>
+        <EditorCategories value="CommandersHero:Raynor"/>
+    </CButton>
+    <CButton id="Raynor_Powershot" parent="StormButtonParent">
+        <Icon value="Base.CCAssets\Icons\HeroTalents\commanders_ui_icon_raynor_powershot_a.DDS"/>
+        <TooltipAppender Validator="RaynorBucket_Powershot_HasBurstingBullet" Face="RaynorBucket_Powershot_BurstingBullet"/>
+        <TooltipAppender Validator="RaynorBucket_Powershot_HasHeavySlugsTalent" Face="RaynorBucket_Powershot_HeavySlugs"/>
+        <TooltipAppender Validator="RaynorBucket_Powershot_HasMarkThemRedTalent" Face="RaynorBucket_Powershot_MarkThemRed"/>
+        <TooltipFlags index="ShowCooldown" value="1"/>
+        <TooltipCooldownOverrideText value="Button/Tooltip/Raynor_Powershot/Time"/>
+        <SimpleDisplayText value="Button/Tooltip/Raynor_Powershot_Simple"/>
+        <EditorCategories value="CommandersHero:Raynor"/>
+    </CButton>
+    <CButton id="RaynorBucket_AerialBombardment_AerialBlitzkrieg">
+        <Icon value="Base.CCAssets\Icons\HeroTalents\commanders_ui_icon_raynor_raynorsraiders.dds"/>
+        <TooltipAppender Validator="RaynorBucket_AerialBomb_HasAerialBlitzkriegTalent" Face="RaynorBucket_AerialBombardment_AerialBlitzkrieg"/>
+        <SimpleDisplayText value="Button/Tooltip/RaynorBucket_AerialBombardment_AerialBlitzkrieg_Simple"/>
+        <EditorCategories value="CommandersHero:Raynor"/>
+    </CButton>
+    <CButton id="Raynor_AerialBomb" parent="StormButtonParent">
+        <Icon value="Base.CCAssets\Icons\HeroTalents\commanders_ui_icon_raynor_raynorsraiders.dds"/>
+        <TooltipFlags index="ShowCooldown" value="1"/>
+        <TooltipCooldownOverrideText value="Button/Tooltip/Raynor_AerialBomb/Time"/>
+        <SimpleDisplayText value="Button/Tooltip/Raynor_AerialBomb_Simple"/>
+        <EditorCategories value="CommandersHero:Raynor"/>
+    </CButton>
+    <CButton id="RaynorBucket_AdvancedOptics_AdvancedProtection">
+        <Icon value="Base.CCAssets\Icons\HeroTalents\Commanders_ui_icon_raynor_advancedoptics_a.DDS"/>
+        <SimpleDisplayText value="Button/Tooltip/RaynorBucket_AdvancedOptics_AdvancedProtection_Simple"/>
+        <EditorCategories value="CommandersHero:Raynor"/>
+    </CButton>
+    <CButton id="RaynorBucket_AdvancedOptics_HighPower">
+        <Icon value="Base.CCAssets\Icons\HeroTalents\Commanders_ui_icon_raynor_advancedoptics.dds"/>
+        <SimpleDisplayText value="Button/Tooltip/RaynorBucket_AdvancedOptics_HighPower_Simple"/>
+        <EditorCategories value="CommandersHero:Raynor"/>
+    </CButton>
+    <CButton id="Raynor_AdvancedOptics" parent="StormButtonParent">
+        <Icon value="Base.CCAssets\Icons\HeroTalents\Commanders_ui_icon_raynor_advancedoptics.dds"/>
+        <TooltipAppender Validator="Raynor_AdvancedOptics_HasHighPowerTalent" Face="RaynorBucket_AdvancedOptics_HighPower"/>
+        <TooltipAppender Validator="Raynor_AdvancedOptics_HasAdvancedProtectionTalent" Face="RaynorBucket_AdvancedOptics_AdvancedProtection"/>
+        <TooltipFlags index="ShowCooldown" value="1"/>
+        <TooltipCooldownOverrideText value="Button/Tooltip/Raynor_AdvancedOptics/Time"/>
+        <SimpleDisplayText value="Button/Tooltip/Raynor_AdvancedOptics_Simple"/>
+        <EditorCategories value="CommandersHero:Raynor"/>
+    </CButton>
+    <CButton id="RaynorBucket_IRememberYou_ExplosionMark">
+        <Icon value="Base.CCAssets\Icons\HeroTalents\Commanders_ui_icon_raynor_irememberyou_c.DDS"/>
+        <SimpleDisplayText value="Button/Tooltip/RaynorBucket_IRememberYou_ExplosionMark_Simple"/>
+        <EditorCategories value="CommandersHero:Raynor"/>
+    </CButton>
+    <CButton id="RaynorBucket_IRememberYou_VampiricMark">
+        <Icon value="Base.CCAssets\Icons\HeroTalents\Commanders_ui_icon_raynor_irememberyou_b.DDS"/>
+        <SimpleDisplayText value="Button/Tooltip/RaynorBucket_IRememberYou_VampiricMark_Simple"/>
+        <EditorCategories value="CommandersHero:Raynor"/>
+    </CButton>
+    <CButton id="RaynorBucket_IRememberYou_EagleEye">
+        <Icon value="Base.CCAssets\Icons\HeroTalents\Commanders_ui_icon_raynor_irememberyou.dds"/>
+        <SimpleDisplayText value="Button/Tooltip/RaynorBucket_IRememberYou_EagleEye_Simple"/>
+        <EditorCategories value="CommandersHero:Raynor"/>
+    </CButton>
+    <CButton id="RaynorBucket_IRememberYou_PersecutionMania">
+        <Icon value="Base.CCAssets\Icons\HeroTalents\Commanders_ui_icon_raynor_irememberyou_a.DDS"/>
+        <SimpleDisplayText value="Button/Tooltip/RaynorBucket_IRememberYou_PersecutionMania_Simple"/>
+        <EditorCategories value="CommandersHero:Raynor"/>
+    </CButton>
+    <CButton id="Raynor_IRememberYou" parent="StormButtonParent">
+        <Icon value="Base.CCAssets\Icons\HeroTalents\Commanders_ui_icon_raynor_irememberyou.dds"/>
+        <Hotkey value="Button/Hotkey/RaynorInspire"/>
+        <SimpleDisplayText value="Button/Tooltip/Raynor_IRememberYou_Simple"/>
+        <TooltipAppender Validator="RaynorBucket_IRememberYou_HasVampiricMarkTalent" Face="RaynorBucket_IRememberYou_VampiricMark"/>
+        <TooltipAppender Validator="RaynorBucket_IRememberYou_HasEagleEyeTalent" Face="RaynorBucket_IRememberYou_EagleEye"/>
+        <TooltipAppender Validator="RaynorBucket_IRememberYou_HasPersecutionManiaTalent" Face="RaynorBucket_IRememberYou_PersecutionMania"/>
+        <TooltipAppender Validator="RaynorBucket_IRememberYou_HasExplosionMaskTalent" Face="RaynorBucket_IRememberYou_ExplosionMark"/>
+        <TooltipFlags index="ShowCooldown" value="1"/>
+        <TooltipCooldownOverrideText value="Button/Tooltip/Raynor_IRememberYou/Time"/>
+        <EditorCategories value="CommandersHero:Raynor"/>
+    </CButton>
+    <CTalent default="1" id="RaynorBucket"/>
+    <CTalent id="RaynorBucket_Stimpack" parent="RaynorBucket">
+        <Face value="RaynorBucket_Stimpack"/>
+        <RankArray Item="RaynorBucket_Stimpack">
+            <BehaviorArray value="RaynorBucket_Stimpack_CarryBehavior"/>
+        </RankArray>
+        <Active value="1"/>
+    </CTalent>
+    <CTalent id="TaynorBucket_TacticalShot" parent="RaynorBucket">
+        <Face value="RaynorBucket_TacticalShot"/>
+        <RankArray>
+            <BehaviorArray value="RaynorBucket_TacticalShot_CarryBehavior"/>
+        </RankArray>
+    </CTalent>
+    <CTalent id="RaynorBucket_DisorientingGrenade_BlindGrenade" parent="RaynorBucket">
+        <Face value="RaynorBucket_DisorientingGrenade_BlindGrenade"/>
+        <Abil value="Raynor_DisorientingGrenade"/>
+    </CTalent>
+    <CTalent id="RaynorBucket_DisorientingGrenade_UpgradedGrenade" parent="RaynorBucket">
+        <Face value="RaynorBucket_DisorientingGrenade_UpgradedGrenade"/>
+        <Abil value="Raynor_DisorientingGrenade"/>
+        <RankArray Upgrade="RaynorBucket_DisorientingGrenade_UpgradedGrenade"/>
+    </CTalent>
+    <CTalent id="RaynorBucket_Powershot_BurstingBullet" parent="RaynorBucket">
+        <Face value="RaynorBucket_Powershot_BurstingBullet"/>
+        <Abil value="Raynor_Powershot"/>
+    </CTalent>
+    <CTalent id="RaynorBucket_Powershot_HeavySlugs" parent="RaynorBucket">
+        <Face value="RaynorBucket_Powershot_HeavySlugs"/>
+        <Abil value="Raynor_Powershot"/>
+        <RankArray Upgrade="RaynorBucket_Powershot_HeavySlugs"/>
+    </CTalent>
+    <CTalent id="RaynorBucket_Powershot_MarkThemRed" parent="RaynorBucket">
+        <Face value="RaynorBucket_Powershot_MarkThemRed"/>
+        <Abil value="Raynor_Powershot"/>
+        <RankArray Upgrade="RaynorBucket_Powershot_MarkThemRed"/>
+    </CTalent>
+    <CTalent id="RaynorBucket_AerialBombardment_AerialBlitzkrieg_Stacks" parent="RaynorBucket">
+        <Face value="RaynorBucket_AerialBombardment_AerialBlitzkrieg"/>
+        <Abil value="Raynor_AerialBomb"/>
+        <RankArray>
+            <BehaviorArray value="RaynorBucket_AerialBombardment_AerialBlitzkrieg_CarryBehavior"/>
+        </RankArray>
+    </CTalent>
+    <CTalent id="RaynorBucket_AdvancedOptics_AdvancedProtection" parent="RaynorBucket">
+        <Face value="RaynorBucket_AdvancedOptics_AdvancedProtection"/>
+        <Trait value="1"/>
+    </CTalent>
+    <CTalent id="RaynorBucket_AdvancedOptics_HighPower" parent="RaynorBucket">
+        <Face value="RaynorBucket_AdvancedOptics_HighPower"/>
+        <RankArray Upgrade="RaynorBucket_AdvancedOptics_HighPower"/>
+        <Trait value="1"/>
+    </CTalent>
+    <CTalent id="RaynorBucket_IRememberYou_EagleEye" parent="RaynorBucket">
+        <Face value="RaynorBucket_IRememberYou_EagleEye"/>
+        <Abil value="Raynor_IRememberYou"/>
+        <RankArray Upgrade="RaynorBucket_IRememberYou_EagleEye"/>
+    </CTalent>
+    <CTalent id="RaynorBucket_IRememberYou_ExplosionMark" parent="RaynorBucket">
+        <Face value="RaynorBucket_IRememberYou_ExplosionMark"/>
+        <Abil value="Raynor_IRememberYou"/>
+        <RankArray Upgrade="RaynorBucket_IRememberYou_ExplosionMark"/>
+    </CTalent>
+    <CTalent id="RaynorBucket_IRememberYou_PersecutionMania" parent="RaynorBucket">
+        <Face value="RaynorBucket_IRememberYou_PersecutionMania"/>
+        <Abil value="Raynor_IRememberYou"/>
+    </CTalent>
+    <CTalent id="RaynorBucket_IRememberYou_VampiricMark" parent="RaynorBucket">
+        <Face value="RaynorBucket_IRememberYou_VampiricMark"/>
+        <Abil value="Raynor_IRememberYou"/>
+        <RankArray Upgrade="RaynorBucket_IRememberYou_VampiricMark"/>
+    </CTalent>
+    <CActorSplat id="Raynor_DisorientingGrenade_RangeSplat" parent="UI_RangeSplat">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Raynor"/>
+        <Scale value="10.875000"/>
+    </CActorSplat>
+    <CActorUnit id="RaynorBucket_Stimpack" parent="StormItemBase" unitName="RaynorBucket_Stimpack">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Raynor"/>
+    </CActorUnit>
+    <CActorAction id="Raynor_Weapon_Attack" parent="RangedHeroAttackMissile" effectImpact="Raynor_Weapon_ImpactSet" effectLaunch="Raynor_Weapon_LaunchMissile">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Raynor"/>
+    </CActorAction>
+    <CActorMissile id="Raynor_Weapon_AttackMissile" parent="GenericAttackMissile" unitName="Raynor_Weapon_Missile">
+        <Model value="RaynorAttackMissile"/>
+        <DeathArray index="Normal" ModelLink="RaynorAttackMissile"/>
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Raynor"/>
+    </CActorMissile>
+    <CActorSplat id="Raynor_Powershot_RangeSplat" parent="UI_RangeSplat">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Raynor"/>
+        <Scale value="10.875000"/>
+    </CActorSplat>
+    <CActorUnit id="Hero_Raynor" parent="StormHeroBasePredictive" unitName="Hero_Raynor">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Raynor"/>
+        <On Terms="Abil.Raynor_Powershot.SourcePrepStart" Send="$Spell,A 0 -1.000000 -1.000000 -1.000000 AsAutomatic 0.000000 10"/>
+        <On Terms="Abil.RaynorOrbitalStrike.SourcePrepStart" Send="$Spell,A"/>
+        <On Terms="Abil.RaynorPerditionTurret.SourcePrepStart" Send="$Spell,B"/>
+        <On Terms="Abil.RaynorHyperion.SourcePrepStart" Send="$Spell,C"/>
+        <On Terms="Abil.RaynorInspire.SourcePrepStart" Send="$Spell,B"/>
+        <On Terms="Abil.RaynorRaynorsBanshee.SourceCastStart" Send="$Spell,D"/>
+        <On Terms="UnitDeathCustomize; CanApplyActionPhysics RagdollBasic" Send="DeathCustomize RagdollBasic"/>
+        <On Terms="Abil.Raynor_IRememberYou.SourcePrepStart" Send="$Spell,B"/>
+        <On Terms="Abil.Raynor_DisorientingGrenade.SourceCastStart" Send="$Spell,Forward 0 -1.000000 -1.000000 -1.000000 AsAutomatic 0.000000 10"/>
+        <On Terms="Abil.Raynor_AerialBomb.SourceCastStart" Send="$Spell,D 0 -1.000000 -1.000000 -1.000000 AsAutomatic 0.000000 10"/>
+        <Model value="HeroRaynor"/>
+        <AnimBlendTime value="0.100000"/>
+        <Baselines index="Walk" AnimProps="Walk,A"/>
+        <BuildModel value="HeroRaynor"/>
+        <DeathArray index="Normal" ModelLink="HeroRaynorDeath" SoundLink="Raynor_Death"/>
+        <DeathCustoms index="1">
+            <ActorModel value="HeroRaynorDeathRagdoll"/>
+            <ModelLink value="HeroRaynorDeathRagdoll"/>
+            <Name value="RagdollMidair"/>
+            <InheritsFrom value="RagdollBasic"/>
+        </DeathCustoms>
+        <DeathCustoms index="2" ActorModel="HeroRaynorDeathRagdoll" ModelLink="HeroRaynorDeathRagdoll" Name="RagdollBasic"/>
+        <DeathCustoms index="3" ActorModel="HeroRaynorDeathRagdoll" ModelLink="HeroRaynorDeathRagdoll" Name="RagdollFire"/>
+        <DeathCustoms index="4" ActorModel="HeroRaynorDeathRagdoll" ModelLink="HeroRaynorDeathRagdoll" Name="RagdollAcid"/>
+        <PlacementModel value="HeroRaynor"/>
+        <PortraitActor value="RaynorPortrait"/>
+        <PortraitModel value="RaynorPortrait"/>
+        <WalkAnimMoveSpeed value="4"/>
+        <AbilSoundArray AbilCmd="Raynor_Powershot,Execute" Sound="Raynor_VOX_Casting"/>
+        <AbilSoundArray AbilCmd="Raynor_AerialBomb,Execute" Sound="Raynor_Ultimate1Used"/>
+        <ErrorArray Error="NotEnoughEnergy" Sound="Raynor_LowMana"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\ui_targetportrait_hero_raynor.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\UI\HeroIcons\PartyFrame\UI_PartyFrame_Raynor.dds"/>
+        <LifeArmorIcon value="Assets\Textures\storm_temp_btn-research-terran-vanadiumplating.dds"/>
+        <MinimapIcon value="Assets\Textures\UI\HeroIcons\MinimapIcons\UI_MinimapIcon_Hero_Raynor.dds"/>
+        <SoundArray index="Yes" value="Raynor_Yes"/>
+        <SoundArray index="Attack" value="Raynor_Attack"/>
+        <UnitIcon value="Assets\Textures\UI\HeroIcons\PartyFrame\UI_PartyFrame_Raynor.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\ui_targetportrait_hero_raynor.dds"/>
+        </Wireframe>
+        <Macros index="18" removed="1"/>
+    </CActorUnit>
+    <CActorModel id="RaynorBucket_Stimpack_ModelCast" parent="StormModelAddition">
+        <On Terms="Behavior.RaynorBucket_Stimpack_PowershotCD.On" Send="Create"/>
+        <On Terms="Behavior.RaynorBucket_Stimpack_PowershotCD.Off" Send="Destroy"/>
+        <HostSiteOps Ops="SOpAttachCenter" HoldRotation="1"/>
+        <Model value="RaynorBucket_Stimpack_Cast"/>
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Raynor"/>
+    </CActorModel>
+    <CActorSound id="RaynorBucket_Stimpack_SoundCast" parent="SoundOneShot">
+        <On Terms="Abil.RaynorBucket_Stimpack.SourceCastStart" Send="Create"/>
+        <Sound value="RaynorBucket_Stimpack_Cast"/>
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Raynor"/>
+    </CActorSound>
+    <CActorAction id="Raynor_DisorientingGrenade_Attack" parent="GenericAttack" effectImpact="Raynor_DisorientingGrenade_ImpactPointSet" effectLaunch="Raynor_DisorientingGrenade_LM">
+        <LaunchSiteOps Ops="SOpMoveLeftBy05 SOpMoveUpBy1Dot5"/>
+        <On index="1" Terms="Effect.Start; FromEffectTreeDescendant"/>
+        <On index="2" Terms="Effect.Stop; FromEffectTreeDescendant"/>
+        <ImpactMap index="None" Model="Raynor_DisorientingGrenade_ImpactGrenade" Sound="Raynor_DisorientingGrenade_Explosion"/>
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Raynor"/>
+    </CActorAction>
+    <CActorModel id="Raynor_DisorientingGrenade_ModelExplosion" parent="ModelAddition">
+        <On index="0" Send="$Birth"/>
+        <On index="2" Terms="AnimDone; AnimName Birth"/>
+        <On Terms="Effect.Raynor_DisorientingGrenade_ImpactPointSet.Start" Send="Create"/>
+        <HostSiteOps Ops="SOpTargetPoint"/>
+        <Model value="Raynor_DisorientingGrenade_ImpactGrenade"/>
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Raynor"/>
+    </CActorModel>
+    <CActorSplat id="Raynor_AerialBomb_RangeSplat" parent="UI_RangeSplat">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Raynor"/>
+        <Scale value="20.000000"/>
+    </CActorSplat>
+    <CActorModel id="Raynor_DisorientingGrenade_ModelImpact" parent="ModelAddition">
+        <On Terms="Behavior.Raynor_DisorientingGrenade_Disorientation.On" Send="Create"/>
+        <On Terms="Behavior.Raynor_DisorientingGrenade_Disorientation.Off" Send="Destroy"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <Model value="Raynor_DisorientingGrenade_ImpactHero"/>
+        <AutoScaleFactor value="2.000000"/>
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Raynor"/>
+    </CActorModel>
+    <CActorSound id="Raynor_DisorientingGrenade_SoundExplosion" parent="SoundOneShot">
+        <EditorCategories value="CommandersHero:Raynor"/>
+        <On Terms="Effect.Raynor_DisorientingGrenade_ImpactPointSet.Start" Send="Create"/>
+        <HostSiteOps Ops="SOpTargetPoint"/>
+        <Sound value="Raynor_DisorientingGrenade_Explosion"/>
+    </CActorSound>
+    <CActorSound id="Raynor_DisorientingGrenade_SoundImpact" parent="SoundOneShot">
+        <On Terms="UnitCreation.Raynor_DisorientingGrenade_Missile" Send="Create"/>
+        <Sound value="Raynor_DisorientingGrenade_Launch"/>
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Raynor"/>
+    </CActorSound>
+    <CActorSplat id="Raynor_DisorientingGrenade_CursorSplat" parent="CommandersGuideVisualCircleSciFi" abil="Raynor_DisorientingGrenade">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Raynor"/>
+    </CActorSplat>
+    <CActorMissile id="Raynor_DisorientingGrenade_AttackMissile" parent="GenericAttackMissile" unitName="Raynor_DisorientingGrenade_Missile">
+        <Remove Terms="UnitBirth" Send="AnimBracketStart Lifetime Birth Stand"/>
+        <On Terms="UnitBirth" Send="AnimBracketStart Lifetime IGNORE Stand"/>
+        <Model value="Raynor_DisorientingGrenade_GrenadeMissile"/>
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Raynor"/>
+    </CActorMissile>
+    <CActorRange id="Raynor_DisorientingGrenade_Range" parent="CommandersRangeAbilPlusSplat" abil="Raynor_DisorientingGrenade">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Raynor"/>
+    </CActorRange>
+    <CActorModel id="Raynor_Powershot_ModelArea_BurstBullet" parent="ModelAddition">
+        <Inherits index="BaseModelScale" value="0"/>
+        <On index="0" Send="$Death"/>
+        <On index="2" Terms="AnimDone; AnimName Death"/>
+        <On Terms="Effect.Raynor_Powershot_TargetSearch_BurstBullet.Start; At Target" Send="Create"/>
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Raynor"/>
+    </CActorModel>
+    <CActorSound id="Raynor_Powershot_SoundAerial_BurstBullet" parent="SoundOneShot">
+        <On Terms="Effect.Raynor_Powershot_TargetSearch_BurstBullet.Start; At Target" Send="Create"/>
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Raynor"/>
+    </CActorSound>
+    <CActorRange id="Raynor_Powershot_Range" parent="CommandersRangeAbilPlusSplat" abil="Raynor_Powershot">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Raynor"/>
+    </CActorRange>
+    <CActorAction id="Raynor_PowerShot_Attack" parent="RangedHeroAttackMissile" effectImpact="Raynor_Powershot_ImpactSet" effectLaunch="Raynor_Powershot_LM">
+        <LaunchAssets Sound="Raynor_Powershot_Launch"/>
+        <Missile value="Raynor_Powershot_AttackMissile"/>
+        <ImpactMap index="None" Sound="Raynor_Powershot_Impact"/>
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Raynor"/>
+    </CActorAction>
+    <CActorMissile id="Raynor_Powershot_AttackMissile" parent="GenericAttackMissile" unitName="Raynor_Powershot_Missile">
+        <DeathArray index="Normal" ModelLink="Raynor_Powershot_Missile"/>
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Raynor"/>
+    </CActorMissile>
+    <CActorRange id="Raynor_AerialBomb_Range" parent="CommandersRangeAbilPlusSplat" abil="Raynor_AerialBomb">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Raynor"/>
+    </CActorRange>
+    <CActorSound id="Raynor_AerialBomb_SoundAttackImpact" parent="SoundOneShot">
+        <On Terms="UnitDeath.Raynor_BansheeMissile" Send="Create"/>
+        <Sound value="Raynor_AerialBomb_AttackImpact"/>
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Raynor"/>
+    </CActorSound>
+    <CActorSound id="Raynor_AerialBomb_BansheeFlyIn" parent="SoundOneShot">
+        <On Terms="Effect.RaynorBansheeDummyPersistentFlyIn.Start" Send="Create"/>
+        <On Terms="UnitCreation.Raynor_Banshee" Send="Create"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Raynor"/>
+    </CActorSound>
+    <CActorSound id="Raynor_AerialBomb_BansheeFlyOut" parent="SoundOneShot">
+        <On Terms="Effect.RaynorBansheeDummyPersistentFlyOut.Start" Send="Create"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Raynor"/>
+    </CActorSound>
+    <CActorSound id="Raynor_AerialBomb_SoundAttackLaunch" parent="SoundOneShot">
+        <On Terms="UnitBirth.Raynor_BansheeMissile" Send="Create"/>
+        <Sound value="Raynor_AerialBomb_AttackLaunch"/>
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Raynor"/>
+    </CActorSound>
+    <CActorMissile id="Raynor_AerialBomb_BansheeAttackMissile" parent="GenericAttackMissile" unitName="Raynor_BansheeMissile">
+        <Model value="RaynorBansheeMissile"/>
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Raynor"/>
+    </CActorMissile>
+    <CActorAction id="Raynor_AerialBomb_BansheeAttack" parent="RangedHeroAttackMissile" effectImpact="Raynor_AerialBomb_DummyImpactSet" effectLaunch="Raynor_AerialBomb_LM">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Raynor"/>
+    </CActorAction>
+    <CActorUnit id="Raynor_Banshee" parent="StormMinionStandard" unitName="Raynor_Banshee">
+        <On Terms="UnitDeathCustomize; CanApplyActionPhysics RagdollBasic" Send="DeathCustomize RagdollBasic"/>
+        <On Terms="Behavior.Raynor_AerialBomb_BansheeFlyIn.Off" Send="SetScale"/>
+        <Host Subject="BansheeFlyerBillboard" Actor="Create"/>
+        <Scale value="0.010000"/>
+        <DeathCustoms Name="RagdollMidair" InheritsFrom="RagdollBasic"/>
+        <DeathCustoms ActorModel="RaynorsBansheeDeathRagdoll" ModelLink="RaynorRaynorsBansheeDeathRagdoll" Name="RagdollBasic">
+            <BodySquibs Name="None"/>
+        </DeathCustoms>
+        <GroupIcon>
+            <Image value="Assets\Textures\ui_targetportrait_hero_bansheeblue.dds"/>
+        </GroupIcon>
+        <LifeArmorIcon value="Assets\Textures\storm_temp_btn-upgrade-terran-infantryarmorlevel0.dds"/>
+        <SoundArray index="Birth" value="Raynor_Raiders_DropPod_Medivac_Vox_GoGo"/>
+        <StatusBarFlags index="Custom" value="0"/>
+        <UnitIcon value="Assets\Textures\storm_temp_btn-ability-terran-cloak-color.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\ui_targetportrait_hero_bansheered.dds"/>
+        </Wireframe>
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Raynor"/>
+    </CActorUnit>
+    <CActorModel id="Raynor_AdvancedOptics_TargetModel" parent="ModelAddition">
+        <On index="0" Send="AnimBracketStart BSD Birth Stand Death OpeningPlayForever"/>
+        <On Terms="Behavior.Raynor_AdvancedOptics_Target.On" Send="Create"/>
+        <On Terms="Behavior.Raynor_AdvancedOptics_Target.Off" Send="Destroy"/>
+        <Model value="Raynor_AdvancedOptics_Target"/>
+        <AutoScaleFactor value="1.000000"/>
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Raynor"/>
+    </CActorModel>
+    <CActorSound id="Raynor_IRememberYou_SoundCast" parent="SoundContinuous">
+        <On Terms="Abil.Raynor_IRememberYou.SourceCastStart" Send="Create"/>
+        <Sound value="Raynor_IRememberYou_Cast"/>
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Raynor"/>
+    </CActorSound>
+    <CActorModel id="Raynor_IRememberYou_ExplosionMark_ModelImpactArea" parent="ModelAddition">
+        <On index="0" Send="$Death"/>
+        <On index="2" Terms="AnimDone; AnimName Death"/>
+        <On Terms="Effect.Raynor_IRememberYou_AdditiveDamage_ExplosionMarkSearch.Start; At Target" Send="Create"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <Model value="Raynor_IRememberYou_ExplosionMark_ImpactArea"/>
+        <AutoScaleFactor value="2.000000"/>
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Raynor"/>
+    </CActorModel>
+    <CActorArc id="Raynor_IRememberYou_ConeGuide" parent="CommandersGuideVisualArcFantasy" abil="Raynor_IRememberYou">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Raynor"/>
+    </CActorArc>
+    <CActorQuad id="Raynor_AerialBomb_CursorGuide" parent="CommandersGuideVisualQuadDownSciFiDetached" abil="Raynor_AerialBomb">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Raynor"/>
+        <Height value="12.000000"/>
+        <Width value="8.000000"/>
+    </CActorQuad>
+    <CScoreValueCustom id="RaynorBucket_AerialBlitzkrieg_BonusDamage"/>
+    <CModel id="RaynorPortrait" parent="Portrait">
+        <Model value="Assets\Portraits\Storm_Portrait_Raynor_Base_Background\Storm_Portrait_Raynor_Base_Background.m3"/>
+        <Lighting value="Storm_Portrait_Raynor_Base"/>
+        <Flags index="ForcePortraitModel" value="1"/>
+    </CModel>
+    <CModel id="RaynorPortraitAddition" parent="Portrait">
+        <Model value="Assets\Units\Heroes\Storm_Hero_Raynor_Base\Storm_Hero_Raynor_Base.m3"/>
+        <RequiredAnims value="Assets\Portraits\Storm_Hero_Raynor_PortraitAnims\Storm_Hero_Raynor_PortraitAnims.m3a"/>
+        <Flags index="ForcePortraitModel" value="1"/>
+        <TextureDeclares Prefix="Storm_Raynor_Decal" Slot="generic01"/>
+        <TextureDeclares Prefix="Storm_Raynor" Slot="main"/>
+    </CModel>
+    <CModel id="HeroRaynorDeathRagdoll" parent="HeroDeathRagdoll">
+        <Model value="Assets\Units\Heroes\Storm_Hero_Raynor_Base_DeathRagdoll\Storm_Hero_Raynor_Base_DeathRagdoll.m3"/>
+        <!-- No Decal Slot in the Dissolve shader.  The decal slot would conceptually swap, but there's nothing there. -->
+        <!-- TextureDeclares Prefix="Storm_Raynor_Decal" Slot="generic01"/ -->
+        <TextureDeclares Prefix="Storm_Raynor" Slot="main"/>
+    </CModel>
+    <CModel id="HeroRaynor" parent="Unit">
+        <Model value="Assets\Units\Heroes\Storm_Hero_Raynor_Base\Storm_Hero_Raynor_Base.m3"/>
+        <EditorCategories value="Race:Terran"/>
+        <Occlusion value="Show"/>
+        <Flags index="ForcePortraitModel" value="1"/>
+        <Events>
+            <Anim value="Walk,A,00"/>
+            <Name value="Raynor_Fs_Mv"/>
+            <Type value="Sound"/>
+            <Time value="0.253000"/>
+            <Payload value="Raynor_Footstep_Mv"/>
+        </Events>
+        <Events>
+            <Anim value="Walk,A,00"/>
+            <Name value="Raynor_Fs_Mv"/>
+            <Type value="Sound"/>
+            <Time value="0.678000"/>
+            <Payload value="Raynor_Footstep_Mv"/>
+        </Events>
+        <RequiredAnims value="Assets\Units\Heroes\Storm_Hero_Raynor_RequiredAnims\Storm_Hero_Raynor_RequiredAnims.m3a"/>
+        <TextureDeclares Prefix="Storm_Raynor_Decal" Slot="generic01"/>
+        <TextureDeclares Prefix="Storm_Raynor" Slot="main"/>
+    </CModel>
+    <CModel id="Raynor_Weapon_AttackImpact" parent="ImpactFX">
+        <Model value="Assets\Effects\Storm_Effect_Raynor_Base_Weapon_Missile_Impact\Storm_Effect_Raynor_Base_Weapon_Missile_Impact.m3"/>
+        <EditorCategories value="CommandersHero:Raynor"/>
+    </CModel>
+    <CModel id="Raynor_Weapon_AttackLaunch" parent="LaunchFX">
+        <Model value="Assets\Effects\Storm_Effect_Raynor_Base_Weapon_Launch\Storm_Effect_Raynor_Base_Weapon_Launch.m3"/>
+        <EditorCategories value="CommandersHero:Raynor"/>
+    </CModel>
+    <CModel id="RaynorBucket_Stimpack_Cast" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Storm_Effect_Raynor_Base_AdrenalineRush\Storm_Effect_Raynor_Base_AdrenalineRush.m3"/>
+        <Flags index="TeenSafe" value="1"/>
+        <EditorCategories value="Race:Neutral,CommandersHero:Raynor"/>
+    </CModel>
+    <CModel id="Raynor_DisorientingGrenade_ImpactGrenade">
+        <Model value="Assets\Effects\Terran\Nova_PulseGrenade\Nova_PulseGrenade.m3"/>
+        <EditorCategories value="CommandersHero:Raynor"/>
+    </CModel>
+    <CModel id="Raynor_DisorientingGrenade_ImpactHero">
+        <Model value="Assets\Effects\Zerg\PulseStunImpact\PulseStunImpact.m3"/>
+        <EditorCategories value="CommandersHero:Raynor"/>
+    </CModel>
+    <CModel id="Raynor_DisorientingGrenade_GrenadeMissile" parent="MissileFX">
+        <Model value="Assets\Effects\Terran\Nova_PulseGrenade_Missile\Nova_PulseGrenade_Missile.m3"/>
+        <EditorCategories value="Race:Terran,CommandersHero:Raynor"/>
+    </CModel>
+    <CModel id="Raynor_Powershot_Missile" parent="MissileFX">
+        <Model value="Assets\Effects\Storm_Effect_Raynor_Base_PenetratingRound_Missile\Storm_Effect_Raynor_Base_PenetratingRound_Missile.m3"/>
+        <EditorCategories value="Race:Terran,CommandersHero:Raynor"/>
+    </CModel>
+    <CModel id="Raynor_Powershot_ModelArea_BurstBullet">
+        <Model value="Assets\effects\storm_effect_raynor_base_orbitalstrike_marauder_impact\storm_effect_raynor_base_orbitalstrike_marauder_impact.m3"/>
+        <ScaleMax value="3.000000,3.000000,3.000000"/>
+        <ScaleMin value="3.000000,3.000000,3.000000"/>
+        <EditorCategories value="CommandersHero:Raynor"/>
+    </CModel>
+    <CModel id="Raynor_AerialBomb_BansheeAttackImpact" parent="ImpactFX">
+        <Model value="Assets\Effects\Terran\BansheeMissileHitSprite\BansheeMissileHitSprite.m3"/>
+        <ScaleMax value="2.000000,2.000000,2.000000"/>
+        <ScaleMin value="0.300000,0.300000,0.300000"/>
+        <EditorCategories value="CommandersHero:Raynor"/>
+    </CModel>
+    <CModel id="Raynor_Banshee" parent="Unit">
+        <Model value="Assets\Units\Pets\Storm_Pet_RaynorBanshee_Base\Storm_Pet_RaynorBanshee_Base.m3"/>
+        <AttachProps Id="Ref_Hit 01">
+            <Keys index="Hit" value="0"/>
+        </AttachProps>
+        <AttachProps Id="Ref_Hit 05">
+            <Keys index="Hit" value="1"/>
+        </AttachProps>
+        <Radius value="0.750000"/>
+        <SelectionOffset value="0.000000,0.000000,-0.500000"/>
+        <SelectionRadius value="1.071200"/>
+        <ShadowRadius value="1.071200"/>
+        <EditorCategories value="Race:Neutral,CommandersHero:Raynor"/>
+    </CModel>
+    <CModel id="Raynor_AdvancedOptics_Target">
+        <Model value="Assets\Effects\Terran\Xanthos_Missile_Target\Xanthos_Missile_Target.m3"/>
+        <EditorCategories value="CommandersHero:Raynor"/>
+    </CModel>
+    <CModel id="Raynor_IRememberYou_ExplosionMark_ImpactArea">
+        <Model value="Assets\Effects\Terran\EMPImpact\EMPImpact.m3"/>
+        <EditorCategories value="CommandersHero:Raynor"/>
+    </CModel>
+    <CWeaponLegacy id="Raynor_HeroWeapon" parent="StormHeroFastWeapon">
+        <Options index="ContinuousScan" value="1"/>
+        <Options index="HoldFileInShrubs" value="1"/>
+        <Icon value="Assets\Textures\storm_temp_btn-upgrade-terran-infantryweaponslevel3.dds"/>
+        <DisplayEffect value="Raynor_Weapon_Damage"/>
+        <TargetFilters value="Visible;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <MinScanRange value="5.5"/>
+        <Range value="5.5"/>
+        <RangeSlop value="2.125"/>
+        <Cost>
+            <Cooldown Link="Abil/RaynorWeaponCooldown" Location="Unit" TimeUse="0.25"/>
+        </Cost>
+        <Period value="1"/>
+        <DamagePoint value="0.125"/>
+        <Backswing value="0"/>
+        <Effect value="Raynor_Weapon_InitialSwitch"/>
+        <RandomDelayMin value="0"/>
+        <RandomDelayMax value="0"/>
+    </CWeaponLegacy>
+    <CSound id="Raynor_Weapon_AttackImpact" parent="Combat">
+        <EditorCategories value="Race:Neutral,CommandersHero:Raynor"/>
+        <AssetArray File="Assets\Sounds\Heroes\Nova_Base\Nova_Attack_ImpactUnit01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Nova_Base\Nova_Attack_ImpactUnit02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Nova_Base\Nova_Attack_ImpactUnit03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Nova_Base\Nova_Attack_ImpactUnit04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Nova_Base\Nova_Attack_ImpactUnit05.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Nova_Base\Nova_Attack_ImpactUnit06.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Nova_Base\Nova_Attack_ImpactUnit07.wav" FacialGroup=""/>
+        <Flags index="Download" value="0"/>
+        <Volume value="-5.000000,-3.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="Raynor_Weapon_AttackLaunch" parent="Combat">
+        <EditorCategories value="Race:Neutral,CommandersHero:Raynor"/>
+        <AssetArray File="Assets\Sounds\Heroes\Raynor_Base\Raynor_AttackLaunch_Single01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Raynor_Base\Raynor_AttackLaunch_Single02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Raynor_Base\Raynor_AttackLaunch_Single03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Raynor_Base\Raynor_AttackLaunch_Single04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Raynor_Base\Raynor_AttackLaunch_Single05.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Raynor_Base\Raynor_AttackLaunch_Single06.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Raynor_Base\Raynor_AttackLaunch_Single07.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Raynor_Base\Raynor_AttackLaunch_Single08.wav" FacialGroup=""/>
+        <Pitch value="-1.000000,2.000000"/>
+        <Volume value="-10.000000,-10.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="RaynorBucket_Stimpack_Cast" parent="Spell">
+        <AssetArray File="Assets\Sounds\Heroes\Raynor_Base\Raynor_StimPack_Activate01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Raynor_Base\Raynor_StimPack_Activate02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Raynor_Base\Raynor_StimPack_Activate03.wav" FacialGroup=""/>
+        <Volume value="-6.000000,-6.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+        <EditorCategories value="CommandersHero:Raynor"/>
+    </CSound>
+    <CSound id="Raynor_DisorientingGrenade_Explosion" parent="Spell">
+        <AssetArray File="Assets\Sounds\GrenadePulse_Explosion01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\GrenadePulse_Explosion02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\GrenadePulse_Explosion03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\GrenadePulse_Explosion04.wav" FacialGroup=""/>
+        <DupeDestroyCount value="8"/>
+        <DupeMuteCount value="6"/>
+        <Pitch value="-2.000000,2.000000"/>
+        <Volume value="-1.000000,-1.000000"/>
+        <EditorCategories value="CommandersHero:Raynor"/>
+    </CSound>
+    <CSound id="Raynor_DisorientingGrenade_Launch" parent="Spell">
+        <AssetArray File="Assets\Sounds\GrenadePulse_Activate01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\GrenadePulse_Activate02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\GrenadePulse_Activate03.wav" FacialGroup=""/>
+        <DupeDestroyCount value="8"/>
+        <DupeMuteCount value="6"/>
+        <Pitch value="-1.000000,1.000000"/>
+        <Volume value="-3.000000,-3.000000"/>
+        <EditorCategories value="CommandersHero:Raynor"/>
+    </CSound>
+    <CSound id="Raynor_Powershot_SoundAerial_BurstBullet" parent="Spell">
+        <AssetArray File="Assets\Sounds\Terran\Diamondback\Diamondback_AttackLaunch0.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Terran\Diamondback\Diamondback_AttackLaunch1.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Terran\Diamondback\Diamondback_AttackLaunch2.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Terran\Diamondback\Diamondback_AttackLaunch3.wav" FacialGroup=""/>
+        <EditorCategories value="CommandersHero:Raynor"/>
+    </CSound>
+    <CSound id="Raynor_Powershot_Impact" parent="Spell">
+        <EditorCategories value="Race:Terran,CommandersHero:Raynor"/>
+        <AssetArray File="Assets\Sounds\Heroes\Nova_Base\Nova_Snipe_Impact01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Nova_Base\Nova_Snipe_Impact02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Nova_Base\Nova_Snipe_Impact03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Nova_Base\Nova_Snipe_Impact04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Nova_Base\Nova_Snipe_Impact05.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Nova_Base\Nova_Snipe_Impact06.wav" FacialGroup=""/>
+        <Category value="Combat"/>
+        <DupeMaximumMethod value="Replace"/>
+        <Pitch value="-1.000000,3.000000"/>
+        <Volume value="-7.600000,-7.600000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="Raynor_Powershot_Launch" parent="Spell">
+        <EditorCategories value="Race:Neutral,CommandersHero:Raynor"/>
+        <AssetArray File="Assets\Sounds\Heroes\Raynor_Base\Raynor_PentRnd_Cast01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Raynor_Base\Raynor_PentRnd_Cast02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Raynor_Base\Raynor_PentRnd_Cast03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Raynor_Base\Raynor_PentRnd_Cast04.wav" FacialGroup=""/>
+        <Pitch value="-1.000000,0.000000"/>
+        <Volume value="-4.000000,-4.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="Raynor_AerialBomb_BansheeFlyIn" parent="Spell">
+        <AssetArray File="Base.CCAssets\Sounds\Heroes\Raynor_Base\raynor_banshee_enter01.wav" FacialGroup=""/>
+        <AssetArray File="Base.CCAssets\Sounds\Heroes\Raynor_Base\raynor_banshee_enter02.wav" FacialGroup=""/>
+        <AssetArray File="Base.CCAssets\Sounds\Heroes\Raynor_Base\raynor_banshee_enter03.wav" FacialGroup=""/>
+        <Pitch value="-5.000000,-3.000000"/>
+        <PlayDelay value="250,250"/>
+        <Volume value="-3.000000,-3.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="30.000000" Volume="-96.000000"/>
+        <EditorCategories value="CommandersHero:Raynor"/>
+    </CSound>
+    <CSound id="Raynor_AerialBomb_BansheeFlyOut" parent="Spell">
+        <AssetArray File="Base.CCAssets\Sounds\Heroes\Raynor_Base\raynor_banshee_exit01.wav" FacialGroup=""/>
+        <AssetArray File="Base.CCAssets\Sounds\Heroes\Raynor_Base\raynor_banshee_exit02.wav" FacialGroup=""/>
+        <AssetArray File="Base.CCAssets\Sounds\Heroes\Raynor_Base\raynor_banshee_exit03.wav" FacialGroup=""/>
+        <Pitch value="-5.000000,-3.000000"/>
+        <Volume value="-3.000000,-3.000000"/>
+        <EditorCategories value="CommandersHero:Raynor"/>
+    </CSound>
+    <CSound id="Raynor_AerialBomb_AttackImpact" parent="Spell">
+        <AssetArray File="Base.CCAssets\Sounds\Heroes\Raynor_Base\raynor_banshee_attackimpact01.wav" FacialGroup=""/>
+        <AssetArray File="Base.CCAssets\Sounds\Heroes\Raynor_Base\raynor_banshee_attackimpact02.wav" FacialGroup=""/>
+        <AssetArray File="Base.CCAssets\Sounds\Heroes\Raynor_Base\raynor_banshee_attackimpact03.wav" FacialGroup=""/>
+        <DupeDestroyCount value="100"/>
+        <DupeMuteCount value="100"/>
+        <EditorCategories value="CommandersHero:Raynor"/>
+    </CSound>
+    <CSound id="Raynor_AerialBomb_AttackLaunch" parent="Spell">
+        <AssetArray File="Base.CCAssets\Sounds\Heroes\Raynor_Base\raynor_banshee_attacklaunch01.wav" FacialGroup=""/>
+        <AssetArray File="Base.CCAssets\Sounds\Heroes\Raynor_Base\raynor_banshee_attacklaunch02.wav" FacialGroup=""/>
+        <AssetArray File="Base.CCAssets\Sounds\Heroes\Raynor_Base\raynor_banshee_attacklaunch03.wav" FacialGroup=""/>
+        <AssetArray File="Base.CCAssets\Sounds\Heroes\Raynor_Base\raynor_banshee_attacklaunch04.wav" FacialGroup=""/>
+        <DupeDestroyCount value="100"/>
+        <DupeMuteCount value="100"/>
+        <Volume value="-3.000000,-3.000000"/>
+        <EditorCategories value="CommandersHero:Raynor"/>
+    </CSound>
+    <CSound id="Raynor_IRememberYou_Cast" parent="Spell">
+        <AssetArray File="Assets\Sounds\Heroes\Raynor_Base\Raynor_Inspire_Launch01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Raynor_Base\Raynor_Inspire_Launch02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Raynor_Base\Raynor_Inspire_Launch03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Raynor_Base\Raynor_Inspire_Launch04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Heroes\Raynor_Base\Raynor_Inspire_Launch05.wav" FacialGroup=""/>
+        <Pitch value="-1.000000,1.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+        <EditorCategories value="CommandersHero:Raynor"/>
+    </CSound>
+    <CItemAbil id="RaynorBucket_Stimpack">
+        <Flags index="CanDrop" value="0"/>
+        <Class value="Item"/>
+        <CarryBehaviorArray value="RaynorBucket_Stimpack_CarryBehavior"/>
+    </CItemAbil>
+    <CUnit id="Hero_Raynor" parent="CommandersHero">
+        <PlaneArray index="Ground" value="1"/>
+        <Collide index="Larva" value="1"/>
+        <Collide index="FlyingEscorts" value="1"/>
+        <LifeStart value="725"/>
+        <LifeMax value="725"/>
+        <LifeRegenRate value="1.5117"/>
+        <EnergyStart value="350"/>
+        <EnergyMax value="350"/>
+        <Speed value="4.4023"/>
+        <AbilArray Link="Raynor_IRememberYou"/>
+        <AbilArray Link="Raynor_Powershot"/>
+        <AbilArray Link="RaynorBucket_Stimpack"/>
+        <AbilArray Link="Raynor_AerialBomb"/>
+        <AbilArray Link="Raynor_DisorientingGrenade"/>
+        <BehaviorArray Link="Default_StartAllSystems"/>
+        <BehaviorArray Link="GenericRangedHero"/>
+        <BehaviorArray Link="Raynor_IRememberYou_AdditiveDamageController"/>
+        <WeaponArray Link="Raynor_HeroWeapon"/>
+        <CardLayouts>
+            <LayoutButtons Face="Raynor_Powershot" Type="AbilCmd" AbilCmd="Raynor_Powershot,255" Row="0" Column="0"/>
+            <LayoutButtons>
+                <Face value="Raynor_Powershot_StandardMode"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="Raynor_Powershot_Cancel,255"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="0"/>
+            </LayoutButtons>
+            <LayoutButtons Face="Raynor_Powershot" Type="AbilCmd" AbilCmd="Raynor_Powershot,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="Raynor_IRememberYou" Type="AbilCmd" AbilCmd="Raynor_IRememberYou,Execute" Row="0" Column="1"/>
+            <LayoutButtons Face="Raynor_AerialBomb" Type="AbilCmd" AbilCmd="Raynor_AerialBomb,Execute" Row="0" Column="3"/>
+            <LayoutButtons Face="AbathurCancelAssumingDirectControl" Type="AbilCmd" AbilCmd="AbathurAssumingDirectControlCancel,Execute" Row="0" Column="3"/>
+            <LayoutButtons Face="HeroGeneric_Hearthstone" Type="AbilCmd" AbilCmd="HeroGeneric_Hearthstone_2,255" Row="2" Column="3"/>
+            <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="AcquireMove" Type="AbilCmd" AbilCmd="move,AcquireMove" Row="2" Column="0"/>
+            <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="2" Column="1"/>
+            <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="2" Column="2"/>
+            <LayoutButtons Face="Raynor_AdvancedOptics" Type="Passive" Row="0" Column="4"/>
+            <LayoutButtons Face="Cancel" Type="CancelTargetMode" Row="2" Column="4"/>
+            <LayoutButtons Face="HeroGeneric_FountainDrink" Type="AbilCmd" AbilCmd="HeroGeneric_FountainDrink,Execute" Row="1" Column="4"/>
+            <LayoutButtons Face="Raynor_DisorientingGrenade" Type="AbilCmd" AbilCmd="Raynor_DisorientingGrenade,Execute" Row="0" Column="2"/>
+        </CardLayouts>
+        <CardLayouts CardId="0004">
+            <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="2" Column="4"/>
+        </CardLayouts>
+        <Radius value="0.875"/>
+        <InnerRadius value="0.875"/>
+        <TacticalAIThink value="AIThinkRaynor"/>
+    </CUnit>
+    <CUnit id="RaynorBucket_Stimpack" parent="ITEM">
+        <Mob value="Multiplayer"/>
+        <FlagArray index="Pawnable" value="1"/>
+        <EditorCategories value="ObjectType:Item,ObjectFamily:Campaign"/>
+    </CUnit>
+    <CUnit id="Raynor_Weapon_Missile" parent="MISSILE_INVULNERABLE">
+        <Mover value="HeroMissile"/>
+    </CUnit>
+    <CUnit id="Raynor_DisorientingGrenade_Missile" parent="MISSILE_INVULNERABLE">
+        <Mover value="Raynor_DisorientingGrenade_GrenadeMovel"/>
+        <Sight value="2.5"/>
+    </CUnit>
+    <CUnit id="Raynor_Powershot_Missile" parent="MISSILE_INVULNERABLE">
+        <Mover value="HeroMissile"/>
+    </CUnit>
+    <CUnit id="Raynor_Banshee">
+        <DeathRevealRadius value="3"/>
+        <Mob value="Multiplayer"/>
+        <FlagArray index="Unselectable" value="1"/>
+        <FlagArray index="Untargetable" value="1"/>
+        <FlagArray index="Invulnerable" value="1"/>
+        <FlagArray index="NoScore" value="1"/>
+        <FlagArray index="NoDeathEvent" value="1"/>
+        <FlagArray index="AILifetime" value="1"/>
+        <FlagArray index="VisionTestCenterOnly" value="1"/>
+        <Attributes index="Mechanical" value="1"/>
+        <Attributes index="Psionic" value="1"/>
+        <Attributes index="Massive" value="1"/>
+        <Attributes index="Hover" value="1"/>
+        <LifeStart value="700"/>
+        <LifeMax value="700"/>
+        <LifeArmorName value="Unit/LifeArmorName/TerranShipPlating"/>
+        <Mover value="Fly"/>
+        <Speed value="7"/>
+        <Acceleration value="12"/>
+        <Deceleration value="12"/>
+        <StationaryTurningRate value="360"/>
+        <TurningRate value="360"/>
+        <RepairTime value="41.6667"/>
+        <AttackTargetPriority value="10"/>
+        <AbilArray Link="stop"/>
+        <AbilArray Link="move"/>
+        <AbilArray Link="attack"/>
+        <BehaviorArray Link="Raynor_AerialBomb_BansheeFlyIn"/>
+        <CardLayouts>
+            <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="2" Column="2"/>
+            <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="2" Column="3"/>
+            <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="2" Column="0"/>
+            <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="2" Column="1"/>
+            <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="2" Column="4"/>
+            <LayoutButtons Face="AcquireMove" Type="AbilCmd" AbilCmd="move,AcquireMove" Row="2" Column="4"/>
+        </CardLayouts>
+        <Radius value="1"/>
+        <SeparationRadius value="1"/>
+        <InnerRadius value="1"/>
+        <SubgroupPriority value="6"/>
+        <MinimapRadius value="0"/>
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Melee"/>
+        <GlossaryCategory value="Unit/Category/TerranUnits"/>
+        <HotkeyCategory value="Unit/Category/TerranUnits"/>
+    </CUnit>
+    <CBehaviorBuff id="RaynorBucket_TacticalShot_MissileBehavior">
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Raynor"/>
+        <MaxStackCount value="3"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="RaynorBucket_Stimpack_AADamage_ActivateBehavior" parent="CommandersTalentBehaviorParent">
+        <InfoFlags index="Hidden" value="1"/>
+        <RemoveValidatorArray value="RaynorBucket_Stimpack_CasterHasActiveStimpack"/>
+        <DamageResponse>
+            <Handled value="RaynorBucket_Stimpack_ApplyAABonusDamage"/>
+            <Location value="Attacker"/>
+            <TargetFilters value="Heroic;Stasis,Invulnerable"/>
+            <DamageValue value="Original"/>
+            <RequireEffectInChainArray value="Raynor_Powershot_ImpactSet"/>
+            <Chance value="1"/>
+        </DamageResponse>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Raynor"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="RaynorBucket_Stimpack_CarryBehavior" parent="CommandersTalentCarryBehaviorParent">
+        <Modification>
+            <AdditiveAttackSpeedFactor value="0.1"/>
+        </Modification>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Raynor"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="RaynorBucket_Stimpack_AABonusDamage" parent="CommandersTalentBehaviorParent">
+        <InfoIcon value="Base.CCAssets\Icons\Talents\Commanders_ui_icon_talent_autoattack_damage.dds"/>
+        <RemoveValidatorArray value="RaynorBucket_Stimpack_CasterHasActiveStimpack"/>
+        <DamageResponse>
+            <Handled value="RaynorBucket_Stimpack_RemoveBonusDamageBehavior"/>
+            <Location value="Attacker"/>
+            <ModifyFraction value="1.2"/>
+            <DamageValue value="Original"/>
+            <RequireEffectInChainArray value="Raynor_Weapon_ImpactSet"/>
+            <Chance value="1"/>
+        </DamageResponse>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Raynor"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="RaynorBucket_TacticalShot_CarryBehavior" parent="CommandersTalentCarryBehaviorParent">
+        <DamageResponse Handled="RaynorBucket_TacticalShot_InitialSwitch" Location="Attacker">
+            <Chance value="1"/>
+        </DamageResponse>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Raynor"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="RaynorBucket_Stimpack_PowershotCD" parent="CommandersTalentBehaviorParent">
+        <InfoIcon value="Assets\Textures\btn-ability-terran-stimpack-color.dds"/>
+        <Duration value="10"/>
+        <DamageResponse Handled="RaynorBucket_Stimpack_ModifyPowershotCD" Location="Attacker">
+            <RequireEffectInChainArray value="Raynor_Weapon_ImpactSet"/>
+            <Chance value="1"/>
+        </DamageResponse>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Raynor"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Raynor_DisorientingGrenade_BlindGrenade" parent="CommandersBlind">
+        <InfoIcon value="Base.CCAssets\Icons\HeroTalents\commanders_ui_icon_raynor_disorientinggrenade_a.DDS"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Raynor"/>
+        <Duration value="2"/>
+        <RemoveValidatorArray value="SYS_HasNotResetBehavior"/>
+        <Name value="Behavior/Name/Raynor_DisorientingGrenade_BlindGrenade"/>
+        <Tooltip value="Behavior/Tooltip/Raynor_DisorientingGrenade_BlindGrenade"/>
+        <Cost>
+            <Charge Link="Behavior/Raynor_DisorientingGrenade_BlindGrenade"/>
+            <Cooldown Link="Behavior/Raynor_DisorientingGrenade_BlindGrenade"/>
+        </Cost>
+        <DamageResponse>
+            <Cost>
+                <Charge Link="Behavior/Raynor_DisorientingGrenade_BlindGrenade"/>
+                <Cooldown Link="Behavior/Raynor_DisorientingGrenade_BlindGrenade"/>
+            </Cost>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Raynor_DisorientingGrenade_Disorientation" parent="CommandersIsolationParent">
+        <Name value="Behavior/Name/Raynor_DisorientingGrenade_Disorientation"/>
+        <InfoIcon value="Assets\Textures\btn-ability-stetmann-corruptorcausticspray.dds"/>
+        <Duration value="2"/>
+        <ExpireEffect value="Raynor_DisorientingGrenade_ApplyBlindBehavior"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Raynor"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="RaynorAdrenalineRushMasteryUnstoppableBehavior2">
+        <InfoIcon value="Assets\Textures\storm_temp_btn-ability-terran-stimpack-color.dds"/>
+        <BehaviorCategories index="User1" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BuffFlags index="UpdateDurationWhileDisabled" value="1"/>
+        <Duration value="2"/>
+        <Modification>
+            <StateFlags index="Unstoppable" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Raynor_AerialBomb_BansheeFlyIn">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Raynor"/>
+        <Duration value="0.75"/>
+        <Modification Height="10" UnifiedMoveSpeedFactor="2.5">
+            <StateFlags index="Invulnerable" value="1"/>
+            <StateFlags index="SuppressAttack" value="1"/>
+            <HeightTime index="Stop" value="0.75"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Raynor_AerialBomb_BansheeAscend">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Raynor"/>
+        <Duration value="2"/>
+        <Period value="2"/>
+        <InitialEffect value="RaynorBansheeDummyPersistentFlyOut"/>
+        <PeriodicEffect value="StormSuicideRemove"/>
+        <FinalEffect value="StormSuicideRemove"/>
+        <Modification Height="10">
+            <StateFlags index="Invulnerable" value="1"/>
+            <StateFlags index="SuppressAttack" value="1"/>
+            <HeightTime index="Start" value="2"/>
+            <HeightTime index="Stop" value="6"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="RaynorBucket_AerialBomb_AerialBlitzkrieg_Stacks" parent="CommandersTalentCarryBehaviorParent">
+        <MaxStackCount value="65535"/>
+        <DamageResponse Location="Attacker">
+            <ModifyAmount value="5"/>
+            <RequireEffectInChainArray value="Raynor_AerialBomb_Damage"/>
+            <Chance value="1"/>
+        </DamageResponse>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Raynor"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="RaynorBucket_AerialBombardment_AerialBlitzkrieg_CarryBehavior" parent="CommandersTalentCarryBehaviorParent">
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Raynor"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Raynor_AerialBomb_BansheeAttackBehavior">
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Raynor"/>
+        <Duration value="1.75"/>
+        <Period value="0.14"/>
+        <PeriodicEffect value="Raynor_AerialBomb_AttackPersist"/>
+        <FinalEffect value="Raynor_AerialBomb_ApplyAscend"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="RaynorBucket_AdvancedOptics_AdvancedProtection" parent="CommandersTalentBehaviorParent">
+        <Alignment value="Positive"/>
+        <InfoIcon value="Base.CCAssets\Icons\HeroTalents\Commanders_ui_icon_raynor_advancedoptics_a.DDS"/>
+        <BuffFlags index="RefreshStack" value="1"/>
+        <Duration value="8"/>
+        <DamageResponse ModifyFraction="0" ModifyLimit="1">
+            <Chance value="1"/>
+        </DamageResponse>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Raynor"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Raynor_AdvancedOptics_CasterBehavior">
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Raynor"/>
+        <MaxStackCount value="3"/>
+        <DamageResponse Location="Attacker" ModifyFraction="1.1">
+            <RequireEffectInChainArray value="Raynor_Weapon_Damage"/>
+            <Chance value="1"/>
+        </DamageResponse>
+        <InfoIcon value="Base.CCAssets\Icons\HeroTalents\Commanders_ui_icon_raynor_advancedoptics.dds"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Raynor_AdvancedOptics_Target">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Raynor"/>
+        <RemoveValidatorArray value="CasterNotDeadAndTargetNotDead"/>
+        <MaxStackCount value="10"/>
+        <MaxStackCountPerCaster value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="RaynorBucket_IRememberYou_PersecutionMania_SpeedBehavior" parent="CommandersTalentBehaviorParent">
+        <InfoFlags index="Hidden" value="1"/>
+        <Duration value="0.25"/>
+        <Modification>
+            <AdditiveMoveSpeedFactor value="0.2"/>
+        </Modification>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Raynor"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Raynor_IRememberYou" parent="CommandersTalentBehaviorParent">
+        <Alignment value="Negative"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <InfoIcon value="Base.CCAssets\Icons\HeroTalents\Commanders_ui_icon_raynor_irememberyou.dds"/>
+        <BuffFlags index="RemoveDamageResponseExhausted" value="0"/>
+        <MaxStackCount value="10"/>
+        <MaxStackCountPerCaster value="1"/>
+        <Duration value="5"/>
+        <RemoveValidatorArray value="TargetIsEnemy"/>
+        <Modification>
+            <ModifyFlags index="Reveal" value="1"/>
+        </Modification>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Raynor"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="RaynorBucket_IRememberYou_PersecutionManiaSearchBehavior" parent="CommandersTalentCarryBehaviorParent">
+        <DisableValidatorArray value="RaynorBucket_IRememberYou_HasPersecutionManiaTalent"/>
+        <Duration value="5"/>
+        <Period value="0.18"/>
+        <PeriodicEffect value="Raynor_IRememberYou_FindTargetWithMark"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Raynor"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Raynor_IRememberYou_AdditiveDamageController" parent="CommandersTalentCarryBehaviorParent">
+        <RemoveValidatorArray index="0" removed="1"/>
+        <DamageResponse Handled="Raynor_IRememberYou_AdditiveDamage_ImpactSet" Location="Attacker">
+            <Kind index="Spell" value="0"/>
+            <RequireEffectInChainArray value="Raynor_Weapon_ImpactSet"/>
+            <RequireEffectInChainArray value="Raynor_DisorientingGrenade_Damage"/>
+            <ValidatorArray value="Raynor_IRememberYou_TargetHasBehavior"/>
+            <Chance value="1"/>
+        </DamageResponse>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Raynor"/>
+    </CBehaviorBuff>
+    <CUpgrade id="RaynorBucket_DisorientingGrenade_UpgradedGrenade">
+        <EffectArray Operation="Set" Reference="Behavior,Raynor_IRememberYou_AdditiveDamageController,DamageResponse.Kind[Spell]" Value="1"/>
+        <EffectArray Reference="Effect,Raynor_DisorientingGrenade_Search,AreaArray[0].Radius" Value="0.25"/>
+        <EffectArray Operation="Set" Reference="Actor,Raynor_DisorientingGrenade_ModelExplosion,Scale" Value="1.000000"/>
+        <EditorCategories value="UpgradeType:Talents,CommandersHero:Raynor"/>
+    </CUpgrade>
+    <CUpgrade id="RaynorBucket_Powershot_MarkThemRed">
+        <EffectArray Reference="Effect,Raynor_Powershot_PercentDamage,Chance" Value="1"/>
+        <EditorCategories value="UpgradeType:Talents,CommandersHero:Raynor"/>
+    </CUpgrade>
+    <CUpgrade id="RaynorBucket_Powershot_HeavySlugs">
+        <EffectArray Reference="Effect,Raynor_Powershot_InitialPersistent,Chance" Value="1"/>
+        <EditorCategories value="UpgradeType:Talents,CommandersHero:Raynor"/>
+    </CUpgrade>
+    <CUpgrade id="RaynorBucket_AdvancedOptics_HighPower">
+        <EffectArray Reference="Behavior,Raynor_AdvancedOptics_CasterBehavior,DamageResponse.ModifyFraction" Value="0.1"/>
+        <EditorCategories value="UpgradeType:Talents,CommandersHero:Raynor"/>
+    </CUpgrade>
+    <CUpgrade id="RaynorBucket_IRememberYou_ExplosionMark">
+        <EffectArray Operation="Set" Reference="Effect,Raynor_IRememberYou_AdditiveDamage_ExplosionMarkSearch,Chance" Value="1"/>
+        <EditorCategories value="UpgradeType:Talents,CommandersHero:Raynor"/>
+    </CUpgrade>
+    <CUpgrade id="RaynorBucket_IRememberYou_VampiricMark">
+        <EffectArray Operation="Set" Reference="Effect,Raynor_IRememberYou_AdditiveStormDamage,LeechFraction[Life]" Value="1"/>
+        <EditorCategories value="UpgradeType:Talents,CommandersHero:Raynor"/>
+    </CUpgrade>
+    <CUpgrade id="RaynorBucket_IRememberYou_EagleEye">
+        <EffectArray Reference="Effect,Raynor_IRememberYou_Search,AreaArray[0].Radius" Value="4.125"/>
+        <EditorCategories value="UpgradeType:Talents,CommandersHero:Raynor"/>
+    </CUpgrade>
+</Catalog>

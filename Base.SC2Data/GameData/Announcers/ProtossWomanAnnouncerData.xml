@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CSound id="ProtossWoman_Observer_Core_BlueTeamCoreIsUnderAttack" parent="UI">
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_castleattack_blue00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_castleattack_blue01.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="ProtossWoman_Countdown_Countdown_Remain" parent="UI">
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_countdownremain00.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="ProtossWoman_Core_CoreIsUnderAttack" parent="UI">
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_castleattackally00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_castleattackally00_alt.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_castleattackally01.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="ProtossWoman_Observer_Core_RedTeamCoreIsUnderAttack" parent="UI">
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_castleattack_red00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_castleattack_red01.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="ProtossWoman_Countdown_Countdown10s" parent="UI">
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_countdown10sec00.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="ProtossWoman_Countdown_Countdown1s" parent="UI">
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_countdown1sec00.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="ProtossWoman_Countdown_Countdown2s" parent="UI">
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_countdown2sec00.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="ProtossWoman_Countdown_Countdown5s" parent="UI">
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_countdown5sec00.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="ProtossWoman_Countdown_Countdown30s" parent="UI">
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_countdown30sec00.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="ProtossWoman_Countdown_Countdown3s" parent="UI">
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_countdown3sec00.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="ProtossWoman_Countdown_Countdown4s" parent="UI">
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_countdown4sec00.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="ProtossWoman_Countdown_GameStart" parent="UI">
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_gamestart00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_gamestart01.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="ProtossWoman_Fort_AllyDestroyFort" parent="UI">
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_outpostdestroy00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_outpostdestroy01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_outpostdestroy02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_outpostdestroy03.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_outpostdestroy04_alt4.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_outpostdestroy05_alt.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="ProtossWoman_Fort_AllyLostFort" parent="UI">
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_outpostlost00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_outpostlost01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_outpostlost02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_outpostlost03.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_outpostlost04.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_outpostlost05_alt1.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="ProtossWoman_Observer_Fort_BlueTeamDestroyFort" parent="UI">
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_outpostdestroy_blue00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_outpostdestroy_blue01.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="ProtossWoman_Observer_Fort_RedTeamDestroyFort" parent="UI">
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_outpostdestroy_red00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_outpostdestroy_red01.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="ProtossWoman_Observer_GameEnd_BlueTeamWin" parent="UI">
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_ending_blue00.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="ProtossWoman_Observer_GameEnd_RedTeamWin" parent="UI">
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_ending_red00.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="ProtossWoman_GameEnd_TeamLose" parent="UI">
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_endinglose00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_endinglose01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_endinglose02.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="ProtossWoman_GameEnd_TeamWin" parent="UI">
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_endingwin00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_endingwin01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_endingwin02.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="ProtossWoman_Keep_AllyDestroyKeep" parent="UI">
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_keepdestroy00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_keepdestroy01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_keepdestroy02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_keepdestroy03_alt.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="ProtossWoman_Keep_AllyLostKeep" parent="UI">
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_keeplost00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_keeplost01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_keeplost02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_keeplost03.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="ProtossWoman_Kill_Default_PlayerDies" parent="UI">
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_heroslain00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_heroslain03.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_heroslain04.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_heroslain05.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_heroslain06.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_heroslain07.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="ProtossWoman_Observer_Keep_BlueTeamDestroyKeep" parent="UI">
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_keepdestroy_blue00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_keepdestroy_blue01.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="ProtossWoman_Observer_Kill_Default_PlayerDies_Observer" parent="UI">
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_kill_observer00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_kill_observer01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_kill_observer02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_kill_observer03.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_kill_observer04.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="ProtossWoman_Observer_Keep_RedTeamDestroyKeep" parent="UI">
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_keepdestroy_red00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_keepdestroy_red01.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="ProtossWoman_Observer_Kill_BlueTeamWipe" parent="UI">
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_teamkill_blue00.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="ProtossWoman_Kill_Default_PlayerKillEnemy" parent="UI">
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_herokill00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_herokill01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_herokill02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_herokill03.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_herokill04.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_herokill05.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_herokill06.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_herokill07_alt.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_herokill08_alt1.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="ProtossWoman_Kill_DoubleKill" parent="UI">
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_doublekill00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_doublekill01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_doublekill02.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="ProtossWoman_Kill_FirstBlood_Ally" parent="UI">
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_firstbloodally00.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="ProtossWoman_Observer_Kill_FirstBlood_BlueTeam" parent="UI">
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_firstblood_blue00.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="ProtossWoman_Observer_Kill_FirstBlood_RedTeam" parent="UI">
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_firstblood_red00.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="ProtossWoman_Kill_FourKill" parent="UI">
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_fourkill00.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="ProtossWoman_Kill_KillingSpree_FirstUpgrade" parent="UI">
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_spreefirstupgrade00.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="ProtossWoman_Kill_KillingSpree_MaxUpgrade" parent="UI">
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_spreemax00.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="ProtossWoman_Kill_KillingSpree_SecondUpgrade" parent="UI">
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_spreesecondupgrade00.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="ProtossWoman_Kill_KillingSpree_SpreeEndAlly" parent="UI">
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_spreeend_ally00.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="ProtossWoman_Kill_KillingSpree_SpreeEndYour" parent="UI">
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_spreeend00.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="ProtossWoman_Kill_KillingSpree_SpreeStart" parent="UI">
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_spreestart00.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="ProtossWoman_Kill_KillingSpree_ThirdUpgrade" parent="UI">
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_spreethirdupgrade00.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="ProtossWoman_Kill_MegaKill" parent="UI">
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_megakill00.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="ProtossWoman_Observer_Kill_RedTeamWipe" parent="UI">
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_teamkill_red00.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="ProtossWoman_Kill_TeamKill" parent="UI">
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_teamkill00.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="ProtossWoman_Kill_TripleKill" parent="UI">
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_triplekill00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_triplekill01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_triplekill02.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="ProtossWoman_Talent_TalentUnlocked" parent="UI">
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_talentunlock00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_talentunlock01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_talentunlock02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Announcer\ProtossWoman\ProtossWoman_talentunlock03.ogg" FacialGroup=""/>
+    </CSound>
+</Catalog>

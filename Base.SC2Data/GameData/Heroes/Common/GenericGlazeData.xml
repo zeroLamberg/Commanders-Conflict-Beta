@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CModel id="HeroGeneric_Hearthstone_Glaze" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Glaze\SOA_TemporalField_Glaze\SOA_TemporalField_Glaze.m3"/>
+        <EditorCategories value="CommandersHero:Common"/>
+    </CModel>
+    <CModel id="GlazeUnstoppableHoly">
+        <Model value="assets\Effects\Glaze\Glaze_Unstoppable_Holy\Glaze_Unstoppable_Holy.m3"/>
+    </CModel>
+</Catalog>

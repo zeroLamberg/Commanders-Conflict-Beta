@@ -1,0 +1,1129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CEffectApplyBehavior id="HeroGeneric_FountainDrink_ApplyFountainCooldown_ThirstOfLife">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="HeroGeneric_FountainDrink_HealingFountainCooldown"/>
+        <Flags index="UseDuration" value="1"/>
+        <Duration value="50"/>
+    </CEffectApplyBehavior>
+    <CEffectSwitch id="HeroGeneric_FountainDrink_CooldownSwitch">
+        <EditorCategories value=""/>
+        <CaseArray Validator="TalentBucket_HasThirstForLifeTalent" Effect="HeroGeneric_FountainDrink_ApplyFountainCooldown_ThirstOfLife"/>
+        <CaseDefault value="HeroGeneric_FountainDrink_ApplyDefaultCooldown"/>
+    </CEffectSwitch>
+    <CEffectApplyBehavior id="HeroGeneric_FountainDrink_ApplyManaBehavior">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="HeroGeneric_FountainDrink_HealingFountainRestoreMana"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="HeroGeneric_FountainDrink_ApplyHealBehavior">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="HeroGeneric_FountainDrink_HealingFountainRestoreHealth"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="HeroGeneric_FountainDrink_ApplyDefaultCooldown">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="HeroGeneric_FountainDrink_HealingFountainCooldown"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="HeroGeneric_FountainDrink_ApplyBehaviorsSet">
+        <EffectArray value="HeroGeneric_FountainDrink_ApplyHealBehavior"/>
+        <EffectArray value="HeroGeneric_FountainDrink_ApplyManaBehavior"/>
+    </CEffectSet>
+    <CEffectSet id="HeroGeneric_FountainDrink_StartingSet">
+        <ValidatorArray value="HeroGeneric_FountainDrink_FountainValidators"/>
+        <EditorCategories value=""/>
+        <EffectArray value="HeroGeneric_FountainDrink_CooldownSwitch"/>
+        <EffectArray value="HeroGeneric_FountainDrink_ApplyBehaviorsSet"/>
+    </CEffectSet>
+    <CEffectCreateHealer id="HeroGeneric_FountainDrink_CreateHealer_Mana">
+        <ValidatorArray value="TargetIsManaUser"/>
+        <EditorCategories value=""/>
+        <PeriodicPeriod value="1"/>
+        <RechargeVital value="Energy"/>
+        <RechargeVitalFraction value="0.0117"/>
+    </CEffectCreateHealer>
+    <CEffectCreateHealer id="HeroGeneric_FountainDrink_CreateHealer_Health">
+        <PeriodicPeriod value="1"/>
+        <RechargeVitalFraction value="0.0117"/>
+    </CEffectCreateHealer>
+    <CEffectSet id="RegenGlobeImpactSet">
+        <EffectArray value="HeroGenericRegenGlobeBarbarianSwitch"/>
+        <EffectArray value="RegenerationMasterSet"/>
+    </CEffectSet>
+    <CEffectSet id="RegenGlobePickupImprovedFlatModifyPeriodicSet">
+        <EffectArray value="RegenGlobePickupImprovedFlatModify"/>
+        <EffectArray value="RegenGlobePickupImprovedFlatModifyCreateHealer"/>
+    </CEffectSet>
+    <CEffectCreateHealer id="RegenGlobePickupFlatModifyCreateHealer">
+        <EditorCategories value=""/>
+        <PeriodCount value="1"/>
+        <PeriodicPeriod value="1"/>
+        <RechargeVitalRate value="15"/>
+        <LaunchUnit Value="Source"/>
+        <ImpactUnit Value="Source"/>
+    </CEffectCreateHealer>
+    <CEffectSet id="RegenGlobePickupFlatModifyPeriodicSet">
+        <EffectArray value="RegenGlobePickupFlatModify"/>
+        <EffectArray value="RegenGlobePickupFlatModifyCreateHealer"/>
+    </CEffectSet>
+    <CEffectCreateHealer id="RegenGlobePickupImprovedFlatModifyCreateHealer">
+        <EditorCategories value=""/>
+        <PeriodCount value="1"/>
+        <PeriodicPeriod value="1"/>
+        <RechargeVitalRate value="30"/>
+        <LaunchUnit Value="Source"/>
+        <ImpactUnit Value="Source"/>
+    </CEffectCreateHealer>
+    <CEffectCreateHealer id="RegenGlobePickupImprovedPercentModifyCreateHealer">
+        <EditorCategories value=""/>
+        <PeriodCount value="1"/>
+        <PeriodicPeriod value="1"/>
+        <RechargeVitalFraction value="0.0156"/>
+        <LaunchUnit Value="Source"/>
+        <ImpactUnit Value="Source"/>
+    </CEffectCreateHealer>
+    <CEffectSet id="RegenGlobePickupImprovedPercentModifyPeriodicSet">
+        <EffectArray value="RegenGlobePickupImprovedPercentModify"/>
+        <EffectArray value="RegenGlobePickupImprovedPercentModifyCreateHealer"/>
+    </CEffectSet>
+    <CEffectModifyUnit id="RegenGlobePickupPercentModify">
+        <VitalArray index="Energy">
+            <Change value="4"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectCreateHealer id="RegenGlobePickupPercentModifyCreateHealer">
+        <EditorCategories value=""/>
+        <PeriodCount value="1"/>
+        <PeriodicPeriod value="1"/>
+        <RechargeVitalFraction value="0.0078"/>
+        <LaunchUnit Value="Source"/>
+        <ImpactUnit Value="Source"/>
+    </CEffectCreateHealer>
+    <CEffectSet id="RegenGlobePickupPercentModifyPeriodicSet">
+        <EffectArray value="RegenGlobePickupPercentModify"/>
+        <EffectArray value="RegenGlobePickupPercentModifyCreateHealer"/>
+    </CEffectSet>
+    <CEffectSet id="MountInitialSet">
+        <EditorCategories value=""/>
+        <EffectArray value="HoldFireApplyInitialBehavior"/>
+        <EffectArray value="RemoveRevealedSuppressHoldFireBehavior"/>
+    </CEffectSet>
+    <CEffectSet id="RegenGlobePickupFlatSet">
+        <EffectArray value="RegenGlobePickupApplyFlatBehavior"/>
+    </CEffectSet>
+    <CEffectRemoveBehavior id="RemoveMountBehaviorOnCaster">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="Mounted"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectApplyBehavior id="ShieldRechargeControllerApplyBehavior">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="ShieldBroken"/>
+    </CEffectApplyBehavior>
+    <CEffectSwitch id="RegenGlobePickupLaunchMissileSwitch">
+        <EditorCategories value=""/>
+        <CaseDefault value="RegenGlobePickupLaunchMissile"/>
+        <CaseArray Validator="TargetShouldNotBeVisibleCombine" Effect="RegenGlobePickupNoEnemyVisibilityLaunchMissile"/>
+    </CEffectSwitch>
+    <CEffectLaunchMissile id="RegenGlobePickupNoEnemyVisibilityLaunchMissile">
+        <ValidatorArray index="0" value="NotMirrorImage"/>
+        <ImpactEffect value="RegenGlobeImpactSet"/>
+        <AmmoUnit value="RegenGlobeMissileNoEnemyVisibility"/>
+    </CEffectLaunchMissile>
+    <CEffectCreateUnit id="SuicideUnitXPDummyCreateUnit">
+        <EditorCategories value=""/>
+        <WhichLocation Value="CasterPoint"/>
+        <CreateFlags index="Placement" value="0"/>
+        <SpawnUnit value="SuicideUnitXPDummy"/>
+    </CEffectCreateUnit>
+    <CEffectApplyBehavior id="ShrubProximityRevealApplyRevealer">
+        <EditorCategories value=""/>
+        <Behavior value="ShrubProximityRevealed"/>
+        <ValidatorArray index="0" value="NotCloaked"/>
+    </CEffectApplyBehavior>
+    <CEffectCreatePersistent id="ShrubTestRevealCreatePersistent">
+        <EditorCategories value=""/>
+        <WhichLocation Value="SourceUnit"/>
+        <PeriodicPeriodArray value="0.125"/>
+        <RevealRadius value="3"/>
+        <RevealFlags index="Unfog" value="1"/>
+        <RevealFlags index="Detect" value="1"/>
+        <RevealFlags index="Radar" value="1"/>
+        <RevealFlags index="Permanent" value="1"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="ShrubProximityRevealSearch">
+        <EditorCategories value=""/>
+        <SearchFilters value="Heroic;Player,Ally,Neutral,Cloaked,Dead"/>
+        <AreaArray Radius="0.5" Effect="ShrubProximityRevealApplyRevealer"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <SearchFlags index="OffsetByUnitRadius" value="1"/>
+    </CEffectEnumArea>
+    <CEffectDamage id="LeaveVehicleDamage">
+        <EditorCategories value=""/>
+        <ImpactLocation Value="SourceUnit"/>
+        <KindSplash value="Splash"/>
+        <Amount value="1"/>
+    </CEffectDamage>
+    <CEffectDamage id="TalentGenericMarksmanDummy">
+        <EditorCategories value=""/>
+        <Flags index="NoScaledDealtBonus" value="1"/>
+        <Flags index="NoFractionDealtBonus" value="1"/>
+        <Flags index="NoUnscaledDealtBonus" value="1"/>
+        <Kind value="Splash"/>
+        <ValidatorArray value="TargetDoesNotHaveBlock"/>
+    </CEffectDamage>
+    <CEffectSet id="TalentGenericMarksmanDummySet">
+        <EditorCategories value=""/>
+        <EffectArray value="TalentGenericMarksmanDummy"/>
+    </CEffectSet>
+    <CEffectRemoveBehavior id="FlyerRemoveControllerBehavior">
+        <BehaviorLink value="FlyerController"/>
+    </CEffectRemoveBehavior>
+    <CEffectCreatePersistent id="MountFinalPersistent">
+        <EditorCategories value=""/>
+        <WhichLocation Value="SourceUnit"/>
+        <InitialDelay value="0.125"/>
+        <InitialEffect value="MountFinalEffect"/>
+    </CEffectCreatePersistent>
+    <CEffectModifyUnit id="DismountModifyCooldown">
+        <EditorCategories value=""/>
+        <ImpactUnit Value="Caster"/>
+        <Cost Abil="Mount,Execute" CooldownOperation="Add" CooldownTimeUse="4"/>
+    </CEffectModifyUnit>
+    <CEffectModifyUnit id="TalentGenericVampiricAssault1ModifyUnit">
+        <ValidatorArray value="TalentGenericVampiricAssault1ModifyUnitTargetFilters"/>
+        <EditorCategories value=""/>
+        <ImpactUnit Value="Caster"/>
+        <VitalArray index="Life">
+            <Change value="15"/>
+        </VitalArray>
+        <VitalArray index="Energy">
+            <Change value="2"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectModifyUnit id="TalentGenericVampiricAssault2ModifyUnit">
+        <EditorCategories value=""/>
+        <ImpactUnit Value="Caster"/>
+        <VitalArray index="Life">
+            <Change value="30"/>
+        </VitalArray>
+        <VitalArray index="Energy">
+            <Change value="4"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectSwitch id="RegenGlobePercentageSwitch">
+        <EditorCategories value=""/>
+        <CaseArray Validator="HasHealthGlobeMastery" Effect="RegenGlobePickupApplyImprovedPercentBehavior"/>
+        <CaseDefault value="RegenGlobePickupApplyPercentBehavior"/>
+    </CEffectSwitch>
+    <CEffectSwitch id="RegenGlobeFlatSwitch">
+        <EditorCategories value=""/>
+        <CaseArray Validator="HasHealthGlobeMastery" Effect="RegenGlobePickupApplyImprovedFlatBehavior"/>
+        <CaseDefault value="RegenGlobePickupFlatSet"/>
+    </CEffectSwitch>
+    <CEffectApplyBehavior id="RegenGlobePickupApplyImprovedFlatBehavior">
+        <EditorCategories value=""/>
+        <Behavior value="RegenGlobeImprovedFlatBuff"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="RegenGlobePickupApplyImprovedPercentBehavior">
+        <EditorCategories value=""/>
+        <Behavior value="RegenGlobeImprovedPercentBuff"/>
+    </CEffectApplyBehavior>
+    <CEffectSwitch id="RegenGlobePickupFlatModifyUnitSwitch">
+        <EditorCategories value=""/>
+        <CaseArray Validator="HasHealthGlobeMastery" Effect="RegenGlobePickupImprovedFlatModify"/>
+        <CaseDefault value="RegenGlobePickupFlatModify"/>
+    </CEffectSwitch>
+    <CEffectSwitch id="RegenGlobePickupPercentModifyUnitSwitch">
+        <EditorCategories value=""/>
+        <Marker Link="Effect/RegenGlobePickupFlatModifyUnitSwitch"/>
+        <CaseArray Validator="HasHealthGlobeMastery" Effect="RegenGlobePickupImprovedFlatModify"/>
+        <CaseDefault value="RegenGlobePickupFlatModify"/>
+    </CEffectSwitch>
+    <CEffectApplyBehavior id="FlyerRevealApplyBehavior">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="FlyerReveal"/>
+    </CEffectApplyBehavior>
+    <CEffectEnumArea id="FlyerRevealSearch">
+        <EditorCategories value=""/>
+        <AreaArray Radius="12" Effect="FlyerRevealDummySet"/>
+        <SearchFilters value="Heroic;Player,Ally,Structure,Missile,Item,Dead"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="MountApplyDismountStunFlyerTarget">
+        <Behavior value="DismountStunFlyer"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="MountApplyDismountStunFlyerCaster">
+        <WhichUnit Value="Caster"/>
+        <Behavior value="DismountStunFlyer"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="DropCannonballsSoundDummy">
+        <EditorCategories value=""/>
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="DropCannonballsBouncePersistent">
+        <EditorCategories value=""/>
+        <OffsetVectorStartLocation Value="SourcePoint"/>
+        <Flags index="RandomEffect" value="1"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="DropCannonballsLaunchBounceMissile"/>
+        <PeriodicEffectArray value="DropCannonballsCreateCannonballItem"/>
+        <PeriodicEffectArray value="DropCannonballsLaunchBounceMissile"/>
+        <PeriodicPeriodArray value="0"/>
+    </CEffectCreatePersistent>
+    <CEffectCreateUnit id="DropCannonballsCreateCannonballItem">
+        <EditorCategories value=""/>
+        <WhichLocation Value="TargetPoint"/>
+        <Origin Value="TargetPoint"/>
+        <SpawnUnit value="ItemCannonball"/>
+        <SpawnRange value="10"/>
+    </CEffectCreateUnit>
+    <CEffectSet id="DropCannonballsDummySet">
+        <ValidatorArray value="Failure"/>
+        <EditorCategories value=""/>
+    </CEffectSet>
+    <CEffectLaunchMissile id="DropCannonballsLaunchMissile">
+        <EditorCategories value=""/>
+        <ImpactLocation Value="TargetPoint"/>
+        <ImpactEffect value="DropCannonballsCreateCannonballItem"/>
+        <AmmoUnit value="ItemCannonballMissile"/>
+        <Movers Link="CannonballMissile"/>
+        <LaunchOffset value="0,0,3"/>
+    </CEffectLaunchMissile>
+    <CEffectLaunchMissile id="DropCannonballsLaunchBounceMissile">
+        <EditorCategories value=""/>
+        <LaunchLocation Effect="DropCannonballsLaunchMissile" Value="TargetPoint"/>
+        <ImpactLocation Effect="DropCannonballsLaunchMissile" Value="SourcePoint"/>
+        <ImpactOffset value="0,3,0"/>
+        <ImpactEffect value="DropCannonballsCreateCannonballItem"/>
+        <AmmoUnit value="ItemCannonballMissile"/>
+        <Movers Link="CannonballMissileBounce"/>
+    </CEffectLaunchMissile>
+    <CEffectCreatePersistent id="DropCannonballsPersistent">
+        <EditorCategories value=""/>
+        <PeriodCount value="10"/>
+        <PeriodicEffectArray value="DropCannonballsLaunchMissile"/>
+        <!-- 1 (at 45 deg intervals) -->
+        <PeriodicOffsetArray value="1,0,0"/>
+        <PeriodicOffsetArray value="0,1,0"/>
+        <PeriodicOffsetArray value="-1,0,0"/>
+        <PeriodicOffsetArray value="0,-1,0"/>
+        <PeriodicOffsetArray value="0.71,0.71,0"/>
+        <PeriodicOffsetArray value="-0.71,0.71,0"/>
+        <PeriodicOffsetArray value="-0.71,-0.71,0"/>
+        <PeriodicOffsetArray value="0.71,-0.71,0"/>
+        <!-- 2 (at 22.5 deg intervals) -->
+        <PeriodicOffsetArray value="2,0,0"/>
+        <PeriodicOffsetArray value="0,2,0"/>
+        <PeriodicOffsetArray value="-2,0,0"/>
+        <PeriodicOffsetArray value="0,-2,0"/>
+        <PeriodicOffsetArray value="1.41,1.41,0"/>
+        <PeriodicOffsetArray value="-1.41,1.41,0"/>
+        <PeriodicOffsetArray value="-1.41,-1.41,0"/>
+        <PeriodicOffsetArray value="1.41,-1.41,0"/>
+        <PeriodicOffsetArray value="1.85,0.77,0"/>
+        <PeriodicOffsetArray value="-0.77,1.85,0"/>
+        <PeriodicOffsetArray value="-1.85,-0.77,0"/>
+        <PeriodicOffsetArray value="0.77,-1.85,0"/>
+        <PeriodicOffsetArray value="0.77,1.85,0"/>
+        <PeriodicOffsetArray value="-1.85,0.77,0"/>
+        <PeriodicOffsetArray value="-0.77,-1.85,0"/>
+        <PeriodicOffsetArray value="1.85,-0.77,0"/>
+        <!-- 3 (at 11.25 deg intervals) -->
+        <PeriodicOffsetArray value="2.94,0.59,0"/>
+        <PeriodicOffsetArray value="2.49,1.67,0"/>
+        <PeriodicOffsetArray value="1.67,2.49,0"/>
+        <PeriodicOffsetArray value="0.59,2.94,0"/>
+        <PeriodicOffsetArray value="-2.94,0.59,0"/>
+        <PeriodicOffsetArray value="-2.49,1.67,0"/>
+        <PeriodicOffsetArray value="-1.67,2.49,0"/>
+        <PeriodicOffsetArray value="-0.59,2.94,0"/>
+        <PeriodicOffsetArray value="-2.94,-0.59,0"/>
+        <PeriodicOffsetArray value="-2.49,-1.67,0"/>
+        <PeriodicOffsetArray value="-1.67,-2.49,0"/>
+        <PeriodicOffsetArray value="-0.59,-2.94,0"/>
+        <PeriodicOffsetArray value="2.94,-0.59,0"/>
+        <PeriodicOffsetArray value="2.49,-1.67,0"/>
+        <PeriodicOffsetArray value="1.67,-2.49,0"/>
+        <PeriodicOffsetArray value="0.59,-2.94,0"/>
+        <OffsetVectorStartLocation Value="SourcePoint"/>
+        <Flags index="RandomOffset" value="1"/>
+        <Flags index="RandomPeriod" value="1"/>
+        <ExpireDelay value="0.5"/>
+        <ExpireEffect value="DropCannonballsSoundDummy"/>
+        <PeriodicPeriodArray value="0"/>
+        <PeriodicPeriodArray value="0.05"/>
+        <PeriodicPeriodArray value="0.1"/>
+        <OffsetRandMode value="RandomNoRepeat"/>
+    </CEffectCreatePersistent>
+    <CEffectModifyUnit id="PickupCannonballsModifyCannonballItem">
+        <EditorCategories value=""/>
+        <Cost Abil="ItemDoubloon,Execute" CooldownOperation="Add">
+            <Player Value="Target"/>
+            <Fraction Charge="1"/>
+        </Cost>
+    </CEffectModifyUnit>
+    <CEffectApplyBehavior id="UseVehicleApplyVehicleCapturingBehavior">
+        <EditorCategories value=""/>
+        <Behavior value="TransformHeroVehicleBeingCapturedBehavior"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="UseVehicleCommandeerInitialSet">
+        <EditorCategories value=""/>
+        <EffectArray value="UseVehicleApplyCommandeerBehavior"/>
+        <EffectArray value="UseVehicleApplyVehicleCapturingBehavior"/>
+    </CEffectSet>
+    <CEffectSet id="UseVehicleCommandeerFinalSet">
+        <EditorCategories value=""/>
+        <EffectArray value="LeaveVehicleRemoveLeaveBehavior2"/>
+        <EffectArray value="UseVehicleRemoveVehicleCapturingBehavior"/>
+    </CEffectSet>
+    <CEffectRemoveBehavior id="UseVehicleRemoveVehicleCapturingBehavior">
+        <EditorCategories value=""/>
+        <BehaviorLink value="TransformHeroVehicleBeingCapturedBehavior"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectSet id="CryForHelpDummy">
+        <EditorCategories value=""/>
+    </CEffectSet>
+    <CEffectRemoveBehavior id="TestRemove">
+        <EditorCategories value=""/>
+        <BehaviorLink value="TestDisabledBehavior"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectSwitch id="FlyerDismountSwitch">
+        <EditorCategories value=""/>
+        <CaseArray Validator="FlyerNotOnPathable" Effect="FlyerForcedDismountSet"/>
+        <CaseDefault value="FlyerNormalDismountSet"/>
+    </CEffectSwitch>
+    <CEffectSet id="FlyerNormalDismountSet">
+        <EditorCategories value=""/>
+        <EffectArray value="FlyerNormalDismountDummyDamage"/>
+        <!--EffectArray value="FlyerRevealRemoveBehavior"/-->
+    </CEffectSet>
+    <CEffectRemoveBehavior id="RemoveSuppressFidget">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="SuppressFidget"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectApplyBehavior id="ApplyValiantBehavior">
+        <EditorCategories value=""/>
+        <Behavior value="Valiant"/>
+    </CEffectApplyBehavior>
+    <CEffectDamage id="FlyerForcedDismountDummyDamage">
+        <EditorCategories value=""/>
+        <ImpactLocation Value="CasterUnit"/>
+    </CEffectDamage>
+    <CEffectDamage id="FlyerNormalDismountDummyDamage">
+        <EditorCategories value=""/>
+        <ImpactLocation Value="CasterUnit"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="FlyerNormalDismountLaunchMissile">
+        <ValidatorArray index="0" value="FlyerForcedDismountLaunchMissileTargetFilters"/>
+        <Marker Link="Effect/FlyerForcedDismountLaunchMissile"/>
+        <LaunchLocation Value="CasterUnit"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <ImpactEffect value="FlyerNormalDismountDummyDamage"/>
+        <AmmoUnit value="FlyerForcedDismountLaunchMissileWeapon"/>
+        <Movers Link="FlyerNormalDismount" IfRangeLTE="500"/>
+        <DeathType value="Unknown"/>
+        <ImpactOffset value="0,0,1"/>
+    </CEffectLaunchMissile>
+    <CEffectRemoveBehavior id="BailoutFlyerRemoveMountBehavior">
+        <WhichUnit Value="Source"/>
+        <BehaviorLink value="MountedFlyer"/>
+    </CEffectRemoveBehavior>
+    <CEffectApplyBehavior id="MountApplyDismountStunFlyer">
+        <WhichUnit Value="Source"/>
+        <Behavior value="DismountStunFlyer"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="ApplySuppressFidget">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="SuppressFidget"/>
+    </CEffectApplyBehavior>
+    <CEffectLaunchMissile id="FlyerForcedDismountLaunchMissile">
+        <LaunchLocation Value="CasterUnit"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <ImpactEffect value="FlyerForcedDismountDummyDamage"/>
+        <Movers Link="FlyerForcedDismount" IfRangeLTE="500"/>
+        <DeathType value="Unknown"/>
+        <ImpactOffset value="0,0,1"/>
+        <ValidatorArray index="0" value="CasterNotDead"/>
+    </CEffectLaunchMissile>
+    <CEffectSet id="FlyerForcedDismountSet">
+        <EditorCategories value=""/>
+        <EffectArray value="MountApplyDismountStunFlyer"/>
+        <!--EffectArray value="FlyerRevealRemoveBehavior"/-->
+    </CEffectSet>
+    <CEffectRemoveBehavior id="RemoveValiantBehavior">
+        <EditorCategories value=""/>
+        <BehaviorLink value="Valiant"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectSet id="PermanentCloakRecloakSet">
+        <EffectArray value="HoldFireApplyInitialBehavior"/>
+    </CEffectSet>
+    <CEffectModifyUnit id="SiegeHeroTownKillerModifyUnit">
+        <EditorCategories value=""/>
+        <ImpactUnit Value="Caster"/>
+        <VitalArray index="Life">
+            <ChangeFraction value="0.3"/>
+        </VitalArray>
+        <VitalArray index="Energy">
+            <ChangeFraction value="0.3"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectSwitch id="RegenGlobeImprovedModifySwitch">
+        <EditorCategories value=""/>
+        <CaseArray Validator="RegenGlobeHPGT2400" Effect="RegenGlobePickupImprovedApplyPercentBehavior"/>
+        <CaseDefault value="RegenGlobePickupImprovedApplyFlatBehavior"/>
+    </CEffectSwitch>
+    <CEffectSwitch id="RegenGlobeModifySwitch">
+        <EditorCategories value=""/>
+        <CaseArray Validator="RegenGlobeHPGT2400" Effect="RegenGlobePercentageSwitch"/>
+        <CaseDefault value="RegenGlobeFlatSwitch"/>
+    </CEffectSwitch>
+    <CEffectApplyBehavior id="RegenGlobePickupImprovedApplyPercentBehavior">
+        <Behavior value="RegenGlobePercentBuffImproved"/>
+    </CEffectApplyBehavior>
+    <CEffectModifyUnit id="RegenGlobePickupImprovedFlatModify">
+        <EditorCategories value=""/>
+        <VitalArray index="Energy">
+            <Change value="8"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectApplyBehavior id="RegenGlobePickupApplyFlatBehavior">
+        <EditorCategories value=""/>
+        <Behavior value="RegenGlobeFlatBuff"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="RegenGlobePickupApplyPercentBehavior">
+        <EditorCategories value=""/>
+        <Behavior value="RegenGlobePercentBuff"/>
+    </CEffectApplyBehavior>
+    <CEffectModifyUnit id="RegenGlobePickupFlatModify">
+        <VitalArray index="Energy">
+            <Change value="4"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectModifyUnit id="SiegeHeroTownHealingModifyUnit">
+        <EditorCategories value=""/>
+        <ImpactUnit Value="Caster"/>
+        <VitalArray index="Life">
+            <ChangeFraction value="0.03"/>
+        </VitalArray>
+        <VitalArray index="Energy">
+            <ChangeFraction value="0.03"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectApplyBehavior id="ApplyMinionNoLaneOrders">
+        <Behavior value="NoMinionLaneOrders"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="RegenGlobeMasteryPickupSet">
+        <ValidatorArray value="HasRegenGlobeMastery"/>
+        <EffectArray value="RegenGlobePickupSearch"/>
+        <EffectArray value="Suicide"/>
+    </CEffectSet>
+    <CEffectRemoveBehavior id="RemoveSuppressCloak">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="SuppressCloak"/>
+    </CEffectRemoveBehavior>
+    <CEffectTeleport id="LeaveVehicleTeleport">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <ClearQueuedOrders value="0"/>
+        <MinDistance value="0"/>
+        <PlacementArc value="360"/>
+        <PlacementRange value="10"/>
+        <TargetLocation Value="TargetPoint"/>
+    </CEffectTeleport>
+    <CEffectRemoveBehavior id="RemoveMinionNoLaneOrders">
+        <EditorCategories value=""/>
+        <BehaviorLink value="NoMinionLaneOrders"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectSet id="VehicleTimeoutSet">
+        <EditorCategories value=""/>
+        <EffectArray value="UseVehicleFinalDummy"/>
+        <EffectArray value="TimedLifeFate"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="LeaveVehicleApplyLeavingBehavior">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="LeavingVehicle"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="LeaveVehicleApplyTimedLife">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+    </CEffectApplyBehavior>
+    <CEffectCreatePersistent id="LeaveVehiclePersistent">
+        <EditorCategories value=""/>
+        <WhichLocation Value="CasterUnit"/>
+        <Flags index="Channeled" value="1"/>
+        <InitialEffect value="LeaveVehicleApplyLeavingBehavior"/>
+        <ExpireEffect value="LeaveVehicleSet"/>
+        <FinalEffect value="LeaveVehicleRemoveLeaveBehavior"/>
+        <PeriodCount value="8"/>
+        <PeriodicPeriodArray value="0.125"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="LeaveVehiclePersistentFlyer">
+        <ValidatorArray value="FlyerVehiclePlacementCheck"/>
+        <EditorCategories value=""/>
+        <WhichLocation Value="CasterUnit"/>
+        <Flags index="Channeled" value="1"/>
+        <InitialEffect value="LeaveVehicleApplyLeavingBehavior"/>
+        <ExpireEffect value="LeaveVehicleSet"/>
+        <FinalEffect value="LeaveVehicleRemoveLeaveBehavior"/>
+        <PeriodCount value="8"/>
+        <PeriodicPeriodArray value="0.125"/>
+    </CEffectCreatePersistent>
+    <CEffectRemoveBehavior id="LeaveVehicleRemoveLeaveBehavior">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="LeavingVehicle"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="LeaveVehicleRemoveLeaveBehavior2">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="CommandeeringVehicle"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="LeaveVehicleRemoveOccupiedBehavior">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="GenericVehicleBehaviorOccupied"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectSet id="LeaveVehicleSet">
+        <EditorCategories value=""/>
+        <EffectArray value="LeaveVehicleApplyTimedLife"/>
+        <EffectArray value="Suicide"/>
+    </CEffectSet>
+    <CEffectSwitch id="LeaveVehicleSwitch">
+        <CaseArray Validator="IsFlyingStorm" Effect="LeaveVehiclePersistentFlyer"/>
+        <CaseDefault value="LeaveVehiclePersistent"/>
+    </CEffectSwitch>
+    <CEffectCreatePersistent id="UseVehiclePersistent">
+        <ValidatorArray value="TargetIsEmptyVehicle"/>
+        <ValidatorArray value="TargetIsNotOccupiedVehicle"/>
+        <ValidatorArray value="TargetNotDead"/>
+        <ValidatorArray value="VehicleValidatorCombine"/>
+        <ValidatorArray value="CasterNotAbathurUltimateEvolutionControl"/>
+        <ValidatorArray value="TargetIsNotEmptyOdin"/>
+        <EditorCategories value=""/>
+        <WhichLocation Value="TargetUnit"/>
+        <Flags index="Channeled" value="1"/>
+        <InitialEffect value="UseVehicleCommandeerInitialSet"/>
+        <ExpireEffect value="UseVehicleCastCompleteSet"/>
+        <FinalEffect value="UseVehicleCommandeerFinalSet"/>
+        <PeriodCount value="40"/>
+        <PeriodicValidator value="VehicleValidatorCombine"/>
+        <PeriodicPeriodArray value="0.125"/>
+    </CEffectCreatePersistent>
+    <CEffectApplyBehavior id="UseVehicleApplyCasterBehavior">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="UsingVehicle"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="UseVehicleApplyCommandeerBehavior">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="CommandeeringVehicle"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="UseVehicleApplyVehicleBehavior">
+        <EditorCategories value=""/>
+        <Behavior value="GenericVehicleBehaviorOccupied"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="UseVehicleCastCompleteSet">
+        <ValidatorArray value="HeroNotInCombat"/>
+        <ValidatorArray value="TargetIsNotOccupiedVehicle"/>
+        <ValidatorArray value="TargetNotDead"/>
+        <EditorCategories value=""/>
+        <EffectArray value="UseVehicleApplyCasterBehavior"/>
+        <EffectArray value="UseVehicleApplyVehicleBehavior"/>
+        <EffectArray value="UseVehicleTeleToBaseSearchForDestination"/>
+        <EffectArray value="UseVehicleRemoveSelfdestructTimedLife"/>
+        <EffectArray value="UseVehicleRemoveDragonStun"/>
+    </CEffectSet>
+    <CEffectSet id="UseVehicleFinalDummy"/>
+    <CEffectRemoveBehavior id="UseVehicleRemoveSelfdestructTimedLife">
+        <EditorCategories value=""/>
+        <BehaviorLink value="GenericVehicleBehaviorSelfdestructTimedLife"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectEnumArea id="UseVehicleTeleToBaseSearchForDestination">
+        <ImpactLocation Value="TargetUnit"/>
+        <SearchFilters value="Worker;Self,Neutral,Enemy,Item,Dead"/>
+        <AreaArray Radius="400" Effect="UseVehicleTeleToBaseTeleport"/>
+        <MaxCount value="1"/>
+    </CEffectEnumArea>
+    <CEffectTeleport id="UseVehicleTeleToBaseTeleport">
+        <WhichUnit Value="Caster"/>
+        <MinDistance value="0"/>
+        <PlacementArc value="360"/>
+        <PlacementAround Value="TargetUnit"/>
+        <PlacementRange value="7"/>
+        <TargetLocation Value="TargetUnit"/>
+        <TeleportFlags index="TestFog" value="0"/>
+    </CEffectTeleport>
+    <CEffectSet id="HoldFireRemoveSet">
+        <EffectArray value="HoldFireRemoveInitialBehavior"/>
+        <EffectArray value="HoldFireRemoveBehavior"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="MountFlyerApplyMountBehavior">
+        <ValidatorArray index="0" value="CasterNotRooted_Old"/>
+        <ValidatorArray value="HeroNotInCombat"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="FlyerController"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="MountFlyerRemoveMountBehavior">
+        <WhichUnit Value="Source"/>
+        <BehaviorLink value="FlyerController"/>
+    </CEffectRemoveBehavior>
+    <CEffectModifyUnit id="RegenGlobePickupImprovedPercentModify">
+        <VitalArray index="Energy">
+            <Change value="8"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectApplyBehavior id="RegenGlobePickupImprovedApplyFlatBehavior">
+        <Behavior value="RegenGlobeFlatBuffImproved"/>
+    </CEffectApplyBehavior>
+    <CEffectSwitch id="RegenGlobePickupBehaviorSwitch">
+        <CaseArray Validator="HasHealthGlobeMastery" Effect="RegenGlobeImprovedModifySwitch"/>
+        <CaseDefault value="HeroGenericRegenGlobeBarbarianSwitch"/>
+    </CEffectSwitch>
+    <CEffectApplyBehavior id="PrestigeCleanseDebuffsUnstoppable">
+        <EditorCategories value="CommandersHero:Common"/>
+        <Behavior value="PrestigeCleanse@Debuffs"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="MountApplyMountDaze">
+        <WhichUnit Value="Source"/>
+        <Behavior value="DismountStun"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="HoldFireRemoveInitialBehavior">
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="HoldFireInitial"/>
+        <Count value="1"/>
+        <ValidatorArray index="0" value="NotCloakedOrPhaseShifted"/>
+    </CEffectRemoveBehavior>
+    <CEffectApplyBehavior id="MountApplyDismountStun">
+        <WhichUnit Value="Source"/>
+        <Behavior value="DismountStun"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="MountApplyMountBehavior">
+        <Behavior value="Mounted"/>
+        <WhichUnit Value="Caster"/>
+        <ValidatorArray index="0" value="CasterNotRooted_Old"/>
+        <ValidatorArray value="HeroNotInCombat"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="MountDamageResponse">
+        <EffectArray value="MountRemoveMountBehavior"/>
+        <EffectArray value="MountApplyDismountStun"/>
+    </CEffectSet>
+    <CEffectSet id="MountFinalEffect">
+        <EffectArray value="HoldFireRemoveInitialBehavior"/>
+        <EffectArray value="HoldFireRemoveBehavior"/>
+        <EffectArray value="DismountModifyCooldown"/>
+        <ValidatorArray value="DoesNotHaveCloakDelay"/>
+    </CEffectSet>
+    <CEffectRemoveBehavior id="MountRemoveMountBehavior">
+        <WhichUnit Value="Source"/>
+        <BehaviorLink value="Mounted"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectModifyUnit id="Trololol"/>
+    <CEffectLaunchMissile id="RegenGlobePickupLaunchMissile">
+        <ImpactEffect value="RegenGlobeImpactSet"/>
+        <AmmoUnit value="RegenGlobeMissile"/>
+        <ValidatorArray index="0" value="NotMirrorImage"/>
+    </CEffectLaunchMissile>
+    <CEffectApplyBehavior id="RegenGlobePickupApplyRegenBehavior">
+        <Behavior value="RegenGlobePercentBuff"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="RegenGlobePickupSet">
+        <EffectArray value="RegenGlobePickupSearch"/>
+        <EffectArray value="Suicide"/>
+    </CEffectSet>
+    <CEffectEnumArea id="RegenGlobePickupSearch">
+        <SearchFilters value="Heroic;Player,Neutral,Enemy,Mechanical,Massive,Structure,Missile,Item,Stasis,Dead,Hallucination"/>
+        <AreaArray Radius="12" Effect="RegenGlobePickupLaunchMissileSwitch"/>
+        <ImpactLocation Value="SourceUnit"/>
+        <ValidatorArray value="NoStageDiveChannel"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="HoldFireApplyInitialBehavior">
+        <Behavior value="HoldFireInitial"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="HoldFireApplyFinalBehavior">
+        <Behavior value="HoldFire"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="HoldFireRemoveBehavior">
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="HoldFire"/>
+        <Count value="1"/>
+        <ValidatorArray index="0" value="NotCloakedOrPhaseShifted"/>
+    </CEffectRemoveBehavior>
+    <CEffectEnumArea id="PortBackToBaseSearchForDestination">
+        <ImpactLocation Value="TargetUnit"/>
+        <SearchFilters value="Worker;Self,Neutral,Enemy,Item,Dead"/>
+        <AreaArray Radius="400" Effect="PortBackToBaseTeleport"/>
+        <MaxCount value="1"/>
+        <ValidatorArray value="HeroNotInCombat"/>
+    </CEffectEnumArea>
+    <CEffectTeleport id="PortBackToBaseTeleport">
+        <TargetLocation Value="TargetUnit"/>
+        <TeleportFlags index="TestFog" value="0"/>
+        <PlacementArc value="360"/>
+        <PlacementAround Value="TargetUnit"/>
+        <PlacementRange value="7"/>
+        <WhichUnit Value="Caster"/>
+        <MinDistance value="0"/>
+    </CEffectTeleport>
+    <CEffectApplyBehavior id="TalentGenericShields1ApplyShieldBehavior">
+        <ValidatorArray index="0" removed="1"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="TalentGenericShields1"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="TalentGenericShields1ApplyCooldownBehavior">
+        <ValidatorArray index="0" removed="1"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="TalentGenericShields1CooldownBuff"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="TalentGenericShields2ApplyShieldBehavior">
+        <ValidatorArray index="0" removed="1"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="TalentGenericShields2"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="TalentGenericShields2ApplyCooldownBehavior">
+        <ValidatorArray index="0" removed="1"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="TalentGenericShields2CooldownBuff"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="TalentGenericShields3ApplyShieldBehavior">
+        <ValidatorArray index="0" removed="1"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="TalentGenericShields3"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="TalentGenericShields3ApplyCooldownBehavior">
+        <ValidatorArray index="0" removed="1"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="TalentGenericShields3CooldownBuff"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="TalentGenericShields4ApplyShieldBehavior">
+        <ValidatorArray index="0" removed="1"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="TalentGenericShields4"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="TalentGenericShields4ApplyCooldownBehavior">
+        <ValidatorArray index="0" removed="1"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="TalentGenericShields4CooldownBuff"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="TalentGenericShields5ApplyShieldBehavior">
+        <ValidatorArray index="0" removed="1"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="TalentGenericShields5"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="TalentGenericShields5ApplyCooldownBehavior">
+        <ValidatorArray index="0" removed="1"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="TalentGenericShields5CooldownBuff"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="TalentGenericShields6ApplyShieldBehavior">
+        <ValidatorArray index="0" removed="1"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="TalentGenericShields6"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="TalentGenericShields6ApplyCooldownBehavior">
+        <ValidatorArray index="0" removed="1"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="TalentGenericShields6CooldownBuff"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="TalentGenericVampiricAssault1Set">
+        <EffectArray value="TalentGenericVampiricAssault1LifeGain"/>
+        <EffectArray value="TalentGenericVampiricAssault1Switch"/>
+    </CEffectSet>
+    <CEffectSet id="TalentGenericVampiricAssault2Set">
+        <EffectArray value="TalentGenericVampiricAssault2LifeGain"/>
+        <EffectArray value="TalentGenericVampiricAssault2Switch"/>
+    </CEffectSet>
+    <CEffectSwitch id="TalentGenericVampiricAssault1Switch">
+        <CaseArray Validator="SourceIsBarbarian" Effect="TalentBarbarianVampiricAssault1ModifyUnit"/>
+        <CaseDefault value="TalentGenericVampiricAssault1ModifyUnit"/>
+    </CEffectSwitch>
+    <CEffectSwitch id="TalentGenericVampiricAssault2Switch">
+        <CaseArray Validator="SourceIsBarbarian" Effect="TalentBarbarianVampiricAssault2ModifyUnit"/>
+        <CaseDefault value="TalentGenericVampiricAssault2ModifyUnit"/>
+    </CEffectSwitch>
+    <CEffectCreateHealer id="TalentGenericVampiricAssault1LifeGain">
+        <EditorCategories value=""/>
+        <PeriodCount value="1"/>
+        <PeriodicPeriod value="1"/>
+        <RechargeVitalRate value="15"/>
+        <ImpactUnit Value="Caster"/>
+    </CEffectCreateHealer>
+    <CEffectCreateHealer id="TalentGenericVampiricAssault2LifeGain">
+        <EditorCategories value=""/>
+        <PeriodCount value="1"/>
+        <PeriodicPeriod value="1"/>
+        <RechargeVitalRate value="30"/>
+        <ImpactUnit Value="Caster"/>
+    </CEffectCreateHealer>
+    <CEffectCreateHealer id="TalentGenericVampiricAssault1EnergyGain">
+        <EditorCategories value=""/>
+        <PeriodCount value="1"/>
+        <PeriodicPeriod value="1"/>
+        <RechargeVitalRate value="2"/>
+        <ImpactUnit Value="Caster"/>
+        <RechargeVital value="Energy"/>
+    </CEffectCreateHealer>
+    <CEffectCreateHealer id="TalentGenericVampiricAssault2EnergyGain">
+        <EditorCategories value=""/>
+        <PeriodCount value="1"/>
+        <PeriodicPeriod value="1"/>
+        <RechargeVitalRate value="4"/>
+        <ImpactUnit Value="Caster"/>
+        <RechargeVital value="Energy"/>
+    </CEffectCreateHealer>
+    <CEffectApplyBehavior id="TalentGenericMarksmanApplyCooldown">
+        <WhichUnit Value="Caster"/>
+        <Behavior value="TalentFocusedAttackCooldown"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="TalentGenericMarksmanReduceCooldownDummy"/>
+    <CEffectCreateHealer id="TalentGenericTenacity1LifeGain">
+        <EditorCategories value=""/>
+        <PeriodCount value="1"/>
+        <PeriodicPeriod value="1"/>
+        <ImpactUnit Value="Caster"/>
+        <RechargeVitalFraction value="0.0156"/>
+    </CEffectCreateHealer>
+    <CEffectCreateHealer id="TalentGenericTenacity2LifeGain">
+        <EditorCategories value=""/>
+        <PeriodCount value="1"/>
+        <PeriodicPeriod value="1"/>
+        <ImpactUnit Value="Caster"/>
+        <RechargeVitalFraction value="0.0312"/>
+    </CEffectCreateHealer>
+    <CEffectCreateHealer id="TalentGenericTenacity3LifeGain">
+        <EditorCategories value=""/>
+        <PeriodCount value="1"/>
+        <PeriodicPeriod value="1"/>
+        <ImpactUnit Value="Caster"/>
+        <RechargeVitalFraction value="0.0312"/>
+    </CEffectCreateHealer>
+    <CEffectSet id="TalentGenericThrillOfTheKillSet">
+        <EffectArray value="TalentGenericThrillOfTheKillLifeGain"/>
+        <EffectArray value="TalentGenericThrillOfTheKillEnergyGain"/>
+    </CEffectSet>
+    <CEffectCreateHealer id="TalentGenericThrillOfTheKillLifeGain">
+        <EditorCategories value=""/>
+        <PeriodCount value="1"/>
+        <PeriodicPeriod value="1"/>
+        <ImpactUnit Value="Caster"/>
+        <RechargeVitalFraction value="0.039"/>
+    </CEffectCreateHealer>
+    <CEffectCreateHealer id="TalentGenericThrillOfTheKillEnergyGain">
+        <EditorCategories value=""/>
+        <PeriodCount value="1"/>
+        <PeriodicPeriod value="1"/>
+        <ImpactUnit Value="Caster"/>
+        <RechargeVital value="Energy"/>
+        <RechargeVitalFraction value="0.039"/>
+    </CEffectCreateHealer>
+    <CValidatorUnitType id="HeroGeneric_FountainDrink_IsShieldBattery">
+        <Value value="Building_Moonwell"/>
+    </CValidatorUnitType>
+    <CValidatorUnitCompareBehaviorCount id="HeroGeneric_FountainDrink_NoCooldown">
+        <WhichUnit Value="Caster"/>
+        <Behavior value="HeroGeneric_FountainDrink_HealingFountainCooldown"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorCombine id="HeroGeneric_FountainDrink_FountainValidators">
+        <Type value="And"/>
+        <CombineArray value="HeroGeneric_FountainDrink_NoCooldown"/>
+        <CombineArray value="CasterHealthOrEnergyNotFull"/>
+        <CombineArray value="NotSindragosaStructureDebuff"/>
+    </CValidatorCombine>
+    <CValidatorUnitCompareBehaviorCount id="Generic_AbilityPowerMax_Source">
+        <WhichUnit Value="Source"/>
+        <Value value="200"/>
+        <Behavior value="Generic_Default_Positive_AP_H"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="Generic_AbilityPowerNotMax_Source">
+        <WhichUnit Value="Source"/>
+        <Compare value="LT"/>
+        <Value value="200"/>
+        <Behavior value="Generic_Default_Positive_AP_H"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="Generic_AbilityPowerMin_Source">
+        <WhichUnit Value="Source"/>
+        <Behavior value="Generic_Default_Positive_AP_H"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="Generic_AbilityPowerNotMin_Source">
+        <WhichUnit Value="Source"/>
+        <Compare value="GT"/>
+        <Behavior value="Generic_Default_Positive_AP_H"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="Generic_AbilityPowerMin">
+        <Behavior value="Generic_Default_Positive_AP_H"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="Generic_AbilityPowerNotMax">
+        <Compare value="LT"/>
+        <Value value="200"/>
+        <Behavior value="Generic_Default_Positive_AP_H"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="Generic_AbilityPowerMax">
+        <Value value="200"/>
+        <Behavior value="Generic_Default_Positive_AP_H"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="Generic_AbilityPowerNotMin">
+        <Compare value="GT"/>
+        <Behavior value="Generic_Default_Positive_AP_H"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="Generic_AbilityPower_Negative">
+        <Compare value="LT"/>
+        <Value value="100"/>
+        <Behavior value="Generic_Default_Positive_AP_H"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="Generic_AbilityPower_Positive">
+        <Compare value="GT"/>
+        <Value value="100"/>
+        <Behavior value="Generic_Default_Positive_AP_H"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CButton id="HeroGeneric_FountainDrink" parent="StormButtonParent">
+        <Icon value="assets\Icons\Common_General\Icon_General_Gidbin_2.dds"/>
+        <EditorCategories value="CommandersHero:Common"/>
+    </CButton>
+    <CActorSound id="HeroGeneric_FountainDrink_SoundHeal" parent="SoundContinuous">
+        <Flags index="SuppressSaveLoad" value="1"/>
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Common"/>
+        <On Terms="Effect.MoonwellDrinkL2CreatePersistent.Start" Send="Create"/>
+        <On Terms="Effect.MoonwellDrinkL2CreatePersistent.Stop" Send="Destroy Immediate"/>
+        <On Terms="Effect.MoonwellDrinkL3CreatePersistent.Start" Send="Create"/>
+        <On Terms="Effect.MoonwellDrinkL3CreatePersistent.Stop" Send="Destroy Immediate"/>
+        <On Terms="Effect.HeroGeneric_FountainDrink_StartingSet.Start" Send="Create"/>
+        <On Terms="Effect.HeroGeneric_FountainDrink_StartingSet.Stop" Send="Destroy Immediate"/>
+        <Sound value="HeroGeneric_FountainDrink_Heal"/>
+        <Filter index="Neutral" value="0"/>
+        <Filter index="All" value="1"/>
+        <VisibleTo index="Self" value="1"/>
+        <VisibleTo index="Ally" value="1"/>
+        <VisibleTo index="Enemy" value="1"/>
+    </CActorSound>
+    <CActorSound id="HeroGeneric_FountrainDrink_HealSoundStart" parent="SoundOneShot">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Common"/>
+        <On Terms="Effect.HeroGeneric_FountainDrink_StartingSet.Start" Send="Create"/>
+        <On Terms="Effect.MoonwellDrinkL2CreatePersistent.Start" Send="Create"/>
+        <On Terms="Effect.MoonwellDrinkL3CreatePersistent.Start" Send="Create"/>
+        <Sound value="HeroGeneric_FountainDrink_HealStart"/>
+    </CActorSound>
+    <CActorSound id="HeroGeneric_FountrainDrink_HealSoundEnd" parent="SoundOneShot">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Common"/>
+        <On Terms="Effect.HeroGeneric_FountainDrink_StartingSet.Stop" Send="Create"/>
+        <On Terms="Effect.MoonwellDrinkL2CreatePersistent.Stop" Send="Create"/>
+        <On Terms="Effect.MoonwellDrinkL3CreatePersistent.Stop" Send="Create"/>
+        <Sound value="HeroGeneric_FountainDrink_HealEnd"/>
+    </CActorSound>
+    <CActorModel id="HeroGeneric_FountainDrink_ModelHeal" parent="StormModelAnimationStyleContinuous">
+        <Inherits index="CloakEffect" value="1"/>
+        <Inherits index="Visibility" value="1"/>
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Common"/>
+        <On Terms="Behavior.HealingFountainRestoreL1.On" Send="Create"/>
+        <On Terms="Behavior.HeroGeneric_FountainDrink_HealingFountainRestoreHealth.On" Send="Create"/>
+        <On Terms="Behavior.HealingFountainRestoreL3.On" Send="Create"/>
+        <On Terms="Behavior.HealingFountainRestoreL1.Off" Send="AnimBracketStop BSD"/>
+        <On Terms="Behavior.HeroGeneric_FountainDrink_HealingFountainRestoreHealth.Off" Send="AnimBracketStop BSD"/>
+        <On Terms="Behavior.HealingFountainRestoreL3.Off" Send="AnimBracketStop BSD"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachCenter" HoldRotation="1"/>
+        <Model value="HeroGeneric_FountainDrink_HealImpact"/>
+    </CActorModel>
+    <!--CModel id="BruiserMinionDeath" parent="UnitDeath" Race="Terran">-->
+    <!--        <Model value="Assets\Effects\Terran\TerranSmallUnitDeath\TerranSmallUnitDeath.m3"/>-->
+    <!--        <EditorCategories value="Race:Neutral"/>-->
+    <!--        <Occlusion value="Show"/>-->
+    <!--        <SelectionRadius value="2.000000"/>-->
+    <!--        <ShadowRadius value="2.000000"/>-->
+    <!--    </CModel>-->
+    <!--    <CModel id="Storm_Effect_MinionDeath" parent="UnitDeath" Race="Terran">-->
+    <!--        <Model value="Assets\Effects\Storm_Effect_MinionDeath\Storm_Effect_MinionDeath.m3"/>-->
+    <!--        <EditorCategories value="Race:Neutral"/>-->
+    <!--        <Occlusion value="Show"/>-->
+    <!--        <SelectionRadius value="2.000000"/>-->
+    <!--        <ShadowRadius value="2.000000"/>-->
+    <!--    </CModel-->
+    <CModel id="CommandersSlowDebuff" parent="BuffFX">
+        <Model value="assets\Effects\Generic\Generic_Slow\Generic_Slow.m3"/>
+        <EditorCategories value="CommandersHero:Common"/>
+    </CModel>
+    <CModel id="HeroGeneric_FountainDrink_HealImpact" parent="OneShotSpellFX">
+        <Model value="assets\Effects\Generic\Generic_Manawell_Impact\Generic_Manawell_Impact.m3"/>
+        <EditorCategories value="CommandersHero:Common"/>
+    </CModel>
+    <CSound id="HeroGeneric_FountainDrink_HealStart" parent="Spell">
+        <EditorCategories value="CommandersHero:Common"/>
+        <AssetArray File="assets\Sounds\Doodads\Doodad_Manawell_Heal01.ogg" FacialGroup=""/>
+        <AssetArray File="assets\Sounds\Doodads\Doodad_Manawell_Heal02.ogg" FacialGroup=""/>
+        <AssetArray File="assets\Sounds\Doodads\Doodad_Manawell_Heal03.ogg" FacialGroup=""/>
+        <Category value="Gather"/>
+        <DupeDestroyCount value="4"/>
+        <Volume value="-2.000000,-2.000000"/>
+        <VolumeRolloffFadeOut/>
+        <VolumeRolloffFadeOut Time="1047" Volume="-96.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="HeroGeneric_FountainDrink_HealEnd" parent="Spell">
+        <EditorCategories value="CommandersHero:Common"/>
+        <AssetArray File="assets\Sounds\Doodads\Doodad_Manawell_Heal_End01.ogg" FacialGroup=""/>
+        <DupeDestroyCount value="4"/>
+        <Pitch value="1.000000,1.000000"/>
+        <Volume value="-15.000000,-15.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="HeroGeneric_FountainDrink_Heal" parent="Spell">
+        <EditorCategories value="CommandersHero:Common"/>
+        <AssetArray File="Assets\Sounds\Doodads\Doodad_ManaWell_Heal_Loop01.ogg" FacialGroup=""/>
+        <DupeDestroyCount value="4"/>
+        <LoopCount value="-1"/>
+        <Volume value="-23.000000,-23.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CBehaviorBuff id="HeroGeneric_FountainDrink_HealingFountainRestoreMana">
+        <Alignment value="Positive"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <InfoIcon value="Assets\Icons\Common_General\Icon_General_ManaPotion.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Common"/>
+        <Duration value="20"/>
+        <Period value="1.125"/>
+        <PeriodicEffect value="HeroGeneric_FountainDrink_CreateHealer_Mana"/>
+        <PeriodicDisplayEffect value="HeroGeneric_FountainDrink_CreateHealer_Mana"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="HeroGeneric_FountainDrink_HealingFountainRestoreHealth">
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Icons\Common_General\Icon_General_HealthPotion.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Common"/>
+        <Duration value="20"/>
+        <Period value="0.5625"/>
+        <PeriodicEffect value="HeroGeneric_FountainDrink_CreateHealer_Health"/>
+        <PeriodicDisplayEffect value="HeroGeneric_FountainDrink_CreateHealer_Health"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="HeroGeneric_FountainDrink_HealingFountainCooldown">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoIcon value="Assets\Icons\Common_General\Icon_General_Gidbin_1.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Common"/>
+        <RemoveValidatorArray value="TalentBucket_LifeForce_CasterHasNotTalentOrCasterNotDeadAndHasTalent"/>
+        <Duration value="100"/>
+        <Modification>
+            <BehaviorLinkDisableArray value="HealingFountainAvailabilityController"/>
+        </Modification>
+    </CBehaviorBuff>
+</Catalog>

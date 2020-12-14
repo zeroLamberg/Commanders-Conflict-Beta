@@ -1,0 +1,2674 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CEffectApplyBehavior id="SelendisPowerStrike@ApplySpeed">
+        <WhichUnit Value="Source"/>
+        <Behavior value="SelendisPowerStrike@Speed"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyForce id="SelendisPowerStrike@CasterApplyForce">
+        <WhichLocation Effect="SelendisPowerStrike@PeriodicSet" Value="TargetPoint"/>
+        <Amount value="-10"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+    </CEffectApplyForce>
+    <CEffectDamage id="SelendisPowerStrike@Damage" parent="CommandersEnergyDamage">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <Amount value="124"/>
+    </CEffectDamage>
+    <CEffectCreatePersistent id="SelendisPowerStrike@InitialPersistent">
+        <Marker>
+            <MatchFlags index="Id" value="1"/>
+        </Marker>
+        <WhichLocation Value="OriginPoint"/>
+        <TimeScaleSource Value="Caster"/>
+        <Flags index="Channeled" value="1"/>
+        <InitialEffect value="SelendisPowerStrike@ApplySpeed"/>
+        <ExpireEffect value="SelendisPowerStrike@ExpireSearch"/>
+        <FinalEffect value="SelendisPowerStrike@RemoveSpeed"/>
+        <PeriodCount value="7"/>
+        <PeriodicValidator value="SelendisPowerStrike@CasterHasSpeedBuff"/>
+        <PeriodicEffectArray value="SelendisPowerStrike@PeriodicSet"/>
+        <PeriodicOffsetArray value="0,-8,0"/>
+        <PeriodicPeriodArray value="0.0625"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="SelendisPowerStrike@MovePersistent">
+        <WhichLocation Value="SourceUnit"/>
+        <TimeScaleSource Value="Caster"/>
+        <InitialEffect value="SelendisPowerStrike@CasterApplyForce"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+    </CEffectCreatePersistent>
+    <CEffectSet id="SelendisPowerStrike@PeriodicSet">
+        <EffectArray value="SelendisPowerStrike@TargetSearch"/>
+        <EffectArray value="SelendisPowerStrike@MovePersistent"/>
+        <TargetLocationType value="Point"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+    </CEffectSet>
+    <CEffectRemoveBehavior id="SelendisPowerStrike@RemoveSpeed">
+        <WhichUnit Value="Source"/>
+        <BehaviorLink value="SelendisPowerStrike@Speed"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+    </CEffectRemoveBehavior>
+    <CEffectSet id="SelendisPowerStrike@TargetImpactSet">
+        <ValidatorArray value="noMarkers"/>
+        <EffectArray value="SelendisPowerStrike@Damage"/>
+        <EffectArray value="SelendisPowerStrike@Slow"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+    </CEffectSet>
+    <CEffectEnumArea id="SelendisPowerStrike@TargetSearch">
+        <DebugTrace value="1"/>
+        <ImpactLocation Value="SourceUnit"/>
+        <SearchFilters value="-;Player,Ally,Neutral,Mechanical,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray RectangleWidth="4" RectangleHeight="1.5" Effect="SelendisPowerStrike@TargetImpactSet"/>
+        <AreaRelativeOffset value="0,-1"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+    </CEffectEnumArea>
+    <CEffectCreateHealer id="SelendisBucketPhaseWeaponHealer" parent="CommandersCreateHealer">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <RechargeVitalRate value="0">
+            <AccumulatorArray index="0" removed="1"/>
+            <AccumulatorArray index="1" removed="1"/>
+        </RechargeVitalRate>
+    </CEffectCreateHealer>
+    <CEffectApplyBehavior id="SelendisBucket_TemplarWillpower_ApplyForceOfWillArmorBehavior">
+        <ValidatorArray index="0" value="SelendisBucketSourceHasForceofWillCarryBehavior"/>
+        <ValidatorArray value="SelendisBucket_CasterHasTemplarWillpowerShields"/>
+        <ValidatorArray value="SelendisBucket_TemplarWillpower_SourceHasNoForceOfWillArmorBehavior"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <Behavior value="SelendisBucket_TemplarWillpower_ForceOfWillArmorBehavior"/>
+    </CEffectApplyBehavior>
+    <CEffectLaunchMissile id="Selendis_VindicatorsBeam_LaunchMissile">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <LaunchLocation Effect="Selendis_VindicatorsBeam_SecondPersistent" Value="TargetPoint"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <SearchEffect value="Selendis_VindicatorsBeam_MissileSet"/>
+        <Flags index="2D" value="1"/>
+        <SearchFlags index="DynamicSearchArea" value="1"/>
+        <AmmoUnit value="Selendis_VindicatosBeam_WeaponMissile"/>
+    </CEffectLaunchMissile>
+    <CEffectSet id="Selendis_VindicatorsBeam_MissileSet">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <EffectArray value="Selendis_VindicatorsBeam_Search"/>
+        <EffectArray value="Selendis_VindicatorsBeam_ThermalFire_Persistent"/>
+    </CEffectSet>
+    <CEffectRemoveBehavior id="SelendisPowerStrikeProtectedByKhala@RemoveMarkers">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="SelendisPowerStrikeProtectedByKhala@Marker"/>
+    </CEffectRemoveBehavior>
+    <CEffectSet id="SelendisPowerStrikeProtectedByKhala@RemoveSet">
+        <ValidatorArray value="SelendisPowerStrikeProtectedByKhala@HasProtectedByKhala"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <EffectArray value="SelendisPowerStrikeProtectedByKhala@ApplyProtection"/>
+        <EffectArray value="SelendisPowerStrikeProtectedByKhala@RemoveMarkers"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="SelendisBucket_ExecutorBlade_AdvancedBlade">
+        <ValidatorArray index="0" removed="1"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <Behavior value="SelendisBucket_ExecutorBlade_AdvancedCharge"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="SelendisPowerStrikeProtectedByKhala@ApplyMarkerBehavior">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="SelendisPowerStrikeProtectedByKhala@Marker"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="SelendisPowerStrikeProtectedByKhala@ApplyProtection">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <Behavior value="SelendisPowerStrikeProtectedByKhala"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="Selendis_ExecutorCharge_RemoveCasterBehavior">
+        <ValidatorArray index="0" removed="1"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="Selendis_ExecutorBlade_ExecutorCharge_CasterBehavior"/>
+    </CEffectRemoveBehavior>
+    <CEffectApplyBehavior id="Selendis_ExecutorChargeApproach_ApplySlow">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <Behavior value="Selendis_ExecutorChargeApproach_Slowed"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="Selendis_ExecutorChargeApproach_RemoveTargetBehavior">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <BehaviorLink value="Selendis_ExecutorBlade_ExecutorCharge_TargetBehavior"/>
+    </CEffectRemoveBehavior>
+    <CEffectDamage id="Selendis_ExecutorChargeApproach_Damage" parent="CommandersStormDamage">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <Amount value="108"/>
+    </CEffectDamage>
+    <CEffectSet id="Selendis_ExecutorBlade_ExecutorCharge_TargetImpactSet">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <EffectArray value="Selendis_ExecutorBlade_ExecutorCharge_ApplyCasterUnitTrackerBehavior"/>
+        <EffectArray value="Selendis_ExecutorBlade_ExecutorCharge_AddTrackedUnit"/>
+        <EffectArray value="Selendis_ExecutorBlade_ExecutorCharge_ApplyTargetBehavior"/>
+    </CEffectSet>
+    <CEffectAddTrackedUnit id="Selendis_ExecutorBlade_ExecutorCharge_AddTrackedUnit">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <BehaviorLink value="Selendis_ExecutorBlade_ExecutorCharge_UnitTracker"/>
+        <TrackedUnit Value="Target"/>
+    </CEffectAddTrackedUnit>
+    <CEffectApplyBehavior id="Selendis_ExecutorBlade_ExecutorCharge_ApplyCasterUnitTrackerBehavior">
+        <ValidatorArray index="0" removed="1"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="Selendis_ExecutorBlade_ExecutorCharge_UnitTracker"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="Selendis_ExecutorBlade_ExecutorCharge_RemoveCasterUnitTrackerBehavior">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <BehaviorLink value="Selendis_ExecutorBlade_ExecutorCharge_UnitTracker"/>
+    </CEffectRemoveBehavior>
+    <CEffectEnumTrackedUnits id="Selendis_ExecutorCharge_EnumTrackedUnits">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <BehaviorLink value="Selendis_ExecutorBlade_ExecutorCharge_UnitTracker"/>
+        <Effect value="Selendis_ExecutorCharge_CastingSet"/>
+    </CEffectEnumTrackedUnits>
+    <CEffectSet id="Selendis_ExecutorCharge_CastingSet">
+        <ValidatorArray value="CasterNotRooted"/>
+        <ValidatorArray value="Selendis_ExecutorCharge_TargetCombine"/>
+        <EffectArray value="Selendis_ExecutorCharge_IssueApproachOrder"/>
+        <EffectArray value="Selendis_ExecutorCharge_ApplyCharging"/>
+        <EffectArray value="Selendis_ExecutorCharge_RemoveCasterBehavior"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="Selendis_ExecutorBlade_ExecutorCharge_ApplyCasterBehavior">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <WhichUnit Effect="Selendis_ExecutorBlade" Value="Caster"/>
+        <Behavior value="Selendis_ExecutorBlade_ExecutorCharge_CasterBehavior"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="Selendis_ExecutorBlade_ExecutorCharge_ApplyTargetBehavior">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <Behavior value="Selendis_ExecutorBlade_ExecutorCharge_TargetBehavior"/>
+    </CEffectApplyBehavior>
+    <CEffectEnumArea id="Selendis_ExecutorBlade_ExecutorCharge_SearchHero">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <SearchFilters value="Heroic;Player,Ally,Neutral,Mechanical,Stasis,Dead,Hidden,Invulnerable"/>
+        <TargetSorts RequestCount="1" RequestPercentage="1">
+            <SortArray value="TSDistance"/>
+        </TargetSorts>
+        <AreaArray RectangleWidth="1" RectangleHeight="5" Effect="Selendis_ExecutorBlade_ExecutorCharge_TargetImpactSet"/>
+        <AreaRelativeOffset value="0,-2.5"/>
+        <MaxCount value="1"/>
+        <SearchFlags index="CenterAtLaunch" value="1"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="SelendisPowerStrikeFinalCut@ApplyFinalCutCasterBuff">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="SelendisPowerStrikeFinalCut@Buff"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="SelendisBucket_PowerStrike_ApplyPsionicDashCasterBuff">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="SelendisBucket_PowerStrike_PsionicDashBuff"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="Selendis_VindicatorCalldown_ApplySilenceMothershipField">
+        <ValidatorArray index="0" value="SelendisBucket_HasMothershipField"/>
+        <ValidatorArray value="TargetIsHero"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <Behavior value="SelendisBucket_VindicatorCalldown_MothershipField"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="SelendisBucket_OverloadShields">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <Behavior value="SelendisBucket_TemplarWillPower_OverloadShields"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="SelendisBucket_HealingBlades">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <Behavior value="SelendisBucket_PhaseWeapon"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="SelendisBucket_InTheHeatOfBattle_DebuffBehavior">
+        <EditorCategories value="CommandersHero:Selendis"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="SelendisBucket_InTheHeatOfBattle_MainBehavior">
+        <EditorCategories value="CommandersHero:Selendis"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="SelendisBucket_InTheHeatOfBattle_DummyTriggerSet">
+        <EditorCategories value="CommandersHero:Selendis"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="SelendisBucket_IntuitiveAttack_ApplyBehaviorStack">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="SelendisBucket_IntuitiveAttack_MainStacks"/>
+    </CEffectApplyBehavior>
+    <CEffectModifyUnit id="SelendisBucket_VindicatorsBeam_ImprovedBeamLauncher_ModifyCooldown">
+        <ValidatorArray value="SelendisBucket_HasImprovedBeamLauncher"/>
+        <ValidatorArray value="TargetIsHero"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <ImpactUnit Value="Caster"/>
+        <Cost Abil="Selendis_VindicatorsBeam,Execute" CooldownOperation="Add" CooldownTimeUse="-2"/>
+    </CEffectModifyUnit>
+    <CEffectApplyBehavior id="SelendisBucket_VindicatorsBeam_MothershipPower_QuestComplete">
+        <ValidatorArray index="0" value="SelendisBucket_VindicatorsBeam_MothershipPower_Has25Stacks"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <WhichUnit Value="Caster"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="Selendis_VindicatorsBeam_ThermalFire_MarkerBehavior">
+        <EditorCategories value="CommandersHero:Selendis"/>
+    </CEffectApplyBehavior>
+    <CEffectEnumArea id="SelendisBucket_TemplarWillpower_OverloadShields_Search">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <SearchFilters value="-;Player,Ally,Neutral,Mechanical,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="2" Effect="SelendisBucket_TemplarWillpower_OverloadShields_Damage"/>
+        <ImpactLocation Value="SourceUnit"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="Selendis_VindicatorsBeam_SlowBehavior">
+        <EditorCategories value="CommandersHero:Selendis"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="SelendisPowerStrike@Slow">
+        <EditorCategories value="CommandersHero:Selendis"/>
+    </CEffectApplyBehavior>
+    <CEffectDamage id="Selendis_VindicatorCalldown_Weapon_Damage" parent="CommandersEnergyDamage">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <Amount value="132"/>
+    </CEffectDamage>
+    <CEffectApplyBehavior id="Selendis_VindicatorCalldown_PeriodChecker">
+        <EditorCategories value="CommandersHero:Selendis"/>
+    </CEffectApplyBehavior>
+    <CEffectLaunchMissile id="Selendis_VindicatorCalldown_Weapon_LaunchMissile">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <ImpactEffect value="Selendis_VindicatorCalldown_Weapon_Damage"/>
+        <AmmoUnit value="Selendis_VindicatorCalldown_WeaponMissile"/>
+        <Movers Link="Selendis_VindicatorCalldown_WeaponCloseMissile" IfRangeLTE="4"/>
+        <Movers Link="Selendis_VindicatorCalldown_WeaponMissile" IfRangeLTE="20"/>
+    </CEffectLaunchMissile>
+    <CEffectSet id="Selendis_Weapon_InitialSet">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <EffectArray value="Selendis_Weapon_Damage"/>
+        <MinCount value="1"/>
+        <MaxCount value="1"/>
+    </CEffectSet>
+    <CEffectDamage id="Selendis_Weapon_Damage" parent="CommandersKineticDamage">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <Amount value="42"/>
+    </CEffectDamage>
+    <CEffectCreatePersistent id="Selendis_VindicatorsBeam_SecondPersistent">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <WhichLocation Effect="Selendis_VindicatorsBeam_InitialSet"/>
+        <OffsetVectorEndLocation Effect="Selendis_VindicatorsBeam_InitialSet"/>
+        <InitialEffect value="Selendis_VindicatorsBeam_LaunchMissile"/>
+        <InitialOffset value="0,-4.5,0"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="SelendisPowerStrike@ExpireSearch">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <DebugTrace value="1"/>
+        <LaunchLocation Value="CasterUnit"/>
+        <ImpactLocation Value="CasterUnit"/>
+        <SearchFilters value="-;Player,Ally,Neutral,Mechanical,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Arc="180" Radius="2" Effect="SelendisPowerStrike@ExpireImpactSet"/>
+    </CEffectEnumArea>
+    <CEffectCreatePersistent id="Selendis_VindicatorsBeam_InitialPersistent">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <WhichLocation Effect="Selendis_VindicatorsBeam_InitialSet"/>
+        <OffsetVectorEndLocation Effect="Selendis_VindicatorsBeam_InitialSet"/>
+        <InitialEffect value="Selendis_VindicatorsBeam_SecondPersistent"/>
+        <InitialOffset value="0,4.5,0"/>
+    </CEffectCreatePersistent>
+    <CEffectSet id="Selendis_VindicatorsBeam_InitialSet">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <EffectArray value="Selendis_VindicatorsBeam_InitialPersistent"/>
+        <TargetLocationType value="Point"/>
+        <Marker>
+            <MatchFlags index="Id" value="1"/>
+        </Marker>
+    </CEffectSet>
+    <CEffectEnumArea id="Selendis_VindicatorsBeam_Search">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <SearchFilters value="-;Player,Ally,Neutral,Mechanical,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray RectangleWidth="2" RectangleHeight="2" Effect="Selendis_VindicatorsBeam_ImpactSet"/>
+        <RevealerParams Duration="1" ShapeExpansion="0.5">
+            <RevealFlags index="Unfog" value="1"/>
+        </RevealerParams>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="Selendis_ExecutorBlade_Search">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <SearchFilters value="-;Player,Ally,Neutral,Mechanical,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray RectangleWidth="1" RectangleHeight="5" Effect="Selendis_ExecutorBlade_ImpactSet"/>
+        <AreaRelativeOffset value="0,-2.5"/>
+        <RevealerParams Duration="0.5">
+            <RevealFlags index="Unfog" value="1"/>
+        </RevealerParams>
+        <SearchFlags index="CenterAtLaunch" value="1"/>
+    </CEffectEnumArea>
+    <CEffectSet id="Selendis_ExecutorBlade_ImpactSet">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <EffectArray value="Selendis_ExecutorBlade_Damage"/>
+        <EffectArray value="Selendis_ExecutorBlade_ApplySlowBehavior"/>
+        <EffectArray value="Selendis_ExecutorBlade_ImpalingBlade_CooldownBehavior"/>
+    </CEffectSet>
+    <CEffectDamage id="Selendis_ExecutorBlade_Damage" parent="CommandersKineticDamage">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <Amount value="67"/>
+    </CEffectDamage>
+    <CEffectApplyBehavior id="Selendis_ExecutorBlade_ApplySlowBehavior">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <Behavior value="Selendis_ExecutorBlade_ExecutorSlow"/>
+    </CEffectApplyBehavior>
+    <CEffectDamage id="SelendisPowerStrike@ExpireDamage" parent="CommandersEnergyDamage">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <Amount value="124"/>
+    </CEffectDamage>
+    <CEffectCreateUnit id="Selendis_VindicatoCalldown_CreateUnit">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <WhichLocation Value="TargetPoint"/>
+        <CreateFlags index="Placement" value="0"/>
+        <SpawnEffect value="Selendis_VindicatorCalldown_Delay"/>
+        <SpawnUnit value="Selendis_Vindicator"/>
+    </CEffectCreateUnit>
+    <CEffectApplyBehavior id="Selendis_VindicatorCalldown_TimedBehavior">
+        <EditorCategories value="CommandersHero:Selendis"/>
+    </CEffectApplyBehavior>
+    <CEffectCreatePersistent id="Selendis_VindicatorCalldown_Delay">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <WhichLocation Value="TargetUnitOrPoint"/>
+        <InitialDelay value="0.25"/>
+        <InitialEffect value="Selendis_VindicatorCalldown_TimedBehavior"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="Selendis_VindicatorCalldown_WeaponBehavior"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="Selendis_VindicatorCalldown_Search">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <SearchFilters value="Heroic;Player,Ally,Neutral,Mechanical,Structure,Missile,Stasis,Dead,Hidden,Invulnerable,Unstoppable"/>
+        <AreaArray Radius="5.75" Effect="Selendis_VindicatorCalldown_SearchSet"/>
+    </CEffectEnumArea>
+    <CEffectSet id="Selendis_VindicatorCalldown_SearchSet">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <EffectArray value="Selendis_VindicatorCalldown_PeriodChecker"/>
+        <EffectArray value="Selendis_VindicatorCalldown_Blind"/>
+        <EffectArray value="Selendis_VindicatorCalldown_ApplySilenceMothershipField"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="Selendis_VindicatorCalldown_Blind">
+        <EditorCategories value="CommandersHero:Selendis"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="Selendis_VindicatorsBeam_ImpactSet">
+        <ValidatorArray value="noMarkers"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <EffectArray value="Selendis_VindicatorsBeam_Damage"/>
+        <EffectArray value="Selendis_VindicatorsBeam_SlowBehavior"/>
+        <EffectArray value="SelendisBucket_VindicatorsBeam_ImprovedBeamLauncher_ModifyCooldown"/>
+    </CEffectSet>
+    <CEffectEnumArea id="Selendis_VindicatorCalldown_Weapon_Search">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <ImpactLocation Value="SourceUnit"/>
+        <SearchFilters value="-;Player,Ally,Neutral,Psionic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="5.5" Effect="Selendis_VindicatorCalldown_Weapon_LaunchMissile"/>
+    </CEffectEnumArea>
+    <CEffectDamage id="Selendis_VindicatorsBeam_Damage" parent="CommandersEnergyDamage">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <Amount value="152"/>
+    </CEffectDamage>
+    <CEffectApplyBehavior id="Selendis_VindicatorCalldown_WeaponBehavior">
+        <EditorCategories value="CommandersHero:Selendis"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="SelendisBucket_ExecutorBlade_ExecutorPower_Stacks">
+        <ValidatorArray index="0" value="SelendisBucket_ExecutorBlade_ExecutorPowerStacksNotMax"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <WhichUnit Value="Caster"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="Selendis_ExecutorBlade">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <EffectArray value="Selendis_ExecutorBlade_ExecutorCharge_SearchHero"/>
+        <EffectArray value="Selendis_ExecutorBlade_Search"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectModifyUnit id="Selendis_ExecutorBlade_ImpalingBlade_ModifyCooldown">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <ImpactUnit Value="Caster"/>
+        <Cost Abil="Selendis_ExecutorBlade,Execute" CooldownOperation="Add" CooldownTimeUse="-0.125">
+            <Player Value="Caster"/>
+        </Cost>
+    </CEffectModifyUnit>
+    <CEffectApplyBehavior id="Selendis_ExecutorBlade_ImpalingBlade_CooldownBehavior">
+        <ValidatorArray index="0" value="SelendisBucket_HasImpalingBlade"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+    </CEffectApplyBehavior>
+    <CEffectCreatePersistent id="Selendis_VindicatorsBeam_ThermalFire_Persistent">
+        <ValidatorArray value="SelendisBucket_HasThermalFire"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <PeriodCount value="32"/>
+        <PeriodicEffectArray value="Selendis_VindicatorsBeam_ThermalLance_Search"/>
+        <PeriodicPeriodArray value="0.0625"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="Selendis_VindicatorsBeam_ThermalLance_Search">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <SearchFilters value="-;Player,Ally,Neutral,Mechanical,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray RectangleWidth="2" RectangleHeight="2" Effect="Selendis_VindicatorsBeam_ThermalFire_ImpactSet"/>
+        <RevealerParams Duration="1" ShapeExpansion="0.5">
+            <RevealFlags index="Unfog" value="1"/>
+        </RevealerParams>
+    </CEffectEnumArea>
+    <CEffectDamage id="Selendis_VindicatorsBeam_ThermalFire_Damage" parent="CommandersEnergyDamage">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <Amount value="17.5"/>
+    </CEffectDamage>
+    <CEffectSet id="Selendis_VindicatorsBeam_ThermalFire_ImpactSet">
+        <ValidatorArray value="Selendis_VindicatorsBeam_ThermalFire_HasNoMarker"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <EffectArray value="Selendis_VindicatorsBeam_ThermalFire_MarkerBehavior"/>
+        <EffectArray value="Selendis_VindicatorsBeam_ThermalFire_Damage"/>
+    </CEffectSet>
+    <CEffectSet id="SelendisPowerStrike@ExpireImpactSet">
+        <ValidatorArray value="noMarkers"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <EffectArray value="SelendisPowerStrike@ExpireDamage"/>
+        <EffectArray value="SelendisPowerStrike@Slow"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="SelendisPowerStrikeTemplarsZeal@ApplyTimedDamageBehavior">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <Behavior value="SelendisPowerStrikeTemplarsZeal@TimedDamageBehavior"/>
+    </CEffectApplyBehavior>
+    <CEffectDamage id="SelendisPowerStrikeTemplarsZeal@TimedDamage" parent="CommandersEnergyDamage">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <LaunchLocation Value="CasterUnit"/>
+        <Amount value="62"/>
+    </CEffectDamage>
+    <CEffectDamage id="SelendisBucket_TemplarWillpower_OverloadShields_Damage" parent="CommandersStormDamage">
+        <EditorCategories value="CommandersHero:Selendis"/>
+    </CEffectDamage>
+    <CEffectApplyBehavior id="SelendisBucket_BladesOfZealot_ApplyStackBehavior">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="SelendisBucket_BladesOfZealot_Stacks"/>
+        <ValidatorArray index="0" value="SelendisBucket_BladesOfZealot_QuestNotCompleted"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="SelendisBucket_IntuitiveAttack_ImpactSet">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <EffectArray value="SelendisBucket_IntuitiveAttack_RemoveStackBehavior"/>
+        <EffectArray value="SelendisBucket_IntuitiveAttack_Damage"/>
+    </CEffectSet>
+    <CEffectRemoveBehavior id="SelendisBucket_IntuitiveAttack_RemoveStackBehavior">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="SelendisBucket_IntuitiveAttack_MainStacks"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectDamage id="SelendisBucket_IntuitiveAttack_Damage" parent="CommandersEnergyDamage">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <Amount value="29"/>
+    </CEffectDamage>
+    <CEffectApplyBehavior id="SelendisBucket_VindicatorsBeam_MothershipPower_ApplyStack">
+        <ValidatorArray index="0" value="SelendisBucket_VindicatorsBeam_MothershipPower_HasNot25Stacks"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="SelendisBucket_VindicatorsBeam_MothershipPower_Stacks"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="SelendisBucket_InTheHeatOfBattle_ImpactSet">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <EffectArray value="SelendisBucket_InTheHeatOfBattle_DebuffBehavior"/>
+    </CEffectSet>
+    <CEffectSet id="SelendisBucket_InTheHeatOfBattle">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <EffectArray value="SelendisBucket_InTheHeatOfBattle_MainBehavior"/>
+    </CEffectSet>
+    <CEffectModifyPlayer id="SelendisBucket_VindicatorsBeam_MothershipPower_IncreaseSlow">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <WhichPlayer Value="Caster"/>
+        <EffectArray Operation="Multiply" Reference="Behavior,Selendis_VindicatorsBeam_SlowBehavior,Modification.AdditiveAttackSpeedFactor" Value="2"/>
+        <EffectArray Operation="Multiply" Reference="Behavior,Selendis_VindicatorsBeam_SlowBehavior,Modification.AdditiveMoveSpeedFactor" Value="2"/>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="SelendisBucket_VindicatorsBeam_MothershipPower_DecreaseSlow">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <EffectArray Operation="Divide" Reference="Behavior,Selendis_VindicatorsBeam_SlowBehavior,Modification.AdditiveAttackSpeedFactor" Value="2"/>
+        <EffectArray Operation="Divide" Reference="Behavior,Selendis_VindicatorsBeam_SlowBehavior,Modification.AdditiveMoveSpeedFactor" Value="2"/>
+    </CEffectModifyPlayer>
+    <CEffectIssueOrder id="Selendis_ExecutorCharge_IssueApproachOrder">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <WhichUnit Value="Caster"/>
+        <Abil value="Selendis_ExecutorChargeApproach"/>
+        <CmdFlags index="Preempt" value="1"/>
+        <Target Effect="Selendis_ExecutorCharge_CastingSet" Value="TargetUnit"/>
+    </CEffectIssueOrder>
+    <CEffectApplyBehavior id="Selendis_ExecutorCharge_ApplyCharging">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="Selendis_ExecutorCharge_Charging"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="Selendis_ExecutorCharge_RemoveChargingBehavior">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="Selendis_ExecutorCharge_Charging"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectCancelOrder id="Selendis_ExecutorCharge_ClearOrder">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <WhichUnit Value="Caster"/>
+        <AbilCmd value="Selendis_ExecutorCharge,Execute"/>
+        <Flags index="Queued" value="1"/>
+        <Flags index="Uninterruptible" value="1"/>
+    </CEffectCancelOrder>
+    <CEffectSet id="Selendis_ExecutorChargeApproach_ImpactSet">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <EffectArray value="Selendis_ExecutorChargeApproach_Damage"/>
+        <EffectArray value="Selendis_ExecutorChargeApproach_ApplySlow"/>
+        <EffectArray value="Selendis_ExecutorCharge_RemoveChargingBehavior"/>
+        <EffectArray value="Selendis_ExecutorChargeApproach_RemoveTargetBehavior"/>
+    </CEffectSet>
+    <CAbilEffectTarget id="SelendisPowerStrike">
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Selendis"/>
+        <TechAliasArray value="Ability3"/>
+        <AbilityCategories index="User4" value="1"/>
+        <AbilityCategories index="Physical" value="1"/>
+        <Effect index="0" value="SelendisPowerStrike@InitialPersistent"/>
+        <Flags index="BestUnit" value="0"/>
+        <Flags index="ClearLastAttackTarget" value="1"/>
+        <Flags index="ClearLastMoveTarget" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Vital index="Energy" value="50"/>
+            <Cooldown Location="Unit" TimeUse="10"/>
+        </Cost>
+        <Range value="500"/>
+        <FinishTime value="0.25"/>
+        <UninterruptibleArray index="Channel" value="1"/>
+        <UninterruptibleArray index="Finish" value="1"/>
+        <CursorEffect value="SelendisPowerStrike@TargetSearch"/>
+        <EffectRange index="0" value="8,1000"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="SelendisPowerStrike">
+            <Flags index="AllowSelfCast" value="0"/>
+        </CmdButtonArray>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="Selendis_ExecutorCharge">
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Selendis"/>
+        <AbilityCategories index="User2" value="1"/>
+        <AbilityCategories index="Physical" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Cooldown Location="Unit" TimeUse="1"/>
+        </Cost>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Selendis_ExecutorCharge" Requirements="Selendis_ExecutorBlade_ExecutorChargeButton"/>
+        <Effect index="0" value="Selendis_ExecutorCharge_EnumTrackedUnits"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="SelendisBucket_OverloadShields">
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Selendis"/>
+        <SharedFlags index="DisableWhileDead" value="0"/>
+        <SharedFlags index="RegisterChargeEvent" value="1"/>
+        <SharedFlags index="RegisterCooldownEvent" value="1"/>
+        <Cost>
+            <Charge Location="Unit"/>
+            <Cooldown Location="Unit" TimeUse="45"/>
+        </Cost>
+        <CmdButtonArray index="Execute" DefaultButtonFace="SelendisBucket_TemplarWillPower_OverloadShields"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="SelendisBucket_InTheHeatOfBattle">
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Selendis"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Charge>
+                <CountMax value="16"/>
+                <CountStart value="16"/>
+                <CountUse value="16"/>
+                <Location value="Unit"/>
+            </Charge>
+            <Cooldown Location="Unit"/>
+        </Cost>
+        <CmdButtonArray index="Execute" DefaultButtonFace="SelendisBucket_InTheHeatOfBattle"/>
+        <AINotifyEffect value="SelendisBucket_InTheHeatOfBattle_MainBehavior"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="SelendisBucket_PhaseWeapon">
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Selendis"/>
+        <Effect index="0" value="SelendisBucket_HealingBlades"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Charge Link="Abil/SelendisBucket_HealingBlades" Location="Unit"/>
+            <Cooldown Link="Abil/SelendisBucket_HealingBlades" Location="Unit" TimeUse="45"/>
+        </Cost>
+        <AINotifyEffect value="SelendisBucket_InTheHeatOfBattle_MainBehavior"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="SelendisBucket_PhaseWeapon"/>
+    </CAbilEffectInstant>
+    <CAbilEffectTarget id="Selendis_VindicatorCalldown">
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Selendis"/>
+        <Effect index="0" value="Selendis_VindicatoCalldown_CreateUnit"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Range value="10"/>
+        <CursorEffect value="Selendis_VindicatorCalldown_Search"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Selendis_VindicatorCalldown" Requirements="UltimateUnlocked"/>
+        <Cost>
+            <Vital index="Energy" value="100"/>
+            <Charge Location="Unit"/>
+            <Cooldown Location="Unit" TimeUse="120"/>
+        </Cost>
+        <TechAliasArray value="Heroic"/>
+        <Arc value="360"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="Selendis_VindicatorsBeam">
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Selendis"/>
+        <Effect index="0" value="Selendis_VindicatorsBeam_InitialSet"/>
+        <Flags index="ClearLastAttackTarget" value="1"/>
+        <Flags index="ClearLastMoveTarget" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Range value="10"/>
+        <PrepTime value="0.175"/>
+        <FinishTime value="0.55"/>
+        <UninterruptibleArray index="Prep" value="1"/>
+        <UninterruptibleArray index="Cast" value="1"/>
+        <UninterruptibleArray index="Channel" value="1"/>
+        <UninterruptibleArray index="Finish" value="1"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Selendis_VindicatorsBeam"/>
+        <CursorRangeMode value="Clamp"/>
+        <Cost>
+            <Vital index="Energy" value="70"/>
+            <Charge Location="Unit"/>
+            <Cooldown Location="Unit" TimeUse="12"/>
+        </Cost>
+        <TechAliasArray value="Ability2"/>
+        <CursorEffect value="Selendis_VindicatorsBeam_Search"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="Selendis_ExecutorBlade">
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Selendis"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Vital index="Energy" value="30"/>
+            <Cooldown Location="Unit" TimeUse="5"/>
+        </Cost>
+        <Range value="500"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Selendis_ExecutorBlade"/>
+        <PrepTime value="0.2"/>
+        <FinishTime value="0.3"/>
+        <UninterruptibleArray index="Prep" value="1"/>
+        <UninterruptibleArray index="Cast" value="1"/>
+        <UninterruptibleArray index="Channel" value="1"/>
+        <UninterruptibleArray index="Finish" value="1"/>
+        <CursorEffect value="Selendis_ExecutorBlade_Search"/>
+        <TechAliasArray value="Ability1"/>
+        <AbilityCategories index="User2" value="1"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="Selendis_ExecutorChargeApproach">
+        <OrderArray index="0" removed="1"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Selendis"/>
+        <AbilityCategories index="User2" value="1"/>
+        <Effect index="0" value="Selendis_ExecutorChargeApproach_ImpactSet"/>
+        <Flags index="ClearLastMoveTarget" value="1"/>
+        <Flags index="LineMovement" value="1"/>
+        <Range value="1"/>
+        <CastOutroTime value="0.25"/>
+        <FinishTime value="0.25"/>
+        <UninterruptibleArray index="Approach" value="1"/>
+        <UninterruptibleArray index="Channel" value="1"/>
+        <UninterruptibleArray index="Finish" value="1"/>
+        <SetLastTarget value="Attack"/>
+    </CAbilEffectTarget>
+    <CValidatorUnitCompareBehaviorCount id="SelendisPowerStrike@CasterHasSpeedBuff">
+        <WhichUnit Value="Caster"/>
+        <Compare value="GT"/>
+        <Behavior value="SelendisPowerStrike@Speed"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="SelendisBucket_TemplarWillpower_SourceHasNoForceOfWillArmorBehavior" parent="SourceNotParent">
+        <Behavior value="SelendisBucket_TemplarWillpower_ForceOfWillArmorBehavior"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="SelendisBucketSourceHasForceofWillCarryBehavior" parent="SourceIsParent">
+        <Behavior value="SelendisBucket_TemplarWillpower_ForceofWillCarryBehavior"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="SelendisBucket_CasterHasTemplarWillpowerShields" parent="CasterIsParent">
+        <Behavior value="Selendis_TemplarWillpower_ShieldBehavior"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="SelendisBucket_ExecutorBlade_ExecutorPowerStacksNotMax" parent="CasterNotParent">
+        <Compare value="LT"/>
+        <Value value="50"/>
+        <Behavior value="SelendisBucket_ExecutorBlade_ExecutorPower_Stacks"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorPlayerTalent id="SelendisPowerStrikeProtectedByKhala@HasProtectedByKhala">
+        <WhichPlayer Value="Caster"/>
+        <Find value="1"/>
+        <Value value="SelendisPowerStrikeProtectedByKhala"/>
+    </CValidatorPlayerTalent>
+    <CValidatorUnitCompareBehaviorCount id="Selendis_ExecutorBlade_ExecutorCharge_TargetHasCasterBehavior_UI" parent="SourceIsParent">
+        <WhichUnit Value="Target"/>
+        <Behavior value="Selendis_ExecutorBlade_ExecutorCharge_CasterBehavior"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorLocationCompareRange id="Selendis_ExecutorBlade_ExecutorCharge_TargetInCasterRange">
+        <WhichLocation Effect="Selendis_ExecutorBlade_ExecutorCharge_ApplyTargetBehavior" Value="TargetUnit"/>
+        <Compare value="LE"/>
+        <Range value="4"/>
+        <Pathing value="1"/>
+        <Value Effect="Selendis_ExecutorBlade"/>
+    </CValidatorLocationCompareRange>
+    <CValidatorUnitCompareBehaviorCount id="Selendis_ExecutorBlade_ExecutorCharge_TargetHasBehavior" parent="SourceIsParent">
+        <WhichUnit Effect="Selendis_ExecutorBlade_ExecutorCharge_ApplyTargetBehavior" Value="Target"/>
+        <Behavior value="Selendis_ExecutorBlade_ExecutorCharge_TargetBehavior"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="SelendisBucket_BladesOfZealot_QuestNotCompleted">
+        <WhichUnit Value="Caster"/>
+        <Compare value="LT"/>
+        <Value value="50"/>
+        <Behavior value="SelendisBucket_BladesOfZealot_Stacks"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="Selendis_VindicatorCalldown_TargetHasPeriodChecker" parent="TargetIsParent">
+        <Behavior value="Selendis_VindicatorCalldown_PeriodChecker"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitType id="IsSelendis">
+        <Value value="HeroSelendis"/>
+    </CValidatorUnitType>
+    <CValidatorPlayerTalent id="SelendisBucket_HasAdvancedBlade">
+        <WhichPlayer Value="Caster"/>
+        <Find value="1"/>
+        <Value value="Selendis_ExecutorBlade_AdvancedCharge"/>
+    </CValidatorPlayerTalent>
+    <CValidatorPlayerTalent id="SelendisBucket_HasIntuitiveAttack">
+        <WhichPlayer Value="Caster"/>
+        <Find value="1"/>
+        <Value value="Selendis_IntuitiveAttack"/>
+    </CValidatorPlayerTalent>
+    <CValidatorPlayerTalent id="SelendisBucket_HasShieldSurge">
+        <WhichPlayer Value="Caster"/>
+        <Find value="1"/>
+        <Value value="Selendis_TemplarWillpower_ShieldSurge"/>
+    </CValidatorPlayerTalent>
+    <CValidatorPlayerTalent id="SelendisBucket_HasInTheHeatOfBattle">
+        <WhichPlayer Value="Caster"/>
+        <Find value="1"/>
+        <Value value="Selendis_InTheHeatOfBattle"/>
+    </CValidatorPlayerTalent>
+    <CValidatorPlayerTalent id="SelendisBucket_HasInspiration">
+        <WhichPlayer Value="Caster"/>
+        <Find value="1"/>
+        <Value value="Selendis_TemplarWillpower_Inspiration"/>
+    </CValidatorPlayerTalent>
+    <CValidatorPlayerTalent id="SelendisBucket_HasMothershipField">
+        <WhichPlayer Value="Caster"/>
+        <Find value="1"/>
+        <Value value="Selendis_VindicatorCalldown_MothershipField"/>
+    </CValidatorPlayerTalent>
+    <CValidatorPlayerTalent id="SelendisBucket_HasReconfigurationShields">
+        <WhichPlayer Value="Caster"/>
+        <Find value="1"/>
+        <Value value="Selendis_TemplarWillpower_ReconfigurationShields"/>
+    </CValidatorPlayerTalent>
+    <CValidatorPlayerTalent id="SelendisBucket_HasPhaseBulwark">
+        <WhichPlayer Value="Caster"/>
+        <Find value="1"/>
+        <Value value="Selendis_TemplarWillpower_PhaseBulwark"/>
+    </CValidatorPlayerTalent>
+    <CValidatorPlayerTalent id="SelendisBucket_HasThermalFire">
+        <WhichPlayer Value="Caster"/>
+        <Find value="1"/>
+        <Value value="Selendis_VindicatorsBeam_ThermalFire"/>
+    </CValidatorPlayerTalent>
+    <CValidatorPlayerTalent id="SelendisBucket_HasPsionicDash">
+        <WhichPlayer Value="Caster"/>
+        <Find value="1"/>
+        <Value value="Selendis_PowerStrike_PsionicDash"/>
+    </CValidatorPlayerTalent>
+    <CValidatorPlayerTalent id="SelendisBucket_HasTemplarsZeal">
+        <WhichPlayer Value="Caster"/>
+        <Find value="1"/>
+        <Value value="SelendisPowerStrikeTemplarsZeal"/>
+    </CValidatorPlayerTalent>
+    <CValidatorPlayerTalent id="SelendisBucket_HasImpalingBlade">
+        <WhichPlayer Value="Caster"/>
+        <Find value="1"/>
+        <Value value="Selendis_ExecutorBlade_ImpalingBlade"/>
+    </CValidatorPlayerTalent>
+    <CValidatorPlayerTalent id="SelendisBucket_HasFinalCut">
+        <WhichPlayer Value="Caster"/>
+        <Find value="1"/>
+        <Value value="SelendisPowerStrikeFinalCut"/>
+    </CValidatorPlayerTalent>
+    <CValidatorPlayerTalent id="SelendisBucket_HasForceOfWill">
+        <WhichPlayer Value="Caster"/>
+        <Find value="1"/>
+        <Value value="Selendis_TemplarWillpower_ForceOfWill"/>
+    </CValidatorPlayerTalent>
+    <CValidatorPlayerTalent id="SelendisBucket_HasPlasmaShields">
+        <WhichPlayer Value="Caster"/>
+        <Find value="1"/>
+        <Value value="Selendis_TemplarWillpower_PlasmaShields"/>
+    </CValidatorPlayerTalent>
+    <CValidatorPlayerTalent id="SelendisBucket_HasOverloadShields">
+        <WhichPlayer Value="Caster"/>
+        <Find value="1"/>
+        <Value value="Selendis_TemplarWillpower_OverloadShields"/>
+    </CValidatorPlayerTalent>
+    <CValidatorPlayerTalent id="SelendisBucket_HasImprovedBeamLauncher">
+        <WhichPlayer Value="Caster"/>
+        <Find value="1"/>
+        <Value value="Selendis_VindicatorsBeam_ImprovedBeamLauncher"/>
+    </CValidatorPlayerTalent>
+    <CValidatorPlayerTalent id="SelendisBucket_HasMothershipPower">
+        <WhichPlayer Value="Caster"/>
+        <Find value="1"/>
+        <Value value="Selendis_VindicatorsBeam_MothershipPower_Stacks"/>
+    </CValidatorPlayerTalent>
+    <CValidatorUnitCompareBehaviorCount id="SelendisBucket_VindicatorsBeam_MothershipPower_HasNot25Stacks" parent="CasterNotParent">
+        <Behavior value="SelendisBucket_VindicatorsBeam_MothershipPower_QuestComplete"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="SelendisBucket_VindicatorsBeam_MothershipPower_Has25Stacks">
+        <WhichUnit Value="Caster"/>
+        <Value value="25"/>
+        <Behavior value="SelendisBucket_VindicatorsBeam_MothershipPower_Stacks"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="SelendisBucket_IntuitiveAttack_HasStacks" parent="CasterIsParent">
+        <Behavior value="SelendisBucket_IntuitiveAttack_MainStacks"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="Selendis_VindicatorCalldown_SourceHasTimedBehavior" parent="SourceIsParent">
+        <Behavior value="Selendis_VindicatorCalldown_TimedBehavior"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="Selendis_VindicatorCalldown_TargetHasPerodicBuff" parent="TargetIsParent">
+        <Behavior value="Selendis_VindicatorCalldown_PeriodChecker"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="Selendis_VindicatorsBeam_ThermalFire_HasNoMarker">
+        <Behavior value="Selendis_VindicatorsBeam_ThermalFire_MarkerBehavior"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorPlayerTalent id="SelendisBucket_HasExecutorPower">
+        <WhichPlayer Value="Caster"/>
+        <Find value="1"/>
+        <Value value="Selendis_ExecutorBlade_ExecutorPower_Stacks"/>
+    </CValidatorPlayerTalent>
+    <CValidatorCombine id="Selendis_ExecutorCharge_HasOrderCombine">
+        <CombineArray value="Selendis_ExecutorCharge_HasOrder"/>
+        <CombineArray value="Selendis_ExecutorCharge_HasApproachOrder"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="Selendis_ExecutorCharge_TargetCombine">
+        <Type value="And"/>
+        <CombineArray value="TargetIsEnemy"/>
+        <CombineArray value="TargetNotStasis"/>
+        <CombineArray value="TargetNotInvulnerable"/>
+    </CValidatorCombine>
+    <CValidatorUnitOrderQueue id="Selendis_ExecutorCharge_HasOrder">
+        <AbilLink value="Selendis_ExecutorCharge"/>
+    </CValidatorUnitOrderQueue>
+    <CValidatorUnitOrderQueue id="Selendis_ExecutorCharge_HasApproachOrder">
+        <AbilLink value="Selendis_ExecutorChargeApproach"/>
+    </CValidatorUnitOrderQueue>
+    <CValidatorLocationCompareRange id="Selendis_ExecutorCharge_TargetRangeValidator">
+        <WhichLocation Effect="Selendis_ExecutorCharge_CastingSet" Value="TargetUnit"/>
+        <Compare value="LT"/>
+        <Range value="12"/>
+        <Pathing value="1"/>
+    </CValidatorLocationCompareRange>
+    <CRequirement id="Selendis_ExecutorBlade_ExecutorChargeButton">
+        <EditorCategories value="CommandersHero:Selendis,TechType:Ability"/>
+        <NodeArray index="Use" Link="OrCountBehaviorSelendis_ExecutorBlade_ExecutorCharge_CasterBehaviorCompleteOnlyAtUnitCountBehaviorSelendis_ExecutorCharge_ChargingCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountBehaviorSelendis_ExecutorBlade_ExecutorCharge_CasterBehaviorCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CButton id="SelendisPowerStrikeProtectedByKhala">
+        <Icon value="Assets\Icons\Hero_Selendis\Icon_Hero_Selendis_PowerStrikes.DDS"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <HotkeyAlias value="SelendisPowerStrike"/>
+        <SimpleDisplayText value="Button/Tooltip/SelendisPowerStrikeProtectedByKhala/Simple"/>
+    </CButton>
+    <CButton id="Selendis_ExecutorCharge">
+        <Icon value="Assets\Textures\btn-ability-protoss-lightningdash.dds"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <Tooltip value="Button/Tooltip/Selendis_ExecutorBlade"/>
+        <HotkeyAlias value="Selendis_ExecutorBlade"/>
+    </CButton>
+    <CButton id="SelendisBucket_PhaseWeapon">
+        <TooltipCooldownOverrideText value="Button/Tooltip/SelendisBucket_HealingBlades/Time"/>
+        <Icon value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel2.dds"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <SimpleDisplayText value="Button/Tooltip/SelendisBucket_PhaseWeapon_Simple"/>
+    </CButton>
+    <CButton id="SelendisBucket_IntuitiveAttack" parent="StormButtonParent">
+        <Icon value="Assets\Icons\Common_General\Icon_General_AutoAttack_Base.dds"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <SimpleDisplayText value="Button/Tooltip/SelendisBucket_IntuitiveAttack_Simple"/>
+    </CButton>
+    <CButton id="SelendisBucket_ExecutorBlade_ImpalingBlade">
+        <Icon value="Assets\Textures\btn-ability-protoss-shadowblade.dds"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <SimpleDisplayText value="Button/Tooltip/SelendisBucket_ExecutorBlade_ImpalingBlade_Simple"/>
+    </CButton>
+    <CButton id="SelendisBucket_ExecutorBlade_AdvancedCharge">
+        <Icon value="Assets\Textures\btn-ability-protoss-lightningdash.dds"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <HotkeyAlias value="Selendis_ExecutorBlade"/>
+        <SimpleDisplayText value="Button/Tooltip/SelendisBucket_ExecutorBlade_AdvancedCharge_Simple"/>
+    </CButton>
+    <CButton id="SelendisBucket_InTheHeatOfBattle" parent="StormButtonParent">
+        <Icon value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel3.dds"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <SimpleDisplayText value="Button/Tooltip/SelendisBucket_InTheHeatOfBattle_Simple"/>
+        <TooltipCooldownOverrideText value="Button/Tooltip/SelendisBucket_InTheHeatOfBattle/Time"/>
+        <TooltipFlags index="ShowCooldown" value="1"/>
+    </CButton>
+    <CButton id="SelendisBucket_TemplarWillPower_PhaseBulwark">
+        <Icon value="Assets\Icons\Hero_Selendis\Icon_Hero_Selendis_TemplarWillpower_var1.dds"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <HotkeyAlias value="Selendis_TemplarWillpower"/>
+        <SimpleDisplayText value="Button/Tooltip/SelendisBucket_TemplarWillPower_PhaseBulwark_Simple"/>
+    </CButton>
+    <CButton id="SelendisBucket_VindicatorCalldown_MothershipField">
+        <Icon value="Assets\Textures\ui_commandertraiticon_artanis.dds"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <HotkeyAlias value="Selendis_VindicatorCalldown"/>
+        <SimpleDisplayText value="Button/Tooltip/SelendisBucket_VindicatorCalldown_MothershipField_Simple"/>
+    </CButton>
+    <CButton id="SelendisBucket_TemplarWillPower_OverloadShields" parent="StormButtonParent">
+        <Icon value="Assets\Icons\Hero_Selendis\Icon_Hero_Selendis_TemplarWillpower_var4.dds"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <SimpleDisplayText value="Button/Tooltip/SelendisBucket_TemplarWillPower_OverloadShields_Simple"/>
+        <TooltipCooldownOverrideText value="Button/Tooltip/SelendisBucket_TemplarWillPower_OverloadShields/Time"/>
+        <TooltipFlags index="ShowCooldown" value="1"/>
+    </CButton>
+    <CButton id="SelendisBucket_TemplarWillPower_Inspiration">
+        <TooltipFlags index="ShowLevel" value="0"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowCooldown" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipFlags index="ShowAutocast" value="0"/>
+        <Icon value="Assets\Icons\Hero_Selendis\Icon_Hero_Selendis_TemplarWillpower_var1.dds"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <HotkeyAlias value="Selendis_TemplarWillpower"/>
+        <SimpleDisplayText value="Button/Tooltip/SelendisBucket_TemplarWillPower_Inspiration_Simple"/>
+    </CButton>
+    <CButton id="SelendisBucket_TemplarWillPower_ReconfigurationShields">
+        <Icon value="Assets\Icons\Hero_Selendis\Icon_Hero_Selendis_TemplarWillpower_var1.dds"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <HotkeyAlias value="Selendis_TemplarWillpower"/>
+        <SimpleDisplayText value="Button/Tooltip/SelendisBucket_TemplarWillPower_ReconfigurationShields_Simple"/>
+    </CButton>
+    <CButton id="SelendisBucket_VindicatorsBeam_ThermalFire">
+        <Icon value="Assets\Icons\Hero_Selendis\Icon_Hero_Selendis_VindicatorsBeam_var3.dds"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <HotkeyAlias value="Selendis_VindicatorsBeam"/>
+        <SimpleDisplayText value="Button/Tooltip/SelendisBucket_VindicatorsBeam_ThermalFire_Simple"/>
+    </CButton>
+    <CButton id="SelendisBucket_TemplarWillpower_ForceOfWill">
+        <Icon value="Assets\Icons\Hero_Selendis\Icon_Hero_Selendis_TemplarWillpower_var2.dds"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <SimpleDisplayText value="Button/Tooltip/SelendisBucket_TemplarWillpower_ForceOfWill/Simple"/>
+        <HotkeyAlias value="Selendis_TemplarWillpower"/>
+    </CButton>
+    <CButton id="SelendisBucket_TemplarWillPower_PlasmaShields">
+        <Icon value="Assets\Icons\Hero_Selendis\Icon_Hero_Selendis_TemplarWillpower_var1.dds"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <HotkeyAlias value="Selendis_TemplarWillpower"/>
+        <SimpleDisplayText value="Button/Tooltip/SelendisBucket_TemplarWillPower_PlasmaShields_Simple"/>
+    </CButton>
+    <CButton id="SelendisPowerStrikeFinalCut">
+        <Icon value="Assets\Icons\Hero_Selendis\Icon_Hero_Selendis_PowerStrikes.DDS"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <HotkeyAlias value="SelendisPowerStrike"/>
+        <SimpleDisplayText value="Button/Tooltip/SelendisPowerStrikeFinalCut/Simple"/>
+    </CButton>
+    <CButton id="SelendisBucket_PowerStrike_PsionicDash">
+        <Icon value="Assets\Icons\Hero_Selendis\Icon_Hero_Selendis_PowerStrikes.DDS"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <HotkeyAlias value="SelendisPowerStrike"/>
+        <SimpleDisplayText value="Button/Tooltip/SelendisBucket_PowerStrike_PsionicDash_Simple"/>
+    </CButton>
+    <CButton id="SelendisPowerStrikeTemplarsZeal">
+        <Icon value="Assets\Icons\Hero_Selendis\Icon_Hero_Selendis_PowerStrikes.DDS"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <HotkeyAlias value="SelendisPowerStrike"/>
+        <SimpleDisplayText value="Button/Tooltip/SelendisBucketPowerStrikeTemplarsZeal/Simple"/>
+    </CButton>
+    <CButton id="SelendisBucket_VindicatorsBeam_ImprovedBeamLauncher">
+        <Icon value="Assets\Icons\Hero_Selendis\Icon_Hero_Selendis_VindicatorsBeam_var3.dds"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <HotkeyAlias value="Selendis_VindicatorsBeam"/>
+        <SimpleDisplayText value="Button/Tooltip/SelendisBucket_VindicatorsBeam_ImprovedBeamLauncher_Simple"/>
+    </CButton>
+    <CButton id="SelendisBucket_VindicatorsBeam_MothershipPower">
+        <Icon value="Assets\Icons\Hero_Selendis\Icon_Hero_Selendis_VindicatorsBeam_var3.dds"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <HotkeyAlias value="Selendis_VindicatorsBeam"/>
+        <SimpleDisplayText value="Button/Tooltip/SelendisBucket_VindicatorsBeam_MothershipPower_Simple"/>
+    </CButton>
+    <CButton id="Selendis_ExecutorBlade" parent="StormButtonParent">
+        <Icon value="Assets\Textures\btn-ability-protoss-shadowblade.dds"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <SimpleDisplayText value="Button/Tooltip/Selendis_ExecutorBlade_Simple"/>
+        <TooltipFlags index="ShowCooldown" value="1"/>
+        <TooltipCooldownOverrideText value="Button/Tooltip/Selendis_ExecutorBlade/Time"/>
+        <TooltipAppender Validator="SelendisBucket_HasAdvancedBlade" Face="SelendisBucket_ExecutorBlade_AdvancedCharge"/>
+        <TooltipAppender Validator="SelendisBucket_HasExecutorPower" Face="SelendisBucket_ExecutorBlade_ExecutorPower"/>
+        <TooltipAppender Validator="SelendisBucket_HasImpalingBlade" Face="SelendisBucket_ExecutorBlade_ImpalingBlade"/>
+    </CButton>
+    <CButton id="SelendisBucket_ExecutorBlade_ExecutorPower">
+        <Icon value="Assets\Textures\btn-ability-protoss-shadowblade.dds"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <SimpleDisplayText value="Button/Tooltip/SelendisBucket_ExecutorBlade_ExecutorPower_Simple"/>
+        <HotkeyAlias value="Selendis_ExecutorBlade"/>
+    </CButton>
+    <CButton id="SelendisPowerStrike" parent="StormButtonParent">
+        <TooltipAppender Validator="SelendisBucket_HasFinalCut" Face="SelendisPowerStrikeFinalCut"/>
+        <TooltipAppender Validator="SelendisBucket_HasTemplarsZeal" Face="SelendisPowerStrikeTemplarsZeal"/>
+        <TooltipAppender Validator="SelendisBucket_HasPsionicDash" Face="SelendisBucket_PowerStrike_PsionicDash"/>
+        <TooltipAppender Validator="SelendisPowerStrikeProtectedByKhala@HasProtectedByKhala" Face="SelendisPowerStrikeProtectedByKhala"/>
+        <TooltipFlags index="ShowCooldown" value="1"/>
+        <TooltipCooldownOverrideText value="Button/Tooltip/SelendisPowerStrike/Time"/>
+        <Icon value="Assets\Icons\Hero_Selendis\Icon_Hero_Selendis_PowerStrikes.DDS"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <SimpleDisplayText value="Button/Tooltip/SelendisPowerStrike/Simple"/>
+    </CButton>
+    <CButton id="Selendis_TemplarWillpower" parent="StormButtonParent">
+        <TooltipAppender Validator="SelendisBucket_HasInspiration" Face="SelendisBucket_TemplarWillPower_Inspiration"/>
+        <TooltipAppender Validator="SelendisBucket_HasPlasmaShields" Face="SelendisBucket_TemplarWillPower_PlasmaShields"/>
+        <TooltipAppender Validator="SelendisBucket_HasPhaseBulwark" Face="SelendisBucket_TemplarWillPower_PhaseBulwark"/>
+        <TooltipAppender Validator="SelendisBucket_HasReconfigurationShields" Face="SelendisBucket_TemplarWillPower_ReconfigurationShields"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="1"/>
+        <TooltipFlags index="ShowCooldown" value="1"/>
+        <TooltipCooldownOverrideText value="Button/Tooltip/Selendis_TemplarWillpower/Time"/>
+        <Icon value="Assets\Icons\Hero_Selendis\Icon_Hero_Selendis_TemplarWillpower_var1.dds"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <SimpleDisplayText value="Button/Tooltip/Selendis_TemplarWillpower_Simple"/>
+    </CButton>
+    <CButton id="Selendis_VindicatorCalldown" parent="StormButtonParent">
+        <Icon value="Assets\Textures\ui_commandertraiticon_artanis.dds"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <SimpleDisplayText value="Button/Tooltip/Selendis_VindicatorCalldown_Simple"/>
+        <TooltipFlags index="ShowCooldown" value="1"/>
+        <TooltipFlags index="ShowRequirements" value="1"/>
+        <TooltipCooldownOverrideText value="Button/Tooltip/Selendis_VindicatorCalldown/Time"/>
+    </CButton>
+    <CButton id="Selendis_VindicatorsBeam" parent="StormButtonParent">
+        <Icon value="Assets\Icons\Hero_Selendis\Icon_Hero_Selendis_VindicatorsBeam_var3.dds"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <SimpleDisplayText value="Button/Tooltip/Selendis_VindicatorsBeam_Simple"/>
+        <TooltipFlags index="ShowCooldown" value="1"/>
+        <TooltipCooldownOverrideText value="Button/Tooltip/Selendis_VindicatorsBeam/Time"/>
+        <TooltipAppender Validator="SelendisBucket_HasImprovedBeamLauncher" Face="SelendisBucket_VindicatorsBeam_ImprovedBeamLauncher"/>
+        <TooltipAppender Validator="SelendisBucket_HasMothershipPower" Face="SelendisBucket_VindicatorsBeam_MothershipPower"/>
+        <TooltipAppender Validator="SelendisBucket_HasThermalFire" Face="SelendisBucket_VindicatorsBeam_ThermalFire"/>
+    </CButton>
+    <CButton id="SelendisBucket_BladesOfAZealot" parent="StormButtonParent">
+        <Icon value="Assets\Icons\Common_General\Icon_General_AutoAttack_Damage.dds"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <SimpleDisplayText value="Button/Tooltip/SelendisBucket_BladesOfAZealot_Simple"/>
+    </CButton>
+    <CTalent default="1" id="Selendis"/>
+    <CTalent id="Selendis_BladesOfZealot_Stacks" parent="Selendis">
+        <Face value="SelendisBucket_BladesOfAZealot"/>
+        <RankArray>
+            <BehaviorArray value="SelendisBucket_BladesOfZealot_CarryBehavior"/>
+            <BehaviorArray value="SelendisBucket_BladesOfZealot_Stacks"/>
+        </RankArray>
+    </CTalent>
+    <CTalent id="Selendis_PhaseWeapon" parent="Selendis">
+        <Face value="SelendisBucket_PhaseWeapon"/>
+        <RankArray Item="SelendisBucket_HealingBlades"/>
+        <Active value="1"/>
+    </CTalent>
+    <CTalent id="Selendis_IntuitiveAttack" parent="Selendis">
+        <Face value="SelendisBucket_IntuitiveAttack"/>
+        <RankArray>
+            <BehaviorArray value="SelendisBucket_IntuitiveAttack_CarryBehavior"/>
+            <BehaviorArray value="SelendisBucket_IntuitiveAttackStacksGainingController"/>
+        </RankArray>
+    </CTalent>
+    <CTalent id="Selendis_ExecutorBlade_ExecutorPower_Stacks" parent="Selendis">
+        <Face value="SelendisBucket_ExecutorBlade_ExecutorPower"/>
+        <RankArray>
+            <BehaviorArray value="SelendisBucket_ExecutorBlade_ExecutorPower_CarryBehavior"/>
+            <BehaviorArray value="SelendisBucket_ExecutorBlade_ExecutorPower_Stacks"/>
+        </RankArray>
+    </CTalent>
+    <CTalent id="Selendis_ExecutorBlade_ImpalingBlade" parent="Selendis">
+        <Face value="SelendisBucket_ExecutorBlade_ImpalingBlade"/>
+        <RankArray>
+            <BehaviorArray value="SelendisBucket_ExecutorBlade_ImpalingBlade"/>
+        </RankArray>
+    </CTalent>
+    <CTalent id="Selendis_ExecutorBlade_AdvancedCharge" parent="Selendis">
+        <Face value="SelendisBucket_ExecutorBlade_AdvancedCharge"/>
+        <RankArray>
+            <BehaviorArray value="SelendisBucket_ExecutorBlade_AdvancedCharge_CarryBehavior"/>
+        </RankArray>
+    </CTalent>
+    <CTalent id="Selendis_InTheHeatOfBattle" parent="Selendis">
+        <Face value="SelendisBucket_InTheHeatOfBattle"/>
+        <RankArray Item="SelendisBucket_InTheHeatOfBattle">
+            <BehaviorArray value="SelendisBucket_InTheHeatOfBattle_CarryBehavior"/>
+            <BehaviorArray value="SelendisBucket_InTheHeatOfBattle_ExtraDamageController"/>
+        </RankArray>
+        <Active value="1"/>
+    </CTalent>
+    <CTalent id="SelendisPowerStrikeProtectedByKhala" parent="Selendis">
+        <Face value="SelendisPowerStrikeProtectedByKhala"/>
+        <RankArray>
+            <BehaviorArray value="SelendisPowerStrikeProtectedByKhala@CarryBehavior"/>
+        </RankArray>
+    </CTalent>
+    <CTalent id="Selendis_TemplarWillpower_PhaseBulwark" parent="Selendis">
+        <Face value="SelendisBucket_TemplarWillPower_PhaseBulwark"/>
+        <RankArray>
+            <BehaviorArray value="SelendisBucket_TemplarWillpower_PhasbeBulwark_CarryBehavior"/>
+        </RankArray>
+    </CTalent>
+    <CTalent id="Selendis_VindicatorCalldown_MothershipField" parent="Selendis">
+        <Face value="SelendisBucket_VindicatorCalldown_MothershipField"/>
+    </CTalent>
+    <CTalent id="Selendis_TemplarWillpower_OverloadShields" parent="Selendis">
+        <Face value="SelendisBucket_TemplarWillPower_OverloadShields"/>
+        <RankArray Item="SelendisBucket_OverloadShields"/>
+        <Active value="1"/>
+    </CTalent>
+    <CTalent id="Selendis_TemplarWillpower_Inspiration" parent="Selendis">
+        <Face value="SelendisBucket_TemplarWillPower_Inspiration"/>
+        <RankArray>
+            <BehaviorArray value="SelendisBucket_TemplarWillPower_Inspiration"/>
+        </RankArray>
+        <Trait value="1"/>
+    </CTalent>
+    <CTalent id="Selendis_TemplarWillpower_ReconfigurationShields" parent="Selendis">
+        <Face value="SelendisBucket_TemplarWillPower_ReconfigurationShields"/>
+        <Trait value="1"/>
+        <RankArray Upgrade="SelendisBucket_TemplarWillpower_ReconfigurationShields">
+            <BehaviorArray value="SelendisBucket_TemplarWillpower_ReconfigurationShields"/>
+        </RankArray>
+    </CTalent>
+    <CTalent id="Selendis_VindicatorsBeam_ThermalFire" parent="Selendis">
+        <Face value="SelendisBucket_VindicatorsBeam_ThermalFire"/>
+        <RankArray>
+            <BehaviorArray value="HeroicAbilityUnlocked"/>
+        </RankArray>
+    </CTalent>
+    <CTalent id="SelendisPowerStrikeFinalCut" parent="Selendis">
+        <Face value="SelendisPowerStrikeFinalCut"/>
+        <RankArray>
+            <BehaviorArray value="SelendisPowerStrikeFinalCut@CarryBehavior"/>
+        </RankArray>
+    </CTalent>
+    <CTalent id="Selendis_PowerStrike_PsionicDash" parent="Selendis">
+        <Face value="SelendisBucket_PowerStrike_PsionicDash"/>
+        <RankArray Item="SelendisBucket_ForceOfWill">
+            <BehaviorArray value="HeroicAbilityUnlocked"/>
+        </RankArray>
+    </CTalent>
+    <CTalent id="SelendisPowerStrikeTemplarsZeal" parent="Selendis">
+        <Face value="SelendisPowerStrikeTemplarsZeal"/>
+    </CTalent>
+    <CTalent id="Selendis_TemplarWillpower_ForceOfWill" parent="Selendis">
+        <Face value="SelendisBucket_TemplarWillpower_ForceOfWill"/>
+        <RankArray>
+            <BehaviorArray value="HeroicAbilityUnlocked"/>
+            <BehaviorArray value="SelendisBucket_TemplarWillpower_ForceofWillCarryBehavior"/>
+        </RankArray>
+        <Trait value="1"/>
+    </CTalent>
+    <CTalent id="Selendis_TemplarWillpower_PlasmaShields" parent="Selendis">
+        <Face value="SelendisBucket_TemplarWillPower_PlasmaShields"/>
+        <Trait value="1"/>
+        <RankArray>
+            <BehaviorArray value="SelendisBucket_TemplarWillpower_PlasmaShields"/>
+        </RankArray>
+    </CTalent>
+    <CTalent id="Selendis_VindicatorsBeam_ImprovedBeamLauncher" parent="Selendis">
+        <Face value="SelendisBucket_VindicatorsBeam_ImprovedBeamLauncher"/>
+    </CTalent>
+    <CTalent id="Selendis_VindicatorsBeam_MothershipPower_Stacks" parent="Selendis">
+        <Face value="SelendisBucket_VindicatorsBeam_MothershipPower"/>
+        <RankArray>
+            <BehaviorArray value="SelendisBucket_VindicatorsPower_MothershipBeam_CarryBehavior"/>
+            <BehaviorArray value="SelendisBucket_VindicatorsBeam_MothershipPower_Stacks"/>
+        </RankArray>
+    </CTalent>
+    <CRequirementCountBehavior id="CountBehaviorSelendis_ExecutorCharge_ChargingCompleteOnlyAtUnit">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="Selendis_ExecutorCharge_Charging" State="CompleteOnlyAtUnit"/>
+    </CRequirementCountBehavior>
+    <CRequirementOr id="OrCountBehaviorSelendis_ExecutorBlade_ExecutorCharge_CasterBehaviorCompleteOnlyAtUnitCountBehaviorSelendis_ExecutorCharge_ChargingCompleteOnlyAtUnit">
+        <OperandArray value="CountBehaviorSelendis_ExecutorBlade_ExecutorCharge_CasterBehaviorCompleteOnlyAtUnit"/>
+        <OperandArray value="CountBehaviorSelendis_ExecutorCharge_ChargingCompleteOnlyAtUnit"/>
+    </CRequirementOr>
+    <CRequirementCountBehavior id="CountBehaviorSelendis_ExecutorBlade_ExecutorCharge_CasterBehaviorCompleteOnlyAtUnit">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="Selendis_ExecutorBlade_ExecutorCharge_CasterBehavior" State="CompleteOnlyAtUnit"/>
+    </CRequirementCountBehavior>
+    <CActorAction id="Selendis_Weapon_Attack" parent="CommandersGenericAttackHeroMelee" effectAttack="Selendis_Weapon_InitialSet">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Selendis"/>
+        <LaunchAssets Sound="Selendis_Weapon_AttackLaunch"/>
+    </CActorAction>
+    <CActorQuad id="SelendisPowerStrike@CursorGuide" parent="CommandersGuideVisualQuadDownSciFi" abil="SelendisPowerStrike">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <Height value="9.000000"/>
+        <Width value="4.000000"/>
+    </CActorQuad>
+    <CActorRange id="Selendis_ExecutorBlade_ExecutorCharge_VisionRange">
+        <Filter index="Ally" value="1"/>
+        <Filter index="Neutral" value="1"/>
+        <Filter index="Enemy" value="1"/>
+        <Inherits index="TeamColor" value="1"/>
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Selendis"/>
+        <On Terms="Behavior.Selendis_ExecutorBlade_ExecutorCharge_CasterBehavior.On" Send="Create"/>
+        <On Terms="Behavior.Selendis_ExecutorBlade_ExecutorCharge_CasterBehavior.Off" Send="Destroy"/>
+        <Range value="4.000000"/>
+        <Icon value="assets\Textures\UI_Ingame_Radius_Tower.dds"/>
+        <IconArcLength value="5.000000"/>
+    </CActorRange>
+    <CActorSound id="Selendis_VindicatorsBeam_SoundPreLaunch" parent="SoundOneShot">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Selendis"/>
+        <On Terms="Abil.Selendis_VindicatorsBeam.SourcePrepStart" Send="Create"/>
+    </CActorSound>
+    <CActorModel id="Selendis_VindicatorsBeam_ModelImpact" parent="CommandersModelAnimationStyleOneShotUnit">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Selendis"/>
+        <On Terms="Effect.Selendis_VindicatorsBeam_ImpactSet.Start; At Effect" Send="Create"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <AutoScaleFactor value="1.000000"/>
+    </CActorModel>
+    <CActorSound id="Selendis_VindicatorsBeam_SoundLoop" parent="SoundOneShot">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Selendis"/>
+        <On Terms="UnitBirth.Selendis_VindicatosBeam_WeaponMissile" Send="Create"/>
+        <On Terms="UnitDeath.Selendis_VindicatosBeam_WeaponMissile" Send="Destroy"/>
+    </CActorSound>
+    <CActorMissile id="Selendis_VindicatorsBeam_WeaponAttackMissile" parent="GenericAttackMissile" unitName="Selendis_VindicatosBeam_WeaponMissile">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Selendis"/>
+        <Model value="Selendis_VindicatorsBeam_ModelBeam"/>
+    </CActorMissile>
+    <CActorRange id="Selendis_VindicatorCalldown_Range" parent="CommandersRangeAbilPlusSplat" abil="Selendis_VindicatorCalldown">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Selendis"/>
+    </CActorRange>
+    <CActorSplat id="Selendis_VindicatorCalldown_RangeSplat" parent="CommandersRangeSplat">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Selendis"/>
+        <Scale value="10.750000"/>
+    </CActorSplat>
+    <CActorSound id="Selendis_ExecutorCharge_SoundDash" parent="SoundOneShot">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Selendis"/>
+        <On Terms="Behavior.Selendis_ExecutorCharge_Charging.On" Send="Create"/>
+        <Filter index="All" value="1"/>
+        <VisibleTo index="Self" value="1"/>
+        <VisibleTo index="Ally" value="1"/>
+        <VisibleTo index="Neutral" value="0"/>
+        <VisibleTo index="Enemy" value="1"/>
+    </CActorSound>
+    <CActorSound id="Selendis_ExecutorCharge_SoundImpact" parent="SoundOneShot">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Selendis"/>
+        <On Terms="Effect.Selendis_ExecutorChargeApproach_Damage.Start" Send="Create"/>
+        <Filter index="All" value="1"/>
+        <VisibleTo index="Self" value="1"/>
+        <VisibleTo index="Ally" value="1"/>
+        <VisibleTo index="Neutral" value="0"/>
+        <VisibleTo index="Enemy" value="1"/>
+    </CActorSound>
+    <CActorModel id="Selendis_ExecutorCharge_ModelImpact" parent="CommandersModelAnimationStyleOneShotUnit">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Selendis"/>
+        <On Terms="Effect.Selendis_ExecutorChargeApproach_Damage.Start; At Target" Send="Create"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <AutoScaleFactor value="1.000000"/>
+    </CActorModel>
+    <CActorModelMaterial id="Selendis_TemplarWillpower_GlazeShield" parent="GlazeParent">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Selendis"/>
+        <On Terms="Behavior.Selendis_TemplarWillpower_ShieldBehavior.On" Send="Create"/>
+        <On Terms="ActorCreation" Send="ModelMaterialApplyTo ::Main"/>
+        <On Terms="Behavior.Selendis_TemplarWillpower_ShieldBehavior.Off" Send="AnimBracketStop BSD"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+    </CActorModelMaterial>
+    <CActorModel id="SelendisBucket_TemplarWillPower_OverloadShields_ModelCast" parent="CommandersModelAnimationStyleOneShot">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Selendis"/>
+        <On Terms="Effect.SelendisBucket_TemplarWillpower_OverloadShields_Search.Start" Send="Create"/>
+        <On Terms="ActorCreation" Send="SetLocalTintColor 191,255,255"/>
+        <HostSiteOps Ops="SOpMoveUpBy1Dot5"/>
+        <ModelFlags index="AllowHitTest" value="1"/>
+    </CActorModel>
+    <CActorUnit id="SelendisBucket_HealingBlades" parent="StormItemBase" unitName="SelendisBucket_HealingBlades">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Selendis"/>
+    </CActorUnit>
+    <CActorUnit id="SelendisBucket_InTheHeatOfBattle" parent="StormItemBase" unitName="SelendisBucket_InTheHeatOfBattle">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Selendis"/>
+    </CActorUnit>
+    <CActorUnit id="SelendisBucket_OverloadShields" parent="StormItemBase" unitName="SelendisBucket_OverloadShields">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Selendis"/>
+    </CActorUnit>
+    <CActorSound id="SelendisPowerStrike@SoundImpact" parent="SoundOneShot">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Selendis"/>
+        <On Terms="Effect.SelendisPowerStrike@Damage.Start; At Target" Send="Create"/>
+        <On Terms="Effect.SelendisPowerStrike@ExpireDamage.Start; At Target" Send="Create"/>
+        <On Terms="Effect.SelendisPowerStrikeTemplarsZeal@TimedDamage.Start; At Target" Send="Create"/>
+    </CActorSound>
+    <CActorUnit id="Selendis_Vindicator" parent="CommandersUnitBase" unitName="Selendis_Vindicator">
+        <Aliases value="_UnitHuge"/>
+        <Macros value="TerrainSquibAnimations"/>
+        <Macros value="PhysicsDeathsSwarmAir"/>
+        <Macros value="PhysicsDeathsVoidAir"/>
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Selendis"/>
+        <On Terms="ActorCreation" Send="SetOpacity"/>
+        <On Terms="ActorCreation" Send="TimerSet 0.100000 Birth"/>
+        <On Terms="TimerExpired; TimerName Birth" Send="SetOpacity 1.000000 5.000000"/>
+        <On Terms="UnitBirth" Send="AnimGroupApply Stand,Work Stand,Work,Start Stand,Work,End 0 3.000000"/>
+        <ModelFlags index="OutlineEmitter" value="1"/>
+        <EventDataFootprint index="0" Actor="UnitFootprint" Model="MothershipFootprint"/>
+        <Baselines index="Walk" AnimProps="Walk,01"/>
+        <DeathArray index="Normal" AnimProps="Birth" ModelLink="Selendis_VindicatorCalldown_TeleportOut"/>
+        <PhysicsMatchKeysOrdered value="BasicAir,Basic"/>
+        <TerrainSquibs>
+            <MovementDistance value="0.150000,0.150000"/>
+            <IdlePeriod value="0.250000,0.500000"/>
+            <RangeDown value="5.000000"/>
+            <RangeDownFade value="1.000000"/>
+            <AttachQuery Methods="AMFilterCenter"/>
+            <Visuals TerrainPhysicsMaterial="Water" ActorModel="TerrainSquibHarnessContinuous" ModelLink="WaterRippleMassive3"/>
+        </TerrainSquibs>
+        <VarianceWindowStandIntro value="0.330000"/>
+        <VarianceWindowWalkIntro value="0.330000"/>
+        <VarianceWindowWalkOutro value="0.330000"/>
+        <UnitFlags index="SuppressDefaultStatusBar" value="0"/>
+    </CActorUnit>
+    <CActorSound id="Selendis_TemplarWillpower_OverloadShields_SoundStart" parent="SoundOneShot">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Selendis"/>
+        <On Terms="Effect.SelendisBucket_OverloadShields.Start" Send="Create"/>
+        <Filter index="All" value="1"/>
+        <VisibleTo index="Self" value="1"/>
+        <VisibleTo index="Ally" value="1"/>
+        <VisibleTo index="Neutral" value="0"/>
+        <VisibleTo index="Enemy" value="1"/>
+    </CActorSound>
+    <CActorSound id="Selendis_VindicatorsBeam_SoundImpact" parent="SoundOneShot">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Selendis"/>
+        <On Terms="Effect.Selendis_VindicatorsBeam_Damage.Start" Send="Create"/>
+    </CActorSound>
+    <CActorSound id="Selendis_TemplarWillpower_OverloadShields_SoundImpact" parent="SoundOneShot">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Selendis"/>
+        <On Terms="Effect.SelendisBucket_TemplarWillpower_OverloadShields_Damage.Start" Send="Create"/>
+        <Filter index="All" value="1"/>
+        <VisibleTo index="Self" value="1"/>
+        <VisibleTo index="Ally" value="1"/>
+        <VisibleTo index="Neutral" value="0"/>
+        <VisibleTo index="Enemy" value="1"/>
+    </CActorSound>
+    <CActorModel id="Selendis_VindicatorsBeam_ModelFire" parent="ModelAnimationStyleContinuous">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Selendis"/>
+        <On Terms="Effect.Selendis_VindicatorsBeam_ThermalFire_Persistent.Start" Send="Create"/>
+        <On Terms="Effect.Selendis_VindicatorsBeam_ThermalFire_Persistent.Stop" Send="AnimBracketStop BSD"/>
+        <HostSiteOps Ops="SOpForwardOriginPoint SOp90"/>
+    </CActorModel>
+    <CActorModel id="Selendis_TemplarWillpower_OverloadShields" parent="ModelAnimationStyleContinuous">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Selendis"/>
+        <On Terms="Behavior.SelendisBucket_TemplarWillPower_OverloadShields.On" Send="Create"/>
+        <On Terms="Behavior.SelendisBucket_TemplarWillPower_OverloadShields.Off" Send="AnimBracketStop BSD"/>
+        <HostSiteOps Ops="SOpAttachCenter SOpMoveUpBy1Dot5" HoldRotation="1"/>
+    </CActorModel>
+    <CActorSound id="Selendis_VindicatorCalldown_SoundWarpLoop" parent="SoundContinuous">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Selendis"/>
+        <On Terms="Behavior.Selendis_VindicatorCalldown_TimedBehavior.On" Send="Create"/>
+        <On Terms="Behavior.Selendis_VindicatorCalldown_TimedBehavior.Off" Send="Destroy"/>
+    </CActorSound>
+    <CActorModel id="Selendis_ExecutorBlade_ModelImpact" parent="CommandersModelAnimationStyleOneShotUnit">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Selendis"/>
+        <On Terms="Effect.Selendis_ExecutorBlade_ImpactSet.Start; At Target" Send="Create"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <AutoScaleFactor value="1.000000"/>
+    </CActorModel>
+    <CActorSound id="Selendis_VindicatorCalldown_SoundWarpIn" parent="SoundOneShot">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Selendis"/>
+        <On Terms="Behavior.Selendis_VindicatorCalldown_TimedBehavior.On" Send="Create"/>
+        <Filter index="All" value="1"/>
+        <VisibleTo index="Self" value="1"/>
+        <VisibleTo index="Ally" value="1"/>
+        <VisibleTo index="Neutral" value="0"/>
+        <VisibleTo index="Enemy" value="1"/>
+    </CActorSound>
+    <CActorModel id="SelendisPowerStrike@ModelImpact" parent="CommandersModelAnimationStyleOneShotUnit">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Selendis"/>
+        <On Terms="Effect.SelendisPowerStrike@Damage.Start; At Target" Send="Create"/>
+        <On Terms="Effect.SelendisPowerStrike@ExpireDamage.Start; At Target" Send="Create"/>
+        <On Terms="Effect.SelendisPowerStrikeTemplarsZeal@TimedDamage.Start; At Target" Send="Create"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+    </CActorModel>
+    <CActorSound id="Selendis_VindicatorCalldown_SoundWarpOut" parent="SoundOneShot">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Selendis"/>
+        <On Terms="Behavior.Selendis_VindicatorCalldown_TimedBehavior.Off" Send="Create"/>
+        <Filter index="All" value="1"/>
+        <VisibleTo index="Self" value="1"/>
+        <VisibleTo index="Ally" value="1"/>
+        <VisibleTo index="Neutral" value="0"/>
+        <VisibleTo index="Enemy" value="1"/>
+    </CActorSound>
+    <CActorAction id="Selendis_VindicatorCalldown_WeaponAttack" parent="GenericAttack" effectImpact="Selendis_VindicatorCalldown_Weapon_Damage" effectLaunch="Selendis_VindicatorCalldown_Weapon_LaunchMissile">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Selendis"/>
+        <LaunchSiteOps Ops="SOpForwardTargetPoint SOp2DRotation"/>
+        <LaunchAttachQuery Methods="TurretZ"/>
+        <ImpactPhysics Name="PurifyImpact" MatchKeys="Basic" Physics="MothershipCoreAttackForce"/>
+    </CActorAction>
+    <CActorMissile id="Selendis_VindicatorCalldown_WeaponAttackMissile" parent="GenericAttackMissile" unitName="Selendis_VindicatorCalldown_WeaponMissile">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Selendis"/>
+        <On Terms="UnitBirth" Send="AnimSetTimeScaleAbsolute Lifetime 1.000000"/>
+    </CActorMissile>
+    <CActorUnit id="HeroSelendis" parent="CommandersHeroBasePredictive" unitName="HeroSelendis">
+        <Macros index="18" value=""/>
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Selendis"/>
+        <On index="38" Terms="Signal.*.InvisibleModel" Target="HeroRingUnitRadiusDot75" Send="SetVisibility"/>
+        <On index="39" Terms="Signal.*.RestoreModel" Target="HeroRingUnitRadiusDot75" Send="SetVisibility 1"/>
+        <On index="40" Terms="Signal.*.InvisibleRing" Target="HeroRingUnitRadiusDot75" Send="SetVisibility"/>
+        <On index="41" Terms="Signal.*.RestoreRing" Target="HeroRingUnitRadiusDot75" Send="SetVisibility 1"/>
+        <On index="42" Terms="ActorCreation" Send="Create HeroRingUnitRadiusDot75"/>
+        <On index="43" Terms="ActorDestruction" Target="HeroRingUnitRadiusDot75" Send="Destroy"/>
+        <!-- Visual Model Stuff -->
+        <On Terms="UnitBirth.HeroSelendis" Send="AttachModel {} SelendisHitTestSphere {Origin 0} SOpMoveUpBy1Dot5"/>
+        <On Terms="UnitRevive.HeroSelendis" Send="AttachModel {} SelendisHitTestSphere {Origin 0} SOpMoveUpBy1Dot5"/>
+        <On Terms="UnitDeath" Target="Selendis_Weapon_LeftHand" Send="SetScale 0.900000"/>
+        <On Terms="UnitDeath" Target="Selendis_Weapon_LeftHand" Send="SetOpacity"/>
+        <On Terms="UnitDeath" Target="Selendis_Weapon_RightHand" Send="SetOpacity"/>
+        <On Terms="UnitRevive" Target="Selendis_Weapon_LeftHand" Send="SetOpacity 1.000000"/>
+        <On Terms="UnitRevive" Target="Selendis_Weapon_RightHand" Send="SetOpacity 1.000000"/>
+        <On Terms="ActorCreation" Send="Attach Selendis_Weapon_LeftHand AMFilterAiur"/>
+        <On Terms="ActorCreation" Send="Attach Selendis_Weapon_RightHand AMFilterMoria"/>
+        <!-- Gameplay Stuff -->
+        <On Terms="WeaponStart.*.AttackStart" Send="AnimClear Attack"/>
+        <On Terms="WeaponStart.*.AttackStart" Send="TimerKill SelendisAttackClear"/>
+        <!--<On Terms="WeaponStart.*.AttackStart; !ValidateUnit SelendisHasTwinBladesPrimed" Send="AnimPlay Attack Attack"/>-->
+        <On Terms="WeaponStart.*.AttackStart" Send="AnimPlay Attack Attack"/>
+        <On Terms="UnitMovementUpdate.*.Walk" Send="TimerSet 0.250000 SelendisAttackClear"/>
+        <On Terms="TimerExpired; TimerName SelendisAttackClear" Send="AnimClear Attack 0.375000"/>
+        <On Terms="Behavior.Selendis_PowerStrike_MovementBehavior.On" Send="AnimBracketStart Spell Spell,A,Start Spell,A,Start Spell,A,End"/>
+        <On Terms="Behavior.Selendis_PowerStrike_MovementBehavior.Off" Send="AnimBracketStop Spell"/>
+        <On Terms="Behavior.Selendis_PowerStrike_MovementBehavior.On" Send="SetWalkAnimMoveSpeed 7.5"/>
+        <On Terms="Behavior.Selendis_PowerStrike_MovementBehavior.Off" Send="SetWalkAnimMoveSpeed 3.75"/>
+        <On Terms="Abil.Selendis_VindicatorsBeam.SourcePrepStart" Send="AnimClear Spell"/>
+        <On Terms="Abil.Selendis_VindicatorsBeam.SourcePrepStart" Send="$Spell,Forward 0 -1.000000 -1.000000 1.000000 AsTimeScale"/>
+        <On Terms="Abil.Selendis_ExecutorBlade.SourcePrepStart" Send="AnimClear Spell"/>
+        <On Terms="Abil.Selendis_ExecutorBlade.SourcePrepStart" Send="$Spell,H 0 -1.000000 -1.000000 1.250000 AsTimeScale"/>
+        <On Terms="Abil.Selendis_ExecutorBlade.SourcePrepStart" Target="Selendis_Weapon_LeftHand" Send="SetScale 0.900000,0.900000,4.000000 0.250000"/>
+        <On Terms="Abil.Selendis_ExecutorBlade.SourcePrepStart" Send="TimerSet 0.400000 LeftHandTimer"/>
+        <On Terms="TimerExpired; TimerName LeftHandTimer" Target="Selendis_Weapon_LeftHand" Send="SetScale 0.900000 0.300000"/>
+        <On Terms="Behavior.Selendis_ExecutorCharge_Charging.On" Send="$Spell,G PlayForever"/>
+        <On Terms="Abil.Selendis_ExecutorChargeApproach.SourceCastStart" Send="$Spell,B"/>
+        <On Terms="Abil.Selendis_VindicatorsBeam.SourceCastStart" Target="Selendis_Weapon_LeftHand" Send="SetOpacity 0.000000 0.100000"/>
+        <On Terms="Abil.Selendis_VindicatorsBeam.SourceFinishStart; ValidateUnit TargetNotDead" Target="Selendis_Weapon_LeftHand" Send="SetOpacity 1.000000 0.500000"/>
+        <On Terms="Behavior.SelendisPowerStrike@Speed.On" Send="AnimBracketStart Cover Spell,A,Start Spell,A,Start Spell,A,End"/>
+        <On Terms="Behavior.SelendisPowerStrike@Speed.Off" Send="AnimBracketStop Cover"/>
+        <On Terms="Behavior.SelendisPowerStrike@Speed.On" Send="AnimPlay Spell Walk PlayForever"/>
+        <On Terms="Behavior.SelendisPowerStrike@Speed.Off" Send="AnimClear Spell"/>
+        <Baselines index="Walk" AnimProps="Walk,A,Ready"/>
+        <PortraitActor value="HeroSelendisPortrait"/>
+        <PortraitModel value="HeroSelendisPortrait"/>
+        <HeroIcon value="assets\Textures\storm_ui_ingame_heroselect_btn_selendis.dds"/>
+        <MinimapIcon value="Assets\Textures\UI_MiniMapIcon_Hero_Selendis.dds"/>
+        <UnitIcon value="assets\Textures\storm_ui_ingame_heroselect_btn_selendis.dds"/>
+    </CActorUnit>
+    <CActorModel id="SelendisPowerStrike@ModelTrail" parent="CommandersModelAddition">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Selendis"/>
+        <On Terms="Behavior.SelendisPowerStrike@Speed.On" Send="Create"/>
+        <On Terms="Behavior.SelendisPowerStrike@Speed.Off" Send="AnimBracketStop BSD"/>
+    </CActorModel>
+    <CActorSound id="Selendis_ExecutorBlade_SoundImpact" parent="SoundOneShot">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Selendis"/>
+        <On Terms="Effect.Selendis_ExecutorBlade_ImpactSet.Start" Send="Create"/>
+        <Filter index="All" value="1"/>
+        <VisibleTo index="Self" value="1"/>
+        <VisibleTo index="Ally" value="1"/>
+        <VisibleTo index="Neutral" value="0"/>
+        <VisibleTo index="Enemy" value="1"/>
+    </CActorSound>
+    <CActorSound id="SelendisPowerStrike@SoundDash" parent="SoundOneShot">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Selendis"/>
+        <On Terms="Behavior.SelendisPowerStrike@Speed.On" Send="Create"/>
+        <On Terms="Behavior.SelendisPowerStrike@Speed.Off" Send="Destroy"/>
+    </CActorSound>
+    <CActorModel id="Selendis_VindicatorCalldown_ModelArea" parent="CommandersModelAnimationStyleOneShot">
+        <Inherits index="TeamColor" value="1"/>
+        <AcceptedHostedPropTransfers index="TeamColor" value="1"/>
+        <AcceptedHostedPropTransfers index="Visibility" value="1"/>
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Selendis"/>
+        <On index="1" Terms="ActorOrphan"/>
+        <On index="2" Terms="Behavior.Selendis_VindicatorCalldown_TimedBehavior.On" Send="Create"/>
+        <On Terms="Behavior.Selendis_VindicatorCalldown_TimedBehavior.Off" Send="Destroy"/>
+        <HostSiteOps Ops="SOpShadow SOpMoveUpByDot5"/>
+        <Model value="Selendis_VindicatorsCalldown_ModelArea"/>
+    </CActorModel>
+    <CActorModel id="Selendis_VindicatorsCalldown_ModelTeleportIn" parent="ModelAddition">
+        <Inherits index="Opacity" value="0"/>
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Selendis"/>
+        <On Terms="UnitCreation.Selendis_Vindicator" Send="Create"/>
+        <Model value="Selendis_VindicatorCalldown_ModelTeleportIn"/>
+    </CActorModel>
+    <CActorSound id="Selendis_VindicatorsBeam_SoundLaunch" parent="SoundOneShot">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Selendis"/>
+        <On Terms="UnitBirth.Selendis_VindicatosBeam_WeaponMissile" Send="Create"/>
+    </CActorSound>
+    <CActorModel id="Selendis_VindicatorsBeam_ModelImpactGround">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Selendis"/>
+        <On Terms="ActorCreation" Send="AnimBracketStart BSD Stand,Work,Start Stand,Work Stand,Work,End ContentPlayOnce"/>
+        <On Terms="AnimBracketState.*.AfterClosing; AnimName BSD" Send="Destroy"/>
+        <On Terms="Effect.Selendis_VindicatorsBeam_Search.Start" Send="Create"/>
+        <HostSiteOps Ops="SOpForwardOriginPoint"/>
+    </CActorModel>
+    <CActorModel id="Selendis_VindicatorsBeam_ModelBeam" parent="ModelAnimationStyleContinuous">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Selendis"/>
+        <On Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death"/>
+        <On Terms="ActorCreation" Send="Create Selendis_VindicatorsBeam_SoundLaunch"/>
+        <On Terms="Effect.Selendis_VindicatorsBeam_SecondPersistent.Stop" Send="AnimBracketStop BSD"/>
+        <On Terms="Effect.Selendis_VindicatorsBeam_Search.Start" Target="Selendis_VindicatorsBeam_ImpactSite" Send="MoverMove"/>
+        <On Terms="AnimBracketState.*.AfterClosing; AnimName BSD" Send="Destroy"/>
+        <On Terms="Effect.Selendis_VindicatorsBeam_PointLaunch.Start" Send="Create"/>
+        <Host Subject="Selendis_VindicatorsBeam_ImpactSite"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+    </CActorModel>
+    <CActorSplat id="Selendis_VindicatorsBeam_RangeSplat" parent="CommandersRangeSplat">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Selendis"/>
+        <Scale value="10.750000"/>
+    </CActorSplat>
+    <CActorRange id="Selendis_VindicatorsBeam_Range" parent="CommandersRangeAbilPlusSplat" abil="Selendis_VindicatorsBeam">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Selendis"/>
+    </CActorRange>
+    <CActorPortrait id="HeroSelendisPortrait" parent="CompositePortrait">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Selendis"/>
+    </CActorPortrait>
+    <CActorModel id="HeroSelendisPortraitAddition" parent="CompositePortraitAddition">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Selendis"/>
+    </CActorModel>
+    <CActorSound id="Selendis_ExecutorBlade_SoundLaunch" parent="SoundOneShot">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Selendis"/>
+        <On Terms="Abil.Selendis_ExecutorBlade.SourcePrepStart" Send="Create"/>
+        <On Terms="ActorCreation" Send="TimerSet 0.300000 Timer"/>
+        <On Terms="TimerExpired; TimerName Timer" Send="Destroy"/>
+        <Filter index="All" value="1"/>
+        <VisibleTo index="Self" value="1"/>
+        <VisibleTo index="Ally" value="1"/>
+        <VisibleTo index="Neutral" value="0"/>
+        <VisibleTo index="Enemy" value="1"/>
+    </CActorSound>
+    <CActorSplat id="Selendis_VindicatorCalldown_CursorGuide" parent="CommandersGuideVisualCircleModern" abil="Selendis_VindicatorCalldown">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Selendis"/>
+    </CActorSplat>
+    <CActorModel id="Selendis_Weapon_RightHand" parent="ModelAddition">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <On Terms="UnitCreation.HeroSelendis" Send="Create"/>
+        <On Terms="ActorDestruction.HeroSelendis" Send="Destroy Immediate"/>
+        <Model value="Selendis_WeaponBlade"/>
+        <Scale value="0.900000"/>
+        <ModelFlags index="OutlineEmitter" value="1"/>
+    </CActorModel>
+    <CActorModel id="Selendis_Weapon_LeftHand" parent="ModelAddition">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <On Terms="UnitCreation.HeroSelendis" Send="Create"/>
+        <On Terms="ActorDestruction.HeroSelendis" Send="Destroy Immediate"/>
+        <Model value="Selendis_WeaponBlade"/>
+        <Scale value="0.900000"/>
+        <ModelFlags index="OutlineEmitter" value="1"/>
+    </CActorModel>
+    <CActorQuad id="Selendis_ExecutorBlade_CursorGuide" parent="CommandersGuideVisualQuadDownSciFi" abil="Selendis_ExecutorBlade">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <Height value="5.000000"/>
+        <Width value="1.000000"/>
+    </CActorQuad>
+    <CActorQuad id="Selendis_VindicatorsBeam_Guide" parent="CommandersGuideVisualQuadDownSciFiDetached" abil="Selendis_VindicatorsBeam">
+        <EditorCategories value="DoodadType:NotDoodad,CommandersHero:Selendis"/>
+        <Height value="11.000000"/>
+        <Width value="3.000000"/>
+    </CActorQuad>
+    <CModel id="Selendis_VindicatorsBeam_ModelImpact" parent="OneShotSpellFX">
+        <Model value="assets\Effects\Heroes\Base_Tassadar\Effect_Tassadar_Base_Archon_AOE_Impact\Effect_Tassadar_Base_Archon_AOE_Impact.m3"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+    </CModel>
+    <CModel id="Selendis_ExecutorCharge_ModelImpact" parent="OneShotSpellFX">
+        <Model value="assets\Effects\Heroes\Base_Cassia\Effect_Cassia_Base_Weapon_TA_Impact\Effect_Cassia_Base_Weapon_TA_Impact.m3"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+    </CModel>
+    <CModel id="Selendis_TemplarWillpower_GlazeShield" parent="Glaze">
+        <Model value="Assets\Effects\Glaze\Glaze_PhaseArmor\Glaze_PhaseArmor.m3"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <Priority value="32"/>
+    </CModel>
+    <CModel id="SelendisBucket_TemplarWillPower_OverloadShields_ModelCast" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Protoss\Zealot_Nerazim_PhaseChargeStun_Impact\Zealot_Nerazim_PhaseChargeStun_Impact.m3"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <ScaleMax value="1.500000,1.500000,1.500000"/>
+        <ScaleMin value="1.500000,1.500000,1.500000"/>
+    </CModel>
+    <CModel id="Selendis_VindicatorCalldown_WeaponAttackImpact" parent="ImpactFX">
+        <Model value="Assets\Effects\Protoss\MothershipPurifyMissileImpact\MothershipPurifyMissileImpact.m3"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="MotherShip_Purify_AttackImpact"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="MotherShip_Purify_AttackImpact"/>
+        </Events>
+    </CModel>
+    <CModel id="Selendis_VindicatorCalldown_WeaponMissile" parent="MissileFX">
+        <Model value="Assets\Effects\Protoss\MothershipPurifyMissile\MothershipPurifyMissile.m3"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <Events>
+            <Anim value="Stand,00"/>
+            <Name value="MotherShip_Purify_AttackLaunch"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="MotherShip_Purify_AttackLaunch"/>
+        </Events>
+    </CModel>
+    <CModel id="Selendis_Vindicator" parent="Unit" Race="Protoss">
+        <Model value="Assets\Units\Protoss\Mothership_Golden\Mothership_Golden.m3"/>
+        <RequiredAnims value="Assets\Units\Protoss\Mothership_SwarmAnims\Mothership_SwarmAnims.m3a"/>
+        <AttachProps Id="Ref_Weapon 01">
+            <Keys index="SetA" value="0"/>
+        </AttachProps>
+        <AttachProps Id="Ref_Weapon 02">
+            <Keys index="SetA" value="0"/>
+        </AttachProps>
+        <AttachProps Id="Ref_Weapon 03">
+            <Keys index="SetA" value="0"/>
+        </AttachProps>
+        <AttachProps Id="Ref_Weapon 04">
+            <Keys index="SetA" value="0"/>
+        </AttachProps>
+        <AttachProps Id="Ref_Weapon 05">
+            <Keys index="SetA" value="0"/>
+        </AttachProps>
+        <AttachProps Id="Ref_Weapon 06">
+            <Keys index="SetA" value="0"/>
+        </AttachProps>
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <Occlusion value="Show"/>
+        <Radius value="2.000000"/>
+        <ScaleMax value="0.600000,0.600000,0.600000"/>
+        <ScaleMin value="0.600000,0.600000,0.600000"/>
+        <SelectionRadius value="3.333000"/>
+        <ShadowRadius value="3.333000"/>
+        <SquibTypeDefault value="Metal"/>
+        <TechPurchaseSpeed value="0.050000"/>
+    </CModel>
+    <CModel id="Selendis_ExecutorBlade_ModelImpact" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Protoss\ScoutWeaponImpact\ScoutWeaponImpact.m3"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <ScaleMax value="3.000000,3.000000,3.000000"/>
+        <ScaleMin value="3.000000,3.000000,3.000000"/>
+    </CModel>
+    <CModel id="SelendisPowerStrike@ModelImpact" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Protoss\Zealot_Aiur_Whirlwind_Impact\Zealot_Aiur_Whirlwind_Impact.m3"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <ScaleMax value="3.000000,3.000000,3.000000"/>
+        <ScaleMin value="3.000000,3.000000,3.000000"/>
+    </CModel>
+    <CModel id="SelendisPowerStrike@ModelTrail" parent="MissileFX">
+        <Model value="Assets\Effects\Terran\Nova_DashAttack\Nova_DashAttack.m3"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <ScaleMax value="3.000000,3.000000,3.000000"/>
+        <ScaleMin value="3.000000,3.000000,3.000000"/>
+    </CModel>
+    <CModel id="Selendis_VindicatorCalldown_TeleportOut">
+        <Model value="Assets\Effects\Protoss\MothershipTeleportOutEx1\MothershipTeleportOutEx1.m3"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+    </CModel>
+    <CModel id="Selendis_VindicatorsBeam_ModelBeam" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Protoss\SOA_SolarLance\SOA_SolarLance.m3"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+    </CModel>
+    <CModel id="Selendis_VindicatorsCalldown_ModelArea" parent="PersistentSpellFX">
+        <Model value="assets\UI\Cursors\UI_Cursor_Circle_Modern_TeamColor\UI_Cursor_Circle_Modern_TeamColor.m3"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <ScaleMax value="6.000000,6.000000,6.000000"/>
+        <ScaleMin value="6.000000,6.000000,6.000000"/>
+    </CModel>
+    <CModel id="Selendis_VindicatorsBeam_ModelImpactGround" parent="ImpactFX">
+        <Model value="Assets\Effects\Protoss\SOA_SolarLance_Trail\SOA_SolarLance_Trail.m3"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <VariationCount value="5"/>
+    </CModel>
+    <CModel id="HeroSelendisPortrait" parent="Portrait" Race="Protoss">
+        <Model value="Assets\Portraits\Protoss\SelendisEx2Portrait\SelendisEx2Portrait.m3"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <Lighting value="SelendisEx2Portrait"/>
+        <PortraitOffset value="-0.075000,-0.075000,-0.500000"/>
+    </CModel>
+    <CModel id="HeroSelendisPortraitAddition" parent="FXAPortrait" Race="Protoss">
+        <Model value="Assets\StoryModeCharacters\Protoss\SMX2_Selendis_T1\SMX2_Selendis_T1.m3"/>
+        <RequiredAnims value="Assets\StoryModeCharacters\Protoss\SMX2_Selendis_T1_RequiredAnims\SMX2_Selendis_T1_RequiredAnims.m3a"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <FacialController value="LocalizedData\Facial\SMX2_Selendis_T1.fxa"/>
+    </CModel>
+    <CModel id="Selendis_VindicatorsBeam_ModelFire" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Protoss\SOA_SolarLance_Fire_Upgrade\SOA_SolarLance_Fire_Upgrade.m3"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <ScaleMax value="0.750000,0.750000,0.750000"/>
+        <ScaleMin value="0.750000,0.750000,0.750000"/>
+    </CModel>
+    <CModel id="Selendis_TemplarWillpower_OverloadShields" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Protoss\TractorBeamImpactBubble\TractorBeamImpactBubble.m3"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <ScaleMax value="1.750000,1.750000,1.750000"/>
+        <ScaleMin value="1.750000,1.750000,1.750000"/>
+    </CModel>
+    <CModel id="Selendis_WeaponBlade">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <Model value="Assets\Units\Heroes\Hero_Base_Selendis\Hero_Base_Selendis\Hero_Base_Selendis_Blade.m3"/>
+        <ScaleMax value="1.000000,1.350000,0.750000"/>
+        <ScaleMin value="1.000000,1.350000,0.750000"/>
+    </CModel>
+    <CModel id="SelendisHitTestSphere">
+        <Model value="Assets\Units\Test\HitTestSphere\HitTestSphere.m3"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <ScaleMax value="2.500000,2.500000,5.000000"/>
+        <ScaleMin value="2.500000,2.500000,5.000000"/>
+        <Flags index="TeenSafe" value="1"/>
+    </CModel>
+    <CModel id="Selendis_VindicatorCalldown_ModelTeleportIn">
+        <Model value="Assets\Effects\Protoss\MothershipTeleportInEx1\MothershipTeleportInEx1.m3"/>
+        <AnimSpeed value="1.600000"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+    </CModel>
+    <CModel id="HeroSelendis" parent="Unit">
+        <Model value="Assets\Units\Heroes\Hero_Base_Selendis\Hero_Base_Selendis\Hero_Base_Selendis.m3"/>
+        <RequiredAnims value="Assets\Units\Heroes\Hero_Base_Selendis\Hero_Base_Selendis_RequiredAnims\Hero_Base_Selendis_RequiredAnims.m3a"/>
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <Events>
+            <Anim value="Walk,A,Ready"/>
+            <Name value="Selendis_Footstep_Mv"/>
+            <Type value="Sound"/>
+            <Time value="0.100000"/>
+            <Payload value="Selendis_Footstep_Mv"/>
+        </Events>
+        <Events>
+            <Anim value="Walk,A,Ready"/>
+            <Name value="Selendis_Footstep_Mv"/>
+            <Type value="Sound"/>
+            <Time value="0.500000"/>
+            <Payload value="Selendis_Footstep_Mv"/>
+        </Events>
+        <TextureDeclares Prefix="Skin_Nazeebo_Base_" Slot="main"/>
+        <AnimAliases Anim="Stand,Start,Ready" Alias="Stand,Start"/>
+        <AnimAliases Anim="Stand,Ready" Alias="Stand"/>
+        <AnimAliases Anim="Stand,Ready" Alias="Stand,Ready,End"/>
+        <AnimAliases Anim="Channel,Interact" Alias="Spell,Channel"/>
+    </CModel>
+    <CModel id="HeroSelendisDeath" parent="CommandersUnitDeathNew">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <RadiusLoose value="0.500000"/>
+    </CModel>
+    <CWeaponLegacy id="SelendisHeroWeapon" parent="StormHeroFastWeapon">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <Options index="Melee" value="1"/>
+        <Options index="ContinuousScan" value="1"/>
+        <Options index="HoldFileInShrubs" value="1"/>
+        <DisplayEffect value="Selendis_Weapon_Damage"/>
+        <MinScanRange value="4"/>
+        <Range value="1.25"/>
+        <Period value="1"/>
+        <Effect value="Selendis_Weapon_InitialSet"/>
+        <TargetFilters value="Visible;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <CMoverMissile id="Selendis_VindicatorsBeam_Mover">
+        <MotionPhases>
+            <Driver value="Guidance"/>
+            <Speed value="8"/>
+            <MaxSpeed value="15"/>
+            <IgnoresTerrain value="1"/>
+            <ThrowBandYaw value="-360,-360,-360,-360"/>
+            <ThrowBandPitch value="-360,-360,-360,-360"/>
+            <YawPitchRoll value="5759.6484"/>
+        </MotionPhases>
+    </CMoverMissile>
+    <CMoverMissile id="Selendis_VindicatorCalldown_WeaponMissile" parent="MissileDefault">
+        <MotionPhases index="0">
+            <Driver value="Guidance"/>
+            <Acceleration value="3200"/>
+            <MaxSpeed value="36"/>
+            <ClearanceAcceleration value="75"/>
+            <Outro value="-1"/>
+            <YawPitchRoll value="719.2968"/>
+        </MotionPhases>
+    </CMoverMissile>
+    <CMoverMissile id="Selendis_VindicatorCalldown_WeaponCloseMissile" parent="MissileDefault">
+        <MotionPhases index="0">
+            <Driver value="Guidance"/>
+            <Acceleration value="3200"/>
+            <MaxSpeed value="12"/>
+            <ClearanceAcceleration value="75"/>
+            <Outro value="-1"/>
+            <YawPitchRoll value="719.2968"/>
+        </MotionPhases>
+    </CMoverMissile>
+    <CAccumulatorBehavior id="SelendisPowerStrikeProtectedByKhala@MarkersCount">
+        <ApplicationRule value="Multiply"/>
+        <Behavior value="SelendisPowerStrikeProtectedByKhala@Marker"/>
+    </CAccumulatorBehavior>
+    <CAccumulatorArithmetic id="SelendisPowerStrikeProtectedByKhala@Arithmetic">
+        <Parameters value="0.75">
+            <AccumulatorArray value="SelendisPowerStrikeProtectedByKhala@MarkersCount"/>
+        </Parameters>
+    </CAccumulatorArithmetic>
+    <CSound id="HeroTalandarThunderousCharge@SoundImpactNonHero" parent="Spell">
+        <EditorCategories value="CommandersHero:Talandar"/>
+        <AssetArray File="Assets\Sounds\FenixChampion_ThunderousCharge_SpellAEnd_5825ms_1ch.wav" FacialGroup=""/>
+    </CSound>
+    <CSound id="HeroTalandarThunderousCharge@SoundLaunch" parent="Spell">
+        <EditorCategories value="CommandersHero:Talandar"/>
+        <AssetArray File="Assets\Sounds\FenixChampion_ThunderousCharge_AttackLaunch01_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\FenixChampion_ThunderousCharge_AttackLaunch02_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\FenixChampion_ThunderousCharge_AttackLaunch03_1ch.wav" FacialGroup=""/>
+        <DupeMuteCount value="4"/>
+    </CSound>
+    <CSound id="HeroTalandarThunderousCharge@SoundImpactHero" parent="Spell">
+        <EditorCategories value="CommandersHero:Talandar"/>
+        <AssetArray File="Assets\Sounds\FenixChampion_ThunderousCharge_AttackImpact01_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\FenixChampion_ThunderousCharge_AttackImpact02_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\FenixChampion_ThunderousCharge_AttackImpact03_1ch.wav" FacialGroup=""/>
+    </CSound>
+    <CSound id="Selendis_VindicatorsBeam_SoundPreLaunch" parent="Spell">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <AssetArray File="Assets\Sounds\ColossusTaldarim_Beam_PowerUp02_1ch.wav" FacialGroup=""/>
+        <DupeMuteCount value="4"/>
+        <SpeakerMix index="LFE" value="1.000000"/>
+        <Volume value="6.000000,6.000000"/>
+    </CSound>
+    <CSound id="Selendis_VindicatorsBeam_SoundLoop" parent="Spell">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <AssetArray File="assets\Sounds\Heroes\Base_Artanis\Artanis_Purifier_Beam_Loop01.ogg" FacialGroup=""/>
+        <DupeMuteCount value="4"/>
+        <LoopCount value="-1"/>
+        <SpeakerMix index="LFE" value="1.000000"/>
+        <Volume value="-6.000000,-6.000000"/>
+    </CSound>
+    <CSound id="Selendis_ExecutorCharge_SoundDash" parent="Spell">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <AssetArray File="assets\Sounds\Heroes\Base_Artanis\Artanis_PowerStrike_Whoosh1_01.ogg" FacialGroup=""/>
+        <AssetArray File="assets\Sounds\Heroes\Base_Artanis\Artanis_PowerStrike_Whoosh1_02.ogg" FacialGroup=""/>
+        <AssetArray File="assets\Sounds\Heroes\Base_Artanis\Artanis_PowerStrike_Whoosh1_03.ogg" FacialGroup=""/>
+        <Pitch value="-2.000000,0.000000"/>
+        <Volume value="1.000000,1.000000"/>
+    </CSound>
+    <CSound id="Selendis_ExecutorCharge_SoundImpact" parent="Spell">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <AssetArray File="assets\Sounds\Heroes\Base_Artanis\Artanis_Attack_Impact_Trait01.ogg" FacialGroup=""/>
+        <AssetArray File="assets\Sounds\Heroes\Base_Artanis\Artanis_Attack_Impact_Trait02.ogg" FacialGroup=""/>
+        <AssetArray File="assets\Sounds\Heroes\Base_Artanis\Artanis_Attack_Impact_Trait03.ogg" FacialGroup=""/>
+        <Pitch value="-2.000000,0.000000"/>
+        <Volume value="3.000000,3.000000"/>
+    </CSound>
+    <CSound id="HeroSelendis_Attack" parent="Hero_Medium">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossVO\CampaignUnits\Selendis\Selendis_Attack00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossVO\CampaignUnits\Selendis\Selendis_Attack01.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossVO\CampaignUnits\Selendis\Selendis_Attack02.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossVO\CampaignUnits\Selendis\Selendis_Attack03.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossVO\CampaignUnits\Selendis\Selendis_Attack04.ogg"/>
+    </CSound>
+    <CSound id="HeroSelendis_Pissed" parent="Hero_Pissed">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossVO\CampaignUnits\Selendis\Selendis_Pissed00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossVO\CampaignUnits\Selendis\Selendis_Pissed01.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossVO\CampaignUnits\Selendis\Selendis_Pissed02.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossVO\CampaignUnits\Selendis\Selendis_Pissed03.ogg"/>
+    </CSound>
+    <CSound id="HeroSelendis_Ready" parent="Hero_High">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossVO\CampaignUnits\Selendis\Selendis_Ready00.ogg"/>
+    </CSound>
+    <CSound id="SelendisPowerStrike@SoundImpact" parent="Spell">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <AssetArray File="Assets\Sounds\Adept_AttackImpact00.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Adept_AttackImpact01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Adept_AttackImpact02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Adept_AttackImpact03.wav" FacialGroup=""/>
+        <Pitch value="-2.000000,0.000000"/>
+        <Volume value="3.000000,3.000000"/>
+    </CSound>
+    <CSound id="Selendis_TemplarWillpower_OverloadShields_SoundStart" parent="Spell">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <AssetArray File="Assets\Sounds\Protoss\Nexus\Nexus_ChronoBoostImpact0.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Protoss\Nexus\Nexus_ChronoBoostImpact1.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Protoss\Nexus\Nexus_ChronoBoostImpact2.wav" FacialGroup=""/>
+        <Pitch value="-2.000000,0.000000"/>
+        <Volume value="1.000000,1.000000"/>
+    </CSound>
+    <CSound id="Selendis_VindicatorsBeam_SoundImpact" parent="Spell">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <AssetArray File="assets\Sounds\Heroes\Base_Tassadar\Tassadar_Shockblast_Bolt_Impact_01.ogg" FacialGroup=""/>
+        <AssetArray File="assets\Sounds\Heroes\Base_Tassadar\Tassadar_Shockblast_Bolt_Impact_02.ogg" FacialGroup=""/>
+        <AssetArray File="assets\Sounds\Heroes\Base_Tassadar\Tassadar_Shockblast_Bolt_Impact_03.ogg" FacialGroup=""/>
+        <AssetArray File="assets\Sounds\Heroes\Base_Tassadar\Tassadar_Shockblast_Bolt_Impact_04.ogg" FacialGroup=""/>
+        <AssetArray File="assets\Sounds\Heroes\Base_Tassadar\Tassadar_Shockblast_Bolt_Impact_05.ogg" FacialGroup=""/>
+        <AssetArray File="assets\Sounds\Heroes\Base_Tassadar\Tassadar_Shockblast_Bolt_Impact_06.ogg" FacialGroup=""/>
+        <AssetArray File="assets\Sounds\Heroes\Base_Tassadar\Tassadar_Shockblast_Bolt_Impact_06a.ogg" FacialGroup=""/>
+        <AssetArray File="assets\Sounds\Heroes\Base_Tassadar\Tassadar_Shockblast_Bolt_Impact_07.ogg" FacialGroup=""/>
+        <AssetArray File="assets\Sounds\Heroes\Base_Tassadar\Tassadar_Shockblast_Bolt_Impact_08.ogg" FacialGroup=""/>
+        <Pitch value="-2.000000,0.000000"/>
+        <Volume value="1.000000,1.000000"/>
+    </CSound>
+    <CSound id="Selendis_TemplarWillpower_OverloadShields_SoundImpact" parent="Spell">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <AssetArray File="Assets\Sounds\Spell_CorrosiveBlast_Impact_00.wav"/>
+        <AssetArray File="Assets\Sounds\Spell_CorrosiveBlast_Impact_01.wav"/>
+        <AssetArray File="Assets\Sounds\Spell_CorrosiveBlast_Impact_02.wav"/>
+        <AssetArray File="Assets\Sounds\Spell_CorrosiveBlast_Impact_03.wav"/>
+        <AssetArray File="Assets\Sounds\Spell_CorrosiveBlast_Impact_04.wav"/>
+        <AssetArray File="Assets\Sounds\Spell_CorrosiveBlast_Impact_05.wav"/>
+        <Pitch value="-2.000000,0.000000"/>
+        <Volume value="1.000000,1.000000"/>
+    </CSound>
+    <CSound id="Selendis_VindicatorCalldown_SoundWarpLoop" parent="Spell">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <AssetArray File="assets\Sounds\Heroes\Base_Probius\Probius_VoidGate_GateKeeper_Loop01.ogg"/>
+        <LoopCount value="-1"/>
+        <Volume value="-6.000000,-6.000000"/>
+    </CSound>
+    <CSound id="Selendis_VindicatorCalldown_SoundWarpIn" parent="Spell">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <AssetArray File="assets\Sounds\Heroes\Base_Probius\Probius_VoidGate_GateKeeper_Launch01.ogg"/>
+        <Volume value="-6.000000,-6.000000"/>
+    </CSound>
+    <CSound id="Selendis_VindicatorCalldown_SoundWarpOut" parent="Spell">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <AssetArray File="assets\Sounds\Heroes\Base_Probius\Probius_VoidGate_GateKeeper_End01.ogg"/>
+        <Volume value="-6.000000,-6.000000"/>
+    </CSound>
+    <CSound id="Selendis_VindicatorCalldown_WeaponAttackImpact" parent="Combat">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <AssetArray File="Assets\Sounds\Protoss\PhotonCannon\PhotonCannon_AttackImpact0.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\PhotonCannon\PhotonCannon_AttackImpact1.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\PhotonCannon\PhotonCannon_AttackImpact2.wav"/>
+        <Volume value="-9.000000,-9.000000"/>
+    </CSound>
+    <CSound id="Selendis_VindicatorCalldown_WeaponAttackLaunch" parent="Combat">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <AssetArray File="Assets\Sounds\Protoss\PhotonCannon\PhotonCannon_AttackLaunch0.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\PhotonCannon\PhotonCannon_AttackLaunch1.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\PhotonCannon\PhotonCannon_AttackLaunch2.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\PhotonCannon\PhotonCannon_AttackLaunch3.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\PhotonCannon\PhotonCannon_AttackLaunch4.wav"/>
+        <Pitch value="-1.000000,2.000000"/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="Selendis_ExecutorBlade_SoundImpact" parent="Spell">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Lightning_Impact01.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Lightning_Impact02.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Lightning_Impact03.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Lightning_Impact04.ogg" FacialGroup=""/>
+        <DupeMuteCount value="4"/>
+    </CSound>
+    <CSound id="SelendisPowerStrike@SoundDash" parent="Spell">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <AssetArray File="Assets\Sounds\Kerrigan_PsionicShift00.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Kerrigan_PsionicShift01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Kerrigan_PsionicShift02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Kerrigan_PsionicShift03.wav" FacialGroup=""/>
+        <Pitch value="-2.000000,0.000000"/>
+        <Volume value="1.000000,1.000000"/>
+    </CSound>
+    <CSound id="Selendis_VindicatorsBeam_SoundLaunch" parent="Spell">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <AssetArray File="assets\Sounds\Heroes\Base_Artanis\Artanis_Purifier_Beam_Launch01.ogg" FacialGroup=""/>
+        <DupeMuteCount value="4"/>
+        <SpeakerMix index="LFE" value="1.000000"/>
+        <Volume value="-6.000000,-6.000000"/>
+    </CSound>
+    <CSound id="Selendis_ExecutorBlade_SoundLaunch" parent="Spell">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <AssetArray File="Assets\Sounds\UI_Glue_PsiBladeOn.ogg" FacialGroup=""/>
+        <DupeMuteCount value="4"/>
+    </CSound>
+    <CSound id="Selendis_Weapon_AttackLaunch" parent="Combat">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <AssetArray File="Assets\Sounds\Protoss\Zealot\Zealot_AttackLaunch0.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Protoss\Zealot\Zealot_AttackLaunch1.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Protoss\Zealot\Zealot_AttackLaunch2.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Protoss\Zealot\Zealot_AttackLaunch3.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Protoss\Zealot\Zealot_AttackLaunch4.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Protoss\Zealot\Zealot_AttackLaunch5.wav" FacialGroup=""/>
+    </CSound>
+    <CSound id="Selendis_Weapon_AttackImpact" parent="Combat">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Lightning_Impact01.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Lightning_Impact02.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Lightning_Impact03.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Generic\Gen_Spell_Lightning_Impact04.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="HeroSelendis_Yes" parent="Hero_Low">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossVO\CampaignUnits\Selendis\Selendis_Yes00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossVO\CampaignUnits\Selendis\Selendis_Yes01.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossVO\CampaignUnits\Selendis\Selendis_Yes02.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossVO\CampaignUnits\Selendis\Selendis_Yes03.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossVO\CampaignUnits\Selendis\Selendis_Yes04.ogg"/>
+    </CSound>
+    <CSound id="Selendis_Footstep_Mv" parent="Movement">
+        <EditorCategories value="CommandersHero:Selendis"/>
+        <AssetArray File="Assets\Sounds\Movement\FS_Mech_Med01.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Movement\FS_Mech_Med02.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Movement\FS_Mech_Med03.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Movement\FS_Mech_Med04.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Movement\FS_Mech_Med05.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Movement\FS_Mech_Med06.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Movement\FS_Mech_Med07.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Movement\FS_Mech_Med08.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Movement\FS_Mech_Med09.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Movement\FS_Mech_Med10.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Movement\FS_Mech_Med11.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Movement\FS_Mech_Med12.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Movement\FS_Mech_Med13.ogg" FacialGroup=""/>
+        <Pitch value="-2.000000,1.000000"/>
+        <Volume value="-17.000000,-15.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CHero id="Selendis">
+        <AttributeId value="HSel"/>
+        <UserReference value="Champions;Zeratul"/>
+        <Role value="Damage"/>
+        <Melee value="1"/>
+        <IntroCutsceneSize value="Medium"/>
+        <HeroAbilArray Abil="Selendis_ExecutorBlade" Button="Selendis_ExecutorBlade">
+            <Flags index="ShowInHeroSelect" value="1"/>
+            <Flags index="AffectedByCooldownReduction" value="1"/>
+        </HeroAbilArray>
+        <HeroAbilArray Abil="Selendis_VindicatorsBeam" Button="Selendis_VindicatorsBeam">
+            <Flags index="ShowInHeroSelect" value="1"/>
+            <Flags index="AffectedByCooldownReduction" value="1"/>
+        </HeroAbilArray>
+        <HeroAbilArray Abil="SelendisPowerStrike" Button="SelendisPowerStrike">
+            <Flags index="ShowInHeroSelect" value="1"/>
+            <Flags index="AffectedByCooldownReduction" value="1"/>
+        </HeroAbilArray>
+        <HeroAbilArray Abil="Selendis_VindicatorCalldown" Button="Selendis_VindicatorCalldown">
+            <Flags index="ShowInHeroSelect" value="1"/>
+            <Flags index="AffectedByCooldownReduction" value="1"/>
+            <Flags index="Heroic" value="1"/>
+        </HeroAbilArray>
+        <HeroAbilArray Button="Selendis_TemplarWillpower">
+            <Flags index="ShowInHeroSelect" value="1"/>
+            <Flags index="Trait" value="1"/>
+            <Flags index="HideHotkey" value="1"/>
+        </HeroAbilArray>
+        <TalentTreeArray index="4" Talent="" Tier="1" Column="5"/>
+        <TalentTreeArray index="7" Talent="Selendis_ExecutorBlade_AdvancedCharge" Tier="2" Column="1"/>
+        <TalentTreeArray index="8" Talent="Selendis_VindicatorsBeam_ImprovedBeamLauncher" Tier="2" Column="2"/>
+        <TalentTreeArray index="9" Talent="SelendisPowerStrikeFinalCut" Tier="2" Column="3"/>
+        <TalentTreeArray index="10" Talent="Selendis_TemplarWillpower_Inspiration" Tier="2" Column="4"/>
+        <TalentTreeArray index="14" Talent="Selendis_ExecutorBlade_ExecutorPower_Stacks" Tier="3" Column="1"/>
+        <TalentTreeArray index="15" Talent="Selendis_VindicatorsBeam_MothershipPower_Stacks" Tier="3" Column="2"/>
+        <TalentTreeArray index="16" Talent="SelendisPowerStrikeTemplarsZeal" Tier="3" Column="3"/>
+        <TalentTreeArray index="17" Talent="Selendis_BladesOfZealot_Stacks" Tier="3" Column="4"/>
+        <TalentTreeArray index="21" Talent="Selendis_TemplarWillpower_PlasmaShields" Tier="4" Column="1"/>
+        <TalentTreeArray index="22" Talent="Selendis_PhaseWeapon" Tier="4" Column="2"/>
+        <TalentTreeArray index="23" Talent="Selendis_IntuitiveAttack" Tier="4" Column="3"/>
+        <TalentTreeArray index="28" Talent="Selendis_VindicatorsBeam_ThermalFire" Tier="5" Column="1"/>
+        <TalentTreeArray index="29" Talent="Selendis_PowerStrike_PsionicDash" Tier="5" Column="2"/>
+        <TalentTreeArray index="30" Talent="Selendis_TemplarWillpower_ForceOfWill" Tier="5" Column="3"/>
+        <TalentTreeArray index="37" Talent="Selendis_TemplarWillpower_OverloadShields" Tier="6" Column="3"/>
+        <TalentTreeArray index="38" Talent="Selendis_InTheHeatOfBattle" Tier="6" Column="4"/>
+        <TalentTreeArray index="42" Talent="Selendis_VindicatorCalldown_MothershipField" Tier="7" Column="1"/>
+        <TalentTreeArray index="43" Talent="SelendisPowerStrikeProtectedByKhala" Tier="7" Column="2"/>
+        <TalentTreeArray index="44" Talent="Selendis_TemplarWillpower_ReconfigurationShields" Tier="7" Column="3"/>
+        <HeroSelectCutsceneFile value=""/>
+        <MiniPortraitCutsceneFile value=""/>
+        <VariationIcon value="Assets\Textures\UI_Glues_Swatch_Purple_Bright.dds"/>
+        <Difficulty value="Hard"/>
+        <UniverseIcon value="Assets\Textures\UI_Glues_Store_GameIcon_SC2.dds"/>
+        <TileCutsceneFile value=""/>
+    </CHero>
+    <CDataCollection id="SelendisPowerStrikeFinalCut">
+        <EditorCategories value="DataGroup:Template,Race:Neutral,CommandersHero:Selendis,CommandersDataGroup:Talent"/>
+        <DataRecord Entry="Behavior,SelendisPowerStrikeFinalCut@CarryBehavior"/>
+        <DataRecord Entry="Button,SelendisPowerStrikeFinalCut"/>
+        <DataRecord Entry="Talent,SelendisPowerStrikeFinalCut"/>
+        <DataRecord Entry="Behavior,SelendisPowerStrikeFinalCut@Buff"/>
+        <DataRecord Entry="Effect,SelendisPowerStrikeFinalCut@ApplyFinalCutCasterBuff"/>
+    </CDataCollection>
+    <CDataCollection id="SelendisPowerStrikeTemplarsZeal">
+        <EditorCategories value="DataGroup:Template,Race:Neutral,CommandersHero:Selendis,CommandersDataGroup:Talent"/>
+        <DataRecord Entry="Behavior,SelendisPowerStrikeTemplarsZeal@CarryBehavior"/>
+        <DataRecord Entry="Button,SelendisPowerStrikeTemplarsZeal"/>
+        <DataRecord Entry="Talent,SelendisPowerStrikeTemplarsZeal"/>
+        <DataRecord Entry="Effect,SelendisPowerStrikeTemplarsZeal@ApplyTimedDamageBehavior"/>
+        <DataRecord Entry="Behavior,SelendisPowerStrikeTemplarsZeal@TimedDamageBehavior"/>
+        <DataRecord Entry="Effect,SelendisPowerStrikeTemplarsZeal@TimedDamage"/>
+    </CDataCollection>
+    <CDataCollection id="SelendisPowerStrikeProtectedByKhala">
+        <EditorCategories value="DataGroup:Template,Race:Neutral,CommandersHero:Selendis,CommandersDataGroup:Talent"/>
+        <DataRecord Entry="Behavior,SelendisPowerStrikeProtectedByKhala@CarryBehavior"/>
+        <DataRecord Entry="Behavior,SelendisPowerStrikeProtectedByKhala"/>
+        <DataRecord Entry="Behavior,SelendisPowerStrikeProtectedByKhala@Marker"/>
+        <DataRecord Entry="Button,SelendisPowerStrikeProtectedByKhala"/>
+        <DataRecord Entry="Effect,SelendisPowerStrikeProtectedByKhala@ApplyMarkerBehavior"/>
+        <DataRecord Entry="Effect,SelendisPowerStrikeProtectedByKhala@RemoveSet"/>
+        <DataRecord Entry="Effect,SelendisPowerStrikeProtectedByKhala@ApplyProtection"/>
+        <DataRecord Entry="Effect,SelendisPowerStrikeProtectedByKhala@RemoveMarkers"/>
+        <DataRecord Entry="Talent,SelendisPowerStrikeProtectedByKhala"/>
+        <DataRecord Entry="Validator,SelendisPowerStrikeProtectedByKhala@HasProtectedByKhala"/>
+        <DataRecord Entry="Accumulator,SelendisPowerStrikeProtectedByKhala@Arithmetic"/>
+        <DataRecord Entry="Accumulator,SelendisPowerStrikeProtectedByKhala@MarkersCount"/>
+    </CDataCollection>
+    <CDataCollectionAbil id="SelendisPowerStrike">
+        <EditorCategories value="DataGroup:Template,Race:Neutral,CommandersHero:Selendis,CommandersDataGroup:Ability"/>
+        <DataRecord Entry="Abil,SelendisPowerStrike"/>
+        <DataRecord Entry="Behavior,SelendisPowerStrike@Speed"/>
+        <DataRecord Entry="Button,SelendisPowerStrike"/>
+        <DataRecord Entry="Effect,SelendisPowerStrike@InitialPersistent"/>
+        <DataRecord Entry="Effect,SelendisPowerStrike@ApplySpeed"/>
+        <DataRecord Entry="Effect,SelendisPowerStrike@RemoveSpeed"/>
+        <DataRecord Entry="Effect,SelendisPowerStrike@PeriodicSet"/>
+        <DataRecord Entry="Effect,SelendisPowerStrike@MovePersistent"/>
+        <DataRecord Entry="Effect,SelendisPowerStrike@TargetSearch"/>
+        <DataRecord Entry="Effect,SelendisPowerStrike@CasterApplyForce"/>
+        <DataRecord Entry="Effect,SelendisPowerStrike@TargetImpactSet"/>
+        <DataRecord Entry="Effect,SelendisPowerStrike@Damage"/>
+        <DataRecord Entry="Actor,SelendisPowerStrike@CursorGuide"/>
+        <DataRecord Entry="Validator,SelendisPowerStrike@CasterHasSpeedBuff"/>
+        <DataRecord Entry="Abil,SelendisPowerStrike"/>
+        <DataRecord Entry="Actor,SelendisPowerStrike@SoundImpact"/>
+        <DataRecord Entry="Actor,SelendisPowerStrike@ModelImpact"/>
+        <DataRecord Entry="Actor,SelendisPowerStrike@SoundDash"/>
+        <DataRecord Entry="Actor,SelendisPowerStrike@ModelTrail"/>
+        <DataRecord Entry="Behavior,SelendisPowerStrike@Slow"/>
+        <DataRecord Entry="Effect,SelendisPowerStrike@ExpireSearch"/>
+        <DataRecord Entry="Effect,SelendisPowerStrike@Slow"/>
+        <DataRecord Entry="Effect,SelendisPowerStrike@ExpireImpactSet"/>
+        <DataRecord Entry="Effect,SelendisPowerStrike@ExpireDamage"/>
+        <DataRecord Entry="Model,SelendisPowerStrike@ModelImpact"/>
+        <DataRecord Entry="Model,SelendisPowerStrike@ModelTrail"/>
+        <DataRecord Entry="Sound,SelendisPowerStrike@SoundImpact"/>
+        <DataRecord Entry="Sound,SelendisPowerStrike@SoundDash"/>
+    </CDataCollectionAbil>
+    <CItemAbil id="SelendisBucket_PhaseWeapon">
+        <Flags index="CanDrop" value="0"/>
+        <Flags index="EnabledWhileDead" value="0"/>
+        <Class value="Item"/>
+        <Requirements value="HeroHasNoDeadBehavior"/>
+    </CItemAbil>
+    <CItemAbil id="SelendisBucket_InTheHeatOfBattle">
+        <Flags index="CanDrop" value="0"/>
+        <Flags index="EnabledWhileDead" value="0"/>
+        <Class value="Item"/>
+        <Requirements value="HeroHasNoDeadBehavior"/>
+    </CItemAbil>
+    <CItemAbil id="SelendisBucket_OverloadShields">
+        <Face value="SelendisBucket_TemplarWillPower_OverloadShields"/>
+        <Flags index="CanDrop" value="0"/>
+        <Flags index="EnabledWhileDead" value="0"/>
+        <Class value="Item"/>
+        <Requirements value="HeroHasNoDeadBehavior"/>
+    </CItemAbil>
+    <CUnit id="Selendis_VindicatosBeam_WeaponMissile" parent="MISSILE">
+        <Mover value="Selendis_VindicatorsBeam_Mover"/>
+        <EditorCategories value="ObjectType:Projectile,CommandersHero:Selendis"/>
+    </CUnit>
+    <CUnit id="HeroSelendis" parent="CommandersHero">
+        <PlaneArray index="Ground" value="1"/>
+        <LifeStart value="1700"/>
+        <LifeMax value="1700"/>
+        <LifeRegenRate value="3"/>
+        <AbilArray index="11" Link="Selendis_PowerStrike"/>
+        <AbilArray index="12" Link="Selendis_ExecutorBlade"/>
+        <AbilArray Link="Selendis_ExecutorCharge"/>
+        <AbilArray Link="Selendis_ExecutorChargeApproach"/>
+        <AbilArray Link="Selendis_VindicatorsBeam"/>
+        <AbilArray Link="Selendis_VindicatorCalldown"/>
+        <AbilArray Link="SelendisPowerStrike"/>
+        <WeaponArray Link="SelendisHeroWeapon"/>
+        <CardLayouts>
+            <LayoutButtons Face="Selendis_TemplarWillpower" Type="Passive" AbilCmd="Selendis_TemplarWillpower,255" Row="0" Column="4"/>
+            <LayoutButtons Face="Selendis_VindicatorsBeam" Type="AbilCmd" AbilCmd="Selendis_VindicatorsBeam,Execute" Row="0" Column="1"/>
+            <LayoutButtons Face="SelendisPowerStrike" Type="AbilCmd" AbilCmd="SelendisPowerStrike,Execute" Row="0" Column="2"/>
+            <LayoutButtons Face="Selendis_ExecutorCharge" Type="AbilCmd" AbilCmd="Selendis_ExecutorCharge,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="Selendis_ExecutorBlade" Type="AbilCmd" AbilCmd="Selendis_ExecutorBlade,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="Selendis_VindicatorCalldown" Type="AbilCmd" AbilCmd="Selendis_VindicatorCalldown,Execute" Row="0" Column="3"/>
+            <LayoutButtons Face="HeroGeneric_HearthstoneReturnToBase" Type="AbilCmd" AbilCmd="HeroGeneric_HearthstoneReturnToBase,Execute" Row="1" Column="4"/>
+            <LayoutButtons Face="MothershipCoreAttack" Type="AbilCmd" AbilCmd="attack,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="AcquireMove" Type="AbilCmd" AbilCmd="move,AcquireMove" Row="2" Column="0"/>
+            <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="2" Column="1"/>
+            <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="2" Column="2"/>
+            <LayoutButtons Face="Cancel" Type="CancelTargetMode" Row="2" Column="3"/>
+            <LayoutButtons Face="HeroGeneric_Hearthstone" Type="AbilCmd" AbilCmd="HeroGeneric_Hearthstone,Execute" Row="1" Column="3"/>
+        </CardLayouts>
+        <Radius value="0.75"/>
+        <SeparationRadius value="0.75"/>
+        <EditorCategories value="ObjectType:Hero,CommandersHero:Selendis"/>
+        <BehaviorArray Link="Selendis_TemplarWillpower_SelendisNotLowHealth"/>
+        <BehaviorArray Link="Selendis_TemplarWillpower_TargetLowHealth"/>
+        <InnerRadius value="0.75"/>
+    </CUnit>
+    <CUnit id="SelendisBucket_HealingBlades" parent="ITEM">
+        <Mob value="Multiplayer"/>
+        <FlagArray index="Pawnable" value="1"/>
+        <EditorCategories value="ObjectType:Item,CommandersHero:Selendis"/>
+        <Item value="SelendisBucket_PhaseWeapon"/>
+    </CUnit>
+    <CUnit id="SelendisBucket_InTheHeatOfBattle" parent="ITEM">
+        <Mob value="Multiplayer"/>
+        <FlagArray index="Pawnable" value="1"/>
+        <EditorCategories value="ObjectType:Item,CommandersHero:Selendis"/>
+    </CUnit>
+    <CUnit id="SelendisBucket_OverloadShields" parent="ITEM">
+        <Mob value="Multiplayer"/>
+        <FlagArray index="Pawnable" value="1"/>
+        <EditorCategories value="ObjectType:Item,CommandersHero:Selendis"/>
+    </CUnit>
+    <CUnit id="Selendis_VindicatorCalldown_WeaponMissile" parent="MISSILE">
+        <EditorCategories value="ObjectType:Projectile,CommandersHero:Selendis"/>
+    </CUnit>
+    <CUnit id="Selendis_Vindicator" parent="CommandersSummonInvulnerable">
+        <Facing value="45"/>
+        <FlagArray index="Untargetable" value="1"/>
+        <FlagArray index="PreventDestroy" value="1"/>
+        <FlagArray index="KillCredit" value="1"/>
+        <Attributes index="Summoned" value="0"/>
+        <Height value="7"/>
+        <AbilArray Link="stop"/>
+        <AbilArray Link="AttackAlly"/>
+        <BehaviorArray Link="SafeZone_Knockback_Immune"/>
+        <BehaviorArray Link="CommandersSummonedUnit"/>
+        <WeaponArray Turret="MothershipRotate"/>
+        <CardLayouts>
+            <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="2" Column="1"/>
+            <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="2" Column="1"/>
+            <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="2" Column="2"/>
+            <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="AttackAlly,Execute" Row="2" Column="4"/>
+            <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="2" Column="3"/>
+        </CardLayouts>
+        <EditorCategories value="ObjectType:Unit,CommandersHero:Selendis"/>
+    </CUnit>
+    <CBehaviorBuff id="SelendisPowerStrikeTemplarsZeal@CarryBehavior" parent="CommandersTalentCarryBehaviorParent">
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Selendis"/>
+        <DamageResponse Handled="SelendisPowerStrikeTemplarsZeal@ApplyTimedDamageBehavior" Location="Attacker">
+            <RequireEffectArray value="SelendisPowerStrike@Damage"/>
+            <RequireEffectArray value="SelendisPowerStrike@ExpireDamage"/>
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SelendisBucket_IntuitiveAttackStacksGainingController" parent="CommandersTalentCarryBehaviorParent">
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Selendis"/>
+        <DamageResponse Handled="SelendisBucket_IntuitiveAttack_ApplyBehaviorStack" Location="Attacker" TargetFilters="Heroic;-">
+            <RequireEffectArray value="Selendis_ExecutorBlade_Damage"/>
+            <RequireEffectArray value="Selendis_ExecutorChargeApproach_Damage"/>
+            <RequireEffectArray value="SelendisPowerStrike@ExpireDamage"/>
+            <RequireEffectArray value="SelendisPowerStrikeTemplarsZeal@TimedDamage"/>
+            <RequireEffectArray value="Selendis_VindicatorsBeam_Damage"/>
+            <RequireEffectArray value="Selendis_VindicatorsBeam_ThermalFire_Damage"/>
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SelendisPowerStrike@Speed">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Selendis"/>
+        <RemoveValidatorArray value="CasterNotDazedOrDeadOrFearedOrPolymorphedOrRootedOrSilencedOrStasisOrStunned"/>
+        <FinalEffect value="SelendisPowerStrikeProtectedByKhala@RemoveSet"/>
+        <Modification MoveSpeedMaximum="20" MoveSpeedMinimum="20">
+            <StateFlags index="SuppressCollision" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SelendisBucket_TemplarWillpower_ForceOfWillArmorBehavior" parent="CommandersUnitStatsModificator">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Selendis"/>
+        <RemoveValidatorArray value="SelendisBucketSourceHasForceofWillCarryBehavior"/>
+        <RemoveValidatorArray value="SelendisBucket_CasterHasTemplarWillpowerShields"/>
+        <Modification>
+            <AttributeChangeArray index="0" Points="25"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SelendisBucket_TemplarWillpower_ForceofWillCarryBehavior" parent="CommandersTalentCarryBehaviorParent">
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Selendis"/>
+        <PeriodicEffect value="SelendisBucket_TemplarWillpower_ApplyForceOfWillArmorBehavior"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SelendisPowerStrikeProtectedByKhala" parent="CommandersProtect">
+        <InfoIcon value="assets\Icons\Common_General\Icon_General_ProtectiveShield.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Selendis"/>
+        <Duration value="0.75">
+            <AccumulatorArray value="SelendisPowerStrikeProtectedByKhala@Arithmetic"/>
+        </Duration>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Selendis_TemplarWillpower_TargetLowHealth">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Selendis"/>
+        <DamageResponse Location="Attacker" ModifyFraction="1.25" DamageValue="Original">
+            <RequireEffectArray value="Selendis_Weapon_Damage"/>
+            <ValidatorArray value="TargetLifeLT25Percent"/>
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SelendisPowerStrikeProtectedByKhala@Marker" parent="CommandersTalentBehaviorParent">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Selendis"/>
+        <MaxStackCount value="5"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SelendisPowerStrikeProtectedByKhala@CarryBehavior" parent="CommandersTalentCarryBehaviorParent">
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Selendis"/>
+        <DamageResponse Handled="SelendisPowerStrikeProtectedByKhala@ApplyMarkerBehavior" Location="Attacker" TargetFilters="Heroic;-">
+            <RequireEffectArray value="SelendisPowerStrike@Damage"/>
+            <RequireEffectArray value="SelendisPowerStrike@ExpireDamage"/>
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Selendis_TemplarWillpower_SelendisNotLowHealth">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Selendis"/>
+        <DamageResponse Location="Attacker" ModifyFraction="1.75" DamageValue="Original">
+            <RequireEffectArray value="Selendis_Weapon_Damage"/>
+            <Chance value="1"/>
+        </DamageResponse>
+        <DisableValidatorArray value="CasterLifeGT75Percent"/>
+        <BehaviorCategories index="Temporary" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SelendisPowerStrikeFinalCut@Buff" parent="CommandersUnitStatsModificator">
+        <InfoIcon value="Assets\Icons\Hero_Selendis\Icon_Hero_Selendis_PowerStrikes.DDS"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Selendis"/>
+        <MaxStackCount value="5"/>
+        <Duration value="7"/>
+        <Modification>
+            <AttributeChangeArray index="24" Points="4"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SelendisBucket_ExecutorBlade_AdvancedCharge">
+        <InfoIcon value="assets\Icons\Common_General\Icon_General_AutoAttack_Speed.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Selendis"/>
+        <Duration value="3"/>
+        <Modification>
+            <AdditiveAttackSpeedFactor value="0.25"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SelendisBucket_ExecutorBlade_ExecutorPower_CarryBehavior" parent="CommandersTalentCarryBehaviorParent">
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Selendis"/>
+        <DamageResponse Handled="SelendisBucket_ExecutorBlade_ExecutorPower_Stacks" Location="Attacker" TargetFilters="Heroic;Hallucination">
+            <RequireEffectArray value="Selendis_ExecutorBlade_Damage"/>
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Selendis_ExecutorBlade_ExecutorCharge_CasterBehavior">
+        <InfoIcon value="Assets\Textures\btn-ability-protoss-lightningdash.dds"/>
+        <BehaviorCategories index="Restorable" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Selendis"/>
+        <RemoveValidatorArray value="Selendis_ExecutorBlade_ExecutorCharge_TargetHasBehavior"/>
+        <Duration value="2"/>
+        <FinalEffect value="Selendis_ExecutorBlade_ExecutorCharge_RemoveCasterUnitTrackerBehavior"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SelendisPowerStrikeFinalCut@CarryBehavior" parent="CommandersTalentCarryBehaviorParent">
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Selendis"/>
+        <DamageResponse Handled="SelendisPowerStrikeFinalCut@ApplyFinalCutCasterBuff" Location="Attacker" TargetFilters="Heroic;-">
+            <RequireEffectArray value="SelendisPowerStrike@Damage"/>
+            <RequireEffectArray value="SelendisPowerStrike@ExpireDamage"/>
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorUnitTracker id="Selendis_ExecutorBlade_ExecutorCharge_UnitTracker">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Selendis"/>
+        <MaxTrackedUnits value="1"/>
+        <UnitAddedAtMaxRule value="ReplaceOldest"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorUnitTracker>
+    <CBehaviorBuff id="Selendis_ExecutorBlade_ExecutorCharge_TargetBehavior">
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Selendis"/>
+        <RemoveValidatorArray value="Selendis_ExecutorBlade_ExecutorCharge_TargetInCasterRange"/>
+        <Duration value="2"/>
+        <InitialEffect value="Selendis_ExecutorBlade_ExecutorCharge_ApplyCasterBehavior"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SelendisBucket_PowerStrike_PsionicDashBuff" parent="CommandersShield">
+        <InfoIcon value="assets\Icons\Common_General\Icon_General_ProtectiveShield.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Selendis"/>
+        <DisplayDuration index="Self" value="0"/>
+        <DisplayDuration index="Ally" value="0"/>
+        <DisplayDuration index="Enemy" value="0"/>
+        <MaxStackCount value="3"/>
+        <Duration value="5"/>
+        <DamageResponse>
+            <ModifyLimitVitalMaxFractionArray index="Life" value="0.05"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SelendisBucket_PowerStrike_PsionicDashCarryBehavior" parent="CommandersTalentCarryBehaviorParent">
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Selendis"/>
+        <DamageResponse Handled="SelendisBucket_PowerStrike_ApplyPsionicDashCasterBuff" Location="Attacker" TargetFilters="Heroic;-">
+            <RequireEffectArray value="SelendisPowerStrike@Damage"/>
+            <RequireEffectArray value="SelendisPowerStrike@ExpireDamage"/>
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SelendisBucket_ExecutorBlade_ExecutorPower_Stacks" parent="CommandersStacksBehaviorParent">
+        <Face value="SelendisBucket_ExecutorBlade_ExecutorPower"/>
+        <InfoIcon value="Assets\Textures\btn-ability-protoss-shadowblade.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Selendis"/>
+        <MaxStackCount value="50"/>
+        <DamageResponse Location="Attacker">
+            <ModifyAmount value="5"/>
+            <RequireEffectInChainArray value="Selendis_ExecutorBlade_Damage"/>
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SelendisBucket_VindicatorCalldown_MothershipField" parent="CommandersSilence">
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Selendis"/>
+        <RemoveValidatorArray value="SelendisBucket_HasMothershipField"/>
+        <RemoveValidatorArray value="Selendis_VindicatorCalldown_TargetHasPeriodChecker"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SelendisBucket_VindicatorsBeam_MothershipPower_Stacks" parent="CommandersStacksBehaviorParent">
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Selendis"/>
+        <DisableValidatorArray value="SelendisBucket_VindicatorsBeam_MothershipPower_HasNot25Stacks"/>
+        <MaxStackCount value="25"/>
+        <RefreshEffect value="SelendisBucket_VindicatorsBeam_MothershipPower_QuestComplete"/>
+        <InfoIcon value="Assets\Icons\Hero_Selendis\Icon_Hero_Selendis_VindicatorsBeam_var3.dds"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Selendis_ExecutorBlade_ImpalingBlade_CooldownBehavior" parent="CommandersTalentBehaviorParent">
+        <InfoIcon value="Assets\Textures\btn-ability-protoss-shadowblade.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Selendis"/>
+        <MaxStackCount value="5"/>
+        <Duration value="2"/>
+        <PeriodicEffect value="Selendis_ExecutorBlade_ImpalingBlade_ModifyCooldown"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SelendisBucket_PhaseWeapon" parent="CommandersTalentBehaviorParent">
+        <InfoIcon value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel2.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Selendis"/>
+        <Duration value="8"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SelendisBucket_InTheHeatOfBattle_DebuffBehavior" parent="CommandersTalentBehaviorParent">
+        <Alignment value="Negative"/>
+        <BehaviorCategories index="Slow" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Selendis"/>
+        <Duration value="3"/>
+        <Modification>
+            <AdditiveMoveSpeedFactor value="-0.15"/>
+            <AdditiveAttackSpeedFactor value="-0.15"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SelendisBucket_InTheHeatOfBattle_MainBehavior" parent="CommandersTalentBehaviorParent">
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel3.dds"/>
+        <BehaviorCategories index="Fast" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Selendis"/>
+        <Duration value="6"/>
+        <Modification>
+            <AdditiveMoveSpeedFactor value="0.15"/>
+            <AdditiveAttackSpeedFactor value="0.15"/>
+        </Modification>
+        <DamageResponse Handled="SelendisBucket_InTheHeatOfBattle_ImpactSet" Location="Attacker" TargetFilters="Heroic;-">
+            <RequireEffectInChainArray value="Selendis_Weapon_Damage"/>
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SelendisBucket_InTheHeatOfBattle_CarryBehavior" parent="CommandersTalentCarryBehaviorParent">
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Selendis"/>
+        <DamageResponse Handled="SelendisBucket_InTheHeatOfBattle_DummyTriggerSet" Location="Attacker" TargetFilters="Heroic;Player,Ally,Neutral">
+            <RequireEffectInChainArray value="Selendis_Weapon_Damage"/>
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SelendisBucket_IntuitiveAttack_MainStacks" parent="CommandersTalentBehaviorParent">
+        <InfoIcon value="Assets\Icons\Common_General\Icon_General_AutoAttack_Base.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Selendis"/>
+        <MaxStackCount value="10"/>
+        <Duration value="10"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SelendisBucket_IntuitiveAttack_CarryBehavior" parent="CommandersTalentCarryBehaviorParent">
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Selendis"/>
+        <DisableValidatorArray value="SelendisBucket_IntuitiveAttack_HasStacks"/>
+        <DamageResponse Handled="SelendisBucket_IntuitiveAttack_ImpactSet" Location="Attacker">
+            <RequireEffectArray value="Selendis_Weapon_Damage"/>
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Selendis_TemplarWillpower_ShieldBehavior" parent="CommandersShield">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Selendis"/>
+        <DisplayDuration index="Self" value="0"/>
+        <DisplayDuration index="Ally" value="0"/>
+        <DisplayDuration index="Enemy" value="0"/>
+        <Duration value="4"/>
+        <DamageResponse ModifyLimit="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SelendisBucket_TemplarWillPower_Inspiration" parent="CommandersTalentCarryBehaviorParent">
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Selendis"/>
+        <DisableValidatorArray value="SelendisBucket_CasterHasTemplarWillpowerShields"/>
+        <DamageResponse Location="Attacker" ModifyFraction="1.2">
+            <RequireEffectArray value="Selendis_Weapon_Damage"/>
+            <Chance value="1"/>
+        </DamageResponse>
+        <BehaviorCategories index="Temporary" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SelendisBucket_VindicatorsPower_MothershipBeam_CarryBehavior" parent="CommandersTalentCarryBehaviorParent">
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Selendis"/>
+        <DisableValidatorArray value="SelendisBucket_VindicatorsBeam_MothershipPower_HasNot25Stacks"/>
+        <DamageResponse Handled="SelendisBucket_VindicatorsBeam_MothershipPower_ApplyStack" Location="Attacker" TargetFilters="Heroic;-">
+            <RequireEffectInChainArray value="Selendis_VindicatorsBeam_Damage"/>
+            <Chance value="1"/>
+            <Cost>
+                <Charge Link="Behavior/CommandersStacksBehaviorParent"/>
+                <Cooldown Link="Behavior/CommandersStacksBehaviorParent"/>
+            </Cost>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SelendisBucket_ExecutorBlade_AdvancedCharge_CarryBehavior" parent="CommandersTalentCarryBehaviorParent">
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Selendis"/>
+        <DamageResponse Handled="SelendisBucket_ExecutorBlade_AdvancedBlade" Location="Attacker" TargetFilters="Heroic;-">
+            <RequireEffectArray value="Selendis_ExecutorChargeApproach_Damage"/>
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SelendisBucket_VindicatorsBeam_MothershipPower_QuestComplete" parent="CommandersTalentCarryBehaviorParent">
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Selendis"/>
+        <InitialEffect value="SelendisBucket_VindicatorsBeam_MothershipPower_IncreaseSlow"/>
+        <FinalEffect value="SelendisBucket_VindicatorsBeam_MothershipPower_DecreaseSlow"/>
+        <DamageResponse Location="Attacker" ModifyFraction="2" DamageValue="Original">
+            <RequireEffectInChainArray value="Selendis_VindicatorsBeam_Damage"/>
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Selendis_VindicatorsBeam_ThermalFire_MarkerBehavior" parent="CommandersTalentBehaviorParent">
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Selendis"/>
+        <Duration value="0.25"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SelendisBucket_BladesOfZealot_CarryBehavior" parent="CommandersTalentCarryBehaviorParent">
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Selendis"/>
+        <Modification>
+            <AdditiveAttackSpeedFactor value="0.1"/>
+        </Modification>
+        <DamageResponse Handled="SelendisBucket_BladesOfZealot_ApplyStackBehavior" Location="Attacker" TargetFilters="Heroic;Player,Ally,Neutral,Hallucination">
+            <RequireEffectArray value="Selendis_Weapon_Damage"/>
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SelendisBucket_BladesOfZealot_Stacks" parent="CommandersTalentBehaviorParent">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoIcon value="Assets\Icons\Common_General\Icon_General_AutoAttack_Damage.dds"/>
+        <BehaviorCategories index="Temporary" value="1"/>
+        <BehaviorCategories index="Passive" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Selendis"/>
+        <MaxStackCount value="50"/>
+        <MaxStackCountPerCaster value="50"/>
+        <DamageResponse Location="Attacker" DamageValue="Original">
+            <ModifyAmount value="1"/>
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Selendis_VindicatorCalldown_PeriodChecker">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Selendis"/>
+        <RemoveValidatorArray value="TargetDoesNotHaveImmuneToCrowdControlBehavior"/>
+        <RemoveValidatorArray value="TargetNotDead"/>
+        <RemoveValidatorArray value="TargetNotInvulnerableExceptTimeStop"/>
+        <RemoveValidatorArray value="TargetNotUnstoppable"/>
+        <RemoveValidatorArray value="SYS_HasNotResetBehavior"/>
+        <Duration value="0.125"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Selendis_VindicatorCalldown_TimedBehavior" parent="CommandersTalentBehaviorParent">
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Selendis"/>
+        <Duration value="10"/>
+        <InitialEffect value="Selendis_VindicatorCalldown_Search"/>
+        <PeriodicEffect value="Selendis_VindicatorCalldown_Search"/>
+        <FinalEffect value="Suicide"/>
+        <Modification>
+            <ModifyFlags index="SuppressMoving" value="1"/>
+        </Modification>
+        <MaxStackCountPerCaster value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SelendisPowerStrikeTemplarsZeal@TimedDamageBehavior" parent="CommandersTalentBehaviorParent">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Selendis"/>
+        <Duration value="1"/>
+        <FinalEffect value="SelendisPowerStrikeTemplarsZeal@TimedDamage"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Selendis_VindicatorCalldown_Blind" parent="CommandersBlind">
+        <Name value="Behavior/Name/Selendis_VindicatorCalldown_Blind"/>
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Selendis"/>
+        <RemoveValidatorArray value="Selendis_VindicatorCalldown_TargetHasPeriodChecker"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <DisplayDuration index="Self" value="0"/>
+        <DisplayDuration index="Ally" value="0"/>
+        <DisplayDuration index="Enemy" value="0"/>
+        <Duration value="0.25"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Selendis_VindicatorCalldown_WeaponBehavior">
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Selendis"/>
+        <Period value="0.85"/>
+        <PeriodicEffect value="Selendis_VindicatorCalldown_Weapon_Search"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SelendisBucket_TemplarWillpower_PhasbeBulwark_CarryBehavior" parent="CommandersTalentCarryBehaviorParent">
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Selendis"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SelendisBucket_TemplarWillPower_OverloadShields" parent="CommandersTalentCarryBehaviorParent">
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Selendis"/>
+        <Duration value="8"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SelendisBucket_InTheHeatOfBattle_ExtraDamageController" parent="CommandersTalentCarryBehaviorParent">
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Selendis"/>
+        <DamageResponse Location="Attacker" ModifyFraction="1.6" TargetFilters="Heroic;-">
+            <RequireEffectInChainArray value="Selendis_Weapon_Damage"/>
+            <ValidatorArray value="LifeLTHalf"/>
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Selendis_ExecutorCharge_Charging">
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Selendis"/>
+        <RemoveValidatorArray value="Selendis_ExecutorCharge_HasOrderCombine"/>
+        <RemoveValidatorArray value="CasterNotDeadOrSilencedOrStasisOrStunnedExceptTimeStop"/>
+        <RemoveValidatorArray value="Selendis_ExecutorCharge_TargetRangeValidator"/>
+        <RemoveValidatorArray value="CasterNotHoldingFireCombine"/>
+        <Duration value="1.5"/>
+        <FinalEffect value="Selendis_ExecutorCharge_ClearOrder"/>
+        <Modification MoveSpeedMinimum="18">
+            <StateFlags index="SuppressCollision" value="1"/>
+            <AbilLinkDisableArray value="HoldFire"/>
+        </Modification>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Selendis_ExecutorBlade_ExecutorSlow" parent="CommandersSlow">
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Selendis"/>
+        <Duration value="0.75"/>
+        <Modification>
+            <AdditiveMoveSpeedFactor value="-0.75"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Selendis_ExecutorChargeApproach_Slowed" parent="CommandersSlow">
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Selendis"/>
+        <Duration value="1.25"/>
+        <Modification UnifiedMoveSpeedFactor="-0.75"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SelendisPowerStrike@Slow" parent="CommandersSlow">
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Selendis"/>
+        <Duration value="1"/>
+        <Modification>
+            <AdditiveMoveSpeedFactor value="-0.15"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Selendis_VindicatorsBeam_SlowBehavior" parent="CommandersSlow">
+        <EditorCategories value="AbilityorEffectType:Units,CommandersHero:Selendis"/>
+        <Duration value="1"/>
+        <Modification>
+            <AdditiveMoveSpeedFactor value="-0.25"/>
+            <AdditiveAttackSpeedFactor value="-0.25"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CUpgrade id="LevelUp_Selendis">
+        <EditorCategories value="UpgradeType:LevelUpgrade,CommandersHero:Selendis"/>
+        <MaxLevel value="30"/>
+        <EffectArray Operation="Multiply" Reference="Unit,HeroSelendis,LifeMax" Value="1.04"/>
+        <EffectArray Reference="Unit,HeroSelendis,EnergyMax" Value="10"/>
+        <EffectArray Operation="Multiply" Reference="Unit,HeroSelendis,LifeStart" Value="1.04"/>
+        <EffectArray Reference="Unit,HeroSelendis,EnergyStart" Value="10"/>
+        <EffectArray Operation="Multiply" Reference="Unit,HeroSelendis,LifeRegenRate" Value="1.04"/>
+        <EffectArray Operation="Multiply" Reference="Unit,HeroSelendis,EnergyRegenRate" Value="1.04"/>
+        <EffectArray Operation="Multiply" Reference="Effect,SelendisBucket_IntuitiveAttack_Damage,Amount" Value="1.04"/>
+        <EffectArray Operation="Multiply" Reference="Effect,Selendis_ExecutorBlade_Damage,Amount" Value="1.04"/>
+        <EffectArray Operation="Multiply" Reference="Effect,SelendisPowerStrike@ExpireDamage,Amount" Value="1.04"/>
+        <EffectArray Operation="Multiply" Reference="Effect,SelendisPowerStrikeTemplarsZeal@TimedDamage,Amount" Value="1.04"/>
+        <EffectArray Operation="Multiply" Reference="Effect,Selendis_ExecutorChargeApproach_Damage,Amount" Value="1.04"/>
+        <EffectArray Operation="Multiply" Reference="Effect,Selendis_VindicatorCalldown_Weapon_Damage,Amount" Value="1.04"/>
+        <EffectArray Operation="Multiply" Reference="Effect,Selendis_VindicatorsBeam_Damage,Amount" Value="1.04"/>
+        <EffectArray Operation="Multiply" Reference="Effect,Selendis_VindicatorsBeam_ThermalFire_Damage,Amount" Value="1.04"/>
+        <EffectArray Operation="Multiply" Reference="Effect,Selendis_Weapon_Damage,Amount" Value="1.04"/>
+    </CUpgrade>
+    <CUpgrade id="SelendisBucket_TemplarWillpower_ReconfigurationShields">
+        <EditorCategories value="CommandersHero:Selendis,UpgradeType:Talents"/>
+        <EffectArray Operation="Set" Reference="Behavior,Selendis_TemplarWillpower_ShieldBehavior,Duration" Value="6.000000"/>
+    </CUpgrade>
+</Catalog>

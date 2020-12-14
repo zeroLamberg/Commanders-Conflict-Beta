@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CUser id="Storm_Announsers">
+        <Fields Id="AnnouncerData" Type="String" EditorColumn="1"/>
+        <Instances Id="[Default]"/>
+        <Instances Id="1">
+            <String String="ProtossWoman">
+                <Field Id="AnnouncerData"/>
+            </String>
+        </Instances>
+    </CUser>
+</Catalog>
