@@ -1,0 +1,3634 @@
+include "TriggerLibs/NativeLib"
+include "LibAIAI_h"
+include "LibCore_h"
+include "LibGame_h"
+
+include "LibGDHL_h"
+
+//--------------------------------------------------------------------------------------------------
+// Library: Game Data Helper
+//--------------------------------------------------------------------------------------------------
+// External Library Initialization
+void libGDHL_InitLibraries () {
+    libNtve_InitVariables();
+    libAIAI_InitVariables();
+    libCore_InitVariables();
+    libGame_InitVariables();
+}
+
+// Variable Initialization
+bool libGDHL_InitVariables_completed = false;
+
+void libGDHL_InitVariables () {
+    if (libGDHL_InitVariables_completed) {
+        return;
+    }
+
+    libGDHL_InitVariables_completed = true;
+
+    libGDHL_gv_talentMarineDropBattlegroup = UnitGroupEmpty();
+}
+
+// Presets
+// Functions
+void libGDHL_gf_MercAICreateMercPath (unit lp_merc, int lp_groupIndex, int lp_nextPoint) {
+    // Variable Declarations
+    int lv_itPointNumber;
+    int lv_team;
+    int lv_lane;
+    int lv_itPoint;
+    int lv_itPath;
+
+    // Automatic Variable Declarations
+    int auto15EECEB3_ae;
+    int auto7A6F289B_ae;
+    int auto9BA5EA82_ae;
+    int autoCF0243D0_ae;
+
+    // Variable Initialization
+
+    // Implementation
+    lv_team = libGame_gf_PlayerGetPlayerTeam(UnitGetOwner(lp_merc));
+    lv_lane = libAIAI_gf_MercAIGetMercGroupLane(lp_merc);
+    libAIAI_gv_mercsGroupInfo[lp_groupIndex].lv_havePath = true;
+    libNtve_gf_SendActorMessageToUnit(lp_merc, "SetMinimapVisibility 1");
+    if ((libAIAI_gv_mercsGroupInfo[lp_groupIndex].lv_mercLeaderPath[1] == 0) && (libAIAI_gv_mercsGroupInfo[lp_groupIndex].lv_mercLeaderPath[2] == 0) && (libAIAI_gv_mercsGroupInfo[lp_groupIndex].lv_mercLeaderPath[3] == 0)) {
+        PathCreateForUnit(libGame_gv_teams[1].lv_teamPlayerGroupNoNPCPlayers, lp_merc);
+        libAIAI_gv_mercsGroupInfo[lp_groupIndex].lv_mercLeaderPath[1] = PathLastCreated();
+        PathCreateForUnit(libGame_gv_teams[2].lv_teamPlayerGroupNoNPCPlayers, lp_merc);
+        libAIAI_gv_mercsGroupInfo[lp_groupIndex].lv_mercLeaderPath[2] = PathLastCreated();
+        PathCreateForUnit(libCore_gv_playerGroupFromPlayer[libCore_gv_oBSERVER_ObserverUIPlayer], lp_merc);
+        libAIAI_gv_mercsGroupInfo[lp_groupIndex].lv_mercLeaderPath[3] = PathLastCreated();
+        if ((UnitGetOwner(lp_merc) == libCore_gv_cOMPUTER_Blue)) {
+            PathSetColor(libAIAI_gv_mercsGroupInfo[lp_groupIndex].lv_mercLeaderPath[1], c_pathLocationMinimap, ColorWithAlpha(0.00, 50.20, 100.00, 89.41));
+            PathSetColor(libAIAI_gv_mercsGroupInfo[lp_groupIndex].lv_mercLeaderPath[2], c_pathLocationMinimap, ColorWithAlpha(100.00, 24.71, 24.71, 89.02));
+            PathSetColor(libAIAI_gv_mercsGroupInfo[lp_groupIndex].lv_mercLeaderPath[3], c_pathLocationMinimap, ColorWithAlpha(0.00, 50.20, 100.00, 89.41));
+        }
+        else {
+            PathSetColor(libAIAI_gv_mercsGroupInfo[lp_groupIndex].lv_mercLeaderPath[1], c_pathLocationMinimap, ColorWithAlpha(100.00, 24.71, 24.71, 89.02));
+            PathSetColor(libAIAI_gv_mercsGroupInfo[lp_groupIndex].lv_mercLeaderPath[2], c_pathLocationMinimap, ColorWithAlpha(0.00, 50.20, 100.00, 89.41));
+            PathSetColor(libAIAI_gv_mercsGroupInfo[lp_groupIndex].lv_mercLeaderPath[3], c_pathLocationMinimap, ColorWithAlpha(100.00, 24.71, 24.71, 89.02));
+        }
+    }
+
+    auto15EECEB3_ae = libCore_gv_bALMaxMercenaryPathLayers;
+    lv_itPath = 1;
+    for ( ; lv_itPath <= auto15EECEB3_ae ; lv_itPath += 1 ) {
+        PathSetDestinationUnit(libAIAI_gv_mercsGroupInfo[lp_groupIndex].lv_mercLeaderPath[lv_itPath], libGame_gv_teams[libGame_gf_EnemyTeamNumberOfTeam(lv_team)].lv_core);
+        PathSetSourceUnit(libAIAI_gv_mercsGroupInfo[lp_groupIndex].lv_mercLeaderPath[lv_itPath], lp_merc);
+        PathSetVisible(libAIAI_gv_mercsGroupInfo[lp_groupIndex].lv_mercLeaderPath[lv_itPath], c_pathLocationWorld, false);
+        PathSetVisible(libAIAI_gv_mercsGroupInfo[lp_groupIndex].lv_mercLeaderPath[lv_itPath], c_pathLocationMinimap, true);
+    }
+    auto7A6F289B_ae = libGame_gv_laneInfo.lv_lanePointsCount[lv_lane];
+    lv_itPointNumber = lp_nextPoint;
+    for ( ; lv_itPointNumber <= auto7A6F289B_ae ; lv_itPointNumber += 1 ) {
+        auto9BA5EA82_ae = libCore_gv_bALMaxMercenaryPathLayers;
+        lv_itPath = 1;
+        for ( ; lv_itPath <= auto9BA5EA82_ae ; lv_itPath += 1 ) {
+            if ((libAIAI_gv_mercsGroupInfo[lp_groupIndex].lv_pointsCountBeforeLane2222222222222 > 0)) {
+                autoCF0243D0_ae = libAIAI_gv_mercsGroupInfo[lp_groupIndex].lv_pointsCountBeforeLane2222222222222;
+                lv_itPoint = 1;
+                for ( ; lv_itPoint <= autoCF0243D0_ae ; lv_itPoint += 1 ) {
+                    PathAddWayPoint(libAIAI_gv_mercsGroupInfo[lp_groupIndex].lv_mercLeaderPath[lv_itPath], libAIAI_gv_mercsGroupInfo[lp_groupIndex].lv_pointsBeforeLane[lv_team][lv_itPoint]);
+                }
+            }
+
+            PathAddWayPoint(libAIAI_gv_mercsGroupInfo[lp_groupIndex].lv_mercLeaderPath[lv_itPath], libGame_gv_laneInfo.lv_lanePointsForTeam[lv_team][lv_lane][lv_itPointNumber]);
+        }
+    }
+}
+
+void libGDHL_gf_GameDataAddHeroTraitWeaponEffecttoAlliesfromPlayer (int lp_player) {
+    // Variable Declarations
+    int lv_effectSlot;
+
+    // Automatic Variable Declarations
+    playergroup auto852FDEBB_g;
+    int auto852FDEBB_var;
+    string autoC8D17A68_val;
+
+    // Variable Initialization
+    lv_effectSlot = (libGame_gv_players[lp_player].lv_playerAllySlot-1);
+
+    // Implementation
+    auto852FDEBB_g = libGame_gv_teams[libGame_gf_PlayerGetPlayerTeam(lp_player)].lv_teamPlayerGroupNoNPCPlayers;
+    auto852FDEBB_var = -1;
+    while (true) {
+        auto852FDEBB_var = PlayerGroupNextPlayer(auto852FDEBB_g, auto852FDEBB_var);
+        if (auto852FDEBB_var < 0) { break; }
+        if ((PlayerType(auto852FDEBB_var) != c_playerTypeUser) && (PlayerStatus(auto852FDEBB_var) != c_playerStatusActive)) {
+            continue;
+        }
+
+        autoC8D17A68_val = UnitGetType(libGame_gv_players[lp_player].lv_heroUnit);
+        if (autoC8D17A68_val == "Hero_Raynor") {
+            CatalogFieldValueSet(c_gameCatalogEffect, "Storm_Weapon_HeroTraitWeaponSet", "EffectArray[" + IntToString(lv_effectSlot) + "]", auto852FDEBB_var, ("Raynor_AdvancedOptics_InitialSwitch"));
+        }
+        else {
+        }
+    }
+}
+
+bool libGDHL_gf_TalentHardenedFocusBasicAbilitiesOnCD (int lp_player) {
+    // Variable Declarations
+    int lv_itAbilityIndex;
+    string lv_abilityLink;
+    int lv_heroIndex;
+
+    // Automatic Variable Declarations
+    int autoD034CCEF_ae;
+
+    // Variable Initialization
+
+    // Implementation
+    lv_heroIndex = libCore_gf_CommandersGetHeroIndexOfPlayerHero(lp_player);
+    autoD034CCEF_ae = libCore_gv_heroData[lv_heroIndex].lv_abilitiesCount;
+    lv_itAbilityIndex = 1;
+    for ( ; lv_itAbilityIndex <= autoD034CCEF_ae ; lv_itAbilityIndex += 1 ) {
+        lv_abilityLink = libCore_gv_heroData[lv_heroIndex].lv_abilitiesData[lv_itAbilityIndex].lv_abilityLink;
+        if ((libCore_gv_heroData[lv_heroIndex].lv_abilitiesData[lv_itAbilityIndex].lv_isAffectedByCooldownReduction == true) && ((CatalogFieldValueGet(c_gameCatalogAbil, lv_abilityLink, "TechAliasArray[" + IntToString(0) + "]", c_playerAny) == "Ability1") || (CatalogFieldValueGet(c_gameCatalogAbil, lv_abilityLink, "TechAliasArray[" + IntToString(0) + "]", c_playerAny) == "Ability2") || (CatalogFieldValueGet(c_gameCatalogAbil, lv_abilityLink, "TechAliasArray[" + IntToString(0) + "]", c_playerAny) == "Ability3"))) {
+            if ((libCore_gv_heroData[lv_heroIndex].lv_abilitiesData[lv_itAbilityIndex].lv_isUsesCharges == true)) {
+                if ((UnitGetCooldown(libGame_gf_PlayerHeroUnit(lp_player), CatalogFieldValueGet(c_gameCatalogAbil, lv_abilityLink, "Cost[" + IntToString(0) + "].Charge.Link", c_playerAny)) <= 0.0)) {
+                    return false;
+                }
+            }
+            else {
+                if ((UnitGetCooldown(libGame_gf_PlayerHeroUnit(lp_player), CatalogFieldValueGet(c_gameCatalogAbil, lv_abilityLink, "Cost[" + IntToString(0) + "].Cooldown.Link", c_playerAny)) <= 0.0)) {
+                    return false;
+                }
+            }
+        }
+    }
+    return true;
+}
+
+void libGDHL_gf_HearthstoneChangeHeroModel (int lp_player, unit lp_heroUnit) {
+    // Automatic Variable Declarations
+    // Implementation
+    CatalogLinkReplace(lp_player, c_gameCatalogModel, CatalogReferenceGet("Actor,HeroGenericHearthstoneUnit,Model", lp_player), CatalogFieldValueGet(c_gameCatalogHero, libCore_gv_heroData[libCore_gf_CommandersGetHeroIndexOfUnit(lp_heroUnit)].lv_heroCatalogLink, "Model", c_playerAny));
+    CatalogFieldValueSet(c_gameCatalogEffect, "HeroGeneric_Hearthstone_SearchRadiusEffect", "AreaArray[" + IntToString(0) + "].Radius", lp_player, FixedToString(libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogUnit, UnitGetType(lp_heroUnit), "Radius", lp_player), c_fixedPrecisionAny));
+}
+
+void libGDHL_gf_CooldownReduceCooldownofHeroAbathurVehicleHero (unit lp_unit, int lp_player, fixed lp_time, bool lp_reset, bool lp_ignoreCDRRequirment, bool lp_includeHeroicAbility) {
+    // Variable Declarations
+    int lv_heroIndex;
+    int lv_i;
+    string lv_abilLink;
+    string lv_cooldownLink;
+    string lv_chargeLink;
+    fixed lv_cooldown_reduction_time;
+
+    // Automatic Variable Declarations
+    int autoB68FB4DD_ae;
+
+    // Variable Initialization
+    lv_heroIndex = libCore_gf_CommandersGetHeroIndexOfPlayerHero(lp_player);
+    lv_cooldownLink = "";
+    lv_chargeLink = "";
+    lv_cooldown_reduction_time = (-1.0 * lp_time);
+
+    // Implementation
+    autoB68FB4DD_ae = libCore_gv_heroData[lv_heroIndex].lv_abilitiesCount;
+    lv_i = 1;
+    for ( ; lv_i <= autoB68FB4DD_ae ; lv_i += 1 ) {
+        lv_abilLink = libCore_gv_heroData[lv_heroIndex].lv_abilitiesData[lv_i].lv_abilityLink;
+        if (((lp_ignoreCDRRequirment == true) || ((libCore_gv_heroData[lv_heroIndex].lv_abilitiesData[lv_i].lv_isAffectedByCooldownReduction == true) && (lp_ignoreCDRRequirment == false))) && ((lp_includeHeroicAbility == false) || ((libCore_gv_heroData[lv_heroIndex].lv_abilitiesData[lv_i].lv_abilityType == libCore_ge_HeroAbilityType_Heroic) && (lp_includeHeroicAbility == true)))) {
+            if ((lp_reset == false)) {
+                lv_cooldownLink = CatalogFieldValueGet(c_gameCatalogAbil, lv_abilLink, "Cost[" + IntToString(0) + "].Cooldown.Link", lp_player);
+                UnitModifyCooldown(lp_unit, lv_cooldownLink, lv_cooldown_reduction_time, c_cooldownOperationAdd);
+                lv_chargeLink = CatalogFieldValueGet(c_gameCatalogAbil, lv_abilLink, "Cost[" + IntToString(0) + "].Charge.Link", lp_player);
+                UnitAddChargeRegenRemaining(lp_unit, lv_chargeLink, lv_cooldown_reduction_time);
+            }
+            else {
+                UnitAbilityReset(lp_unit, AbilityCommand(lv_abilLink, 0), c_spendLocationAll);
+            }
+        }
+    }
+}
+
+point libGDHL_gf_TargetCalculation (point lp_targetPoint, point lp_casterPoint, region lp_bFGRegion) {
+    // Variable Declarations
+    point lv_casterPoint;
+    point lv_targetPoint;
+    fixed lv_targetXToEdgeOfMap;
+    fixed lv_targetYToEdgeOfMap;
+    fixed lv_targetAngle;
+    fixed lv_triangle1C;
+    fixed lv_triangle2C;
+    point lv_abilityTargetPoint;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_casterPoint = lp_casterPoint;
+    lv_targetPoint = lp_targetPoint;
+
+    // Implementation
+    if ((PointGetX(lv_casterPoint) <= PointGetX(lv_targetPoint)) && (PointGetY(lv_casterPoint) <= PointGetY(lv_targetPoint))) {
+        lv_targetXToEdgeOfMap = (PointGetX(RegionGetBoundsMax(lp_bFGRegion)) - PointGetX(lv_targetPoint));
+        lv_targetYToEdgeOfMap = (PointGetY(RegionGetBoundsMax(lp_bFGRegion)) - PointGetY(lv_targetPoint));
+        lv_targetAngle = AngleBetweenPoints(lv_casterPoint, lv_targetPoint);
+        if ((Cos(lv_targetAngle) == 0.0)) {
+            lv_abilityTargetPoint = Point(PointGetX(lv_targetPoint), PointGetY(RegionGetBoundsMax(lp_bFGRegion)));
+        }
+        else {
+            lv_triangle1C = (lv_targetXToEdgeOfMap / Cos(lv_targetAngle));
+            lv_targetAngle = (90.0 - lv_targetAngle);
+            if ((Cos(lv_targetAngle) == 0.0)) {
+                lv_abilityTargetPoint = Point(PointGetX(RegionGetBoundsMax(lp_bFGRegion)), PointGetY(lv_targetPoint));
+            }
+            else {
+                lv_triangle2C = (lv_targetYToEdgeOfMap / Cos(lv_targetAngle));
+                if ((lv_triangle1C < lv_triangle2C)) {
+                    lv_abilityTargetPoint = libNtve_gf_PointOffsetTowardsPoint(lv_targetPoint, (lv_triangle1C * -1.0), lv_casterPoint);
+                }
+                else {
+                    lv_abilityTargetPoint = libNtve_gf_PointOffsetTowardsPoint(lv_targetPoint, (lv_triangle2C * -1.0), lv_casterPoint);
+                }
+            }
+        }
+    }
+    else if ((PointGetX(lv_casterPoint) >= PointGetX(lv_targetPoint)) && (PointGetY(lv_casterPoint) <= PointGetY(lv_targetPoint))) {
+        lv_targetXToEdgeOfMap = PointGetX(lv_targetPoint);
+        lv_targetYToEdgeOfMap = (PointGetY(RegionGetBoundsMax(lp_bFGRegion)) - PointGetY(lv_targetPoint));
+        lv_targetAngle = (AngleBetweenPoints(lv_casterPoint, lv_targetPoint) - 90.0);
+        if ((Cos(lv_targetAngle) == 0.0)) {
+            lv_abilityTargetPoint = Point(PointGetX(RegionGetBoundsMin(lp_bFGRegion)), PointGetY(lv_targetPoint));
+        }
+        else {
+            lv_triangle1C = (lv_targetYToEdgeOfMap / Cos(lv_targetAngle));
+            lv_targetAngle = (90.0 - lv_targetAngle);
+            if ((Cos(lv_targetAngle) == 0.0)) {
+                lv_abilityTargetPoint = Point(PointGetX(lv_targetPoint), PointGetY(RegionGetBoundsMax(lp_bFGRegion)));
+            }
+            else {
+                lv_triangle2C = (lv_targetXToEdgeOfMap / Cos(lv_targetAngle));
+                if ((lv_triangle1C < lv_triangle2C)) {
+                    lv_abilityTargetPoint = libNtve_gf_PointOffsetTowardsPoint(lv_targetPoint, (lv_triangle1C * -1.0), lv_casterPoint);
+                }
+                else {
+                    lv_abilityTargetPoint = libNtve_gf_PointOffsetTowardsPoint(lv_targetPoint, (lv_triangle2C * -1.0), lv_casterPoint);
+                }
+            }
+        }
+    }
+    else if ((PointGetX(lv_casterPoint) >= PointGetX(lv_targetPoint)) && (PointGetY(lv_casterPoint) >= PointGetY(lv_targetPoint))) {
+        lv_targetXToEdgeOfMap = PointGetX(lv_targetPoint);
+        lv_targetYToEdgeOfMap = PointGetY(lv_targetPoint);
+        lv_targetAngle = (AngleBetweenPoints(lv_casterPoint, lv_targetPoint) - 180.0);
+        if ((Cos(lv_targetAngle) == 0.0)) {
+            lv_abilityTargetPoint = Point(PointGetX(lv_targetPoint), PointGetY(RegionGetBoundsMin(lp_bFGRegion)));
+        }
+        else {
+            lv_triangle1C = (lv_targetXToEdgeOfMap / Cos(lv_targetAngle));
+            lv_targetAngle = (90.0 - lv_targetAngle);
+            if ((Cos(lv_targetAngle) == 0.0)) {
+                lv_abilityTargetPoint = Point(PointGetX(RegionGetBoundsMin(lp_bFGRegion)), PointGetY(lv_targetPoint));
+            }
+            else {
+                lv_triangle2C = (lv_targetYToEdgeOfMap / Cos(lv_targetAngle));
+                if ((lv_triangle1C < lv_triangle2C)) {
+                    lv_abilityTargetPoint = libNtve_gf_PointOffsetTowardsPoint(lv_targetPoint, (lv_triangle1C * -1.0), lv_casterPoint);
+                }
+                else {
+                    lv_abilityTargetPoint = libNtve_gf_PointOffsetTowardsPoint(lv_targetPoint, (lv_triangle2C * -1.0), lv_casterPoint);
+                }
+            }
+        }
+    }
+    else if ((PointGetX(lv_casterPoint) <= PointGetX(lv_targetPoint)) && (PointGetY(lv_casterPoint) >= PointGetY(lv_targetPoint))) {
+        lv_targetXToEdgeOfMap = (PointGetX(RegionGetBoundsMax(lp_bFGRegion)) - PointGetX(lv_targetPoint));
+        lv_targetYToEdgeOfMap = PointGetY(lv_targetPoint);
+        lv_targetAngle = (AngleBetweenPoints(lv_casterPoint, lv_targetPoint) - 270.0);
+        if ((Cos(lv_targetAngle) == 0.0)) {
+            lv_abilityTargetPoint = Point(PointGetX(RegionGetBoundsMax(lp_bFGRegion)), PointGetY(lv_targetPoint));
+        }
+        else {
+            lv_triangle1C = (lv_targetYToEdgeOfMap / Cos(lv_targetAngle));
+            lv_targetAngle = (90.0 - lv_targetAngle);
+            if ((Cos(lv_targetAngle) == 0.0)) {
+                lv_abilityTargetPoint = Point(PointGetX(lv_targetPoint), PointGetY(RegionGetBoundsMin(lp_bFGRegion)));
+            }
+            else {
+                lv_triangle2C = (lv_targetXToEdgeOfMap / Cos(lv_targetAngle));
+                if ((lv_triangle1C < lv_triangle2C)) {
+                    lv_abilityTargetPoint = libNtve_gf_PointOffsetTowardsPoint(lv_targetPoint, (lv_triangle1C * -1.0), lv_casterPoint);
+                }
+                else {
+                    lv_abilityTargetPoint = libNtve_gf_PointOffsetTowardsPoint(lv_targetPoint, (lv_triangle2C * -1.0), lv_casterPoint);
+                }
+            }
+        }
+    }
+    if ((lv_abilityTargetPoint != null)) {
+        return lv_abilityTargetPoint;
+    }
+    else {
+        return null;
+    }
+}
+
+string libGDHL_gf_HeroKatarinaCarriedWeaponBehavior (unit lp_unit) {
+    // Variable Declarations
+    string lv_carriedWeaponBehavior;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Implementation
+    if ((UnitHasBehavior2(lp_unit, "Katarina_Carried_Autorifle") == true)) {
+        lv_carriedWeaponBehavior = "Katarina_Carried_Autorifle";
+    }
+    else if ((UnitHasBehavior2(lp_unit, "Katarina_Carried_Chaingun") == true)) {
+        lv_carriedWeaponBehavior = "Katarina_Carried_Chaingun";
+    }
+    else if ((UnitHasBehavior2(lp_unit, "Katarina_Carried_Flamethrower") == true)) {
+        lv_carriedWeaponBehavior = "Katarina_Carried_Flamethrower";
+    }
+    else if ((UnitHasBehavior2(lp_unit, "Katarina_Carried_Snipe") == true)) {
+        lv_carriedWeaponBehavior = "Katarina_Carried_Snipe";
+    }
+    return lv_carriedWeaponBehavior;
+}
+
+string libGDHL_gf_HeroKatarinaEquippedWeaponBehavior (unit lp_unit) {
+    // Variable Declarations
+    string lv_equippedWeaponBehavior;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Implementation
+    if ((UnitHasBehavior2(lp_unit, "Katarina_Equipped_Autorifle") == true)) {
+        lv_equippedWeaponBehavior = "Katarina_Equipped_Autorifle";
+    }
+    else if ((UnitHasBehavior2(lp_unit, "Katarina_Equipped_Chaingun") == true)) {
+        lv_equippedWeaponBehavior = "Katarina_Equipped_Chaingun";
+    }
+    else if ((UnitHasBehavior2(lp_unit, "Katarina_Equipped_Flamethrower") == true)) {
+        lv_equippedWeaponBehavior = "Katarina_Equipped_Flamethrower";
+    }
+    else if ((UnitHasBehavior2(lp_unit, "Katarina_Equipped_Snipe") == true)) {
+        lv_equippedWeaponBehavior = "Katarina_Equipped_Snipe";
+    }
+    return lv_equippedWeaponBehavior;
+}
+
+string libGDHL_gf_HeroKatarinaChangeEquippedWeaponToCarried (unit lp_unit) {
+    // Variable Declarations
+    string lv_carriedWeaponBehavior;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Implementation
+    if ((UnitHasBehavior2(lp_unit, "Katarina_Equipped_Autorifle") == true)) {
+        lv_carriedWeaponBehavior = "Katarina_Carried_Autorifle";
+    }
+    else if ((UnitHasBehavior2(lp_unit, "Katarina_Equipped_Chaingun") == true)) {
+        lv_carriedWeaponBehavior = "Katarina_Carried_Chaingun";
+    }
+    else if ((UnitHasBehavior2(lp_unit, "Katarina_Equipped_Flamethrower") == true)) {
+        lv_carriedWeaponBehavior = "Katarina_Carried_Flamethrower";
+    }
+    else if ((UnitHasBehavior2(lp_unit, "Katarina_Equipped_Snipe") == true)) {
+        lv_carriedWeaponBehavior = "Katarina_Carried_Snipe";
+    }
+    return lv_carriedWeaponBehavior;
+}
+
+trigger auto_libGDHL_gf_HeroKatarinaAmmoAdd_Trigger = null;
+int auto_libGDHL_gf_HeroKatarinaAmmoAdd_lp_value;
+string auto_libGDHL_gf_HeroKatarinaAmmoAdd_lp_ammoType;
+unit auto_libGDHL_gf_HeroKatarinaAmmoAdd_lp_unit;
+
+void libGDHL_gf_HeroKatarinaAmmoAdd (int lp_value, string lp_ammoType, unit lp_unit) {
+    auto_libGDHL_gf_HeroKatarinaAmmoAdd_lp_value = lp_value;
+    auto_libGDHL_gf_HeroKatarinaAmmoAdd_lp_ammoType = lp_ammoType;
+    auto_libGDHL_gf_HeroKatarinaAmmoAdd_lp_unit = lp_unit;
+
+    if (auto_libGDHL_gf_HeroKatarinaAmmoAdd_Trigger == null) {
+        auto_libGDHL_gf_HeroKatarinaAmmoAdd_Trigger = TriggerCreate("auto_libGDHL_gf_HeroKatarinaAmmoAdd_TriggerFunc");
+    }
+
+    TriggerExecute(auto_libGDHL_gf_HeroKatarinaAmmoAdd_Trigger, false, false);
+}
+
+bool auto_libGDHL_gf_HeroKatarinaAmmoAdd_TriggerFunc (bool testConds, bool runActions) {
+    int lp_value = auto_libGDHL_gf_HeroKatarinaAmmoAdd_lp_value;
+    string lp_ammoType = auto_libGDHL_gf_HeroKatarinaAmmoAdd_lp_ammoType;
+    unit lp_unit = auto_libGDHL_gf_HeroKatarinaAmmoAdd_lp_unit;
+
+    // Variable Declarations
+    int lv_maxAmmo;
+    int lv_currentStacks;
+    int lv_ammo;
+    string lv_chargeString;
+    int lv_owner;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_maxAmmo = libGDHL_gf_HeroKatarinaAmmoDefaultAmmoValue(lp_ammoType);
+    lv_owner = UnitGetOwner(lp_unit);
+
+    // Implementation
+    lv_currentStacks = UnitBehaviorCount(lp_unit, ((lp_ammoType)));
+    lv_maxAmmo = libGDHL_gf_HeroKatarinaAmmoGetMaxAmmoValue(lv_owner, lp_ammoType);
+    if ((lp_ammoType == "Katarina_Ammo_Autorifle")) {
+        lv_chargeString = "Abil/Katarina_EquipAutorifle";
+    }
+    else if ((lp_ammoType == "Katarina_Ammo_Chaingun")) {
+        lv_chargeString = "Abil/Katarina_EquipChaingun";
+    }
+    else if ((lp_ammoType == "Katarina_Ammo_Flamethrower")) {
+        lv_chargeString = "Abil/Katarina_EquipFlamethrower";
+    }
+    else if ((lp_ammoType == "Katarina_Ammo_Snipe")) {
+        lv_chargeString = "Abil/Katarina_EquipSnipe";
+    }
+    if ((lv_maxAmmo == lv_currentStacks)) {
+        return true;
+    }
+
+    if (((lv_maxAmmo - lv_currentStacks) < lp_value)) {
+        lv_ammo += (lv_maxAmmo - lv_currentStacks);
+    }
+    else {
+        lv_ammo += lp_value;
+    }
+    UnitBehaviorAdd(lp_unit, ((lp_ammoType)), lp_unit, lv_ammo);
+    UnitAddChargeUsed(lp_unit, (lv_chargeString), (-lv_ammo));
+    return true;
+}
+
+int libGDHL_gf_HeroKatarinaAmmoDefaultAmmoValue (string lp_ammoType) {
+    // Variable Declarations
+    int lv_ammo;
+
+    // Automatic Variable Declarations
+    string autoD1AA22D8_val;
+
+    // Variable Initialization
+
+    // Implementation
+    autoD1AA22D8_val = lp_ammoType;
+    if (autoD1AA22D8_val == "Katarina_Ammo_Autorifle") {
+        lv_ammo = libGDHL_gv_heroKatarinaAmmoDefaultAutorifle;
+    }
+    else if (autoD1AA22D8_val == "Katarina_Ammo_Chaingun") {
+        lv_ammo = libGDHL_gv_heroKatarinaAmmoDefaultChaingun;
+    }
+    else if (autoD1AA22D8_val == "Katarina_Ammo_Flamethrower") {
+        lv_ammo = libGDHL_gv_heroKatarinaAmmoDefaultFlamethrower;
+    }
+    else if (autoD1AA22D8_val == "Katarina_Ammo_Snipe") {
+        lv_ammo = libGDHL_gv_heroKatarinaAmmoDefaultSnipe;
+    }
+    else {
+    }
+    return lv_ammo;
+}
+
+int libGDHL_gf_HeroKatarinaAmmoGetMaxAmmoValue (int lp_player, string lp_ammoType) {
+    // Variable Declarations
+    int lv_maxAmmo;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_maxAmmo = libGDHL_gf_HeroKatarinaAmmoDefaultAmmoValue(lp_ammoType);
+
+    // Implementation
+    return lv_maxAmmo;
+}
+
+int libGDHL_gf_HeroKatarinaAmmoGetCurrentAmmoValue (unit lp_unit, string lp_ammoType) {
+    // Automatic Variable Declarations
+    // Implementation
+    return UnitBehaviorCount(lp_unit, ((lp_ammoType)));
+}
+
+void libGDHL_gf_HeroKatarinaAutorifleHealingSystem (unit lp_unit, fixed lp_damage, int lp_equippedCarried) {
+    // Variable Declarations
+    fixed lv_healingAmountTotal;
+    fixed lv_healingVital;
+    fixed lv_healingShields;
+    fixed lv_currentShields;
+    fixed lv_currentShields2;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Implementation
+    if ((lp_equippedCarried == libGDHL_ge_HeroKatarinaWeaponEquippedCarried_Equipped)) {
+        lv_healingAmountTotal = (lp_damage * libGDHL_gv_heroKatarinaAutorifleEquippedPercentHealValue);
+    }
+    else {
+        if ((lp_equippedCarried == libGDHL_ge_HeroKatarinaWeaponEquippedCarried_Carried)) {
+            lv_healingAmountTotal = (lp_damage * libGDHL_gv_heroKatarinaAutorifleCarriedPercentHealValue);
+        }
+        else {
+            return ;
+        }
+    }
+    if ((UnitGetPropertyFixed(lp_unit, c_unitPropLifePercent, c_unitPropCurrent) >= 100.0)) {
+        lv_healingShields = lv_healingAmountTotal;
+    }
+    else {
+        if (((UnitGetPropertyFixed(lp_unit, c_unitPropLifeMax, c_unitPropCurrent) - UnitGetPropertyFixed(lp_unit, c_unitPropLife, c_unitPropCurrent)) >= lv_healingAmountTotal)) {
+            lv_healingVital = lv_healingAmountTotal;
+        }
+        else {
+            lv_healingVital = (UnitGetPropertyFixed(lp_unit, c_unitPropLifeMax, c_unitPropCurrent) - UnitGetPropertyFixed(lp_unit, c_unitPropLife, c_unitPropCurrent));
+            lv_healingShields = (lv_healingAmountTotal - lv_healingVital);
+        }
+    }
+    if ((lv_healingVital > 0.0)) {
+        CatalogFieldValueSet(c_gameCatalogEffect, "KatarinaAutorifleCreateHealer", "RechargeVitalRate", UnitGetOwner(lp_unit), FixedToString(lv_healingVital, 2));
+        CatalogFieldValueSet(c_gameCatalogEffect, "KatarinaAutorifleCreateHealer", "RechargeVitalMax", UnitGetOwner(lp_unit), FixedToString(lv_healingVital, 2));
+        UnitCreateEffectUnit(lp_unit, "KatarinaAutorifleCreateHealer", lp_unit);
+    }
+    if ((PlayerHasTalent(UnitGetOwner(lp_unit), "Katarina_MasterAutorifle") == true)) {
+        lv_currentShields = UnitBehaviorDamageModifyRemaining(lp_unit, "KatarinaAutorifleShieldBehavior");
+        lv_currentShields2 = (UnitGetPropertyFixed(lp_unit, c_unitPropLifeMax, c_unitPropCurrent) * libGDHL_gv_heroKatarinaAutorifleMaximumShieldsValue);
+        if ((lv_healingShields > 0.0) && (lv_currentShields < lv_currentShields2)) {
+            lv_currentShields += lv_healingShields;
+            if ((lv_currentShields > lv_currentShields2)) {
+                lv_currentShields = lv_currentShields2;
+            }
+            CatalogFieldValueSet(c_gameCatalogBehavior, "KatarinaAutorifleShieldBehavior", "DamageResponse.ModifyLimit", UnitGetOwner(lp_unit), FixedToString(lv_currentShields, 2));
+            UnitBehaviorAdd(lp_unit, "KatarinaAutorifleShieldBehavior", lp_unit, 1);
+        }
+
+    }
+}
+
+fixed libGDHL_gf_HeroSelendisTemplarWillpowerShieldsModificator (int lp_player) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((PlayerHasTalent(lp_player, "Selendis_TemplarWillpower_PlasmaShields") == false)) {
+        return libGDHL_gv_heroSelendisTemplarWillpowerShieldsModificator;
+    }
+    else {
+        return libGDHL_gv_heroSelendisTemplarWillpowerShieldsModificatorPlasmaShield;
+    }
+}
+
+fixed libGDHL_gf_HeroSelendisTemplarWillpowerHPShieldsMaxModificator (int lp_player) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((PlayerHasTalent(lp_player, "Selendis_TemplarWillpower_ReconfigurationShields") == false)) {
+        return libGDHL_gv_heroSelendisTemplarWillpowerHPShieldsMaxModificator;
+    }
+    else {
+        return libGDHL_gv_heroSelendisTemplarWillpowerHPShieldsMaxModificatorReconfigurationShields;
+    }
+}
+
+// Triggers
+//--------------------------------------------------------------------------------------------------
+// Trigger: Prestige - Blood For Blood
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_PrestigeBloodForBlood_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    string lv_bFBHealingEffect;
+    fixed lv_value;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_bFBHealingEffect = "PrestigeBloodForBlood@CreateHealer";
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_value = (EventUnitDamageAttemptedVitals() + EventUnitDamageAbsorbed());
+    lv_value *= libGDHL_gv_prestigeBloodForBloodHealModificator;
+    libNtve_gf_CatalogFieldValueSetAsReal(c_gameCatalogEffect, lv_bFBHealingEffect, "RechargeVitalRate", EventUnitDamageSourcePlayer(), lv_value);
+    libNtve_gf_CatalogFieldValueSetAsReal(c_gameCatalogEffect, lv_bFBHealingEffect, "RechargeVitalMax", EventUnitDamageSourcePlayer(), lv_value);
+    UnitCreateEffectUnit(EventUnitDamageSourceUnit(), lv_bFBHealingEffect, EventUnitDamageSourceUnit());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_PrestigeBloodForBlood_Init () {
+    libGDHL_gt_PrestigeBloodForBlood = TriggerCreate("libGDHL_gt_PrestigeBloodForBlood_Func");
+    TriggerAddEventUnitDamaged(libGDHL_gt_PrestigeBloodForBlood, null, c_unitDamageTypeAny, c_unitDamageEither, "PrestigeBloodForBlood@Damage");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Regeneration Globe Talents
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_RegenerationGlobeTalents_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_targetUnit;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_targetUnit = EventPlayerEffectUsedUnit(c_effectUnitTarget);
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((PlayerHasTalent(UnitGetOwner(lv_targetUnit), "TalentBucket_RegenerationMaster_Stacks") == true)) {
+        UnitBehaviorAddPlayer(lv_targetUnit, "TalentBucket_RegenerationMaster_Stacks", EventPlayer(), 1);
+    }
+    if ((PlayerHasTalent(UnitGetOwner(lv_targetUnit), "TalentBucket_ConjurersPursuit_Stacks") == true)) {
+        UnitBehaviorAddPlayer(lv_targetUnit, "TalentBucket_ConjurersPursuit_Stacks_Manausers", EventPlayer(), 1);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_RegenerationGlobeTalents_Init () {
+    libGDHL_gt_RegenerationGlobeTalents = TriggerCreate("libGDHL_gt_RegenerationGlobeTalents_Func");
+    TriggerAddEventPlayerEffectUsed(libGDHL_gt_RegenerationGlobeTalents, c_playerAny, "HeroGeneraic_RegenGlobePickUp_ImpactSwitch");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Talent - Rewind Activate
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_TalentRewindActivate_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_hero;
+    string lv_abilLink;
+    string lv_cooldownLink;
+    fixed lv_currentCooldownAmount;
+    fixed lv_newCooldownAmount;
+    string lv_chargeLink;
+    fixed lv_currentChargeAmount;
+    fixed lv_newChargeAmount;
+    int lv_i;
+    int lv_hero_Index;
+    int lv_owner;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_cooldownLink = "";
+    lv_chargeLink = "";
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_hero = EventPlayerEffectUsedUnit(c_effectUnitCaster);
+    lv_owner = UnitGetOwner(lv_hero);
+    libGDHL_gf_CooldownReduceCooldownofHeroAbathurVehicleHero(lv_hero, EventPlayer(), 0.0, true, false, false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_TalentRewindActivate_Init () {
+    libGDHL_gt_TalentRewindActivate = TriggerCreate("libGDHL_gt_TalentRewindActivate_Func");
+    TriggerAddEventPlayerEffectUsed(libGDHL_gt_TalentRewindActivate, c_playerAny, "TalentBucket_Rewind_TriggerDummySet");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Talent - Battle Momentum Proc
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_TalentBattleMomentumProc_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_i;
+    unit lv_hero;
+    int lv_heroIndex;
+    string lv_abilLink;
+    string lv_cooldownLink;
+    fixed lv_currentCooldownAmount;
+    fixed lv_newCooldownAmount;
+    string lv_chargeLink;
+    fixed lv_currentChargeAmount;
+    fixed lv_newChargeAmount;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_hero = EventPlayerEffectUsedUnit(c_effectUnitCaster);
+    lv_cooldownLink = "";
+    lv_chargeLink = "";
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitHasBehavior2(lv_hero, "BucketBattleMomentumCarryBehavior") == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libGDHL_gf_CooldownReduceCooldownofHeroAbathurVehicleHero(lv_hero, EventPlayer(), 0.5, false, false, false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_TalentBattleMomentumProc_Init () {
+    libGDHL_gt_TalentBattleMomentumProc = TriggerCreate("libGDHL_gt_TalentBattleMomentumProc_Func");
+    TriggerAddEventPlayerEffectUsed(libGDHL_gt_TalentBattleMomentumProc, c_playerAny, "BattleMomentumDamageResponseDummy");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Talent - Fury of the Storm - Activate
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_TalentFuryoftheStormActivate_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((TriggerIsEnabled(libGDHL_gt_TalentFuryoftheStorm) == false))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerEnable(TriggerGetCurrent(), false);
+    TriggerEnable(libGDHL_gt_TalentFuryoftheStorm, true);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_TalentFuryoftheStormActivate_Init () {
+    libGDHL_gt_TalentFuryoftheStormActivate = TriggerCreate("libGDHL_gt_TalentFuryoftheStormActivate_Func");
+    TriggerAddEventUnitBehaviorChange(libGDHL_gt_TalentFuryoftheStormActivate, null, "TalentBucket_FuryoftheStorm_CarryBehavior", c_unitBehaviorChangeCreate);
+    TriggerAddEventUnitBehaviorChange(libGDHL_gt_TalentFuryoftheStormActivate, null, "TalentBucket_FuryoftheStorm_CarryBehavior_Tychus", c_unitBehaviorChangeCreate);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Talent - Fury of the Storm
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_TalentFuryoftheStorm_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    fixed lv_damage;
+    fixed lv_modifiedDamage;
+    unit lv_itDamagingUnit;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_itDamagingUnit = EventUnitDamageSourceUnit();
+
+    // Conditions
+    if (testConds) {
+        if (!(((UnitBehaviorCount(lv_itDamagingUnit, "TalentBucket_FuryoftheStorm_CarryBehavior") == 1) || (UnitBehaviorCount(lv_itDamagingUnit, "TalentBucket_FuryoftheStorm_CarryBehavior_Tychus") == 1)))) {
+            return false;
+        }
+
+        if (!((UnitBehaviorCount(lv_itDamagingUnit, "TalentBucket_FuryoftheStorm_Cooldown") == 0))) {
+            return false;
+        }
+
+        if (!((UnitBehaviorCount(lv_itDamagingUnit, "TalentBucket_FuryoftheStorm_Cooldown_Tychus") == 0))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_damage = EventUnitDamageAttempted();
+    lv_modifiedDamage = (lv_damage * (1.0 - libCore_gv_talents_FuryOfTheStormBounceDamagePercent_C));
+    CatalogFieldValueSet(c_gameCatalogEffect, "TalentBucket_FuryOfTheStorm_Damage1", "Amount", UnitGetOwner(lv_itDamagingUnit), FixedToString(lv_modifiedDamage, c_fixedPrecisionAny));
+    CatalogFieldValueSet(c_gameCatalogEffect, "TalentBucket_FuryOfTheStorm_Damage2", "Amount", UnitGetOwner(lv_itDamagingUnit), FixedToString(lv_modifiedDamage, c_fixedPrecisionAny));
+    UnitCreateEffectUnit(lv_itDamagingUnit, "TalentBucket_FuryoftheStorm_Delay1", EventUnit());
+    if ((UnitBehaviorCount(lv_itDamagingUnit, "TalentBucket_FuryoftheStorm_CarryBehavior") == 1)) {
+        UnitBehaviorAdd(lv_itDamagingUnit, "TalentBucket_FuryoftheStorm_Cooldown", lv_itDamagingUnit, 1);
+    }
+    else if ((UnitBehaviorCount(lv_itDamagingUnit, "TalentBucket_FuryoftheStorm_CarryBehavior_Tychus") == 1)) {
+        UnitBehaviorAdd(lv_itDamagingUnit, "TalentBucket_FuryoftheStorm_Cooldown_Tychus", lv_itDamagingUnit, 1);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_TalentFuryoftheStorm_Init () {
+    libGDHL_gt_TalentFuryoftheStorm = TriggerCreate("libGDHL_gt_TalentFuryoftheStorm_Func");
+    TriggerEnable(libGDHL_gt_TalentFuryoftheStorm, false);
+    TriggerAddEventUnitDamaged(libGDHL_gt_TalentFuryoftheStorm, null, c_unitDamageTypeRanged, c_unitDamageEither, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Talent - Arcane Teachings Apply Slow
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_TalentArcaneTeachingsApplySlow_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!(((UnitTypeTestAttribute(UnitGetType(EventUnitDamageSourceUnit()), c_unitAttributeHeroic) == true) || (UnitTypeTestAttribute(UnitGetType(EventUnitDamageSourceUnit()), c_unitAttributeSummoned) == true)))) {
+            return false;
+        }
+
+        if (!(((EventUnitDamageEffect() != "WitchDoctorDeathRitualDamage") && (EventUnitDamageEffect() != "WitchDoctorDeathRitualImprovedDamage") && (UnitGetType(EventUnit()) != "JungleGraveGolemDefender") && (EventUnitDamageEffect() != "PrestigeBloodForBlood@Damage") && (EventUnitDamageEffect() != "BurningRageDamage1") && (EventUnitDamageEffect() != "BurningRageDamage2") && (EventUnitDamageEffect() != "FuryoftheStormHop1Damage") && (EventUnitDamageEffect() != "FuryoftheStormHop2Damage") && (EventUnitDamageEffect() != "FuryoftheStormHop3Damage") && (EventUnitDamageEffect() != "VehicleDragonKnightBullRushDamage") && (EventUnitDamageEffect() != "DragonBurninateDamage") && (EventUnitDamageEffect() != "DragonFireBreathDamage") && (EventUnitDamageEffect() != "VehicleDragonKnightAttackDamage") && (EventUnitDamageAmount() != 0.0)))) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_TalentArcaneTeachingsApplySlow_Init () {
+    libGDHL_gt_TalentArcaneTeachingsApplySlow = TriggerCreate("libGDHL_gt_TalentArcaneTeachingsApplySlow_Func");
+    TriggerAddEventUnitDamaged(libGDHL_gt_TalentArcaneTeachingsApplySlow, null, c_unitDamageTypeSpell, c_unitDamageNonFatal, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Talent - Bribe
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_TalentBribe_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_JungleCamp;
+    unit lv_unit;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_TalentBribe_Init () {
+    libGDHL_gt_TalentBribe = TriggerCreate("libGDHL_gt_TalentBribe_Func");
+    TriggerAddEventPlayerEffectUsed(libGDHL_gt_TalentBribe, c_playerAny, "BribeSet");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Talent - Swift Storm
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_TalentSwiftStorm_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_hero;
+    fixed lv_hearthCastTime;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_hero = EventUnit();
+    lv_hearthCastTime = 2.0;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    CatalogFieldValueSet(c_gameCatalogAbil, "PortBackToBase", "CastIntroTime[" + IntToString(0) + "]", UnitGetOwner(lv_hero), FixedToString(lv_hearthCastTime, 2));
+    TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "LevelUp_SwiftStorm", 1);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_TalentSwiftStorm_Init () {
+    libGDHL_gt_TalentSwiftStorm = TriggerCreate("libGDHL_gt_TalentSwiftStorm_Func");
+    TriggerAddEventUnitBehaviorChange(libGDHL_gt_TalentSwiftStorm, null, "TalentBucketSwiftStormCarryBehavior", c_unitBehaviorChangeActivate);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Talent - Storm Shield
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_TalentStormShield_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_hero;
+    fixed lv_heroMaxHealth;
+    fixed lv_shieldAmount;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_hero = EventUnit();
+    lv_heroMaxHealth = UnitGetPropertyFixed(lv_hero, c_unitPropLifeMax, c_unitPropCurrent);
+    lv_shieldAmount = (lv_heroMaxHealth * 0.2);
+    CatalogFieldValueSet(c_gameCatalogBehavior, "TalentBucketStormShield", "DamageResponse.ModifyLimit", UnitGetOwner(lv_hero), FixedToString(lv_shieldAmount, 2));
+    UnitBehaviorRemove(lv_hero, "TalentBucketStormShieldDummyBehavior", 1);
+    UnitCreateEffectUnit(lv_hero, "TalentBucketStormShieldApplyBehavior", lv_hero);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_TalentStormShield_Init () {
+    libGDHL_gt_TalentStormShield = TriggerCreate("libGDHL_gt_TalentStormShield_Func");
+    TriggerAddEventUnitBehaviorChange(libGDHL_gt_TalentStormShield, null, "TalentBucketStormShieldDummyBehavior", c_unitBehaviorChangeActivate);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Talent - Hardened Focus
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_TalentHardenedFocus_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_itPlayer;
+
+    // Automatic Variable Declarations
+    int autoC3A229FA_ae;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((EventUnitBehaviorChange() == c_unitBehaviorChangeCreate)) {
+        TriggerEnable(libGDHL_gt_TalentHardenedFocusUpdate, true);
+    }
+    else {
+        autoC3A229FA_ae = libCore_gv_bALMaxEnginePlayerCount;
+        lv_itPlayer = 1;
+        for ( ; lv_itPlayer <= autoC3A229FA_ae ; lv_itPlayer += 1 ) {
+            if ((libGame_gf_PlayerHeroUnit(lv_itPlayer) != null) && (PlayerHasTalent(lv_itPlayer, "TalentBucket_HardenedFocus") == true)) {
+                return true;
+            }
+        }
+        TriggerEnable(libGDHL_gt_TalentHardenedFocusUpdate, false);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_TalentHardenedFocus_Init () {
+    libGDHL_gt_TalentHardenedFocus = TriggerCreate("libGDHL_gt_TalentHardenedFocus_Func");
+    TriggerAddEventUnitBehaviorChange(libGDHL_gt_TalentHardenedFocus, null, "TalentBucket_HardenedFocus_CarryBehavior", c_unitBehaviorChangeCreate);
+    TriggerAddEventUnitBehaviorChange(libGDHL_gt_TalentHardenedFocus, null, "TalentBucket_HardenedFocus_CarryBehavior", c_unitBehaviorChangeDestroy);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Talent - Hardened Focus - Update
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_TalentHardenedFocusUpdate_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_itPlayer;
+
+    // Automatic Variable Declarations
+    int autoE23B8798_ae;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    autoE23B8798_ae = libCore_gv_bALMaxEnginePlayerCount;
+    lv_itPlayer = 1;
+    for ( ; lv_itPlayer <= autoE23B8798_ae ; lv_itPlayer += 1 ) {
+        if ((UnitIsAlive(libGame_gf_PlayerHeroUnit(lv_itPlayer)) == true) && (libGame_gf_PlayerHeroUnit(lv_itPlayer) != null) && (libGDHL_gf_TalentHardenedFocusBasicAbilitiesOnCD(lv_itPlayer) == true)) {
+            libGDHL_gf_CooldownReduceCooldownofHeroAbathurVehicleHero(libGame_gf_PlayerHeroUnit(lv_itPlayer), lv_itPlayer, libCore_gv_talents_HardenedFocus_Value_C, false, false, false);
+        }
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_TalentHardenedFocusUpdate_Init () {
+    libGDHL_gt_TalentHardenedFocusUpdate = TriggerCreate("libGDHL_gt_TalentHardenedFocusUpdate_Func");
+    TriggerEnable(libGDHL_gt_TalentHardenedFocusUpdate, false);
+    TriggerAddEventTimePeriodic(libGDHL_gt_TalentHardenedFocusUpdate, 0.0625, c_timeGame);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Talent - Resurgence Of The Storm
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_TalentResurgenceOfTheStorm_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libCore_gf_ResetRespawnTimerOfPlayerHero(EventPlayer());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_TalentResurgenceOfTheStorm_Init () {
+    libGDHL_gt_TalentResurgenceOfTheStorm = TriggerCreate("libGDHL_gt_TalentResurgenceOfTheStorm_Func");
+    TriggerAddEventPlayerEffectUsed(libGDHL_gt_TalentResurgenceOfTheStorm, c_playerAny, "TalentBucketResurgenceOfTheStormApplyCooldownBehavior");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero Port Back To Base (Hearthstone)
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_HeroPortBackToBaseHearthstone_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitSetPosition(EventPlayerEffectUsedUnit(c_effectUnitCaster), libGame_gv_players[EventPlayer()].lv_spawnPoint, false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_HeroPortBackToBaseHearthstone_Init () {
+    libGDHL_gt_HeroPortBackToBaseHearthstone = TriggerCreate("libGDHL_gt_HeroPortBackToBaseHearthstone_Func");
+    TriggerAddEventPlayerEffectUsed(libGDHL_gt_HeroPortBackToBaseHearthstone, c_playerAny, "HeroGeneric_HearthstoneReturn_TriggerDummySet");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero Port Back To Base
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_HeroPortBackToBase_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_player;
+    unit lv_hero;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_player = EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster);
+    lv_hero = EventPlayerEffectUsedUnit(c_effectUnitCaster);
+    CameraPan(lv_player, UnitGetPosition(lv_hero), 0.0, -1, 0.0, false);
+    if (((UnitHasBehavior2(lv_hero, "SiegeMode") == true) || (UnitHasBehavior2(lv_hero, "PassiveBuffWeaponSiegeMode") == true))) {
+        UnitCreateEffectUnit(lv_hero, "SiegeModeRemoveSet", lv_hero);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_HeroPortBackToBase_Init () {
+    libGDHL_gt_HeroPortBackToBase = TriggerCreate("libGDHL_gt_HeroPortBackToBase_Func");
+    TriggerAddEventPlayerEffectUsed(libGDHL_gt_HeroPortBackToBase, c_playerAny, "PortBackToBaseTeleport");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero Port Back To Base Start
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_HeroPortBackToBaseStart_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitBehaviorAdd(EventUnit(), "HeroGenericHearthing", EventUnit(), 1);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_HeroPortBackToBaseStart_Init () {
+    libGDHL_gt_HeroPortBackToBaseStart = TriggerCreate("libGDHL_gt_HeroPortBackToBaseStart_Func");
+    TriggerAddEventUnitAbility(libGDHL_gt_HeroPortBackToBaseStart, null, AbilityCommand("HeroGeneric_Hearthstone_2", 0), c_unitAbilStageExecute, false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero Port Back To Base End
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_HeroPortBackToBaseEnd_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_HeroPortBackToBaseEnd_Init () {
+    libGDHL_gt_HeroPortBackToBaseEnd = TriggerCreate("libGDHL_gt_HeroPortBackToBaseEnd_Func");
+    TriggerAddEventUnitAbility(libGDHL_gt_HeroPortBackToBaseEnd, null, AbilityCommand("HeroGeneric_Hearthstone_2", 0), c_abilEffectStageBail, false);
+    TriggerAddEventUnitAbility(libGDHL_gt_HeroPortBackToBaseEnd, null, AbilityCommand("HeroGeneric_Hearthstone_2", 0), c_abilEffectStageFinish, false);
+    TriggerAddEventUnitAbility(libGDHL_gt_HeroPortBackToBaseEnd, null, AbilityCommand("HeroGeneric_Hearthstone_2", 0), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(libGDHL_gt_HeroPortBackToBaseEnd, null, AbilityCommand("HeroGeneric_Hearthstone_2", 0), c_unitAbilStagePreempt, false);
+    TriggerAddEventUnitAbility(libGDHL_gt_HeroPortBackToBaseEnd, null, AbilityCommand("HeroGeneric_Hearthstone_2", 0), c_unitAbilStageComplete, false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero Port Back To Base Fizzle
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_HeroPortBackToBaseFizzle_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    SoundPlayOnUnitForPlayer(SoundLink("Gen_Hearthstone_Teleport_Fizzle", -1), EventPlayer(), PlayerGroupSingle(EventPlayer()), EventUnit(), 0.0, 100.0, 0.0);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_HeroPortBackToBaseFizzle_Init () {
+    libGDHL_gt_HeroPortBackToBaseFizzle = TriggerCreate("libGDHL_gt_HeroPortBackToBaseFizzle_Func");
+    TriggerAddEventUnitAbility(libGDHL_gt_HeroPortBackToBaseFizzle, null, AbilityCommand("HeroGeneric_Hearthstone_2", 0), c_abilEffectStageBail, false);
+    TriggerAddEventUnitAbility(libGDHL_gt_HeroPortBackToBaseFizzle, null, AbilityCommand("HeroGeneric_Hearthstone_2", 0), c_unitAbilStageCancel, false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero - Diablo - Overpower - Facing
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_HeroDiabloOverpowerFacing_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_diablo;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_diablo = EventPlayerEffectUsedUnit(c_effectUnitCaster);
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitSetFacing(lv_diablo, (UnitGetFacing(lv_diablo) + 180.0), 0.0);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_HeroDiabloOverpowerFacing_Init () {
+    libGDHL_gt_HeroDiabloOverpowerFacing = TriggerCreate("libGDHL_gt_HeroDiabloOverpowerFacing_Func");
+    TriggerAddEventPlayerEffectUsed(libGDHL_gt_HeroDiabloOverpowerFacing, c_playerAny, "Diablo_Overpower_MakeCasterLookAtTarget");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero - Diablo - Inferno Breath Cast
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_HeroDiabloInfernoBreathCast_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_itPlayer;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_itPlayer = UnitGetOwner(EventUnit());
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libGDHL_gv_heroDiabloInfernoBreathActive[lv_itPlayer] = true;
+    CatalogFieldValueSet(c_gameCatalogUnit, "HeroDiablo", "StationaryTurningRate", lv_itPlayer, FixedToString(libGDHL_gv_heroDiabloInfernoBreathTurningRate, 0));
+    if ((libGDHL_gv_heroDiabloInfernoBreathEventAdded[lv_itPlayer] == false)) {
+        TriggerAddEventMouseMoved(libGDHL_gt_HeroDiabloInfernoBreathAim, lv_itPlayer);
+    }
+
+    libGDHL_gv_heroDiabloInfernoBreathEventAdded[lv_itPlayer] = true;
+    TriggerEnable(libGDHL_gt_HeroDiabloInfernoBreathAim, true);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_HeroDiabloInfernoBreathCast_Init () {
+    libGDHL_gt_HeroDiabloInfernoBreathCast = TriggerCreate("libGDHL_gt_HeroDiabloInfernoBreathCast_Func");
+    TriggerAddEventUnitBehaviorChange(libGDHL_gt_HeroDiabloInfernoBreathCast, null, "Diablo_LightningBreath_ActiveBehavior", c_unitBehaviorChangeActivate);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero - Diablo - Inferno Breath Aim
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_HeroDiabloInfernoBreathAim_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_itPlayer;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_itPlayer = EventPlayer();
+
+    // Conditions
+    if (testConds) {
+        if (!((libGDHL_gv_heroDiabloInfernoBreathActive[lv_itPlayer] == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((UnitGetType(libGame_gv_players[lv_itPlayer].lv_heroUnit) == "HeroAbathur")) {
+        UnitIssueOrder(libGame_gv_players[lv_itPlayer].lv_activeVehicle, OrderTargetingPoint(AbilityCommand("move", 4), Point(EventMouseMovedPosXWorld(), EventMouseMovedPosYWorld())), c_orderQueueReplace);
+    }
+    else {
+        UnitIssueOrder(libGame_gv_players[lv_itPlayer].lv_heroUnit, OrderTargetingPoint(AbilityCommand("move", 4), Point(EventMouseMovedPosXWorld(), EventMouseMovedPosYWorld())), c_orderQueueReplace);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_HeroDiabloInfernoBreathAim_Init () {
+    libGDHL_gt_HeroDiabloInfernoBreathAim = TriggerCreate("libGDHL_gt_HeroDiabloInfernoBreathAim_Func");
+    TriggerEnable(libGDHL_gt_HeroDiabloInfernoBreathAim, false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero - Diablo - Inferno Breath End
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_HeroDiabloInfernoBreathEnd_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_itPlayer;
+    int lv_i;
+    bool lv_infernoBreathAimTriggerEnabled;
+    int lv_diabloIndex;
+    int lv_triggeringDiabloPlayer;
+
+    // Automatic Variable Declarations
+    const int auto8E97D224_ae = libCore_gv_bALMaxPlayers;
+    const int auto8E97D224_ai = 1;
+    const int auto261A615A_ae = libCore_gv_bALMaxPlayers;
+    const int auto261A615A_ai = 1;
+
+    // Variable Initialization
+    lv_itPlayer = UnitGetOwner(EventUnit());
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((lv_itPlayer <= libCore_gv_bALMaxPlayers)) {
+        CatalogFieldValueSet(c_gameCatalogUnit, "HeroDiablo", "StationaryTurningRate", lv_itPlayer, CatalogFieldValueGet(c_gameCatalogUnit, "HeroDiablo", "StationaryTurningRate", 0));
+        libGDHL_gv_heroDiabloInfernoBreathActive[lv_itPlayer] = false;
+    }
+    else {
+        lv_diabloIndex = 1;
+        for ( ; ( (auto8E97D224_ai >= 0 && lv_diabloIndex <= auto8E97D224_ae) || (auto8E97D224_ai < 0 && lv_diabloIndex >= auto8E97D224_ae) ) ; lv_diabloIndex += auto8E97D224_ai ) {
+            if ((TechTreeUnitCount(lv_diabloIndex, "HeroAbathur", c_techCountCompleteOnly) == 1) && (TechTreeUnitCount(lv_diabloIndex, "HeroTinker", c_techCountCompleteOnly) == 0) && (lv_diabloIndex != lv_itPlayer) && (libGDHL_gv_heroDiabloInfernoBreathActive[lv_diabloIndex] == true)) {
+                lv_triggeringDiabloPlayer = lv_diabloIndex;
+                CatalogFieldValueSet(c_gameCatalogUnit, "HeroDiablo", "StationaryTurningRate", lv_diabloIndex, CatalogFieldValueGet(c_gameCatalogUnit, "HeroDiablo", "StationaryTurningRate", 0));
+                libGDHL_gv_heroDiabloInfernoBreathActive[lv_diabloIndex] = false;
+            }
+
+        }
+    }
+    lv_i = 1;
+    for ( ; ( (auto261A615A_ai >= 0 && lv_i <= auto261A615A_ae) || (auto261A615A_ai < 0 && lv_i >= auto261A615A_ae) ) ; lv_i += auto261A615A_ai ) {
+        if ((libGDHL_gv_heroDiabloInfernoBreathActive[lv_i] == true)) {
+            lv_infernoBreathAimTriggerEnabled = true;
+            break;
+        }
+
+    }
+    if ((lv_infernoBreathAimTriggerEnabled == false)) {
+        TriggerEnable(libGDHL_gt_HeroDiabloInfernoBreathAim, false);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_HeroDiabloInfernoBreathEnd_Init () {
+    libGDHL_gt_HeroDiabloInfernoBreathEnd = TriggerCreate("libGDHL_gt_HeroDiabloInfernoBreathEnd_Func");
+    TriggerAddEventUnitBehaviorChange(libGDHL_gt_HeroDiabloInfernoBreathEnd, null, "Diablo_LightningBreath_ActiveBehavior", c_unitBehaviorChangeDeactivate);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero - Diablo - Black Soulstone - Add Charge
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_HeroDiabloBlackSoulstoneAddCharge_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_targetUnit;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_targetUnit = EventPlayerEffectUsedUnit(c_effectUnitCaster);
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitBehaviorCount(lv_targetUnit, "Diablo_BlackSoulstone_StacksBehavior") < libGDHL_gv_heroDiabloBlackSoulstoneMaximumSoulstones))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitBehaviorAdd(lv_targetUnit, "Diablo_BlackSoulstone_StacksBehavior", lv_targetUnit, 1);
+    UnitAddChargeUsed(lv_targetUnit, "Abil/Diablo_BlackSoulstone", -1.0);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_HeroDiabloBlackSoulstoneAddCharge_Init () {
+    libGDHL_gt_HeroDiabloBlackSoulstoneAddCharge = TriggerCreate("libGDHL_gt_HeroDiabloBlackSoulstoneAddCharge_Func");
+    TriggerAddEventPlayerEffectUsed(libGDHL_gt_HeroDiabloBlackSoulstoneAddCharge, c_playerAny, "Diablo_BlackSoulStone_ApplyDiabloSoulBehavior");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero - Diablo - Black Soulstone - Diablo Death
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_HeroDiabloBlackSoulstoneDiabloDeath_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_player;
+    int lv_count;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_player = libGame_gf_HeroKilledPlayer();
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(libGame_gv_players[lv_player].lv_heroUnit) == "HeroDiablo"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((PlayerHasTalent(lv_player, "Diablo_SecondComing") == false)) {
+        lv_count = UnitBehaviorCount(libGame_gv_players[lv_player].lv_heroUnit, "Diablo_BlackSoulstone_StacksBehavior");
+        UnitAddChargeUsed(libGame_gv_players[lv_player].lv_heroUnit, "Abil/Diablo_BlackSoulstone", lv_count);
+        UnitBehaviorRemove(libGame_gv_players[lv_player].lv_heroUnit, "Diablo_BlackSoulstone_StacksBehavior", 0);
+        if ((ModI(lv_count, 2) == 1)) {
+            lv_count -= 1;
+        }
+        lv_count = (lv_count / 2);
+        if ((lv_count > 0)) {
+            UnitBehaviorAdd(libGame_gv_players[lv_player].lv_heroUnit, "Diablo_BlackSoulstone_StacksBehavior", libGame_gv_players[lv_player].lv_heroUnit, lv_count);
+            UnitAddChargeUsed(libGame_gv_players[lv_player].lv_heroUnit, "Abil/Diablo_BlackSoulstone", (-lv_count));
+        }
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_HeroDiabloBlackSoulstoneDiabloDeath_Init () {
+    libGDHL_gt_HeroDiabloBlackSoulstoneDiabloDeath = TriggerCreate("libGDHL_gt_HeroDiabloBlackSoulstoneDiabloDeath_Func");
+    libGame_gf_HeroKilled(libGDHL_gt_HeroDiabloBlackSoulstoneDiabloDeath);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero - Diablo - Talent - Devil Charge - Devastating Charge
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_HeroDiabloTalentDevilChargeDevastatingCharge_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((EventUnitBehaviorChange() == c_unitBehaviorChangeIncrease)) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "DiabloBucket_DevilCharge_DevastatingCharge", 1);
+    }
+    else {
+        libNtve_gf_SetUpgradeLevelForPlayer(UnitGetOwner(EventUnit()), "DiabloBucket_DevilCharge_DevastatingCharge", 0);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_HeroDiabloTalentDevilChargeDevastatingCharge_Init () {
+    libGDHL_gt_HeroDiabloTalentDevilChargeDevastatingCharge = TriggerCreate("libGDHL_gt_HeroDiabloTalentDevilChargeDevastatingCharge_Func");
+    TriggerAddEventUnitBehaviorChange(libGDHL_gt_HeroDiabloTalentDevilChargeDevastatingCharge, null, "DiabloBucket_DevilCharge_DevastatingCharge", c_unitBehaviorChangeIncrease);
+    TriggerAddEventUnitBehaviorChange(libGDHL_gt_HeroDiabloTalentDevilChargeDevastatingCharge, null, "DiabloBucket_DevilCharge_DevastatingCharge", c_unitBehaviorChangeDestroy);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero - Diablo - Talent - Apocalypse Add Charge
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_HeroDiabloTalentApocalypseAddCharge_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitAddChargeUsed(EventUnit(), "Abil/DiabloApocalypse", -1.0);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_HeroDiabloTalentApocalypseAddCharge_Init () {
+    libGDHL_gt_HeroDiabloTalentApocalypseAddCharge = TriggerCreate("libGDHL_gt_HeroDiabloTalentApocalypseAddCharge_Func");
+    TriggerAddEventUnitBehaviorChange(libGDHL_gt_HeroDiabloTalentApocalypseAddCharge, null, "DiabloBucket_Apocalypse_Stacks", c_unitBehaviorChangeIncrease);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero - Diablo - Talent - Second Coming Revive
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_HeroDiabloTalentSecondComingRevive_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libCore_gf_ResetRespawnTimerOfPlayerHero(EventPlayer());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_HeroDiabloTalentSecondComingRevive_Init () {
+    libGDHL_gt_HeroDiabloTalentSecondComingRevive = TriggerCreate("libGDHL_gt_HeroDiabloTalentSecondComingRevive_Func");
+    TriggerAddEventPlayerEffectUsed(libGDHL_gt_HeroDiabloTalentSecondComingRevive, c_playerAny, "DiabloBucketSecondComingRemoveSouls");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: [Diablo Bucket] - [Lord of Terror] - Add Additive Souls (Effect)
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_DiabloBucketLordofTerrorAddAdditiveSoulsEffect_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_casterUnit;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_casterUnit = EventPlayerEffectUsedUnit(c_effectUnitCaster);
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitIsAlive(lv_casterUnit) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitBehaviorAdd(lv_casterUnit, "DiabloBucket_LordOfTerror_AdditiveSoulstoneStacks", lv_casterUnit, libGDHL_gv_diabloBucketLordofTerrorAdditiveSoulsPerHero);
+    UnitAddChargeUsed(lv_casterUnit, "Abil/DiabloBucket_LordOfTerror", (-libGDHL_gv_diabloBucketLordofTerrorAdditiveSoulsPerHero));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_DiabloBucketLordofTerrorAddAdditiveSoulsEffect_Init () {
+    libGDHL_gt_DiabloBucketLordofTerrorAddAdditiveSoulsEffect = TriggerCreate("libGDHL_gt_DiabloBucketLordofTerrorAddAdditiveSoulsEffect_Func");
+    TriggerAddEventPlayerEffectUsed(libGDHL_gt_DiabloBucketLordofTerrorAddAdditiveSoulsEffect, c_playerAny, "DiabloBucket_LordOfTerror_InitialSearch");
+    TriggerAddEventPlayerEffectUsed(libGDHL_gt_DiabloBucketLordofTerrorAddAdditiveSoulsEffect, c_playerAny, "DiabloBucket_LordOfTerror_DummyImpactSet");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: [Diablo Bucket] - [Lord of Terror] - Remove Additive Souls
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_DiabloBucketLordofTerrorRemoveAdditiveSouls_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitAddChargeUsed(EventUnit(), "Abil/DiabloBucket_LordOfTerror", 1.0);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_DiabloBucketLordofTerrorRemoveAdditiveSouls_Init () {
+    libGDHL_gt_DiabloBucketLordofTerrorRemoveAdditiveSouls = TriggerCreate("libGDHL_gt_DiabloBucketLordofTerrorRemoveAdditiveSouls_Func");
+    TriggerAddEventUnitBehaviorChange(libGDHL_gt_DiabloBucketLordofTerrorRemoveAdditiveSouls, null, "DiabloBucket_LordOfTerror_AdditiveSoulstoneStacks", c_unitBehaviorChangeDecrease);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: [Diablo Bucket] - [Lord of Terror] - Set Additive Souls Duration [UI]
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_DiabloBucketLordofTerrorSetAdditiveSoulsDurationUI_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    fixed lv_duration;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_duration = (libGDHL_gv_diabloBucketLordofTerrorBaseDuration * (UnitBehaviorCount(EventUnit(), "DiabloBucket_LordOfTerror_AdditiveSoulstoneStacks") / libGDHL_gv_diabloBucketLordofTerrorAdditiveSoulsPerHero));
+    libGDHL_gv_diabloBucketLordofTerrorCurrentDuration[EventPlayer()] = lv_duration;
+    UnitAddChargeRegenRemaining(EventUnit(), "Abil/DiabloBucket_LordOfTerror", lv_duration);
+    UnitBehaviorSetDuration(EventUnit(), "DiabloBucket_LordOfTerror_AdditiveSoulstoneStacks", lv_duration);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_DiabloBucketLordofTerrorSetAdditiveSoulsDurationUI_Init () {
+    libGDHL_gt_DiabloBucketLordofTerrorSetAdditiveSoulsDurationUI = TriggerCreate("libGDHL_gt_DiabloBucketLordofTerrorSetAdditiveSoulsDurationUI_Func");
+    TriggerAddEventUnitBehaviorChange(libGDHL_gt_DiabloBucketLordofTerrorSetAdditiveSoulsDurationUI, null, "DiabloBucket_LordOfTerror_AdditiveSoulstoneStacks", c_unitBehaviorChangeCreate);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: [Diablo Bucket] - [Lord of Terror] - Clear Additive Souls Duration [UI]
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_DiabloBucketLordofTerrorClearAdditiveSoulsDurationUI_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitAddChargeRegenRemaining(EventUnit(), "Abil/DiabloBucket_LordOfTerror", (-libGDHL_gv_diabloBucketLordofTerrorCurrentDuration[EventPlayer()]));
+    if ((UnitIsAlive(EventUnit()) == true)) {
+        UnitAddChargeUsed(EventUnit(), "Abil/DiabloBucket_LordOfTerror", 1.0);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_DiabloBucketLordofTerrorClearAdditiveSoulsDurationUI_Init () {
+    libGDHL_gt_DiabloBucketLordofTerrorClearAdditiveSoulsDurationUI = TriggerCreate("libGDHL_gt_DiabloBucketLordofTerrorClearAdditiveSoulsDurationUI_Func");
+    TriggerAddEventUnitBehaviorChange(libGDHL_gt_DiabloBucketLordofTerrorClearAdditiveSoulsDurationUI, null, "DiabloBucket_LordOfTerror_AdditiveSoulstoneStacks", c_unitBehaviorChangeDestroy);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero - Diablo - Talent - Engulfing Shadow Teleport
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_HeroDiabloTalentEngulfingShadowTeleport_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_itUnit;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_itUnit = EventPlayerEffectUsedUnit(c_effectUnitCaster);
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitSetPosition(lv_itUnit, libGame_gv_players[UnitGetOwner(lv_itUnit)].lv_spawnPoint, false);
+    UnitSetFacing(lv_itUnit, PointGetFacing(libGame_gv_players[UnitGetOwner(lv_itUnit)].lv_spawnPoint), 0.0625);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_HeroDiabloTalentEngulfingShadowTeleport_Init () {
+    libGDHL_gt_HeroDiabloTalentEngulfingShadowTeleport = TriggerCreate("libGDHL_gt_HeroDiabloTalentEngulfingShadowTeleport_Func");
+    TriggerAddEventPlayerEffectUsed(libGDHL_gt_HeroDiabloTalentEngulfingShadowTeleport, c_playerAny, "DiabloBucket_EngulfingShadow_FakeSet");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero - Diablo - Talent - Overkill
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_HeroDiabloTalentOverkill_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    fixed lv_healingValue;
+    fixed lv_lifePercentBeforeDamage;
+    int lv_armor;
+    string lv_healingEffect;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_healingEffect = "DiabloBucket_Overpower_Overkill_CreateHealer";
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_lifePercentBeforeDamage = ((100*(EventUnitDamageAttemptedVitals()/UnitGetPropertyFixed(EventUnit(), c_unitPropLife, c_unitPropNormal)))+UnitGetPropertyFixed(EventUnit(), c_unitPropLifePercent, c_unitPropCurrent));
+    UnitBehaviorRemove(EventUnitDamageSourceUnit(), "DiabloBucket_Overpower_OverkillArmor", 0);
+    UnitBehaviorRemove(EventUnitDamageSourceUnit(), "DiabloBucket_Overpower_OverkillArmor_UIOnly", 0);
+    lv_armor = (100 - FixedToInt(lv_lifePercentBeforeDamage));
+    if (((lv_lifePercentBeforeDamage < 25.0) || (UnitIsAlive(EventUnit()) == false))) {
+        lv_armor = libGame_gv_unitStatsMaximumArmor;
+    }
+    lv_healingValue = (EventUnitDamageAttemptedVitals() + EventUnitDamageBehaviorShield());
+    libNtve_gf_CatalogFieldValueSetAsReal(c_gameCatalogEffect, lv_healingEffect, "RechargeVitalRate", EventUnitDamageSourcePlayer(), FixedToInt(lv_healingValue));
+    UnitCreateEffectUnit(EventUnitDamageSourceUnit(), lv_healingEffect, EventUnitDamageSourceUnit());
+    Wait(0.0625, c_timeGame);
+    if ((lv_armor > 0)) {
+        UnitBehaviorAdd(EventUnitDamageSourceUnit(), "DiabloBucket_Overpower_OverkillArmor", EventUnitDamageSourceUnit(), lv_armor);
+        UnitBehaviorAdd(EventUnitDamageSourceUnit(), "DiabloBucket_Overpower_OverkillArmor_UIOnly", EventUnitDamageSourceUnit(), 1);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_HeroDiabloTalentOverkill_Init () {
+    libGDHL_gt_HeroDiabloTalentOverkill = TriggerCreate("libGDHL_gt_HeroDiabloTalentOverkill_Func");
+    TriggerAddEventUnitDamaged(libGDHL_gt_HeroDiabloTalentOverkill, null, c_unitDamageTypeAny, c_unitDamageEither, "DiabloBucket_Overpower_Overkill_StormDamage");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero - Diablo - Talent - Tempered Flame
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_HeroDiabloTalentTemperedFlame_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    fixed lv_damage;
+    fixed lv_healingValue;
+    string lv_healingEffect;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_healingEffect = "DiabloBucket_FireStorm_TemperedFlame_CreateHealer";
+
+    // Conditions
+    if (testConds) {
+        if (!((PlayerHasTalent(EventUnitDamageSourcePlayer(), "Diablo_FireStomp_TemperedFlame") == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_damage = (EventUnitDamageAttemptedVitals() + EventUnitDamageAbsorbed());
+    if ((UnitTypeTestAttribute(UnitGetType(EventUnit()), c_unitAttributeHeroic) == true)) {
+        lv_healingValue = (lv_damage * libGDHL_gv_heroDiabloTalentTemperedFlameHeroModificator);
+    }
+    else {
+        lv_healingValue = (lv_damage * libGDHL_gv_heroDiabloTalentTemperedFlameModificator);
+    }
+    libNtve_gf_CatalogFieldValueSetAsReal(c_gameCatalogEffect, lv_healingEffect, "RechargeVitalRate", EventUnitDamageSourcePlayer(), lv_healingValue);
+    UnitCreateEffectUnit(EventUnitDamageSourceUnit(), lv_healingEffect, EventUnitDamageSourceUnit());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_HeroDiabloTalentTemperedFlame_Init () {
+    libGDHL_gt_HeroDiabloTalentTemperedFlame = TriggerCreate("libGDHL_gt_HeroDiabloTalentTemperedFlame_Func");
+    TriggerAddEventUnitDamaged(libGDHL_gt_HeroDiabloTalentTemperedFlame, null, c_unitDamageTypeSpell, c_unitDamageEither, "Diablo_FireStomp_Damage");
+    TriggerAddEventUnitDamaged(libGDHL_gt_HeroDiabloTalentTemperedFlame, null, c_unitDamageTypeSpell, c_unitDamageEither, "Diablo_FireStomp_ReturnDamage");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero - Katarina - Change Carry Weapon (Weapon Swap)
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_HeroKatarinaChangeCarryWeaponWeaponSwap_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    string lv_oldCarriedWeaponBehavior;
+    string lv_newCarriedWeaponBehavior;
+    unit lv_unit;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_unit = EventPlayerEffectUsedUnit(c_effectUnitCaster);
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((UnitHasBehavior2(lv_unit, "Katarina_Carried_Autorifle") == true)) {
+        lv_oldCarriedWeaponBehavior = "Katarina_Carried_Autorifle";
+        if ((UnitHasBehavior2(lv_unit, "Katarina_Equipped_Chaingun") == false)) {
+            lv_newCarriedWeaponBehavior = "Katarina_Carried_Chaingun";
+        }
+        else {
+            lv_newCarriedWeaponBehavior = "Katarina_Carried_Flamethrower";
+        }
+    }
+    else if ((UnitHasBehavior2(lv_unit, "Katarina_Carried_Chaingun") == true)) {
+        lv_oldCarriedWeaponBehavior = "Katarina_Carried_Chaingun";
+        if ((UnitHasBehavior2(lv_unit, "Katarina_Equipped_Flamethrower") == false)) {
+            lv_newCarriedWeaponBehavior = "Katarina_Carried_Flamethrower";
+        }
+        else {
+            lv_newCarriedWeaponBehavior = "Katarina_Carried_Snipe";
+        }
+    }
+    else if ((UnitHasBehavior2(lv_unit, "Katarina_Carried_Flamethrower") == true)) {
+        lv_oldCarriedWeaponBehavior = "Katarina_Carried_Flamethrower";
+        if ((UnitHasBehavior2(lv_unit, "Katarina_Equipped_Snipe") == false)) {
+            lv_newCarriedWeaponBehavior = "Katarina_Carried_Snipe";
+        }
+        else {
+            lv_newCarriedWeaponBehavior = "Katarina_Carried_Autorifle";
+        }
+    }
+    else if ((UnitHasBehavior2(lv_unit, "Katarina_Carried_Snipe") == true)) {
+        lv_oldCarriedWeaponBehavior = "Katarina_Carried_Snipe";
+        if ((UnitHasBehavior2(lv_unit, "Katarina_Equipped_Autorifle") == false)) {
+            lv_newCarriedWeaponBehavior = "Katarina_Carried_Autorifle";
+        }
+        else {
+            lv_newCarriedWeaponBehavior = "Katarina_Carried_Chaingun";
+        }
+    }
+    UnitBehaviorRemove(lv_unit, lv_oldCarriedWeaponBehavior, 1);
+    UnitBehaviorAdd(lv_unit, lv_newCarriedWeaponBehavior, lv_unit, 1);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_HeroKatarinaChangeCarryWeaponWeaponSwap_Init () {
+    libGDHL_gt_HeroKatarinaChangeCarryWeaponWeaponSwap = TriggerCreate("libGDHL_gt_HeroKatarinaChangeCarryWeaponWeaponSwap_Func");
+    TriggerAddEventPlayerEffectUsed(libGDHL_gt_HeroKatarinaChangeCarryWeaponWeaponSwap, c_playerAny, "Katarina_WeaponSwap");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero - Katarina - Change Equipped Weapon
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_HeroKatarinaChangeEquippedWeapon_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    string lv_effect;
+    unit lv_unit;
+    string lv_newEquippedWeaponBehavior;
+    string lv_newCarriedWeaponBehavior;
+    string lv_oldCarriedWeaponBehavior;
+    string lv_oldEquippedWeaponBehavior;
+
+    // Automatic Variable Declarations
+    string autoFA298DE5_val;
+
+    // Variable Initialization
+    lv_effect = EventPlayerEffectUsed();
+    lv_unit = EventPlayerEffectUsedUnit(c_effectUnitCaster);
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_oldEquippedWeaponBehavior = libGDHL_gf_HeroKatarinaEquippedWeaponBehavior(lv_unit);
+    lv_oldCarriedWeaponBehavior = libGDHL_gf_HeroKatarinaCarriedWeaponBehavior(lv_unit);
+    autoFA298DE5_val = lv_effect;
+    if (autoFA298DE5_val == "Katarina_EquipAutorifle") {
+        lv_newEquippedWeaponBehavior = "Katarina_Equipped_Autorifle";
+        if ((lv_oldCarriedWeaponBehavior == "Katarina_Carried_Autorifle")) {
+            lv_newCarriedWeaponBehavior = libGDHL_gf_HeroKatarinaChangeEquippedWeaponToCarried(lv_unit);
+        }
+        else {
+            lv_newCarriedWeaponBehavior = lv_oldCarriedWeaponBehavior;
+        }
+    }
+    else if (autoFA298DE5_val == "Katarina_EquipChaingun") {
+        lv_newEquippedWeaponBehavior = "Katarina_Equipped_Chaingun";
+        if ((lv_oldCarriedWeaponBehavior == "Katarina_Carried_Chaingun")) {
+            lv_newCarriedWeaponBehavior = libGDHL_gf_HeroKatarinaChangeEquippedWeaponToCarried(lv_unit);
+        }
+        else {
+            lv_newCarriedWeaponBehavior = lv_oldCarriedWeaponBehavior;
+        }
+    }
+    else if (autoFA298DE5_val == "Katarina_EquipFlamethrower") {
+        lv_newEquippedWeaponBehavior = "Katarina_Equipped_Flamethrower";
+        if ((lv_oldCarriedWeaponBehavior == "Katarina_Carried_Flamethrower")) {
+            lv_newCarriedWeaponBehavior = libGDHL_gf_HeroKatarinaChangeEquippedWeaponToCarried(lv_unit);
+        }
+        else {
+            lv_newCarriedWeaponBehavior = lv_oldCarriedWeaponBehavior;
+        }
+    }
+    else if (autoFA298DE5_val == "Katarina_EquipSnipe") {
+        lv_newEquippedWeaponBehavior = "Katarina_Equipped_Snipe";
+        if ((lv_oldCarriedWeaponBehavior == "Katarina_Carried_Snipe")) {
+            lv_newCarriedWeaponBehavior = libGDHL_gf_HeroKatarinaChangeEquippedWeaponToCarried(lv_unit);
+        }
+        else {
+            lv_newCarriedWeaponBehavior = lv_oldCarriedWeaponBehavior;
+        }
+    }
+    else {
+    }
+    UnitBehaviorRemove(lv_unit, lv_oldCarriedWeaponBehavior, 1);
+    UnitBehaviorRemove(lv_unit, lv_oldEquippedWeaponBehavior, 1);
+    UnitBehaviorAdd(lv_unit, lv_newEquippedWeaponBehavior, lv_unit, 1);
+    UnitBehaviorAdd(lv_unit, lv_newCarriedWeaponBehavior, lv_unit, 1);
+    UnitCreateEffectUnit(lv_unit, "SetEquippedCooldown", lv_unit);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_HeroKatarinaChangeEquippedWeapon_Init () {
+    libGDHL_gt_HeroKatarinaChangeEquippedWeapon = TriggerCreate("libGDHL_gt_HeroKatarinaChangeEquippedWeapon_Func");
+    TriggerAddEventPlayerEffectUsed(libGDHL_gt_HeroKatarinaChangeEquippedWeapon, c_playerAny, "Katarina_EquipAutorifle");
+    TriggerAddEventPlayerEffectUsed(libGDHL_gt_HeroKatarinaChangeEquippedWeapon, c_playerAny, "Katarina_EquipChaingun");
+    TriggerAddEventPlayerEffectUsed(libGDHL_gt_HeroKatarinaChangeEquippedWeapon, c_playerAny, "Katarina_EquipFlamethrower");
+    TriggerAddEventPlayerEffectUsed(libGDHL_gt_HeroKatarinaChangeEquippedWeapon, c_playerAny, "Katarina_EquipSnipe");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero - Katarina - Katarina Is Created
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_HeroKatarinaKatarinaIsCreated_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_heroUnit;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_heroUnit = EventUnit();
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitInventoryCreate(lv_heroUnit, "Katarina_EquipAutorifle");
+    UnitInventoryCreate(lv_heroUnit, "Katarina_EquipSnipe");
+    UnitInventoryCreate(lv_heroUnit, "Katarina_EquipChaingun");
+    UnitInventoryCreate(lv_heroUnit, "Katarina_EquipFlamethrower");
+    UISetFrameVisible(libCore_gv_playerGroupFromPlayer[UnitGetOwner(lv_heroUnit)], c_syncFrameTypeInventoryPanel, true);
+    TriggerEnable(libGDHL_gt_HeroKatarinaKatarinaIsRevived, true);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_HeroKatarinaKatarinaIsCreated_Init () {
+    libGDHL_gt_HeroKatarinaKatarinaIsCreated = TriggerCreate("libGDHL_gt_HeroKatarinaKatarinaIsCreated_Func");
+    TriggerAddEventUnitBehaviorChange(libGDHL_gt_HeroKatarinaKatarinaIsCreated, null, "Katarina_KatarinaBirthAddAmmo", c_unitBehaviorChangeCreate);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero - Katarina - Katarina Is Revived
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_HeroKatarinaKatarinaIsRevived_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_heroUnit;
+    string lv_carriedWeaponBehavior;
+    string lv_equippedWeaponBehavior;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_heroUnit = EventUnit();
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(lv_heroUnit) == "HeroKatarina"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_carriedWeaponBehavior = libGDHL_gf_HeroKatarinaCarriedWeaponBehavior(lv_heroUnit);
+    lv_equippedWeaponBehavior = libGDHL_gf_HeroKatarinaEquippedWeaponBehavior(lv_heroUnit);
+    UnitBehaviorRemove(lv_heroUnit, lv_carriedWeaponBehavior, 1);
+    UnitBehaviorRemove(lv_heroUnit, lv_equippedWeaponBehavior, 1);
+    UnitBehaviorAdd(lv_heroUnit, lv_equippedWeaponBehavior, lv_heroUnit, 1);
+    UnitBehaviorAdd(lv_heroUnit, lv_carriedWeaponBehavior, lv_heroUnit, 1);
+    libGDHL_gf_HeroKatarinaAmmoAdd(60, "Katarina_Ammo_Autorifle", lv_heroUnit);
+    libGDHL_gf_HeroKatarinaAmmoAdd(60, "Katarina_Ammo_Chaingun", lv_heroUnit);
+    libGDHL_gf_HeroKatarinaAmmoAdd(60, "Katarina_Ammo_Flamethrower", lv_heroUnit);
+    libGDHL_gf_HeroKatarinaAmmoAdd(60, "Katarina_Ammo_Snipe", lv_heroUnit);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_HeroKatarinaKatarinaIsRevived_Init () {
+    libGDHL_gt_HeroKatarinaKatarinaIsRevived = TriggerCreate("libGDHL_gt_HeroKatarinaKatarinaIsRevived_Func");
+    TriggerEnable(libGDHL_gt_HeroKatarinaKatarinaIsRevived, false);
+    TriggerAddEventUnitBehaviorChange(libGDHL_gt_HeroKatarinaKatarinaIsRevived, null, "Dead", c_unitBehaviorChangeDestroy);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero - Katarina - Swap Hero Models (Carried)
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_HeroKatarinaSwapHeroModelsCarried_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    string lv_locBehavior;
+    unit lv_locUnit;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_locBehavior = EventUnitBehavior();
+    lv_locUnit = EventUnit();
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((lv_locBehavior == "Katarina_Carried_Autorifle")) {
+        if ((UnitHasBehavior2(lv_locUnit, "Katarina_Equipped_Chaingun") == true)) {
+            ActorSend(libNtve_gf_MainActorofUnit(lv_locUnit), "ModelSwap HeroKatarina_Chaingunner_Autorifled");
+        }
+        else if ((UnitHasBehavior2(lv_locUnit, "Katarina_Equipped_Flamethrower") == true)) {
+            ActorSend(libNtve_gf_MainActorofUnit(lv_locUnit), "ModelSwap HeroKatarina_Flamethrower_Autorifled");
+        }
+        else if ((UnitHasBehavior2(lv_locUnit, "Katarina_Equipped_Snipe") == true)) {
+            ActorSend(libNtve_gf_MainActorofUnit(lv_locUnit), "ModelSwap HeroKatarina_Sniper_Autorifled");
+        }
+    }
+    else if ((lv_locBehavior == "Katarina_Carried_Chaingun")) {
+        if ((UnitHasBehavior2(lv_locUnit, "Katarina_Equipped_Autorifle") == true)) {
+            ActorSend(libNtve_gf_MainActorofUnit(lv_locUnit), "ModelSwap HeroKatarina_Autorifler_Chainguned");
+        }
+        else if ((UnitHasBehavior2(lv_locUnit, "Katarina_Equipped_Flamethrower") == true)) {
+            ActorSend(libNtve_gf_MainActorofUnit(lv_locUnit), "ModelSwap HeroKatarina_Flamethrower_Chainguned");
+        }
+        else if ((UnitHasBehavior2(lv_locUnit, "Katarina_Equipped_Snipe") == true)) {
+            ActorSend(libNtve_gf_MainActorofUnit(lv_locUnit), "ModelSwap HeroKatarina_Sniper_Chainguned");
+        }
+    }
+    else if ((lv_locBehavior == "Katarina_Carried_Flamethrower")) {
+        if ((UnitHasBehavior2(lv_locUnit, "Katarina_Equipped_Autorifle") == true)) {
+            ActorSend(libNtve_gf_MainActorofUnit(lv_locUnit), "ModelSwap HeroKatarina_Autorifler_Flamethrowered");
+        }
+        else if ((UnitHasBehavior2(lv_locUnit, "Katarina_Equipped_Chaingun") == true)) {
+            ActorSend(libNtve_gf_MainActorofUnit(lv_locUnit), "ModelSwap HeroKatarina_Chaingunner_Flamethrowered");
+        }
+        else if ((UnitHasBehavior2(lv_locUnit, "Katarina_Equipped_Snipe") == true)) {
+            ActorSend(libNtve_gf_MainActorofUnit(lv_locUnit), "ModelSwap HeroKatarina_Sniper_Flamethrowered");
+        }
+    }
+    else if ((lv_locBehavior == "Katarina_Carried_Snipe")) {
+        if ((UnitHasBehavior2(lv_locUnit, "Katarina_Equipped_Autorifle") == true)) {
+            ActorSend(libNtve_gf_MainActorofUnit(lv_locUnit), "ModelSwap HeroKatarina_Autorifler_Sniped");
+        }
+        else if ((UnitHasBehavior2(lv_locUnit, "Katarina_Equipped_Chaingun") == true)) {
+            ActorSend(libNtve_gf_MainActorofUnit(lv_locUnit), "ModelSwap HeroKatarina_Chaingunner_Sniped");
+        }
+        else if ((UnitHasBehavior2(lv_locUnit, "Katarina_Equipped_Flamethrower") == true)) {
+            ActorSend(libNtve_gf_MainActorofUnit(lv_locUnit), "ModelSwap HeroKatarina_Flamethrower_Sniped");
+        }
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_HeroKatarinaSwapHeroModelsCarried_Init () {
+    libGDHL_gt_HeroKatarinaSwapHeroModelsCarried = TriggerCreate("libGDHL_gt_HeroKatarinaSwapHeroModelsCarried_Func");
+    TriggerAddEventUnitBehaviorChange(libGDHL_gt_HeroKatarinaSwapHeroModelsCarried, null, "Katarina_Carried_Autorifle", c_unitBehaviorChangeCreate);
+    TriggerAddEventUnitBehaviorChange(libGDHL_gt_HeroKatarinaSwapHeroModelsCarried, null, "Katarina_Carried_Chaingun", c_unitBehaviorChangeCreate);
+    TriggerAddEventUnitBehaviorChange(libGDHL_gt_HeroKatarinaSwapHeroModelsCarried, null, "Katarina_Carried_Flamethrower", c_unitBehaviorChangeCreate);
+    TriggerAddEventUnitBehaviorChange(libGDHL_gt_HeroKatarinaSwapHeroModelsCarried, null, "Katarina_Carried_Snipe", c_unitBehaviorChangeCreate);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero - Katarina - Swap Hero Models (Equipped)
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_HeroKatarinaSwapHeroModelsEquipped_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    string lv_effect;
+    unit lv_locUnit;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_effect = EventPlayerEffectUsed();
+    lv_locUnit = EventPlayerEffectUsedUnit(c_effectUnitCaster);
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((UnitHasBehavior2(lv_locUnit, "Katarina_Equipped_Autorifle") == true)) {
+        if ((UnitHasBehavior2(lv_locUnit, "Katarina_Carried_Chaingun") == true)) {
+            ActorSend(libNtve_gf_MainActorofUnit(lv_locUnit), "ModelSwap HeroKatarina_Autorifler_Chainguned");
+        }
+        else if ((UnitHasBehavior2(lv_locUnit, "Katarina_Carried_Flamethrower") == true)) {
+            ActorSend(libNtve_gf_MainActorofUnit(lv_locUnit), "ModelSwap HeroKatarina_Autorifler_Flamethrowered");
+        }
+        else if ((UnitHasBehavior2(lv_locUnit, "Katarina_Carried_Snipe") == true)) {
+            ActorSend(libNtve_gf_MainActorofUnit(lv_locUnit), "ModelSwap HeroKatarina_Autorifler_Sniped");
+        }
+    }
+    else if ((UnitHasBehavior2(lv_locUnit, "Katarina_Equipped_Chaingun") == true)) {
+        if ((UnitHasBehavior2(lv_locUnit, "Katarina_Carried_Autorifle") == true)) {
+            ActorSend(libNtve_gf_MainActorofUnit(lv_locUnit), "ModelSwap HeroKatarina_Chaingunner_Autorifled");
+        }
+        else if ((UnitHasBehavior2(lv_locUnit, "Katarina_Carried_Flamethrower") == true)) {
+            ActorSend(libNtve_gf_MainActorofUnit(lv_locUnit), "ModelSwap HeroKatarina_Chaingunner_Flamethrowered");
+        }
+        else if ((UnitHasBehavior2(lv_locUnit, "Katarina_Carried_Snipe") == true)) {
+            ActorSend(libNtve_gf_MainActorofUnit(lv_locUnit), "ModelSwap HeroKatarina_Chaingunner_Sniped");
+        }
+    }
+    else if ((UnitHasBehavior2(lv_locUnit, "Katarina_Equipped_Flamethrower") == true)) {
+        if ((UnitHasBehavior2(lv_locUnit, "Katarina_Carried_Autorifle") == true)) {
+            ActorSend(libNtve_gf_MainActorofUnit(lv_locUnit), "ModelSwap HeroKatarina_Flamethrower_Autorifled");
+        }
+        else if ((UnitHasBehavior2(lv_locUnit, "Katarina_Carried_Chaingun") == true)) {
+            ActorSend(libNtve_gf_MainActorofUnit(lv_locUnit), "ModelSwap HeroKatarina_Flamethrower_Chainguned");
+        }
+        else if ((UnitHasBehavior2(lv_locUnit, "Katarina_Carried_Snipe") == true)) {
+            ActorSend(libNtve_gf_MainActorofUnit(lv_locUnit), "ModelSwap HeroKatarina_Flamethrower_Sniped");
+        }
+    }
+    else if ((UnitHasBehavior2(lv_locUnit, "Katarina_Equipped_Snipe") == true)) {
+        if ((UnitHasBehavior2(lv_locUnit, "Katarina_Carried_Autorifle") == true)) {
+            ActorSend(libNtve_gf_MainActorofUnit(lv_locUnit), "ModelSwap HeroKatarina_Sniper_Autorifled");
+        }
+        else if ((UnitHasBehavior2(lv_locUnit, "Katarina_Carried_Chaingun") == true)) {
+            ActorSend(libNtve_gf_MainActorofUnit(lv_locUnit), "ModelSwap HeroKatarina_Sniper_Chainguned");
+        }
+        else if ((UnitHasBehavior2(lv_locUnit, "Katarina_Carried_Flamethrower") == true)) {
+            ActorSend(libNtve_gf_MainActorofUnit(lv_locUnit), "ModelSwap HeroKatarina_Sniper_Flamethrowered");
+        }
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_HeroKatarinaSwapHeroModelsEquipped_Init () {
+    libGDHL_gt_HeroKatarinaSwapHeroModelsEquipped = TriggerCreate("libGDHL_gt_HeroKatarinaSwapHeroModelsEquipped_Func");
+    TriggerAddEventPlayerEffectUsed(libGDHL_gt_HeroKatarinaSwapHeroModelsEquipped, c_playerAny, "SetEquippedCooldown");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero - Katarina - Aimed Shot - Hero Healing (Damage)
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_HeroKatarinaAimedShotHeroHealingDamage_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    string lv_healingEffect;
+    fixed lv_healingValue;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_healingEffect = "Katarina_AimedShot_CreateHealer";
+    lv_healingValue = (EventUnitDamageAttemptedVitals() + EventUnitDamageBehaviorShield());
+    libNtve_gf_CatalogFieldValueSetAsReal(c_gameCatalogEffect, lv_healingEffect, "RechargeVitalRate", EventUnitDamageSourcePlayer(), lv_healingValue);
+    libNtve_gf_CatalogFieldValueSetAsReal(c_gameCatalogEffect, lv_healingEffect, "RechargeVitalMax", EventUnitDamageSourcePlayer(), lv_healingValue);
+    UnitCreateEffectUnit(EventUnitDamageSourceUnit(), lv_healingEffect, EventUnitDamageSourceUnit());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_HeroKatarinaAimedShotHeroHealingDamage_Init () {
+    libGDHL_gt_HeroKatarinaAimedShotHeroHealingDamage = TriggerCreate("libGDHL_gt_HeroKatarinaAimedShotHeroHealingDamage_Func");
+    TriggerAddEventUnitDamaged(libGDHL_gt_HeroKatarinaAimedShotHeroHealingDamage, null, c_unitDamageTypeAny, c_unitDamageEither, "Katarina_AimedShot_StormDamage");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero - Katarina - Ammo - Talent Increased (Charges)
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_HeroKatarinaAmmoTalentIncreasedCharges_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    string lv_itEffect;
+    unit lv_itUnit;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_itEffect = EventPlayerEffectUsed();
+    lv_itUnit = EventPlayerEffectUsedUnit(c_effectUnitCaster);
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((lv_itEffect == "KatarinaBucket_Charges_Autorifle_MaxCharges_Add")) {
+        UnitAddChargeUsed(lv_itUnit, "Abil/Katarina_EquipAutorifle", libGDHL_gv_heroKatarinaAmmoTalentIncreased);
+    }
+    else if ((lv_itEffect == "KatarinaBucket_Charges_Chaingun_MaxCharges_Add")) {
+        UnitAddChargeUsed(lv_itUnit, "Abil/Katarina_EquipChaingun", libGDHL_gv_heroKatarinaAmmoTalentIncreased);
+    }
+    else if ((lv_itEffect == "KatarinaBucket_Charges_Flamethrower_MaxCharges_Add")) {
+        UnitAddChargeUsed(lv_itUnit, "Abil/Katarina_EquipFlamethrower", libGDHL_gv_heroKatarinaAmmoTalentIncreased);
+    }
+    else if ((lv_itEffect == "KatarinaBucket_Charges_Snipe_MaxCharges_Add")) {
+        UnitAddChargeUsed(lv_itUnit, "Abil/Katarina_EquipSnipe", libGDHL_gv_heroKatarinaAmmoTalentIncreased);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_HeroKatarinaAmmoTalentIncreasedCharges_Init () {
+    libGDHL_gt_HeroKatarinaAmmoTalentIncreasedCharges = TriggerCreate("libGDHL_gt_HeroKatarinaAmmoTalentIncreasedCharges_Func");
+    TriggerAddEventPlayerEffectUsed(libGDHL_gt_HeroKatarinaAmmoTalentIncreasedCharges, c_playerAny, "KatarinaBucket_Charges_Autorifle_MaxCharges_Add");
+    TriggerAddEventPlayerEffectUsed(libGDHL_gt_HeroKatarinaAmmoTalentIncreasedCharges, c_playerAny, "KatarinaBucket_Charges_Chaingun_MaxCharges_Add");
+    TriggerAddEventPlayerEffectUsed(libGDHL_gt_HeroKatarinaAmmoTalentIncreasedCharges, c_playerAny, "KatarinaBucket_Charges_Flamethrower_MaxCharges_Add");
+    TriggerAddEventPlayerEffectUsed(libGDHL_gt_HeroKatarinaAmmoTalentIncreasedCharges, c_playerAny, "KatarinaBucket_Charges_Snipe_MaxCharges_Add");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero - Katarina - Ammo - Controller
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_HeroKatarinaAmmoController_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    string lv_triggeringEffect;
+    unit lv_casterUnit;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_triggeringEffect = EventPlayerEffectUsed();
+    lv_casterUnit = EventPlayerEffectUsedUnit(c_effectUnitCaster);
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((lv_triggeringEffect == "Katarina_Ammo_Remove1AutorifleAmmo")) {
+        UnitAddChargeUsed(lv_casterUnit, "Abil/Katarina_EquipAutorifle", 1.0);
+    }
+    else if ((lv_triggeringEffect == "Katarina_Ammo_Remove1ChaingunAmmo")) {
+        UnitAddChargeUsed(lv_casterUnit, "Abil/Katarina_EquipChaingun", 1.0);
+    }
+    else if ((lv_triggeringEffect == "Katarina_Ammo_Remove1FlamethrowerAmmo")) {
+        UnitAddChargeUsed(lv_casterUnit, "Abil/Katarina_EquipFlamethrower", 1.0);
+    }
+    else if ((lv_triggeringEffect == "Katarina_Ammo_Remove1SnipeAmmo")) {
+        UnitAddChargeUsed(lv_casterUnit, "Abil/Katarina_EquipSnipe", 1.0);
+    }
+    if ((UnitHasBehavior2(lv_casterUnit, "Katarina_Carried_Autorifle") == true)) {
+        libGDHL_gf_HeroKatarinaAmmoAdd(1, "Katarina_Ammo_Autorifle", lv_casterUnit);
+    }
+    else if ((UnitHasBehavior2(lv_casterUnit, "Katarina_Carried_Chaingun") == true)) {
+        libGDHL_gf_HeroKatarinaAmmoAdd(1, "Katarina_Ammo_Chaingun", lv_casterUnit);
+    }
+    else if ((UnitHasBehavior2(lv_casterUnit, "Katarina_Carried_Flamethrower") == true)) {
+        libGDHL_gf_HeroKatarinaAmmoAdd(1, "Katarina_Ammo_Flamethrower", lv_casterUnit);
+    }
+    else if ((UnitHasBehavior2(lv_casterUnit, "Katarina_Carried_Snipe") == true)) {
+        libGDHL_gf_HeroKatarinaAmmoAdd(1, "Katarina_Ammo_Snipe", lv_casterUnit);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_HeroKatarinaAmmoController_Init () {
+    libGDHL_gt_HeroKatarinaAmmoController = TriggerCreate("libGDHL_gt_HeroKatarinaAmmoController_Func");
+    TriggerAddEventPlayerEffectUsed(libGDHL_gt_HeroKatarinaAmmoController, c_playerAny, "Katarina_Ammo_Remove1AutorifleAmmo");
+    TriggerAddEventPlayerEffectUsed(libGDHL_gt_HeroKatarinaAmmoController, c_playerAny, "Katarina_Ammo_Remove1ChaingunAmmo");
+    TriggerAddEventPlayerEffectUsed(libGDHL_gt_HeroKatarinaAmmoController, c_playerAny, "Katarina_Ammo_Remove1FlamethrowerAmmo");
+    TriggerAddEventPlayerEffectUsed(libGDHL_gt_HeroKatarinaAmmoController, c_playerAny, "Katarina_Ammo_Remove1SnipeAmmo");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero - Katarina - Weapon - Attack Setup
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_HeroKatarinaWeaponAttackSetup_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    string lv_effectUsed;
+    unit lv_targetUnit;
+    unit lv_casterUnit;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_effectUsed = EventPlayerEffectUsed();
+    lv_targetUnit = EventPlayerEffectUsedUnit(c_effectUnitTarget);
+    lv_casterUnit = EventPlayerEffectUsedUnit(c_effectUnitCaster);
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((lv_effectUsed == "Katarina_Weapon_Autorifle_TriggerSet_1st")) {
+        UnitBehaviorRemove(lv_targetUnit, "KatarinaBucket_DestroyerAutorifle_Mark_1st", 0);
+        if ((UnitHasBehavior2(lv_casterUnit, "KatarinaBucket_DestroyerAutorifle") == true)) {
+            UnitBehaviorAdd(lv_targetUnit, "KatarinaBucket_DestroyerAutorifle_Mark_1st", lv_casterUnit, UnitBehaviorCount(lv_casterUnit, "Katarina_Ammo_Autorifle"));
+        }
+
+        UnitCreateEffectUnit(lv_casterUnit, "Katarian_Weapon_Autorifle_LaunchMissile_1st", lv_targetUnit);
+    }
+    else if ((lv_effectUsed == "Katarina_Weapon_Autorifle_TriggerSet_2nd")) {
+        UnitBehaviorRemove(lv_targetUnit, "KatarinaBucket_DestroyerAutorifle_Mark_2nd", 0);
+        if ((UnitHasBehavior2(lv_casterUnit, "KatarinaBucket_DestroyerAutorifle") == true)) {
+            UnitBehaviorAdd(lv_targetUnit, "KatarinaBucket_DestroyerAutorifle_Mark_2nd", lv_casterUnit, UnitBehaviorCount(lv_casterUnit, "Katarina_Ammo_Autorifle"));
+        }
+
+        UnitCreateEffectUnit(lv_casterUnit, "Katarian_Weapon_Autorifle_LaunchMissile_2nd", lv_targetUnit);
+    }
+    else if ((lv_effectUsed == "Katarina_Weapon_Autorifle_TriggerSet_3rd")) {
+        UnitBehaviorRemove(lv_targetUnit, "KatarinaBucket_DestroyerAutorifle_Mark_3rd", 0);
+        if ((UnitHasBehavior2(lv_casterUnit, "KatarinaBucket_DestroyerAutorifle") == true)) {
+            UnitBehaviorAdd(lv_targetUnit, "KatarinaBucket_DestroyerAutorifle_Mark_3rd", lv_casterUnit, UnitBehaviorCount(lv_casterUnit, "Katarina_Ammo_Autorifle"));
+        }
+
+        UnitCreateEffectUnit(lv_casterUnit, "Katarian_Weapon_Autorifle_LaunchMissile_3rd", lv_targetUnit);
+    }
+    else if ((lv_effectUsed == "Katarina_Weapon_Chaingun_TriggerSet_1st")) {
+        UnitBehaviorRemove(lv_targetUnit, "KatarinaBucket_DestroyerChaingun_Mark_1st", 0);
+        if ((UnitHasBehavior2(lv_casterUnit, "KatarinaBucket_DestroyerChaingun") == true)) {
+            UnitBehaviorAdd(lv_targetUnit, "KatarinaBucket_DestroyerChaingun_Mark_1st", lv_casterUnit, UnitBehaviorCount(lv_casterUnit, "Katarina_Ammo_Chaingun"));
+        }
+
+        UnitCreateEffectUnit(lv_casterUnit, "Katarina_Weapon_Chaingun_LaunchMissile_1st", lv_targetUnit);
+    }
+    else if ((lv_effectUsed == "Katarina_Weapon_Chaingun_TriggerSet_2nd")) {
+        UnitBehaviorRemove(lv_targetUnit, "KatarinaBucket_DestroyerChaingun_Mark_2nd", 0);
+        if ((UnitHasBehavior2(lv_casterUnit, "KatarinaBucket_DestroyerChaingun") == true)) {
+            UnitBehaviorAdd(lv_targetUnit, "KatarinaBucket_DestroyerChaingun_Mark_2nd", lv_casterUnit, UnitBehaviorCount(lv_casterUnit, "Katarina_Ammo_Chaingun"));
+        }
+
+        UnitCreateEffectUnit(lv_casterUnit, "Katarina_Weapon_Chaingun_LaunchMissile_2nd", lv_targetUnit);
+    }
+    else if ((lv_effectUsed == "Katarina_Weapon_Chaingun_TriggerSet_3rd")) {
+        UnitBehaviorRemove(lv_targetUnit, "KatarinaBucket_DestroyerChaingun_Mark_3rd", 0);
+        if ((UnitHasBehavior2(lv_casterUnit, "KatarinaBucket_DestroyerChaingun") == true)) {
+            UnitBehaviorAdd(lv_targetUnit, "KatarinaBucket_DestroyerChaingun_Mark_3rd", lv_casterUnit, UnitBehaviorCount(lv_casterUnit, "Katarina_Ammo_Chaingun"));
+        }
+
+        UnitCreateEffectUnit(lv_casterUnit, "Katarina_Weapon_Chaingun_LaunchMissile_3rd", lv_targetUnit);
+    }
+    else if ((lv_effectUsed == "Katarina_Weapon_Flamethrower_TriggerSet")) {
+        UnitBehaviorRemove(lv_targetUnit, "KatarinaBucket_DestroyerFlamethrower_Mark", 0);
+        if ((UnitHasBehavior2(lv_casterUnit, "KatarinaBucket_DestroyerFlamethrower") == true)) {
+            UnitBehaviorAdd(lv_targetUnit, "KatarinaBucket_DestroyerFlamethrower_Mark", lv_casterUnit, UnitBehaviorCount(lv_casterUnit, "Katarina_Ammo_Flamethrower"));
+        }
+
+        UnitCreateEffectUnit(lv_casterUnit, "Katarina_Weapon_Flamethrower_ImpactSet", lv_targetUnit);
+    }
+    else if ((lv_effectUsed == "Katarina_Weapon_Snipe_TriggerSet")) {
+        UnitBehaviorRemove(lv_targetUnit, "KatarinaBucket_DestroyerSnipe_Mark", 0);
+        if ((UnitHasBehavior2(lv_casterUnit, "KatarinaBucket_DestroyerSnipe") == true)) {
+            UnitBehaviorAdd(lv_targetUnit, "KatarinaBucket_DestroyerSnipe_Mark", lv_casterUnit, UnitBehaviorCount(lv_casterUnit, "Katarina_Ammo_Snipe"));
+        }
+
+        UnitCreateEffectUnit(lv_casterUnit, "Katarina_Weapon_Snipe_LaunchMissile", lv_targetUnit);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_HeroKatarinaWeaponAttackSetup_Init () {
+    libGDHL_gt_HeroKatarinaWeaponAttackSetup = TriggerCreate("libGDHL_gt_HeroKatarinaWeaponAttackSetup_Func");
+    TriggerAddEventPlayerEffectUsed(libGDHL_gt_HeroKatarinaWeaponAttackSetup, c_playerAny, "Katarina_Weapon_Autorifle_TriggerSet_1st");
+    TriggerAddEventPlayerEffectUsed(libGDHL_gt_HeroKatarinaWeaponAttackSetup, c_playerAny, "Katarina_Weapon_Autorifle_TriggerSet_2nd");
+    TriggerAddEventPlayerEffectUsed(libGDHL_gt_HeroKatarinaWeaponAttackSetup, c_playerAny, "Katarina_Weapon_Autorifle_TriggerSet_3rd");
+    TriggerAddEventPlayerEffectUsed(libGDHL_gt_HeroKatarinaWeaponAttackSetup, c_playerAny, "Katarina_Weapon_Chaingun_TriggerSet_1st");
+    TriggerAddEventPlayerEffectUsed(libGDHL_gt_HeroKatarinaWeaponAttackSetup, c_playerAny, "Katarina_Weapon_Chaingun_TriggerSet_2nd");
+    TriggerAddEventPlayerEffectUsed(libGDHL_gt_HeroKatarinaWeaponAttackSetup, c_playerAny, "Katarina_Weapon_Chaingun_TriggerSet_3rd");
+    TriggerAddEventPlayerEffectUsed(libGDHL_gt_HeroKatarinaWeaponAttackSetup, c_playerAny, "Katarina_Weapon_Flamethrower_TriggerSet");
+    TriggerAddEventPlayerEffectUsed(libGDHL_gt_HeroKatarinaWeaponAttackSetup, c_playerAny, "Katarina_Weapon_Snipe_TriggerSet");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero - Katarina - Weapon - Main and Secondary Effects (on Damage dealt)
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_HeroKatarinaWeaponMainandSecondaryEffectsonDamagedealt_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    string lv_effect;
+    unit lv_casterUnit;
+    unit lv_targetUnit;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_effect = EventUnitDamageEffect();
+    lv_casterUnit = EventUnitDamageSourceUnit();
+    lv_targetUnit = EventUnit();
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if (((lv_effect == "Katarina_Weapon_Autorifle_Damage_1st") || (lv_effect == "Katarina_Weapon_Autorifle_Damage_2nd") || (lv_effect == "Katarina_Weapon_Autorifle_Damage_3rd"))) {
+        libGDHL_gf_HeroKatarinaAutorifleHealingSystem(lv_casterUnit, (EventUnitDamageAttemptedVitals() + EventUnitDamageBehaviorShield()), libGDHL_ge_HeroKatarinaWeaponEquippedCarried_Equipped);
+    }
+    else if (((lv_effect == "Katarina_Weapon_Flamethrower_BaseDamage") || (lv_effect == "Katarina_Weapon_Flamethrower_SplashDamage")) && (UnitHasBehavior2(lv_targetUnit, "Katarina_AdditiveEffect_Flamethrower_BurningCooldown") == false)) {
+        UnitBehaviorRemove(lv_targetUnit, "Katarina_AdditiveEffect_Flamethrower_Burning_SecondaryWeapon", 0);
+        UnitBehaviorAdd(lv_targetUnit, "Katarina_AdditiveEffect_Flamethrower_Burning_Base", lv_casterUnit, 1);
+        UnitBehaviorAdd(lv_targetUnit, "Katarina_AdditiveEffect_Flamethrower_BurningCooldown", lv_casterUnit, 1);
+    }
+    else if (((lv_effect == "Katarina_Weapon_Chaingun_Damage_1st") || (lv_effect == "Katarina_Weapon_Chaingun_Damage_2nd") || (lv_effect == "Katarina_Weapon_Chaingun_Damage_3rd"))) {
+        UnitBehaviorRemove(lv_targetUnit, "Katarina_AdditiveEffect_Chaingun_ArmorReduced_CarriedWeapon", 0);
+    }
+    else if ((lv_effect == "Katarina_Weapon_Snipe_Damage")) {
+        UnitBehaviorRemove(lv_targetUnit, "Katarina_AdditiveEffect_Snipe_Slow_Secondary", 0);
+        UnitBehaviorAdd(lv_targetUnit, "Katarina_AdditiveEffect_Snipe_Slow_Base", lv_casterUnit, 1);
+    }
+
+    if ((UnitHasBehavior2(lv_casterUnit, "Katarina_Carried_Autorifle") == true)) {
+        libGDHL_gf_HeroKatarinaAutorifleHealingSystem(lv_casterUnit, (EventUnitDamageAttemptedVitals() + EventUnitDamageBehaviorShield()), libGDHL_ge_HeroKatarinaWeaponEquippedCarried_Carried);
+    }
+    else if ((UnitHasBehavior2(lv_casterUnit, "Katarina_Carried_Chaingun") == true)) {
+        UnitBehaviorRemove(lv_targetUnit, "Katarina_AdditiveEffect_Chaingun_ArmorReduced_EquippedWeapon", 0);
+    }
+    else if ((UnitHasBehavior2(lv_casterUnit, "Katarina_Carried_Flamethrower") == true) && (UnitHasBehavior2(lv_targetUnit, "Katarina_AdditiveEffect_Flamethrower_BurningCooldown") == false)) {
+        UnitBehaviorRemove(lv_targetUnit, "Katarina_AdditiveEffect_Flamethrower_Burning_Base", 0);
+        UnitBehaviorAdd(lv_targetUnit, "Katarina_AdditiveEffect_Flamethrower_Burning_SecondaryWeapon", lv_casterUnit, 1);
+        UnitBehaviorAdd(lv_targetUnit, "Katarina_AdditiveEffect_Flamethrower_BurningCooldown", lv_casterUnit, 1);
+    }
+    else if ((UnitHasBehavior2(lv_casterUnit, "Katarina_Carried_Snipe") == true)) {
+        UnitBehaviorRemove(lv_targetUnit, "Katarina_AdditiveEffect_Snipe_Slow_Base", 0);
+        UnitBehaviorAdd(lv_targetUnit, "Katarina_AdditiveEffect_Snipe_Slow_Secondary", lv_casterUnit, 1);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_HeroKatarinaWeaponMainandSecondaryEffectsonDamagedealt_Init () {
+    libGDHL_gt_HeroKatarinaWeaponMainandSecondaryEffectsonDamagedealt = TriggerCreate("libGDHL_gt_HeroKatarinaWeaponMainandSecondaryEffectsonDamagedealt_Func");
+    TriggerAddEventUnitDamaged(libGDHL_gt_HeroKatarinaWeaponMainandSecondaryEffectsonDamagedealt, null, c_unitDamageTypeAny, c_unitDamageNonFatal, "Katarina_Weapon_Autorifle_Damage_1st");
+    TriggerAddEventUnitDamaged(libGDHL_gt_HeroKatarinaWeaponMainandSecondaryEffectsonDamagedealt, null, c_unitDamageTypeAny, c_unitDamageNonFatal, "Katarina_Weapon_Autorifle_Damage_2nd");
+    TriggerAddEventUnitDamaged(libGDHL_gt_HeroKatarinaWeaponMainandSecondaryEffectsonDamagedealt, null, c_unitDamageTypeAny, c_unitDamageNonFatal, "Katarina_Weapon_Autorifle_Damage_3rd");
+    TriggerAddEventUnitDamaged(libGDHL_gt_HeroKatarinaWeaponMainandSecondaryEffectsonDamagedealt, null, c_unitDamageTypeAny, c_unitDamageNonFatal, "Katarina_Weapon_Chaingun_Damage_1st");
+    TriggerAddEventUnitDamaged(libGDHL_gt_HeroKatarinaWeaponMainandSecondaryEffectsonDamagedealt, null, c_unitDamageTypeAny, c_unitDamageNonFatal, "Katarina_Weapon_Chaingun_Damage_2nd");
+    TriggerAddEventUnitDamaged(libGDHL_gt_HeroKatarinaWeaponMainandSecondaryEffectsonDamagedealt, null, c_unitDamageTypeAny, c_unitDamageNonFatal, "Katarina_Weapon_Chaingun_Damage_3rd");
+    TriggerAddEventUnitDamaged(libGDHL_gt_HeroKatarinaWeaponMainandSecondaryEffectsonDamagedealt, null, c_unitDamageTypeAny, c_unitDamageNonFatal, "Katarina_Weapon_Flamethrower_BaseDamage");
+    TriggerAddEventUnitDamaged(libGDHL_gt_HeroKatarinaWeaponMainandSecondaryEffectsonDamagedealt, null, c_unitDamageTypeAny, c_unitDamageNonFatal, "Katarina_Weapon_Flamethrower_SplashDamage");
+    TriggerAddEventUnitDamaged(libGDHL_gt_HeroKatarinaWeaponMainandSecondaryEffectsonDamagedealt, null, c_unitDamageTypeAny, c_unitDamageNonFatal, "Katarina_Weapon_Snipe_Damage");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero - Katarina - Talent - Universal Ammo
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_HeroKatarinaTalentUniversalAmmo_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_itUnit;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_itUnit = EventPlayerEffectUsedUnit(c_effectUnitTarget);
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libGDHL_gf_HeroKatarinaAmmoAdd(libGDHL_gv_heroKatarinaTalentUniversalAmmoAmmoGainfromGlobe, "Katarina_Ammo_Autorifle", lv_itUnit);
+    libGDHL_gf_HeroKatarinaAmmoAdd(libGDHL_gv_heroKatarinaTalentUniversalAmmoAmmoGainfromGlobe, "Katarina_Ammo_Chaingun", lv_itUnit);
+    libGDHL_gf_HeroKatarinaAmmoAdd(libGDHL_gv_heroKatarinaTalentUniversalAmmoAmmoGainfromGlobe, "Katarina_Ammo_Flamethrower", lv_itUnit);
+    libGDHL_gf_HeroKatarinaAmmoAdd(libGDHL_gv_heroKatarinaTalentUniversalAmmoAmmoGainfromGlobe, "Katarina_Ammo_Snipe", lv_itUnit);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_HeroKatarinaTalentUniversalAmmo_Init () {
+    libGDHL_gt_HeroKatarinaTalentUniversalAmmo = TriggerCreate("libGDHL_gt_HeroKatarinaTalentUniversalAmmo_Func");
+    TriggerAddEventPlayerEffectUsed(libGDHL_gt_HeroKatarinaTalentUniversalAmmo, c_playerAny, "HeroGeneric_RegenerationGlobe_Pickup_Katarina_UniversalAmmo");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero - Katarina - Talent - Ammo Restoration
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_HeroKatarinaTalentAmmoRestoration_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_heroUnit;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((PlayerHasTalent(EventPlayer(), "KatarinaUltimateWeaponAmmoRestoration") == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_heroUnit = EventPlayerEffectUsedUnit(c_effectUnitCaster);
+    libGDHL_gf_HeroKatarinaAmmoAdd(1, "Katarina_Ammo_Autorifle", lv_heroUnit);
+    libGDHL_gf_HeroKatarinaAmmoAdd(1, "Katarina_Ammo_Chaingun", lv_heroUnit);
+    libGDHL_gf_HeroKatarinaAmmoAdd(1, "Katarina_Ammo_Flamethrower", lv_heroUnit);
+    libGDHL_gf_HeroKatarinaAmmoAdd(1, "Katarina_Ammo_Snipe", lv_heroUnit);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_HeroKatarinaTalentAmmoRestoration_Init () {
+    libGDHL_gt_HeroKatarinaTalentAmmoRestoration = TriggerCreate("libGDHL_gt_HeroKatarinaTalentAmmoRestoration_Func");
+    TriggerAddEventPlayerEffectUsed(libGDHL_gt_HeroKatarinaTalentAmmoRestoration, c_playerAny, "KatarinaBucket_UltimateWeapon_AmmorRestorationTriggerSet");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero - Katarina - Talent - Destroyer Weapon UI -Talent Picked
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_HeroKatarinaTalentDestroyerWeaponUITalentPicked_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_player;
+    string lv_talent;
+    unit lv_heroUnit;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_player = libGame_gf_PlayerChooseTalentPlayer();
+    lv_talent = libGame_gf_PlayerChooseTalentTalentLink();
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_heroUnit = libGame_gf_PlayerHeroUnit(lv_player);
+    if ((lv_talent == "Katarina_DestroyerAutorifle")) {
+        libNtve_gf_SetBehaviorCount(lv_heroUnit, "KatarinaBucket_DestroyerAutorifleDamageUIDisplayer", lv_heroUnit, libGDHL_gf_HeroKatarinaAmmoGetCurrentAmmoValue(lv_heroUnit, "Katarina_Ammo_Autorifle"));
+    }
+    else if ((lv_talent == "KatarinaDestroyerChaingun")) {
+        libNtve_gf_SetBehaviorCount(lv_heroUnit, "KatarinaBucket_DestroyerChaingunDamageUIDisplayer", lv_heroUnit, libGDHL_gf_HeroKatarinaAmmoGetCurrentAmmoValue(lv_heroUnit, "Katarina_Ammo_Chaingun"));
+    }
+    else if ((lv_talent == "Katarina_DestroyerFlamethrower")) {
+        libNtve_gf_SetBehaviorCount(lv_heroUnit, "KatarinaBucket_DestroyerFlamethrowerDamageUIDisplayer", lv_heroUnit, libGDHL_gf_HeroKatarinaAmmoGetCurrentAmmoValue(lv_heroUnit, "Katarina_Ammo_Flamethrower"));
+    }
+    else if ((lv_talent == "Katarina_DestroyerSnipe")) {
+        libNtve_gf_SetBehaviorCount(lv_heroUnit, "KatarinaBucket_DestroyerSnipeDamageUIDisplayer", lv_heroUnit, libGDHL_gf_HeroKatarinaAmmoGetCurrentAmmoValue(lv_heroUnit, "Katarina_Ammo_Snipe"));
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_HeroKatarinaTalentDestroyerWeaponUITalentPicked_Init () {
+    libGDHL_gt_HeroKatarinaTalentDestroyerWeaponUITalentPicked = TriggerCreate("libGDHL_gt_HeroKatarinaTalentDestroyerWeaponUITalentPicked_Func");
+    libGame_gf_PlayerChooseTalent(libGDHL_gt_HeroKatarinaTalentDestroyerWeaponUITalentPicked);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero - Katarina - Talent - Destroyer Weapon UI Controller
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_HeroKatarinaTalentDestroyerWeaponUIController_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((EventUnitBehavior() == "Katarina_Ammo_Autorifle") && (PlayerHasTalent(EventPlayer(), "Katarina_DestroyerAutorifle") == true)) {
+        libNtve_gf_SetBehaviorCount(EventUnit(), "KatarinaBucket_DestroyerAutorifleDamageUIDisplayer", EventUnit(), libGDHL_gf_HeroKatarinaAmmoGetCurrentAmmoValue(EventUnit(), "Katarina_Ammo_Autorifle"));
+    }
+    else if ((EventUnitBehavior() == "Katarina_Ammo_Chaingun") && (PlayerHasTalent(EventPlayer(), "KatarinaDestroyerChaingun") == true)) {
+        libNtve_gf_SetBehaviorCount(EventUnit(), "KatarinaBucket_DestroyerChaingunDamageUIDisplayer", EventUnit(), libGDHL_gf_HeroKatarinaAmmoGetCurrentAmmoValue(EventUnit(), "Katarina_Ammo_Chaingun"));
+    }
+    else if ((EventUnitBehavior() == "Katarina_Ammo_Flamethrower") && (PlayerHasTalent(EventPlayer(), "Katarina_DestroyerFlamethrower") == true)) {
+        libNtve_gf_SetBehaviorCount(EventUnit(), "KatarinaBucket_DestroyerFlamethrowerDamageUIDisplayer", EventUnit(), libGDHL_gf_HeroKatarinaAmmoGetCurrentAmmoValue(EventUnit(), "Katarina_Ammo_Flamethrower"));
+    }
+    else if ((EventUnitBehavior() == "Katarina_Ammo_Snipe") && (PlayerHasTalent(EventPlayer(), "Katarina_DestroyerSnipe") == true)) {
+        libNtve_gf_SetBehaviorCount(EventUnit(), "KatarinaBucket_DestroyerSnipeDamageUIDisplayer", EventUnit(), libGDHL_gf_HeroKatarinaAmmoGetCurrentAmmoValue(EventUnit(), "Katarina_Ammo_Snipe"));
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_HeroKatarinaTalentDestroyerWeaponUIController_Init () {
+    libGDHL_gt_HeroKatarinaTalentDestroyerWeaponUIController = TriggerCreate("libGDHL_gt_HeroKatarinaTalentDestroyerWeaponUIController_Func");
+    TriggerAddEventUnitBehaviorChange(libGDHL_gt_HeroKatarinaTalentDestroyerWeaponUIController, null, "Katarina_Ammo_Autorifle", c_unitBehaviorChangeIncrease);
+    TriggerAddEventUnitBehaviorChange(libGDHL_gt_HeroKatarinaTalentDestroyerWeaponUIController, null, "Katarina_Ammo_Autorifle", c_unitBehaviorChangeDecrease);
+    TriggerAddEventUnitBehaviorChange(libGDHL_gt_HeroKatarinaTalentDestroyerWeaponUIController, null, "Katarina_Ammo_Chaingun", c_unitBehaviorChangeIncrease);
+    TriggerAddEventUnitBehaviorChange(libGDHL_gt_HeroKatarinaTalentDestroyerWeaponUIController, null, "Katarina_Ammo_Chaingun", c_unitBehaviorChangeDecrease);
+    TriggerAddEventUnitBehaviorChange(libGDHL_gt_HeroKatarinaTalentDestroyerWeaponUIController, null, "Katarina_Ammo_Flamethrower", c_unitBehaviorChangeIncrease);
+    TriggerAddEventUnitBehaviorChange(libGDHL_gt_HeroKatarinaTalentDestroyerWeaponUIController, null, "Katarina_Ammo_Flamethrower", c_unitBehaviorChangeDecrease);
+    TriggerAddEventUnitBehaviorChange(libGDHL_gt_HeroKatarinaTalentDestroyerWeaponUIController, null, "Katarina_Ammo_Snipe", c_unitBehaviorChangeIncrease);
+    TriggerAddEventUnitBehaviorChange(libGDHL_gt_HeroKatarinaTalentDestroyerWeaponUIController, null, "Katarina_Ammo_Snipe", c_unitBehaviorChangeDecrease);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero - Malfurion - Regrowth - Nature's Blessing (Controller)
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_HeroMalfurionRegrowthNaturesBlessingController_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    const int auto5C1C2B71_ae = libCore_gv_bALMaxPlayers;
+    int auto5C1C2B71_var;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((EventUnitBehaviorChange() == c_unitBehaviorChangeCreate) && (TriggerIsEnabled(libGDHL_gt_HeroMalfurionRegrowthNaturesBlessingQuest) == false)) {
+        TriggerEnable(libGDHL_gt_HeroMalfurionRegrowthNaturesBlessingQuest, true);
+        return true;
+    }
+
+    auto5C1C2B71_var = 1;
+    for ( ; auto5C1C2B71_var <= auto5C1C2B71_ae; auto5C1C2B71_var += 1 ) {
+        if ((UnitHasBehavior2(libGame_gv_players[auto5C1C2B71_var].lv_heroUnit, EventUnitBehavior()) == true)) {
+            return true;
+        }
+        else {
+            PlayerScoreValueSetFromFixed(auto5C1C2B71_var, "Malfurion_Regrowth_NaturesBlessing", 0.0);
+        }
+    }
+    TriggerEnable(libGDHL_gt_HeroMalfurionRegrowthNaturesBlessingQuest, false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_HeroMalfurionRegrowthNaturesBlessingController_Init () {
+    libGDHL_gt_HeroMalfurionRegrowthNaturesBlessingController = TriggerCreate("libGDHL_gt_HeroMalfurionRegrowthNaturesBlessingController_Func");
+    TriggerAddEventUnitBehaviorChange(libGDHL_gt_HeroMalfurionRegrowthNaturesBlessingController, null, "MalfurionBucket_Regrowth_NaturesBlessing_CarryBehavior", c_unitBehaviorChangeCreate);
+    TriggerAddEventUnitBehaviorChange(libGDHL_gt_HeroMalfurionRegrowthNaturesBlessingController, null, "MalfurionBucket_Regrowth_NaturesBlessing_CarryBehavior", c_unitBehaviorChangeDestroy);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero - Malfurion - Regrowth - Nature's Blessing (Quest)
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_HeroMalfurionRegrowthNaturesBlessingQuest_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    fixed lv_scoreValue;
+    fixed lv_remainingValue;
+    unit lv_healerUnit;
+    int lv_casterPlayer;
+
+    // Automatic Variable Declarations
+    const int autoB7C21925_ae = libCore_gv_bALMaxPlayers;
+    int autoB7C21925_var;
+
+    // Variable Initialization
+    lv_scoreValue = EventUnitHealAmount();
+    lv_healerUnit = EventUnitHealLaunchUnit();
+    lv_casterPlayer = UnitGetOwner(lv_healerUnit);
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitFilterMatch(EventUnit(), lv_casterPlayer, UnitFilter((1 << c_targetFilterHeroic), 0, (1 << c_targetFilterSelf) | (1 << c_targetFilterPlayer) | (1 << c_targetFilterNeutral) | (1 << c_targetFilterEnemy) | (1 << c_targetFilterMissile), (1 << (c_targetFilterStasis - 32)) | (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)))) == true))) {
+            return false;
+        }
+
+        if (!((UnitHasBehavior2(lv_healerUnit, "MalfurionBucket_Regrowth_NaturesBlessing_QuestCompleteBehavior") == false))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_remainingValue = (libGDHL_gv_heroMalfurionRegrowthNaturesBlessingValue - PlayerScoreValueGetAsFixed(lv_casterPlayer, "Malfurion_Regrowth_NaturesBlessing"));
+    if ((lv_remainingValue < lv_scoreValue)) {
+        lv_scoreValue = lv_remainingValue;
+    }
+
+    PlayerScoreValueSetFromFixed(lv_casterPlayer, "Malfurion_Regrowth_NaturesBlessing", (PlayerScoreValueGetAsFixed(lv_casterPlayer, "Malfurion_Regrowth_NaturesBlessing") + lv_scoreValue));
+    libNtve_gf_SetBehaviorCount(libGame_gf_PlayerHeroUnit(lv_casterPlayer), "MalfurionBucket_Regrowth_NaturesBlessing_Quest", libGame_gf_PlayerHeroUnit(lv_casterPlayer), PlayerScoreValueGetAsInt(lv_casterPlayer, "Malfurion_Regrowth_NaturesBlessing"));
+    if ((PlayerScoreValueGetAsFixed(lv_casterPlayer, "Malfurion_Regrowth_NaturesBlessing") >= libGDHL_gv_heroMalfurionRegrowthNaturesBlessingValue)) {
+        UnitBehaviorAddPlayer(lv_healerUnit, "MalfurionBucket_Regrowth_NaturesBlessing_QuestCompleteBehavior", lv_casterPlayer, 1);
+        autoB7C21925_var = 1;
+        for ( ; autoB7C21925_var <= autoB7C21925_ae; autoB7C21925_var += 1 ) {
+            if ((PlayerHasTalent(autoB7C21925_var, "Malfurion_Regrowth_NaturesBlessing_Stacks") == true) && (PlayerScoreValueGetAsFixed(lv_casterPlayer, "Malfurion_Regrowth_NaturesBlessing") < libGDHL_gv_heroMalfurionRegrowthNaturesBlessingValue)) {
+                return true;
+            }
+
+        }
+        TriggerEnable(libGDHL_gt_HeroMalfurionRegrowthNaturesBlessingQuest, false);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_HeroMalfurionRegrowthNaturesBlessingQuest_Init () {
+    libGDHL_gt_HeroMalfurionRegrowthNaturesBlessingQuest = TriggerCreate("libGDHL_gt_HeroMalfurionRegrowthNaturesBlessingQuest_Func");
+    TriggerEnable(libGDHL_gt_HeroMalfurionRegrowthNaturesBlessingQuest, false);
+    TriggerAddEventUnitHealed(libGDHL_gt_HeroMalfurionRegrowthNaturesBlessingQuest, null, c_unitVitalAny, "Malfurion_Regrowth_InitialHealBase");
+    TriggerAddEventUnitHealed(libGDHL_gt_HeroMalfurionRegrowthNaturesBlessingQuest, null, c_unitVitalAny, "Malfurion_Regrowth_InitialHealAdvanced");
+    TriggerAddEventUnitHealed(libGDHL_gt_HeroMalfurionRegrowthNaturesBlessingQuest, null, c_unitVitalAny, "Malfurion_Regrowth_PeriodicHeal");
+    TriggerAddEventUnitHealed(libGDHL_gt_HeroMalfurionRegrowthNaturesBlessingQuest, null, c_unitVitalAny, "Malfurion_Regrowth_AllyHeal");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero - Malfurion - Talent - Wild Growth
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_HeroMalfurionTalentWildGrowth_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_itPlayer;
+    unit lv_itCaster;
+    unit lv_itUnit;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_itPlayer = EventPlayer();
+    lv_itCaster = EventPlayerEffectUsedUnit(c_effectUnitCaster);
+    lv_itUnit = EventPlayerEffectUsedUnit(c_effectUnitTarget);
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitFilterMatch(lv_itUnit, lv_itPlayer, UnitFilter((1 << c_targetFilterHeroic), 0, (1 << c_targetFilterPlayer) | (1 << c_targetFilterEnemy), 0)) == true))) {
+            return false;
+        }
+
+        if (!((PlayerHasTalent(lv_itPlayer, "Malfurion_WildGrowth") == true))) {
+            return false;
+        }
+
+        if (!((lv_itCaster != lv_itUnit))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitModifyCooldown(lv_itCaster, "Abil/Malfurion_Moonfire", (-libGDHL_gv_heroMalfurionTalentWildGrowthCooldownReduction), c_cooldownOperationAdd);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_HeroMalfurionTalentWildGrowth_Init () {
+    libGDHL_gt_HeroMalfurionTalentWildGrowth = TriggerCreate("libGDHL_gt_HeroMalfurionTalentWildGrowth_Func");
+    TriggerAddEventPlayerEffectUsed(libGDHL_gt_HeroMalfurionTalentWildGrowth, c_playerAny, "Malfurion_Regrowth_PeriodicSet");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero - Malfurion - Talent - Nature's Call
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_HeroMalfurionTalentNaturesCall_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_owner;
+
+    // Automatic Variable Declarations
+    const int auto678ABDA2_ae = libCore_gv_bALMaxPlayers;
+    int auto678ABDA2_var;
+
+    // Variable Initialization
+    lv_owner = UnitGetOwner(EventUnit());
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    auto678ABDA2_var = 1;
+    for ( ; auto678ABDA2_var <= auto678ABDA2_ae; auto678ABDA2_var += 1 ) {
+        if ((PlayerHasTalent(auto678ABDA2_var, "Malfurion_Regrowth_NaturesCall") == true) && (lv_owner != auto678ABDA2_var)) {
+            UnitAddChargeUsed(libGame_gv_players[auto678ABDA2_var].lv_heroUnit, "Abil/Malfurion_Regrowth", libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "Malfurion_Regrowth", "Cost[" + IntToString(0) + "].Charge.CountMax", auto678ABDA2_var));
+        }
+
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_HeroMalfurionTalentNaturesCall_Init () {
+    libGDHL_gt_HeroMalfurionTalentNaturesCall = TriggerCreate("libGDHL_gt_HeroMalfurionTalentNaturesCall_Func");
+    TriggerEnable(libGDHL_gt_HeroMalfurionTalentNaturesCall, false);
+    TriggerAddEventUnitDied(libGDHL_gt_HeroMalfurionTalentNaturesCall, UnitRefFromVariable("libGame_gv_players[1].lv_heroUnit"));
+    TriggerAddEventUnitDied(libGDHL_gt_HeroMalfurionTalentNaturesCall, UnitRefFromVariable("libGame_gv_players[2].lv_heroUnit"));
+    TriggerAddEventUnitDied(libGDHL_gt_HeroMalfurionTalentNaturesCall, UnitRefFromVariable("libGame_gv_players[3].lv_heroUnit"));
+    TriggerAddEventUnitDied(libGDHL_gt_HeroMalfurionTalentNaturesCall, UnitRefFromVariable("libGame_gv_players[4].lv_heroUnit"));
+    TriggerAddEventUnitDied(libGDHL_gt_HeroMalfurionTalentNaturesCall, UnitRefFromVariable("libGame_gv_players[5].lv_heroUnit"));
+    TriggerAddEventUnitDied(libGDHL_gt_HeroMalfurionTalentNaturesCall, UnitRefFromVariable("libGame_gv_players[6].lv_heroUnit"));
+    TriggerAddEventUnitDied(libGDHL_gt_HeroMalfurionTalentNaturesCall, UnitRefFromVariable("libGame_gv_players[7].lv_heroUnit"));
+    TriggerAddEventUnitDied(libGDHL_gt_HeroMalfurionTalentNaturesCall, UnitRefFromVariable("libGame_gv_players[8].lv_heroUnit"));
+    TriggerAddEventUnitDied(libGDHL_gt_HeroMalfurionTalentNaturesCall, UnitRefFromVariable("libGame_gv_players[9].lv_heroUnit"));
+    TriggerAddEventUnitDied(libGDHL_gt_HeroMalfurionTalentNaturesCall, UnitRefFromVariable("libGame_gv_players[10].lv_heroUnit"));
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero - Malfurion - Talent - Nature's Call - Controller
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_HeroMalfurionTalentNaturesCallController_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    const int autoCC8EF545_ae = libCore_gv_bALMaxPlayers;
+    int autoCC8EF545_var;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((EventUnitBehaviorChange() == c_unitBehaviorChangeCreate)) {
+        if ((TriggerIsEnabled(libGDHL_gt_HeroMalfurionTalentNaturesCall) == false)) {
+            TriggerEnable(libGDHL_gt_HeroMalfurionTalentNaturesCall, true);
+        }
+
+        return true;
+    }
+
+    autoCC8EF545_var = 1;
+    for ( ; autoCC8EF545_var <= autoCC8EF545_ae; autoCC8EF545_var += 1 ) {
+        if ((PlayerHasTalent(autoCC8EF545_var, "Malfurion_Regrowth_NaturesCall") == true)) {
+            return true;
+        }
+
+    }
+    TriggerEnable(libGDHL_gt_HeroMalfurionTalentNaturesCall, false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_HeroMalfurionTalentNaturesCallController_Init () {
+    libGDHL_gt_HeroMalfurionTalentNaturesCallController = TriggerCreate("libGDHL_gt_HeroMalfurionTalentNaturesCallController_Func");
+    TriggerAddEventUnitBehaviorChange(libGDHL_gt_HeroMalfurionTalentNaturesCallController, null, "MalfurionBucket_Regrowth_NaturesCall_CarryBehavior", c_unitBehaviorChangeCreate);
+    TriggerAddEventUnitBehaviorChange(libGDHL_gt_HeroMalfurionTalentNaturesCallController, null, "MalfurionBucket_Regrowth_NaturesCall_CarryBehavior", c_unitBehaviorChangeDestroy);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero - Malfurion - Talent - Hindering Roots
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_HeroMalfurionTalentHinderingRoots_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitModifyCooldown(EventUnit(), "Abil/MalfurionBucket_HinderingRoots", libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "MalfurionBucket_HinderingRoots", "Cost[" + IntToString(0) + "].Cooldown.TimeUse", c_playerAny), c_cooldownOperationAdd);
+    UnitModifyCooldown(EventUnit(), "Abil/Malfurion_EntanglingRoots", 0.0, c_cooldownOperationSet);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_HeroMalfurionTalentHinderingRoots_Init () {
+    libGDHL_gt_HeroMalfurionTalentHinderingRoots = TriggerCreate("libGDHL_gt_HeroMalfurionTalentHinderingRoots_Func");
+    TriggerAddEventUnitBehaviorChange(libGDHL_gt_HeroMalfurionTalentHinderingRoots, null, "MalfurionBucket_EntanglingRoots_HinderingRoots_Cooldown", c_unitBehaviorChangeCreate);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero - Malfurion - Talent - Dangerous Roots - Treant Spawned
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_HeroMalfurionTalentDangerousRootsTreantSpawned_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libNtve_gf_SetBehaviorCount(EventUnit(), "Malfurion_EntanglingRoots_DangerousRoots", libGame_gv_players[EventPlayer()].lv_heroUnit, UnitBehaviorCount(libGame_gv_players[EventPlayer()].lv_heroUnit, "Malfurion_EntanglingRoots_DangerousRoots"));
+    libAIAI_gf_SummonedAIInitialAttackLogic(false, EventUnit(), libGame_gv_players[EventPlayer()].lv_heroUnit, true);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_HeroMalfurionTalentDangerousRootsTreantSpawned_Init () {
+    libGDHL_gt_HeroMalfurionTalentDangerousRootsTreantSpawned = TriggerCreate("libGDHL_gt_HeroMalfurionTalentDangerousRootsTreantSpawned_Func");
+    TriggerAddEventUnitBehaviorChange(libGDHL_gt_HeroMalfurionTalentDangerousRootsTreantSpawned, null, "Malfurion_EntanglingRoots_Treant_TimedLife", c_unitBehaviorChangeCreate);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero - Malfurion - Talent - Regrowth - Lifebloom
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_HeroMalfurionTalentRegrowthLifebloom_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_itPlayer;
+    unit lv_itUnit;
+    fixed lv_value_to_heal;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_itPlayer = EventPlayer();
+    lv_itUnit = EventPlayerEffectUsedUnit(c_effectUnitTarget);
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_value_to_heal = (UnitGetPropertyFixed(lv_itUnit, c_unitPropLifeMax, c_unitPropCurrent) - UnitGetPropertyFixed(lv_itUnit, c_unitPropLife, c_unitPropCurrent));
+    lv_value_to_heal = (lv_value_to_heal * 0.1);
+    CatalogFieldValueSet(c_gameCatalogEffect, "Malfurion_Regrowth_LifeBloom_Heal", "RechargeVitalRate", lv_itPlayer, FixedToString(lv_value_to_heal, c_fixedPrecisionAny));
+    UnitCreateEffectUnit(libGame_gv_players[lv_itPlayer].lv_heroUnit, "Malfurion_Regrowth_LifeBloom_Heal", lv_itUnit);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_HeroMalfurionTalentRegrowthLifebloom_Init () {
+    libGDHL_gt_HeroMalfurionTalentRegrowthLifebloom = TriggerCreate("libGDHL_gt_HeroMalfurionTalentRegrowthLifebloom_Func");
+    TriggerAddEventPlayerEffectUsed(libGDHL_gt_HeroMalfurionTalentRegrowthLifebloom, c_playerAny, "Malfurion_Regrowth_Lifebloom_TriggerSet");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero - Malfurion - Talent - Revitalize
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_HeroMalfurionTalentRevitalize_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_malfurionOwner;
+    bool lv_team_has_revitalize;
+    int lv_itTeam;
+    int lv_player;
+
+    // Automatic Variable Declarations
+    playergroup auto33A332F8_g;
+    int auto33A332F8_var;
+    playergroup auto201DA362_g;
+    int auto201DA362_var;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_player = libGame_gf_HeroAbilityUsedPlayer();
+    lv_itTeam = libGame_gf_PlayerGetPlayerTeam(lv_player);
+    auto33A332F8_g = libGame_gv_teams[lv_itTeam].lv_teamPlayerGroupNoNPCPlayers;
+    auto33A332F8_var = -1;
+    while (true) {
+        auto33A332F8_var = PlayerGroupNextPlayer(auto33A332F8_g, auto33A332F8_var);
+        if (auto33A332F8_var < 0) { break; }
+        if ((PlayerHasTalent(auto33A332F8_var, "Malfurion_Inneravate_Revitalize") == true)) {
+            lv_team_has_revitalize = true;
+            lv_malfurionOwner = auto33A332F8_var;
+            break;
+        }
+
+    }
+    if ((lv_team_has_revitalize == true)) {
+        auto201DA362_g = libGame_gv_teams[lv_itTeam].lv_teamPlayerGroupNoNPCPlayers;
+        auto201DA362_var = -1;
+        while (true) {
+            auto201DA362_var = PlayerGroupNextPlayer(auto201DA362_g, auto201DA362_var);
+            if (auto201DA362_var < 0) { break; }
+            if ((UnitGetType(libGame_gv_players[auto201DA362_var].lv_heroUnit) != "HeroMalfurion") && (UnitHasBehavior2(libGame_gv_players[auto201DA362_var].lv_heroUnit, "NotManaUserDummy") == false)) {
+                UnitBehaviorAdd(libGame_gv_players[auto201DA362_var].lv_heroUnit, "MalfurionBucket_Innervate_Revitalize_ManaRestoration", libGame_gv_players[lv_malfurionOwner].lv_heroUnit, 1);
+            }
+
+        }
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_HeroMalfurionTalentRevitalize_Init () {
+    libGDHL_gt_HeroMalfurionTalentRevitalize = TriggerCreate("libGDHL_gt_HeroMalfurionTalentRevitalize_Func");
+    TriggerEnable(libGDHL_gt_HeroMalfurionTalentRevitalize, false);
+    libGame_gf_HeroAbilityUsed(libGDHL_gt_HeroMalfurionTalentRevitalize);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero - Malfurion - Talent - Revitalize - Controller
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_HeroMalfurionTalentRevitalizeController_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    const int autoC956D408_ae = libCore_gv_bALMaxPlayers;
+    int autoC956D408_var;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((EventUnitBehaviorChange() == c_unitBehaviorChangeCreate)) {
+        if ((TriggerIsEnabled(libGDHL_gt_HeroMalfurionTalentRevitalize) == false)) {
+            TriggerEnable(libGDHL_gt_HeroMalfurionTalentRevitalize, true);
+        }
+
+        return true;
+    }
+
+    autoC956D408_var = 1;
+    for ( ; autoC956D408_var <= autoC956D408_ae; autoC956D408_var += 1 ) {
+        if ((PlayerHasTalent(autoC956D408_var, "Malfurion_Inneravate_Revitalize") == true)) {
+            return true;
+        }
+
+    }
+    TriggerEnable(libGDHL_gt_HeroMalfurionTalentRevitalize, false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_HeroMalfurionTalentRevitalizeController_Init () {
+    libGDHL_gt_HeroMalfurionTalentRevitalizeController = TriggerCreate("libGDHL_gt_HeroMalfurionTalentRevitalizeController_Func");
+    TriggerAddEventUnitBehaviorChange(libGDHL_gt_HeroMalfurionTalentRevitalizeController, null, "MalfurionBucket_Innervate_Revitalize_CarryBehavior", c_unitBehaviorChangeCreate);
+    TriggerAddEventUnitBehaviorChange(libGDHL_gt_HeroMalfurionTalentRevitalizeController, null, "MalfurionBucket_Innervate_Revitalize_CarryBehavior", c_unitBehaviorChangeDestroy);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero - Malfurion - Talent - Shan'do's Clarity
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_HeroMalfurionTalentShandosClarity_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_malfurion;
+    int lv_itTeam;
+
+    // Automatic Variable Declarations
+    playergroup auto48819669_g;
+    int auto48819669_var;
+
+    // Variable Initialization
+    lv_malfurion = EventUnit();
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    auto48819669_g = libGame_gv_teams[lv_itTeam].lv_teamPlayerGroupNoNPCPlayers;
+    auto48819669_var = -1;
+    while (true) {
+        auto48819669_var = PlayerGroupNextPlayer(auto48819669_g, auto48819669_var);
+        if (auto48819669_var < 0) { break; }
+        if ((libGame_gv_players[auto48819669_var].lv_heroUnit != lv_malfurion) && (UnitHasBehavior2(libGame_gv_players[auto48819669_var].lv_heroUnit, "NotManaUserDummy") == false)) {
+            UnitBehaviorAdd(libGame_gv_players[auto48819669_var].lv_heroUnit, "MalfurionBucket_Inneravate_ShandosClarity_ManaRestoration", lv_malfurion, 1);
+        }
+
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_HeroMalfurionTalentShandosClarity_Init () {
+    libGDHL_gt_HeroMalfurionTalentShandosClarity = TriggerCreate("libGDHL_gt_HeroMalfurionTalentShandosClarity_Func");
+    TriggerAddEventUnitBehaviorChange(libGDHL_gt_HeroMalfurionTalentShandosClarity, null, "MalfurionBucket_Inneravate_ShandosClarity_CarryBehavior", c_unitBehaviorChangeCreate);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero - Nazeebo - Ravenous Souls - Cast
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_HeroNazeeboRavenousSoulsCast_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_player;
+    unit lv_controllerUnit;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_player = EventPlayer();
+    if ((UnitGetType(libGame_gv_players[lv_player].lv_heroUnit) == "HeroAbathur")) {
+        lv_controllerUnit = libGame_gv_players[lv_player].lv_activeVehicle;
+    }
+    else {
+        lv_controllerUnit = libGame_gv_players[lv_player].lv_heroUnit;
+    }
+    UnitSelect(EventUnit(), lv_player, true);
+    while ((UnitHasBehavior2(lv_controllerUnit, "Nazeebo_RavenousSpirit") == true)) {
+        if (true) {
+        }
+
+        Wait(0.0625, c_timeGame);
+    }
+    UnitSelect(EventUnit(), lv_player, false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_HeroNazeeboRavenousSoulsCast_Init () {
+    libGDHL_gt_HeroNazeeboRavenousSoulsCast = TriggerCreate("libGDHL_gt_HeroNazeeboRavenousSoulsCast_Func");
+    TriggerAddEventUnitBehaviorChange(libGDHL_gt_HeroNazeeboRavenousSoulsCast, null, "Nazeebo_RavenousSpirit_TimedLife", c_unitBehaviorChangeCreate);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero - Nazeebo - Voodoo Ritual (Non-Fatal)
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_HeroNazeeboVoodooRitualNonFatal_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_unitorVehicle;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!(((UnitTypeTestAttribute(UnitGetType(EventUnit()), c_unitAttributeHeroic) == false) || ((UnitTypeTestAttribute(UnitGetType(EventUnit()), c_unitAttributeHeroic) == true) && (PlayerHasTalent(EventUnitDamageSourcePlayer(), "NazeeboBucket_VoodooRitual_KissOfDeath") == true))))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_unitorVehicle = libCore_gf_CommandersCurrentHeroOrVehicleOfPlayer(EventUnitDamageSourcePlayer());
+    if ((UnitGetType(lv_unitorVehicle) == "HeroNazeebo")) {
+        UnitCreateEffectUnit(lv_unitorVehicle, "Nazeebo_VoodooRitual_ApplyTargetPoisonBehavior", EventUnit());
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_HeroNazeeboVoodooRitualNonFatal_Init () {
+    libGDHL_gt_HeroNazeeboVoodooRitualNonFatal = TriggerCreate("libGDHL_gt_HeroNazeeboVoodooRitualNonFatal_Func");
+    TriggerAddEventUnitDamaged(libGDHL_gt_HeroNazeeboVoodooRitualNonFatal, null, c_unitDamageTypeAny, c_unitDamageNonFatal, "Nazeebo_Weapon_Damage");
+    TriggerAddEventUnitDamaged(libGDHL_gt_HeroNazeeboVoodooRitualNonFatal, null, c_unitDamageTypeAny, c_unitDamageNonFatal, "Nazeebo_CorpseSpider_JarDamage");
+    TriggerAddEventUnitDamaged(libGDHL_gt_HeroNazeeboVoodooRitualNonFatal, null, c_unitDamageTypeAny, c_unitDamageNonFatal, "Nazeebo_ZombiePrison_ZombieDamage");
+    TriggerAddEventUnitDamaged(libGDHL_gt_HeroNazeeboVoodooRitualNonFatal, null, c_unitDamageTypeAny, c_unitDamageNonFatal, "Nazeebo_ZombiePrison_ZombieRelicDamage");
+    TriggerAddEventUnitDamaged(libGDHL_gt_HeroNazeeboVoodooRitualNonFatal, null, c_unitDamageTypeAny, c_unitDamageNonFatal, "Nazeebo_CorpseSpiderWeapon_Damage");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero - Nazeebo - Voodoo Ritual (Fatal)
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_HeroNazeeboVoodooRitualFatal_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((UnitHasBehavior2(EventUnit(), "Nazeebo_VoodooRitual_PoisonTarget") == false))) {
+            return false;
+        }
+
+        if (!((((UnitTypeTestAttribute(UnitGetType(EventUnit()), c_unitAttributeBiological) == true) && (UnitTypeTestAttribute(UnitGetType(EventUnit()), c_unitAttributeHeroic) == false) && (UnitTypeTestAttribute(UnitGetType(EventUnit()), c_unitAttributeRobotic) == false) && (UnitTypeTestAttribute(UnitGetType(EventUnit()), c_unitAttributeLight) == false)) || ((UnitTypeTestAttribute(UnitGetType(EventUnit()), c_unitAttributeHeroic) == true) && (PlayerHasTalent(EventUnitDamageSourcePlayer(), "NazeeboBucket_VoodooRitual_KissOfDeath") == true))))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitBehaviorAddPlayer(EventUnitDamageSourceUnit(), "Nazeebo_VoodooRitual_Stacks_Caster", EventUnitDamageSourcePlayer(), 1);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_HeroNazeeboVoodooRitualFatal_Init () {
+    libGDHL_gt_HeroNazeeboVoodooRitualFatal = TriggerCreate("libGDHL_gt_HeroNazeeboVoodooRitualFatal_Func");
+    TriggerAddEventUnitDamaged(libGDHL_gt_HeroNazeeboVoodooRitualFatal, null, c_unitDamageTypeAny, c_unitDamageFatal, "Nazeebo_Weapon_Damage");
+    TriggerAddEventUnitDamaged(libGDHL_gt_HeroNazeeboVoodooRitualFatal, null, c_unitDamageTypeAny, c_unitDamageFatal, "Nazeebo_CorpseSpider_JarDamage");
+    TriggerAddEventUnitDamaged(libGDHL_gt_HeroNazeeboVoodooRitualFatal, null, c_unitDamageTypeAny, c_unitDamageFatal, "Nazeebo_ZombiePrison_ZombieDamage");
+    TriggerAddEventUnitDamaged(libGDHL_gt_HeroNazeeboVoodooRitualFatal, null, c_unitDamageTypeAny, c_unitDamageFatal, "Nazeebo_ZombiePrison_ZombieRelicDamage");
+    TriggerAddEventUnitDamaged(libGDHL_gt_HeroNazeeboVoodooRitualFatal, null, c_unitDamageTypeAny, c_unitDamageFatal, "Nazeebo_CorpseSpiderWeapon_Damage");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero - Nazeebo - Zombie Prison - Initial Attack Logic
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_HeroNazeeboZombiePrisonInitialAttackLogic_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_zombie;
+    int lv_ownerPlayer;
+    point lv_positionOfAbility;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_zombie = EventPlayerEffectUsedUnit(c_effectUnitTarget);
+    lv_ownerPlayer = EventPlayer();
+    lv_positionOfAbility = UnitGetPosition(lv_zombie);
+    libAIAI_gf_SummonedAIInitialAttackLogic(false, lv_zombie, libGame_gv_players[lv_ownerPlayer].lv_heroUnit, true);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_HeroNazeeboZombiePrisonInitialAttackLogic_Init () {
+    libGDHL_gt_HeroNazeeboZombiePrisonInitialAttackLogic = TriggerCreate("libGDHL_gt_HeroNazeeboZombiePrisonInitialAttackLogic_Func");
+    TriggerAddEventPlayerEffectUsed(libGDHL_gt_HeroNazeeboZombiePrisonInitialAttackLogic, c_playerAny, "Nazeebo_ZombiePrison_Morph");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero - Nazeebo - Talent - Rush Of Essence
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_HeroNazeeboTalentRushOfEssence_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    fixed lv_damage;
+    string lv_healingEffect;
+    fixed lv_healingValue;
+    unit lv_sourceUnit;
+    unit lv_heroUnit;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_damage = (EventUnitDamageAttemptedVitals() + EventUnitDamageBehaviorShield());
+
+    // Conditions
+    if (testConds) {
+        if (!((PlayerHasTalent(EventUnitDamageSourcePlayer(), "NazeeboBucket_RushOfEssence") == true))) {
+            return false;
+        }
+
+        if (!((lv_damage > 0.0))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_healingEffect = "NazeeboBucketRushOfEssenceHealing";
+    lv_heroUnit = libCore_gf_CommandersCurrentHeroOrVehicleOfPlayer(EventUnitDamageSourcePlayer());
+    lv_sourceUnit = libGame_gf_UnitStatsVampiricGetDamagingUnit(EventUnitDamageSourceUnit());
+    if ((lv_sourceUnit != null)) {
+        lv_healingValue = (libGDHL_gv_heroNazeeboTalentRushOfEssenceHealModificator*lv_damage);
+        libNtve_gf_CatalogFieldValueSetAsReal(c_gameCatalogEffect, lv_healingEffect, "VitalArray[" + IntToString(0) + "].Change", EventUnitDamageSourcePlayer(), lv_healingValue);
+        UnitCreateEffectUnit(lv_heroUnit, lv_healingEffect, lv_heroUnit);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_HeroNazeeboTalentRushOfEssence_Init () {
+    libGDHL_gt_HeroNazeeboTalentRushOfEssence = TriggerCreate("libGDHL_gt_HeroNazeeboTalentRushOfEssence_Func");
+    TriggerAddEventUnitDamaged(libGDHL_gt_HeroNazeeboTalentRushOfEssence, null, c_unitDamageTypeAny, c_unitDamageEither, "Nazeebo_CorpseSpider_JarDamage");
+    TriggerAddEventUnitDamaged(libGDHL_gt_HeroNazeeboTalentRushOfEssence, null, c_unitDamageTypeAny, c_unitDamageEither, "Nazeebo_CorpseSpiderWeapon_Damage");
+    TriggerAddEventUnitDamaged(libGDHL_gt_HeroNazeeboTalentRushOfEssence, null, c_unitDamageTypeAny, c_unitDamageEither, "Nazeebo_ZombiePrison_ZombieDamage");
+    TriggerAddEventUnitDamaged(libGDHL_gt_HeroNazeeboTalentRushOfEssence, null, c_unitDamageTypeAny, c_unitDamageEither, "Nazeebo_ZombiePrison_ZombieRelicDamage");
+    TriggerAddEventUnitDamaged(libGDHL_gt_HeroNazeeboTalentRushOfEssence, null, c_unitDamageTypeAny, c_unitDamageEither, "Nazeebo_PlagueOfToads_PoisonDamage_Base");
+    TriggerAddEventUnitDamaged(libGDHL_gt_HeroNazeeboTalentRushOfEssence, null, c_unitDamageTypeAny, c_unitDamageEither, "Nazeebo_PlagueOfToads_PoisonDamage_Talent1");
+    TriggerAddEventUnitDamaged(libGDHL_gt_HeroNazeeboTalentRushOfEssence, null, c_unitDamageTypeAny, c_unitDamageEither, "Nazeebo_PlagueOfToads_PoisonDamage_Talent2");
+    TriggerAddEventUnitDamaged(libGDHL_gt_HeroNazeeboTalentRushOfEssence, null, c_unitDamageTypeAny, c_unitDamageEither, "Nazeebo_PlagueOfToads_PoisonDamage_Talent3");
+    TriggerAddEventUnitDamaged(libGDHL_gt_HeroNazeeboTalentRushOfEssence, null, c_unitDamageTypeAny, c_unitDamageEither, "Nazeebo_PlagueOfToads_PoisonDamage_Talent4");
+    TriggerAddEventUnitDamaged(libGDHL_gt_HeroNazeeboTalentRushOfEssence, null, c_unitDamageTypeAny, c_unitDamageEither, "Nazeebo_PlagueOfToads_PoisonDamage_Base");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero - Nazeebo - Talent - Zombie Prison - Surrounded By Dead
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_HeroNazeeboTalentZombiePrisonSurroundedByDead_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((PlayerHasTalent(EventUnitDamageSourcePlayer(), "NazeeboBucket_ZombiePrison_SurroundedByDead") == true))) {
+            return false;
+        }
+
+        if (!((UnitTypeTestAttribute(UnitGetType(EventUnit()), c_unitAttributeHeroic) == true))) {
+            return false;
+        }
+
+        if (!((UnitHasBehavior2(EventUnit(), "Nazeebo_ZombiePrison_Marker_SurroundedByDead") == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitModifyCooldown(libGame_gf_PlayerHeroUnit(EventUnitDamageSourcePlayer()), "Abil/NazeeboCorpseSpiders", (-libGDHL_gv_heroNazeeboTalentZombiePrisonSurroundedByDeadCDReduction), c_cooldownOperationAdd);
+    UnitModifyCooldown(libGame_gf_PlayerHeroUnit(EventUnitDamageSourcePlayer()), "Abil/NazeeboPlagueOfToads", (-libGDHL_gv_heroNazeeboTalentZombiePrisonSurroundedByDeadCDReduction), c_cooldownOperationAdd);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_HeroNazeeboTalentZombiePrisonSurroundedByDead_Init () {
+    libGDHL_gt_HeroNazeeboTalentZombiePrisonSurroundedByDead = TriggerCreate("libGDHL_gt_HeroNazeeboTalentZombiePrisonSurroundedByDead_Func");
+    TriggerAddEventUnitDamaged(libGDHL_gt_HeroNazeeboTalentZombiePrisonSurroundedByDead, null, c_unitDamageTypeAny, c_unitDamageEither, "Nazeebo_ZombiePrison_ZombieDamage");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero - Raynor - Powershot
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_HeroRaynorPowershot_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_casterUnit;
+    unit lv_targetUnit;
+    fixed lv_distance;
+    int lv_recntagleCount;
+    fixed lv_rectangleHeight;
+
+    // Automatic Variable Declarations
+    int auto6E10E94C_ae;
+    int auto6E10E94C_var;
+
+    // Variable Initialization
+    lv_casterUnit = EventPlayerEffectUsedUnit(c_effectUnitCaster);
+    lv_rectangleHeight = 1.5;
+
+    // Conditions
+    if (testConds) {
+        if (!((PlayerHasTalent(UnitGetOwner(lv_casterUnit), "RaynorBucket_Powershot_HeavySlugs") == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_targetUnit = EventPlayerEffectUsedUnit(c_effectUnitTarget);
+    lv_distance = DistanceBetweenPoints(UnitGetPosition(lv_casterUnit), UnitGetPosition(lv_targetUnit));
+    lv_recntagleCount = FixedToInt((lv_distance / lv_rectangleHeight));
+    if (((lv_distance - (lv_rectangleHeight * lv_recntagleCount)) > 0.0)) {
+        lv_recntagleCount = (lv_recntagleCount + 1);
+    }
+
+    lv_rectangleHeight = (lv_distance / lv_recntagleCount);
+    CatalogFieldValueSet(c_gameCatalogEffect, "Raynor_Powershot_InitialPersistent", "InitialOffset", UnitGetOwner(lv_casterUnit), ("0," + FixedToString((-1.0 * lv_distance), 2) + ",0"));
+    CatalogFieldValueSet(c_gameCatalogEffect, "Raynor_Powershot_SecondPersistent", "PeriodCount", UnitGetOwner(lv_casterUnit), IntToString(lv_recntagleCount));
+    auto6E10E94C_ae = (lv_recntagleCount-1);
+    auto6E10E94C_var = 0;
+    for ( ; auto6E10E94C_var <= auto6E10E94C_ae; auto6E10E94C_var += 1 ) {
+        CatalogFieldValueSet(c_gameCatalogEffect, "Raynor_Powershot_SecondPersistent", "PeriodicOffsetArray[" + IntToString(auto6E10E94C_var) + "]", UnitGetOwner(lv_casterUnit), ("0," + FixedToString((lv_distance - ((auto6E10E94C_var + 1) * lv_rectangleHeight)), 2) + ",0"));
+    }
+    CatalogFieldValueSet(c_gameCatalogEffect, "Raynor_Powershot_SearchArea", "AreaArray[" + IntToString(0) + "].RectangleHeight", UnitGetOwner(lv_casterUnit), FixedToString(lv_rectangleHeight, 2));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_HeroRaynorPowershot_Init () {
+    libGDHL_gt_HeroRaynorPowershot = TriggerCreate("libGDHL_gt_HeroRaynorPowershot_Func");
+    TriggerAddEventPlayerEffectUsed(libGDHL_gt_HeroRaynorPowershot, c_playerAny, "Raynor_Powershot_InitialSet");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero - Raynor - Advanced Optics - Add Shields
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_HeroRaynorAdvancedOpticsAddShields_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    fixed lv_maxShields;
+    fixed lv_damageValue;
+    fixed lv_shieldsToAdd;
+    fixed lv_currentShields;
+    unit lv_casterUnit;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_casterUnit = EventUnitDamageSourceUnit();
+
+    // Conditions
+    if (testConds) {
+        if (!((PlayerHasTalent(UnitGetOwner(lv_casterUnit), "RaynorBucket_AdvancedOptics_AdvancedProtection") == true))) {
+            return false;
+        }
+
+        if (!((UnitBehaviorCount(lv_casterUnit, "Raynor_AdvancedOptics_CasterBehavior") == 3))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_maxShields = (libGDHL_gv_bALHeroRaynorAdvancedOpticsBaseShield + (libGDHL_gv_bALHeroRaynorAdvancedOpticsMaxShieldsLevelModifier * UnitBehaviorCount(lv_casterUnit, "TeamVeterancyBehavior")));
+    lv_damageValue = EventUnitDamageAmount();
+    lv_currentShields = UnitBehaviorDamageModifyRemaining(lv_casterUnit, "RaynorBucket_AdvancedOptics_AdvancedProtection");
+    lv_shieldsToAdd = (lv_damageValue * libGDHL_gv_bALHeroRaynorAdvancedOpticsModifier);
+    if ((lv_currentShields < lv_maxShields)) {
+        lv_currentShields += lv_shieldsToAdd;
+        if ((lv_currentShields > lv_maxShields)) {
+            lv_currentShields = lv_maxShields;
+        }
+
+        CatalogFieldValueSet(c_gameCatalogBehavior, "RaynorBucket_AdvancedOptics_AdvancedProtection", "DamageResponse.ModifyLimit", UnitGetOwner(lv_casterUnit), FixedToString(lv_currentShields, 2));
+    }
+
+    UnitBehaviorAdd(lv_casterUnit, "RaynorBucket_AdvancedOptics_AdvancedProtection", lv_casterUnit, 1);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_HeroRaynorAdvancedOpticsAddShields_Init () {
+    libGDHL_gt_HeroRaynorAdvancedOpticsAddShields = TriggerCreate("libGDHL_gt_HeroRaynorAdvancedOpticsAddShields_Func");
+    TriggerAddEventUnitDamaged(libGDHL_gt_HeroRaynorAdvancedOpticsAddShields, null, c_unitDamageTypeRanged, c_unitDamageEither, "Raynor_Weapon_Damage");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero - Raynor - I Remember You - Effect Used
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_HeroRaynorIRememberYouEffectUsed_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_casterPlayer;
+    unit lv_targetUnit;
+    int lv_itMarkedTargetFrame;
+    int lv_anchorPointDialogItem;
+    int lv_itAnchorDialog;
+    fixed lv_unitRadius;
+    string lv_itBehavior;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_casterPlayer = UnitGetOwner(UnitBehaviorEffectUnit(EventUnit(), "Raynor_IRememberYou", c_effectUnitCaster, 0));
+    lv_targetUnit = EventUnit();
+    lv_itMarkedTargetFrame = c_invalidDialogControlId;
+    lv_anchorPointDialogItem = c_invalidDialogControlId;
+    lv_itAnchorDialog = c_invalidDialogId;
+    lv_unitRadius = UnitGetPropertyFixed(lv_targetUnit, c_unitPropRadius, c_unitPropCurrent);
+    lv_itBehavior = EventUnitBehavior();
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    DialogCreate(200, 200, c_anchorCenter, 0, 0, true);
+    lv_itAnchorDialog = DialogLastCreated();
+    DialogSetVisible(DialogLastCreated(), libCore_gv_playerGroupFromPlayer[lv_casterPlayer], true);
+    DialogSetImageVisible(DialogLastCreated(), false);
+    libCore_gf_DialogSetPositionRelativeToUnitWithAnchor(lv_itAnchorDialog, lv_targetUnit, "Ref_Center", c_anchorCenter, 0, 0);
+    DialogSetPositionRelativeToUnit(lv_itAnchorDialog, lv_targetUnit, "Ref_Origin", -100, -150);
+    DialogControlCreate(DialogLastCreated(), c_triggerControlTypePanel);
+    DialogControlSetSize(DialogControlLastCreated(), PlayerGroupAll(), 1, 1);
+    DialogControlSetPosition(DialogControlLastCreated(), PlayerGroupAll(), c_anchorCenter, 0, 0);
+    lv_anchorPointDialogItem = DialogControlLastCreated();
+    DialogControlHookupStandard(c_triggerControlTypePanel, "UIContainer/FullscreenLowerContainer");
+    DialogControlCreateInPanelFromTemplate(DialogControlLastCreated(), c_triggerControlTypePanel, "MarkedTarget/MarkedTarget");
+    lv_itMarkedTargetFrame = DialogControlLastCreated();
+    DialogControlSetPositionRelative(lv_itMarkedTargetFrame, libCore_gv_playerGroupFromPlayer[lv_casterPlayer], c_anchorCenter, lv_anchorPointDialogItem, c_anchorCenter, 0, 0);
+    DialogControlFadeTransparency(lv_itMarkedTargetFrame, libCore_gv_playerGroupFromPlayer[lv_casterPlayer], 0.0, 100.0);
+    DialogControlFadeTransparency(lv_itMarkedTargetFrame, libCore_gv_playerGroupFromPlayer[lv_casterPlayer], 0.5, 0.0);
+    if ((lv_unitRadius < 1.0)) {
+        DialogControlSetSize(lv_itMarkedTargetFrame, libCore_gv_playerGroupFromPlayer[lv_casterPlayer], (200 * FixedToInt(lv_unitRadius)), (200 * FixedToInt(lv_unitRadius)));
+    }
+
+    DialogControlHookup(lv_itMarkedTargetFrame, c_triggerControlTypeImage, "MarkImage");
+    libNtve_gf_SetDialogItemImage(DialogControlLastCreated(), (CatalogFieldValueGet(c_gameCatalogBehavior, lv_itBehavior, "InfoIcon", c_playerAny)), libCore_gv_playerGroupFromPlayer[lv_casterPlayer]);
+    while (!(((UnitIsAlive(lv_targetUnit) == false) || (UnitHasBehavior2(lv_targetUnit, lv_itBehavior) == false)))) {
+        Wait(0.1, c_timeGame);
+    }
+    DialogDestroy(lv_itAnchorDialog);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_HeroRaynorIRememberYouEffectUsed_Init () {
+    libGDHL_gt_HeroRaynorIRememberYouEffectUsed = TriggerCreate("libGDHL_gt_HeroRaynorIRememberYouEffectUsed_Func");
+    TriggerAddEventUnitBehaviorChange(libGDHL_gt_HeroRaynorIRememberYouEffectUsed, null, "Raynor_IRememberYou", c_unitBehaviorChangeCreate);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero - Selendis - Templar Willpower
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_HeroSelendisTemplarWillpower_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_damagingUnit;
+    int lv_damagingPlayer;
+    unit lv_targetUnit;
+    fixed lv_shieldsValueTotal;
+    fixed lv_shieldsValueMax;
+    fixed lv_shieldsValueCurrent;
+    string lv_shieldsBehavior;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_damagingUnit = EventUnitDamageSourceUnit();
+    lv_damagingPlayer = EventUnitDamageSourcePlayer();
+    lv_targetUnit = EventUnit();
+    lv_shieldsBehavior = "Selendis_TemplarWillpower_ShieldBehavior";
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_shieldsValueTotal = (EventUnitDamageAttemptedVitals() + EventUnitDamageBehaviorShield());
+    lv_shieldsValueCurrent = UnitBehaviorDamageModifyRemaining(lv_damagingUnit, lv_shieldsBehavior);
+    lv_shieldsValueTotal *= libGDHL_gf_HeroSelendisTemplarWillpowerShieldsModificator(lv_damagingPlayer);
+    lv_shieldsValueMax = StringToFixed(CatalogFieldValueGet(c_gameCatalogUnit, "HeroSelendis", "LifeMax", lv_damagingPlayer));
+    lv_shieldsValueMax *= libGDHL_gf_HeroSelendisTemplarWillpowerHPShieldsMaxModificator(lv_damagingPlayer);
+    if ((lv_shieldsValueCurrent < lv_shieldsValueMax)) {
+        lv_shieldsValueCurrent += lv_shieldsValueTotal;
+        if ((lv_shieldsValueCurrent > lv_shieldsValueMax)) {
+            lv_shieldsValueCurrent = lv_shieldsValueMax;
+        }
+    }
+    CatalogFieldValueSet(c_gameCatalogBehavior, lv_shieldsBehavior, "DamageResponse.ModifyLimit", lv_damagingPlayer, FixedToString(lv_shieldsValueCurrent, 3));
+    UnitBehaviorAdd(lv_damagingUnit, lv_shieldsBehavior, lv_damagingUnit, 1);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_HeroSelendisTemplarWillpower_Init () {
+    libGDHL_gt_HeroSelendisTemplarWillpower = TriggerCreate("libGDHL_gt_HeroSelendisTemplarWillpower_Func");
+    TriggerAddEventUnitDamaged(libGDHL_gt_HeroSelendisTemplarWillpower, null, c_unitDamageTypeAny, c_unitDamageEither, "Selendis_Weapon_Damage");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero - Selendis - Templar Willpower - Overload Shields - Behaviors Changes
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_HeroSelendisTemplarWillpowerOverloadShieldsBehaviorsChanges_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    const int auto383001D8_ae = libCore_gv_bALMaxPlayers;
+    int auto383001D8_var;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((EventUnitBehaviorChange() == c_unitBehaviorChangeCreate)) {
+        if ((TriggerIsEnabled(libGDHL_gt_HeroSelendisTemplarWillpowerOverloadShieldsDamageControl) == false)) {
+            TriggerEnable(libGDHL_gt_HeroSelendisTemplarWillpowerOverloadShieldsDamageControl, true);
+        }
+
+        return true;
+    }
+
+    auto383001D8_var = 1;
+    for ( ; auto383001D8_var <= auto383001D8_ae; auto383001D8_var += 1 ) {
+        if ((auto383001D8_var != UnitGetOwner(EventUnit())) && (UnitGetType(libGame_gv_players[auto383001D8_var].lv_heroUnit) == "HeroSelendis") && (UnitHasBehavior2(libGame_gv_players[auto383001D8_var].lv_heroUnit, "SelendisBucket_TemplarWillPower_OverloadShields") == true)) {
+            return true;
+        }
+
+    }
+    TriggerEnable(libGDHL_gt_HeroSelendisTemplarWillpowerOverloadShieldsDamageControl, false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_HeroSelendisTemplarWillpowerOverloadShieldsBehaviorsChanges_Init () {
+    libGDHL_gt_HeroSelendisTemplarWillpowerOverloadShieldsBehaviorsChanges = TriggerCreate("libGDHL_gt_HeroSelendisTemplarWillpowerOverloadShieldsBehaviorsChanges_Func");
+    TriggerAddEventUnitBehaviorChange(libGDHL_gt_HeroSelendisTemplarWillpowerOverloadShieldsBehaviorsChanges, null, "SelendisBucket_TemplarWillPower_OverloadShields", c_unitBehaviorChangeCreate);
+    TriggerAddEventUnitBehaviorChange(libGDHL_gt_HeroSelendisTemplarWillpowerOverloadShieldsBehaviorsChanges, null, "SelendisBucket_TemplarWillPower_OverloadShields", c_unitBehaviorChangeDestroy);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero - Selendis - Templar Willpower - Overload Shields - Damage Control
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_HeroSelendisTemplarWillpowerOverloadShieldsDamageControl_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    string lv_effect;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_effect = "SelendisBucket_TemplarWillpower_OverloadShields_Damage";
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitHasBehavior2(EventUnit(), "SelendisBucket_TemplarWillPower_OverloadShields") == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    CatalogFieldValueSet(c_gameCatalogEffect, lv_effect, "Amount", EventPlayer(), FixedToString(EventUnitDamageAbsorbed(), 5));
+    UnitCreateEffectUnit(EventUnit(), "SelendisBucket_TemplarWillpower_OverloadShields_Search", EventUnit());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_HeroSelendisTemplarWillpowerOverloadShieldsDamageControl_Init () {
+    libGDHL_gt_HeroSelendisTemplarWillpowerOverloadShieldsDamageControl = TriggerCreate("libGDHL_gt_HeroSelendisTemplarWillpowerOverloadShieldsDamageControl_Func");
+    TriggerEnable(libGDHL_gt_HeroSelendisTemplarWillpowerOverloadShieldsDamageControl, false);
+    TriggerAddEventUnitDamageAbsorbed(libGDHL_gt_HeroSelendisTemplarWillpowerOverloadShieldsDamageControl, null, "Selendis_TemplarWillpower_ShieldBehavior");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero - Selendis - In The Heat Of Battle - Add Charge
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_HeroSelendisInTheHeatOfBattleAddCharge_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitAddChargeUsed(EventPlayerEffectUsedUnit(c_effectUnitCaster), "Abil/SelendisBucket_InTheHeatOfBattle", (-libGDHL_gv_heroSelendisInTheHeatOfBattleChargesAdded));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_HeroSelendisInTheHeatOfBattleAddCharge_Init () {
+    libGDHL_gt_HeroSelendisInTheHeatOfBattleAddCharge = TriggerCreate("libGDHL_gt_HeroSelendisInTheHeatOfBattleAddCharge_Func");
+    TriggerAddEventPlayerEffectUsed(libGDHL_gt_HeroSelendisInTheHeatOfBattleAddCharge, c_playerAny, "SelendisBucket_InTheHeatOfBattle_DummyTriggerSet");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero - Selendis - Phase Weapon
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_HeroSelendisPhaseWeapon_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    fixed lv_healingValue;
+    string lv_healingEffect;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((PlayerHasTalent(EventUnitDamageSourcePlayer(), "Selendis_PhaseWeapon") == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_healingValue = (EventUnitDamageAttemptedVitals() + EventUnitDamageBehaviorShield());
+    lv_healingEffect = "SelendisBucketPhaseWeaponHealer";
+    if ((UnitHasBehavior2(EventUnitDamageSourceUnit(), "SelendisBucket_PhaseWeapon") == false)) {
+        if ((EventUnitDamageEffect() == "Selendis_Weapon_Damage")) {
+            lv_healingValue = (lv_healingValue*libGDHL_gv_heroSelendisPhaseWeaponPassiveHealing);
+        }
+        else {
+            return true;
+        }
+    }
+    else {
+        lv_healingValue = (lv_healingValue*libGDHL_gv_heroSelendisPhaseWeaponActiveHealing);
+    }
+    libNtve_gf_CatalogFieldValueSetAsReal(c_gameCatalogEffect, lv_healingEffect, "RechargeVitalRate", EventUnitDamageSourcePlayer(), lv_healingValue);
+    UnitCreateEffectUnit(EventUnitDamageSourceUnit(), lv_healingEffect, EventUnitDamageSourceUnit());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_HeroSelendisPhaseWeapon_Init () {
+    libGDHL_gt_HeroSelendisPhaseWeapon = TriggerCreate("libGDHL_gt_HeroSelendisPhaseWeapon_Func");
+    TriggerAddEventUnitDamaged(libGDHL_gt_HeroSelendisPhaseWeapon, null, c_unitDamageTypeAny, c_unitDamageEither, "Selendis_Weapon_Damage");
+    TriggerAddEventUnitDamaged(libGDHL_gt_HeroSelendisPhaseWeapon, null, c_unitDamageTypeAny, c_unitDamageEither, "Selendis_ExecutorBlade_Damage");
+    TriggerAddEventUnitDamaged(libGDHL_gt_HeroSelendisPhaseWeapon, null, c_unitDamageTypeAny, c_unitDamageEither, "Selendis_ExecutorChargeApproach_Damage");
+    TriggerAddEventUnitDamaged(libGDHL_gt_HeroSelendisPhaseWeapon, null, c_unitDamageTypeAny, c_unitDamageEither, "Selendis_VindicatorsBeam_Damage");
+    TriggerAddEventUnitDamaged(libGDHL_gt_HeroSelendisPhaseWeapon, null, c_unitDamageTypeAny, c_unitDamageEither, "Selendis_VindicatorsBeam_ThermalFire_Damage");
+    TriggerAddEventUnitDamaged(libGDHL_gt_HeroSelendisPhaseWeapon, null, c_unitDamageTypeAny, c_unitDamageEither, "SelendisPowerStrike@Damage");
+    TriggerAddEventUnitDamaged(libGDHL_gt_HeroSelendisPhaseWeapon, null, c_unitDamageTypeAny, c_unitDamageEither, "SelendisPowerStrikeTemplarsZeal@TimedDamage");
+    TriggerAddEventUnitDamaged(libGDHL_gt_HeroSelendisPhaseWeapon, null, c_unitDamageTypeAny, c_unitDamageEither, "SelendisPowerStrike@ExpireDamage");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Untitled Trigger 001
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_gt_UntitledTrigger001_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_talandar;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_talandar = EventPlayerEffectUsedUnit(c_effectUnitCaster);
+    UnitSetFacing(lv_talandar, -90.0, 0.0);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libGDHL_gt_UntitledTrigger001_Init () {
+    libGDHL_gt_UntitledTrigger001 = TriggerCreate("libGDHL_gt_UntitledTrigger001_Func");
+    TriggerAddEventPlayerEffectUsed(libGDHL_gt_UntitledTrigger001, c_playerAny, "HeroTalandarDragoonArmorSuit@Teleport");
+    TriggerAddEventPlayerEffectUsed(libGDHL_gt_UntitledTrigger001, c_playerAny, "HeroTalandarPraetorArmorSuit@Teleport");
+}
+
+void libGDHL_InitTriggers () {
+    libGDHL_gt_PrestigeBloodForBlood_Init();
+    libGDHL_gt_RegenerationGlobeTalents_Init();
+    libGDHL_gt_TalentRewindActivate_Init();
+    libGDHL_gt_TalentBattleMomentumProc_Init();
+    libGDHL_gt_TalentFuryoftheStormActivate_Init();
+    libGDHL_gt_TalentFuryoftheStorm_Init();
+    libGDHL_gt_TalentArcaneTeachingsApplySlow_Init();
+    libGDHL_gt_TalentBribe_Init();
+    libGDHL_gt_TalentSwiftStorm_Init();
+    libGDHL_gt_TalentStormShield_Init();
+    libGDHL_gt_TalentHardenedFocus_Init();
+    libGDHL_gt_TalentHardenedFocusUpdate_Init();
+    libGDHL_gt_TalentResurgenceOfTheStorm_Init();
+    libGDHL_gt_HeroPortBackToBaseHearthstone_Init();
+    libGDHL_gt_HeroPortBackToBase_Init();
+    libGDHL_gt_HeroPortBackToBaseStart_Init();
+    libGDHL_gt_HeroPortBackToBaseEnd_Init();
+    libGDHL_gt_HeroPortBackToBaseFizzle_Init();
+    libGDHL_gt_HeroDiabloOverpowerFacing_Init();
+    libGDHL_gt_HeroDiabloInfernoBreathCast_Init();
+    libGDHL_gt_HeroDiabloInfernoBreathAim_Init();
+    libGDHL_gt_HeroDiabloInfernoBreathEnd_Init();
+    libGDHL_gt_HeroDiabloBlackSoulstoneAddCharge_Init();
+    libGDHL_gt_HeroDiabloBlackSoulstoneDiabloDeath_Init();
+    libGDHL_gt_HeroDiabloTalentDevilChargeDevastatingCharge_Init();
+    libGDHL_gt_HeroDiabloTalentApocalypseAddCharge_Init();
+    libGDHL_gt_HeroDiabloTalentSecondComingRevive_Init();
+    libGDHL_gt_DiabloBucketLordofTerrorAddAdditiveSoulsEffect_Init();
+    libGDHL_gt_DiabloBucketLordofTerrorRemoveAdditiveSouls_Init();
+    libGDHL_gt_DiabloBucketLordofTerrorSetAdditiveSoulsDurationUI_Init();
+    libGDHL_gt_DiabloBucketLordofTerrorClearAdditiveSoulsDurationUI_Init();
+    libGDHL_gt_HeroDiabloTalentEngulfingShadowTeleport_Init();
+    libGDHL_gt_HeroDiabloTalentOverkill_Init();
+    libGDHL_gt_HeroDiabloTalentTemperedFlame_Init();
+    libGDHL_gt_HeroKatarinaChangeCarryWeaponWeaponSwap_Init();
+    libGDHL_gt_HeroKatarinaChangeEquippedWeapon_Init();
+    libGDHL_gt_HeroKatarinaKatarinaIsCreated_Init();
+    libGDHL_gt_HeroKatarinaKatarinaIsRevived_Init();
+    libGDHL_gt_HeroKatarinaSwapHeroModelsCarried_Init();
+    libGDHL_gt_HeroKatarinaSwapHeroModelsEquipped_Init();
+    libGDHL_gt_HeroKatarinaAimedShotHeroHealingDamage_Init();
+    libGDHL_gt_HeroKatarinaAmmoTalentIncreasedCharges_Init();
+    libGDHL_gt_HeroKatarinaAmmoController_Init();
+    libGDHL_gt_HeroKatarinaWeaponAttackSetup_Init();
+    libGDHL_gt_HeroKatarinaWeaponMainandSecondaryEffectsonDamagedealt_Init();
+    libGDHL_gt_HeroKatarinaTalentUniversalAmmo_Init();
+    libGDHL_gt_HeroKatarinaTalentAmmoRestoration_Init();
+    libGDHL_gt_HeroKatarinaTalentDestroyerWeaponUITalentPicked_Init();
+    libGDHL_gt_HeroKatarinaTalentDestroyerWeaponUIController_Init();
+    libGDHL_gt_HeroMalfurionRegrowthNaturesBlessingController_Init();
+    libGDHL_gt_HeroMalfurionRegrowthNaturesBlessingQuest_Init();
+    libGDHL_gt_HeroMalfurionTalentWildGrowth_Init();
+    libGDHL_gt_HeroMalfurionTalentNaturesCall_Init();
+    libGDHL_gt_HeroMalfurionTalentNaturesCallController_Init();
+    libGDHL_gt_HeroMalfurionTalentHinderingRoots_Init();
+    libGDHL_gt_HeroMalfurionTalentDangerousRootsTreantSpawned_Init();
+    libGDHL_gt_HeroMalfurionTalentRegrowthLifebloom_Init();
+    libGDHL_gt_HeroMalfurionTalentRevitalize_Init();
+    libGDHL_gt_HeroMalfurionTalentRevitalizeController_Init();
+    libGDHL_gt_HeroMalfurionTalentShandosClarity_Init();
+    libGDHL_gt_HeroNazeeboRavenousSoulsCast_Init();
+    libGDHL_gt_HeroNazeeboVoodooRitualNonFatal_Init();
+    libGDHL_gt_HeroNazeeboVoodooRitualFatal_Init();
+    libGDHL_gt_HeroNazeeboZombiePrisonInitialAttackLogic_Init();
+    libGDHL_gt_HeroNazeeboTalentRushOfEssence_Init();
+    libGDHL_gt_HeroNazeeboTalentZombiePrisonSurroundedByDead_Init();
+    libGDHL_gt_HeroRaynorPowershot_Init();
+    libGDHL_gt_HeroRaynorAdvancedOpticsAddShields_Init();
+    libGDHL_gt_HeroRaynorIRememberYouEffectUsed_Init();
+    libGDHL_gt_HeroSelendisTemplarWillpower_Init();
+    libGDHL_gt_HeroSelendisTemplarWillpowerOverloadShieldsBehaviorsChanges_Init();
+    libGDHL_gt_HeroSelendisTemplarWillpowerOverloadShieldsDamageControl_Init();
+    libGDHL_gt_HeroSelendisInTheHeatOfBattleAddCharge_Init();
+    libGDHL_gt_HeroSelendisPhaseWeapon_Init();
+    libGDHL_gt_UntitledTrigger001_Init();
+}
+
+//--------------------------------------------------------------------------------------------------
+// Library Initialization
+//--------------------------------------------------------------------------------------------------
+bool libGDHL_InitLib_completed = false;
+
+void libGDHL_InitLib () {
+    if (libGDHL_InitLib_completed) {
+        return;
+    }
+
+    libGDHL_InitLib_completed = true;
+
+    libGDHL_InitLibraries();
+    libGDHL_InitVariables();
+    libGDHL_InitTriggers();
+}
+
+include "LibAIAI"
+include "LibCore"
+include "LibGame"
+

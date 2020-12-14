@@ -1,0 +1,163 @@
+include "LibCore_h"
+
+//--------------------------------------------------------------------------------------------------
+// Library: Map Mechanics
+//--------------------------------------------------------------------------------------------------
+// Preset Declarations
+const int libMapM_ge_MapMechanicType_None = 0;
+const int libMapM_ge_MapMechanicType_BattleforSlayn = 1;
+const int libMapM_ge_MapMechanicType_CurseofRavenLord = 2;
+const int libMapM_ge_MapMechanicType_AlwaysLastIndex = 3;
+const int libMapM_ge_MMRavenCurseState_Starting = 0;
+const int libMapM_ge_MMRavenCurseState_Collecting = 1;
+const int libMapM_ge_MMRavenCurseState_Cursed = 2;
+const int libMapM_ge_MMRavenCurseState_Lifted = 3;
+
+// Constants
+const int libMapM_gv_mapMechanicsMaxCount_C = 2;
+const int libMapM_gv_mMSlaynMaxEventPoints = 3;
+const fixed libMapM_gv_mMSlaynSpawnWarningTimerTime_C = 15.0;
+const fixed libMapM_gv_mMSlaynSpawnTime_C = 200.0;
+const fixed libMapM_gv_mMSlaynSpawnTimePings_C = 30.0;
+const int libMapM_gv_mMSlaynMinimapunitCount = 3;
+const int libMapM_gv_mMSlayn_MinionsPerTeam_MaxCount = 6;
+const fixed libMapM_gv_mMSlayn_MinionsSpawnTime_C = 5.0;
+const int libMapM_gv_cursedHollowTribute_Lane = 2;
+const int libMapM_gv_cursedHollowTribue_Column = 3;
+const int libMapM_gv_mMRavenTributeSpawnPointsCountMax_C = 50;
+const fixed libMapM_gv_mMRavenStartTime_C = 150.0;
+const fixed libMapM_gv_mMRavenRevealRadius_C = 4.5;
+const fixed libMapM_gv_mMRavenSpawnWarningTimerTime_C = 15.0;
+const fixed libMapM_gv_mMRavenTributeSpawnTimeFirst_C = 17.0;
+const fixed libMapM_gv_mMRavenTributeSpawnTime_C = 70.0;
+const int libMapM_gv_mMRavenTributeSpawnTimeVariance = 20;
+const fixed libMapM_gv_mMRavenTributePostCurseWaitTime_C = 70.0;
+const int libMapM_gv_mMRavenTributeThreshold_C = 3;
+const fixed libMapM_gv_mMRavenCurseDuration_C = 70.0;
+
+// Structures
+struct libMapM_gs_MapMechanicUsedTracker {
+    bool lv_healingFountainUsed;
+    bool lv_ravenTribute;
+};
+
+struct libMapM_gs_BattleForSlaynData {
+    point[libMapM_gv_mMSlaynMaxEventPoints + 1] lv_eventPoint;
+    region[libMapM_gv_mMSlaynMaxEventPoints + 1] lv_eventRegion;
+    int[libCore_gv_bALMaxTeams + 1] lv_eventLastPoint;
+    int[libCore_gv_bALMaxTeams + 1] lv_eventCurrentPoint;
+    unit[libCore_gv_bALMaxTeams + 1] lv_voidThrasher;
+    unitgroup[libCore_gv_bALMaxTeams + 1] lv_voidThrasherMinions;
+    unit[libCore_gv_bALMaxTeams + 1][libMapM_gv_mMSlaynMinimapunitCount + 1] lv_minimapUnit;
+    bool lv_firstPointsCalculated;
+    int lv_eventLevel;
+    timer[libCore_gv_bALMaxTeams + 1] lv_minionSpawnTimer;
+};
+
+struct libMapM_gs_CursedHollowData {
+    int lv_tributeCountALL;
+    bool lv__1stCursedFinished;
+    int[3] lv_laneTributeCount;
+    point[libMapM_gv_cursedHollowTribute_Lane + 1][libMapM_gv_cursedHollowTribue_Column + 1] lv_tributePoint;
+    bool[libMapM_gv_cursedHollowTribute_Lane + 1][libMapM_gv_cursedHollowTribue_Column + 1] lv_tributePointAvailable;
+};
+
+struct libMapM_gs_RavenCurseTeamStats {
+    int lv_triburteCollected;
+    bool lv_cursed;
+};
+
+// Variable Declarations
+int libMapM_gv_mapMMaxCampsForMapCurrent;
+actor libMapM_gv_mapMechanicControllerActor;
+int[libMapM_gv_mapMechanicsMaxCount_C + 1] libMapM_gv_mapMechanics;
+int libMapM_gv_mapMechanicsCount;
+trigger[libMapM_gv_mapMechanicsMaxCount_C + 1] libMapM_gv_mapMechanicsInitCallbacks;
+libMapM_gs_MapMechanicUsedTracker[libCore_gv_bALMaxPlayers + 1] libMapM_gv_mapMechanicUsedTracker;
+libMapM_gs_BattleForSlaynData libMapM_gv_mMBattleForSlaynData;
+timer libMapM_gv_mMSlaynSpawnTimer;
+timer libMapM_gv_mMSlaynPingsTimer;
+libMapM_gs_CursedHollowData libMapM_gv_cursedHollowData;
+point[libMapM_gv_mMRavenTributeSpawnPointsCountMax_C + 1] libMapM_gv_mMRavenTributeSpawnPoints;
+int libMapM_gv_mMRavenTributeSpawnPointsCount;
+revealer libMapM_gv_mMRavenOrderRevealer;
+revealer libMapM_gv_mMRavenChaosRevealer;
+unitgroup libMapM_gv_mMRavenTributes;
+unit libMapM_gv_mMRavenTributeWarning;
+libMapM_gs_RavenCurseTeamStats[libCore_gv_bALMaxTeams + 1] libMapM_gv_mMRavenTeamStats;
+timer libMapM_gv_mMRavenStartTimer;
+timer libMapM_gv_mMRavenWarningTimer;
+int libMapM_gv_mMRavenLastTributeSpawnIndex1;
+int libMapM_gv_mMRavenLastTributeSpawnIndex2;
+timer libMapM_gv_mMRavenCurseTimer;
+bool libMapM_gv_mMRavenCurseLifted;
+sound libMapM_gv_mMRavenCurseSound;
+bool libMapM_gv_mMRavenEventFirstTime;
+
+// Function Declarations
+void libMapM_gf_ShowHideActorofUnitforPlayer (bool lp_showHide, unit lp_unit, int lp_player);
+void libMapM_gf_MapMechanicAdd (int lp_mechanic, trigger lp_initializeCallback);
+int libMapM_gf_MapMechanicIndex (int lp_mechanic);
+bool libMapM_gf_MapMechanicExistsOnMap (int lp_mechanic);
+int libMapM_gf_PrimaryMapMechanic ();
+void libMapM_gf_MMSlaynSpawnMinion (int lp_count, int lp_team, int lp_regionNumber);
+point libMapM_gf_CursedHollowGetAvaiablePoint ();
+int libMapM_gf_CursedHollowRandomAvailableColumn ();
+int libMapM_gf_CursedHollowLastColumnAvailable ();
+int libMapM_gf_CursedHollowAvailableColumnCount ();
+bool libMapM_gf_CursedHollowIsColumnAvailable (int lp_column);
+int libMapM_gf_CursedHollowColumnIsAvailable (int lp_column);
+int libMapM_gf_CursedHollowAvailableLane ();
+void libMapM_gf_MMRavenCurseAddTributeSpawnLocation (point lp_spawnLocation);
+void libMapM_gf_CursedHollowCheckPointsForAvailable ();
+bool libMapM_gf_MMRavenCurseStarted ();
+void libMapM_gf_MMRavenCurseInit ();
+fixed libMapM_gf_MMRavenStartTime ();
+fixed libMapM_gf_MMRavenTributeSpawnTime ();
+int libMapM_gf_MMRavenTributeThresholdAmount ();
+string libMapM_gf_MMRavenTributeUnitType ();
+point libMapM_gf_MMRavenRandomSpawnPoint ();
+void libMapM_gf_MMRavenStartSpawnTimer5090 ();
+void libMapM_gf_MMRavenTributeCollectionThresholdReached (int lp_winningTeam);
+void libMapM_gf_MMRavenCurseStart (int lp_cursedPlayer);
+void libMapM_gf_MMRavenApplyCurseEffectOnMinion (unit lp_unit);
+void libMapM_gf_MMRavenRemoveCurseEffectOnMinion (unit lp_minion);
+void libMapM_gf_MMRavenPlayCurseSound (int lp_cursedTeam);
+void libMapM_gf_MMRavenObjectiveUIUpdateText ();
+void libMapM_gf_MMRavenTransmissionEventStartQ (playergroup lp_players);
+void libMapM_gf_MMRavenTransmissionTributeAboutToSpawnQ (playergroup lp_players);
+void libMapM_gf_MMRavenTransmissionEnemyCursedQ (playergroup lp_players);
+void libMapM_gf_MMRavenTransmissionAlliedCursedQ (playergroup lp_players);
+void libMapM_gf_MMRavenTransmissionObserverCursedQ ();
+void libMapM_gf_MMRavenTransmissionEnemyCurseEndsQ (playergroup lp_players);
+void libMapM_gf_MMRavenTransmissionAlliedCurseEndsQ (playergroup lp_players);
+void libMapM_gf_MMRavenTransmissionObserverCurseEndsQ ();
+
+// Trigger Declarations
+trigger libMapM_gt_MAPINITIZALIEDCursedHollow;
+trigger libMapM_gt_MAPINITIZALIEDBattleforSlayn;
+trigger libMapM_gt_MMSlaynStartSpawning;
+trigger libMapM_gt_MMSlaynCreateWarningPings;
+trigger libMapM_gt_MMSlaynCreateVoidThrashers;
+trigger libMapM_gt_MMSlaynSpawnVoidThrasherMinions;
+trigger libMapM_gt_MMSlaynUnitDies;
+trigger libMapM_gt_MMSlaynVoidThrasherMissiles;
+trigger libMapM_gt_MMRavenCurseGateOpen;
+trigger libMapM_gt_MMRavenCurseGateOpenMYOWN;
+trigger libMapM_gt_MMRavenStartSpawning;
+trigger libMapM_gt_MMRavenSpawnTribute;
+trigger libMapM_gt_MMRavenTributeCollectStarted;
+trigger libMapM_gt_MMRavenTributeCollectCanceled;
+trigger libMapM_gt_MMRavenTributeObtained;
+trigger libMapM_gt_MMRavenCurseStartLightTransition;
+trigger libMapM_gt_MMRavenCurseAppliedCurseStructure;
+trigger libMapM_gt_MMRavenCurseRemoveCurseStructure;
+trigger libMapM_gt_MMRavenCurseFinished;
+trigger libMapM_gt_MMRavenObjectiveUIHandler;
+trigger libMapM_gt_MMRavenDebugStartElunees;
+trigger libMapM_gt_MMRavenDebugStartNexten;
+trigger libMapM_gt_MMRavenDebugStartCurseec;
+
+// Library Initialization
+void libMapM_InitVariables ();
+

@@ -1,0 +1,73 @@
+include "TriggerLibs/natives"
+
+//--------------------------------------------------------------------------------------------------
+// Library: ImprovedArrays
+//--------------------------------------------------------------------------------------------------
+// Preset Declarations
+
+// Function Declarations
+void lib6D040D01_gf_CreateArray (string lp_arrayName);
+int lib6D040D01_gf_LengthofArray (string lp_arrayName);
+bool lib6D040D01_gf_ArrayKeyExists (string lp_arrayName, int lp_arrayKey);
+int lib6D040D01_gf_TypeofArrayValue (string lp_arrayName, int lp_arrayKey);
+void lib6D040D01_gf_SetArrayValueInteger (string lp_arrayName, int lp_arrayIndex, int lp_arrayValue);
+void lib6D040D01_gf_SetArrayValueReal (string lp_arrayName, int lp_arrayIndex, fixed lp_arrayValue);
+void lib6D040D01_gf_SetArrayValueAbilityCommand (string lp_arrayName, int lp_arrayIndex, abilcmd lp_arrayValue);
+void lib6D040D01_gf_SetArrayValueBoolean (string lp_arrayName, int lp_arrayIndex, bool lp_arrayValue);
+void lib6D040D01_gf_SetArrayValueDialog (string lp_arrayName, int lp_arrayIndex, int lp_arrayValue);
+void lib6D040D01_gf_SetArrayValueDialogItem (string lp_arrayName, int lp_arrayIndex, int lp_arrayValue);
+void lib6D040D01_gf_SetArrayValuePoint (string lp_arrayName, int lp_arrayIndex, point lp_arrayValue);
+void lib6D040D01_gf_SetArrayValueRegion (string lp_arrayName, int lp_arrayIndex, region lp_arrayValue);
+void lib6D040D01_gf_SetArrayValueString (string lp_arrayName, int lp_arrayIndex, string lp_arrayValue);
+void lib6D040D01_gf_SetArrayValueTrigger (string lp_arrayName, int lp_arrayIndex, trigger lp_arrayValue);
+void lib6D040D01_gf_SetArrayValueUnit (string lp_arrayName, int lp_arrayIndex, unit lp_arrayValue);
+void lib6D040D01_gf_SetArrayValueUnitGroup (string lp_arrayName, int lp_arrayIndex, unitgroup lp_arrayValue);
+void lib6D040D01_gf_PushArrayValueInteger (string lp_arrayName, int lp_arrayValue);
+void lib6D040D01_gf_PushArrayValueReal (string lp_arrayName, fixed lp_arrayValue);
+void lib6D040D01_gf_PushArrayValueAbilityCommand (string lp_arrayName, abilcmd lp_arrayValue);
+void lib6D040D01_gf_PushArrayValueBoolean (string lp_arrayName, bool lp_arrayValue);
+void lib6D040D01_gf_PushArrayValueDialog (string lp_arrayName, int lp_arrayValue);
+void lib6D040D01_gf_PushArrayValueDialogItem (string lp_arrayName, int lp_arrayValue);
+void lib6D040D01_gf_PushArrayValuePoint (string lp_arrayName, point lp_arrayValue);
+void lib6D040D01_gf_PushArrayValueRegion (string lp_arrayName, region lp_arrayValue);
+void lib6D040D01_gf_PushArrayValueString (string lp_arrayName, string lp_arrayValue);
+void lib6D040D01_gf_PushArrayValueTrigger (string lp_arrayName, trigger lp_arrayValue);
+void lib6D040D01_gf_PushArrayValueUnit (string lp_arrayName, unit lp_arrayValue);
+void lib6D040D01_gf_PushArrayValueUnitGroup (string lp_arrayName, unitgroup lp_arrayValue);
+int lib6D040D01_gf_GetArrayValueInteger (string lp_arrayName, int lp_arrayIndex);
+fixed lib6D040D01_gf_GetArrayValueReal (string lp_arrayName, int lp_arrayIndex);
+abilcmd lib6D040D01_gf_GetArrayValueAbilityCommand (string lp_arrayName, int lp_arrayIndex);
+bool lib6D040D01_gf_GetArrayValueBoolean (string lp_arrayName, int lp_arrayIndex);
+int lib6D040D01_gf_GetArrayValueDialog (string lp_arrayName, int lp_arrayIndex);
+int lib6D040D01_gf_GetArrayValueDialogItem (string lp_arrayName, int lp_arrayIndex);
+point lib6D040D01_gf_GetArrayValuePoint (string lp_arrayName, int lp_arrayIndex);
+region lib6D040D01_gf_GetArrayValueRegion (string lp_arrayName, int lp_arrayIndex);
+string lib6D040D01_gf_GetArrayValueString (string lp_arrayName, int lp_arrayIndex);
+trigger lib6D040D01_gf_GetArrayValueTrigger (string lp_arrayName, int lp_arrayIndex);
+unit lib6D040D01_gf_GetArrayValueUnit (string lp_arrayName, int lp_arrayIndex);
+unitgroup lib6D040D01_gf_GetArrayValueUnitGroup (string lp_arrayName, int lp_arrayIndex);
+int lib6D040D01_gf_SearchArrayValueInteger (string lp_arrayName, int lp_value);
+int lib6D040D01_gf_SearchArrayValueReal (string lp_arrayName, fixed lp_value);
+int lib6D040D01_gf_SearchArrayValueAbilityCommand (string lp_arrayName, abilcmd lp_value);
+int lib6D040D01_gf_SearchArrayValueBoolean (string lp_arrayName, bool lp_value);
+int lib6D040D01_gf_SearchArrayValueDialog (string lp_arrayName, int lp_value);
+int lib6D040D01_gf_SearchArrayValueDialogItem (string lp_arrayName, int lp_value);
+int lib6D040D01_gf_SearchArrayValuePoint (string lp_arrayName, point lp_value);
+int lib6D040D01_gf_SearchArrayValueRegion (string lp_arrayName, region lp_value);
+int lib6D040D01_gf_SearchArrayValueString (string lp_arrayName, string lp_value);
+int lib6D040D01_gf_SearchArrayValueTrigger (string lp_arrayName, trigger lp_value);
+int lib6D040D01_gf_SearchArrayValueUnit (string lp_arrayName, unit lp_value);
+int lib6D040D01_gf_SearchArrayValueUnitGroup (string lp_arrayName, unitgroup lp_value);
+void lib6D040D01_gf_SetArrayValuetoArrayValue (string lp_arrayName1, int lp_arrayIndex1, string lp_arrayName2, int lp_arrayIndex2);
+void lib6D040D01_gf_SplitStringintoArray (string lp_arrayName, string lp_string, string lp_delimiter);
+string lib6D040D01_gf_JoinArrayintoString (string lp_arrayName, string lp_glue);
+int lib6D040D01_gf_IndexofGreatestLowestValue (string lp_arrayName, bool lp_greatestLowest);
+void lib6D040D01_gf_sortArray (string lp_arrayName, bool lp_ascendingDescendingOrder);
+void lib6D040D01_gf_CopyArray (string lp_arrayName, string lp_newArrayName);
+void lib6D040D01_gf_DeleteArrayKey (string lp_arrayName, int lp_arrayKey);
+void lib6D040D01_gf_Move (string lp_arrayName, int lp_indexFrom, int lp_indexTo);
+void lib6D040D01_gf_SwapArrayValues (string lp_arrayName, int lp_arrayIndex1, int lp_arrayIndex2);
+void lib6D040D01_gf_ReverseArray (string lp_arrayName);
+void lib6D040D01_gf_Shuffle (string lp_arrayName);
+void lib6D040D01_gf_MergeArrays (string lp_arrayName1, string lp_arrayName2);
+

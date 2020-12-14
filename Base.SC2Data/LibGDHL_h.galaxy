@@ -1,0 +1,152 @@
+include "LibCore_h"
+
+//--------------------------------------------------------------------------------------------------
+// Library: Game Data Helper
+//--------------------------------------------------------------------------------------------------
+// Preset Declarations
+const int libGDHL_ge_HeroKatarinaWeaponEquippedCarried_Equipped = 0;
+const int libGDHL_ge_HeroKatarinaWeaponEquippedCarried_Carried = 1;
+
+// Constants
+const int libGDHL_gv_prestigeBloodForBloodHealModificator = 2;
+const fixed libGDHL_gv_heroDiabloInfernoBreathTurningRate = 100.0;
+const int libGDHL_gv_heroDiabloBlackSoulstoneMaximumSoulstones = 75;
+const fixed libGDHL_gv_diabloBucketLordofTerrorBaseDuration = 6.66;
+const int libGDHL_gv_diabloBucketLordofTerrorAdditiveSoulsPerHero = 30;
+const fixed libGDHL_gv_heroDiabloTalentOverkillHealingPercent = 1.0;
+const fixed libGDHL_gv_heroDiabloTalentTemperedFlameModificator = 0.1;
+const fixed libGDHL_gv_heroDiabloTalentTemperedFlameHeroModificator = 0.35;
+const fixed libGDHL_gv_heroKatarinaAimedShotHeroHealingModificator = 1.0;
+const int libGDHL_gv_heroKatarinaAmmoDefaultAutorifle = 27;
+const int libGDHL_gv_heroKatarinaAmmoDefaultChaingun = 27;
+const int libGDHL_gv_heroKatarinaAmmoDefaultFlamethrower = 32;
+const int libGDHL_gv_heroKatarinaAmmoDefaultSnipe = 12;
+const int libGDHL_gv_heroKatarinaAmmoMax = 60;
+const int libGDHL_gv_heroKatarinaAmmoTalentIncreased = 10;
+const fixed libGDHL_gv_heroKatarinaAutorifleEquippedPercentHealValue = 0.3;
+const fixed libGDHL_gv_heroKatarinaAutorifleCarriedPercentHealValue = 0.1;
+const fixed libGDHL_gv_heroKatarinaAutorifleMaximumShieldsValue = 0.25;
+const int libGDHL_gv_heroKatarinaTalentUniversalAmmoAmmoGainfromGlobe = 5;
+const fixed libGDHL_gv_heroMalfurionRegrowthNaturesBlessingValue = 10000.0;
+const fixed libGDHL_gv_heroMalfurionTalentWildGrowthCooldownReduction = 0.25;
+const fixed libGDHL_gv_heroNazeeboTalentRushOfEssenceHealModificator = 0.1;
+const fixed libGDHL_gv_heroNazeeboTalentZombiePrisonSurroundedByDeadCDReduction = 0.15;
+const fixed libGDHL_gv_bALHeroRaynorAdvancedOpticsModifier = 0.35;
+const fixed libGDHL_gv_bALHeroRaynorAdvancedOpticsBaseShield = 350.0;
+const fixed libGDHL_gv_bALHeroRaynorAdvancedOpticsMaxShieldsLevelModifier = 50.0;
+const int libGDHL_gv_heroRaynorAdvancedOpticsMaxStacks = 3;
+const fixed libGDHL_gv_heroRaynorAdvancedOpticsStacksValue = 0.1;
+const fixed libGDHL_gv_heroSelendisTemplarWillpowerShieldsModificator = 1.0;
+const fixed libGDHL_gv_heroSelendisTemplarWillpowerShieldsModificatorPlasmaShield = 1.5;
+const fixed libGDHL_gv_heroSelendisTemplarWillpowerHPShieldsMaxModificator = 0.3;
+const fixed libGDHL_gv_heroSelendisTemplarWillpowerHPShieldsMaxModificatorReconfigurationShields = 0.45;
+const fixed libGDHL_gv_heroSelendisInTheHeatOfBattleChargesAdded = 1.0;
+const fixed libGDHL_gv_heroSelendisPhaseWeaponPassiveHealing = 0.25;
+const fixed libGDHL_gv_heroSelendisPhaseWeaponActiveHealing = 0.5;
+
+// Variable Declarations
+bool[libCore_gv_bALMaxPlayers + 1] libGDHL_gv_heroDiabloInfernoBreathActive;
+bool[libCore_gv_bALMaxPlayers + 1] libGDHL_gv_heroDiabloInfernoBreathEventAdded;
+fixed[libCore_gv_bALMaxPlayers + 1] libGDHL_gv_diabloBucketLordofTerrorCurrentDuration;
+unit[libCore_gv_bALMaxPlayers + 1] libGDHL_gv_heroRaynorAdvancedOpticsStoredUnit;
+int[libCore_gv_bALMaxPlayers + 1] libGDHL_gv_heroRaynorAdvancedOpticsStacksCount;
+unitgroup libGDHL_gv_talentMarineDropBattlegroup;
+
+// Function Declarations
+void libGDHL_gf_MercAICreateMercPath (unit lp_merc, int lp_groupIndex, int lp_nextPoint);
+void libGDHL_gf_GameDataAddHeroTraitWeaponEffecttoAlliesfromPlayer (int lp_player);
+bool libGDHL_gf_TalentHardenedFocusBasicAbilitiesOnCD (int lp_player);
+void libGDHL_gf_HearthstoneChangeHeroModel (int lp_player, unit lp_heroUnit);
+void libGDHL_gf_CooldownReduceCooldownofHeroAbathurVehicleHero (unit lp_unit, int lp_player, fixed lp_time, bool lp_reset, bool lp_ignoreCDRRequirment, bool lp_includeHeroicAbility);
+point libGDHL_gf_TargetCalculation (point lp_targetPoint, point lp_casterPoint, region lp_bFGRegion);
+string libGDHL_gf_HeroKatarinaCarriedWeaponBehavior (unit lp_unit);
+string libGDHL_gf_HeroKatarinaEquippedWeaponBehavior (unit lp_unit);
+string libGDHL_gf_HeroKatarinaChangeEquippedWeaponToCarried (unit lp_unit);
+void libGDHL_gf_HeroKatarinaAmmoAdd (int lp_value, string lp_ammoType, unit lp_unit);
+int libGDHL_gf_HeroKatarinaAmmoDefaultAmmoValue (string lp_ammoType);
+int libGDHL_gf_HeroKatarinaAmmoGetMaxAmmoValue (int lp_player, string lp_ammoType);
+int libGDHL_gf_HeroKatarinaAmmoGetCurrentAmmoValue (unit lp_unit, string lp_ammoType);
+void libGDHL_gf_HeroKatarinaAutorifleHealingSystem (unit lp_unit, fixed lp_damage, int lp_equippedCarried);
+fixed libGDHL_gf_HeroSelendisTemplarWillpowerShieldsModificator (int lp_player);
+fixed libGDHL_gf_HeroSelendisTemplarWillpowerHPShieldsMaxModificator (int lp_player);
+
+// Trigger Declarations
+trigger libGDHL_gt_PrestigeBloodForBlood;
+trigger libGDHL_gt_RegenerationGlobeTalents;
+trigger libGDHL_gt_TalentRewindActivate;
+trigger libGDHL_gt_TalentBattleMomentumProc;
+trigger libGDHL_gt_TalentFuryoftheStormActivate;
+trigger libGDHL_gt_TalentFuryoftheStorm;
+trigger libGDHL_gt_TalentArcaneTeachingsApplySlow;
+trigger libGDHL_gt_TalentBribe;
+trigger libGDHL_gt_TalentSwiftStorm;
+trigger libGDHL_gt_TalentStormShield;
+trigger libGDHL_gt_TalentHardenedFocus;
+trigger libGDHL_gt_TalentHardenedFocusUpdate;
+trigger libGDHL_gt_TalentResurgenceOfTheStorm;
+trigger libGDHL_gt_HeroPortBackToBaseHearthstone;
+trigger libGDHL_gt_HeroPortBackToBase;
+trigger libGDHL_gt_HeroPortBackToBaseStart;
+trigger libGDHL_gt_HeroPortBackToBaseEnd;
+trigger libGDHL_gt_HeroPortBackToBaseFizzle;
+trigger libGDHL_gt_HeroDiabloOverpowerFacing;
+trigger libGDHL_gt_HeroDiabloInfernoBreathCast;
+trigger libGDHL_gt_HeroDiabloInfernoBreathAim;
+trigger libGDHL_gt_HeroDiabloInfernoBreathEnd;
+trigger libGDHL_gt_HeroDiabloBlackSoulstoneAddCharge;
+trigger libGDHL_gt_HeroDiabloBlackSoulstoneDiabloDeath;
+trigger libGDHL_gt_HeroDiabloTalentDevilChargeDevastatingCharge;
+trigger libGDHL_gt_HeroDiabloTalentApocalypseAddCharge;
+trigger libGDHL_gt_HeroDiabloTalentSecondComingRevive;
+trigger libGDHL_gt_DiabloBucketLordofTerrorAddAdditiveSoulsEffect;
+trigger libGDHL_gt_DiabloBucketLordofTerrorRemoveAdditiveSouls;
+trigger libGDHL_gt_DiabloBucketLordofTerrorSetAdditiveSoulsDurationUI;
+trigger libGDHL_gt_DiabloBucketLordofTerrorClearAdditiveSoulsDurationUI;
+trigger libGDHL_gt_HeroDiabloTalentEngulfingShadowTeleport;
+trigger libGDHL_gt_HeroDiabloTalentOverkill;
+trigger libGDHL_gt_HeroDiabloTalentTemperedFlame;
+trigger libGDHL_gt_HeroKatarinaChangeCarryWeaponWeaponSwap;
+trigger libGDHL_gt_HeroKatarinaChangeEquippedWeapon;
+trigger libGDHL_gt_HeroKatarinaKatarinaIsCreated;
+trigger libGDHL_gt_HeroKatarinaKatarinaIsRevived;
+trigger libGDHL_gt_HeroKatarinaSwapHeroModelsCarried;
+trigger libGDHL_gt_HeroKatarinaSwapHeroModelsEquipped;
+trigger libGDHL_gt_HeroKatarinaAimedShotHeroHealingDamage;
+trigger libGDHL_gt_HeroKatarinaAmmoTalentIncreasedCharges;
+trigger libGDHL_gt_HeroKatarinaAmmoController;
+trigger libGDHL_gt_HeroKatarinaWeaponAttackSetup;
+trigger libGDHL_gt_HeroKatarinaWeaponMainandSecondaryEffectsonDamagedealt;
+trigger libGDHL_gt_HeroKatarinaTalentUniversalAmmo;
+trigger libGDHL_gt_HeroKatarinaTalentAmmoRestoration;
+trigger libGDHL_gt_HeroKatarinaTalentDestroyerWeaponUITalentPicked;
+trigger libGDHL_gt_HeroKatarinaTalentDestroyerWeaponUIController;
+trigger libGDHL_gt_HeroMalfurionRegrowthNaturesBlessingController;
+trigger libGDHL_gt_HeroMalfurionRegrowthNaturesBlessingQuest;
+trigger libGDHL_gt_HeroMalfurionTalentWildGrowth;
+trigger libGDHL_gt_HeroMalfurionTalentNaturesCall;
+trigger libGDHL_gt_HeroMalfurionTalentNaturesCallController;
+trigger libGDHL_gt_HeroMalfurionTalentHinderingRoots;
+trigger libGDHL_gt_HeroMalfurionTalentDangerousRootsTreantSpawned;
+trigger libGDHL_gt_HeroMalfurionTalentRegrowthLifebloom;
+trigger libGDHL_gt_HeroMalfurionTalentRevitalize;
+trigger libGDHL_gt_HeroMalfurionTalentRevitalizeController;
+trigger libGDHL_gt_HeroMalfurionTalentShandosClarity;
+trigger libGDHL_gt_HeroNazeeboRavenousSoulsCast;
+trigger libGDHL_gt_HeroNazeeboVoodooRitualNonFatal;
+trigger libGDHL_gt_HeroNazeeboVoodooRitualFatal;
+trigger libGDHL_gt_HeroNazeeboZombiePrisonInitialAttackLogic;
+trigger libGDHL_gt_HeroNazeeboTalentRushOfEssence;
+trigger libGDHL_gt_HeroNazeeboTalentZombiePrisonSurroundedByDead;
+trigger libGDHL_gt_HeroRaynorPowershot;
+trigger libGDHL_gt_HeroRaynorAdvancedOpticsAddShields;
+trigger libGDHL_gt_HeroRaynorIRememberYouEffectUsed;
+trigger libGDHL_gt_HeroSelendisTemplarWillpower;
+trigger libGDHL_gt_HeroSelendisTemplarWillpowerOverloadShieldsBehaviorsChanges;
+trigger libGDHL_gt_HeroSelendisTemplarWillpowerOverloadShieldsDamageControl;
+trigger libGDHL_gt_HeroSelendisInTheHeatOfBattleAddCharge;
+trigger libGDHL_gt_HeroSelendisPhaseWeapon;
+trigger libGDHL_gt_UntitledTrigger001;
+
+// Library Initialization
+void libGDHL_InitVariables ();
+

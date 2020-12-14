@@ -1,0 +1,2033 @@
+include "TriggerLibs/NativeLib"
+include "TriggerLibs/SwarmLib"
+include "LibAIAI_h"
+include "LibCore_h"
+include "LibGame_h"
+include "LibUIUI_h"
+
+include "LibMapM_h"
+
+//--------------------------------------------------------------------------------------------------
+// Library: Map Mechanics
+//--------------------------------------------------------------------------------------------------
+// External Library Initialization
+void libMapM_InitLibraries () {
+    libNtve_InitVariables();
+    libHots_InitVariables();
+    libAIAI_InitVariables();
+    libCore_InitVariables();
+    libGame_InitVariables();
+    libUIUI_InitVariables();
+}
+
+// Variable Initialization
+bool libMapM_InitVariables_completed = false;
+
+void libMapM_InitVariables () {
+    int init_i1;
+    int init_j1;
+
+    if (libMapM_InitVariables_completed) {
+        return;
+    }
+
+    libMapM_InitVariables_completed = true;
+
+    for (init_i1 = 0; init_i1 <= libCore_gv_bALMaxTeams; init_i1 += 1) {
+        libMapM_gv_mMBattleForSlaynData.lv_voidThrasherMinions[init_i1] = UnitGroupEmpty();
+    }
+    for (init_i1 = 0; init_i1 <= libCore_gv_bALMaxTeams; init_i1 += 1) {
+        libMapM_gv_mMBattleForSlaynData.lv_minionSpawnTimer[init_i1] = TimerCreate();
+    }
+    libMapM_gv_mMSlaynSpawnTimer = TimerCreate();
+    libMapM_gv_mMSlaynPingsTimer = TimerCreate();
+    for (init_i1 = 0; init_i1 <= libMapM_gv_cursedHollowTribute_Lane; init_i1 += 1) {
+        for (init_j1 = 0; init_j1 <= libMapM_gv_cursedHollowTribue_Column; init_j1 += 1) {
+            libMapM_gv_cursedHollowData.lv_tributePointAvailable[init_i1][init_j1] = true;
+        }
+    }
+    libMapM_gv_mMRavenTributes = UnitGroupEmpty();
+    libMapM_gv_mMRavenStartTimer = TimerCreate();
+    libMapM_gv_mMRavenWarningTimer = TimerCreate();
+    libMapM_gv_mMRavenCurseTimer = TimerCreate();
+    libMapM_gv_mMRavenEventFirstTime = true;
+}
+
+// Presets
+// Functions
+void libMapM_gf_ShowHideActorofUnitforPlayer (bool lp_showHide, unit lp_unit, int lp_player) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((lp_showHide == true)) {
+        libNtve_gf_SendActorMessageToUnit(lp_unit, (("SetVisibleToPlayers " + IntToString(lp_player) + " Clear")));
+    }
+    else {
+        libNtve_gf_SendActorMessageToUnit(lp_unit, (("SetVisibleToPlayers " + IntToString(lp_player) + " Toggle")));
+    }
+}
+
+void libMapM_gf_MapMechanicAdd (int lp_mechanic, trigger lp_initializeCallback) {
+    // Automatic Variable Declarations
+    int autoCBB77751_val;
+
+    // Implementation
+    if ((libMapM_gv_mapMechanicControllerActor == null)) {
+        libNtve_gf_CreateActorAtPoint("MMController", RegionGetCenter(RegionEntireMap()));
+        libMapM_gv_mapMechanicControllerActor = libNtve_gf_ActorLastCreated();
+    }
+
+    if ((libMapM_gf_MapMechanicExistsOnMap(lp_mechanic) == true)) {
+        return ;
+    }
+
+    libMapM_gv_mapMechanicsCount += 1;
+    libMapM_gv_mapMechanics[libMapM_gv_mapMechanicsCount] = lp_mechanic;
+    libMapM_gv_mapMechanicsInitCallbacks[libMapM_gv_mapMechanicsCount] = lp_initializeCallback;
+    autoCBB77751_val = lp_mechanic;
+    if (autoCBB77751_val == libMapM_ge_MapMechanicType_BattleforSlayn) {
+    }
+    else {
+    }
+}
+
+int libMapM_gf_MapMechanicIndex (int lp_mechanic) {
+    // Variable Declarations
+    int lv_itMechanic;
+
+    // Automatic Variable Declarations
+    int auto1B621E36_ae;
+    const int auto1B621E36_ai = 1;
+
+    // Variable Initialization
+
+    // Implementation
+    auto1B621E36_ae = libMapM_gv_mapMechanicsCount;
+    lv_itMechanic = 1;
+    for ( ; ( (auto1B621E36_ai >= 0 && lv_itMechanic <= auto1B621E36_ae) || (auto1B621E36_ai < 0 && lv_itMechanic >= auto1B621E36_ae) ) ; lv_itMechanic += auto1B621E36_ai ) {
+        if ((libMapM_gv_mapMechanics[lv_itMechanic] == lp_mechanic)) {
+            return lv_itMechanic;
+        }
+
+    }
+    return 0;
+}
+
+bool libMapM_gf_MapMechanicExistsOnMap (int lp_mechanic) {
+    // Automatic Variable Declarations
+    // Implementation
+    return (libMapM_gf_MapMechanicIndex(lp_mechanic) > 0);
+}
+
+int libMapM_gf_PrimaryMapMechanic () {
+    // Automatic Variable Declarations
+    // Implementation
+    return libMapM_gv_mapMechanics[1];
+}
+
+trigger auto_libMapM_gf_MMSlaynSpawnMinion_Trigger = null;
+int auto_libMapM_gf_MMSlaynSpawnMinion_lp_count;
+int auto_libMapM_gf_MMSlaynSpawnMinion_lp_team;
+int auto_libMapM_gf_MMSlaynSpawnMinion_lp_regionNumber;
+
+void libMapM_gf_MMSlaynSpawnMinion (int lp_count, int lp_team, int lp_regionNumber) {
+    auto_libMapM_gf_MMSlaynSpawnMinion_lp_count = lp_count;
+    auto_libMapM_gf_MMSlaynSpawnMinion_lp_team = lp_team;
+    auto_libMapM_gf_MMSlaynSpawnMinion_lp_regionNumber = lp_regionNumber;
+
+    if (auto_libMapM_gf_MMSlaynSpawnMinion_Trigger == null) {
+        auto_libMapM_gf_MMSlaynSpawnMinion_Trigger = TriggerCreate("auto_libMapM_gf_MMSlaynSpawnMinion_TriggerFunc");
+    }
+
+    TriggerExecute(auto_libMapM_gf_MMSlaynSpawnMinion_Trigger, false, false);
+}
+
+bool auto_libMapM_gf_MMSlaynSpawnMinion_TriggerFunc (bool testConds, bool runActions) {
+    int lp_count = auto_libMapM_gf_MMSlaynSpawnMinion_lp_count;
+    int lp_team = auto_libMapM_gf_MMSlaynSpawnMinion_lp_team;
+    int lp_regionNumber = auto_libMapM_gf_MMSlaynSpawnMinion_lp_regionNumber;
+
+    // Variable Declarations
+    int lv_enemyTeam;
+
+    // Automatic Variable Declarations
+    int auto147D71AF_n;
+    int auto147D71AF_i;
+
+    // Variable Initialization
+    lv_enemyTeam = (3-lp_team);
+
+    // Implementation
+    auto147D71AF_n = lp_count;
+    for (auto147D71AF_i = 1; auto147D71AF_i <= auto147D71AF_n; auto147D71AF_i += 1) {
+        if ((UnitIsAlive(libMapM_gv_mMBattleForSlaynData.lv_voidThrasher[lv_enemyTeam]) == false)) {
+            break;
+        }
+
+        Wait(0.25, c_timeGame);
+        UnitCreate(1, "MapM_BattleForSlayn_VoidMinion", 0, libGame_gv_teams[lp_team].lv_nPCPlayer, RegionRandomPoint(libMapM_gv_mMBattleForSlaynData.lv_eventRegion[lp_regionNumber]), libNtve_gf_RandomAngle());
+        libAIAI_gf_MapMAIRegisterUnit(UnitLastCreated(), libMapM_gv_mMBattleForSlaynData.lv_eventRegion[lp_regionNumber], lp_regionNumber, libMapM_gv_mMBattleForSlaynData.lv_eventLevel);
+        UnitGroupAdd(libMapM_gv_mMBattleForSlaynData.lv_voidThrasherMinions[lp_team], UnitLastCreated());
+        PlayerCreateEffectPoint(libCore_gv_cOMPUTER_Hostile, "MapM_BattleForSlayn_VoidMinion_CreateUnitSpawnModelAtPoint", UnitGetPosition(UnitLastCreated()));
+    }
+    return true;
+}
+
+point libMapM_gf_CursedHollowGetAvaiablePoint () {
+    // Variable Declarations
+    int lv_lane;
+    int lv_column;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Implementation
+    lv_lane = libMapM_gf_CursedHollowAvailableLane();
+    lv_column = libMapM_gf_CursedHollowRandomAvailableColumn();
+    libMapM_gv_cursedHollowData.lv_laneTributeCount[lv_lane] += 1;
+    libMapM_gv_cursedHollowData.lv_tributePointAvailable[lv_lane][lv_column] = false;
+    return libMapM_gv_cursedHollowData.lv_tributePoint[lv_lane][lv_column];
+}
+
+int libMapM_gf_CursedHollowRandomAvailableColumn () {
+    // Variable Declarations
+    int lv_return;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Implementation
+    if ((libMapM_gf_CursedHollowAvailableColumnCount() == 3)) {
+        lv_return = RandomInt(1, 3);
+        return lv_return;
+    }
+
+    if ((libMapM_gf_CursedHollowAvailableColumnCount() == 2)) {
+        lv_return = RandomInt(1, 3);
+        if ((libMapM_gf_CursedHollowIsColumnAvailable(lv_return) == true)) {
+            return lv_return;
+        }
+        else {
+            while ((libMapM_gf_CursedHollowIsColumnAvailable(lv_return) == false)) {
+                Wait(0.0625, c_timeGame);
+                lv_return = RandomInt(1, 3);
+            }
+            return lv_return;
+        }
+    }
+
+    if ((libMapM_gf_CursedHollowAvailableColumnCount() == 1)) {
+        lv_return = RandomInt(1, 3);
+        if ((libMapM_gf_CursedHollowIsColumnAvailable(lv_return) == true)) {
+            return lv_return;
+        }
+        else {
+            while ((libMapM_gf_CursedHollowIsColumnAvailable(lv_return) == false)) {
+                Wait(0.0625, c_timeGame);
+                lv_return = RandomInt(1, 3);
+            }
+            return lv_return;
+        }
+    }
+
+    return lv_return;
+}
+
+int libMapM_gf_CursedHollowLastColumnAvailable () {
+    // Variable Declarations
+    int lv_i;
+
+    // Automatic Variable Declarations
+    const int auto9C5DD613_n = libMapM_gv_cursedHollowTribue_Column;
+    int auto9C5DD613_i;
+
+    // Variable Initialization
+
+    // Implementation
+    for (auto9C5DD613_i = 1; auto9C5DD613_i <= auto9C5DD613_n; auto9C5DD613_i += 1) {
+        lv_i += 1;
+        if ((libMapM_gv_cursedHollowData.lv_tributePointAvailable[1][lv_i] == true) && (libMapM_gv_cursedHollowData.lv_tributePointAvailable[2][lv_i] == true)) {
+            return lv_i;
+        }
+
+    }
+    return 0;
+}
+
+int libMapM_gf_CursedHollowAvailableColumnCount () {
+    // Variable Declarations
+    int lv_i;
+    int lv_returning;
+
+    // Automatic Variable Declarations
+    const int auto7ACD8058_n = libMapM_gv_cursedHollowTribue_Column;
+    int auto7ACD8058_i;
+
+    // Variable Initialization
+
+    // Implementation
+    for (auto7ACD8058_i = 1; auto7ACD8058_i <= auto7ACD8058_n; auto7ACD8058_i += 1) {
+        lv_i += 1;
+        if ((libMapM_gv_cursedHollowData.lv_tributePointAvailable[1][lv_i] == true) && (libMapM_gv_cursedHollowData.lv_tributePointAvailable[2][lv_i] == true)) {
+            lv_returning += 1;
+        }
+
+    }
+    return lv_returning;
+}
+
+bool libMapM_gf_CursedHollowIsColumnAvailable (int lp_column) {
+    // Variable Declarations
+    int lv_d091D0B5D0B7D18BD0BCD18FD0BDD0BDD0B0D18FD0BFD0B5D180D0B5D0BCD0B5D0BDD0BDD0B0D18F001;
+    int lv_i;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_d091D0B5D0B7D18BD0BCD18FD0BDD0BDD0B0D18FD0BFD0B5D180D0B5D0BCD0B5D0BDD0BDD0B0D18F001 = RandomInt(0, 100);
+
+    // Implementation
+    if ((libMapM_gv_cursedHollowData.lv_tributePointAvailable[1][lp_column] == true) && (libMapM_gv_cursedHollowData.lv_tributePointAvailable[2][lp_column] == true)) {
+        return true;
+    }
+
+    return false;
+}
+
+int libMapM_gf_CursedHollowColumnIsAvailable (int lp_column) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((libMapM_gv_cursedHollowData.lv_tributePointAvailable[1][lp_column] == true) && (libMapM_gv_cursedHollowData.lv_tributePointAvailable[2][lp_column] == true)) {
+        return lp_column;
+    }
+
+    return 0;
+}
+
+int libMapM_gf_CursedHollowAvailableLane () {
+    // Variable Declarations
+    int lv_lane;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Implementation
+    lv_lane = RandomInt(1, 2);
+    if ((libMapM_gv_cursedHollowData.lv_laneTributeCount[lv_lane] < 2)) {
+        return lv_lane;
+    }
+    else {
+        return (3-lv_lane);
+    }
+}
+
+void libMapM_gf_MMRavenCurseAddTributeSpawnLocation (point lp_spawnLocation) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((libMapM_gv_mMRavenTributeSpawnPointsCount >= libMapM_gv_mMRavenTributeSpawnPointsCountMax_C)) {
+        TriggerDebugOutput(1, StringExternal("Param/Value/lib_MapM_AA88E61A"), true);
+        return ;
+    }
+
+    libMapM_gv_mMRavenTributeSpawnPointsCount += 1;
+    libMapM_gv_mMRavenTributeSpawnPoints[libMapM_gv_mMRavenTributeSpawnPointsCount] = lp_spawnLocation;
+}
+
+void libMapM_gf_CursedHollowCheckPointsForAvailable () {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((libMapM_gv_cursedHollowData.lv_tributeCountALL == 2)) {
+        libMapM_gv_cursedHollowData.lv_tributePointAvailable[1][1] = true;
+        libMapM_gv_cursedHollowData.lv_tributePointAvailable[1][2] = true;
+        libMapM_gv_cursedHollowData.lv_tributePointAvailable[1][3] = true;
+        libMapM_gv_cursedHollowData.lv_tributePointAvailable[2][1] = true;
+        libMapM_gv_cursedHollowData.lv_tributePointAvailable[2][2] = true;
+        libMapM_gv_cursedHollowData.lv_tributePointAvailable[2][3] = true;
+        libMapM_gv_cursedHollowData.lv_tributeCountALL = 0;
+    }
+    else {
+        libMapM_gv_cursedHollowData.lv_tributeCountALL += 1;
+    }
+}
+
+bool libMapM_gf_MMRavenCurseStarted () {
+    // Automatic Variable Declarations
+    // Implementation
+    return (libMapM_gv_mMRavenTeamStats[1].lv_cursed || libMapM_gv_mMRavenTeamStats[2].lv_cursed);
+}
+
+void libMapM_gf_MMRavenCurseInit () {
+    // Variable Declarations
+    int lv_itPlayer;
+
+    // Automatic Variable Declarations
+    playergroup autoFC7A44C8_g;
+
+    // Variable Initialization
+
+    // Implementation
+    TriggerEnable(libMapM_gt_MMRavenCurseGateOpen, true);
+    TriggerEnable(libMapM_gt_MMRavenTributeCollectStarted, true);
+    TriggerEnable(libMapM_gt_MMRavenTributeCollectCanceled, true);
+    TriggerEnable(libMapM_gt_MMRavenCurseAppliedCurseStructure, true);
+    TriggerEnable(libMapM_gt_MMRavenCurseRemoveCurseStructure, true);
+    TriggerEnable(libMapM_gt_MMRavenDebugStartElunees, true);
+    TriggerEnable(libMapM_gt_MMRavenDebugStartNexten, true);
+    TriggerEnable(libMapM_gt_MMRavenDebugStartCurseec, true);
+    ActorSend(libMapM_gv_mapMechanicControllerActor, "Signal MM1Off");
+    autoFC7A44C8_g = PlayerGroupAll();
+    lv_itPlayer = -1;
+    while (true) {
+        lv_itPlayer = PlayerGroupNextPlayer(autoFC7A44C8_g, lv_itPlayer);
+        if (lv_itPlayer < 0) { break; }
+        CatalogFieldValueSet(c_gameCatalogAbil, "CaptureMacGuffin", "Activity", lv_itPlayer, "DOCSTR_MMRavenCurse_CapturingTribute");
+    }
+}
+
+fixed libMapM_gf_MMRavenStartTime () {
+    // Automatic Variable Declarations
+    // Implementation
+    return libMapM_gv_mMRavenStartTime_C;
+}
+
+fixed libMapM_gf_MMRavenTributeSpawnTime () {
+    // Automatic Variable Declarations
+    // Implementation
+    return libMapM_gv_mMRavenTributeSpawnTime_C;
+}
+
+int libMapM_gf_MMRavenTributeThresholdAmount () {
+    // Automatic Variable Declarations
+    // Implementation
+    return libMapM_gv_mMRavenTributeThreshold_C;
+}
+
+string libMapM_gf_MMRavenTributeUnitType () {
+    // Automatic Variable Declarations
+    // Implementation
+    return "RavenLordTribute";
+}
+
+point libMapM_gf_MMRavenRandomSpawnPoint () {
+    // Variable Declarations
+    int lv_spawnIndex;
+    int[libMapM_gv_mMRavenTributeSpawnPointsCountMax_C + 1] lv_availableSpawnPointIndex;
+    int lv_availableSpawnPointsCount;
+    int lv_index;
+
+    // Automatic Variable Declarations
+    int auto644DBDBF_ae;
+    const int auto644DBDBF_ai = 1;
+
+    // Variable Initialization
+
+    // Implementation
+    if ((libMapM_gv_mMRavenTributeSpawnPointsCount < 1)) {
+        return null;
+    }
+    else {
+        auto644DBDBF_ae = libMapM_gv_mMRavenTributeSpawnPointsCount;
+        lv_index = 1;
+        for ( ; ( (auto644DBDBF_ai >= 0 && lv_index <= auto644DBDBF_ae) || (auto644DBDBF_ai < 0 && lv_index >= auto644DBDBF_ae) ) ; lv_index += auto644DBDBF_ai ) {
+            if ((lv_index != libMapM_gv_mMRavenLastTributeSpawnIndex1) && (!(((libMapM_gv_mMRavenLastTributeSpawnIndex1 > 0) && (libMapM_gv_mMRavenLastTributeSpawnIndex2 > 0) && (ModI(libMapM_gv_mMRavenLastTributeSpawnIndex1, 2) == ModI(libMapM_gv_mMRavenLastTributeSpawnIndex2, 2)) && (ModI(lv_index, 2) == ModI(libMapM_gv_mMRavenLastTributeSpawnIndex1, 2)))))) {
+                lv_availableSpawnPointsCount += 1;
+                lv_availableSpawnPointIndex[lv_availableSpawnPointsCount] = lv_index;
+            }
+
+        }
+        libMapM_gv_mMRavenLastTributeSpawnIndex2 = libMapM_gv_mMRavenLastTributeSpawnIndex1;
+        libMapM_gv_mMRavenLastTributeSpawnIndex1 = lv_availableSpawnPointIndex[RandomInt(1, lv_availableSpawnPointsCount)];
+        return libMapM_gv_mMRavenTributeSpawnPoints[libMapM_gv_mMRavenLastTributeSpawnIndex1];
+    }
+}
+
+void libMapM_gf_MMRavenStartSpawnTimer5090 () {
+    // Variable Declarations
+    fixed lv_spawnTime;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Implementation
+    lv_spawnTime = (libMapM_gv_mMRavenTributeSpawnTime_C + RandomFixed((libMapM_gv_mMRavenTributeSpawnTimeVariance * -1), libMapM_gv_mMRavenTributeSpawnTimeVariance));
+    if ((GameIsOnline() == true)) {
+        TimerStart(libMapM_gv_mMRavenWarningTimer, (lv_spawnTime - libMapM_gv_mMRavenSpawnWarningTimerTime_C), false, c_timeGame);
+    }
+    else {
+        TimerStart(libMapM_gv_mMRavenWarningTimer, (2.0 - 1.0), false, c_timeGame);
+    }
+}
+
+void libMapM_gf_MMRavenTributeCollectionThresholdReached (int lp_winningTeam) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((lp_winningTeam == libGame_gf_PlayerGetPlayerTeam(libCore_gv_cOMPUTER_Blue)) && (libCore_gv_gameOver == false)) {
+        libMapM_gf_MMRavenCurseStart(libCore_gv_cOMPUTER_Red);
+    }
+    else {
+        libMapM_gf_MMRavenCurseStart(libCore_gv_cOMPUTER_Blue);
+    }
+}
+
+void libMapM_gf_MMRavenCurseStart (int lp_cursedPlayer) {
+    // Variable Declarations
+    int lv_itPlayer;
+    int lv_index;
+    int lv_cursedTeam;
+    int lv_enemyTeam;
+
+    // Automatic Variable Declarations
+    unitgroup autoBF4D09DD_g;
+    int autoBF4D09DD_u;
+    unit autoBF4D09DD_var;
+    unitgroup auto5C89DAD8_g;
+    int auto5C89DAD8_u;
+    unit auto5C89DAD8_var;
+    unitgroup auto6E26A5BB_g;
+    int auto6E26A5BB_u;
+    unit auto6E26A5BB_var;
+
+    // Variable Initialization
+
+    // Implementation
+    lv_cursedTeam = libGame_gf_PlayerGetPlayerTeam(lp_cursedPlayer);
+    lv_enemyTeam = (3 - lv_cursedTeam);
+    libMapM_gf_MMRavenPlayCurseSound(lv_cursedTeam);
+    SoundChannelMute(PlayerGroupAll(), c_soundCategoryAmbient, true);
+    SoundtrackPlay(PlayerGroupAll(), c_soundtrackCategoryMusic, "Storm_Music_RavenKing_Cursed", c_soundtrackCueAny, c_soundtrackIndexAny, false);
+    libGame_gf_SendEventMapRavenLordCurseStarts(lv_enemyTeam);
+    ActorSend(libMapM_gv_mapMechanicControllerActor, "Signal MM1On");
+    libGame_gv_teams[lv_enemyTeam].lv_map_CursesPlacedOnEnemyTeam += 1;
+    libMapM_gv_mMRavenTeamStats[lv_cursedTeam].lv_cursed = true;
+    libGame_gv_teams[lv_cursedTeam].lv_isCursed = true;
+    autoBF4D09DD_g = UnitGroup(null, lp_cursedPlayer, RegionEntireMap(), UnitFilter((1 << c_targetFilterArmored), 0, (1 << c_targetFilterLight) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    autoBF4D09DD_u = UnitGroupCount(autoBF4D09DD_g, c_unitCountAll);
+    for (;; autoBF4D09DD_u -= 1) {
+        autoBF4D09DD_var = UnitGroupUnitFromEnd(autoBF4D09DD_g, autoBF4D09DD_u);
+        if (autoBF4D09DD_var == null) { break; }
+        UnitBehaviorAdd(autoBF4D09DD_var, "RavenLordsCurseStructures", autoBF4D09DD_var, 1);
+        UnitBehaviorSetDuration(autoBF4D09DD_var, "RavenLordsCurseStructures", libMapM_gv_mMRavenCurseDuration_C);
+        UnitBehaviorAdd(autoBF4D09DD_var, "RavenLordsCurseStructuresWarning", autoBF4D09DD_var, 1);
+        UnitBehaviorSetDuration(autoBF4D09DD_var, "RavenLordsCurseStructuresWarning", (libMapM_gv_mMRavenCurseDuration_C - 5.0));
+    }
+    auto5C89DAD8_g = UnitGroup(null, lp_cursedPlayer, RegionEntireMap(), UnitFilter((1 << c_targetFilterStructure), 0, (1 << c_targetFilterLight) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    auto5C89DAD8_u = UnitGroupCount(auto5C89DAD8_g, c_unitCountAll);
+    for (;; auto5C89DAD8_u -= 1) {
+        auto5C89DAD8_var = UnitGroupUnitFromEnd(auto5C89DAD8_g, auto5C89DAD8_u);
+        if (auto5C89DAD8_var == null) { break; }
+        if ((UnitHasBehavior2(auto5C89DAD8_var, "TownGateBehavior") == true)) {
+            UnitBehaviorAdd(auto5C89DAD8_var, "RavenLordsCurseStructures", auto5C89DAD8_var, 1);
+            UnitBehaviorSetDuration(auto5C89DAD8_var, "RavenLordsCurseStructures", libMapM_gv_mMRavenCurseDuration_C);
+            UnitBehaviorAdd(auto5C89DAD8_var, "RavenLordsCurseStructuresWarning", auto5C89DAD8_var, 1);
+            UnitBehaviorSetDuration(auto5C89DAD8_var, "RavenLordsCurseStructuresWarning", (libMapM_gv_mMRavenCurseDuration_C - 1.0));
+        }
+
+    }
+    auto6E26A5BB_g = UnitGroup(null, lp_cursedPlayer, RegionEntireMap(), UnitFilter((1 << c_targetFilterBiological), 0, (1 << c_targetFilterRobotic) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    auto6E26A5BB_u = UnitGroupCount(auto6E26A5BB_g, c_unitCountAll);
+    for (;; auto6E26A5BB_u -= 1) {
+        auto6E26A5BB_var = UnitGroupUnitFromEnd(auto6E26A5BB_g, auto6E26A5BB_u);
+        if (auto6E26A5BB_var == null) { break; }
+        libMapM_gf_MMRavenApplyCurseEffectOnMinion(auto6E26A5BB_var);
+    }
+    TriggerExecute(libMapM_gt_MMRavenCurseStartLightTransition, true, false);
+    TimerStart(libMapM_gv_mMRavenCurseTimer, libMapM_gv_mMRavenCurseDuration_C, false, c_timeGame);
+}
+
+void libMapM_gf_MMRavenApplyCurseEffectOnMinion (unit lp_unit) {
+    // Automatic Variable Declarations
+    // Implementation
+    UnitBehaviorAdd(lp_unit, "RavenLordsCurseUnits", lp_unit, 1);
+    UnitSetPropertyFixed(lp_unit, c_unitPropLife, 1.0);
+    libNtve_gf_SendActorMessageToUnit(lp_unit, "SetTintColor 207,159,255");
+}
+
+void libMapM_gf_MMRavenRemoveCurseEffectOnMinion (unit lp_minion) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((UnitIsAlive(lp_minion) == false)) {
+        return ;
+    }
+
+    UnitSetPropertyFixed(lp_minion, c_unitPropLifePercent, 100.0);
+    UnitBehaviorRemove(lp_minion, "RavenLordsCurseUnits", 1);
+    libNtve_gf_SendActorMessageToUnit(lp_minion, "SetTintColor 255,255,255");
+}
+
+trigger auto_libMapM_gf_MMRavenPlayCurseSound_Trigger = null;
+int auto_libMapM_gf_MMRavenPlayCurseSound_lp_cursedTeam;
+
+void libMapM_gf_MMRavenPlayCurseSound (int lp_cursedTeam) {
+    auto_libMapM_gf_MMRavenPlayCurseSound_lp_cursedTeam = lp_cursedTeam;
+
+    if (auto_libMapM_gf_MMRavenPlayCurseSound_Trigger == null) {
+        auto_libMapM_gf_MMRavenPlayCurseSound_Trigger = TriggerCreate("auto_libMapM_gf_MMRavenPlayCurseSound_TriggerFunc");
+    }
+
+    TriggerExecute(auto_libMapM_gf_MMRavenPlayCurseSound_Trigger, false, false);
+}
+
+bool auto_libMapM_gf_MMRavenPlayCurseSound_TriggerFunc (bool testConds, bool runActions) {
+    int lp_cursedTeam = auto_libMapM_gf_MMRavenPlayCurseSound_lp_cursedTeam;
+
+    // Variable Declarations
+    int lv_enemyTeam;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Implementation
+    SoundPlayForPlayer(SoundLink("Event_RavenCurse_CurseStart", -1), c_maxPlayers, PlayerGroupAll(), 100.0, 0.0);
+    SoundPlayForPlayer(SoundLink("Event_RavenCurse_CurseMid", -1), c_maxPlayers, PlayerGroupAll(), 100.0, 0.0);
+    libMapM_gv_mMRavenCurseSound = SoundLastPlayed();
+    Wait(2.0, c_timeReal);
+    lv_enemyTeam = (3 - lp_cursedTeam);
+    libMapM_gf_MMRavenTransmissionEnemyCursedQ(libGame_gf_PlayersOnTeamHeroes(lv_enemyTeam, false));
+    libMapM_gf_MMRavenTransmissionEnemyCursedQ(libGame_gf_PlayersOnTeamHeroes(lp_cursedTeam, false));
+    libMapM_gf_MMRavenTransmissionObserverCursedQ();
+    return true;
+}
+
+void libMapM_gf_MMRavenObjectiveUIUpdateText () {
+    // Variable Declarations
+    int lv_indexTeam;
+    int lv_indexTeamEnemy;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Implementation
+}
+
+trigger auto_libMapM_gf_MMRavenTransmissionEventStartQ_Trigger = null;
+playergroup auto_libMapM_gf_MMRavenTransmissionEventStartQ_lp_players;
+
+void libMapM_gf_MMRavenTransmissionEventStartQ (playergroup lp_players) {
+    auto_libMapM_gf_MMRavenTransmissionEventStartQ_lp_players = lp_players;
+
+    if (auto_libMapM_gf_MMRavenTransmissionEventStartQ_Trigger == null) {
+        auto_libMapM_gf_MMRavenTransmissionEventStartQ_Trigger = TriggerCreate("auto_libMapM_gf_MMRavenTransmissionEventStartQ_TriggerFunc");
+    }
+
+    TriggerExecute(auto_libMapM_gf_MMRavenTransmissionEventStartQ_Trigger, false, false);
+}
+
+bool auto_libMapM_gf_MMRavenTransmissionEventStartQ_TriggerFunc (bool testConds, bool runActions) {
+    playergroup lp_players = auto_libMapM_gf_MMRavenTransmissionEventStartQ_lp_players;
+
+    // Automatic Variable Declarations
+    // Implementation
+    if ((libMapM_gv_mMRavenEventFirstTime == true)) {
+        TriggerQueueEnter();
+        // Transmission - SoundLink("CreepVO_RavenKing_067", -1)
+        TransmissionSendForPlayer(lp_players, TransmissionSource(), c_invalidPortraitId, "", "Talk", SoundLink("CreepVO_RavenKing_067", c_soundIndexAny), null, null, 0.0, c_transmissionDurationAdd, true, c_maxPlayers);
+        TriggerQueueExit();
+    }
+    else {
+        libMapM_gf_MMRavenTransmissionTributeAboutToSpawnQ(lp_players);
+    }
+    return true;
+}
+
+trigger auto_libMapM_gf_MMRavenTransmissionTributeAboutToSpawnQ_Trigger = null;
+playergroup auto_libMapM_gf_MMRavenTransmissionTributeAboutToSpawnQ_lp_players;
+
+void libMapM_gf_MMRavenTransmissionTributeAboutToSpawnQ (playergroup lp_players) {
+    auto_libMapM_gf_MMRavenTransmissionTributeAboutToSpawnQ_lp_players = lp_players;
+
+    if (auto_libMapM_gf_MMRavenTransmissionTributeAboutToSpawnQ_Trigger == null) {
+        auto_libMapM_gf_MMRavenTransmissionTributeAboutToSpawnQ_Trigger = TriggerCreate("auto_libMapM_gf_MMRavenTransmissionTributeAboutToSpawnQ_TriggerFunc");
+    }
+
+    TriggerExecute(auto_libMapM_gf_MMRavenTransmissionTributeAboutToSpawnQ_Trigger, false, false);
+}
+
+bool auto_libMapM_gf_MMRavenTransmissionTributeAboutToSpawnQ_TriggerFunc (bool testConds, bool runActions) {
+    playergroup lp_players = auto_libMapM_gf_MMRavenTransmissionTributeAboutToSpawnQ_lp_players;
+
+    // Automatic Variable Declarations
+    // Implementation
+    TriggerQueueEnter();
+    // Transmission - SoundLink("Raven_TributeSpawn", -1)
+    TransmissionSendForPlayer(lp_players, TransmissionSource(), c_invalidPortraitId, "", "Talk", SoundLink("Raven_TributeSpawn", c_soundIndexAny), null, null, 0.0, c_transmissionDurationAdd, true, c_maxPlayers);
+    TriggerQueueExit();
+    return true;
+}
+
+trigger auto_libMapM_gf_MMRavenTransmissionEnemyCursedQ_Trigger = null;
+playergroup auto_libMapM_gf_MMRavenTransmissionEnemyCursedQ_lp_players;
+
+void libMapM_gf_MMRavenTransmissionEnemyCursedQ (playergroup lp_players) {
+    auto_libMapM_gf_MMRavenTransmissionEnemyCursedQ_lp_players = lp_players;
+
+    if (auto_libMapM_gf_MMRavenTransmissionEnemyCursedQ_Trigger == null) {
+        auto_libMapM_gf_MMRavenTransmissionEnemyCursedQ_Trigger = TriggerCreate("auto_libMapM_gf_MMRavenTransmissionEnemyCursedQ_TriggerFunc");
+    }
+
+    TriggerExecute(auto_libMapM_gf_MMRavenTransmissionEnemyCursedQ_Trigger, false, false);
+}
+
+bool auto_libMapM_gf_MMRavenTransmissionEnemyCursedQ_TriggerFunc (bool testConds, bool runActions) {
+    playergroup lp_players = auto_libMapM_gf_MMRavenTransmissionEnemyCursedQ_lp_players;
+
+    // Automatic Variable Declarations
+    // Implementation
+    TriggerQueueEnter();
+    // Transmission - SoundLink("Raven_EnemyCursed", -1)
+    TransmissionSendForPlayer(lp_players, TransmissionSource(), c_invalidPortraitId, "", "Talk", SoundLink("Raven_EnemyCursed", c_soundIndexAny), null, null, 0.0, c_transmissionDurationAdd, true, c_maxPlayers);
+    TriggerQueueExit();
+    return true;
+}
+
+trigger auto_libMapM_gf_MMRavenTransmissionAlliedCursedQ_Trigger = null;
+playergroup auto_libMapM_gf_MMRavenTransmissionAlliedCursedQ_lp_players;
+
+void libMapM_gf_MMRavenTransmissionAlliedCursedQ (playergroup lp_players) {
+    auto_libMapM_gf_MMRavenTransmissionAlliedCursedQ_lp_players = lp_players;
+
+    if (auto_libMapM_gf_MMRavenTransmissionAlliedCursedQ_Trigger == null) {
+        auto_libMapM_gf_MMRavenTransmissionAlliedCursedQ_Trigger = TriggerCreate("auto_libMapM_gf_MMRavenTransmissionAlliedCursedQ_TriggerFunc");
+    }
+
+    TriggerExecute(auto_libMapM_gf_MMRavenTransmissionAlliedCursedQ_Trigger, false, false);
+}
+
+bool auto_libMapM_gf_MMRavenTransmissionAlliedCursedQ_TriggerFunc (bool testConds, bool runActions) {
+    playergroup lp_players = auto_libMapM_gf_MMRavenTransmissionAlliedCursedQ_lp_players;
+
+    // Automatic Variable Declarations
+    // Implementation
+    TriggerQueueEnter();
+    // Transmission - SoundLink("Raven_AlliesCursed", -1)
+    TransmissionSendForPlayer(lp_players, TransmissionSource(), c_invalidPortraitId, "", "Talk", SoundLink("Raven_AlliesCursed", c_soundIndexAny), null, null, 0.0, c_transmissionDurationAdd, true, c_maxPlayers);
+    TriggerQueueExit();
+    return true;
+}
+
+trigger auto_libMapM_gf_MMRavenTransmissionObserverCursedQ_Trigger = null;
+
+void libMapM_gf_MMRavenTransmissionObserverCursedQ () {
+    if (auto_libMapM_gf_MMRavenTransmissionObserverCursedQ_Trigger == null) {
+        auto_libMapM_gf_MMRavenTransmissionObserverCursedQ_Trigger = TriggerCreate("auto_libMapM_gf_MMRavenTransmissionObserverCursedQ_TriggerFunc");
+    }
+
+    TriggerExecute(auto_libMapM_gf_MMRavenTransmissionObserverCursedQ_Trigger, false, false);
+}
+
+bool auto_libMapM_gf_MMRavenTransmissionObserverCursedQ_TriggerFunc (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Implementation
+    TriggerQueueEnter();
+    TransmissionSendForPlayer(PlayerGroupSingle(libCore_gv_oBSERVER_ObserverUIPlayer), TransmissionSource(), c_invalidPortraitId, "", "Talk", SoundLink("Raven_ObserverCurse", c_soundIndexAny), null, null, 0.0, c_transmissionDurationAdd, true, c_maxPlayers);
+    TriggerQueueExit();
+    return true;
+}
+
+trigger auto_libMapM_gf_MMRavenTransmissionEnemyCurseEndsQ_Trigger = null;
+playergroup auto_libMapM_gf_MMRavenTransmissionEnemyCurseEndsQ_lp_players;
+
+void libMapM_gf_MMRavenTransmissionEnemyCurseEndsQ (playergroup lp_players) {
+    auto_libMapM_gf_MMRavenTransmissionEnemyCurseEndsQ_lp_players = lp_players;
+
+    if (auto_libMapM_gf_MMRavenTransmissionEnemyCurseEndsQ_Trigger == null) {
+        auto_libMapM_gf_MMRavenTransmissionEnemyCurseEndsQ_Trigger = TriggerCreate("auto_libMapM_gf_MMRavenTransmissionEnemyCurseEndsQ_TriggerFunc");
+    }
+
+    TriggerExecute(auto_libMapM_gf_MMRavenTransmissionEnemyCurseEndsQ_Trigger, false, false);
+}
+
+bool auto_libMapM_gf_MMRavenTransmissionEnemyCurseEndsQ_TriggerFunc (bool testConds, bool runActions) {
+    playergroup lp_players = auto_libMapM_gf_MMRavenTransmissionEnemyCurseEndsQ_lp_players;
+
+    // Automatic Variable Declarations
+    // Implementation
+    TriggerQueueEnter();
+    // Transmission - SoundLink("CreepVO_RavenKing_084", -1)
+    TransmissionSendForPlayer(lp_players, TransmissionSource(), c_invalidPortraitId, "", "Talk", SoundLink("CreepVO_RavenKing_084", c_soundIndexAny), null, null, 0.0, c_transmissionDurationAdd, true, c_maxPlayers);
+    TriggerQueueExit();
+    return true;
+}
+
+trigger auto_libMapM_gf_MMRavenTransmissionAlliedCurseEndsQ_Trigger = null;
+playergroup auto_libMapM_gf_MMRavenTransmissionAlliedCurseEndsQ_lp_players;
+
+void libMapM_gf_MMRavenTransmissionAlliedCurseEndsQ (playergroup lp_players) {
+    auto_libMapM_gf_MMRavenTransmissionAlliedCurseEndsQ_lp_players = lp_players;
+
+    if (auto_libMapM_gf_MMRavenTransmissionAlliedCurseEndsQ_Trigger == null) {
+        auto_libMapM_gf_MMRavenTransmissionAlliedCurseEndsQ_Trigger = TriggerCreate("auto_libMapM_gf_MMRavenTransmissionAlliedCurseEndsQ_TriggerFunc");
+    }
+
+    TriggerExecute(auto_libMapM_gf_MMRavenTransmissionAlliedCurseEndsQ_Trigger, false, false);
+}
+
+bool auto_libMapM_gf_MMRavenTransmissionAlliedCurseEndsQ_TriggerFunc (bool testConds, bool runActions) {
+    playergroup lp_players = auto_libMapM_gf_MMRavenTransmissionAlliedCurseEndsQ_lp_players;
+
+    // Automatic Variable Declarations
+    // Implementation
+    TriggerQueueEnter();
+    // Transmission - SoundLink("CreepVO_RavenKing_085", -1)
+    TransmissionSendForPlayer(lp_players, TransmissionSource(), c_invalidPortraitId, "", "Talk", SoundLink("CreepVO_RavenKing_085", c_soundIndexAny), null, null, 0.0, c_transmissionDurationAdd, true, c_maxPlayers);
+    TriggerQueueExit();
+    return true;
+}
+
+trigger auto_libMapM_gf_MMRavenTransmissionObserverCurseEndsQ_Trigger = null;
+
+void libMapM_gf_MMRavenTransmissionObserverCurseEndsQ () {
+    if (auto_libMapM_gf_MMRavenTransmissionObserverCurseEndsQ_Trigger == null) {
+        auto_libMapM_gf_MMRavenTransmissionObserverCurseEndsQ_Trigger = TriggerCreate("auto_libMapM_gf_MMRavenTransmissionObserverCurseEndsQ_TriggerFunc");
+    }
+
+    TriggerExecute(auto_libMapM_gf_MMRavenTransmissionObserverCurseEndsQ_Trigger, false, false);
+}
+
+bool auto_libMapM_gf_MMRavenTransmissionObserverCurseEndsQ_TriggerFunc (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Implementation
+    TriggerQueueEnter();
+    // Transmission - SoundLink("CreepVO_RavenKing_085", -1)
+    TransmissionSendForPlayer(PlayerGroupSingle(libCore_gv_oBSERVER_ObserverUIPlayer), TransmissionSource(), c_invalidPortraitId, "", "Talk", SoundLink("CreepVO_RavenKing_085", c_soundIndexAny), null, null, 0.0, c_transmissionDurationAdd, true, c_maxPlayers);
+    TriggerQueueExit();
+    return true;
+}
+
+// Triggers
+//--------------------------------------------------------------------------------------------------
+// Trigger: === MAP INITIZALIED- Cursed Hollow ====
+//--------------------------------------------------------------------------------------------------
+bool libMapM_gt_MAPINITIZALIEDCursedHollow_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_itDefender;
+
+    // Automatic Variable Declarations
+    int autoA57C5B30_ae;
+    int autoA57C5B30_var;
+    int autoC17E27E6_ae;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libGame_gv_laneInfo.lv_laneCount = 3;
+    libGame_gv_laneInfo.lv_lanePointsCount[1] = (24+2);
+    libGame_gv_laneInfo.lv_lanePointsCount[2] = (25+2);
+    libGame_gv_laneInfo.lv_lanePointsCount[3] = (24+2);
+    libMapM_gv_cursedHollowData.lv_tributePoint[1][1] = PointFromName("Tear 4");
+    libMapM_gv_cursedHollowData.lv_tributePoint[1][2] = PointFromName("Tear 2");
+    libMapM_gv_cursedHollowData.lv_tributePoint[1][3] = PointFromName("Tear 6");
+    libMapM_gv_cursedHollowData.lv_tributePoint[2][1] = PointFromName("Tear 5");
+    libMapM_gv_cursedHollowData.lv_tributePoint[2][2] = PointFromName("Tear 1");
+    libMapM_gv_cursedHollowData.lv_tributePoint[2][3] = PointFromName("Tear 3");
+    libMapM_gv_mapMMaxCampsForMapCurrent = 6;
+    libAIAI_gv_defenderGroupInfo[1].lv_maxGroupSize = 2;
+    libAIAI_gv_defenderGroupInfo[2].lv_maxGroupSize = 4;
+    libAIAI_gv_defenderGroupInfo[3].lv_maxGroupSize = 1;
+    libAIAI_gv_defenderGroupInfo[4].lv_maxGroupSize = 2;
+    libAIAI_gv_defenderGroupInfo[5].lv_maxGroupSize = 4;
+    libAIAI_gv_defenderGroupInfo[6].lv_maxGroupSize = 1;
+    libAIAI_gv_defenderGroupInfo[1].lv_campType = libAIAI_ge_JungleDefendersCampType_CapturetoReplaceMinions;
+    libAIAI_gv_defenderGroupInfo[2].lv_campType = libAIAI_ge_JungleDefendersCampType_CapturetoReplaceMinions;
+    libAIAI_gv_defenderGroupInfo[3].lv_campType = libAIAI_ge_JungleDefendersCampType_CapturetoReplaceMinions;
+    libAIAI_gv_defenderGroupInfo[4].lv_campType = libAIAI_ge_JungleDefendersCampType_CapturetoReplaceMinions;
+    libAIAI_gv_defenderGroupInfo[5].lv_campType = libAIAI_ge_JungleDefendersCampType_CapturetoReplaceMinions;
+    libAIAI_gv_defenderGroupInfo[6].lv_campType = libAIAI_ge_JungleDefendersCampType_CapturetoReplaceMinions;
+    libAIAI_gv_defenderGroupInfo[1].lv_campDiff = libAIAI_ge_JungleDefendersDifficulty_Medium;
+    libAIAI_gv_defenderGroupInfo[2].lv_campDiff = libAIAI_ge_JungleDefendersDifficulty_Elite;
+    libAIAI_gv_defenderGroupInfo[3].lv_campDiff = libAIAI_ge_JungleDefendersDifficulty_Boss;
+    libAIAI_gv_defenderGroupInfo[4].lv_campDiff = libAIAI_ge_JungleDefendersDifficulty_Medium;
+    libAIAI_gv_defenderGroupInfo[5].lv_campDiff = libAIAI_ge_JungleDefendersDifficulty_Elite;
+    libAIAI_gv_defenderGroupInfo[6].lv_campDiff = libAIAI_ge_JungleDefendersDifficulty_Boss;
+    libAIAI_gv_defenderGroupInfo[1].lv_defenderUnitsTypeC2ABGameLinkC2BB[1] = "MercHybridRangedDefender";
+    libAIAI_gv_defenderGroupInfo[2].lv_defenderUnitsTypeC2ABGameLinkC2BB[1] = "MercenaryHybridMeleeDefender";
+    libAIAI_gv_defenderGroupInfo[3].lv_defenderUnitsTypeC2ABGameLinkC2BB[1] = "MercenaryHybridPsionicDefender";
+    libAIAI_gv_defenderGroupInfo[4].lv_defenderUnitsTypeC2ABGameLinkC2BB[1] = "MercHybridRangedDefender";
+    libAIAI_gv_defenderGroupInfo[5].lv_defenderUnitsTypeC2ABGameLinkC2BB[1] = "MercenaryHybridMeleeDefender";
+    libAIAI_gv_defenderGroupInfo[6].lv_defenderUnitsTypeC2ABGameLinkC2BB[1] = "MercenaryHybridPsionicDefender";
+    libAIAI_gv_defenderGroupInfo[7].lv_defenderUnitsTypeC2ABGameLinkC2BB[1] = "MercenaryHybridPsionicDefender";
+    libAIAI_gv_defenderGroupInfo[8].lv_defenderUnitsTypeC2ABGameLinkC2BB[1] = "MercenaryHybridPsionicDefender";
+    autoA57C5B30_ae = libMapM_gv_mapMMaxCampsForMapCurrent;
+    autoA57C5B30_var = 1;
+    for ( ; autoA57C5B30_var <= autoA57C5B30_ae; autoA57C5B30_var += 1 ) {
+        autoC17E27E6_ae = libAIAI_gv_defenderGroupInfo[autoA57C5B30_var].lv_maxGroupSize;
+        lv_itDefender = 2;
+        for ( ; lv_itDefender <= autoC17E27E6_ae ; lv_itDefender += 1 ) {
+            libAIAI_gv_defenderGroupInfo[autoA57C5B30_var].lv_defenderUnitsTypeC2ABGameLinkC2BB[lv_itDefender] = libAIAI_gv_defenderGroupInfo[autoA57C5B30_var].lv_defenderUnitsTypeC2ABGameLinkC2BB[1];
+        }
+    }
+    libAIAI_gv_defenderGroupInfo[1].lv_lane = 1;
+    libAIAI_gv_defenderGroupInfo[2].lv_lane = 2;
+    libAIAI_gv_defenderGroupInfo[3].lv_lane = 3;
+    libAIAI_gv_defenderGroupInfo[4].lv_lane = 3;
+    libAIAI_gv_defenderGroupInfo[5].lv_lane = 2;
+    libAIAI_gv_defenderGroupInfo[6].lv_lane = 1;
+    TriggerExecute(libCore_gt_INITIALIZATION, true, false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libMapM_gt_MAPINITIZALIEDCursedHollow_Init () {
+    libMapM_gt_MAPINITIZALIEDCursedHollow = TriggerCreate("libMapM_gt_MAPINITIZALIEDCursedHollow_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: === MAP INITIZALIED- Battle for Slayn ====
+//--------------------------------------------------------------------------------------------------
+bool libMapM_gt_MAPINITIZALIEDBattleforSlayn_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_itLane;
+    int lv_itTeam;
+    int lv_itDefender;
+    string lv_itDefender_UnitType;
+    int lv_itDefenderGroup;
+
+    // Automatic Variable Declarations
+    int auto1FCC8D82_ae;
+    const int auto17A914C0_ae = libMapM_gv_mMSlaynMaxEventPoints;
+    int auto17A914C0_var;
+    int auto16253679_ae;
+    int auto4BF4B341_ae;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libCore_gv_mAPCurrentMap = libCore_ge_MAPName_BattleForSlayn;
+    libGame_gv_laneInfo.lv_laneCount = 3;
+    libGame_gv_laneInfo.lv_lanePointsCount[1] = (21+2);
+    libGame_gv_laneInfo.lv_lanePointsCount[2] = (19+2);
+    libGame_gv_laneInfo.lv_lanePointsCount[3] = (25+2);
+    libMapM_gv_mapMMaxCampsForMapCurrent = 8;
+    libAIAI_gv_defenderGroupInfo[1].lv_maxGroupSize = 3;
+    libAIAI_gv_defenderGroupInfo[2].lv_maxGroupSize = 3;
+    libAIAI_gv_defenderGroupInfo[3].lv_maxGroupSize = 3;
+    libAIAI_gv_defenderGroupInfo[4].lv_maxGroupSize = 3;
+    libAIAI_gv_defenderGroupInfo[5].lv_maxGroupSize = 3;
+    libAIAI_gv_defenderGroupInfo[6].lv_maxGroupSize = 3;
+    libAIAI_gv_defenderGroupInfo[7].lv_maxGroupSize = 1;
+    libAIAI_gv_defenderGroupInfo[8].lv_maxGroupSize = 1;
+    libAIAI_gv_defenderGroupInfo[1].lv_campType = libAIAI_ge_JungleDefendersCampType_CapturetoPushLanes;
+    libAIAI_gv_defenderGroupInfo[2].lv_campType = libAIAI_ge_JungleDefendersCampType_CapturetoPushLanes;
+    libAIAI_gv_defenderGroupInfo[3].lv_campType = libAIAI_ge_JungleDefendersCampType_CapturetoPushLanes;
+    libAIAI_gv_defenderGroupInfo[4].lv_campType = libAIAI_ge_JungleDefendersCampType_CapturetoPushLanes;
+    libAIAI_gv_defenderGroupInfo[5].lv_campType = libAIAI_ge_JungleDefendersCampType_CapturetoPushLanes;
+    libAIAI_gv_defenderGroupInfo[6].lv_campType = libAIAI_ge_JungleDefendersCampType_CapturetoPushLanes;
+    libAIAI_gv_defenderGroupInfo[7].lv_campType = libAIAI_ge_JungleDefendersCampType_CapturetoGainBonuses;
+    libAIAI_gv_defenderGroupInfo[8].lv_campType = libAIAI_ge_JungleDefendersCampType_CapturetoPushLanes;
+    libAIAI_gv_defenderGroupInfo[1].lv_campDiff = libAIAI_ge_JungleDefendersDifficulty_Medium;
+    libAIAI_gv_defenderGroupInfo[2].lv_campDiff = libAIAI_ge_JungleDefendersDifficulty_Medium;
+    libAIAI_gv_defenderGroupInfo[3].lv_campDiff = libAIAI_ge_JungleDefendersDifficulty_Medium;
+    libAIAI_gv_defenderGroupInfo[4].lv_campDiff = libAIAI_ge_JungleDefendersDifficulty_Medium;
+    libAIAI_gv_defenderGroupInfo[5].lv_campDiff = libAIAI_ge_JungleDefendersDifficulty_Medium;
+    libAIAI_gv_defenderGroupInfo[6].lv_campDiff = libAIAI_ge_JungleDefendersDifficulty_Medium;
+    libAIAI_gv_defenderGroupInfo[7].lv_campDiff = libAIAI_ge_JungleDefendersDifficulty_Boss;
+    libAIAI_gv_defenderGroupInfo[8].lv_campDiff = libAIAI_ge_JungleDefendersDifficulty_Boss;
+    libAIAI_gv_defenderGroupInfo[1].lv_eXP_Camp_Default = libCore_gv_eXP_Camp_BruiserHybrids_Value;
+    libAIAI_gv_defenderGroupInfo[2].lv_eXP_Camp_Default = libCore_gv_eXP_Camp_BruiserHybrids_Value;
+    libAIAI_gv_defenderGroupInfo[3].lv_eXP_Camp_Default = libCore_gv_eXP_Camp_BruiserHybrids_Value;
+    libAIAI_gv_defenderGroupInfo[4].lv_eXP_Camp_Default = libCore_gv_eXP_Camp_BruiserHybrids_Value;
+    libAIAI_gv_defenderGroupInfo[5].lv_eXP_Camp_Default = libCore_gv_eXP_Camp_BruiserHybrids_Value;
+    libAIAI_gv_defenderGroupInfo[6].lv_eXP_Camp_Default = libCore_gv_eXP_Camp_BruiserHybrids_Value;
+    libAIAI_gv_defenderGroupInfo[7].lv_eXP_Camp_Default = libCore_gv_eXP_Camp_BossElemental_Value;
+    libAIAI_gv_defenderGroupInfo[8].lv_eXP_Camp_Default = libCore_gv_eXP_Camp_BossColossus_Value;
+    libAIAI_gv_defenderGroupInfo[1].lv_defenderUnitsTypeC2ABGameLinkC2BB[1] = "MercHybridRangedDefender";
+    libAIAI_gv_defenderGroupInfo[1].lv_defenderUnitsTypeC2ABGameLinkC2BB[2] = "MercenaryHybridPsionicDefender";
+    libAIAI_gv_defenderGroupInfo[1].lv_defenderUnitsTypeC2ABGameLinkC2BB[3] = "MercenaryHybridMeleeDefender";
+    libAIAI_gv_defenderGroupInfo[2].lv_defenderUnitsTypeC2ABGameLinkC2BB[1] = "MercenaryHybridMeleeDefender";
+    libAIAI_gv_defenderGroupInfo[2].lv_defenderUnitsTypeC2ABGameLinkC2BB[2] = "MercenaryHybridPsionicDefender";
+    libAIAI_gv_defenderGroupInfo[2].lv_defenderUnitsTypeC2ABGameLinkC2BB[3] = "MercHybridRangedDefender";
+    libAIAI_gv_defenderGroupInfo[3].lv_defenderUnitsTypeC2ABGameLinkC2BB[1] = "MercHybridRangedDefender";
+    libAIAI_gv_defenderGroupInfo[3].lv_defenderUnitsTypeC2ABGameLinkC2BB[2] = "MercenaryHybridPsionicDefender";
+    libAIAI_gv_defenderGroupInfo[3].lv_defenderUnitsTypeC2ABGameLinkC2BB[3] = "MercenaryHybridMeleeDefender";
+    libAIAI_gv_defenderGroupInfo[4].lv_defenderUnitsTypeC2ABGameLinkC2BB[1] = "MercHybridRangedDefender";
+    libAIAI_gv_defenderGroupInfo[4].lv_defenderUnitsTypeC2ABGameLinkC2BB[2] = "MercenaryHybridPsionicDefender";
+    libAIAI_gv_defenderGroupInfo[4].lv_defenderUnitsTypeC2ABGameLinkC2BB[3] = "MercenaryHybridMeleeDefender";
+    libAIAI_gv_defenderGroupInfo[5].lv_defenderUnitsTypeC2ABGameLinkC2BB[1] = "MercenaryHybridMeleeDefender";
+    libAIAI_gv_defenderGroupInfo[5].lv_defenderUnitsTypeC2ABGameLinkC2BB[2] = "MercenaryHybridPsionicDefender";
+    libAIAI_gv_defenderGroupInfo[5].lv_defenderUnitsTypeC2ABGameLinkC2BB[3] = "MercHybridRangedDefender";
+    libAIAI_gv_defenderGroupInfo[6].lv_defenderUnitsTypeC2ABGameLinkC2BB[1] = "MercHybridRangedDefender";
+    libAIAI_gv_defenderGroupInfo[6].lv_defenderUnitsTypeC2ABGameLinkC2BB[2] = "MercenaryHybridPsionicDefender";
+    libAIAI_gv_defenderGroupInfo[6].lv_defenderUnitsTypeC2ABGameLinkC2BB[3] = "MercenaryHybridMeleeDefender";
+    libAIAI_gv_defenderGroupInfo[7].lv_defenderUnitsTypeC2ABGameLinkC2BB[1] = "MercDefender_SlaynElemental";
+    libAIAI_gv_defenderGroupInfo[8].lv_defenderUnitsTypeC2ABGameLinkC2BB[1] = "MercenaryColossusDefender";
+    libAIAI_gv_defenderGroupInfo[1].lv_respawnTimer = libAIAI_gv_defRespawnTimers.lv_medium;
+    libAIAI_gv_defenderGroupInfo[2].lv_respawnTimer = libAIAI_gv_defRespawnTimers.lv_medium;
+    libAIAI_gv_defenderGroupInfo[3].lv_respawnTimer = libAIAI_gv_defRespawnTimers.lv_medium;
+    libAIAI_gv_defenderGroupInfo[4].lv_respawnTimer = libAIAI_gv_defRespawnTimers.lv_medium;
+    libAIAI_gv_defenderGroupInfo[5].lv_respawnTimer = libAIAI_gv_defRespawnTimers.lv_medium;
+    libAIAI_gv_defenderGroupInfo[6].lv_respawnTimer = libAIAI_gv_defRespawnTimers.lv_medium;
+    libAIAI_gv_defenderGroupInfo[7].lv_respawnTimer = libAIAI_gv_defRespawnTimers.lv_boss;
+    libAIAI_gv_defenderGroupInfo[8].lv_respawnTimer = libAIAI_gv_defRespawnTimers.lv_boss;
+    libAIAI_gv_defenderGroupInfo[1].lv_lane = 1;
+    libAIAI_gv_defenderGroupInfo[2].lv_lane = 2;
+    libAIAI_gv_defenderGroupInfo[3].lv_lane = 3;
+    libAIAI_gv_defenderGroupInfo[4].lv_lane = 1;
+    libAIAI_gv_defenderGroupInfo[5].lv_lane = 2;
+    libAIAI_gv_defenderGroupInfo[6].lv_lane = 3;
+    libAIAI_gv_defenderGroupInfo[8].lv_lane = 3;
+    libAIAI_gv_defenderGroupInfo[1].lv_firstTeamLanePointNumber[libGame_gv_teamOrderIndex_C] = 8;
+    libAIAI_gv_defenderGroupInfo[2].lv_firstTeamLanePointNumber[libGame_gv_teamOrderIndex_C] = 9;
+    libAIAI_gv_defenderGroupInfo[3].lv_firstTeamLanePointNumber[libGame_gv_teamOrderIndex_C] = 8;
+    libAIAI_gv_defenderGroupInfo[4].lv_firstTeamLanePointNumber[libGame_gv_teamOrderIndex_C] = 15;
+    libAIAI_gv_defenderGroupInfo[5].lv_firstTeamLanePointNumber[libGame_gv_teamOrderIndex_C] = 11;
+    libAIAI_gv_defenderGroupInfo[6].lv_firstTeamLanePointNumber[libGame_gv_teamOrderIndex_C] = 19;
+    libAIAI_gv_defenderGroupInfo[8].lv_firstTeamLanePointNumber[libGame_gv_teamOrderIndex_C] = 14;
+    libAIAI_gv_defenderGroupInfo[1].lv_firstTeamLanePointNumber[libGame_gv_teamChaosIndex_C] = 15;
+    libAIAI_gv_defenderGroupInfo[2].lv_firstTeamLanePointNumber[libGame_gv_teamChaosIndex_C] = 11;
+    libAIAI_gv_defenderGroupInfo[3].lv_firstTeamLanePointNumber[libGame_gv_teamChaosIndex_C] = 19;
+    libAIAI_gv_defenderGroupInfo[4].lv_firstTeamLanePointNumber[libGame_gv_teamChaosIndex_C] = 8;
+    libAIAI_gv_defenderGroupInfo[5].lv_firstTeamLanePointNumber[libGame_gv_teamChaosIndex_C] = 9;
+    libAIAI_gv_defenderGroupInfo[6].lv_firstTeamLanePointNumber[libGame_gv_teamChaosIndex_C] = 8;
+    libAIAI_gv_defenderGroupInfo[8].lv_firstTeamLanePointNumber[libGame_gv_teamChaosIndex_C] = 14;
+    auto1FCC8D82_ae = libMapM_gv_mapMMaxCampsForMapCurrent;
+    lv_itDefenderGroup = 1;
+    for ( ; lv_itDefenderGroup <= auto1FCC8D82_ae ; lv_itDefenderGroup += 1 ) {
+        libAIAI_gv_defenderGroupInfo[lv_itDefenderGroup].lv_healOnLeash = true;
+    }
+    auto17A914C0_var = 1;
+    for ( ; auto17A914C0_var <= auto17A914C0_ae; auto17A914C0_var += 1 ) {
+        libMapM_gv_mMBattleForSlaynData.lv_eventPoint[auto17A914C0_var] = PointFromName(("Event " + IntToString(auto17A914C0_var)));
+        libMapM_gv_mMBattleForSlaynData.lv_eventRegion[auto17A914C0_var] = RegionFromName(("Event - " + IntToString(auto17A914C0_var) + " - Region"));
+    }
+    auto16253679_ae = libCore_gv_bALMaxTeams;
+    lv_itTeam = 1;
+    for ( ; lv_itTeam <= auto16253679_ae ; lv_itTeam += 1 ) {
+        auto4BF4B341_ae = libGame_gv_laneInfo.lv_laneCount;
+        lv_itLane = 1;
+        for ( ; lv_itLane <= auto4BF4B341_ae ; lv_itLane += 1 ) {
+            libGame_gv_teams[lv_itTeam].lv_fortRegion[lv_itLane] = RegionFromName(("Team [" + IntToString(lv_itTeam) + "] - Fort " + IntToString(lv_itLane) + " - Region"));
+            libGame_gv_teams[lv_itTeam].lv_keepRegion[lv_itLane] = RegionFromName(("Team [" + IntToString(lv_itTeam) + "] - Keep " + IntToString(lv_itLane) + " - Region"));
+        }
+    }
+    TriggerExecute(libCore_gt_INITIALIZATION, true, false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libMapM_gt_MAPINITIZALIEDBattleforSlayn_Init () {
+    libMapM_gt_MAPINITIZALIEDBattleforSlayn = TriggerCreate("libMapM_gt_MAPINITIZALIEDBattleforSlayn_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MM Slayn Start Spawning
+//--------------------------------------------------------------------------------------------------
+bool libMapM_gt_MMSlaynStartSpawning_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((libCore_gv_sYSEventsEnabled == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((GameIsOnline() == true)) {
+        TimerStart(libMapM_gv_mMSlaynSpawnTimer, libMapM_gv_mMSlaynSpawnTime_C, false, c_timeGame);
+        TimerStart(libMapM_gv_mMSlaynPingsTimer, (libMapM_gv_mMSlaynSpawnTime_C-libMapM_gv_mMSlaynSpawnTimePings_C), false, c_timeGame);
+    }
+    else {
+        TimerStart(libMapM_gv_mMSlaynSpawnTimer, 15.0, false, c_timeGame);
+        TimerStart(libMapM_gv_mMSlaynPingsTimer, 5.0, false, c_timeGame);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libMapM_gt_MMSlaynStartSpawning_Init () {
+    libMapM_gt_MMSlaynStartSpawning = TriggerCreate("libMapM_gt_MMSlaynStartSpawning_Func");
+    TriggerAddEventTimer(libMapM_gt_MMSlaynStartSpawning, libCore_gv_timerBeforeGameStart);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MM Slayn Create Warning Pings
+//--------------------------------------------------------------------------------------------------
+bool libMapM_gt_MMSlaynCreateWarningPings_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_itPointNumber;
+    int lv_itTeam;
+    int lv_enemyTeam;
+    point[libCore_gv_bALMaxTeams + 1] lv_itPoint;
+
+    // Automatic Variable Declarations
+    const int auto398A1BDC_ae = libCore_gv_bALMaxTeams;
+    int auto398A1BDC_var;
+    int autoC76A7438_ae;
+    int autoD39B601A_ae;
+    playergroup autoF7B69892_g;
+    int autoF7B69892_var;
+    playergroup auto25C712CE_g;
+    int auto25C712CE_var;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((libMapM_gv_mMBattleForSlaynData.lv_firstPointsCalculated == false)) {
+        lv_itTeam = RandomInt(1, libCore_gv_bALMaxTeams);
+        libMapM_gv_mMBattleForSlaynData.lv_eventCurrentPoint[lv_itTeam] = 1;
+        libMapM_gv_mMBattleForSlaynData.lv_eventCurrentPoint[(3-lv_itTeam)] = 2;
+        lv_itPoint[lv_itTeam] = libMapM_gv_mMBattleForSlaynData.lv_eventPoint[libGame_gv_teamOrderIndex_C];
+        lv_itPoint[(3-lv_itTeam)] = libMapM_gv_mMBattleForSlaynData.lv_eventPoint[libGame_gv_teamChaosIndex_C];
+        libMapM_gv_mMBattleForSlaynData.lv_firstPointsCalculated = true;
+    }
+    else {
+        auto398A1BDC_var = 1;
+        for ( ; auto398A1BDC_var <= auto398A1BDC_ae; auto398A1BDC_var += 1 ) {
+            libMapM_gv_mMBattleForSlaynData.lv_eventLastPoint[auto398A1BDC_var] = libMapM_gv_mMBattleForSlaynData.lv_eventCurrentPoint[auto398A1BDC_var];
+            libMapM_gv_mMBattleForSlaynData.lv_eventCurrentPoint[auto398A1BDC_var] = 0;
+        }
+        lv_itPointNumber = libCore_gf_RandomIntfrom3Intswithexclude(1, 2, 3, libMapM_gv_mMBattleForSlaynData.lv_eventLastPoint[libGame_gv_teamOrderIndex_C]);
+        libMapM_gv_mMBattleForSlaynData.lv_eventCurrentPoint[libGame_gv_teamOrderIndex_C] = lv_itPointNumber;
+        lv_itPoint[libGame_gv_teamOrderIndex_C] = libMapM_gv_mMBattleForSlaynData.lv_eventPoint[lv_itPointNumber];
+        autoC76A7438_ae = libMapM_gv_mMSlaynMaxEventPoints;
+        lv_itPointNumber = 1;
+        for ( ; lv_itPointNumber <= autoC76A7438_ae ; lv_itPointNumber += 1 ) {
+            if ((lv_itPointNumber != libMapM_gv_mMBattleForSlaynData.lv_eventCurrentPoint[libGame_gv_teamOrderIndex_C]) && (lv_itPointNumber != libMapM_gv_mMBattleForSlaynData.lv_eventLastPoint[libGame_gv_teamChaosIndex_C])) {
+                libMapM_gv_mMBattleForSlaynData.lv_eventCurrentPoint[libGame_gv_teamChaosIndex_C] = lv_itPointNumber;
+                lv_itPoint[libGame_gv_teamChaosIndex_C] = libMapM_gv_mMBattleForSlaynData.lv_eventPoint[lv_itPointNumber];
+                break;
+            }
+
+        }
+    }
+    autoD39B601A_ae = libCore_gv_bALMaxTeams;
+    lv_itTeam = 1;
+    for ( ; lv_itTeam <= autoD39B601A_ae ; lv_itTeam += 1 ) {
+        lv_enemyTeam = libGame_gf_EnemyTeamNumberOfTeam(lv_itTeam);
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "JungleObjectiveDefendIconUnit", c_unitCreateIgnorePlacement, libCore_gv_cOMPUTER_Neutral, lv_itPoint[lv_itTeam]);
+        libMapM_gv_mMBattleForSlaynData.lv_minimapUnit[lv_itTeam][1] = UnitLastCreated();
+        autoF7B69892_g = libGame_gv_teams[lv_enemyTeam].lv_teamPlayerGroupNoNPCPlayers;
+        autoF7B69892_var = -1;
+        while (true) {
+            autoF7B69892_var = PlayerGroupNextPlayer(autoF7B69892_g, autoF7B69892_var);
+            if (autoF7B69892_var < 0) { break; }
+            libMapM_gf_ShowHideActorofUnitforPlayer(false, UnitLastCreated(), autoF7B69892_var);
+        }
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "JungleObjectiveAttackIconUnit", c_unitCreateIgnorePlacement, libCore_gv_cOMPUTER_Neutral, lv_itPoint[lv_enemyTeam]);
+        libMapM_gv_mMBattleForSlaynData.lv_minimapUnit[lv_itTeam][2] = UnitLastCreated();
+        auto25C712CE_g = libGame_gv_teams[lv_enemyTeam].lv_teamPlayerGroupNoNPCPlayers;
+        auto25C712CE_var = -1;
+        while (true) {
+            auto25C712CE_var = PlayerGroupNextPlayer(auto25C712CE_g, auto25C712CE_var);
+            if (auto25C712CE_var < 0) { break; }
+            libMapM_gf_ShowHideActorofUnitforPlayer(false, UnitLastCreated(), auto25C712CE_var);
+        }
+    }
+    if ((libCore_gv_dEBUGTooltipsEnabled == true)) {
+    }
+
+    libUIUI_gf_MapMechanicsBattleForSlaynShowHidePanel(true);
+    libUIUI_gf_MapMechanicsBattleForSlaynSetMode(libUIUI_ge_MapMechanicsBattleForSlaynModes_Timer);
+    while ((TimerGetRemaining(libMapM_gv_mMSlaynSpawnTimer) > 0.0)) {
+        libUIUI_gf_MapMechanicsBattleForSlaynSetRemainingMinesWarningTime(FixedToInt(TimerGetRemaining(libMapM_gv_mMSlaynSpawnTimer)));
+        Wait(0.0625, c_timeGame);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libMapM_gt_MMSlaynCreateWarningPings_Init () {
+    libMapM_gt_MMSlaynCreateWarningPings = TriggerCreate("libMapM_gt_MMSlaynCreateWarningPings_Func");
+    TriggerAddEventTimer(libMapM_gt_MMSlaynCreateWarningPings, libMapM_gv_mMSlaynPingsTimer);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MM Slayn Create Void Thrashers
+//--------------------------------------------------------------------------------------------------
+bool libMapM_gt_MMSlaynCreateVoidThrashers_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    point lv_spawnPoint;
+    int lv_itTeam;
+    int lv_enemyTeam;
+    int lv_level;
+
+    // Automatic Variable Declarations
+    playergroup autoDBDF0F7D_g;
+    int autoDBDF0F7D_var;
+    int auto0204F9EA_ae;
+    int auto9529150C_ae;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerEnable(libMapM_gt_MMSlaynVoidThrasherMissiles, true);
+    autoDBDF0F7D_g = libCore_gv_allHeroPlayersPlusObserver;
+    autoDBDF0F7D_var = -1;
+    while (true) {
+        autoDBDF0F7D_var = PlayerGroupNextPlayer(autoDBDF0F7D_g, autoDBDF0F7D_var);
+        if (autoDBDF0F7D_var < 0) { break; }
+        libGame_gf_AnnRegisterEvent(libCore_ge_AnnouncerVOEvents_EventStarts, autoDBDF0F7D_var, 0, 0, false);
+    }
+    auto0204F9EA_ae = libCore_gv_bALMaxTeams;
+    lv_itTeam = 1;
+    for ( ; lv_itTeam <= auto0204F9EA_ae ; lv_itTeam += 1 ) {
+        lv_enemyTeam = libGame_gf_EnemyTeamNumberOfTeam(lv_itTeam);
+        UnitSetOwner(libMapM_gv_mMBattleForSlaynData.lv_minimapUnit[lv_itTeam][1], libGame_gv_teams[lv_itTeam].lv_nPCPlayer, true);
+        UnitSetOwner(libMapM_gv_mMBattleForSlaynData.lv_minimapUnit[lv_itTeam][2], libGame_gv_teams[lv_enemyTeam].lv_nPCPlayer, true);
+        lv_spawnPoint = libMapM_gv_mMBattleForSlaynData.lv_eventPoint[libMapM_gv_mMBattleForSlaynData.lv_eventCurrentPoint[lv_itTeam]];
+        libNtve_gf_CreateUnitsAtPoint2(1, "MapM_BattleForSlayn_VoidThrasher", c_unitCreateIgnorePlacement, libGame_gv_teams[lv_itTeam].lv_nPCPlayer, lv_spawnPoint);
+        libMapM_gv_mMBattleForSlaynData.lv_voidThrasher[lv_itTeam] = UnitLastCreated();
+        TerrainShowRegion(RegionRect((PointGetX(lv_spawnPoint)-2.0), (PointGetY(lv_spawnPoint)-2.0), (PointGetX(lv_spawnPoint)+2.0), (PointGetY(lv_spawnPoint)+2.0)), false);
+        MinimapPing(libGame_gv_teams[lv_itTeam].lv_teamPlayerGroupNoNPCPlayers, lv_spawnPoint, 3.0, libUIUI_gv_allyTeamColor);
+        MinimapPing(libGame_gv_teams[lv_enemyTeam].lv_teamPlayerGroupNoNPCPlayers, lv_spawnPoint, 3.0, libUIUI_gv_enemyTeamColor);
+        if ((lv_itTeam == libGame_gv_teamOrderIndex_C)) {
+            MinimapPing(libCore_gv_playerGroupFromPlayer[libCore_gv_oBSERVER_ObserverUIPlayer], lv_spawnPoint, 3.0, libCore_gv_cOLORAllyColor);
+        }
+        else {
+            MinimapPing(libCore_gv_playerGroupFromPlayer[libCore_gv_oBSERVER_ObserverUIPlayer], lv_spawnPoint, 3.0, libCore_gv_cOLOREnemyColor);
+        }
+    }
+    libUIUI_gf_MapMechanicsBattleForSlaynSetMode(libUIUI_ge_MapMechanicsBattleForSlaynModes_VoidThrashers);
+    libUIUI_gf_MapMechanicsBattleForSlaynSetUpThrasherForTeam(libMapM_gv_mMBattleForSlaynData.lv_voidThrasher[libGame_gv_teamOrderIndex_C], libGame_gv_teamOrderIndex_C);
+    libUIUI_gf_MapMechanicsBattleForSlaynSetUpThrasherForTeam(libMapM_gv_mMBattleForSlaynData.lv_voidThrasher[libGame_gv_teamChaosIndex_C], libGame_gv_teamChaosIndex_C);
+    libUIUI_gf_MapMechanicsBattleForSlaynSetUpThrasherForObserver(libMapM_gv_mMBattleForSlaynData.lv_voidThrasher[libGame_gv_teamOrderIndex_C], libMapM_gv_mMBattleForSlaynData.lv_voidThrasher[libGame_gv_teamChaosIndex_C]);
+    lv_level = FixedToInt(Round((TimerGetElapsed(libCore_gv_gameTimer) / 60.0)));
+    if ((lv_level > 30)) {
+        lv_level = 30;
+    }
+    libNtve_gf_SetUpgradeLevelForPlayer(libCore_gv_cOMPUTER_Blue, "MapM_BattleForSlayn_ScalingUpgrade", lv_level);
+    libNtve_gf_SetUpgradeLevelForPlayer(libCore_gv_cOMPUTER_Red, "MapM_BattleForSlayn_ScalingUpgrade", lv_level);
+    libMapM_gv_mMBattleForSlaynData.lv_eventLevel = lv_level;
+    Wait(3.5, c_timeGame);
+    auto9529150C_ae = libCore_gv_bALMaxTeams;
+    lv_itTeam = 1;
+    for ( ; lv_itTeam <= auto9529150C_ae ; lv_itTeam += 1 ) {
+        libAIAI_gf_MapMAIRegisterUnit(libMapM_gv_mMBattleForSlaynData.lv_voidThrasher[lv_itTeam], libMapM_gv_mMBattleForSlaynData.lv_eventRegion[libMapM_gv_mMBattleForSlaynData.lv_eventCurrentPoint[lv_itTeam]], libMapM_gv_mMBattleForSlaynData.lv_eventCurrentPoint[lv_itTeam], lv_level);
+    }
+    TriggerEnable(libAIAI_gt_CycleMapMAI, true);
+    TriggerEnable(libMapM_gt_MMSlaynSpawnVoidThrasherMinions, true);
+    TriggerEnable(libMapM_gt_MMSlaynUnitDies, true);
+    while (!((UnitIsAlive(libMapM_gv_mMBattleForSlaynData.lv_voidThrasher[libGame_gv_teamOrderIndex_C]) == false) && (UnitIsAlive(libMapM_gv_mMBattleForSlaynData.lv_voidThrasher[libGame_gv_teamChaosIndex_C]) == false))) {
+        Wait(0.0625, c_timeGame);
+    }
+    libUIUI_gf_MapMechanicsBattleForSlaynShowHidePanel(false);
+    TriggerEnable(libMapM_gt_MMSlaynSpawnVoidThrasherMinions, false);
+    TriggerEnable(libMapM_gt_MMSlaynVoidThrasherMissiles, false);
+    if ((GameIsOnline() == true)) {
+        TimerStart(libMapM_gv_mMSlaynSpawnTimer, libMapM_gv_mMSlaynSpawnTime_C, false, c_timeGame);
+        TimerStart(libMapM_gv_mMSlaynPingsTimer, (libMapM_gv_mMSlaynSpawnTime_C-libMapM_gv_mMSlaynSpawnTimePings_C), false, c_timeGame);
+    }
+    else {
+        TimerStart(libMapM_gv_mMSlaynSpawnTimer, 15.0, false, c_timeGame);
+        TimerStart(libMapM_gv_mMSlaynPingsTimer, 5.0, false, c_timeGame);
+    }
+    Wait(1.0, c_timeGame);
+    TriggerEnable(libMapM_gt_MMSlaynUnitDies, false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libMapM_gt_MMSlaynCreateVoidThrashers_Init () {
+    libMapM_gt_MMSlaynCreateVoidThrashers = TriggerCreate("libMapM_gt_MMSlaynCreateVoidThrashers_Func");
+    TriggerAddEventTimer(libMapM_gt_MMSlaynCreateVoidThrashers, libMapM_gv_mMSlaynSpawnTimer);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MM Slayn Spawn Void Thrasher Minions
+//--------------------------------------------------------------------------------------------------
+bool libMapM_gt_MMSlaynSpawnVoidThrasherMinions_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_itTeam;
+    int lv_itCount;
+    int lv_voidThrasherRegion;
+    unitgroup lv_enemyUnitGroup;
+    unitgroup lv_dummyGroup;
+
+    // Automatic Variable Declarations
+    int autoE62DBB2C_ae;
+    playergroup auto1978889A_g;
+    int auto1978889A_var;
+
+    // Variable Initialization
+    lv_enemyUnitGroup = UnitGroupEmpty();
+    lv_dummyGroup = UnitGroupEmpty();
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    autoE62DBB2C_ae = libCore_gv_bALMaxTeams;
+    lv_itTeam = 1;
+    for ( ; lv_itTeam <= autoE62DBB2C_ae ; lv_itTeam += 1 ) {
+        if ((UnitIsAlive(libMapM_gv_mMBattleForSlaynData.lv_voidThrasher[lv_itTeam]) == true) && (TimerGetRemaining(libMapM_gv_mMBattleForSlaynData.lv_minionSpawnTimer[lv_itTeam]) <= 0.0)) {
+            if ((UnitGroupCount(libMapM_gv_mMBattleForSlaynData.lv_voidThrasherMinions[lv_itTeam], c_unitCountAlive) < libMapM_gv_mMSlayn_MinionsPerTeam_MaxCount)) {
+                auto1978889A_g = libGame_gv_teams[libGame_gf_EnemyTeamNumberOfTeam(lv_itTeam)].lv_teamPlayerGroupNoNPCPlayers;
+                auto1978889A_var = -1;
+                while (true) {
+                    auto1978889A_var = PlayerGroupNextPlayer(auto1978889A_g, auto1978889A_var);
+                    if (auto1978889A_var < 0) { break; }
+                    lv_dummyGroup = UnitGroup(null, auto1978889A_var, libMapM_gv_mMBattleForSlaynData.lv_eventRegion[libMapM_gv_mMBattleForSlaynData.lv_eventCurrentPoint[lv_itTeam]], UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+                    UnitGroupAddUnitGroup(lv_enemyUnitGroup, lv_dummyGroup);
+                    if ((UnitGroupCount(lv_enemyUnitGroup, c_unitCountAlive) >= 1)) {
+                        TimerStart(libMapM_gv_mMBattleForSlaynData.lv_minionSpawnTimer[lv_itTeam], libMapM_gv_mMSlayn_MinionsSpawnTime_C, false, c_timeGame);
+                        lv_itCount = (libMapM_gv_mMSlayn_MinionsPerTeam_MaxCount-UnitGroupCount(libMapM_gv_mMBattleForSlaynData.lv_voidThrasherMinions[lv_itTeam], c_unitCountAlive));
+                        lv_voidThrasherRegion = libMapM_gv_mMBattleForSlaynData.lv_eventCurrentPoint[lv_itTeam];
+                        libMapM_gf_MMSlaynSpawnMinion(lv_itCount, lv_itTeam, lv_voidThrasherRegion);
+                        lv_enemyUnitGroup = null;
+                        break;
+                    }
+                }
+            }
+
+        }
+
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libMapM_gt_MMSlaynSpawnVoidThrasherMinions_Init () {
+    libMapM_gt_MMSlaynSpawnVoidThrasherMinions = TriggerCreate("libMapM_gt_MMSlaynSpawnVoidThrasherMinions_Func");
+    TriggerEnable(libMapM_gt_MMSlaynSpawnVoidThrasherMinions, false);
+    TriggerAddEventTimePeriodic(libMapM_gt_MMSlaynSpawnVoidThrasherMinions, 1.0, c_timeGame);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MM Slayn Unit Dies
+//--------------------------------------------------------------------------------------------------
+bool libMapM_gt_MMSlaynUnitDies_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_unit;
+    int lv_team;
+    int lv_enemyTeam;
+    point lv_point;
+
+    // Automatic Variable Declarations
+    playergroup autoC3C62579_g;
+    int autoC3C62579_var;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_unit = EventUnit();
+    lv_team = libGame_gf_TeamNumberOfPlayer(EventPlayer());
+    lv_enemyTeam = libGame_gf_EnemyTeamNumberOfTeam(lv_team);
+    if ((UnitGetType(lv_unit) == "MapM_BattleForSlayn_VoidThrasher")) {
+        UnitRemove(libMapM_gv_mMBattleForSlaynData.lv_minimapUnit[lv_team][1]);
+        UnitRemove(libMapM_gv_mMBattleForSlaynData.lv_minimapUnit[lv_enemyTeam][2]);
+        UnitRemove(libMapM_gv_mMBattleForSlaynData.lv_minimapUnit[lv_team][3]);
+        DialogControlSetVisible(libUIUI_gv_mapMechanicsPanel.lv_battleForSlaynAllyGolemHealthUnitStatus, libGame_gf_PlayersOnTeamHeroes(lv_team, false), false);
+        DialogControlSetVisible(libUIUI_gv_mapMechanicsPanel.lv_battleForSlaynEnemyGolemHealthUnitStatus, libGame_gf_PlayersOnTeamHeroes(lv_enemyTeam, false), false);
+        lv_point = libMapM_gv_mMBattleForSlaynData.lv_eventPoint[libMapM_gv_mMBattleForSlaynData.lv_eventCurrentPoint[lv_team]];
+        TerrainShowRegion(RegionRect((PointGetX(lv_point)-2.0), (PointGetY(lv_point)-2.0), (PointGetX(lv_point)+2.0), (PointGetY(lv_point)+2.0)), true);
+        autoC3C62579_g = libGame_gv_teams[lv_enemyTeam].lv_teamPlayerGroupNoNPCPlayers;
+        autoC3C62579_var = -1;
+        while (true) {
+            autoC3C62579_var = PlayerGroupNextPlayer(autoC3C62579_g, autoC3C62579_var);
+            if (autoC3C62579_var < 0) { break; }
+            libGame_gf_AnnRegisterEvent(libCore_ge_AnnouncerVOEvents_EventEnds, autoC3C62579_var, 0, 0, false);
+        }
+    }
+    else if ((UnitGetType(lv_unit) == "MapM_BattleForSlayn_VoidMinion")) {
+        UnitGroupRemove(libMapM_gv_mMBattleForSlaynData.lv_voidThrasherMinions[lv_team], lv_unit);
+    }
+    libAIAI_gf_MapMAIFreeUnitIndex(libAIAI_gf_MapMAIGetMapMUnitIndex(lv_unit));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libMapM_gt_MMSlaynUnitDies_Init () {
+    libMapM_gt_MMSlaynUnitDies = TriggerCreate("libMapM_gt_MMSlaynUnitDies_Func");
+    TriggerEnable(libMapM_gt_MMSlaynUnitDies, false);
+    TriggerAddEventUnitDied(libMapM_gt_MMSlaynUnitDies, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MM Slayn Void Thrasher Missiles
+//--------------------------------------------------------------------------------------------------
+bool libMapM_gt_MMSlaynVoidThrasherMissiles_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_missileUnit;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnit()) == "MapM_BattleForSlayn_VoidThrasher_Weapon_Missile"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_missileUnit = EventUnit();
+    libNtve_gf_CreatePingFacingAngle(PlayerGroupAll(), "KaiserWormScourgeMissile", UnitGetPosition(lv_missileUnit), ColorWithAlpha(100.00, 100.00, 100.00, 0.00), 0.0, UnitGetFacing(lv_missileUnit));
+    libHots_gf_StorePingForUnit(lv_missileUnit, 1, PingLastCreated());
+    PingSetUnit(PingLastCreated(), lv_missileUnit);
+    PingSetScale(PingLastCreated(), 0.05);
+    while (!((UnitIsAlive(lv_missileUnit) == false))) {
+        Wait(0.0625, c_timeGame);
+    }
+    PingDestroy(libHots_gf_PingStoredForUnit(lv_missileUnit, 1));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libMapM_gt_MMSlaynVoidThrasherMissiles_Init () {
+    libMapM_gt_MMSlaynVoidThrasherMissiles = TriggerCreate("libMapM_gt_MMSlaynVoidThrasherMissiles_Func");
+    TriggerEnable(libMapM_gt_MMSlaynVoidThrasherMissiles, false);
+    TriggerAddEventUnitRegion(libMapM_gt_MMSlaynVoidThrasherMissiles, null, RegionEntireMap(), true);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MM Raven Curse Gate Open
+//--------------------------------------------------------------------------------------------------
+bool libMapM_gt_MMRavenCurseGateOpen_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerEnable(TriggerGetCurrent(), false);
+    TriggerEnable(libMapM_gt_MMRavenSpawnTribute, true);
+    TriggerEnable(libMapM_gt_MMRavenTributeObtained, true);
+    TimerStart(libMapM_gv_mMRavenStartTimer, (libMapM_gf_MMRavenStartTime() + RandomFixed((libMapM_gv_mMRavenTributeSpawnTimeVariance * -1), libMapM_gv_mMRavenTributeSpawnTimeVariance)), false, c_timeGame);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libMapM_gt_MMRavenCurseGateOpen_Init () {
+    libMapM_gt_MMRavenCurseGateOpen = TriggerCreate("libMapM_gt_MMRavenCurseGateOpen_Func");
+    TriggerEnable(libMapM_gt_MMRavenCurseGateOpen, false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MM Raven Curse Gate Open [MY OWN]
+//--------------------------------------------------------------------------------------------------
+bool libMapM_gt_MMRavenCurseGateOpenMYOWN_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerEnable(TriggerGetCurrent(), false);
+    TriggerEnable(libMapM_gt_MMRavenSpawnTribute, true);
+    TriggerEnable(libMapM_gt_MMRavenTributeObtained, true);
+    TimerStart(libMapM_gv_mMRavenStartTimer, (libMapM_gf_MMRavenStartTime() + RandomFixed((libMapM_gv_mMRavenTributeSpawnTimeVariance * -1), libMapM_gv_mMRavenTributeSpawnTimeVariance)), false, c_timeGame);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libMapM_gt_MMRavenCurseGateOpenMYOWN_Init () {
+    libMapM_gt_MMRavenCurseGateOpenMYOWN = TriggerCreate("libMapM_gt_MMRavenCurseGateOpenMYOWN_Func");
+    TriggerEnable(libMapM_gt_MMRavenCurseGateOpenMYOWN, false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MM Raven Start Spawning
+//--------------------------------------------------------------------------------------------------
+bool libMapM_gt_MMRavenStartSpawning_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((TriggerIsEnabled(TriggerGetCurrent()) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerEnable(TriggerGetCurrent(), false);
+    if ((libMapM_gv_mMRavenEventFirstTime == true)) {
+        TimerStart(libMapM_gv_mMRavenWarningTimer, 0.125, false, c_timeGame);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libMapM_gt_MMRavenStartSpawning_Init () {
+    libMapM_gt_MMRavenStartSpawning = TriggerCreate("libMapM_gt_MMRavenStartSpawning_Func");
+    TriggerAddEventTimer(libMapM_gt_MMRavenStartSpawning, libMapM_gv_mMRavenStartTimer);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MM Raven Spawn Tribute
+//--------------------------------------------------------------------------------------------------
+bool libMapM_gt_MMRavenSpawnTribute_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    point lv_spawnPoint;
+    int lv_itPlayer;
+    sound lv_pingSound;
+
+    // Automatic Variable Declarations
+    const int auto1EA11C22_n = 6;
+    int auto1EA11C22_i;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    Wait(5.0, c_timeGame);
+    libMapM_gv_mMRavenCurseLifted = false;
+    lv_spawnPoint = libMapM_gf_CursedHollowGetAvaiablePoint();
+    if ((libMapM_gv_mMRavenEventFirstTime == false)) {
+        libMapM_gf_MMRavenTransmissionTributeAboutToSpawnQ(PlayerGroupAll());
+    }
+    else {
+        libMapM_gf_MMRavenTransmissionEventStartQ(PlayerGroupAll());
+        TriggerExecute(libMapM_gt_MMRavenObjectiveUIHandler, true, false);
+    }
+    Wait(2.0, c_timeGame);
+    SoundPlayForPlayer(SoundLink("UI_Game_Ping_MiniMap", -1), c_maxPlayers, PlayerGroupAll(), 100.0, 0.0);
+    SoundPlayAtPointForPlayer(SoundLink("Event_RavenCurse_TributeSpawn", -1), c_maxPlayers, PlayerGroupAll(), lv_spawnPoint, 2.0, 100.0, 0.0);
+    libNtve_gf_CreatePingFacingAngle(PlayerGroupAll(), "StormPingSimple", lv_spawnPoint, ColorWithAlpha(100.00, 100.00, 0.00, 0.00), (libMapM_gv_mMRavenSpawnWarningTimerTime_C + 1.0), 270.0);
+    libGame_gf_SendEventMapTributeWarning(lv_spawnPoint);
+    libNtve_gf_CreateUnitsWithDefaultFacing(1, "RavenLordTributeWarning", c_unitCreateIgnorePlacement, libCore_gv_cOMPUTER_Neutral, lv_spawnPoint);
+    libMapM_gv_mMRavenTributeWarning = UnitLastCreated();
+    VisRevealerCreate(libCore_gv_cOMPUTER_Blue, RegionCircle(lv_spawnPoint, libMapM_gv_mMRavenRevealRadius_C));
+    libMapM_gv_mMRavenOrderRevealer = VisRevealerLastCreated();
+    VisRevealerCreate(libCore_gv_cOMPUTER_Red, RegionCircle(lv_spawnPoint, libMapM_gv_mMRavenRevealRadius_C));
+    libMapM_gv_mMRavenChaosRevealer = VisRevealerLastCreated();
+    Wait(libMapM_gv_mMRavenSpawnWarningTimerTime_C, c_timeGame);
+    UnitKill(libMapM_gv_mMRavenTributeWarning);
+    libNtve_gf_CreateModelAtPoint("RavenLordTributeSpawn", lv_spawnPoint);
+    Wait(0.5, c_timeReal);
+    libNtve_gf_CreatePingFacingAngle(PlayerGroupAll(), "StormPingSimple", lv_spawnPoint, ColorWithAlpha(100.00, 100.00, 0.00, 0.00), 3.0, 270.0);
+    libNtve_gf_CreateUnitsWithDefaultFacing(1, libMapM_gf_MMRavenTributeUnitType(), c_unitCreateIgnorePlacement, libCore_gv_cOMPUTER_Neutral, lv_spawnPoint);
+    libNtve_gf_PlayAnimation(libNtve_gf_MainActorofUnit(UnitLastCreated()), c_animNameDefault, "Birth", c_animFlagNonLooping, 0.0);
+    UnitGroupAddUnitGroup(libMapM_gv_mMRavenTributes, UnitLastCreatedGroup());
+    TriggerEnable(libMapM_gt_MMRavenTributeObtained, true);
+    libGame_gf_SendEventMapTributeSpawned(UnitLastCreated());
+    libMapM_gv_mMRavenEventFirstTime = false;
+    Wait(1.0, c_timeGame);
+    Wait(0.5, c_timeGame);
+    while (true) {
+        Wait(20.0, c_timeGame);
+        if (((libCore_gv_gameOver == true) || (UnitIsAlive(UnitLastCreated()) == false))) {
+            return true;
+        }
+
+        SoundPlayForPlayer(SoundLink("UI_Game_Ping_General", -1), c_maxPlayers, PlayerGroupAll(), 100.0, 0.0);
+        SoundPlayForPlayer(SoundLink("CH_Curse1_GiveMeThisTribute", -1), c_maxPlayers, PlayerGroupAll(), 100.0, 0.0);
+        lv_pingSound = SoundLastPlayed();
+        libNtve_gf_CreatePingFacingAngle(PlayerGroupAll(), "StormPingSimple", UnitGetPosition(UnitLastCreated()), ColorWithAlpha(100.00, 100.00, 0.00, 0.00), 0.0, 270.0);
+        libHots_gf_StorePingForUnit(UnitLastCreated(), 1, PingLastCreated());
+        PingSetUnit(PingLastCreated(), UnitLastCreated());
+        for (auto1EA11C22_i = 1; auto1EA11C22_i <= auto1EA11C22_n; auto1EA11C22_i += 1) {
+            if (((libCore_gv_gameOver == true) || (UnitIsAlive(UnitLastCreated()) == false))) {
+                break;
+            }
+
+            Wait(1.0, c_timeGame);
+        }
+        PingDestroy(libHots_gf_PingStoredForUnit(UnitLastCreated(), 1));
+        libHots_gf_StorePingForUnit(UnitLastCreated(), 1, c_invalidPingId);
+        SoundStop(lv_pingSound, true);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libMapM_gt_MMRavenSpawnTribute_Init () {
+    libMapM_gt_MMRavenSpawnTribute = TriggerCreate("libMapM_gt_MMRavenSpawnTribute_Func");
+    TriggerAddEventTimer(libMapM_gt_MMRavenSpawnTribute, libMapM_gv_mMRavenWarningTimer);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MM Raven Tribute Collect Started
+//--------------------------------------------------------------------------------------------------
+bool libMapM_gt_MMRavenTributeCollectStarted_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_count;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnitTargetUnit()) == "RavenLordTribute"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_count = (+ 1);
+    libNtve_gf_TurnAnimationPropertiesOn(libNtve_gf_MainActorofUnit(EventUnitTargetUnit()), "Work");
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libMapM_gt_MMRavenTributeCollectStarted_Init () {
+    libMapM_gt_MMRavenTributeCollectStarted = TriggerCreate("libMapM_gt_MMRavenTributeCollectStarted_Func");
+    TriggerEnable(libMapM_gt_MMRavenTributeCollectStarted, false);
+    TriggerAddEventUnitAbility(libMapM_gt_MMRavenTributeCollectStarted, null, AbilityCommand("CaptureMacGuffin", 0), c_abilEffectStageChannel, false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MM Raven Tribute Collect Canceled
+//--------------------------------------------------------------------------------------------------
+bool libMapM_gt_MMRavenTributeCollectCanceled_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_count;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnitTargetUnit()) == "RavenLordTribute"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_count = MaxI((- 1), 0);
+    if ((lv_count == 0)) {
+        libNtve_gf_TurnAnimationPropertiesOff(libNtve_gf_MainActorofUnit(EventUnitTargetUnit()), "Work");
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libMapM_gt_MMRavenTributeCollectCanceled_Init () {
+    libMapM_gt_MMRavenTributeCollectCanceled = TriggerCreate("libMapM_gt_MMRavenTributeCollectCanceled_Func");
+    TriggerEnable(libMapM_gt_MMRavenTributeCollectCanceled, false);
+    TriggerAddEventUnitAbility(libMapM_gt_MMRavenTributeCollectCanceled, null, AbilityCommand("CaptureMacGuffin", 0), c_unitAbilStageCancel, false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MM Raven Tribute Obtained
+//--------------------------------------------------------------------------------------------------
+bool libMapM_gt_MMRavenTributeObtained_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_collectedPlayer;
+    int lv_collectedTeam;
+    int lv_collectedTeamEnemy;
+    unit lv_macGuffinUnit;
+    int lv_teamIterator;
+    string lv_macGuffinCount;
+    int lv_regenGlobeOwner;
+    point lv_regenGlobePoint;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_macGuffinUnit = EventPlayerEffectUsedUnit(c_effectUnitTarget);
+    lv_macGuffinCount = "";
+    lv_regenGlobePoint = UnitGetPosition(lv_macGuffinUnit);
+
+    // Conditions
+    if (testConds) {
+        if (!((TriggerIsEnabled(TriggerGetCurrent()) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libMapM_gf_CursedHollowCheckPointsForAvailable();
+    TriggerEnable(TriggerGetCurrent(), false);
+    lv_collectedPlayer = EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster);
+    lv_collectedTeam = libGame_gf_PlayerGetPlayerTeam(EventPlayer());
+    lv_collectedTeamEnemy = (3 - lv_collectedTeam);
+    libGame_gf_SendEventMapTributePickedUp(lv_collectedPlayer, UnitGetPosition(lv_macGuffinUnit));
+    UnitKill(lv_macGuffinUnit);
+    libMapM_gv_mMRavenTeamStats[lv_collectedTeam].lv_triburteCollected += 1;
+    VisRevealerDestroy(libMapM_gv_mMRavenOrderRevealer);
+    VisRevealerDestroy(libMapM_gv_mMRavenChaosRevealer);
+    libMapM_gv_mapMechanicUsedTracker[lv_collectedPlayer].lv_ravenTribute = true;
+    if ((lv_collectedTeam == 1)) {
+        lv_regenGlobeOwner = libCore_gv_cOMPUTER_Blue;
+    }
+    else {
+        lv_regenGlobeOwner = libCore_gv_cOMPUTER_Red;
+    }
+    libNtve_gf_CreateUnitsWithDefaultFacing(1, "RegenGlobe", c_unitCreateIgnorePlacement, lv_regenGlobeOwner, lv_regenGlobePoint);
+    lv_macGuffinCount = IntToString(libMapM_gv_mMRavenTeamStats[lv_teamIterator].lv_triburteCollected);
+    libGame_gv_players[lv_collectedPlayer].lv_tributesCollected += 1;
+    if ((libMapM_gv_mMRavenTeamStats[lv_collectedTeam].lv_triburteCollected >= libMapM_gf_MMRavenTributeThresholdAmount())) {
+        libMapM_gf_MMRavenTributeCollectionThresholdReached(lv_collectedTeam);
+    }
+    else {
+        libMapM_gf_MMRavenStartSpawnTimer5090();
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libMapM_gt_MMRavenTributeObtained_Init () {
+    libMapM_gt_MMRavenTributeObtained = TriggerCreate("libMapM_gt_MMRavenTributeObtained_Func");
+    TriggerEnable(libMapM_gt_MMRavenTributeObtained, false);
+    TriggerAddEventPlayerEffectUsed(libMapM_gt_MMRavenTributeObtained, c_playerAny, "CaptureMacGuffinCastComplete");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MM Raven Curse Start Light Transition
+//--------------------------------------------------------------------------------------------------
+bool libMapM_gt_MMRavenCurseStartLightTransition_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_itPlayer;
+
+    // Automatic Variable Declarations
+    const int autoAF4BD00E_ae = libCore_gv_bALMaxPlayers;
+    const int autoAF4BD00E_ai = 1;
+    const int auto1BA3F55F_ae = libCore_gv_bALMaxPlayers;
+    const int auto1BA3F55F_ai = 1;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_itPlayer = 1;
+    for ( ; ( (autoAF4BD00E_ai >= 0 && lv_itPlayer <= autoAF4BD00E_ae) || (autoAF4BD00E_ai < 0 && lv_itPlayer >= autoAF4BD00E_ae) ) ; lv_itPlayer += autoAF4BD00E_ai ) {
+    }
+    PlayerSetLighting(lv_itPlayer, "StormRavenCourtCurseTransition", 1.0);
+    Wait(1.0, c_timeGame);
+    lv_itPlayer = 1;
+    for ( ; ( (auto1BA3F55F_ai >= 0 && lv_itPlayer <= auto1BA3F55F_ae) || (auto1BA3F55F_ai < 0 && lv_itPlayer >= auto1BA3F55F_ae) ) ; lv_itPlayer += auto1BA3F55F_ai ) {
+    }
+    PlayerSetLighting(libCore_gv_oBSERVER_ObserverUIPlayer, "StormRavenCourtCurseFinal", 2.0);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libMapM_gt_MMRavenCurseStartLightTransition_Init () {
+    libMapM_gt_MMRavenCurseStartLightTransition = TriggerCreate("libMapM_gt_MMRavenCurseStartLightTransition_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MM Raven Curse Applied Curse Structure
+//--------------------------------------------------------------------------------------------------
+bool libMapM_gt_MMRavenCurseAppliedCurseStructure_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitSetPropertyFixed(EventUnit(), c_unitPropLife, (UnitGetPropertyFixed(EventUnit(), c_unitPropLife, c_unitPropCurrent) / 2.0));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libMapM_gt_MMRavenCurseAppliedCurseStructure_Init () {
+    libMapM_gt_MMRavenCurseAppliedCurseStructure = TriggerCreate("libMapM_gt_MMRavenCurseAppliedCurseStructure_Func");
+    TriggerAddEventUnitBehaviorChange(libMapM_gt_MMRavenCurseAppliedCurseStructure, null, "RavenLordsCurseStructures", c_unitBehaviorChangeIncrease);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MM Raven Curse Remove Curse Structure
+//--------------------------------------------------------------------------------------------------
+bool libMapM_gt_MMRavenCurseRemoveCurseStructure_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitSetPropertyFixed(EventUnit(), c_unitPropLife, (UnitGetPropertyFixed(EventUnit(), c_unitPropLife, c_unitPropCurrent) * 2.0));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libMapM_gt_MMRavenCurseRemoveCurseStructure_Init () {
+    libMapM_gt_MMRavenCurseRemoveCurseStructure = TriggerCreate("libMapM_gt_MMRavenCurseRemoveCurseStructure_Func");
+    TriggerAddEventUnitBehaviorChange(libMapM_gt_MMRavenCurseRemoveCurseStructure, null, "RavenLordsCurseStructures", c_unitBehaviorChangeDecrease);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MM Raven Curse Finished
+//--------------------------------------------------------------------------------------------------
+bool libMapM_gt_MMRavenCurseFinished_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_itPlayer;
+    int lv_cursedTeam;
+    int lv_enemyTeam;
+    int lv_cursedPlayer;
+
+    // Automatic Variable Declarations
+    unitgroup auto094F666C_g;
+    int auto094F666C_u;
+    unit auto094F666C_var;
+    const int auto65D23987_ae = libCore_gv_bALMaxPlayers;
+    const int auto65D23987_ai = 1;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((libMapM_gv_cursedHollowData.lv__1stCursedFinished == false)) {
+        libMapM_gv_cursedHollowData.lv__1stCursedFinished = true;
+    }
+
+    ActorSend(libMapM_gv_mapMechanicControllerActor, "Signal MM1Off");
+    if ((libMapM_gv_mMRavenTeamStats[1].lv_cursed == true)) {
+        lv_cursedTeam = 1;
+        lv_cursedPlayer = libCore_gv_cOMPUTER_Blue;
+        libMapM_gv_mMRavenTeamStats[libGame_gf_PlayerGetPlayerTeam(libCore_gv_cOMPUTER_Red)].lv_triburteCollected = 0;
+    }
+    else if ((libMapM_gv_mMRavenTeamStats[2].lv_cursed == true)) {
+        lv_cursedTeam = 2;
+        lv_cursedPlayer = libCore_gv_cOMPUTER_Red;
+        libMapM_gv_mMRavenTeamStats[libGame_gf_PlayerGetPlayerTeam(libCore_gv_cOMPUTER_Red)].lv_triburteCollected = 0;
+    }
+    else if (true) {
+        return true;
+    }
+    SoundChannelMute(PlayerGroupAll(), c_soundCategoryAmbient, false);
+    SoundStop(libMapM_gv_mMRavenCurseSound, true);
+    SoundPlayForPlayer(SoundLink("Event_RavenCurse_CurseEnd", -1), c_maxPlayers, PlayerGroupAll(), 100.0, 0.0);
+    lv_enemyTeam = (3 - lv_cursedTeam);
+    libGame_gf_SendEventMapRavenLordCurseEnds();
+    SoundtrackStopCurrent(PlayerGroupAll(), c_soundtrackCategoryMusic, true);
+    auto094F666C_g = UnitGroup(null, lv_cursedPlayer, RegionEntireMap(), UnitFilter((1 << c_targetFilterBiological), 0, (1 << c_targetFilterRobotic) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    auto094F666C_u = UnitGroupCount(auto094F666C_g, c_unitCountAll);
+    for (;; auto094F666C_u -= 1) {
+        auto094F666C_var = UnitGroupUnitFromEnd(auto094F666C_g, auto094F666C_u);
+        if (auto094F666C_var == null) { break; }
+        libMapM_gf_MMRavenRemoveCurseEffectOnMinion(auto094F666C_var);
+    }
+    libMapM_gv_mMRavenTeamStats[1].lv_cursed = false;
+    libMapM_gv_mMRavenTeamStats[2].lv_cursed = false;
+    libGame_gv_teams[1].lv_isCursed = false;
+    libGame_gv_teams[2].lv_isCursed = false;
+    libMapM_gv_mMRavenCurseLifted = true;
+    lv_itPlayer = 1;
+    for ( ; ( (auto65D23987_ai >= 0 && lv_itPlayer <= auto65D23987_ae) || (auto65D23987_ai < 0 && lv_itPlayer >= auto65D23987_ae) ) ; lv_itPlayer += auto65D23987_ai ) {
+    }
+    PlayerSetLighting(libCore_gv_oBSERVER_ObserverUIPlayer, libCore_gv_mAPMapLight, 3.0);
+    Wait(libMapM_gv_mMRavenTributePostCurseWaitTime_C, c_timeGame);
+    libMapM_gf_MMRavenStartSpawnTimer5090();
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libMapM_gt_MMRavenCurseFinished_Init () {
+    libMapM_gt_MMRavenCurseFinished = TriggerCreate("libMapM_gt_MMRavenCurseFinished_Func");
+    TriggerAddEventTimer(libMapM_gt_MMRavenCurseFinished, libMapM_gv_mMRavenCurseTimer);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MM Raven Objective UI Handler
+//--------------------------------------------------------------------------------------------------
+bool libMapM_gt_MMRavenObjectiveUIHandler_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    text lv_tipEffect;
+    text lv_tip;
+    text lv_tipCursed;
+    int lv_indexTeam;
+    int lv_indexTeamEnemy;
+    int lv_state;
+    int lv_lastState;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_state = libMapM_ge_MMRavenCurseState_Starting;
+    lv_lastState = libMapM_ge_MMRavenCurseState_Starting;
+
+    // Conditions
+    if (testConds) {
+        if (!((TriggerIsEnabled(TriggerGetCurrent()) == true))) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libMapM_gt_MMRavenObjectiveUIHandler_Init () {
+    libMapM_gt_MMRavenObjectiveUIHandler = TriggerCreate("libMapM_gt_MMRavenObjectiveUIHandler_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MM Raven Debug (Start Elune -es)
+//--------------------------------------------------------------------------------------------------
+bool libMapM_gt_MMRavenDebugStartElunees_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((GameCheatsEnabled(c_gameCheatCategoryDevelopment) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TimerStart(libMapM_gv_mMRavenStartTimer, 1.0, false, c_timeGame);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libMapM_gt_MMRavenDebugStartElunees_Init () {
+    libMapM_gt_MMRavenDebugStartElunees = TriggerCreate("libMapM_gt_MMRavenDebugStartElunees_Func");
+    TriggerEnable(libMapM_gt_MMRavenDebugStartElunees, false);
+    TriggerAddEventChatMessage(libMapM_gt_MMRavenDebugStartElunees, c_playerAny, "-es", true);
+    TriggerAddEventChatMessage(libMapM_gt_MMRavenDebugStartElunees, c_playerAny, "EVENTSTART", true);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MM Raven Debug (Start Next -en)
+//--------------------------------------------------------------------------------------------------
+bool libMapM_gt_MMRavenDebugStartNexten_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((GameCheatsEnabled(c_gameCheatCategoryDevelopment) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((TriggerIsEnabled(libMapM_gt_MMRavenStartSpawning) == true)) {
+        TimerStart(libMapM_gv_mMRavenStartTimer, 1.0, false, c_timeGame);
+        while (!((TriggerIsEnabled(libMapM_gt_MMRavenStartSpawning) == false))) {
+            Wait(0.25, c_timeGame);
+        }
+    }
+
+    TimerStart(libMapM_gv_mMRavenWarningTimer, 1.0, false, c_timeGame);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libMapM_gt_MMRavenDebugStartNexten_Init () {
+    libMapM_gt_MMRavenDebugStartNexten = TriggerCreate("libMapM_gt_MMRavenDebugStartNexten_Func");
+    TriggerEnable(libMapM_gt_MMRavenDebugStartNexten, false);
+    TriggerAddEventChatMessage(libMapM_gt_MMRavenDebugStartNexten, c_playerAny, "-en", true);
+    TriggerAddEventChatMessage(libMapM_gt_MMRavenDebugStartNexten, c_playerAny, "TRIBUTENEXT", true);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MM Raven Debug (Start Curse -ec)
+//--------------------------------------------------------------------------------------------------
+bool libMapM_gt_MMRavenDebugStartCurseec_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((GameCheatsEnabled(c_gameCheatCategoryDevelopment) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((TriggerIsEnabled(libMapM_gt_MMRavenStartSpawning) == true)) {
+        TimerStart(libMapM_gv_mMRavenStartTimer, 1.0, false, c_timeGame);
+        while (!((TriggerIsEnabled(libMapM_gt_MMRavenStartSpawning) == false))) {
+            Wait(0.25, c_timeGame);
+        }
+    }
+
+    libMapM_gv_mMRavenTeamStats[1].lv_triburteCollected = (libMapM_gv_mMRavenTributeThreshold_C - 1);
+    TimerStart(libMapM_gv_mMRavenWarningTimer, 1.0, false, c_timeGame);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libMapM_gt_MMRavenDebugStartCurseec_Init () {
+    libMapM_gt_MMRavenDebugStartCurseec = TriggerCreate("libMapM_gt_MMRavenDebugStartCurseec_Func");
+    TriggerEnable(libMapM_gt_MMRavenDebugStartCurseec, false);
+    TriggerAddEventChatMessage(libMapM_gt_MMRavenDebugStartCurseec, c_playerAny, "-ec", true);
+    TriggerAddEventChatMessage(libMapM_gt_MMRavenDebugStartCurseec, c_playerAny, "TRIBUTELAST", true);
+}
+
+void libMapM_InitTriggers () {
+    libMapM_gt_MAPINITIZALIEDCursedHollow_Init();
+    libMapM_gt_MAPINITIZALIEDBattleforSlayn_Init();
+    libMapM_gt_MMSlaynStartSpawning_Init();
+    libMapM_gt_MMSlaynCreateWarningPings_Init();
+    libMapM_gt_MMSlaynCreateVoidThrashers_Init();
+    libMapM_gt_MMSlaynSpawnVoidThrasherMinions_Init();
+    libMapM_gt_MMSlaynUnitDies_Init();
+    libMapM_gt_MMSlaynVoidThrasherMissiles_Init();
+    libMapM_gt_MMRavenCurseGateOpen_Init();
+    libMapM_gt_MMRavenCurseGateOpenMYOWN_Init();
+    libMapM_gt_MMRavenStartSpawning_Init();
+    libMapM_gt_MMRavenSpawnTribute_Init();
+    libMapM_gt_MMRavenTributeCollectStarted_Init();
+    libMapM_gt_MMRavenTributeCollectCanceled_Init();
+    libMapM_gt_MMRavenTributeObtained_Init();
+    libMapM_gt_MMRavenCurseStartLightTransition_Init();
+    libMapM_gt_MMRavenCurseAppliedCurseStructure_Init();
+    libMapM_gt_MMRavenCurseRemoveCurseStructure_Init();
+    libMapM_gt_MMRavenCurseFinished_Init();
+    libMapM_gt_MMRavenObjectiveUIHandler_Init();
+    libMapM_gt_MMRavenDebugStartElunees_Init();
+    libMapM_gt_MMRavenDebugStartNexten_Init();
+    libMapM_gt_MMRavenDebugStartCurseec_Init();
+}
+
+//--------------------------------------------------------------------------------------------------
+// Library Initialization
+//--------------------------------------------------------------------------------------------------
+bool libMapM_InitLib_completed = false;
+
+void libMapM_InitLib () {
+    if (libMapM_InitLib_completed) {
+        return;
+    }
+
+    libMapM_InitLib_completed = true;
+
+    libMapM_InitLibraries();
+    libMapM_InitVariables();
+    libMapM_InitTriggers();
+}
+
+include "LibAIAI"
+include "LibCore"
+include "LibGame"
+include "LibUIUI"
+

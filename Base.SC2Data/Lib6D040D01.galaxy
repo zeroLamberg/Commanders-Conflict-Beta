@@ -1,0 +1,1063 @@
+include "TriggerLibs/NativeLib"
+
+include "Lib6D040D01_h"
+
+//--------------------------------------------------------------------------------------------------
+// Library: ImprovedArrays
+//--------------------------------------------------------------------------------------------------
+// External Library Initialization
+void lib6D040D01_InitLibraries () {
+    libNtve_InitVariables();
+}
+
+// Custom Script
+//--------------------------------------------------------------------------------------------------
+// Custom Script: Create
+//--------------------------------------------------------------------------------------------------
+void Create(string array_name) {
+    DataTableSetInt(true, array_name, 0);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Custom Script: Length
+//--------------------------------------------------------------------------------------------------
+int Length(string array_name) {
+    return DataTableGetInt(true, array_name);
+}
+void LengthAdd(string array_name) {
+    DataTableSetInt(true, array_name, DataTableGetInt(true, array_name) + 1);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Custom Script: Exists
+//--------------------------------------------------------------------------------------------------
+bool Exists(string array_name, int array_index) {
+    //return DataTableValueExists(true, array_name + "[" + array_index + "]");
+    if(array_index < 0) {
+        return false;
+    }
+    if(array_index >= Length(array_name)) {
+        return false;
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Custom Script: Type
+//--------------------------------------------------------------------------------------------------
+int Type(string array_name, int array_index) {
+    return DataTableValueType(true, array_name + "[" + IntToString(array_index) + "]");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Custom Script: Set
+//--------------------------------------------------------------------------------------------------
+void CommonSet(string array_name, int array_index) {
+    if(array_index > Length(array_name) - 1){
+        DataTableSetInt(true, array_name, array_index + 1);
+    }
+}
+void SetInt(string array_name, int array_index, int value) {
+    CommonSet(array_name, array_index);
+    DataTableSetInt(true, array_name + "[" + IntToString(array_index) + "]", value);
+}
+void SetFixed(string array_name, int array_index, fixed value) {
+    CommonSet(array_name, array_index);
+    DataTableSetFixed(true, array_name + "[" + IntToString(array_index) + "]", value);
+}
+void SetAbilCmd(string array_name, int array_index, abilcmd value) {
+    CommonSet(array_name, array_index);
+    DataTableSetAbilCmd(true, array_name + "[" + IntToString(array_index) + "]", value);
+}
+void SetBool(string array_name, int array_index, bool value) {
+    CommonSet(array_name, array_index);
+    DataTableSetBool(true, array_name + "[" + IntToString(array_index) + "]", value);
+}
+void SetDialog(string array_name, int array_index, int value) {
+    CommonSet(array_name, array_index);
+    DataTableSetDialog(true, array_name + "[" + IntToString(array_index) + "]", value);
+}
+void SetDialogItem(string array_name, int array_index, int value) {
+    CommonSet(array_name, array_index);
+    libNtve_gf_SaveDataTableValueDialogItem(true, array_name + "[" + IntToString(array_index) + "]", value);
+}
+void SetPoint(string array_name, int array_index, point value) {
+    CommonSet(array_name, array_index);
+    DataTableSetPoint(true, array_name + "[" + IntToString(array_index) + "]", value);
+}
+void SetRegion(string array_name, int array_index, region value) {
+    CommonSet(array_name, array_index);
+    DataTableSetRegion(true, array_name + "[" + IntToString(array_index) + "]", value);
+}
+void SetString(string array_name, int array_index, string value) {
+    CommonSet(array_name, array_index);
+    DataTableSetString(true, array_name + "[" + IntToString(array_index) + "]", value);
+}
+void SetTrigger(string array_name, int array_index, trigger value) {
+    CommonSet(array_name, array_index);
+    DataTableSetTrigger(true, array_name + "[" + IntToString(array_index) + "]", value);
+}
+void SetUnitGroup(string array_name, int array_index, unitgroup value) {
+    CommonSet(array_name, array_index);
+    DataTableSetUnitGroup(true, array_name + "[" + IntToString(array_index) + "]", value);
+}
+void SetUnit(string array_name, int array_index, unit value) {
+    CommonSet(array_name, array_index);
+    DataTableSetUnit(true, array_name + "[" + IntToString(array_index) + "]", value);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Custom Script: Push
+//--------------------------------------------------------------------------------------------------
+void PushInt(string array_name, int value) {
+    DataTableSetInt(true, array_name + "[" + IntToString(Length(array_name)) + "]", value);
+    LengthAdd(array_name);
+}
+void PushFixed(string array_name, fixed value) {
+    DataTableSetFixed(true, array_name + "[" + IntToString(Length(array_name)) + "]", value);
+    LengthAdd(array_name);
+}
+void PushAbilCmd(string array_name, abilcmd value) {
+    DataTableSetAbilCmd(true, array_name + "[" + IntToString(Length(array_name)) + "]", value);
+    LengthAdd(array_name);
+}
+void PushBool(string array_name, bool value) {
+    DataTableSetBool(true, array_name + "[" + IntToString(Length(array_name)) + "]", value);
+    LengthAdd(array_name);
+}
+void PushDialog(string array_name, int value) {
+    DataTableSetDialog(true, array_name + "[" + IntToString(Length(array_name)) + "]", value);
+    LengthAdd(array_name);
+}
+void PushDialogItem(string array_name, int value) {
+    libNtve_gf_SaveDataTableValueDialogItem(true, array_name + "[" + IntToString(Length(array_name)) + "]", value);
+    LengthAdd(array_name);
+}
+void PushPoint(string array_name, point value) {
+    DataTableSetPoint(true, array_name + "[" + IntToString(Length(array_name)) + "]", value);
+    LengthAdd(array_name);
+}
+void PushRegion(string array_name, region value) {
+    DataTableSetRegion(true, array_name + "[" + IntToString(Length(array_name)) + "]", value);
+    LengthAdd(array_name);
+}
+void PushString(string array_name, string value) {
+    DataTableSetString(true, array_name + "[" + IntToString(Length(array_name)) + "]", value);
+    LengthAdd(array_name);
+}
+void PushTrigger(string array_name, trigger value) {
+    DataTableSetTrigger(true, array_name + "[" + IntToString(Length(array_name)) + "]", value);
+    LengthAdd(array_name);
+}
+void PushUnitGroup(string array_name, unitgroup value) {
+    DataTableSetUnitGroup(true, array_name + "[" + IntToString(Length(array_name)) + "]", value);
+    LengthAdd(array_name);
+}
+void PushUnit(string array_name, unit value) {
+    DataTableSetUnit(true, array_name + "[" + IntToString(Length(array_name)) + "]", value);
+    LengthAdd(array_name);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Custom Script: Get
+//--------------------------------------------------------------------------------------------------
+int GetInt(string array_name, int array_index) {
+    return DataTableGetInt(true, array_name + "[" + IntToString(array_index) + "]");
+}
+fixed GetFixed(string array_name, int array_index) {
+    if(Type(array_name, array_index) == c_dataTypeInt) {
+        return GetInt(array_name, array_index);
+    }
+    return DataTableGetFixed(true, array_name + "[" + IntToString(array_index) + "]");
+}
+abilcmd GetAbilCmd(string array_name, int array_index) {
+    return DataTableGetAbilCmd(true, array_name + "[" + IntToString(array_index) + "]");
+}
+bool GetBool(string array_name, int array_index) {
+    return DataTableGetBool(true, array_name + "[" + IntToString(array_index) + "]");
+}
+int GetDialog(string array_name, int array_index) {
+    return DataTableGetDialog(true, array_name + "[" + IntToString(array_index) + "]");
+}
+int GetDialogItem(string array_name, int array_index) {
+    return libNtve_gf_ValueFromDataTableDialogItem(true, array_name + "[" + IntToString(array_index) + "]");
+}
+point GetPoint(string array_name, int array_index) {
+    return DataTableGetPoint(true, array_name + "[" + IntToString(array_index) + "]");
+}
+region GetRegion(string array_name, int array_index) {
+    return DataTableGetRegion(true, array_name + "[" + IntToString(array_index) + "]");
+}
+string GetString(string array_name, int array_index) {
+    return DataTableGetString(true, array_name + "[" + IntToString(array_index) + "]");
+}
+trigger GetTrigger(string array_name, int array_index) {
+    return DataTableGetTrigger(true, array_name + "[" + IntToString(array_index) + "]");
+}
+unitgroup GetUnitGroup(string array_name, int array_index) {
+    return DataTableGetUnitGroup(true, array_name + "[" + IntToString(array_index) + "]");
+}
+unit GetUnit(string array_name, int array_index) {
+    return DataTableGetUnit(true, array_name + "[" + IntToString(array_index) + "]");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Custom Script: Search
+//--------------------------------------------------------------------------------------------------
+int SearchInt(string array_name, int value) {
+    int p = -1;
+    int a = 0;
+    int b = Length(array_name);
+    for(; a < b; a += 1) {
+        if(GetInt(array_name, a) == value) {
+            p = a;
+            break;
+        }
+    }
+    return p;
+}
+int SearchFixed(string array_name, fixed value) {
+    int p = -1;
+    int a = 0;
+    int b = Length(array_name);
+    for(; a < b; a += 1) {
+        if(GetFixed(array_name, a) == value) {
+            p = a;
+            break;
+        }
+    }
+    return p;
+}
+int SearchAbilCmd(string array_name, abilcmd value) {
+    int p = -1;
+    int a = 0;
+    int b = Length(array_name);
+    for(; a < b; a += 1) {
+        if(GetAbilCmd(array_name, a) == value) {
+            p = a;
+            break;
+        }
+    }
+    return p;
+}
+int SearchBool(string array_name, bool value) {
+    int p = -1;
+    int a = 0;
+    int b = Length(array_name);
+    for(; a < b; a += 1) {
+        if(GetBool(array_name, a) == value) {
+            p = a;
+            break;
+        }
+    }
+    return p;
+}
+int SearchDialog(string array_name, int value) {
+    int p = -1;
+    int a = 0;
+    int b = Length(array_name);
+    for(; a < b; a += 1) {
+        if(GetDialog(array_name, a) == value) {
+            p = a;
+            break;
+        }
+    }
+    return p;
+}
+int SearchDialogItem(string array_name, int value) {
+    int p = -1;
+    int a = 0;
+    int b = Length(array_name);
+    for(; a < b; a += 1) {
+        if(GetDialogItem(array_name, a) == value) {
+            p = a;
+            break;
+        }
+    }
+    return p;
+}
+int SearchPoint(string array_name, point value) {
+    int p = -1;
+    int a = 0;
+    int b = Length(array_name);
+    for(; a < b; a += 1) {
+        if(GetPoint(array_name, a) == value) {
+            p = a;
+            break;
+        }
+    }
+    return p;
+}
+int SearchRegion(string array_name, region value) {
+    int p = -1;
+    int a = 0;
+    int b = Length(array_name);
+    for(; a < b; a += 1) {
+        if(GetRegion(array_name, a) == value) {
+            p = a;
+            break;
+        }
+    }
+    return p;
+}
+int SearchString(string array_name, string value) {
+    int p = -1;
+    int a = 0;
+    int b = Length(array_name);
+    for(; a < b; a += 1) {
+        if(GetString(array_name, a) == value) {
+            p = a;
+            break;
+        }
+    }
+    return p;
+}
+int SearchTrigger(string array_name, trigger value) {
+    int p = -1;
+    int a = 0;
+    int b = Length(array_name);
+    for(; a < b; a += 1) {
+        if(GetTrigger(array_name, a) == value) {
+            p = a;
+            break;
+        }
+    }
+    return p;
+}
+int SearchUnit(string array_name, unit value) {
+    int p = -1;
+    int a = 0;
+    int b = Length(array_name);
+    for(; a < b; a += 1) {
+        if(GetUnit(array_name, a) == value) {
+            p = a;
+            break;
+        }
+    }
+    return p;
+}
+int SearchUnitGroup(string array_name, unitgroup value) {
+    int p = -1;
+    int a = 0;
+    int b = Length(array_name);
+    for(; a < b; a += 1) {
+        if(GetUnitGroup(array_name, a) == value) {
+            p = a;
+            break;
+        }
+    }
+    return p;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Custom Script: SetValToVal
+//--------------------------------------------------------------------------------------------------
+void SetValToVal(string array1, int index1, string array2, int index2) {
+    // array1[index1] = array2[index2]
+    // regardless of type
+    if(Type(array2, index2) == c_dataTypeInt) {
+        SetInt(array1, index1, GetInt(array2, index2));
+    }
+    else if(Type(array2, index2) == c_dataTypeFixed) {
+        SetFixed(array1, index1, GetFixed(array2, index2));
+    }
+    else if(Type(array2, index2) == c_dataTypeAbilCmd) {
+        SetAbilCmd(array1, index1, GetAbilCmd(array2, index2));
+    }
+    else if(Type(array2, index2) == c_dataTypeBool) {
+        SetBool(array1, index1, GetBool(array2, index2));
+    }
+    else if(Type(array2, index2) == c_dataTypePoint) {
+        SetPoint(array1, index1, GetPoint(array2, index2));
+    }
+    else if(Type(array2, index2) == c_dataTypeRegion) {
+        SetRegion(array1, index1, GetRegion(array2, index2));
+    }
+    else if(Type(array2, index2) == c_dataTypeString) {
+        SetString(array1, index1, GetString(array2, index2));
+    }
+    else if(Type(array2, index2) == c_dataTypeUnit) {
+        SetUnit(array1, index1, GetUnit(array2, index2));
+    }
+    else if(Type(array2, index2) == c_dataTypeUnitGroup) {
+        SetUnitGroup(array1, index1, GetUnitGroup(array2, index2));
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
+// Custom Script: Split
+//--------------------------------------------------------------------------------------------------
+void Split(string array_name, string str, string delimiter) {
+    int a = 1;
+    int b = StringLength(str);
+    string x = "";
+    string y = "";
+    Create(array_name);
+    for( ; a <= b; a += 1) {
+        x = StringSub(str, a, a);
+        if(StringCompare(x, delimiter, c_stringCase) == 0) {
+            PushString(array_name, y);
+            y = "";
+        } else {
+            y += x;
+        }
+    }
+    PushString(array_name, y); 
+}
+
+//--------------------------------------------------------------------------------------------------
+// Custom Script: Join
+//--------------------------------------------------------------------------------------------------
+string Join(string array_name, string glue) {
+    int a = 0;
+    int b = Length(array_name) - 1;
+    string s = "";    
+    for( ; a < b; a += 1) {
+        s += GetString(array_name, a) + glue;
+    }
+    s += GetString(array_name, b);
+    return s;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Custom Script: Greatest/Lowest
+//--------------------------------------------------------------------------------------------------
+int GreatestLowestIndex(string array_name, bool greatest) {
+    int a = 1;
+    int b = Length(array_name);
+    fixed c = 0;
+    fixed g = 0;
+    int r = 0; 
+    if(Type(array_name, 0) == c_dataTypeInt) {
+        g = IntToFixed(GetInt(array_name, 0));
+    } else if(Type(array_name, 0) == c_dataTypeFixed) {
+        g = GetFixed(array_name, 0);
+    } else {
+        return 0;
+    }
+    for( ; a < b; a += 1) {
+        if(Type(array_name, a) == c_dataTypeInt) {
+            c = IntToFixed(GetInt(array_name, a));
+        } else {
+            c = GetFixed(array_name, a);
+        }
+        if(greatest) {
+            if(c > g) {
+                r = a;
+                g = c;
+            }
+        } else {
+            if(c < g) {
+                r = a;
+                g = c;
+            }
+        }        
+    }
+    return r;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Custom Script: Sort
+//--------------------------------------------------------------------------------------------------
+void Sort(string array_name, bool ascending_order) {
+    lib6D040D01_gf_sortArray(array_name, ascending_order);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Custom Script: Copy
+//--------------------------------------------------------------------------------------------------
+void Copy(string old_array_name, string new_array_name) {
+    int a;
+    int b = Length(old_array_name);
+    Create(new_array_name);
+    for(a = 0; a < b; a += 1) {
+        SetValToVal(new_array_name, a, old_array_name, a);
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
+// Custom Script: Delete
+//--------------------------------------------------------------------------------------------------
+void Delete(string array_name, int index_to_remove) {
+    int a = index_to_remove;
+    int b = Length(array_name);
+    
+    for(a += 1; a < b; a += 1) {
+        SetValToVal(array_name, a - 1, array_name, a);
+    }
+    DataTableSetInt(true, array_name, DataTableGetInt(true, array_name) - 1);
+    DataTableValueRemove(true, array_name + "[" + IntToString(b - 1) + "]");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Custom Script: Move
+//--------------------------------------------------------------------------------------------------
+void Move(string array_name, int from_index, int to_index) {
+    lib6D040D01_gf_Move(array_name, from_index, to_index);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Custom Script: Swap
+//--------------------------------------------------------------------------------------------------
+void Swap(string array_name, int index1, int index2) {
+    string temp = array_name + "__func_swap__TEMP_";
+    Create(temp);
+    SetValToVal(temp, 0, array_name, index1);
+    SetValToVal(array_name, index1, array_name, index2);
+    SetValToVal(array_name, index2, temp, 0);
+    DataTableValueRemove(true, temp); 
+    DataTableValueRemove(true, temp + "[0]"); 
+}
+
+//--------------------------------------------------------------------------------------------------
+// Custom Script: Reverse
+//--------------------------------------------------------------------------------------------------
+void Reverse(string array_name) {
+    int a = Length(array_name) - 1;
+    int b = 0;
+    int c = Length(array_name);
+    int d = 0;
+    string array_temp = array_name + "__func_reverse__TEMP_";
+    
+    Copy(array_name, array_temp);
+    
+    for(; a >= 0; a -= 1) { 
+        SetValToVal(array_name, b, array_temp, a); 
+        b += 1;
+    }       
+    DataTableValueRemove(true, array_temp);
+    for(; d < c; d += 1) {
+        DataTableValueRemove(true, array_temp + "[" + IntToString(d) + "]");
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
+// Custom Script: Shuffle
+//--------------------------------------------------------------------------------------------------
+void Shuffle(string array_name) {
+    lib6D040D01_gf_Shuffle(array_name);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Custom Script: Merge
+//--------------------------------------------------------------------------------------------------
+void Merge(string array_name1, string array_name2) {
+    int a = 0;
+    int b = Length(array_name2);
+    int c = Length(array_name1);
+    for(; a < b; a += 1) {
+        SetValToVal(array_name1, a + c, array_name2, a); 
+    }
+}
+
+void lib6D040D01_InitCustomScript () {
+}
+
+// Presets
+// Functions
+void lib6D040D01_gf_CreateArray (string lp_arrayName) {
+    // Automatic Variable Declarations
+    // Implementation
+    Create(lp_arrayName);
+}
+
+int lib6D040D01_gf_LengthofArray (string lp_arrayName) {
+    // Automatic Variable Declarations
+    // Implementation
+    return Length(lp_arrayName);
+}
+
+bool lib6D040D01_gf_ArrayKeyExists (string lp_arrayName, int lp_arrayKey) {
+    // Automatic Variable Declarations
+    // Implementation
+    return Exists(lp_arrayName, lp_arrayKey);
+}
+
+int lib6D040D01_gf_TypeofArrayValue (string lp_arrayName, int lp_arrayKey) {
+    // Automatic Variable Declarations
+    // Implementation
+    return Type(lp_arrayName, lp_arrayKey);
+}
+
+void lib6D040D01_gf_SetArrayValueInteger (string lp_arrayName, int lp_arrayIndex, int lp_arrayValue) {
+    // Automatic Variable Declarations
+    // Implementation
+    SetInt(lp_arrayName, lp_arrayIndex, lp_arrayValue);
+}
+
+void lib6D040D01_gf_SetArrayValueReal (string lp_arrayName, int lp_arrayIndex, fixed lp_arrayValue) {
+    // Automatic Variable Declarations
+    // Implementation
+    SetFixed(lp_arrayName, lp_arrayIndex, lp_arrayValue);
+}
+
+void lib6D040D01_gf_SetArrayValueAbilityCommand (string lp_arrayName, int lp_arrayIndex, abilcmd lp_arrayValue) {
+    // Automatic Variable Declarations
+    // Implementation
+    SetAbilCmd(lp_arrayName, lp_arrayIndex, lp_arrayValue);
+}
+
+void lib6D040D01_gf_SetArrayValueBoolean (string lp_arrayName, int lp_arrayIndex, bool lp_arrayValue) {
+    // Automatic Variable Declarations
+    // Implementation
+    SetBool(lp_arrayName, lp_arrayIndex, lp_arrayValue);
+}
+
+void lib6D040D01_gf_SetArrayValueDialog (string lp_arrayName, int lp_arrayIndex, int lp_arrayValue) {
+    // Automatic Variable Declarations
+    // Implementation
+    SetDialog(lp_arrayName, lp_arrayIndex, lp_arrayValue);
+}
+
+void lib6D040D01_gf_SetArrayValueDialogItem (string lp_arrayName, int lp_arrayIndex, int lp_arrayValue) {
+    // Automatic Variable Declarations
+    // Implementation
+    SetDialogItem(lp_arrayName, lp_arrayIndex, lp_arrayValue);
+}
+
+void lib6D040D01_gf_SetArrayValuePoint (string lp_arrayName, int lp_arrayIndex, point lp_arrayValue) {
+    // Automatic Variable Declarations
+    // Implementation
+    SetPoint(lp_arrayName, lp_arrayIndex, lp_arrayValue);
+}
+
+void lib6D040D01_gf_SetArrayValueRegion (string lp_arrayName, int lp_arrayIndex, region lp_arrayValue) {
+    // Automatic Variable Declarations
+    // Implementation
+    SetRegion(lp_arrayName, lp_arrayIndex, lp_arrayValue);
+}
+
+void lib6D040D01_gf_SetArrayValueString (string lp_arrayName, int lp_arrayIndex, string lp_arrayValue) {
+    // Automatic Variable Declarations
+    // Implementation
+    SetString(lp_arrayName, lp_arrayIndex, lp_arrayValue);
+}
+
+void lib6D040D01_gf_SetArrayValueTrigger (string lp_arrayName, int lp_arrayIndex, trigger lp_arrayValue) {
+    // Automatic Variable Declarations
+    // Implementation
+    SetTrigger(lp_arrayName, lp_arrayIndex, lp_arrayValue);
+}
+
+void lib6D040D01_gf_SetArrayValueUnit (string lp_arrayName, int lp_arrayIndex, unit lp_arrayValue) {
+    // Automatic Variable Declarations
+    // Implementation
+    SetUnit(lp_arrayName, lp_arrayIndex, lp_arrayValue);
+}
+
+void lib6D040D01_gf_SetArrayValueUnitGroup (string lp_arrayName, int lp_arrayIndex, unitgroup lp_arrayValue) {
+    // Automatic Variable Declarations
+    // Implementation
+    SetUnitGroup(lp_arrayName, lp_arrayIndex, lp_arrayValue);
+}
+
+void lib6D040D01_gf_PushArrayValueInteger (string lp_arrayName, int lp_arrayValue) {
+    // Automatic Variable Declarations
+    // Implementation
+    PushInt(lp_arrayName, lp_arrayValue);
+}
+
+void lib6D040D01_gf_PushArrayValueReal (string lp_arrayName, fixed lp_arrayValue) {
+    // Automatic Variable Declarations
+    // Implementation
+    PushFixed(lp_arrayName, lp_arrayValue);
+}
+
+void lib6D040D01_gf_PushArrayValueAbilityCommand (string lp_arrayName, abilcmd lp_arrayValue) {
+    // Automatic Variable Declarations
+    // Implementation
+    PushAbilCmd(lp_arrayName, lp_arrayValue);
+}
+
+void lib6D040D01_gf_PushArrayValueBoolean (string lp_arrayName, bool lp_arrayValue) {
+    // Automatic Variable Declarations
+    // Implementation
+    PushBool(lp_arrayName, lp_arrayValue);
+}
+
+void lib6D040D01_gf_PushArrayValueDialog (string lp_arrayName, int lp_arrayValue) {
+    // Automatic Variable Declarations
+    // Implementation
+    PushDialog(lp_arrayName, lp_arrayValue);
+}
+
+void lib6D040D01_gf_PushArrayValueDialogItem (string lp_arrayName, int lp_arrayValue) {
+    // Automatic Variable Declarations
+    // Implementation
+    PushDialogItem(lp_arrayName, lp_arrayValue);
+}
+
+void lib6D040D01_gf_PushArrayValuePoint (string lp_arrayName, point lp_arrayValue) {
+    // Automatic Variable Declarations
+    // Implementation
+    PushPoint(lp_arrayName, lp_arrayValue);
+}
+
+void lib6D040D01_gf_PushArrayValueRegion (string lp_arrayName, region lp_arrayValue) {
+    // Automatic Variable Declarations
+    // Implementation
+    PushRegion(lp_arrayName, lp_arrayValue);
+}
+
+void lib6D040D01_gf_PushArrayValueString (string lp_arrayName, string lp_arrayValue) {
+    // Automatic Variable Declarations
+    // Implementation
+    PushString(lp_arrayName, lp_arrayValue);
+}
+
+void lib6D040D01_gf_PushArrayValueTrigger (string lp_arrayName, trigger lp_arrayValue) {
+    // Automatic Variable Declarations
+    // Implementation
+    PushTrigger(lp_arrayName, lp_arrayValue);
+}
+
+void lib6D040D01_gf_PushArrayValueUnit (string lp_arrayName, unit lp_arrayValue) {
+    // Automatic Variable Declarations
+    // Implementation
+    PushUnit(lp_arrayName, lp_arrayValue);
+}
+
+void lib6D040D01_gf_PushArrayValueUnitGroup (string lp_arrayName, unitgroup lp_arrayValue) {
+    // Automatic Variable Declarations
+    // Implementation
+    PushUnitGroup(lp_arrayName, lp_arrayValue);
+}
+
+int lib6D040D01_gf_GetArrayValueInteger (string lp_arrayName, int lp_arrayIndex) {
+    // Automatic Variable Declarations
+    // Implementation
+    return GetInt(lp_arrayName, lp_arrayIndex);
+}
+
+fixed lib6D040D01_gf_GetArrayValueReal (string lp_arrayName, int lp_arrayIndex) {
+    // Automatic Variable Declarations
+    // Implementation
+    return GetFixed(lp_arrayName, lp_arrayIndex);
+}
+
+abilcmd lib6D040D01_gf_GetArrayValueAbilityCommand (string lp_arrayName, int lp_arrayIndex) {
+    // Automatic Variable Declarations
+    // Implementation
+    return GetAbilCmd(lp_arrayName, lp_arrayIndex);
+}
+
+bool lib6D040D01_gf_GetArrayValueBoolean (string lp_arrayName, int lp_arrayIndex) {
+    // Automatic Variable Declarations
+    // Implementation
+    return GetBool(lp_arrayName, lp_arrayIndex);
+}
+
+int lib6D040D01_gf_GetArrayValueDialog (string lp_arrayName, int lp_arrayIndex) {
+    // Automatic Variable Declarations
+    // Implementation
+    return GetDialog(lp_arrayName, lp_arrayIndex);
+}
+
+int lib6D040D01_gf_GetArrayValueDialogItem (string lp_arrayName, int lp_arrayIndex) {
+    // Automatic Variable Declarations
+    // Implementation
+    return GetDialogItem(lp_arrayName, lp_arrayIndex);
+}
+
+point lib6D040D01_gf_GetArrayValuePoint (string lp_arrayName, int lp_arrayIndex) {
+    // Automatic Variable Declarations
+    // Implementation
+    return GetPoint(lp_arrayName, lp_arrayIndex);
+}
+
+region lib6D040D01_gf_GetArrayValueRegion (string lp_arrayName, int lp_arrayIndex) {
+    // Automatic Variable Declarations
+    // Implementation
+    return GetRegion(lp_arrayName, lp_arrayIndex);
+}
+
+string lib6D040D01_gf_GetArrayValueString (string lp_arrayName, int lp_arrayIndex) {
+    // Automatic Variable Declarations
+    // Implementation
+    return GetString(lp_arrayName, lp_arrayIndex);
+}
+
+trigger lib6D040D01_gf_GetArrayValueTrigger (string lp_arrayName, int lp_arrayIndex) {
+    // Automatic Variable Declarations
+    // Implementation
+    return GetTrigger(lp_arrayName, lp_arrayIndex);
+}
+
+unit lib6D040D01_gf_GetArrayValueUnit (string lp_arrayName, int lp_arrayIndex) {
+    // Automatic Variable Declarations
+    // Implementation
+    return GetUnit(lp_arrayName, lp_arrayIndex);
+}
+
+unitgroup lib6D040D01_gf_GetArrayValueUnitGroup (string lp_arrayName, int lp_arrayIndex) {
+    // Automatic Variable Declarations
+    // Implementation
+    return GetUnitGroup(lp_arrayName, lp_arrayIndex);
+}
+
+int lib6D040D01_gf_SearchArrayValueInteger (string lp_arrayName, int lp_value) {
+    // Automatic Variable Declarations
+    // Implementation
+    return SearchInt(lp_arrayName, lp_value);
+}
+
+int lib6D040D01_gf_SearchArrayValueReal (string lp_arrayName, fixed lp_value) {
+    // Automatic Variable Declarations
+    // Implementation
+    return SearchFixed(lp_arrayName, lp_value);
+}
+
+int lib6D040D01_gf_SearchArrayValueAbilityCommand (string lp_arrayName, abilcmd lp_value) {
+    // Automatic Variable Declarations
+    // Implementation
+    return SearchAbilCmd(lp_arrayName, lp_value);
+}
+
+int lib6D040D01_gf_SearchArrayValueBoolean (string lp_arrayName, bool lp_value) {
+    // Automatic Variable Declarations
+    // Implementation
+    return SearchBool(lp_arrayName, lp_value);
+}
+
+int lib6D040D01_gf_SearchArrayValueDialog (string lp_arrayName, int lp_value) {
+    // Automatic Variable Declarations
+    // Implementation
+    return SearchDialog(lp_arrayName, lp_value);
+}
+
+int lib6D040D01_gf_SearchArrayValueDialogItem (string lp_arrayName, int lp_value) {
+    // Automatic Variable Declarations
+    // Implementation
+    return SearchDialogItem(lp_arrayName, lp_value);
+}
+
+int lib6D040D01_gf_SearchArrayValuePoint (string lp_arrayName, point lp_value) {
+    // Automatic Variable Declarations
+    // Implementation
+    return SearchPoint(lp_arrayName, lp_value);
+}
+
+int lib6D040D01_gf_SearchArrayValueRegion (string lp_arrayName, region lp_value) {
+    // Automatic Variable Declarations
+    // Implementation
+    return SearchRegion(lp_arrayName, lp_value);
+}
+
+int lib6D040D01_gf_SearchArrayValueString (string lp_arrayName, string lp_value) {
+    // Automatic Variable Declarations
+    // Implementation
+    return SearchString(lp_arrayName, lp_value);
+}
+
+int lib6D040D01_gf_SearchArrayValueTrigger (string lp_arrayName, trigger lp_value) {
+    // Automatic Variable Declarations
+    // Implementation
+    return SearchTrigger(lp_arrayName, lp_value);
+}
+
+int lib6D040D01_gf_SearchArrayValueUnit (string lp_arrayName, unit lp_value) {
+    // Automatic Variable Declarations
+    // Implementation
+    return SearchUnit(lp_arrayName, lp_value);
+}
+
+int lib6D040D01_gf_SearchArrayValueUnitGroup (string lp_arrayName, unitgroup lp_value) {
+    // Automatic Variable Declarations
+    // Implementation
+    return SearchUnitGroup(lp_arrayName, lp_value);
+}
+
+void lib6D040D01_gf_SetArrayValuetoArrayValue (string lp_arrayName1, int lp_arrayIndex1, string lp_arrayName2, int lp_arrayIndex2) {
+    // Automatic Variable Declarations
+    // Implementation
+    SetValToVal(lp_arrayName1, lp_arrayIndex1, lp_arrayName2, lp_arrayIndex2);
+}
+
+void lib6D040D01_gf_SplitStringintoArray (string lp_arrayName, string lp_string, string lp_delimiter) {
+    // Automatic Variable Declarations
+    // Implementation
+    Split(lp_arrayName, lp_string, lp_delimiter);
+}
+
+string lib6D040D01_gf_JoinArrayintoString (string lp_arrayName, string lp_glue) {
+    // Automatic Variable Declarations
+    // Implementation
+    return Join(lp_arrayName, lp_glue);
+}
+
+int lib6D040D01_gf_IndexofGreatestLowestValue (string lp_arrayName, bool lp_greatestLowest) {
+    // Automatic Variable Declarations
+    // Implementation
+    return GreatestLowestIndex(lp_arrayName, lp_greatestLowest);
+}
+
+void lib6D040D01_gf_sortArray (string lp_arrayName, bool lp_ascendingDescendingOrder) {
+    int init_i;
+
+    // Variable Declarations
+    int lv_indexOuter;
+    int lv_indexInner;
+    int lv_indexMin;
+    fixed lv_scoreSwap;
+    int[3] lv_valueTypes;
+
+    // Automatic Variable Declarations
+    int autoD3F23FFF_ae;
+    const int autoD3F23FFF_ai = 1;
+    int auto0ECF7475_ae;
+    const int auto0ECF7475_ai = 1;
+
+    // Variable Initialization
+    for (init_i = 0; init_i <= 2; init_i += 1) {
+        lv_valueTypes[init_i] = c_dataTypeInt;
+    }
+
+    // Implementation
+    autoD3F23FFF_ae = (lib6D040D01_gf_LengthofArray(lp_arrayName) - 2);
+    lv_indexOuter = 0;
+    for ( ; ( (autoD3F23FFF_ai >= 0 && lv_indexOuter <= autoD3F23FFF_ae) || (autoD3F23FFF_ai < 0 && lv_indexOuter >= autoD3F23FFF_ae) ) ; lv_indexOuter += autoD3F23FFF_ai ) {
+        lv_indexMin = lv_indexOuter;
+        auto0ECF7475_ae = (lib6D040D01_gf_LengthofArray(lp_arrayName) - 1);
+        lv_indexInner = (lv_indexOuter + 1);
+        for ( ; ( (auto0ECF7475_ai >= 0 && lv_indexInner <= auto0ECF7475_ae) || (auto0ECF7475_ai < 0 && lv_indexInner >= auto0ECF7475_ae) ) ; lv_indexInner += auto0ECF7475_ai ) {
+            if ((lib6D040D01_gf_GetArrayValueReal(lp_arrayName, lv_indexInner) < lib6D040D01_gf_GetArrayValueReal(lp_arrayName, lv_indexMin))) {
+                lv_indexMin = lv_indexInner;
+            }
+
+        }
+        if ((lv_indexMin != lv_indexOuter)) {
+            lv_scoreSwap = lib6D040D01_gf_GetArrayValueReal(lp_arrayName, lv_indexOuter);
+            lv_valueTypes[0] = lib6D040D01_gf_TypeofArrayValue(lp_arrayName, lv_indexMin);
+            lv_valueTypes[1] = lib6D040D01_gf_TypeofArrayValue(lp_arrayName, lv_indexOuter);
+            if ((lv_valueTypes[0] == c_dataTypeFixed)) {
+                lib6D040D01_gf_SetArrayValueReal(lp_arrayName, lv_indexOuter, lib6D040D01_gf_GetArrayValueReal(lp_arrayName, lv_indexMin));
+            }
+            else {
+                lib6D040D01_gf_SetArrayValueInteger(lp_arrayName, lv_indexOuter, lib6D040D01_gf_GetArrayValueInteger(lp_arrayName, lv_indexMin));
+            }
+            if ((lv_valueTypes[1] == c_dataTypeFixed)) {
+                lib6D040D01_gf_SetArrayValueReal(lp_arrayName, lv_indexMin, lv_scoreSwap);
+            }
+            else {
+                lib6D040D01_gf_SetArrayValueInteger(lp_arrayName, lv_indexMin, FixedToInt(lv_scoreSwap));
+            }
+        }
+
+    }
+    if ((lp_ascendingDescendingOrder == false)) {
+        lib6D040D01_gf_ReverseArray(lp_arrayName);
+    }
+
+}
+
+void lib6D040D01_gf_CopyArray (string lp_arrayName, string lp_newArrayName) {
+    // Automatic Variable Declarations
+    // Implementation
+    Copy(lp_arrayName, lp_newArrayName);
+}
+
+void lib6D040D01_gf_DeleteArrayKey (string lp_arrayName, int lp_arrayKey) {
+    // Automatic Variable Declarations
+    // Implementation
+    Delete(lp_arrayName, lp_arrayKey);
+}
+
+void lib6D040D01_gf_Move (string lp_arrayName, int lp_indexFrom, int lp_indexTo) {
+    // Variable Declarations
+    string lv_temp;
+    int lv_increment;
+    int lv_k;
+
+    // Automatic Variable Declarations
+    int auto9FA638EB_ae;
+    int auto9FA638EB_ai;
+
+    // Variable Initialization
+    lv_temp = "";
+
+    // Implementation
+    if ((lp_indexFrom == lp_indexTo)) {
+        return ;
+    }
+
+    if ((lp_indexTo < lp_indexFrom)) {
+        lv_increment = -1;
+    }
+    else {
+        lv_increment = 1;
+    }
+    lv_temp = (lp_arrayName + "__func_move__TEMP_");
+    lib6D040D01_gf_CreateArray(lv_temp);
+    lib6D040D01_gf_SetArrayValuetoArrayValue(lv_temp, 0, lp_arrayName, lp_indexFrom);
+    auto9FA638EB_ae = lp_indexTo;
+    auto9FA638EB_ai = lv_increment;
+    lv_k = lp_indexFrom;
+    for ( ; ( (auto9FA638EB_ai >= 0 && lv_k <= auto9FA638EB_ae) || (auto9FA638EB_ai < 0 && lv_k >= auto9FA638EB_ae) ) ; lv_k += auto9FA638EB_ai ) {
+        if ((lv_k != lp_indexTo)) {
+            lib6D040D01_gf_SetArrayValuetoArrayValue(lp_arrayName, lv_k, lp_arrayName, (lv_k + lv_increment));
+        }
+
+    }
+    lib6D040D01_gf_SetArrayValuetoArrayValue(lp_arrayName, lp_indexTo, lv_temp, 0);
+    DataTableValueRemove(true, lv_temp);
+    DataTableValueRemove(true, (lv_temp + "[0]"));
+}
+
+void lib6D040D01_gf_SwapArrayValues (string lp_arrayName, int lp_arrayIndex1, int lp_arrayIndex2) {
+    // Automatic Variable Declarations
+    // Implementation
+    Swap(lp_arrayName, lp_arrayIndex1, lp_arrayIndex2);
+}
+
+void lib6D040D01_gf_ReverseArray (string lp_arrayName) {
+    // Automatic Variable Declarations
+    // Implementation
+    Reverse(lp_arrayName);
+}
+
+void lib6D040D01_gf_Shuffle (string lp_arrayName) {
+    // Variable Declarations
+    int lv_index;
+    int lv_indexRandom;
+    int lv_scoreSwap;
+
+    // Automatic Variable Declarations
+    int auto6B58AEDD_ae;
+    const int auto6B58AEDD_ai = 1;
+
+    // Variable Initialization
+
+    // Implementation
+    auto6B58AEDD_ae = (lib6D040D01_gf_LengthofArray(lp_arrayName) - 1);
+    lv_index = 0;
+    for ( ; ( (auto6B58AEDD_ai >= 0 && lv_index <= auto6B58AEDD_ae) || (auto6B58AEDD_ai < 0 && lv_index >= auto6B58AEDD_ae) ) ; lv_index += auto6B58AEDD_ai ) {
+        lv_indexRandom = RandomInt(lv_index, (lib6D040D01_gf_LengthofArray(lp_arrayName) - 1));
+        if ((lv_indexRandom != lv_index)) {
+            lib6D040D01_gf_SwapArrayValues(lp_arrayName, lv_index, lv_indexRandom);
+        }
+
+    }
+}
+
+void lib6D040D01_gf_MergeArrays (string lp_arrayName1, string lp_arrayName2) {
+    // Automatic Variable Declarations
+    // Implementation
+    Merge(lp_arrayName1, lp_arrayName2);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Library Initialization
+//--------------------------------------------------------------------------------------------------
+bool lib6D040D01_InitLib_completed = false;
+
+void lib6D040D01_InitLib () {
+    if (lib6D040D01_InitLib_completed) {
+        return;
+    }
+
+    lib6D040D01_InitLib_completed = true;
+
+    lib6D040D01_InitLibraries();
+    lib6D040D01_InitCustomScript();
+}
+
